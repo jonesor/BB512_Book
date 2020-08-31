@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>4 Stochastic Population Growth | BB512 - Population Biology and Evolution</title>
+  <meta name="description" content="Course book for BB512 at the Biology Department, University of Southern Denmark" />
+  <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="4 Stochastic Population Growth | BB512 - Population Biology and Evolution" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="Course book for BB512 at the Biology Department, University of Southern Denmark" />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="4 Stochastic Population Growth | BB512 - Population Biology and Evolution" />
+  
+  <meta name="twitter:description" content="Course book for BB512 at the Biology Department, University of Southern Denmark" />
+  
+
+<meta name="author" content="Owen R. Jones (Course Coordinator)" />
+
+
+<meta name="date" content="2020-08-31" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="the-legend-of-ambalapuzha.html"/>
+<link rel="next" href="basic-logistic-population-growth.html"/>
+<script src="libs/header-attrs-2.3/header-attrs.js"></script>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<link href="libs/tabwid-1.0.0/tabwid.css" rel="stylesheet" />
+<script src="libs/tabwid-1.0.0/tabwid.js"></script>
+<style type="text/css">
+
+.warning-box {
+  border: 3px solid #e60000;
+  margin:  25px;
+  padding: 10px 10px 5px 10px;
+  border-radius: 6px 6px 6px 6px;
+}
+
+.advanced-box {
+  border: 3px solid #268bd2;
+  margin:  25px;
+  padding: 10px 10px 5px 10px;
+  border-radius: 6px 6px 6px 6px;
+}
+
+.do-something {
+  border: 3px solid #803e00;
+  margin:  25px;
+  padding: 10px 10px 5px 10px;
+  border-radius: 6px 6px 6px 6px;
+}
+
+</style>
+
+
+
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">BB512</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Welcome to BB512</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#population"><i class="fa fa-check"></i><b>1.1</b> Population</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#evolution"><i class="fa fa-check"></i><b>1.2</b> Evolution</a></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#course-materials"><i class="fa fa-check"></i><b>1.3</b> Course materials</a></li>
+<li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#expectations"><i class="fa fa-check"></i><b>1.4</b> Expectations</a></li>
+<li class="chapter" data-level="1.5" data-path="index.html"><a href="index.html#your-feedback"><i class="fa fa-check"></i><b>1.5</b> Your feedback</a></li>
+<li class="chapter" data-level="1.6" data-path="index.html"><a href="index.html#assessment"><i class="fa fa-check"></i><b>1.6</b> Assessment</a></li>
+<li class="chapter" data-level="1.7" data-path="index.html"><a href="index.html#instructors"><i class="fa fa-check"></i><b>1.7</b> Instructors</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="schedule.html"><a href="schedule.html"><i class="fa fa-check"></i><b>2</b> Schedule</a></li>
+<li class="part"><span><b>I Population Biology</b></span></li>
+<li class="chapter" data-level="3" data-path="the-legend-of-ambalapuzha.html"><a href="the-legend-of-ambalapuzha.html"><i class="fa fa-check"></i><b>3</b> The legend of Ambalapuzha</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="the-legend-of-ambalapuzha.html"><a href="the-legend-of-ambalapuzha.html#animalsplants-not-grains-of-rice."><i class="fa fa-check"></i><b>3.1</b> Animals/plants, not grains of rice.</a></li>
+<li class="chapter" data-level="3.2" data-path="the-legend-of-ambalapuzha.html"><a href="the-legend-of-ambalapuzha.html#optional-try-these-calculations-in-r"><i class="fa fa-check"></i><b>3.2</b> Optional: Try these calculations in R</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="stochastic-population-growth.html"><a href="stochastic-population-growth.html"><i class="fa fa-check"></i><b>4</b> Stochastic Population Growth</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="stochastic-population-growth.html"><a href="stochastic-population-growth.html#simulations-in-r"><i class="fa fa-check"></i><b>4.1</b> Simulations in R</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="basic-logistic-population-growth.html"><a href="basic-logistic-population-growth.html"><i class="fa fa-check"></i><b>5</b> Basic logistic population growth</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="basic-logistic-population-growth.html"><a href="basic-logistic-population-growth.html#graph-1"><i class="fa fa-check"></i><b>5.1</b> Graph 1</a></li>
+<li class="chapter" data-level="5.2" data-path="basic-logistic-population-growth.html"><a href="basic-logistic-population-growth.html#graphs-2-3"><i class="fa fa-check"></i><b>5.2</b> Graphs 2 &amp; 3</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="deeper-into-logistic-growth.html"><a href="deeper-into-logistic-growth.html"><i class="fa fa-check"></i><b>6</b> Deeper into logistic growth</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="deeper-into-logistic-growth.html"><a href="deeper-into-logistic-growth.html#figure-1"><i class="fa fa-check"></i><b>6.1</b> Figure 1</a></li>
+<li class="chapter" data-level="6.2" data-path="deeper-into-logistic-growth.html"><a href="deeper-into-logistic-growth.html#figure-2"><i class="fa fa-check"></i><b>6.2</b> Figure 2</a></li>
+<li class="chapter" data-level="6.3" data-path="deeper-into-logistic-growth.html"><a href="deeper-into-logistic-growth.html#figure-3"><i class="fa fa-check"></i><b>6.3</b> Figure 3</a></li>
+<li class="chapter" data-level="6.4" data-path="deeper-into-logistic-growth.html"><a href="deeper-into-logistic-growth.html#adding-a-time-lag"><i class="fa fa-check"></i><b>6.4</b> Adding a time lag</a></li>
+<li class="chapter" data-level="6.5" data-path="deeper-into-logistic-growth.html"><a href="deeper-into-logistic-growth.html#cobweb-diagrams"><i class="fa fa-check"></i><b>6.5</b> Cobweb diagrams</a></li>
+</ul></li>
+<li class="part"><span><b>II Evolution</b></span></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">BB512 - Population Biology and Evolution</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="stochastic-population-growth" class="section level1" number="4">
+<h1><span class="header-section-number">4</span> Stochastic Population Growth</h1>
+<p>We will examine the effect of adding stochasticity (randomness) into the simple exponential/geometric growth model you have been looking at in the last couple of lectures. Remember – this model allows for unbounded population growth – the populations development is not influenced by population density.</p>
+<p>We’ll focus on the discrete form: <span class="math inline">\(N_{t+1}=λN_t\)</span></p>
+<p>In many cases it is unlikely that lambda (<span class="math inline">\(λ\)</span>) will be constant through time. It is likely to vary because of environmental factors (weather, food supply etc.) and internal factors (structure of the population etc.).</p>
+<p>What effect might this variation have?</p>
+<p>A good way to begin consider this question is to think of lambda as a random number drawn from a particular distribution (Fig. <a href="stochastic-population-growth.html#fig:stochLambda">4.1</a>). In the figure you can see that in good years <span class="math inline">\(λ\)</span> is <span class="math inline">\(&gt;\)</span> 1 so the population will increase, in poor years <span class="math inline">\(λ\)</span> is <span class="math inline">\(&lt;\)</span> 1, so the population will decline. In most years, the population will neither grow nor shrink.</p>
+<div class="figure" style="text-align: center"><span id="fig:stochLambda"></span>
+<img src="BB512_files/figure-html/stochLambda-1.png" alt="A normal distribution of potential lambda values" width="576" />
+<p class="caption">
+Figure 4.1: A normal distribution of potential lambda values
+</p>
+</div>
+<p>When using the equation above to calculate population at time <span class="math inline">\(t+1\)</span> (<span class="math inline">\(N_{t+1}\)</span>) from the population at time <span class="math inline">\(t\)</span> (<span class="math inline">\(N_t\)</span>), one would draw a random <span class="math inline">\(λ\)</span> value from this distribution. Sometimes <span class="math inline">\(λ\)</span> will be high, other times it will be low, most of the time it will be from around the middle of the distribution.</p>
+<div class="do-something">
+<p>
+Use the Excel worksheet, <code>StochasticPopulationGrowth.xslx</code>, to study how stochastic population growth works with this simple model.
+</p>
+</div>
+<ol style="list-style-type: decimal">
+<li>Use Excel formulae to calculate population growth through time (20 generations, with starting population of 100), linking to the mean finite population growth rate.</li>
+<li>Use charts to plot the results. (you already did this last time!)</li>
+<li>Use a formula to generate a column of stochastic lambda values. [English Excel: “<code>=NORMINV(RAND(),$F$10,SQRT($F$11))"</code>/ Danish Excel:”<code>=NORMINV(SLUMP();$F$10;KVROD($F$11))</code>"]</li>
+<li>Use the same procedure as before, to create a stochastic population size vector (stochastic N)</li>
+<li>Compare the two trajectories using a chart.</li>
+<li>Try altering initial population size, the mean finite growth rate, and the amount of stochasticity (Variance).</li>
+<li>Extinction occurs when N <span class="math inline">\(\leq\)</span> 0. What happens to extinction risk as stochasticity increases? What about when initial N is small?</li>
+</ol>
+<div id="simulations-in-r" class="section level2" number="4.1">
+<h2><span class="header-section-number">4.1</span> Simulations in R</h2>
+<p>Excel is of limited use to really get a feel for this. For the next part we’ll use <em>R</em>.</p>
+<p>If you already have R on your computers you can play along, otherwise take a look at my demonstration in class. I will show how you can use this simulation approach to estimate extinction risk and how this is related to starting population size, mean lambda, and the amount of stochasticity.</p>
+<p>You can copy/paste the code below into <em>R</em>.</p>
+<p>The output of the modelling is shown in Fig. <a href="stochastic-population-growth.html#fig:stochProjection">4.2</a></p>
+<div class="do-something">
+<p>
+Copy-and-paste the code below into a text file (or directly into <em>R</em>).
+</p>
+<p>
+The final line of the code (<code>nExtinct/nTrials</code>) gives you an estimate of extinction probability - the proportion of trials that lead to a population size of 0 (or less).
+</p>
+<p>
+Modify the simulation settings to explore what happens to (i) the plot of population growth and (ii) extinction risk, when you vary the amount of stochasticity (<code>var.pgr</code>), the deterministic <span class="math inline"><span class="math inline">\(\lambda\)</span></span> (<code>pgr</code>) and the number of generations (<code>nGen</code>).
+</p>
+</div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="stochastic-population-growth.html#cb8-1" aria-hidden="true"></a><span class="co">#Simulating stochastic geometric population growth rate</span></span>
+<span id="cb8-2"><a href="stochastic-population-growth.html#cb8-2" aria-hidden="true"></a></span>
+<span id="cb8-3"><a href="stochastic-population-growth.html#cb8-3" aria-hidden="true"></a><span class="co">#Simulation settings (try changing these)</span></span>
+<span id="cb8-4"><a href="stochastic-population-growth.html#cb8-4" aria-hidden="true"></a>pgr =<span class="st"> </span><span class="fl">1.05</span> <span class="co"># deterministic growth rate</span></span>
+<span id="cb8-5"><a href="stochastic-population-growth.html#cb8-5" aria-hidden="true"></a>var.pgr =<span class="st"> </span><span class="fl">0.1</span> <span class="co"># amount of stochasticity</span></span>
+<span id="cb8-6"><a href="stochastic-population-growth.html#cb8-6" aria-hidden="true"></a>startPop =<span class="st"> </span><span class="dv">10</span> <span class="co"># pop size at start</span></span>
+<span id="cb8-7"><a href="stochastic-population-growth.html#cb8-7" aria-hidden="true"></a>nGen =<span class="st"> </span><span class="dv">50</span> <span class="co"># number of generations</span></span>
+<span id="cb8-8"><a href="stochastic-population-growth.html#cb8-8" aria-hidden="true"></a>nTrials =<span class="st"> </span><span class="dv">100</span> <span class="co"># number of repeated simulations</span></span>
+<span id="cb8-9"><a href="stochastic-population-growth.html#cb8-9" aria-hidden="true"></a></span>
+<span id="cb8-10"><a href="stochastic-population-growth.html#cb8-10" aria-hidden="true"></a><span class="co">####################################################################</span></span>
+<span id="cb8-11"><a href="stochastic-population-growth.html#cb8-11" aria-hidden="true"></a><span class="co">#If you are unfamiliar with R, do not edit anything below this line!</span></span>
+<span id="cb8-12"><a href="stochastic-population-growth.html#cb8-12" aria-hidden="true"></a><span class="co">####################################################################</span></span>
+<span id="cb8-13"><a href="stochastic-population-growth.html#cb8-13" aria-hidden="true"></a></span>
+<span id="cb8-14"><a href="stochastic-population-growth.html#cb8-14" aria-hidden="true"></a>pseudoExtinction =<span class="st"> </span><span class="dv">1</span></span>
+<span id="cb8-15"><a href="stochastic-population-growth.html#cb8-15" aria-hidden="true"></a></span>
+<span id="cb8-16"><a href="stochastic-population-growth.html#cb8-16" aria-hidden="true"></a><span class="co"># First randomly generate some lambda values</span></span>
+<span id="cb8-17"><a href="stochastic-population-growth.html#cb8-17" aria-hidden="true"></a>lambdas&lt;-<span class="kw">matrix</span>(<span class="kw">rnorm</span>(nTrials<span class="op">*</span>nGen, <span class="dt">mean =</span> pgr, <span class="dt">sd =</span> <span class="kw">sqrt</span>(var.pgr)),<span class="dt">ncol=</span>nTrials,<span class="dt">nrow=</span>nGen)</span>
+<span id="cb8-18"><a href="stochastic-population-growth.html#cb8-18" aria-hidden="true"></a></span>
+<span id="cb8-19"><a href="stochastic-population-growth.html#cb8-19" aria-hidden="true"></a><span class="co"># Use a histogram to see what they look like (uncomment the line below)</span></span>
+<span id="cb8-20"><a href="stochastic-population-growth.html#cb8-20" aria-hidden="true"></a><span class="co"># hist(lambdas,col=&quot;grey&quot;,main=&quot;&quot;)</span></span>
+<span id="cb8-21"><a href="stochastic-population-growth.html#cb8-21" aria-hidden="true"></a></span>
+<span id="cb8-22"><a href="stochastic-population-growth.html#cb8-22" aria-hidden="true"></a><span class="co"># Now run the simulations to see what the resulting population growth looks like</span></span>
+<span id="cb8-23"><a href="stochastic-population-growth.html#cb8-23" aria-hidden="true"></a>trials =<span class="st"> </span><span class="kw">matrix</span>(<span class="dt">data =</span> <span class="ot">NA</span>, <span class="dt">nrow =</span> nGen, <span class="dt">ncol =</span> nTrials)</span>
+<span id="cb8-24"><a href="stochastic-population-growth.html#cb8-24" aria-hidden="true"></a><span class="cf">for</span> (j <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span>nTrials){</span>
+<span id="cb8-25"><a href="stochastic-population-growth.html#cb8-25" aria-hidden="true"></a>  popSize =<span class="st"> </span>startPop  </span>
+<span id="cb8-26"><a href="stochastic-population-growth.html#cb8-26" aria-hidden="true"></a>  <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">2</span><span class="op">:</span><span class="st"> </span>nGen){</span>
+<span id="cb8-27"><a href="stochastic-population-growth.html#cb8-27" aria-hidden="true"></a>  stoch.pgr =<span class="st"> </span>lambdas[i,j]</span>
+<span id="cb8-28"><a href="stochastic-population-growth.html#cb8-28" aria-hidden="true"></a>  popSize =<span class="st"> </span><span class="kw">append</span>(popSize, popSize[i<span class="dv">-1</span>]<span class="op">*</span>stoch.pgr)</span>
+<span id="cb8-29"><a href="stochastic-population-growth.html#cb8-29" aria-hidden="true"></a>}</span>
+<span id="cb8-30"><a href="stochastic-population-growth.html#cb8-30" aria-hidden="true"></a>trials[,j] =<span class="st"> </span>popSize</span>
+<span id="cb8-31"><a href="stochastic-population-growth.html#cb8-31" aria-hidden="true"></a><span class="kw">rm</span>(popSize)</span>
+<span id="cb8-32"><a href="stochastic-population-growth.html#cb8-32" aria-hidden="true"></a>}</span>
+<span id="cb8-33"><a href="stochastic-population-growth.html#cb8-33" aria-hidden="true"></a></span>
+<span id="cb8-34"><a href="stochastic-population-growth.html#cb8-34" aria-hidden="true"></a><span class="co">#Calculate probability of (pseudo)extinction</span></span>
+<span id="cb8-35"><a href="stochastic-population-growth.html#cb8-35" aria-hidden="true"></a>minvals &lt;-<span class="st"> </span><span class="kw">apply</span>(trials,<span class="dv">2</span>,min)</span>
+<span id="cb8-36"><a href="stochastic-population-growth.html#cb8-36" aria-hidden="true"></a>nExtinct &lt;-<span class="st"> </span><span class="kw">length</span>(minvals[minvals<span class="op">&lt;=</span>pseudoExtinction])</span>
+<span id="cb8-37"><a href="stochastic-population-growth.html#cb8-37" aria-hidden="true"></a>nExtinct<span class="op">/</span>nTrials</span></code></pre></div>
+<pre><code>## [1] 0.44</code></pre>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="stochastic-population-growth.html#cb10-1" aria-hidden="true"></a><span class="co">#Make a plot of the population trajectories</span></span>
+<span id="cb10-2"><a href="stochastic-population-growth.html#cb10-2" aria-hidden="true"></a><span class="kw">plot</span>(<span class="dv">1</span><span class="op">:</span>nGen,<span class="kw">log</span>(<span class="kw">seq</span>(<span class="fl">0.1</span>,<span class="kw">max</span>(trials),<span class="dt">length.out=</span>nGen)),<span class="dt">type =</span> <span class="st">&quot;n&quot;</span>,<span class="dt">axes=</span>F,<span class="dt">xlab =</span><span class="st">&quot;Time&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;N&quot;</span>,<span class="dt">ylim=</span><span class="kw">log</span>(<span class="kw">c</span>(<span class="fl">0.1</span>,<span class="dv">100000</span>)))</span>
+<span id="cb10-3"><a href="stochastic-population-growth.html#cb10-3" aria-hidden="true"></a><span class="kw">matlines</span>(<span class="kw">log</span>(trials),<span class="dt">col =</span> <span class="st">&quot;#FF234520&quot;</span>,<span class="dt">lty=</span><span class="dv">1</span>,<span class="dt">lwd=</span><span class="dv">3</span>)</span>
+<span id="cb10-4"><a href="stochastic-population-growth.html#cb10-4" aria-hidden="true"></a><span class="kw">axis</span>(<span class="dv">1</span>)</span>
+<span id="cb10-5"><a href="stochastic-population-growth.html#cb10-5" aria-hidden="true"></a><span class="kw">axis</span>(<span class="dv">2</span>,<span class="dt">at =</span> <span class="kw">log</span>(<span class="kw">c</span>(<span class="fl">0.1</span>,<span class="dv">1</span>,<span class="dv">10</span>,<span class="dv">100</span>,<span class="dv">1000</span>,<span class="dv">10000</span>,<span class="dv">100000</span>)),</span>
+<span id="cb10-6"><a href="stochastic-population-growth.html#cb10-6" aria-hidden="true"></a>     <span class="dt">label =</span> <span class="kw">c</span>(<span class="fl">0.1</span>,<span class="dv">1</span>,<span class="dv">10</span>,<span class="dv">100</span>,<span class="dv">1000</span>,<span class="dv">10000</span>,<span class="dv">100000</span>))</span>
+<span id="cb10-7"><a href="stochastic-population-growth.html#cb10-7" aria-hidden="true"></a><span class="kw">abline</span>(<span class="dt">h=</span><span class="kw">log</span>(pseudoExtinction),<span class="dt">lty=</span><span class="dv">2</span>)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span id="fig:stochProjection"></span>
+<img src="BB512_files/figure-html/stochProjection-1.png" alt="An example of stochastic population projection (100 simulations for 50 generations)" width="576" />
+<p class="caption">
+Figure 4.2: An example of stochastic population projection (100 simulations for 50 generations)
+</p>
+</div>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="the-legend-of-ambalapuzha.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="basic-logistic-population-growth.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/jonesor/BB512_Book/edit/master/1_02_ExponentialGrowth2.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "section"
+},
+"split_by": "section"
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

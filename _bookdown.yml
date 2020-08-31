@@ -1,0 +1,5 @@
+book_filename: "BB512"
+before_chapter_script: "preamble.R"
+chapter_name: ""
+output_dir: "docs"
+delete_merged_file: true

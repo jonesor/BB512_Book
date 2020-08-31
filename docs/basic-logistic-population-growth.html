@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>5 Basic logistic population growth | BB512 - Population Biology and Evolution</title>
+  <meta name="description" content="Course book for BB512 at the Biology Department, University of Southern Denmark" />
+  <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="5 Basic logistic population growth | BB512 - Population Biology and Evolution" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="Course book for BB512 at the Biology Department, University of Southern Denmark" />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="5 Basic logistic population growth | BB512 - Population Biology and Evolution" />
+  
+  <meta name="twitter:description" content="Course book for BB512 at the Biology Department, University of Southern Denmark" />
+  
+
+<meta name="author" content="Owen R. Jones (Course Coordinator)" />
+
+
+<meta name="date" content="2020-08-31" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="stochastic-population-growth.html"/>
+<link rel="next" href="deeper-into-logistic-growth.html"/>
+<script src="libs/header-attrs-2.3/header-attrs.js"></script>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<link href="libs/tabwid-1.0.0/tabwid.css" rel="stylesheet" />
+<script src="libs/tabwid-1.0.0/tabwid.js"></script>
+<style type="text/css">
+
+.warning-box {
+  border: 3px solid #e60000;
+  margin:  25px;
+  padding: 10px 10px 5px 10px;
+  border-radius: 6px 6px 6px 6px;
+}
+
+.advanced-box {
+  border: 3px solid #268bd2;
+  margin:  25px;
+  padding: 10px 10px 5px 10px;
+  border-radius: 6px 6px 6px 6px;
+}
+
+.do-something {
+  border: 3px solid #803e00;
+  margin:  25px;
+  padding: 10px 10px 5px 10px;
+  border-radius: 6px 6px 6px 6px;
+}
+
+</style>
+
+
+
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">BB512</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Welcome to BB512</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#population"><i class="fa fa-check"></i><b>1.1</b> Population</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#evolution"><i class="fa fa-check"></i><b>1.2</b> Evolution</a></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#course-materials"><i class="fa fa-check"></i><b>1.3</b> Course materials</a></li>
+<li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#expectations"><i class="fa fa-check"></i><b>1.4</b> Expectations</a></li>
+<li class="chapter" data-level="1.5" data-path="index.html"><a href="index.html#your-feedback"><i class="fa fa-check"></i><b>1.5</b> Your feedback</a></li>
+<li class="chapter" data-level="1.6" data-path="index.html"><a href="index.html#assessment"><i class="fa fa-check"></i><b>1.6</b> Assessment</a></li>
+<li class="chapter" data-level="1.7" data-path="index.html"><a href="index.html#instructors"><i class="fa fa-check"></i><b>1.7</b> Instructors</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="schedule.html"><a href="schedule.html"><i class="fa fa-check"></i><b>2</b> Schedule</a></li>
+<li class="part"><span><b>I Population Biology</b></span></li>
+<li class="chapter" data-level="3" data-path="the-legend-of-ambalapuzha.html"><a href="the-legend-of-ambalapuzha.html"><i class="fa fa-check"></i><b>3</b> The legend of Ambalapuzha</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="the-legend-of-ambalapuzha.html"><a href="the-legend-of-ambalapuzha.html#animalsplants-not-grains-of-rice."><i class="fa fa-check"></i><b>3.1</b> Animals/plants, not grains of rice.</a></li>
+<li class="chapter" data-level="3.2" data-path="the-legend-of-ambalapuzha.html"><a href="the-legend-of-ambalapuzha.html#optional-try-these-calculations-in-r"><i class="fa fa-check"></i><b>3.2</b> Optional: Try these calculations in R</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="stochastic-population-growth.html"><a href="stochastic-population-growth.html"><i class="fa fa-check"></i><b>4</b> Stochastic Population Growth</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="stochastic-population-growth.html"><a href="stochastic-population-growth.html#simulations-in-r"><i class="fa fa-check"></i><b>4.1</b> Simulations in R</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="basic-logistic-population-growth.html"><a href="basic-logistic-population-growth.html"><i class="fa fa-check"></i><b>5</b> Basic logistic population growth</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="basic-logistic-population-growth.html"><a href="basic-logistic-population-growth.html#graph-1"><i class="fa fa-check"></i><b>5.1</b> Graph 1</a></li>
+<li class="chapter" data-level="5.2" data-path="basic-logistic-population-growth.html"><a href="basic-logistic-population-growth.html#graphs-2-3"><i class="fa fa-check"></i><b>5.2</b> Graphs 2 &amp; 3</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="deeper-into-logistic-growth.html"><a href="deeper-into-logistic-growth.html"><i class="fa fa-check"></i><b>6</b> Deeper into logistic growth</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="deeper-into-logistic-growth.html"><a href="deeper-into-logistic-growth.html#figure-1"><i class="fa fa-check"></i><b>6.1</b> Figure 1</a></li>
+<li class="chapter" data-level="6.2" data-path="deeper-into-logistic-growth.html"><a href="deeper-into-logistic-growth.html#figure-2"><i class="fa fa-check"></i><b>6.2</b> Figure 2</a></li>
+<li class="chapter" data-level="6.3" data-path="deeper-into-logistic-growth.html"><a href="deeper-into-logistic-growth.html#figure-3"><i class="fa fa-check"></i><b>6.3</b> Figure 3</a></li>
+<li class="chapter" data-level="6.4" data-path="deeper-into-logistic-growth.html"><a href="deeper-into-logistic-growth.html#adding-a-time-lag"><i class="fa fa-check"></i><b>6.4</b> Adding a time lag</a></li>
+<li class="chapter" data-level="6.5" data-path="deeper-into-logistic-growth.html"><a href="deeper-into-logistic-growth.html#cobweb-diagrams"><i class="fa fa-check"></i><b>6.5</b> Cobweb diagrams</a></li>
+</ul></li>
+<li class="part"><span><b>II Evolution</b></span></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">BB512 - Population Biology and Evolution</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="basic-logistic-population-growth" class="section level1" number="5">
+<h1><span class="header-section-number">5</span> Basic logistic population growth</h1>
+<p>Population sizes have upper limits – they can only get so large. This is often modeled with the ‘logistic growth’ model<a href="#fn4" class="footnote-ref" id="fnref4"><sup>4</sup></a>:</p>
+<p><span class="math inline">\(N_{t+1}=N_{t}+r_{d} N_{t}\left(1-\frac{N_{t}}{K}\right)\)</span></p>
+<p>This equation models population at time <span class="math inline">\(t+1\)</span> (<span class="math inline">\(N_{t+1}\)</span>) as a function of the population at time <span class="math inline">\(t\)</span> (<span class="math inline">\(N_t\)</span>), the <em>discrete growth factor</em> (<span class="math inline">\(r_d\)</span>), and carrying capacity of the environment (<span class="math inline">\(K\)</span>).</p>
+<p>The idea is that the growth rate of the population (the difference between <span class="math inline">\(N_{t+1}\)</span> and <span class="math inline">\(N_t\)</span>) decreases as the population increases in size. When the population size at <span class="math inline">\(N_t\)</span> is equal to the <em>carrying capacity</em> of the environment (<span class="math inline">\(K\)</span>), the population growth rate is zero. For example, if the carrying capacity of the population is <em>200</em>, and there are already <em>200</em> individuals in the population, then the size of the population will remain unchanged through time (<span class="math inline">\(N_{t+1} = N_t = 200\)</span>).</p>
+<p>The aim of this Excel-based exercise is to explore this model and help you get an intuitive understanding of it by looking at it from different perspectives. Even though it is a fairly simple model, it leads us to some useful biological insights.</p>
+<p>Open the file <code>Basic Logistic Growth.xslx</code>.</p>
+<p>You will see that there are three blocks of numbers, and three graphs.
+During the exercise you only need to edit the pink block.</p>
+<p>The pink block gives the important parameters of the logistic model:</p>
+<ul>
+<li><code>Initial N</code> = the starting population size at time 1.</li>
+<li><code>r_d</code> = the maximum per capita population growth rate (<span class="math inline">\(r_d\)</span>). When <span class="math inline">\(r_d\)</span> is 0, the population does not grow. When <span class="math inline">\(r_d\)</span> is <span class="math inline">\(&gt;\)</span> 0 the population grows, and when it is <span class="math inline">\(&lt;\)</span> 0 it declines. The population cannot fall below 0.</li>
+<li><code>K</code> = the carrying capacity of the population.</li>
+</ul>
+<p>The initial values for these are <em>10</em>, <em>0.8</em> and <em>200</em> respectively.</p>
+<p>In this exercises you will be altering these parameters and observing the outcome in the 3 graphs which show:</p>
+<ol style="list-style-type: decimal">
+<li>The population size through time.</li>
+<li>The per capita growth rate of the population in relation to population size</li>
+<li>The relationship between population size at time t and at time t+1</li>
+</ol>
+<div id="graph-1" class="section level2" number="5.1">
+<h2><span class="header-section-number">5.1</span> Graph 1</h2>
+<p>First – take a look at <strong>Graph 1</strong>.</p>
+<ul>
+<li>What is the maximum population size?</li>
+<li>How does this compare to carrying capacity (<code>K</code>)?</li>
+<li>What do you predict to happen if you increase <code>K</code> to <em>300</em>? (try it)</li>
+</ul>
+<!--You should notice that when `r_d` is around 1 or lower, the maximum population size is the same as the carrying capacity (`K`). As you change `K`, this maximum population size will change accordingly. 
+If `r_d` is markedly greater than 1, then the population size can exceed the carrying capacity. This is because the population grows so fast that it “overshoots” carrying capacity and then fluctuates around `K`.-->
+<ul>
+<li>At what time do you reach the maximum population size?</li>
+<li>If you halved the discrete growth factor (<code>r_d</code>) to <em>0.4</em>, what do you think will happen to the dynamics this time? (try it)</li>
+</ul>
+<!-- You should notice that the time taken to reach the maximum population size is related to the growth rate (`r_d`). As you increase `r_d`, the time taken to hit the maximum population size decreases. If you halve the `r_d`, the time taken to reach maximum population size is doubled.
+-->
+<ul>
+<li>What do you think will happen if you <code>r_d</code> to <em>1.8</em>? (try it)</li>
+<li>What do you notice about the population size through time?</li>
+<li>How does the maximum population size compare with the carrying capacity? How would you describe the ‘<em>dynamics</em>’ of this population?</li>
+</ul>
+<!--You should notice that the population overshoots carrying capacity (`K`), then oscillates around `K` with damped oscilllations that gradually move towards `K`. Therefore if a population has even a moderate population growth rate, and if it has density-dependence, then it can fluctuate in numbers without any extrinsic factor (like weather) acting. 
+-->
+<ul>
+<li>What happens if you increase the <code>r_d</code> even more, to <em>2</em> or <em>2.1</em>?</li>
+<li>And even more to <em>2.8</em>, <em>2.9</em> or <em>3</em>?</li>
+<li>How would you describe these dynamics?</li>
+<li>Is there a limit to how high <code>r_d</code> can be? (hint: populations go extinct if N <span class="math inline">\(&lt;\)</span> 0).</li>
+</ul>
+<!--
+You should notice that as you increase `r_d` the nature of the oscillations changes. In fact, this is predictable:  If `r_d` $<$ 1.0, then population will approach `K` smoothly.
+
+If 1.0 $<$ `r_d` $<$ 2.0, then oscillations of decreasing amplitude around `K`.
+
+If 2.0 $<$ `r_d` $<$ 2.57, then stable, cyclic oscillations around `K` . They can be 1 or 2+ point stable limit cycles.
+
+If `r_d` $>$ 2.57, then population will fluctuate chaotically.
+
+If `r_d` is too high, the population will fluctuate and crash to extinction.
+-->
+<p>Finally, compare the population trajectory in <strong>Graph 1</strong> for populations with <code>r_d</code>= <em>2.8</em> and <em>2.81</em>. Then compare the trajectories where you fix <code>r_d</code> at <em>2.8</em> but vary initial population size by a small amount (e.g. <em>1</em>). Imagine you were a population manager – would these populations be easy or hard to predict? What kinds of species have high population growth rates like these?</p>
+<!--
+When `r_d` is high ($>$ 2.57) the population dynamics become extremely hard (impossible) to predict because they are chaotic. This means that even a very small change in `r_d` (which could simply be measurement error) will mean that predicted population size next year is suddenly very different. This would cause big problems to a population manager.
+
+Many pest species and diseases have very high population growth rates. For example, locusts, or measles. This is one reason why it is hard to predict when the next pest/disease outbreak will happen
+-->
+</div>
+<div id="graphs-2-3" class="section level2" number="5.2">
+<h2><span class="header-section-number">5.2</span> Graphs 2 &amp; 3</h2>
+<p>Now let’s turn to <strong>Graphs 2</strong> and <strong>3</strong>.</p>
+<p>In <strong>Graph 2</strong>, notice that the per capita growth rate always declines linearly with population size (<code>N</code>). Where does it cross the x-axis line? Modify the carrying capacity (<code>K</code>) – what do you notice?</p>
+<!--
+The line describing per capita growth rate crosses the x-axis (population size) at $K$. i.e. if $K$ = 100, the line crosses at 100. If you change $K$, the intercept on the axis also changes accordingly. The line intercepts the axis at this point no matter what the population growth rate is.
+-->
+<p><strong>Graph 3</strong> is shaped like a parabola, starting with small values, increasing to a maximum, then declining to small values again. The position of the maximum is dependent on the values of <code>K</code> and <code>r_d</code>. When <code>r_d</code> is small (around <em>1</em>), the peak is at <span class="math inline">\(x = K\)</span> and <span class="math inline">\(y = K\)</span>. Explore (1) how the peak moves around if you fix one of <code>K</code> or <code>r_d</code> and alter the other parameter and (2) how the slope of the line changes at <span class="math inline">\(N_t = K\)</span>.</p>
+<p><em>Hint: the slope of the line changes from positive to negative as <code>r_d</code> increases.</em></p>
+<!--
+As mentioned above, the peak of the parabola will be at `K` on both axes when `r_d` is small.  You should see that this makes sense because if the population is at carrying capacity in Year 1 ($N_t$, on the x-axis) then next year (Year 2; $N_{t+1}$ on the y-axis) the population size will be the same because with logistic growth the population growth rate is always 0 when the population is at carrying capacity. Therefore, if you change $K$, the peak will move around accordingly, but always will be at $x = K$ and $y = K$.
+
+If you increase `r_d` above 1, the shape of the relationship between $N_t$ and $N_{t+1}$ remains parabolic, but the location of the peak changes relative to $K$.
+
+-->
+<div class="do-something">
+<p>
+These three graphs are simply different ways to visualize the same model. It is important that you can make the connections between these graphs.
+</p>
+<p>
+How would the same plots look for regular exponential growth?
+</p>
+</div>
+<p>Some useful keywords:</p>
+<ul>
+<li>Oscillation</li>
+<li>Cycle/cyclic dynamics</li>
+<li>Stable-limit cycle (2-point, 3-point limit cycle)</li>
+<li>Chaos/Chaotic dynamics</li>
+<li>Unpredictable/predictable</li>
+</ul>
+
+</div>
+</div>
+<div class="footnotes">
+<hr />
+<ol start="4">
+<li id="fn4"><p>This is equation 2.4 in Gotelli<a href="basic-logistic-population-growth.html#fnref4" class="footnote-back">↩︎</a></p></li>
+</ol>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="stochastic-population-growth.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="deeper-into-logistic-growth.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/jonesor/BB512_Book/edit/master/1_03_BasicLogisticGrowth.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "section"
+},
+"split_by": "section"
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
