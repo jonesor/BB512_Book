@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>3 The legend of Ambalapuzha | BB512 - Population Biology and Evolution</title>
+  <title>7 What to do: | Matrix Models</title>
   <meta name="description" content="Course book for BB512 at the Biology Department, University of Southern Denmark" />
   <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="3 The legend of Ambalapuzha | BB512 - Population Biology and Evolution" />
+  <meta property="og:title" content="7 What to do: | Matrix Models" />
   <meta property="og:type" content="book" />
   
   
@@ -16,23 +16,22 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="3 The legend of Ambalapuzha | BB512 - Population Biology and Evolution" />
+  <meta name="twitter:title" content="7 What to do: | Matrix Models" />
   
   <meta name="twitter:description" content="Course book for BB512 at the Biology Department, University of Southern Denmark" />
   
 
-<meta name="author" content="Owen R. Jones (Course Coordinator)" />
+<meta name="author" content="Owen Jones" />
 
 
-<meta name="date" content="2020-08-31" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="schedule.html"/>
-<link rel="next" href="stochastic-population-growth.html"/>
+<link rel="prev" href="deeper-into-logistic-growth.html"/>
+
 <script src="libs/header-attrs-2.3/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -194,11 +193,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="6.4" data-path="deeper-into-logistic-growth.html"><a href="deeper-into-logistic-growth.html#adding-a-time-lag"><i class="fa fa-check"></i><b>6.4</b> Adding a time lag</a></li>
 <li class="chapter" data-level="6.5" data-path="deeper-into-logistic-growth.html"><a href="deeper-into-logistic-growth.html#cobweb-diagrams"><i class="fa fa-check"></i><b>6.5</b> Cobweb diagrams</a></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="matrix-population-modelling.html"><a href="matrix-population-modelling.html"><i class="fa fa-check"></i><b>7</b> Matrix Population Modelling</a>
-<ul>
-<li class="chapter" data-level="7.1" data-path="matrix-population-modelling.html"><a href="matrix-population-modelling.html#your-turn"><i class="fa fa-check"></i><b>7.1</b> Your turn…</a></li>
-<li class="chapter" data-level="7.2" data-path="matrix-population-modelling.html"><a href="matrix-population-modelling.html#an-evolutionary-experiment"><i class="fa fa-check"></i><b>7.2</b> An evolutionary experiment</a></li>
-</ul></li>
+<li class="chapter" data-level="7" data-path="what-to-do.html"><a href="what-to-do.html"><i class="fa fa-check"></i><b>7</b> What to do:</a></li>
 <li class="part"><span><b>II Evolution</b></span></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -212,7 +207,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">BB512 - Population Biology and Evolution</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Matrix Models</a>
           </h1>
         </div>
 
@@ -220,78 +215,40 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="the-legend-of-ambalapuzha" class="section level1" number="3">
-<h1><span class="header-section-number">3</span> The legend of Ambalapuzha</h1>
-<p>Exponential growth is a powerful concept. To help us grasp it better lets use an ancient Indian chess legend as an example.</p>
-<p><img src="images/Radha-Krishna_chess.jpg" width="50%" style="display: block; margin: auto;" /></p>
-<p>According to legend, Lord Krishna once appeared in the form of a wise man in the court of the king and challenged him to a game of chess. The king was a chess enthusiast and naturally accepted the invitation.</p>
-<p>The king asked the wise man to choose a prize in case he won. The old man told the king that he had few material needs and that all he wished was a few grains of rice.</p>
-<p>He added that the amount of rice itself should be determined using the chess- board in the following manner: one grain of rice would be placed in the first square, two grains in the second square, four in the third square, and so on. Every square would have double the number of grains of its predecessor.</p>
-<p>Upon hearing this, the king was unhappy, since the man requested only a few grains of rice instead of any of the other riches of the kingdom, which the king would have been happy to donate (he was a generous guy). He requested the old man to add other items to his prize, but the man declined.</p>
-<p>So the game of chess started and, needless to say, the king lost the game so it was soon time to pay the old man his prize. As he started adding grains of rice to the chessboard, the king soon realised the true nature of the wise man’s demand. The royal granary soon ran out of rice and the king realised that even if he provided all the rice in his kingdom and even the whole of India, he would never be able to fulfill the promised reward. He was distraught that he could not fulfill his promise!</p>
-<p>Seeing the king upset, the wise man appeared to the king in his true form, that of Lord Krishna. He told the king that he did not have to pay the debt immediately but could pay him over time. The king would serve rice in the temple freely to the pilgrims every day until the debt was paid off. And that is why the Ambalappuzha Temple in India still serves rice to pilgrims – the debt is still being paid off.</p>
-<div class="do-something">
-<p>
-Use the Excel sheet (<code>RiceOnAChessboard.xlsx</code>) to calculate the quantity of rice that the king owed.
-</p>
-<p>
-A grain of rice weighs 25mg, what weight of rice did the king owe in total, in kg?
-</p>
-</div>
-<div id="animalsplants-not-grains-of-rice." class="section level2" number="3.1">
-<h2><span class="header-section-number">3.1</span> Animals/plants, not grains of rice.</h2>
-<p>Imagine that instead of rice, we were talking about the population growth of bacteria, or rabbits, reproducing every time step.</p>
-<!--
-<div class="do-something">
-<p>We have about 100 breeding pairs of great tits (musvit) in the woodland around SDU. A female lays an average of 6 eggs per year with a 50:50 sex ratio. Assuming 100% survival, how many females would we have after 5 years?</p>
-</div>
--->
-<ul>
-<li>Would the model be realistic?</li>
-<li>Why/why not?</li>
-<li>What other factors should be taken into account?</li>
-</ul>
-</div>
-<div id="optional-try-these-calculations-in-r" class="section level2" number="3.2">
-<h2><span class="header-section-number">3.2</span> Optional: Try these calculations in R</h2>
-<p>You can do this kind of calculation easily in <em>R</em>. Try this.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="the-legend-of-ambalapuzha.html#cb1-1" aria-hidden="true"></a>myData &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">Squares =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">64</span>,<span class="dt">nRice =</span> <span class="ot">NA</span>)</span>
-<span id="cb1-2"><a href="the-legend-of-ambalapuzha.html#cb1-2" aria-hidden="true"></a>myData<span class="op">$</span>nRice[<span class="dv">1</span>] &lt;-<span class="st"> </span><span class="dv">1</span> </span>
-<span id="cb1-3"><a href="the-legend-of-ambalapuzha.html#cb1-3" aria-hidden="true"></a></span>
-<span id="cb1-4"><a href="the-legend-of-ambalapuzha.html#cb1-4" aria-hidden="true"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">2</span><span class="op">:</span><span class="dv">64</span>){</span>
-<span id="cb1-5"><a href="the-legend-of-ambalapuzha.html#cb1-5" aria-hidden="true"></a>  myData<span class="op">$</span>nRice[i] &lt;-<span class="st"> </span>myData<span class="op">$</span>nRice[i<span class="dv">-1</span>]<span class="op">*</span><span class="dv">2</span></span>
-<span id="cb1-6"><a href="the-legend-of-ambalapuzha.html#cb1-6" aria-hidden="true"></a>}</span></code></pre></div>
-<p>Now we can look at the top and bottom of the 64 row data frame like this:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="the-legend-of-ambalapuzha.html#cb2-1" aria-hidden="true"></a><span class="kw">head</span>(myData)</span></code></pre></div>
-<pre><code>##   Squares nRice
-## 1       1     1
-## 2       2     2
-## 3       3     4
-## 4       4     8
-## 5       5    16
-## 6       6    32</code></pre>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="the-legend-of-ambalapuzha.html#cb4-1" aria-hidden="true"></a><span class="kw">tail</span>(myData)</span></code></pre></div>
-<pre><code>##    Squares        nRice
-## 59      59 2.882304e+17
-## 60      60 5.764608e+17
-## 61      61 1.152922e+18
-## 62      62 2.305843e+18
-## 63      63 4.611686e+18
-## 64      64 9.223372e+18</code></pre>
-<p>And we can sum up the total number of grains of rice on the 64 squares of the board like this:</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="the-legend-of-ambalapuzha.html#cb6-1" aria-hidden="true"></a><span class="kw">sum</span>(myData<span class="op">$</span>nRice)</span></code></pre></div>
-<pre><code>## [1] 1.844674e+19</code></pre>
-<p>To put that <em>HUGE</em> number in context, if a grain of rice ways 25mg (0.0000025kg), then we’d have 46,116,860,184,274 kg.</p>
+<div id="what-to-do" class="section level1" number="7">
+<h1><span class="header-section-number">7</span> What to do:</h1>
+<ol style="list-style-type: decimal">
+<li>make a projection for YOUR data.</li>
+<li>plot the results (cut/paste * modify the R code here)</li>
+<li>what is the health of your population?</li>
+</ol>
+<p>#Finally:</p>
+<p>An evolutionary experiment: You can think of lambda (population growth rate) as being a measure of fitness. Imagine that some of your population had a mutation that caused them to have, say, 1 extra baby, but at the expense of reduced survival in one of the younger stages. Would this mutation persist in the population?</p>
 
 </div>
+
+
+
 </div>
+
+
+
+
+
+
+
+
+
+
+
+
             </section>
 
           </div>
         </div>
       </div>
-<a href="schedule.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="stochastic-population-growth.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="deeper-into-logistic-growth.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -322,7 +279,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/jonesor/BB512_Book/edit/master/1_01_ExponentialGrowth1.Rmd",
+"link": "https://github.com/jonesor/BB512_Book/edit/master/1_05_matrixModels.Rmd",
 "text": "Edit"
 },
 "history": {

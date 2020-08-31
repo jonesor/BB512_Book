@@ -194,6 +194,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="6.4" data-path="deeper-into-logistic-growth.html"><a href="deeper-into-logistic-growth.html#adding-a-time-lag"><i class="fa fa-check"></i><b>6.4</b> Adding a time lag</a></li>
 <li class="chapter" data-level="6.5" data-path="deeper-into-logistic-growth.html"><a href="deeper-into-logistic-growth.html#cobweb-diagrams"><i class="fa fa-check"></i><b>6.5</b> Cobweb diagrams</a></li>
 </ul></li>
+<li class="chapter" data-level="7" data-path="matrix-population-modelling.html"><a href="matrix-population-modelling.html"><i class="fa fa-check"></i><b>7</b> Matrix Population Modelling</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="matrix-population-modelling.html"><a href="matrix-population-modelling.html#your-turn"><i class="fa fa-check"></i><b>7.1</b> Your turn…</a></li>
+<li class="chapter" data-level="7.2" data-path="matrix-population-modelling.html"><a href="matrix-population-modelling.html#an-evolutionary-experiment"><i class="fa fa-check"></i><b>7.2</b> An evolutionary experiment</a></li>
+</ul></li>
 <li class="part"><span><b>II Evolution</b></span></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -297,7 +302,7 @@ Modify the simulation settings to explore what happens to (i) the plot of popula
 <span id="cb8-35"><a href="stochastic-population-growth.html#cb8-35" aria-hidden="true"></a>minvals &lt;-<span class="st"> </span><span class="kw">apply</span>(trials,<span class="dv">2</span>,min)</span>
 <span id="cb8-36"><a href="stochastic-population-growth.html#cb8-36" aria-hidden="true"></a>nExtinct &lt;-<span class="st"> </span><span class="kw">length</span>(minvals[minvals<span class="op">&lt;=</span>pseudoExtinction])</span>
 <span id="cb8-37"><a href="stochastic-population-growth.html#cb8-37" aria-hidden="true"></a>nExtinct<span class="op">/</span>nTrials</span></code></pre></div>
-<pre><code>## [1] 0.33</code></pre>
+<pre><code>## [1] 0.39</code></pre>
 <div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="stochastic-population-growth.html#cb10-1" aria-hidden="true"></a><span class="co">#Make a plot of the population trajectories</span></span>
 <span id="cb10-2"><a href="stochastic-population-growth.html#cb10-2" aria-hidden="true"></a><span class="kw">plot</span>(<span class="dv">1</span><span class="op">:</span>nGen,<span class="kw">log</span>(<span class="kw">seq</span>(<span class="fl">0.1</span>,<span class="kw">max</span>(trials),<span class="dt">length.out=</span>nGen)),<span class="dt">type =</span> <span class="st">&quot;n&quot;</span>,<span class="dt">axes=</span>F,<span class="dt">xlab =</span><span class="st">&quot;Time&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;N&quot;</span>,<span class="dt">ylim=</span><span class="kw">log</span>(<span class="kw">c</span>(<span class="fl">0.1</span>,<span class="dv">100000</span>)))</span>
 <span id="cb10-3"><a href="stochastic-population-growth.html#cb10-3" aria-hidden="true"></a><span class="kw">matlines</span>(<span class="kw">log</span>(trials),<span class="dt">col =</span> <span class="st">&quot;#FF234520&quot;</span>,<span class="dt">lty=</span><span class="dv">1</span>,<span class="dt">lwd=</span><span class="dv">3</span>)</span>

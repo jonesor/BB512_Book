@@ -1,0 +1,127 @@
+# Matrix Population Modelling
+
+```{r,echo=FALSE,warning=FALSE,message=FALSE}
+library(tidyverse)
+```
+
+Think of an organism you would like to model the dynamics of. It could be a mammal, a bird, a fish, insect or tree ... real or fantasy. 
+
+Think about their life cycle, and draw it as a life cycle diagram with circles indicating the stages and arrows representing transitions between stages and reproduction. Next to the arrows, write values for survival probability and fecundity (number of babies) using your biological knowledge.
+
+Things to think about:
+
+* Is it age based or stage based?
+* How many stages are there?
+* If it is stage, how are stages defined? E.g. by size, by development, etc.
+* Are the survival and fecundity higher in earlier or later life?
+* Does the organism skip stages?
+* Does the organism move backwards through the life cycle?
+
+```{r,echo=FALSE,out.width = "30%"}
+x <- data.frame(x = 0:4,y=0:4)
+(p1 <- ggplot(x) + 
+    geom_blank() + 
+    theme_minimal())
+```
+
+Turn this diagram into a matrix population model by filling in a square of survival/fecundity values. There is space below for up to a 4-stage matrix model.
+
+```{r,echo=FALSE}
+p1 + 
+  #geom_vline(xintercept = 0:4) + 
+  #geom_hline(yintercept = 0:4) +
+  geom_segment(aes(x = 0,xend=0,y = 0,yend=4)) +
+  geom_segment(aes(x = 1,xend=1,y = 0,yend=4)) + 
+  geom_segment(aes(x = 2,xend=2,y = 0,yend=4)) +
+  geom_segment(aes(x = 3,xend=3,y = 0,yend=4)) +
+  geom_segment(aes(x = 4,xend=4,y = 0,yend=4)) +
+  
+  geom_segment(aes(x = 0,xend=4,y = 0,yend=0)) +
+  geom_segment(aes(x = 0,xend=4,y = 1,yend=1)) + 
+  geom_segment(aes(x = 0,xend=4,y = 2,yend=2)) +
+  geom_segment(aes(x = 0,xend=4,y = 3,yend=3)) +
+  geom_segment(aes(x = 0,xend=4,y = 4,yend=4)) +
+  
+  xlab("") + ylab("") +
+  theme(
+  axis.text.x = element_blank(),
+  axis.text.y = element_blank(),
+  axis.ticks = element_blank())+
+  
+  NULL
+```
+
+Working with matrices is very tedious in Excel. However, in R you can use this information to predict the future dynamics of the population, and estimate population growth rate, and generation time etc.
+
+Open up **RStudio**, and lets see if we can predict future dynamics. First you will need to install a package called `popdemo`.
+
+```{r,eval=FALSE}
+install.packages("popdemo")
+```
+ 
+You only need to install packages once. After thatyou can load the package for use by using the `library` function.
+
+```{r, message=FALSE}
+library(popdemo)
+```
+
+You can put your matrix into R like in the example below (change the numbers to match YOUR model). If your model has fewer, or more, stages then you will need to modify the code a bit. Ask for help if you get stuck.
+
+```{r}
+    A <- matrix(c( 0.00, 0.00, 4.00, 2.00,
+                   0.10, 0.00, 0.00, 0.00,
+                   0.50, 0.20, 0.00, 0.00,
+                   0.00, 0.30, 0.40, 0.30),
+                byrow = TRUE, nrow = 4)
+```
+
+And now you can use the project function to project what happens to the population, then plot it. Look at what happens if you log or don’t log the y-axis. First you need to define an initial starting population structure. 
+
+In my example, I have 4 stages, so I have 4 values for the initial population sizes. Then I use the `popdemo` function `project` to do a population projection for 10 time steps.
+
+```{r}
+initial <- c(10,5,3,3)
+pr <- popdemo::project(A, vector = initial, time=10)
+```
+
+Take a look at `pr`, the projected population. This gives you the total population size, and below that the population sizes in each stage. 
+
+```{r}
+pr
+```
+
+You can access the population sizes of the different stages using `vec(pr)`.
+
+```{r}
+vec(pr)
+```
+
+Let's plot this... 
+
+```{r}
+pop <- vec(pr)
+matplot(pop,type="l",log="y")
+legend("topleft",legend = colnames(pop),col=1:ncol(pop),lty=1:ncol(pop))
+```
+
+You should see that the population increases exponentially. The population growth rate is the so-called "*dominant eigenvalue*" of the matrix **A**.
+
+We can ask R for the  *eigen values* and *eigen vectors*. These are the population growth rate ($\lambda$) and the stable stage distribution (*SSD*) and the reproductive values (*RV*) of the different stages. *SSD* is the expected *proportion* of individuals in the different stage classes at equilibrium and *RV* is the expected number of future offspring by individuals in each stage.
+
+You can see that in this case, using my example values the population is growing `r format(100*(eigs(A)$lambda-1),2,4)`% per year.
+
+```{r}
+eigs(A)
+```
+
+## Your turn...
+
+
+1) by editing the inputs in the code above, make a projection for **your** data.
+2) plot the results (using the R code here)
+3) what is the health of your population?
+
+## An evolutionary experiment
+
+You can think of lambda (population growth rate) as being a measure of fitness. Imagine that some of your population had a mutation that caused them to have, say, 1 extra baby, but at the expense of reduced survival in one of the younger stages. Would this mutation persist in the population?
+
