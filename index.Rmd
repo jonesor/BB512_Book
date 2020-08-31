@@ -53,9 +53,11 @@ The evolution part comes second and covers microevolutionary processes (natural 
 The recommended textbook is: 
 Stearns, SC & Hoekstra, RF (2005) *Evolution: An Introduction*. 2nd Edition, Oxford University Press. ISBN: 978-0199255634
 
-## Course materials
+## This website and other course materials
 
-In the folders on Blackboard you will find the course materials. These are arranged by week and will include the lecture presentations, handouts etc. Materials will be added as we go along. Apart from the book, there will be some recommended scientific papers to read – these will be accessible via the Dropbox link on Blackboard.
+This website is designed to hold most of the materials you need for the practical (mainly computer) exercises you will do during the course. 
+
+You will find other materials in the folders on Blackboard. These are arranged by week and will include the lecture presentations, handouts etc. Materials will be added as we go along. Apart from the book, there will be some recommended scientific papers to read – these will be accessible via the Dropbox link on Blackboard.
 
 In some of the classes there will be exercises conducted on your personal laptops. Please bring them to class, fully charged.
 
