@@ -39,14 +39,10 @@ knitr::opts_chunk$set(
 Welcome to the Population and Evolution course. 
 The course is divided into two parts: Population and Evolution. 
 
-## Population
-
 The population part comes first and covers ecological population dynamics including models of population growth, species interactions, and other demographic models. 
 
 The recommended textbook is:
 Gotelli, NJ (2008) *A Primer of Ecology*. Fourth Edition, Sinauer Associates. ISBN: 978-0878933181
-
-## Evolution
 
 The evolution part comes second and covers microevolutionary processes (natural selection, neutral evolution etc.), population and quantitative genetics, and macroevolution (speciation, extinction and coevolution). 
 
@@ -55,7 +51,7 @@ Stearns, SC & Hoekstra, RF (2005) *Evolution: An Introduction*. 2nd Edition, Oxf
 
 ## This website and other course materials
 
-This website is designed to hold most of the materials you need for the practical (mainly computer) exercises you will do during the course. 
+This website is designed to hold most of the materials you need for the practical (mainly computer) exercises you will do during the course. You will also find the [Schedule](https://jonesor.github.io/BB512_Book/schedule.html) here.
 
 You will find other materials in the folders on Blackboard. These are arranged by week and will include the lecture presentations, handouts etc. Materials will be added as we go along. Apart from the book, there will be some recommended scientific papers to read – these will be accessible via the Dropbox link on Blackboard.
 
