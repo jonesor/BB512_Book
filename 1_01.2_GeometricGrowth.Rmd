@@ -1,0 +1,23 @@
+# Geometric growth
+
+In a simple model of population growth where the population grows without any constraints, the speed a population increases in size can be described by the population growth rate. This is often given by the symbol lambda ($\lambda$). High values of $\lambda$ mean the population grows fast, while small values indicated that it grows slowly, or shrinks in size.
+
+Geometric growth is often seen as synonymous to exponential growth. It basically is, but with one important difference: exponential growth, strictly speaking, refers to “continuous time” scenarios, whereas geometric growth refers to models where the population changes in discrete time steps (e.g. each year).
+
+Download and open the Excel file `GeometricGrowth.xlsx`”
+
+1.	Starting with an initial population size (`N`) of 10 [at time (`t`) =0], and with a $\lambda$ of `1.1`, use Excel’s equation functions to work out the population size from `t=1` through to `t=20`. E.g. The formula might look something like this “`=B8*$F$8`”.
+2.	Use charts to plot the results. On the horizontal axis (x-axis) you should have time, and on the vertical axis (y-axis) you should have population size (`N`). A scatterplot would be best for this.
+3.	Make another plot of the same data, but this time use a natural logarithmic axis for the population size (hint: the base for natural log is 2.71828). An alternative is to make another column of data calculating the natural logarithm of the population size. If you don’t know how to do this, use Excel’s help to find how to calculate logarithms, or alter the axis (or ask for help!).
+4.	What do you notice about the curves in these different versions of plotting the same data?
+5.	Try altering the population growth rate. Try values of 0.8, 1 and 1.2 for example. What happens to the curves? What is special about the value of 1?
+
+
+Now reset the population growth rate to 1.1. Now lets see if the mathematical rules of so-called “geometric series” work...
+
+1.	If the population starts at t=0, $N_t = N_0 \lambda^t$ . In words, the population at time $t$ is the initial population size multiplied by the finite population growth rate raised to the power of $t$.
+2.	Your instructor will explain how this works on the blackboard.
+3.	Following these rules, the population size at time $t=5$ ($N_5$), is $10 * 1.1^5$, or $10* 1.61051$, which is $16.1051$. Check that this matches what you got earlier.
+4.	This approach can be really useful because it can save lots of time. For example, what is the population after 900 generations? It would be tedious to work this out using the first, "simple" approach, but very easy if you use the geometric series rules.
+
+

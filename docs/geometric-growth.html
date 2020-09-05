@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>8 Matrix Population Modelling | BB512 - Population Biology and Evolution</title>
+  <title>4 Geometric growth | BB512 - Population Biology and Evolution</title>
   <meta name="description" content="Course book for BB512 at the Biology Department, University of Southern Denmark" />
   <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="8 Matrix Population Modelling | BB512 - Population Biology and Evolution" />
+  <meta property="og:title" content="4 Geometric growth | BB512 - Population Biology and Evolution" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="8 Matrix Population Modelling | BB512 - Population Biology and Evolution" />
+  <meta name="twitter:title" content="4 Geometric growth | BB512 - Population Biology and Evolution" />
   
   <meta name="twitter:description" content="Course book for BB512 at the Biology Department, University of Southern Denmark" />
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="deeper-into-logistic-growth.html"/>
-
+<link rel="prev" href="the-legend-of-ambalapuzha.html"/>
+<link rel="next" href="stochastic-population-growth.html"/>
 <script src="libs/header-attrs-2.3/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -221,111 +221,34 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="matrix-population-modelling" class="section level1" number="8">
-<h1><span class="header-section-number">8</span> Matrix Population Modelling</h1>
-<p>Think of an organism you would like to model the dynamics of. It could be a mammal, a bird, a fish, insect or tree … real or fantasy.</p>
-<p>Think about their life cycle, and draw it as a life cycle diagram with circles indicating the stages and arrows representing transitions between stages and reproduction. Next to the arrows, write values for survival probability and fecundity (number of babies) using your biological knowledge.</p>
-<p>Things to think about:</p>
-<ul>
-<li>Is it age based or stage based?</li>
-<li>How many stages are there?</li>
-<li>If it is stage, how are stages defined? E.g. by size, by development, etc.</li>
-<li>Are the survival and fecundity higher in earlier or later life?</li>
-<li>Does the organism skip stages?</li>
-<li>Does the organism move backwards through the life cycle?</li>
-</ul>
-<p><img src="BB512_files/figure-html/unnamed-chunk-25-1.png" width="30%" /></p>
-<p>Turn this diagram into a matrix population model by filling in a square of survival/fecundity values. There is space below for up to a 4-stage matrix model.</p>
-<p><img src="BB512_files/figure-html/unnamed-chunk-26-1.png" width="672" /></p>
-<p>Working with matrices is very tedious in Excel. However, in R you can use this information to predict the future dynamics of the population, and estimate population growth rate, and generation time etc.</p>
-<p>Open up <strong>RStudio</strong>, and lets see if we can predict future dynamics. First you will need to install a package called <code>popdemo</code>.</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="matrix-population-modelling.html#cb11-1" aria-hidden="true"></a><span class="kw">install.packages</span>(<span class="st">&quot;popdemo&quot;</span>)</span></code></pre></div>
-<p>You only need to install packages once. After thatyou can load the package for use by using the <code>library</code> function.</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="matrix-population-modelling.html#cb12-1" aria-hidden="true"></a><span class="kw">library</span>(popdemo)</span></code></pre></div>
-<p>You can put your matrix into R like in the example below (change the numbers to match YOUR model). If your model has fewer, or more, stages then you will need to modify the code a bit. Ask for help if you get stuck.</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="matrix-population-modelling.html#cb13-1" aria-hidden="true"></a>    A &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>( <span class="fl">0.00</span>, <span class="fl">0.00</span>, <span class="fl">4.00</span>, <span class="fl">2.00</span>,</span>
-<span id="cb13-2"><a href="matrix-population-modelling.html#cb13-2" aria-hidden="true"></a>                   <span class="fl">0.10</span>, <span class="fl">0.00</span>, <span class="fl">0.00</span>, <span class="fl">0.00</span>,</span>
-<span id="cb13-3"><a href="matrix-population-modelling.html#cb13-3" aria-hidden="true"></a>                   <span class="fl">0.50</span>, <span class="fl">0.20</span>, <span class="fl">0.00</span>, <span class="fl">0.00</span>,</span>
-<span id="cb13-4"><a href="matrix-population-modelling.html#cb13-4" aria-hidden="true"></a>                   <span class="fl">0.00</span>, <span class="fl">0.30</span>, <span class="fl">0.40</span>, <span class="fl">0.30</span>),</span>
-<span id="cb13-5"><a href="matrix-population-modelling.html#cb13-5" aria-hidden="true"></a>                <span class="dt">byrow =</span> <span class="ot">TRUE</span>, <span class="dt">nrow =</span> <span class="dv">4</span>)</span></code></pre></div>
-<p>And now you can use the project function to project what happens to the population, then plot it. Look at what happens if you log or don’t log the y-axis. First you need to define an initial starting population structure.</p>
-<p>In my example, I have 4 stages, so I have 4 values for the initial population sizes. Then I use the <code>popdemo</code> function <code>project</code> to do a population projection for 10 time steps.</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="matrix-population-modelling.html#cb14-1" aria-hidden="true"></a>initial &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">10</span>,<span class="dv">5</span>,<span class="dv">3</span>,<span class="dv">3</span>)</span>
-<span id="cb14-2"><a href="matrix-population-modelling.html#cb14-2" aria-hidden="true"></a>pr &lt;-<span class="st"> </span>popdemo<span class="op">::</span><span class="kw">project</span>(A, <span class="dt">vector =</span> initial, <span class="dt">time=</span><span class="dv">10</span>)</span></code></pre></div>
-<p>Take a look at <code>pr</code>, the projected population. This gives you the total population size, and below that the population sizes in each stage.</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="matrix-population-modelling.html#cb15-1" aria-hidden="true"></a>pr</span></code></pre></div>
-<pre><code>## 1 deterministic population projection over 10 time intervals.
-## 
-##  [1]   21.0000   28.6000   45.9800   68.7940  110.7142  167.8147  267.2773  408.6193  646.1858
-## [10]  993.7152 1563.8309</code></pre>
-<p>You can access the population sizes of the different stages using <code>vec(pr)</code>.</p>
-<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="matrix-population-modelling.html#cb17-1" aria-hidden="true"></a><span class="kw">vec</span>(pr)</span></code></pre></div>
-<pre><code>##              S1       S2        S3        S4
-##  [1,]   10.0000  5.00000   3.00000   3.00000
-##  [2,]   18.0000  1.00000   6.00000   3.60000
-##  [3,]   31.2000  1.80000   9.20000   3.78000
-##  [4,]   44.3600  3.12000  15.96000   5.35400
-##  [5,]   74.5480  4.43600  22.80400   8.92620
-##  [6,]  109.0684  7.45480  38.16120  13.13026
-##  [7,]  178.9053 10.90684  56.02516  21.44000
-##  [8,]  266.9806 17.89053  91.63403  32.11412
-##  [9,]  430.7643 26.69806 137.06842  51.65501
-## [10,]  651.5837 43.07643 220.72178  78.33329
-## [11,] 1039.5537 65.15837 334.40714 124.71163</code></pre>
-<p>Let’s plot this…</p>
-<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="matrix-population-modelling.html#cb19-1" aria-hidden="true"></a>pop &lt;-<span class="st"> </span><span class="kw">vec</span>(pr)</span>
-<span id="cb19-2"><a href="matrix-population-modelling.html#cb19-2" aria-hidden="true"></a><span class="kw">matplot</span>(pop,<span class="dt">type=</span><span class="st">&quot;l&quot;</span>,<span class="dt">log=</span><span class="st">&quot;y&quot;</span>)</span>
-<span id="cb19-3"><a href="matrix-population-modelling.html#cb19-3" aria-hidden="true"></a><span class="kw">legend</span>(<span class="st">&quot;topleft&quot;</span>,<span class="dt">legend =</span> <span class="kw">colnames</span>(pop),<span class="dt">col=</span><span class="dv">1</span><span class="op">:</span><span class="kw">ncol</span>(pop),<span class="dt">lty=</span><span class="dv">1</span><span class="op">:</span><span class="kw">ncol</span>(pop))</span></code></pre></div>
-<p><img src="BB512_files/figure-html/unnamed-chunk-33-1.png" width="672" /></p>
-<p>You should see that the population increases exponentially. The population growth rate is the so-called “<em>dominant eigenvalue</em>” of the matrix <strong>A</strong>.</p>
-<p>We can ask R for the <em>eigen values</em> and <em>eigen vectors</em>. These are the population growth rate (<span class="math inline">\(\lambda\)</span>) and the stable stage distribution (<em>SSD</em>) and the reproductive values (<em>RV</em>) of the different stages. <em>SSD</em> is the expected <em>proportion</em> of individuals in the different stage classes at equilibrium and <em>RV</em> is the expected number of future offspring by individuals in each stage.</p>
-<p>You can see that in this case, using my example values the population is growing 55.74% per year.</p>
-<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="matrix-population-modelling.html#cb20-1" aria-hidden="true"></a><span class="kw">eigs</span>(A)</span></code></pre></div>
-<pre><code>## $lambda
-## [1] 1.557365
-## 
-## $ss
-## [1] 0.66068003 0.04242295 0.21756281 0.07933420
-## 
-## $rv
-## [1] 0.6831674 0.4705100 2.0337794 1.0866656</code></pre>
-<div id="your-turn" class="section level2" number="8.1">
-<h2><span class="header-section-number">8.1</span> Your turn…</h2>
+<div id="geometric-growth" class="section level1" number="4">
+<h1><span class="header-section-number">4</span> Geometric growth</h1>
+<p>In a simple model of population growth where the population grows without any constraints, the speed a population increases in size can be described by the population growth rate. This is often given by the symbol lambda (<span class="math inline">\(\lambda\)</span>). High values of <span class="math inline">\(\lambda\)</span> mean the population grows fast, while small values indicated that it grows slowly, or shrinks in size.</p>
+<p>Geometric growth is often seen as synonymous to exponential growth. It basically is, but with one important difference: exponential growth, strictly speaking, refers to “continuous time” scenarios, whereas geometric growth refers to models where the population changes in discrete time steps (e.g. each year).</p>
+<p>Download and open the Excel file <code>GeometricGrowth.xlsx</code>”</p>
 <ol style="list-style-type: decimal">
-<li>by editing the inputs in the code above, make a projection for <strong>your</strong> data.</li>
-<li>plot the results (using the R code here)</li>
-<li>what is the health of your population?</li>
+<li>Starting with an initial population size (<code>N</code>) of 10 [at time (<code>t</code>) =0], and with a <span class="math inline">\(\lambda\)</span> of <code>1.1</code>, use Excel’s equation functions to work out the population size from <code>t=1</code> through to <code>t=20</code>. E.g. The formula might look something like this “<code>=B8*$F$8</code>”.</li>
+<li>Use charts to plot the results. On the horizontal axis (x-axis) you should have time, and on the vertical axis (y-axis) you should have population size (<code>N</code>). A scatterplot would be best for this.</li>
+<li>Make another plot of the same data, but this time use a natural logarithmic axis for the population size (hint: the base for natural log is 2.71828). An alternative is to make another column of data calculating the natural logarithm of the population size. If you don’t know how to do this, use Excel’s help to find how to calculate logarithms, or alter the axis (or ask for help!).</li>
+<li>What do you notice about the curves in these different versions of plotting the same data?</li>
+<li>Try altering the population growth rate. Try values of 0.8, 1 and 1.2 for example. What happens to the curves? What is special about the value of 1?</li>
 </ol>
-</div>
-<div id="an-evolutionary-experiment" class="section level2" number="8.2">
-<h2><span class="header-section-number">8.2</span> An evolutionary experiment</h2>
-<p>You can think of lambda (population growth rate) as being a measure of fitness. Imagine that some of your population had a mutation that caused them to have, say, 1 extra baby, but at the expense of reduced survival in one of the younger stages. Would this mutation persist in the population?</p>
+<p>Now reset the population growth rate to 1.1. Now lets see if the mathematical rules of so-called “geometric series” work…</p>
+<ol style="list-style-type: decimal">
+<li>If the population starts at t=0, <span class="math inline">\(N_t = N_0 \lambda^t\)</span> . In words, the population at time <span class="math inline">\(t\)</span> is the initial population size multiplied by the finite population growth rate raised to the power of <span class="math inline">\(t\)</span>.</li>
+<li>Your instructor will explain how this works on the blackboard.</li>
+<li>Following these rules, the population size at time <span class="math inline">\(t=5\)</span> (<span class="math inline">\(N_5\)</span>), is <span class="math inline">\(10 * 1.1^5\)</span>, or <span class="math inline">\(10* 1.61051\)</span>, which is <span class="math inline">\(16.1051\)</span>. Check that this matches what you got earlier.</li>
+<li>This approach can be really useful because it can save lots of time. For example, what is the population after 900 generations? It would be tedious to work this out using the first, “simple” approach, but very easy if you use the geometric series rules.</li>
+</ol>
 
 </div>
-</div>
-
-
-
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
             </section>
 
           </div>
         </div>
       </div>
-<a href="deeper-into-logistic-growth.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-
+<a href="the-legend-of-ambalapuzha.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="stochastic-population-growth.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -356,7 +279,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/jonesor/BB512_Book/edit/master/1_05_matrixModels.Rmd",
+"link": "https://github.com/jonesor/BB512_Book/edit/master/1_01.2_GeometricGrowth.Rmd",
 "text": "Edit"
 },
 "history": {
