@@ -1,0 +1,39 @@
+# Life tables
+
+Life tables are tables that shows for each age, the probability that an individual of that age will die before the next birthday (*probability of death*). This exercise deals with so-called **cohort life tables** which, as the name implies, follows a “*cohort*” of individuals from birth until they all die. A cohort is the group of individuals born within a particular time interval (e.g. “*all individuals born in 1998*”).
+
+Life tables have been used extensively in population biology, in human demography and in epidemiology. They are also important outside of biology, e.g. in the management of product life-cycles, such as in cars or other machinery.
+
+The basic algebra used in life tables is explained in Gotelli Chapter 3 (see table 3.1 for an example).
+
+The purpose of this exercise is:
+
+1. to allow you to calculate a life table yourself in Excel;
+2. to develop your Excel modeling skills by asking you to make the
+calculations following the equations given in Gotelli (and in the lecture
+slides);
+3. to allow you to explore different types of survivorship (Type I, II and III)
+and consider the relationship between these life tables and “life history strategy” (more on this in the evolution part of the course).
+
+Open the Excel file `Life tables exercises.xlsx`.
+
+The file has three worksheets (“*Life table*”, “*Survivorship Curves*” and “*Gotelli
+Table 3.1 example*”.
+
+Let’s start with “**Life table**”.
+
+The aim now is to use Excel as a modeling tool to produce a life table. I have provided some initial data collected from a cohort of animals. I know how many individuals survive each year (how many “enter the interval”). I also know how many babies (on average) are produced by each female.
+
+Start by calculating survivorship ($l_x$). Survivorship is the **probability of survival to a particular age**. Therefore, at time 0, $l_0 = 1$, since everyone is alive at this point. The next value ($l_1$) must be calculated based on the number alive at that point. In this case it is $352/500 = 0.704$. You must generalize this calculation into a formula that can be dragged to fill column `D` in the worksheet. In algebraic form, the equation is $l_x = S_x/S_0$.
+
+Next, you can calculate age specific **survival probability**. Note that this is different from lx. Survival probability is simply the probability that an individual will survive its current age class. i.e. what is the probability that an individual currently aged 2 will survive to become age 3. In this case, the $254/298 = 0.852$. The calculation is $g_x = l_{x-1}/l_x$, or $S_{x-1}/S_x$.
+
+Now complete the remaining two columns, and use them to calculate (a) $R_0$; (b) **Generation time**; and an approximation of $r$.
+**Tip** You need to understand the use of the `$` symbol in Excel, and how to drag the selected area to place the formula in the column. Refer to the sheet “*Gotelli Table 3.1 example*” if you get stuck (you should be able to see the formulae used there.
+
+In the second part we focus on the **Survivorship Curves** worksheet.
+The aim here is to start to explore how different types of organisms with different ways of life (“**life history strategies**”) can have qualitatively different kinds of life tables. The most important thing to observe is the difference in **survivorship curves** ($l_x$). These changes become very obvious when you plot the log-transformed survivorship against age.
+
+In the Excel worksheet, I have placed tables showing the fate of cohorts of three populations of different species. Your job now is to calculate the survivorship curve ($l_x$) for these species, take the natural log (using formula `=log(C3)`, for the first population, `=log(H3)` for the second population etc.
+
+You should see that the graphs automatically fill up with lines. These show Type I, II and III survivorship.
