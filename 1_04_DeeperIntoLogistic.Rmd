@@ -8,18 +8,18 @@ The same is true for the discrete version of the logistic growth model: Compare 
 
 You can then look at the Excel file `Deeper Into Logistic Growth.xlsx`
 
-In the `BasicLogistic` Excel worksheet/ark. 
 
-## Figure 1
+## Different views of the basic logistic growth model
+
+Take a look at the `BasicLogistic` Excel worksheet/ark. 
 
 Focus first on **Figure 1**.
+
 Enter different values for `r_d`, e.g. 0.8, 1.2, 1.8, 2.4, 2.7…
 
 Can you describe the dynamics of the population time series in Figure 1 using some of the following vocabulary: Oscillation, damped oscillation, stable cycle, 2-point cycle, chaotic, unpredictable, predictable?
 
-## Figure 2
-
-Focus now on **Figure 2**.
+Now focus on **Figure 2**.
 
 This figure shows the per capita population growth rate as a function of population size at time $t$. Note where the line intercepts the x- and y-axes. 
 
@@ -29,9 +29,7 @@ On paper, make a sketch of a graph for per capita population growth rate as a fu
 
 Based on what you know about what happens to the population dynamics for different values of $r_d$ and what you have just seen in Figure 2, you should now be able to sketch fairly accurate cartoon graphs if you are given values for $r_d$ and $K$! 
 
-Without using Excel, draw a population time series, and a graph of per capita growth rate vs. N for when initial population size is 10, $r_d$ is 1.9 and $K$ is 500. Check your graph using Excel.  
-
-## Figure 3
+*Without using Excel*, draw a population time series, and a graph of per capita growth rate vs. N for when initial population size is 10, $r_d$ is 1.9 and $K$ is 500. Check your graph using Excel.  
 
 Focus now on **Figure 3**.
 
@@ -53,7 +51,7 @@ How do the relationships in Figures 1, 2 and 3, differ from the equivalent figur
 
 ## Adding a time lag
 
-This relates to Equation 2.3 in Gotelli (and pages 32-35).
+This relates to *Equation 2.3* in Gotelli (and pages 32-35).
 
 $\frac{d N}{d t}=r N\left(1-\frac{N_{t-\tau}}{K}\right)$
 
@@ -65,7 +63,7 @@ You will need to carefully modify the Excel formula so that instead of referring
 
 Start with a small $r_d$ that gives a smooth convergence to K with an ordinary logistic model. Add in a 1-year time lag and show that this generates cyclic dynamics. This shows that this simple “quirk of life history” (a time lag) can generate cycling, even if the population growth rate is low.
  
-## Cobweb diagrams
+## Optional: Cobweb diagrams
 
 The cobweb diagram is another useful tool to visualize and explore dynamics of logistic models. See the book section by Mathiopoulos in Blackboard. They would be very hard to implement in Excel, so I have made a webapp: (https://jonesor.shinyapps.io/cobweb/)
 
