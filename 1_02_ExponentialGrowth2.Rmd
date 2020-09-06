@@ -31,7 +31,7 @@ Use the Excel worksheet, `StochasticPopulationGrowth.xslx`, to study how stochas
 
 1)	Use Excel formulae to calculate population growth through time (20 generations, with starting population of 100), linking to the mean finite population growth rate.
 2)	Use  charts to plot the results. (you already did this last time!)
-3)	Use a formula to generate a column of stochastic lambda values. [English Excel: "`=NORMINV(RAND(),$F$10,SQRT($F$11))"`/ Danish Excel: "`=NORMINV(SLUMP();$F$10;KVROD($F$11))`"]
+3)	Use a formula to generate a column of stochastic lambda values. [English Excel: `=NORMINV(RAND(),$F$10,SQRT($F$11))`/ Danish Excel: `=NORMINV(SLUMP();$F$10;KVROD($F$11))`]
 4)	Use the same procedure as before, to create a stochastic population size vector (stochastic N)
 5)	Compare the two trajectories using a chart.
 6)	Try altering initial population size, the mean finite growth rate, and the amount of stochasticity (Variance).
