@@ -1,4 +1,4 @@
-# Stochastic Population Growth
+# Stochastic population growth
 
 ```{r echo = FALSE}
 set.seed(134)

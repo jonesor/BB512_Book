@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>9 Matrix Population Modelling | BB512 - Population Biology and Evolution</title>
+  <title>9 Matrix population modelling | BB512 - Population Biology and Evolution</title>
   <meta name="description" content="Course book for BB512 at the Biology Department, University of Southern Denmark" />
   <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="9 Matrix Population Modelling | BB512 - Population Biology and Evolution" />
+  <meta property="og:title" content="9 Matrix population modelling | BB512 - Population Biology and Evolution" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="9 Matrix Population Modelling | BB512 - Population Biology and Evolution" />
+  <meta name="twitter:title" content="9 Matrix population modelling | BB512 - Population Biology and Evolution" />
   
   <meta name="twitter:description" content="Course book for BB512 at the Biology Department, University of Southern Denmark" />
   
@@ -24,7 +24,7 @@
 <meta name="author" content="Owen R. Jones (Course Coordinator)" />
 
 
-<meta name="date" content="2020-09-06" />
+<meta name="date" content="2020-09-07" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -32,7 +32,7 @@
   
   
 <link rel="prev" href="life-tables.html"/>
-
+<link rel="next" href="lotka-volterra-competition.html"/>
 <script src="libs/header-attrs-2.3/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -178,7 +178,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.2" data-path="the-legend-of-ambalapuzha.html"><a href="the-legend-of-ambalapuzha.html#optional-try-these-calculations-in-r"><i class="fa fa-check"></i><b>3.2</b> Optional: Try these calculations in R</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="geometric-growth.html"><a href="geometric-growth.html"><i class="fa fa-check"></i><b>4</b> Geometric growth</a></li>
-<li class="chapter" data-level="5" data-path="stochastic-population-growth.html"><a href="stochastic-population-growth.html"><i class="fa fa-check"></i><b>5</b> Stochastic Population Growth</a>
+<li class="chapter" data-level="5" data-path="stochastic-population-growth.html"><a href="stochastic-population-growth.html"><i class="fa fa-check"></i><b>5</b> Stochastic population growth</a>
 <ul>
 <li class="chapter" data-level="5.1" data-path="stochastic-population-growth.html"><a href="stochastic-population-growth.html#simulations-in-r"><i class="fa fa-check"></i><b>5.1</b> Simulations in R</a></li>
 </ul></li>
@@ -194,12 +194,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="7.3" data-path="deeper-into-logistic-growth.html"><a href="deeper-into-logistic-growth.html#optional-cobweb-diagrams"><i class="fa fa-check"></i><b>7.3</b> Optional: Cobweb diagrams</a></li>
 </ul></li>
 <li class="chapter" data-level="8" data-path="life-tables.html"><a href="life-tables.html"><i class="fa fa-check"></i><b>8</b> Life tables</a></li>
-<li class="chapter" data-level="9" data-path="matrix-population-modelling.html"><a href="matrix-population-modelling.html"><i class="fa fa-check"></i><b>9</b> Matrix Population Modelling</a>
+<li class="chapter" data-level="9" data-path="matrix-population-modelling.html"><a href="matrix-population-modelling.html"><i class="fa fa-check"></i><b>9</b> Matrix population modelling</a>
 <ul>
 <li class="chapter" data-level="9.1" data-path="matrix-population-modelling.html"><a href="matrix-population-modelling.html#your-turn"><i class="fa fa-check"></i><b>9.1</b> Your turn…</a></li>
 <li class="chapter" data-level="9.2" data-path="matrix-population-modelling.html"><a href="matrix-population-modelling.html#an-evolutionary-experiment"><i class="fa fa-check"></i><b>9.2</b> An evolutionary experiment</a></li>
 </ul></li>
+<li class="chapter" data-level="10" data-path="lotka-volterra-competition.html"><a href="lotka-volterra-competition.html"><i class="fa fa-check"></i><b>10</b> Lotka-Volterra competition</a></li>
+<li class="chapter" data-level="11" data-path="lotka-volterra-predator-prey-dynamics.html"><a href="lotka-volterra-predator-prey-dynamics.html"><i class="fa fa-check"></i><b>11</b> Lotka-Volterra predator-prey dynamics</a></li>
 <li class="part"><span><b>II Evolution</b></span></li>
+<li class="chapter" data-level="12" data-path="bug-hunt-camouflage-netlogo.html"><a href="bug-hunt-camouflage-netlogo.html"><i class="fa fa-check"></i><b>12</b> Bug hunt camouflage (Netlogo)</a></li>
+<li class="chapter" data-level="13" data-path="neutral-or-adaptive-evolution-in-humans.html"><a href="neutral-or-adaptive-evolution-in-humans.html"><i class="fa fa-check"></i><b>13</b> Neutral or adaptive evolution in humans?</a></li>
+<li class="chapter" data-level="14" data-path="hardy-weinberg-equilibrium.html"><a href="hardy-weinberg-equilibrium.html"><i class="fa fa-check"></i><b>14</b> Hardy-Weinberg equilibrium</a></li>
+<li class="chapter" data-level="15" data-path="how-many-eggs-should-a-bird-lay.html"><a href="how-many-eggs-should-a-bird-lay.html"><i class="fa fa-check"></i><b>15</b> How many eggs should a bird lay?</a></li>
+<li class="chapter" data-level="16" data-path="trade-offs-and-the-force-of-selection.html"><a href="trade-offs-and-the-force-of-selection.html"><i class="fa fa-check"></i><b>16</b> Trade-offs and the force of selection</a></li>
+<li class="chapter" data-level="17" data-path="making-a-phylogeny.html"><a href="making-a-phylogeny.html"><i class="fa fa-check"></i><b>17</b> Making a phylogeny</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 
@@ -221,7 +229,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
             <section class="normal" id="section-">
 <div id="matrix-population-modelling" class="section level1" number="9">
-<h1><span class="header-section-number">9</span> Matrix Population Modelling</h1>
+<h1><span class="header-section-number">9</span> Matrix population modelling</h1>
 <p>Think of an organism you would like to model the dynamics of. It could be a mammal, a bird, a fish, insect or tree … real or fantasy.</p>
 <p>Think about their life cycle, and draw it as a life cycle diagram with circles indicating the stages and arrows representing transitions between stages and reproduction. Next to the arrows, write values for survival probability and fecundity (number of babies) using your biological knowledge.</p>
 <p>Things to think about:</p>
@@ -303,29 +311,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 </div>
 </div>
-
-
-
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
             </section>
 
           </div>
         </div>
       </div>
-<a href="life-tables.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-
+<a href="life-tables.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="lotka-volterra-competition.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -356,7 +348,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/jonesor/BB512_Book/edit/master/1_05_matrixModels.Rmd",
+"link": "https://github.com/jonesor/BB512_Book/edit/master/1_07_matrixModels.Rmd",
 "text": "Edit"
 },
 "history": {

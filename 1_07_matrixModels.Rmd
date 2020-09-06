@@ -1,4 +1,4 @@
-# Matrix Population Modelling
+# Matrix population modelling
 
 ```{r,echo=FALSE,warning=FALSE,message=FALSE}
 library(tidyverse)
