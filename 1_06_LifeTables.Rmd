@@ -1,4 +1,4 @@
-# Life tables
+# Life tables and survivorship types
 
 Life tables are tables that shows for each age, the probability that an individual of that age will die before the next birthday (*probability of death*). This exercise deals with so-called **cohort life tables** which, as the name implies, follows a “*cohort*” of individuals from birth until they all die. A cohort is the group of individuals born within a particular time interval (e.g. “*all individuals born in 1998*”).
 
