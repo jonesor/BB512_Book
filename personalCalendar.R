@@ -66,7 +66,7 @@ for(inst in 1:length(instructorList)){
     ic_write(file = paste0("studentCalendar/",icalName,".ics"),
              ic = ic_event(start = icalScheduleTemp$DTSTART2[i],
                            end = icalScheduleTemp$DTEND2[i],
-                           summary = paste0("BB512 ", icalScheduleTemp$Topic[i],"w.",icalScheduleTemp$Instructor[i],
+                           summary = paste0("BB512 ", icalScheduleTemp$Topic[i]," w.",icalScheduleTemp$Instructor[i],
                                             icalScheduleTemp$Type[i], " in ", icalScheduleTemp$Room[i])))
   }
   
