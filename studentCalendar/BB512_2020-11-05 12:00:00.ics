@@ -4,9 +4,9 @@ VERSION:2.0
 CALSCALE:GREGORIAN
 METHOD:PUBLISH
 BEGIN:VEVENT
-UID:ical-41c6c67f-ff1f-4cc6-8d4f-4d3b072511f5
+UID:ical-e778d66e-8f35-4757-9d80-1e93eeca1cf3
 DTSTART:20201105T120000
 DTEND:20201105T130000
-SUMMARY:BB512 Origin and maintenance of genetic variationw.OJLecture in U43
+SUMMARY:BB512 Origin and maintenance of genetic variation w.OJLecture in U43
 END:VEVENT
 END:VCALENDAR

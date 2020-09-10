@@ -4,9 +4,9 @@ VERSION:2.0
 CALSCALE:GREGORIAN
 METHOD:PUBLISH
 BEGIN:VEVENT
-UID:ical-ac22f988-77b8-43cd-8e48-698292cc6da1
+UID:ical-d7f906f5-27fc-4e60-ae7d-38e099f27a4d
 DTSTART:20201109T120000
 DTEND:20201109T130000
-SUMMARY:BB512 The development and expression of variationw.OJLecture in U21
+SUMMARY:BB512 The development and expression of variation w.OJLecture in U21
 END:VEVENT
 END:VCALENDAR

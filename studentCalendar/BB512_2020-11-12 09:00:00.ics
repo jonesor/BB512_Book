@@ -4,9 +4,9 @@ VERSION:2.0
 CALSCALE:GREGORIAN
 METHOD:PUBLISH
 BEGIN:VEVENT
-UID:ical-412c9f4b-fb85-4113-bca8-3723faa270cd
+UID:ical-498c6c41-d0c6-4f59-b741-c607cd914c05
 DTSTART:20201112T090000
 DTEND:20201112T100000
-SUMMARY:BB512 How many eggs should a bird lay?; Trade-offs and the force of selectionw.OJPractical in U21
+SUMMARY:BB512 How many eggs should a bird lay?; Trade-offs and the force of selection w.OJPractical in U21
 END:VEVENT
 END:VCALENDAR
