@@ -57,6 +57,7 @@ schedule <- left_join(courseCal,schedule)
 ```
 
 
+
 ```{r, echo = FALSE, message=FALSE,eval=knitr::is_html_output()}
 library(lubridate)
 library(officer)
@@ -83,5 +84,9 @@ ft <- flextable(schedule2, cwidth = c(2,9,4,1,.5,1,4,.75,.75)) %>%
 
   
 ft
+```
+
+```{r, echo =FALSE,message=FALSE,warning=FALSE}
+source("personalCalendar.R")
 ```
 

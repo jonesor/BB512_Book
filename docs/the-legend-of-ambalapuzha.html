@@ -263,14 +263,14 @@ A grain of rice weighs 25mg, what weight of rice did the king owe in total, in k
 <div id="optional-try-these-calculations-in-r" class="section level2" number="3.2">
 <h2><span class="header-section-number">3.2</span> Optional: Try these calculations in R</h2>
 <p>You can do this kind of calculation easily in <em>R</em>. Try this.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="the-legend-of-ambalapuzha.html#cb1-1" aria-hidden="true"></a>myData &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">Squares =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">64</span>,<span class="dt">nRice =</span> <span class="ot">NA</span>)</span>
-<span id="cb1-2"><a href="the-legend-of-ambalapuzha.html#cb1-2" aria-hidden="true"></a>myData<span class="op">$</span>nRice[<span class="dv">1</span>] &lt;-<span class="st"> </span><span class="dv">1</span> </span>
-<span id="cb1-3"><a href="the-legend-of-ambalapuzha.html#cb1-3" aria-hidden="true"></a></span>
-<span id="cb1-4"><a href="the-legend-of-ambalapuzha.html#cb1-4" aria-hidden="true"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">2</span><span class="op">:</span><span class="dv">64</span>){</span>
-<span id="cb1-5"><a href="the-legend-of-ambalapuzha.html#cb1-5" aria-hidden="true"></a>  myData<span class="op">$</span>nRice[i] &lt;-<span class="st"> </span>myData<span class="op">$</span>nRice[i<span class="dv">-1</span>]<span class="op">*</span><span class="dv">2</span></span>
-<span id="cb1-6"><a href="the-legend-of-ambalapuzha.html#cb1-6" aria-hidden="true"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="the-legend-of-ambalapuzha.html#cb2-1" aria-hidden="true"></a>myData &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">Squares =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">64</span>,<span class="dt">nRice =</span> <span class="ot">NA</span>)</span>
+<span id="cb2-2"><a href="the-legend-of-ambalapuzha.html#cb2-2" aria-hidden="true"></a>myData<span class="op">$</span>nRice[<span class="dv">1</span>] &lt;-<span class="st"> </span><span class="dv">1</span> </span>
+<span id="cb2-3"><a href="the-legend-of-ambalapuzha.html#cb2-3" aria-hidden="true"></a></span>
+<span id="cb2-4"><a href="the-legend-of-ambalapuzha.html#cb2-4" aria-hidden="true"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">2</span><span class="op">:</span><span class="dv">64</span>){</span>
+<span id="cb2-5"><a href="the-legend-of-ambalapuzha.html#cb2-5" aria-hidden="true"></a>  myData<span class="op">$</span>nRice[i] &lt;-<span class="st"> </span>myData<span class="op">$</span>nRice[i<span class="dv">-1</span>]<span class="op">*</span><span class="dv">2</span></span>
+<span id="cb2-6"><a href="the-legend-of-ambalapuzha.html#cb2-6" aria-hidden="true"></a>}</span></code></pre></div>
 <p>Now we can look at the top and bottom of the 64 row data frame like this:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="the-legend-of-ambalapuzha.html#cb2-1" aria-hidden="true"></a><span class="kw">head</span>(myData)</span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="the-legend-of-ambalapuzha.html#cb3-1" aria-hidden="true"></a><span class="kw">head</span>(myData)</span></code></pre></div>
 <pre><code>##   Squares nRice
 ## 1       1     1
 ## 2       2     2
@@ -278,7 +278,7 @@ A grain of rice weighs 25mg, what weight of rice did the king owe in total, in k
 ## 4       4     8
 ## 5       5    16
 ## 6       6    32</code></pre>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="the-legend-of-ambalapuzha.html#cb4-1" aria-hidden="true"></a><span class="kw">tail</span>(myData)</span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="the-legend-of-ambalapuzha.html#cb5-1" aria-hidden="true"></a><span class="kw">tail</span>(myData)</span></code></pre></div>
 <pre><code>##    Squares        nRice
 ## 59      59 2.882304e+17
 ## 60      60 5.764608e+17
@@ -287,7 +287,7 @@ A grain of rice weighs 25mg, what weight of rice did the king owe in total, in k
 ## 63      63 4.611686e+18
 ## 64      64 9.223372e+18</code></pre>
 <p>And we can sum up the total number of grains of rice on the 64 squares of the board like this:</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="the-legend-of-ambalapuzha.html#cb6-1" aria-hidden="true"></a><span class="kw">sum</span>(myData<span class="op">$</span>nRice)</span></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="the-legend-of-ambalapuzha.html#cb7-1" aria-hidden="true"></a><span class="kw">sum</span>(myData<span class="op">$</span>nRice)</span></code></pre></div>
 <pre><code>## [1] 1.844674e+19</code></pre>
 <p>To put that <em>HUGE</em> number in context, if a grain of rice ways 25mg (0.0000025kg), then we’d have 46,116,860,184,274 kg.</p>
 
@@ -341,7 +341,7 @@ gitbook.start({
 "link": null,
 "text": null
 },
-"download": null,
+"download": ["BB512.pdf"],
 "toc": {
 "collapse": "section"
 },
