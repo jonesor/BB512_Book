@@ -37,3 +37,21 @@ for(i in 1:nrow(icalScheduleTemp)){
                                                                                   end = icalScheduleTemp$DTEND2[i] , 
                                                                                   summary = paste0("BB512 ", icalScheduleTemp$Topic[i],", ", icalScheduleTemp$Type[i], " in ", icalScheduleTemp$Room[i])))
 }
+
+#Combine files by appending the text
+files <- list.files("personalCalendar_Owen/",full.names  = TRUE)
+combinedFiles <- NULL
+for(i in 1:length(files)){
+  temp <- readLines(con = files[i])  
+  combinedFiles <- append(combinedFiles,temp)
+}
+
+#Remove the Begin/End Calendar lines.
+combinedFiles[grep(pattern = "*:VCALENDAR",combinedFiles)]<-""
+
+#Add begin/end calendar lines to the text.
+combinedFiles[1] <- "BEGIN:VCALENDAR"
+combinedFiles[length(combinedFiles)] <- "END:VCALENDAR"
+
+writeLines(combinedFiles,con = "BB512_Owen.ics")
+
