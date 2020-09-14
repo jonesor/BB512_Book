@@ -21,7 +21,7 @@ Seeing the king upset, the wise man appeared to the king in his true form, that 
 
 
 ```{block, type="do-something"}
-Use the Excel sheet (`[RiceOnAChessboard.xlsx] (https://www.dropbox.com/s/nf81t0hzz34vyzk/RiceOnAChessboard.xlsx?dl=1)`) to calculate the quantity of rice that the king owed.
+Use the Excel sheet (`[RiceOnAChessboard.xlsx](https://www.dropbox.com/s/nf81t0hzz34vyzk/RiceOnAChessboard.xlsx?dl=1)`) to calculate the quantity of rice that the king owed.
 
 A grain of rice weighs 25mg, what weight of rice did the king owe in total, in kg?
 ```
