@@ -24,7 +24,7 @@
 <meta name="author" content="Owen R. Jones (Course Coordinator)" />
 
 
-<meta name="date" content="2020-09-10" />
+<meta name="date" content="2020-09-14" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -248,14 +248,19 @@ Use the Excel worksheet, <code>StochasticPopulationGrowth.xslx</code>, to study 
 </p>
 </div>
 <ol style="list-style-type: decimal">
-<li>Use Excel formulae to calculate population growth through time (20 generations, with starting population of 100), linking to the mean finite population growth rate.</li>
+<li>Use Excel formulae to calculate deterministic population size through time (20 generations, with starting population of 100), linking to the mean finite population growth rate.</li>
 <li>Use charts to plot the results. (you already did this last time!)</li>
-<li>Use a formula to generate a column of stochastic lambda values. [English Excel: <code>=NORMINV(RAND(),$F$10,SQRT($F$11))</code>/ Danish Excel: <code>=NORMINV(SLUMP();$F$10;KVROD($F$11))</code>]</li>
+<li>Use a formula to generate a column of stochastic lambda values, based on a particlar mean and variance. [English Excel: <code>=NORMINV(RAND(),$F$10,SQRT($F$11))</code>/ Danish Excel: <code>=NORMINV(SLUMP();$F$10;KVROD($F$11))</code>]</li>
 <li>Use the same procedure as before, to create a stochastic population size vector (stochastic N)</li>
 <li>Compare the two trajectories using a chart.</li>
 <li>Try altering initial population size, the mean finite growth rate, and the amount of stochasticity (Variance).</li>
-<li>Extinction occurs when N <span class="math inline">\(\leq\)</span> 0. What happens to extinction risk as stochasticity increases? What about when initial N is small?</li>
+<li>Extinction occurs when N <span class="math inline">\(\leq\)</span> 0. What happens to extinction risk as stochasticity increases? What hapens when initial N is small?</li>
 </ol>
+<div class="do-something">
+<p>
+Note: Excel re-randomises the random numbers every time you change any cell in the sheet. This is OK, and allows you to explore a stochastic simulation many times.
+</p>
+</div>
 <div id="simulations-in-r" class="section level2" number="5.1">
 <h2><span class="header-section-number">5.1</span> Simulations in R</h2>
 <p>Excel is of limited use to really get a feel for this. For the next part we’ll use <em>R</em>.</p>

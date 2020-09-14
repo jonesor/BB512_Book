@@ -87,3 +87,10 @@ for(inst in 1:length(instructorList)){
   
   writeLines(combinedFiles,con = "BB512_student.ics")
   
+#Tidy up
+  
+  for(inst in 1:length(instructorList)){
+    if(dir.exists(paste0("personalCalendar_",instructorList[inst]))){
+      system(paste0("rm -r personalCalendar_",instructorList[inst]))}
+    }
+  system("rm -r studentCalendar")
