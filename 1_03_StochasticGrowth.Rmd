@@ -26,7 +26,7 @@ When using the equation above to calculate population at time $t+1$ ($N_{t+1}$) 
 
 
 ```{block, type="do-something"}
-Use the Excel worksheet,  `[StochasticPopulationGrowth.xslx](https://www.dropbox.com/s/1wpixbpgwlh54f0/StochasticPopulationGrowth.xlsx?dl=1)`), to study how stochastic population growth works with this simple model.
+Use the Excel worksheet,  `[StochasticPopulationGrowth.xslx](https://www.dropbox.com/s/1wpixbpgwlh54f0/StochasticPopulationGrowth.xlsx?dl=1)`,  to study how stochastic population growth works with this simple model.
 ```
 
 
