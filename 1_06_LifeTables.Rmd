@@ -15,7 +15,7 @@ slides);
 3. to allow you to explore different types of survivorship (Type I, II and III)
 and consider the relationship between these life tables and “life history strategy” (more on this in the evolution part of the course).
 
-Open the Excel file `Life tables exercises.xlsx`.
+Open the Excel file `[Life tables exercises.xlsx](https://www.dropbox.com/s/ox0rk05zdwzrmwy/Life%20tables%20exercises.xlsx?dl=1)`.
 
 The file has three worksheets (“*Life table*”, “*Survivorship Curves*” and “*Gotelli
 Table 3.1 example*”.
