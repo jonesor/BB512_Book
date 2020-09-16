@@ -24,7 +24,7 @@
 <meta name="author" content="Owen R. Jones (Course Coordinator)" />
 
 
-<meta name="date" content="2020-09-14" />
+<meta name="date" content="2020-09-16" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -208,6 +208,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="15" data-path="how-many-eggs-should-a-bird-lay.html"><a href="how-many-eggs-should-a-bird-lay.html"><i class="fa fa-check"></i><b>15</b> How many eggs should a bird lay?</a></li>
 <li class="chapter" data-level="16" data-path="trade-offs-and-the-force-of-selection.html"><a href="trade-offs-and-the-force-of-selection.html"><i class="fa fa-check"></i><b>16</b> Trade-offs and the force of selection</a></li>
 <li class="chapter" data-level="17" data-path="making-a-phylogeny.html"><a href="making-a-phylogeny.html"><i class="fa fa-check"></i><b>17</b> Making a phylogeny</a></li>
+<li class="part"><span><b>III Solutions to exercises</b></span></li>
+<li class="chapter" data-level="18" data-path="section.html"><a href="section.html"><i class="fa fa-check"></i><b>18</b> </a>
+<ul>
+<li class="chapter" data-level="18.1" data-path="section.html"><a href="section.html#solutions-the-legend-of-ambalapuzha"><i class="fa fa-check"></i><b>18.1</b> Solutions: The legend of Ambalapuzha</a></li>
+<li class="chapter" data-level="18.2" data-path="section.html"><a href="section.html#solutions-geometric-growth"><i class="fa fa-check"></i><b>18.2</b> Solutions: Geometric growth</a></li>
+<li class="chapter" data-level="18.3" data-path="section.html"><a href="section.html#solutions-stochastic-population-growth"><i class="fa fa-check"></i><b>18.3</b> Solutions: Stochastic population growth</a></li>
+<li class="chapter" data-level="18.4" data-path="section.html"><a href="section.html#solutions-basic-logistic-population-growth"><i class="fa fa-check"></i><b>18.4</b> Solutions: Basic logistic population growth</a></li>
+<li class="chapter" data-level="18.5" data-path="section.html"><a href="section.html#solutions-deeper-into-logistic-growth"><i class="fa fa-check"></i><b>18.5</b> Solutions: Deeper into logistic growth</a></li>
+</ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 
@@ -230,12 +239,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="basic-logistic-population-growth" class="section level1" number="6">
 <h1><span class="header-section-number">6</span> Basic logistic population growth</h1>
-<p>Population sizes have upper limits – they can only get so large. This is often modeled with the ‘logistic growth’ model<a href="#fn4" class="footnote-ref" id="fnref4"><sup>4</sup></a>:</p>
+<p>Population sizes have upper limits – they can only get so large. This is often modeled with the ‘logistic growth’ model<a href="#fn6" class="footnote-ref" id="fnref6"><sup>6</sup></a>:</p>
 <p><span class="math inline">\(N_{t+1}=N_{t}+r_{d} N_{t}\left(1-\frac{N_{t}}{K}\right)\)</span></p>
 <p>This equation models population at time <span class="math inline">\(t+1\)</span> (<span class="math inline">\(N_{t+1}\)</span>) as a function of the population at time <span class="math inline">\(t\)</span> (<span class="math inline">\(N_t\)</span>), the <em>discrete growth factor</em> (<span class="math inline">\(r_d\)</span>), and carrying capacity of the environment (<span class="math inline">\(K\)</span>).</p>
 <p>The idea is that the growth rate of the population (the difference between <span class="math inline">\(N_{t+1}\)</span> and <span class="math inline">\(N_t\)</span>) decreases as the population increases in size. When the population size at <span class="math inline">\(N_t\)</span> is equal to the <em>carrying capacity</em> of the environment (<span class="math inline">\(K\)</span>), the population growth rate is zero. For example, if the carrying capacity of the population is <em>200</em>, and there are already <em>200</em> individuals in the population, then the size of the population will remain unchanged through time (<span class="math inline">\(N_{t+1} = N_t = 200\)</span>).</p>
 <p>The aim of this Excel-based exercise is to explore this model and help you get an intuitive understanding of it by looking at it from different perspectives. Even though it is a fairly simple model, it leads us to some useful biological insights.</p>
-<p>Open the file <code>Basic Logistic Growth.xslx</code>.</p>
+<p>Open the file <code>[Basic Logistic Growth.xslx](https://www.dropbox.com/s/oxxyyn4zf4wsvkg/Basic%20Logistic%20Growth.xlsx?dl=1)</code>.</p>
 <p>You will see that there are three blocks of numbers, and three graphs.
 During the exercise you only need to edit the pink block.</p>
 <p>The pink block gives the important parameters of the logistic model:</p>
@@ -334,8 +343,8 @@ How would the same plots look for regular exponential growth?
 </div>
 <div class="footnotes">
 <hr />
-<ol start="4">
-<li id="fn4"><p>This is equation 2.4 in Gotelli<a href="basic-logistic-population-growth.html#fnref4" class="footnote-back">↩︎</a></p></li>
+<ol start="6">
+<li id="fn6"><p>This is equation 2.4 in Gotelli<a href="basic-logistic-population-growth.html#fnref6" class="footnote-back">↩︎</a></p></li>
 </ol>
 </div>
             </section>

@@ -24,7 +24,7 @@
 <meta name="author" content="Owen R. Jones (Course Coordinator)" />
 
 
-<meta name="date" content="2020-09-14" />
+<meta name="date" content="2020-09-16" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -208,6 +208,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="15" data-path="how-many-eggs-should-a-bird-lay.html"><a href="how-many-eggs-should-a-bird-lay.html"><i class="fa fa-check"></i><b>15</b> How many eggs should a bird lay?</a></li>
 <li class="chapter" data-level="16" data-path="trade-offs-and-the-force-of-selection.html"><a href="trade-offs-and-the-force-of-selection.html"><i class="fa fa-check"></i><b>16</b> Trade-offs and the force of selection</a></li>
 <li class="chapter" data-level="17" data-path="making-a-phylogeny.html"><a href="making-a-phylogeny.html"><i class="fa fa-check"></i><b>17</b> Making a phylogeny</a></li>
+<li class="part"><span><b>III Solutions to exercises</b></span></li>
+<li class="chapter" data-level="18" data-path="section.html"><a href="section.html"><i class="fa fa-check"></i><b>18</b> </a>
+<ul>
+<li class="chapter" data-level="18.1" data-path="section.html"><a href="section.html#solutions-the-legend-of-ambalapuzha"><i class="fa fa-check"></i><b>18.1</b> Solutions: The legend of Ambalapuzha</a></li>
+<li class="chapter" data-level="18.2" data-path="section.html"><a href="section.html#solutions-geometric-growth"><i class="fa fa-check"></i><b>18.2</b> Solutions: Geometric growth</a></li>
+<li class="chapter" data-level="18.3" data-path="section.html"><a href="section.html#solutions-stochastic-population-growth"><i class="fa fa-check"></i><b>18.3</b> Solutions: Stochastic population growth</a></li>
+<li class="chapter" data-level="18.4" data-path="section.html"><a href="section.html#solutions-basic-logistic-population-growth"><i class="fa fa-check"></i><b>18.4</b> Solutions: Basic logistic population growth</a></li>
+<li class="chapter" data-level="18.5" data-path="section.html"><a href="section.html#solutions-deeper-into-logistic-growth"><i class="fa fa-check"></i><b>18.5</b> Solutions: Deeper into logistic growth</a></li>
+</ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 
@@ -231,9 +240,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="deeper-into-logistic-growth" class="section level1" number="7">
 <h1><span class="header-section-number">7</span> Deeper into logistic growth</h1>
 <p>The purpose of this exercise is (i) to look at the relationships between the exponential (or geometric) growth model and the logistic growth model and (ii) to emphasise different ways of looking at the models.</p>
-<p>I will begin by showing the equations on the (actual!) blackboard for exponential and logistic growth. I will highlight how the logistic model is a simple extension of the exponential model. I will show that when K is infinite the model <span class="math inline">\(\frac{d N}{d t}=r N\left(1-\frac{N}{K}\right)\)</span>, simplifies to the exponential model (<span class="math inline">\(\frac{d N}{d t}=r N\)</span>), because the <span class="math inline">\((1-\frac{N}{K})\)</span> bit drops out of the equation.<a href="#fn5" class="footnote-ref" id="fnref5"><sup>5</sup></a></p>
-<p>The same is true for the discrete version of the logistic growth model: Compare the equation <span class="math inline">\(N_{t+1}=N_{t}+r_{d} N_{t}\left(1-\frac{N_{t}}{K}\right)\)</span> with <span class="math inline">\(N_{t+1}=N_{t}+r_{d} N_{t}\)</span>.<a href="#fn6" class="footnote-ref" id="fnref6"><sup>6</sup></a></p>
-<p>You can then look at the Excel file <code>Deeper Into Logistic Growth.xlsx</code></p>
+<p>I will begin by showing the equations on the (actual!) blackboard for exponential and logistic growth. I will highlight how the logistic model is a simple extension of the exponential model. I will show that when K is infinite the model <span class="math inline">\(\frac{d N}{d t}=r N\left(1-\frac{N}{K}\right)\)</span>, simplifies to the exponential model (<span class="math inline">\(\frac{d N}{d t}=r N\)</span>), because the <span class="math inline">\((1-\frac{N}{K})\)</span> bit drops out of the equation.<a href="#fn7" class="footnote-ref" id="fnref7"><sup>7</sup></a></p>
+<p>The same is true for the discrete version of the logistic growth model: Compare the equation <span class="math inline">\(N_{t+1}=N_{t}+r_{d} N_{t}\left(1-\frac{N_{t}}{K}\right)\)</span> with <span class="math inline">\(N_{t+1}=N_{t}+r_{d} N_{t}\)</span>.<a href="#fn8" class="footnote-ref" id="fnref8"><sup>8</sup></a></p>
+<p>You can then look at the Excel file <code>[Deeper Into Logistic Growth.xlsx](https://www.dropbox.com/s/4xq399z7skl1akv/Deeper%20into%20Logistic%20Growth.xlsx?dl=1)</code></p>
 <div id="different-views-of-the-basic-logistic-growth-model" class="section level2" number="7.1">
 <h2><span class="header-section-number">7.1</span> Different views of the basic logistic growth model</h2>
 <p>Take a look at the <code>BasicLogistic</code> Excel worksheet/ark.</p>
@@ -280,9 +289,9 @@ knitr::include_app('https://jonesor.shinyapps.io/cobweb/', height = '600px')
 </div>
 <div class="footnotes">
 <hr />
-<ol start="5">
-<li id="fn5"><p>These are equations 2.1 and 1.1 in Gotelli.<a href="deeper-into-logistic-growth.html#fnref5" class="footnote-back">↩︎</a></p></li>
-<li id="fn6"><p>These are Expression 1.13 (page. 11) and equation 2.4 from Gotelli.<a href="deeper-into-logistic-growth.html#fnref6" class="footnote-back">↩︎</a></p></li>
+<ol start="7">
+<li id="fn7"><p>These are equations 2.1 and 1.1 in Gotelli.<a href="deeper-into-logistic-growth.html#fnref7" class="footnote-back">↩︎</a></p></li>
+<li id="fn8"><p>These are Expression 1.13 (page. 11) and equation 2.4 from Gotelli.<a href="deeper-into-logistic-growth.html#fnref8" class="footnote-back">↩︎</a></p></li>
 </ol>
 </div>
             </section>
