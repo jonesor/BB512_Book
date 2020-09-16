@@ -1,0 +1,45 @@
+#
+
+In this section you will find the solutions and/or main take home messages of the practical exercises used in this course.
+
+## Solutions: The legend of Ambalapuzha
+
+You can find the completed Excel file [here](https://www.dropbox.com/s/ybe5qhmfltuhoyv/RiceOnAChessboard_completed.xlsx?dl=1).
+
+Take home messages:
+
+* Exponential/geometric growth is extremely powerful and can very quickly lead to very large numbers.
+
+
+## Solutions: Geometric growth
+
+You can find the completed Excel file [here](chttps://www.dropbox.com/s/sfxu1lbrxyqt462/GeometricGrowth%20-%20complete.xlsx?dl=1). 
+
+Take home messages:
+
+* The rate of exponential/geometric growth depends on the population growth rate.
+* Lambda ($\lambda$) values $<1$ lead to a exponential *decrease*, while values $>1$ lead to exponential growth. A $\lambda$ of 1 indicates no change.
+* Growth traj"ectories can be plotted on the "natural scale* or on a *log scale*. Exponential growth (or decline) plotted on a log scale is a straight line. This could be useful to infer biological processes (or the lack of them). For example, exponential growth in population size indicates that there are no forces currently limiting the population (e.g. predators/competition/management actions).
+
+## Solutions: Stochastic population growth
+
+You can find the completed Excel file [here](https://www.dropbox.com/s/baao06vi0c0quns/StochasticPopulationGrowth-complete.xlsx?dl=1).
+
+Take home messages:
+
+* Population growth rates are unlikely to be constant through time.
+* Environmental stochasticity will cause changes through time in vital rates (birth/death) which will influence $\lambda$/$r$.
+* We can model environmental stochasticity using a distribution of population growth rates instead of a single deterministic value.
+* We then can randomly draw growth rate values from this distribution for each time-step in a population projection.
+* The "spread" or uncertainty in the population size at a future time point depends on (i) the spread (variance) of the distribution and (ii) the amount of time elapsed. 
+* We can repeatedly simulate a population projection (e.g. in R, or more laboriously in Excel) to get a feel for the likely fate of a population. E.g. "what percent of the projections show extinction within 50 years?".
+* We can use this relatively simple and "unrealistic" model to nevertheless get an intuition about general trends in population dynamics and extinction risk.
+* Extinction probability increases as (i) initial population size decreases; (ii) variance increases; (iii) growth rates decrease; (iv) the time frame increases.
+
+## Solutions: Basic logistic population growth
+
+[coming soon]
+
+## Solutions: Deeper into logistic growth
+
+[coming soon]
