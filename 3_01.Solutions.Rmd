@@ -28,7 +28,7 @@ You can find the completed Excel file [here](https://www.dropbox.com/s/baao06vi0
 Take home messages:
 
 * Population growth rates are unlikely to be constant through time.
-* Environmental stochasticity will cause changes through time in vital rates (birth/death) which will influence $\lambda$/$r$.
+* Environmental stochasticity will cause changes through time in vital rates (birth/death) which will influence $\lambda$ (and $r$).
 * We can model environmental stochasticity using a distribution of population growth rates instead of a single deterministic value.
 * We then can randomly draw growth rate values from this distribution for each time-step in a population projection.
 * The "spread" or uncertainty in the population size at a future time point depends on (i) the spread (variance) of the distribution and (ii) the amount of time elapsed. 
