@@ -1,4 +1,4 @@
-#
+# Solutions and "take-home" messages
 
 In this section you will find the solutions and/or main take home messages of the practical exercises used in this course.
 
