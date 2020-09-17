@@ -68,7 +68,7 @@ You should notice that the population overshoots carrying capacity ($K$), then o
 *	*What happens if you increase the growth rate even more, to 2 or 2.1?* 
 *	*And even more to 2.8, 2.9 or 3?* 
 *	*How would you describe these dynamics?* 
-*	*Is there a limit to how high `r_d` can be? (hint: populations go extinct if N < 0).*
+*	*Is there a limit to how high $r_d$ can be? (hint: populations go extinct if N < 0).*
 
 You should notice that as you increase $r_d$ the nature of the oscillations changes. In fact, this is predictable:  If $r_d < 1.0$, then population will approach $K$ smoothly.
 
@@ -92,7 +92,7 @@ Many pest species and diseases have very high population growth rates. For examp
 
 The line describing per capita growth rate crosses the x-axis (population size) at $K$. i.e. if $K = 100$, the line crosses at 100. If you change $K$, the intercept on the axis also changes accordingly. The line intercepts the axis at this point no matter what the population growth rate is.
 
-*Graph 3 is shaped like a parabola, starting with small values, increasing to a maximum, then declining to small values again. The position of the maximum is dependent on the values of K and r_d. When r_d is small (around 1), the peak is at x=K and y=K. Explore (1) how the peak moves around if you fix one of K or r_d and alter the other parameter and (2) how the slope of the line changes at Nt=K. (Hint: the slope of the line changes from positive to negative as r_d increases)*
+*Graph 3 is shaped like a parabola, starting with small values, increasing to a maximum, then declining to small values again. The position of the maximum is dependent on the values of K and r_d. When r_d is small (around 1), the peak is at $x=K$ and $y=K$. Explore (1) how the peak moves around if you fix one of $K$ or $r_d$ and alter the other parameter and (2) how the slope of the line changes at $N_t=K$. (Hint: the slope of the line changes from positive to negative as $r_d$ increases)*
 
 As mentioned above, the peak of the parabola will be at $K$ on both axes when $r_d$ is small.  You should see that this makes sense because if the population is at carrying capacity in Year 1 (`Nt`, on the x-axis) then next year (Year 2; `Nt+1` on the y-axis) the population size will be the same because with logistic growth the population growth rate is always 0 when the population is at carrying capacity. Therefore, if you change $K$, the peak will move around accordingly, but always will be at $x=K$ and $y=K$.
 
