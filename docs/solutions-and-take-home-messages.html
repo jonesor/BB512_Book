@@ -275,7 +275,52 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="solutions-basic-logistic-population-growth" class="section level2" number="18.4">
 <h2><span class="header-section-number">18.4</span> Solutions: Basic logistic population growth</h2>
-<p>[coming soon]</p>
+<p>You were asked to use the Excel sheet to answer some questions about logistic growth by examining the graphs.</p>
+<p><strong>First – take a look at Graph 1</strong>.</p>
+<ul>
+<li><em>What is the maximum population size?</em></li>
+<li><em>How does this compare to carrying capacity (K)?</em></li>
+<li><em>What do you predict to happen if you increase K to 300?</em></li>
+<li><em>Try doing that. Were you correct?</em></li>
+</ul>
+<p>You should notice that when the population growth rate (<span class="math inline">\(r_d\)</span>) is around 1 or lower, the maximum population size is the same as the carrying capacity (<span class="math inline">\(K\)</span>). As you change <span class="math inline">\(K\)</span>, this maximum population size will change accordingly.</p>
+<p>If <span class="math inline">\(r_d\)</span> is markedly greater than 1, then the population size can exceed the carrying capacity. This is because the population grows so fast that it “<em>overshoots</em>” carrying capacity and then fluctuates around K.</p>
+<ul>
+<li><em>At what time do you reach the maximum population size?</em></li>
+<li><em>If you halved growth rate (r_d) to 0.4, what do you think will happen to this time? </em></li>
+<li><em>Try doing that. Were you correct?</em></li>
+</ul>
+<p>You should notice that the time taken to reach the maximum population size is related to the growth rate (<span class="math inline">\(r_d\)</span>). As you increase <span class="math inline">\(r_d\)</span>, the time taken to hit the maximum population size decreases. If you halve the growth rate, the time taken to reach maximum population size is doubled.</p>
+<ul>
+<li><em>What do you think will happen if you increase growth rate to 1.8?</em></li>
+<li><em>Try that… were you correct?</em></li>
+<li><em>What do you notice about the population size through time?</em></li>
+<li><em>How does the maximum population size compare with the carrying capacity?</em></li>
+<li><em>How would you describe the ‘dynamics’ of this population?</em></li>
+</ul>
+<p>You should notice that the population overshoots carrying capacity (<span class="math inline">\(K\)</span>), then oscillates around <span class="math inline">\(K\)</span> with damped oscilllations that gradually move towards <span class="math inline">\(K\)</span>. Therefore if a population has even a moderate population growth rate, and if it has density-dependence, then it can fluctuate in numbers without any extrinsic factor (like weather) acting.</p>
+<ul>
+<li><em>What happens if you increase the growth rate even more, to 2 or 2.1?</em></li>
+<li><em>And even more to 2.8, 2.9 or 3?</em></li>
+<li><em>How would you describe these dynamics?</em></li>
+<li><em>Is there a limit to how high <code>r_d</code> can be? (hint: populations go extinct if N &lt; 0).</em></li>
+</ul>
+<p>You should notice that as you increase <span class="math inline">\(r_d\)</span> the nature of the oscillations changes. In fact, this is predictable: If <span class="math inline">\(r_d &lt; 1.0\)</span>, then population will approach <span class="math inline">\(K\)</span> smoothly.</p>
+<p>If <span class="math inline">\(1.0 &lt; r_d &lt; 2.0\)</span>, then oscillations of decreasing amplitude around K.</p>
+<p>If <span class="math inline">\(2.0&lt; r_d &lt; 2.57\)</span>, then stable, cyclic oscillations around K . They can be 1 or 2+ point stable limit cycles.</p>
+<p>If <span class="math inline">\(r_d &gt; 2.57\)</span>, then population will fluctuate chaotically.</p>
+<p>If <span class="math inline">\(r_d\)</span> is too high, the population will fluctuate and crash to extinction.</p>
+<p><em>Compare the population trajectory in Graph 1 for populations with <span class="math inline">\(r_d\)</span>= 2.8 and 2.81. Then compare the trajectories where you fix <span class="math inline">\(r_d\)</span> at 2.8 but vary initial population size by a small amount (e.g. 1). Imagine you were a population manager – would these populations be easy or hard to predict? What kinds of species have high population growth rates like these?</em></p>
+<p>When <span class="math inline">\(r_d\)</span> is high (<span class="math inline">\(&gt;2.57\)</span>) the population dynamics become extremely hard (impossible) to predict because they are chaotic. This means that even a very small change in <span class="math inline">\(r_d\)</span> (which could simply be measurement error) will mean that predicted population size next year is suddenly very different. This would cause big problems to a population manager.</p>
+<p>Many pest species and diseases have very high population growth rates. For example, locusts, or measles. This is one reason why it is hard to predict when the next pest/disease outbreak will happen</p>
+<p><strong>Now let’s turn to Graphs 2 and 3</strong></p>
+<p><em>In graph 2, notice that the per capita growth rate always declines linearly with population size (<span class="math inline">\(N\)</span>). Where does it cross the x-axis line? Modify the carrying capacity (<span class="math inline">\(K\)</span>) – what do you notice?</em></p>
+<p>The line describing per capita growth rate crosses the x-axis (population size) at <span class="math inline">\(K\)</span>. i.e. if <span class="math inline">\(K = 100\)</span>, the line crosses at 100. If you change <span class="math inline">\(K\)</span>, the intercept on the axis also changes accordingly. The line intercepts the axis at this point no matter what the population growth rate is.</p>
+<p><em>Graph 3 is shaped like a parabola, starting with small values, increasing to a maximum, then declining to small values again. The position of the maximum is dependent on the values of K and r_d. When r_d is small (around 1), the peak is at x=K and y=K. Explore (1) how the peak moves around if you fix one of K or r_d and alter the other parameter and (2) how the slope of the line changes at Nt=K. (Hint: the slope of the line changes from positive to negative as r_d increases)</em></p>
+<p>As mentioned above, the peak of the parabola will be at <span class="math inline">\(K\)</span> on both axes when <span class="math inline">\(r_d\)</span> is small. You should see that this makes sense because if the population is at carrying capacity in Year 1 (<code>Nt</code>, on the x-axis) then next year (Year 2; <code>Nt+1</code> on the y-axis) the population size will be the same because with logistic growth the population growth rate is always 0 when the population is at carrying capacity. Therefore, if you change <span class="math inline">\(K\)</span>, the peak will move around accordingly, but always will be at <span class="math inline">\(x=K\)</span> and <span class="math inline">\(y=K\)</span>.</p>
+<p>If you increase <span class="math inline">\(r_d\)</span> above 1, the shape of the relationship between <span class="math inline">\(N_t\)</span> and <span class="math inline">\(N_{t+1}\)</span> remains parabolic, but the location of the peak changes relative to <span class="math inline">\(K\)</span>.</p>
+<p><em>How would the same plots look for regular exponential growth?</em></p>
+<p>The equivalent plot (for Graph 2) for exponential growth would be a horizontal line - because population growth rate does NOT depend on population size.</p>
 </div>
 <div id="solutions-deeper-into-logistic-growth" class="section level2" number="18.5">
 <h2><span class="header-section-number">18.5</span> Solutions: Deeper into logistic growth</h2>
