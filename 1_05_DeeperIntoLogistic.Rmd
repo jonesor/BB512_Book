@@ -6,7 +6,7 @@ I will begin by showing the equations on the (actual!) blackboard for exponentia
 
 The same is true for the discrete version of the logistic growth model: Compare the equation  $N_{t+1}=N_{t}+r_{d} N_{t}\left(1-\frac{N_{t}}{K}\right)$ with $N_{t+1}=N_{t}+r_{d} N_{t}$. ^[These are Expression 1.13 (page. 11) and equation 2.4 from Gotelli.]
 
-You can then look at the Excel file `[Deeper Into Logistic Growth.xlsx](https://www.dropbox.com/s/4xq399z7skl1akv/Deeper%20into%20Logistic%20Growth.xlsx?dl=1)`
+You can then look at the Excel file [`Deeper Into Logistic Growth.xlsx`](https://www.dropbox.com/s/4xq399z7skl1akv/Deeper%20into%20Logistic%20Growth.xlsx?dl=1).
 
 
 ## Different views of the basic logistic growth model

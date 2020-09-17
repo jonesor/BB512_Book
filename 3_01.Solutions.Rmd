@@ -13,7 +13,7 @@ Take home messages:
 
 ## Solutions: Geometric growth
 
-You can find the completed Excel file [here](chttps://www.dropbox.com/s/sfxu1lbrxyqt462/GeometricGrowth%20-%20complete.xlsx?dl=1). 
+You can find the completed Excel file [here](https://www.dropbox.com/s/sfxu1lbrxyqt462/GeometricGrowth%20-%20complete.xlsx?dl=1). 
 
 Take home messages:
 

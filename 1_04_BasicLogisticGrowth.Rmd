@@ -11,7 +11,7 @@ The idea is that the growth rate of the population (the difference between $N_{t
 
 The aim of this Excel-based exercise is to explore this model and help you get an intuitive understanding of it by looking at it from different perspectives. Even though it is a fairly simple model, it leads us to some useful biological insights.
 
-Open the file `[Basic Logistic Growth.xslx](https://www.dropbox.com/s/oxxyyn4zf4wsvkg/Basic%20Logistic%20Growth.xlsx?dl=1)`.
+Download and open the Excel file: [`Basic Logistic Growth.xslx`](https://www.dropbox.com/s/oxxyyn4zf4wsvkg/Basic%20Logistic%20Growth.xlsx?dl=1).
 
 You will see that there are three blocks of numbers, and three graphs.
 During the exercise you only need to edit the pink block.

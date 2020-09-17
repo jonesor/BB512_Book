@@ -7,22 +7,24 @@ set.seed(134)
 
 We will examine the effect of adding stochasticity (randomness) into the simple exponential/geometric growth model you have been looking at in the last couple of lectures. Remember – this model allows for unbounded population growth – the populations development is not influenced by population density.
 
-We'll focus on the discrete form: $N_{t+1}=λN_t$
+We'll focus on the discrete form:  $N_{t+1}=λN_t$  ^[1.15 in Gotelli]
 
-In many cases it is unlikely that lambda ($λ$) will be constant through time. It is likely to vary because of environmental factors (weather, food supply etc.) and internal factors (structure of the population etc.).
+In many cases it is unlikely that the finite rate of increase ($λ$) will be constant through time. Population growth rates are likely to vary through time because of environmental factors (weather, food supply etc.). This is called *environmental stochasticity*.
 
-What effect might this variation have?
+We will create some models in Excel, and in R, to explore the effect that this variation has.
 
-A good way to begin consider this question is to think of lambda as a random number drawn from a particular distribution (Fig. \@ref(fig:stochLambda)). In the figure you can see that in good years $λ$ is $>$ 1 so the population will increase, in poor years $λ$ is $<$ 1, so the population will decline. In most years, the population will neither grow nor shrink.
+A good way to begin thinking about this topic is to consider that the instantaneous rate of increase  ($r$) of the population can vary. We can simulate this by drawing a random number drawn from a normal distribution with a mean ($\bar{r}$) and variance ($\sigma_r^2$) (Fig. \@ref(fig:stochGrowthRate)). In the figure you can see that the peak of the $r$ distribution is $>0$ (approximately 0.1), so on average, the population will tend to grow.  However, in poor years $r$ is $<$ 0, so the population will decline in those cases. Both the mean value and the spread of the distribution (i.e. variance or standard deviation) determine the fate of the population. 
+We can convert $r$ to  $\lambda$ by taking the exponential, because $r = ln(\lambda)$^[equation 1.5 in Gotelli]
 
 
-```{r stochLambda, echo=FALSE,fig.width=6,fig.height=4,fig.align='center',fig.cap="A normal distribution of potential lambda values"}
-pgr <- data.frame(lambda = rnorm(1000))
-ggplot(pgr,aes(x=lambda))+geom_histogram(bins =30) +
+```{r stochGrowthRate, echo=FALSE,fig.width=6,fig.height=4,fig.align='center',fig.cap="A normal distribution of potential r values"}
+set.seed(123)
+pgr <- data.frame(r = rnorm(1000,0,0.25))
+ggplot(pgr,aes(x=r))+geom_histogram(bins =30) +
   theme_minimal()
 ```
 
-When using the equation above to calculate population at time $t+1$ ($N_{t+1}$) from the population at time $t$ ($N_t$), one would draw a random $λ$ value from this distribution. Sometimes $λ$ will be high, other times it will be low, most of the time it will be from around the middle of the distribution.
+When using the equation above to calculate population at time $t+1$ ($N_{t+1}$) from the population at time $t$ ($N_t$), one would draw a random $r$ value from this distribution. Sometimes $r$ will be high, other times it will be low, most of the time it will be from around the middle of the distribution.
 
 
 ```{block, type="do-something"}
@@ -32,8 +34,8 @@ Use the Excel worksheet,  `[StochasticPopulationGrowth.xslx](https://www.dropbox
 
 1)	Use Excel formulae to calculate deterministic population size through time (20 generations, with starting population of 100), linking to the mean finite population growth rate.
 2)	Use charts to plot the results. (you already did this last time!)
-3)	Use a formula to generate a column of stochastic lambda values, based on a particlar mean and variance. [English Excel: `=NORMINV(RAND(),$F$10,SQRT($F$11))`/ Danish Excel: `=NORMINV(SLUMP();$F$10;KVROD($F$11))`]
-4)	Use the same procedure as before, to create a stochastic population size vector (stochastic N)
+3)	Use a formula to generate a column of stochastic $r$ values, based on a particlar mean and variance. [English Excel: `=NORMINV(RAND(),$F$10,SQRT($F$11))`/ Danish Excel: `=NORMINV(SLUMP();$F$10;KVROD($F$11))`. If you get errors, check whether Excel is expecting commas or semi-colons]
+4)	Use the same procedure as before, to create a stochastic population size vector (stochastic N). Remember to convert $r$ to $\lambda$ by taking the exponential.
 5)	Compare the two trajectories using a chart.
 6)	Try altering initial population size, the mean finite growth rate, and the amount of stochasticity (Variance).
 7)	Extinction occurs when N $\leq$ 0. What happens to extinction risk as stochasticity increases? What hapens when initial N is small?
@@ -55,17 +57,17 @@ The output of the modelling is shown in  Fig. \@ref(fig:stochProjection)
 ```{block, type="do-something"}
 Copy-and-paste the code below into a text file (or directly into *R*).
 
-The final line of the code (`nExtinct/nTrials`) gives you an estimate of extinction probability - the proportion of trials that lead to a population size of 0 (or less).
+The final line of the code (`nExtinct/nTrials`) gives you an estimate of extinction probability - the proportion of trials that lead to a population size of 1 (or less).
 
-Modify the simulation settings to explore what happens to (i) the plot of population growth and (ii) extinction risk, when you vary the amount of stochasticity (`var.pgr`), the deterministic $\lambda$ (`pgr`) and the number of generations (`nGen`).
+Modify the simulation settings to explore what happens to (i) the plot of population growth and (ii) extinction risk, when you vary  `mean.r` ($\bar{r}$), the amount of stochasticity ($\sigma_r^2$) (`var.r`), and the number of generations (`nGen`).
 ```
 
 ```{r stochProjection, echo=TRUE,fig.width=6,fig.height=4,fig.align='center',fig.cap="An example of stochastic population projection (100 simulations for 50 generations)"}
 #Simulating stochastic geometric population growth rate
 
 #Simulation settings (try changing these)
-pgr = 1.05 # deterministic growth rate
-var.pgr = 0.1 # amount of stochasticity
+mean.r = 0.05 # the mean value of r
+var.r = 0.1 # the variance in r (stochasticity)
 startPop = 10 # pop size at start
 nGen = 50 # number of generations
 nTrials = 100 # number of repeated simulations
@@ -77,7 +79,7 @@ nTrials = 100 # number of repeated simulations
 pseudoExtinction = 1
 
 # First randomly generate some lambda values
-lambdas<-matrix(rnorm(nTrials*nGen, mean = pgr, sd = sqrt(var.pgr)),ncol=nTrials,nrow=nGen)
+rValues<-matrix(rnorm(nTrials*nGen, mean = mean.r, sd = sqrt(var.r)),ncol=nTrials,nrow=nGen)
 
 # Use a histogram to see what they look like (uncomment the line below)
 # hist(lambdas,col="grey",main="")
@@ -87,8 +89,8 @@ trials = matrix(data = NA, nrow = nGen, ncol = nTrials)
 for (j in 1:nTrials){
   popSize = startPop  
   for (i in 2: nGen){
-  stoch.pgr = lambdas[i,j]
-  popSize = append(popSize, popSize[i-1]*stoch.pgr)
+  stoch.r = rValues[i,j]
+  popSize = append(popSize, popSize[i-1]*exp(stoch.r))
 }
 trials[,j] = popSize
 rm(popSize)

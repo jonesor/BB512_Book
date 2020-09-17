@@ -4,7 +4,7 @@ In a simple model of population growth where the population grows without any co
 
 Geometric growth is often seen as synonymous to exponential growth. It basically is, but with one important difference: exponential growth, strictly speaking, refers to “continuous time” scenarios, whereas geometric growth refers to models where the population changes in discrete time steps (e.g. each year).
 
-Download and open the Excel file `GeometricGrowth.xlsx`.
+Download and open the Excel file [`GeometricGrowth.xlsx`](https://www.dropbox.com/s/xxx05sckvop5i52/GeometricGrowth.xlsx?dl=1).
 
 1.	Starting with an initial population size (`N`) of 10 [at time (`t`) =0], and with a $\lambda$ of `1.1`, use Excel’s equation functions to work out the population size from `t=1` through to `t=20`. E.g. The formula might look something like this “`=B8*$F$8`”.
 2.	Use charts to plot the results. On the horizontal axis (x-axis) you should have time, and on the vertical axis (y-axis) you should have population size (`N`). A scatterplot would be best for this.
