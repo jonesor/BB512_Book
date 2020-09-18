@@ -106,4 +106,40 @@ The equivalent plot (for Graph 2) for exponential growth would be a horizontal l
 
 ## Solutions: Deeper into logistic growth
 
-[coming soon]
+### Relationship between Logistic and Exponential growth equations
+
+The logistic growth equation simplifies to become the exponential growth equation if you set $K$ to be infinite ($\infty$). The simplification goes like this:
+
+1. $\frac{d N}{d t}=r N\left(1-\frac{N}{K}\right)$
+2. $\frac{d N}{d t}=r N\left(1-\frac{N}{\infty}\right)$
+3. $\frac{d N}{d t}=r N\left(1-0\right)$
+4. $\frac{d N}{d t}=r N \times 1$
+5. $\frac{d N}{d t}=r N$
+
+This simplification also works with the discrete version of the equation, $N_{t+1}=N_{t}+r_{d} N_{t}\left(1-\frac{N_{t}}{K}\right)$.
+
+
+### Type of dynamics depends on $r_d$.
+
+As you increase $r_d$, the dynamics of the population changes. At low $r_d$ population size ($N$) simply converges on the carrying capacity, $K$. As $r_d$ you will see damped oscillations whereby $N$ overshoots $K$ and then oscillates and converges to $K$. Then you will see cycles where the population size oscillates *around* $K$. The cycles can be simple two-point cycles (where $N$ bounces between two points), or more complex with $N$ bouncing between four-points (or more). In fact, the critical values of $r_d$ that define the type of dynamics are fixed: if we know $r_d$ we can predict the type of dynamics.
+
+The behaviour of the population dynamics depends only on $r_d$, not on $K$ or starting population size ($N_0$) (as long as $N_0 > K$).
+
+### You can obtain parameters from graphs
+
+You should notice that having some information about what the parameters are will allow you to sketch the dynamics. Conversely, if you have a graph showing aspects of the population dynamics, you could figure out what the parameters of the logistic equation are.
+
+For Exponential growth, populaiton size is unlimited and will grow exponentially if $r$ is $>0$ (or $\lambda > 1$). Logistic growth will show some kind of limit (damped oscillation, or whatver), as the population size is attracted to $K$ in some way.
+
+In logistic growth, the per capita growth rate declines as population size increases, and reaches $0$ when $N = K$. In exponential growth, the per capita growth rate remains constant and unaffected by $N$. Therefore the graphs of growth rate vs. N will be very different: Logistic = a negative slope, expontial = a horizontal line.
+
+### Time lag
+
+Time lagged density dependence results in oscillations. Therefore if we see oscillations in dynamics it could be due to a particular $r_d$ value or lagged density dependence.
+
+### Cobweb diagram
+
+Cobweb diagrams and bifurcation plots offer another way of visualising dynamics of populations (see the article about Chaos, by Mathiopoulos).
+
+Chaotic dynamics are deterministic in the sense that if you have the same initial conditions you will get the same results (dynamics). However, small changes in any parameters ($N_0$, $K$, or $r_d$) will lead to very different dynamics - so in that sense, because of measurement error, the population dynamics would be very hard to predict in practice.
+
