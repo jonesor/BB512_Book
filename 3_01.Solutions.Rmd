@@ -2,6 +2,8 @@
 
 In this section you will find the solutions and/or main take home messages of the practical exercises used in this course.
 
+
+```{asis, echo=today() > icalSchedule %>% filter(grepl("Ambalapuzha",Topic)) %>% select(DTSTART2) %>% pull()}
 ## Solutions: The legend of Ambalapuzha
 
 You can find the completed Excel file [here](https://www.dropbox.com/s/ybe5qhmfltuhoyv/RiceOnAChessboard_completed.xlsx?dl=1).
@@ -9,8 +11,9 @@ You can find the completed Excel file [here](https://www.dropbox.com/s/ybe5qhmfl
 Take home messages:
 
 * Exponential/geometric growth is extremely powerful and can very quickly lead to very large numbers.
+```
 
-
+```{asis, echo=today() > icalSchedule %>% filter(grepl("Geometric growth",Topic)) %>% select(DTSTART2) %>% pull()}
 ## Solutions: Geometric growth
 
 You can find the completed Excel file [here](https://www.dropbox.com/s/sfxu1lbrxyqt462/GeometricGrowth%20-%20complete.xlsx?dl=1). 
@@ -21,6 +24,9 @@ Take home messages:
 * Lambda ($\lambda$) values $<1$ lead to a exponential *decrease*, while values $>1$ lead to exponential growth. A $\lambda$ of 1 indicates no change.
 * Growth traj"ectories can be plotted on the "natural scale* or on a *log scale*. Exponential growth (or decline) plotted on a log scale is a straight line. This could be useful to infer biological processes (or the lack of them). For example, exponential growth in population size indicates that there are no forces currently limiting the population (e.g. predators/competition/management actions).
 
+```
+
+```{asis, echo=today() > icalSchedule %>% filter(grepl("Stochastic population growth",Topic)) %>% select(DTSTART2) %>% pull()}
 ## Solutions: Stochastic population growth
 
 You can find the completed Excel file [here](https://www.dropbox.com/s/baao06vi0c0quns/StochasticPopulationGrowth-complete.xlsx?dl=1).
@@ -35,7 +41,9 @@ Take home messages:
 * We can repeatedly simulate a population projection (e.g. in R, or more laboriously in Excel) to get a feel for the likely fate of a population. E.g. "what percent of the projections show extinction within 50 years?".
 * We can use this relatively simple and "unrealistic" model to nevertheless get an intuition about general trends in population dynamics and extinction risk.
 * Extinction probability increases as (i) initial population size decreases; (ii) variance increases; (iii) growth rates decrease; (iv) the time frame increases.
+```
 
+```{asis, echo=today() > icalSchedule %>% filter(grepl("Basic logistic population growth",Topic)) %>% select(DTSTART2) %>% pull()}
 ## Solutions: Basic logistic population growth
 
 You were asked to use the Excel sheet to answer some questions about logistic growth by examining the graphs.
@@ -101,9 +109,9 @@ If you increase $r_d$ above 1, the shape of the relationship between $N_t$ and $
 *How would the same plots look for regular exponential growth?*
 
 The equivalent plot (for Graph 2) for exponential growth would be a horizontal line - because population growth rate does NOT depend on population size.
+```
 
-
-
+```{asis, echo=today() > icalSchedule %>% filter(grepl("Deeper into logistic growth",Topic)) %>% select(DTSTART2) %>% pull()}
 ## Solutions: Deeper into logistic growth
 
 ### Relationship between Logistic and Exponential growth equations
@@ -142,4 +150,11 @@ Time lagged density dependence results in oscillations. Therefore if we see osci
 Cobweb diagrams and bifurcation plots offer another way of visualising dynamics of populations (see the article about Chaos, by Mathiopoulos).
 
 Chaotic dynamics are deterministic in the sense that if you have the same initial conditions you will get the same results (dynamics). However, small changes in any parameters ($N_0$, $K$, or $r_d$) will lead to very different dynamics - so in that sense, because of measurement error, the population dynamics would be very hard to predict in practice.
+```
 
+```{asis, echo=today() > icalSchedule %>% filter(grepl("Life tables",Topic)) %>% select(DTSTART2) %>% pull()}
+
+## Solutions: Life tables and survivorship types
+Solutions here
+
+```
