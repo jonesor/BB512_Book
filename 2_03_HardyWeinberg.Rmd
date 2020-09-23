@@ -1,3 +1,32 @@
 # Hardy-Weinberg equilibrium
 
-[coming soon]
+## Problem #1.
+
+You have sampled a population in which you know that the percentage of the homozygous recessive genotype (aa) is 36%. Using that 36%, calculate the following: 
+*	The frequency of the "aa" genotype. 
+*	The frequency of the "a" allele. 
+*	The frequency of the "A" allele. 
+*	The frequencies of the genotypes "AA" and "Aa." 
+*	The frequencies of the two possible phenotypes if "A" is completely dominant over "a." 
+
+## Problem #2. 
+
+Sickle-cell anemia is an interesting genetic disease. Normal homozygous individials (SS) have normal blood cells that are easily infected with the malarial parasite. Thus, many of these individuals become very ill from the parasite and many die. Individuals homozygous for the sickle-cell trait (ss) have red blood cells that readily collapse when deoxygenated. Although malaria cannot grow in these red blood cells, individuals often die because of the genetic defect. However, individuals with the heterozygous condition (Ss) have some sickling of red blood cells, but generally not enough to cause mortality. In addition, malaria cannot survive well within these "partially defective" red blood cells. Thus, heterozygotes tend to survive better than either of the homozygous conditions. 
+
+*	If 9% of an African population is born with a severe form of sickle-cell anemia (ss), what percentage of the population will be more resistant to malaria because they are heterozygous (Ss) for the sickle-cell gene? 
+
+## Problem #3. 
+
+There are 100 students in a class. Ninety-six did well in the course whereas four blew it totally and received a grade of F.  In the highly unlikely event that these traits are genetic rather than environmental, if these traits involve dominant and recessive alleles, and if the four (4%) represent the frequency of the homozygous recessive condition, please calculate the following: 
+
+*	The frequency of the recessive allele. 
+*	The frequency of the dominant allele. 
+*	The frequency of heterozygous individuals. 
+
+## Problem #4. 
+
+Within a population of butterflies, the color brown (B) is dominant over the color white (b). And, 40% of all butterflies are white. Given this simple information calculate the following: 
+
+*	The percentage of butterflies in the population that are heterozygous. 
+*	The frequency of homozygous dominant individuals. 
+
