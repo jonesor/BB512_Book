@@ -62,6 +62,11 @@ The final line of the code (`nExtinct/nTrials`) gives you an estimate of extinct
 Modify the simulation settings to explore what happens to (i) the plot of population growth and (ii) extinction risk, when you vary  `mean.r` ($\bar{r}$), the amount of stochasticity ($\sigma_r^2$) (`var.r`), and the number of generations (`nGen`).
 ```
 
+```{r eval = TRUE, echo = FALSE}
+set.seed(1234)
+```
+
+
 ```{r stochProjection, echo=TRUE,fig.width=6,fig.height=4,fig.align='center',fig.cap="An example of stochastic population projection (100 simulations for 50 generations)"}
 #Simulating stochastic geometric population growth rate
 
