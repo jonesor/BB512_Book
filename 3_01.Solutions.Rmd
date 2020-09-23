@@ -198,3 +198,56 @@ You can find a completed Excel spreadsheet [here](https://www.dropbox.com/s/wet7
 The answers to the questions are [here](https://www.dropbox.com/s/mt43nvqu7cjif69/10.%20Answers%20to%20Pred-Prey%20exercise.pdf?dl=1).
 
 ```
+
+
+
+```{asis, echo=today() > icalSchedule %>% filter(grepl("How many eggs",Topic)) %>% select(DTSTART2) %>% pull()}
+
+## Solutions: How many eggs should a bird lay?
+
+You can find a completed Excel spreadsheet [here](https://www.dropbox.com/s/tcpxmdfvm35jzgr/How%20many%20eggs%20-%20answers.xlsx?dl=1).
+
+The take-home message is that the trade-off between number of eggs and juvenile survival leads to an optimum number of eggs required to maximise reproductive success (i.e. number of surviving chicks).
+
+You can move this optimum if the trade-off is changed. For example, if you increase survival of the chicks from larger clutches, then the optimum number of eggs will increase.
+
+This fact reminds us that the environment (e.g. predation risk and resource abundance) will be an important factor in determining the evolution of life history parameters (like average number of babies). 
+
+```
+
+
+
+
+```{asis, echo=today() > icalSchedule %>% filter(grepl("force of selection",Topic)) %>% select(DTSTART2) %>% pull()}
+
+## Solutions: Trade-offs and the force of selection?
+
+*Simulate this by adding 1 to fertility (mx) in year 1 (the benefit) but reducing survival to 0 (all die) at age 25 (the cost). What is the fitness of this strategy?*
+  
+Fitness (R0) would be 50.76 (compared to 49.81).
+
+*By setting survival to 0 at other ages, determine how many years of life could be lost before this cost is no longer worth bearing. Is this surprising?*
+  
+You could “kill” the species at 18, losing 8 years of life, before the new strategy of a small increase in fertility at the expense of years of life at the end of life becomes unfavourable. In other words, a cost of losing 8 yrs of life is worth bearing if the benefit is an extra baby in year 1.
+
+
+*Now reset everything (mx =10; survival = 0.8). Recall what fitness was when you added 1 to mx at age 1 (R0=50.811). 
+If, instead of adding to mx at age 1 you were to increase mx at age 25, how much would you need to increase it to to reach this figure?* 
+
+At age 25 you would need to increase Fertility from 10 to 222 to reach the same level of improvement in fitness as increasing Fertility from 10 to 11 at age 1.
+
+*What about at age 20?*   10 to 80
+*Age 15?* 10 to 33
+*Age 10?*  10 to 18
+*Age 5?* 10 to 13
+
+*What do you notice?*
+
+You should notice that changes made at younger ages have a bigger effect than those at older ages. I have plotted this to the right. The plot shows the amount of increase in fertility that would be required to raise fitness (R0) from 49.81 to >50.81 at ages 1 through to 25 (i.e. the figures you estimated above). You can see that you only need to change fertility a little bit at young ages, but you would need to make BIG changes at older ages. 
+
+*Reset everything again (mx =10; survival = 0.8). Set mx from age 15 onwards to be 0. Now alter survival rate after this point (at ages 15-25). What happens to fitness?*
+  
+You should notice that any changes you make to survival AFTER reproduction has been completed will have no effect on fitness. In other words evolution “doesn’t care about you” after you have finished with reproduction.
+
+
+```

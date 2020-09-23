@@ -1,3 +1,70 @@
 # Bug hunt camouflage (Netlogo)
 
-[coming soon]
+Adaptive evolution: Bug Hunt!
+
+In this exercise you are going to impose selection pressure on a creature on a virtual landscape. The exercise is done using one of the built-in models in NetLogo (https://ccl.northwestern.edu/netlogo/).
+Open NetLogo and click File > Models Library. You can then use the search box at the bottom of the screen to find the model called “Bug Hunt Camouflage”.
+This is a model of natural/artificial selection that shows how a population hunted by a predator can develop camouflaging. For example, in a forest with green leaves, green bugs may emerge as the predominant bug color.
+In the simulation you assume the role of a predatory bird that feeds on insects, which can be different colours.  You will see what effect your hunting has on the colour traits/genetics of these simulated insects, and also how this evolution affects your hunting efficiency.
+
+## Getting started
+
+1. When you open the model, you will see a screen with various purple and green “sliders”, buttons and menus that control parts of the model.
+2. Start with 30 bugs, by moving the “carrying-capacity” slider until it reads 30.
+3. Now click “setup”. You should see the environment appear on the right hand side, and you should see a few “bugs” on the environment. Start the simulaton by clicking “go”. 
+4. After you click go, you need to click on bugs as fast as you can using your mouse/track pad. You can also keep the mouse button depressed, and move the cursor around the world to catch the bugs. Try to consume bugs as fast as possible to remove any “deliberation” on your part as a predator. The camouflaging effect will emerge more clearly if you aren’t taking your time trying to find bugs that typically would be more difficult to find.
+
+You can track your progress by looking at the graphs on the left. The most important of these are the two at the top, which show (1) the number of bugs caught through time and (2) the average colour values of the bugs.
+
+In the “Bugs Caught vs. Time” plot the slope of the curve gives a good idea of your hunting efficiency – the faster you can catch bugs, the steeper the slope. If you didn’t catch any bugs for a while, the slope would be horizontal.
+
+You should notice that bugs with contrasting colours (e.g. black on white) are easier to catch.  Keep hunting for 2 mins or until you can’t find any more bugs then pause the simulation by clicking “go” again. Now take a look at the graphs and see what effect your hunting has had on the phenotype distribution in the population.
+
+To understand what’s going on, you need to understand how the simulation works.
+
+ 
+### How the simulation works.
+
+*Simple version:* 
+The simulation starts with bugs with random colours.
+
+Each time you kill a bug, one of the remaining bugs produces an offspring so that the population size stays constant. The colour of the offspring is inherited from its parent, though it can change slightly due to mutation (determined by the “max-mutation-step” slider). Therefore, the offspring of a red parent will be reddish, the offpring of a blue parent will be blueish and so on. Therefore, if you consistently kill off (e.g.) non-reddish bugs, the reddish bugs that remain will have offspring that are also red and the average colour of the population will then shift towards being redder. 
+
+Colour here is indicated by “hue”, “saturation” and “brightness” which range from 0 to 255. Basically, hue describes colour value (red/green/blue), saturation describes how “washed out” or vivid the colour is (a low value for saturation would look white), and brightness describes how bright the colour is (a low value for brightness would look black). See below for more details.
+
+Evolution can be defined as: “*change in the heritable characteristics [colour traits] of biological populations [bugs] over successive generations [time].*” 
+
+## Questions
+
+Answer the following questions, then make sure you confirm your understanding and have the right answers with an instructor.
+
+*	What happens to the average colour of the bug population with time as you hunt? 
+*	What happens to your hunting efficiency?
+*	Would you say that the bug population becomes worse or better adapted to their environment?
+*	Can you explain how this happens?
+*	After simulating in one environment (e.g. poppy field) for a few minutes, pause then switch to another environment. Are the bugs now well- or poorly-adapted to their environment?
+*	Do the genotypes of individuals change (e.g. with individual age)?
+*	Increasing the “max-mutation-step” makes bug offspring less like their parents. How do you think this will influence the speed of adaptation of the bugs?
+
+Some useful keywords:
+
+*	Selection
+*	Adaptation
+*	Selection pressure
+*	Heritability
+
+
+## Details about colours (optional) 
+
+The primary colours red, green and blue (RGB) can be mixed to produce any colour (this is how the pixels of TVs and computer monitors work if you look closely). Mixtures of these colours are also used to control the colour of the bugs. Each bug has three pigment “genes”  (R, G and B) that determine their colour phenotype. The more frequently the gene for a pigment is coded for, the stronger that presence of color is in the overall blend of pigments that results in a single phenotype for coloration. For example, a bug that had lots of R, but little G or B would appear as red. In this simulation RGB can vary from 0 to 100.  The mixture of these primary colours results in a colour which has a particular **hue**, **brightness** and **saturation** (Fig  \@ref(fig:colours)).
+
+**Hue** ranges from 0 to 255 with both ends of that spectrum being red, and as you move from 0 to 255 you pass through all the colours of the rainbow.
+
+The other two elements of colour are **brightness** and **saturation**. If a colour is bright it is very vibrant, if it is not bright, it is dark: a brightness value of 0, would be black, no matter what the hue was. Similarly, a low saturation values give “washed out” colours and a valeue of 0 would be  white. 
+
+
+```{r colours, out.width="50%",fig.align='center',echo = FALSE, fig.cap="Hue, brightness and saturation"}
+knitr::include_graphics('images/colours.png')
+```
+
+Read more about the model here: http://ccl.northwestern.edu/netlogo/models/BugHuntCamouflage

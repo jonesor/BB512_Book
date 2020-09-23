@@ -1,3 +1,41 @@
 # Trade-offs and the force of selection
 
-[coming soon]
+
+Why does evolution ‘care’ less and less about you as you age? Because there are trade-offs between early and late life events. 
+
+## Objective
+
+The aim of this exercise is to gain an understanding of early-life late-life trade offs. Specifically it is to understand why events early in life tend to be much more important to evolution than those that happen later in life.
+
+## Background
+
+An important kind of trade off are those which occur between early and late life. For example, it may be beneficial to increase reproduction at younger ages, but this might lead to increased risk of death at older ages. A mechanism for this could be that limited resources are allocated to producing offspring rather than maintaining/repairing the body.
+Methods
+
+Open the Excel file [TradeOffsAndForceOfSelection.xlsx](https://www.dropbox.com/s/7eyoencvqc3hwv7/TradeOffsAndForceOfSelection.xlsx?dl=1).
+
+This file shows a simplified life table, following a cohort of 1000 individuals for a fictional creature. 
+
+Survival rates from year to year are set to be 0.8 (i.e. 80% make it through to the next year). This fixed, constant survival rate leads to an exponentially declining survival curve, illustrated with a chart in the Excel file. Fertility (i.e. the number of babies produced per year) is set to be 10 per year.
+
+The product of survival ($l_x$) and fertility ($m_x$), lxmx is a measure of the expected number of offspring in an age class. For a stable population the sum of these values ($\sum l_x m_x$) is a measure of net population growth rate (also known as $R_0$). $R_0$ is an excellent measure of fitness of a life history strategy.
+
+Note that the initial $R_0$ is 49.811
+
+## Exploring different life history strategies
+
+**We will now use this data to explore how alternative life history strategies affect fitness.**
+
+Consider a trade-off between early reproduction and late life survival (i.e. via resources allocated to body maintenance). In this scenario the species could increase reproduction early in life by allocating more energy to making babies. However, resources are limited and this will come at the expense of survival at a later date. A mechanism for this could be that the body no longer fixes cancers so effectively. 
+
+* Simulate this by adding 1 to fertility ($m_x$) in year 1 (the benefit) but reducing survival to 0 (all die) at age 25 (the cost). *What is the fitness of this strategy?*
+* By setting survival to 0 at other ages, determine how many years of life could be lost before this cost is no longer worth bearing. Is this surprising?
+* Now reset everything ($m_x$ =10; survival = 0.8). Recall what fitness was when you added 1 to $m_x$ at age 1 (50.811). 
+
+* If, instead of adding to $m_x$ at age 1 you were to increase $m_x$ at age 25, how much would you need to increase $m_x$ to to reach this figure?
+
+* What about at age 20?   Age 15?  Age 10?  Age 5? 
+Plot the increase required vs. age (make a new worksheet/ark in Excel) What do you notice?
+
+* Reset everything again ($m_x$ =10; survival = 0.8). Set $m_x$ from age 15 onwards to be 0. Now alter survival rate after this point (at ages 15-25). What happens to fitness?
+

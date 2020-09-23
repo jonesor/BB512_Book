@@ -1,3 +1,37 @@
 # Neutral or adaptive evolution in humans?
 
-[coming soon]
+## Objective
+
+The objective of this exercise is to develop an intuitive understanding of the effect of selection and genetic drift on traits. 
+
+## Background
+
+Traits that are under moderate or strong selection will tend to be restricted to some optimal value, or change directionally -- natural selection leading to adaptive evolution.  Traits that are under weak or no selection will not be restricted so much so will tend to change via a random process -- random genetic drift leading to neutral evolution.  Both of these changes require the existence of variation in the trait to begin with: if there is no, or very little, variation the trait will not respond much even if there is strong selection. 
+
+Finally, the strength of selection will largely depend on the environment. Traits may be important in some environments but not others. There may also be traits that would be selected for in some environments, but against in others. E.g. production of the skin pigment, melanin, would be selected for in areas with high UV-radiation since it protect against skin cancer, but selected against in cool temperate zones with low UV radiation since it inhibits the ability to make vitamin D (deficiency is a health risk). 
+
+```{r huntergatherer, out.width="50%",fig.align='center',echo = FALSE, fig.cap="How will selection differ between these environments?"}
+knitr::include_graphics('images/huntergathererDK.png')
+```
+
+## Your task
+
+You are given a list of traits for humans (below). In small groups, write the traits onto PostIt notes. Then discuss them and place the traits in order of strength of natural selection that you think would be acting on the traits in hunter-gatherer-type societies. These populations are likely to be experiencing the conditions that humans have experienced over most of our time as a species.
+
+This should result in an ordering of the traits from ones which would evolve only by the neutral process of **GENETIC DRIFT** and ones that would evolve by **ADAPTIVE EVOLUTION** via **NATURAL SELECTION**.
+
+Now repeat this exercise for humans in modern industrialised countries like Denmark.
+
+## The traits
+
+```{r echo = FALSE, message=FALSE, eval=knitr::is_html_output()}
+traits<-read_excel("CourseData/humanevoltraits.xlsx")
+traits_mat<-matrix(traits$Traits,ncol = 2,nrow=8)
+traits_mat<- as.data.frame(traits_mat)
+traits_ft<-flextable(traits_mat) %>% delete_part(part="header") %>% 
+  width(width = c(4,4)) %>% 
+  fontsize(size = 16) %>% 
+  border_remove()
+traits_ft
+```
+

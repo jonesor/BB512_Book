@@ -1,3 +1,38 @@
 # How many eggs should a bird lay?
 
-[coming soon]
+## Objectives
+
+The objective of this exercise is to get an understanding the trade off between the benefits of producing large numbers of offspring and the costs of reduced survival of those offspring. This is known as “Lack’s clutch size”.
+
+## Background
+
+David Lack was a British ornithologist who proposed that the number of eggs a bird should lay was the result of a trade-off between the benefits of producing large numbers of offspring, and the survival costs of feeding the chicks that hatch.
+
+In other words, although it is beneficial in fitness terms to have many offspring, the survival of those offspring will decline if they cannot be cared for.
+
+## Your task
+The big bird (*Bigus canarius*) (Fig  \@ref(fig:bigbird)) can lay up to 10 eggs per breeding season. If there is only 1 egg, the probability that the parents can adequately feed the chick and ensure it survives is very high (0.9). However, as the number of siblings increases, the amount of energy and food that the parents can dedicate to caring for each chick decreases, and the probability of survival therefore declines (Fig. 2). With a clutch size of 10 eggs, there is so little food to go around that the survival rates are close to zero.
+
+```{r bigbird, out.width="50%",fig.align='center',echo = FALSE, fig.cap="Big bird, *Bigus canarius*"}
+knitr::include_graphics('images/bigbird.jpg')
+```
+
+A recent study gathered data on chick survival probability as a function of number of eggs in the nest. These are given in the table below. 
+
+```{r echo = FALSE, message=FALSE, eval=knitr::is_html_output()}
+bbeggs <- data.frame(eggs = 1:10,survival = c(0.9,0.85,0.82,0.7,0.5,0.3,0.22,0.15,0.1,0.05))
+
+bbeggs_ft <- flextable(bbeggs)
+bbeggs_ft 
+
+```
+Use these data to plot a graph in Excel with number of eggs on the x-axis and survival probability on the y-axis axis.
+
+Now, in another column in Excel, calculate, given the chick survival probability, what the expected number of surviving chicks will be for a big bird laying between 1 and 10 eggs^[This may require some thought!].
+
+Plot your result on another graph with number of eggs on the x-axis and number of surviving offspring on the y-axis.
+
+What do you notice? What is the optimum number of eggs to lay? 
+
+Advanced: What happens to the optimum as you change the relationship between clutch size and survival.
+
