@@ -155,6 +155,46 @@ Chaotic dynamics are deterministic in the sense that if you have the same initia
 ```{asis, echo=today() > icalSchedule %>% filter(grepl("Life tables",Topic)) %>% select(DTSTART2) %>% pull()}
 
 ## Solutions: Life tables and survivorship types
-Solutions here
+
+The take home messages for this exercise are that life tables are a rich source of information on the life history of a population or species. From a simple accounting of ages at death and fertility we can obtain information about the "shape" of the survivorship trajectory: do most deaths happen early or late? Is mortality risk constant with age? We can also calculate measures including **generation time**, $R_0$ and population growth rate. You should know what these measures mean.
+
+
+You should understand the relationship between mortality risk and survivorship curve. In other words, you should be able to describe, or do a rough sketch of mortality risk with age, if you have a survivorship curve (or vice versa). 
+
+The completed Excel spreadsheet is [here](https://www.dropbox.com/s/j8uv2wf7nz0ygmp/Life%20tables%20exercise%20-%20complete.xlsx?dl=1). 
+
+```
+
+```{asis, echo=today() > icalSchedule %>% filter(grepl("Matrix population modeling",Topic)) %>% select(DTSTART2) %>% pull()}
+
+## Solutions: Matrix population modeling
+
+The main take home messages for this class are that you should: 
+(1) understand, and be able to draw or interpret life cycle diagram;
+(2) be able to (roughly) parameterise a model shown in the life cycle diagram;
+(3) be able to write out a matrix model (the square of numbers) for a given life cycle diagram (and *vice versa*).
+(4) understand how population projection works, and to therefore interpret a figure or description showing a population projection.
+
+
+```
+
+```{asis, echo=today() > icalSchedule %>% filter(grepl("Lotka-Volterra competition",Topic)) %>% select(DTSTART2) %>% pull()}
+
+## Solutions: Lotka-Volterra competition
+
+You can find a completed Excel spreadsheet [here](https://www.dropbox.com/s/q1qoqxhnm82uugw/9.%20LV%20Competition.xlsx?dl=1).
+
+The answers to the questions are [here](https://www.dropbox.com/s/oz2c10bmyf8t7s6/9.%20Answers%20to%20questions.pdf?dl=1).
+
+```
+
+
+```{asis, echo=today() > icalSchedule %>% filter(grepl("Lotka-Volterra predator-prey dynamics",Topic)) %>% select(DTSTART2) %>% pull()}
+
+## Solutions: Lotka-Volterra predator-prey dynamics
+
+You can find a completed Excel spreadsheet [here](https://www.dropbox.com/s/wet7brtgxywdqi5/10.%20Pred-PreyDynamics.xlsx?dl=1).
+
+The answers to the questions are [here](https://www.dropbox.com/s/mt43nvqu7cjif69/10.%20Answers%20to%20Pred-Prey%20exercise.pdf?dl=1).
 
 ```

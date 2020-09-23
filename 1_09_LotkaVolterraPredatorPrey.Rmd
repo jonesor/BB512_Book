@@ -1,3 +1,13 @@
 # Lotka-Volterra predator-prey dynamics
 
-[coming soon]
+In the classic Lotka-Volterra predator-prey model (Rosenzweig and MacArthur 1963), the predator and prey populations grow exponentially. Modifications to the model include the availability of refuges (places where the prey are safe from predators) and carrying capacity (i.e. using logistic growth).
+
+In this class you will follow a PDF worksheet ([here](https://www.dropbox.com/s/bhwoe161wp9p6hp/10.%20Predator-prey%20dynamics.pdf?dl=1)) which guides you to build and explore a Lotka-Volterra predator-prey model in Excel. The model has parameters for the prey and for the predator, and you will explore how these parameters influence the dynamics of the populations.
+
+The worksheet is divided into three parts. We will mainly **focus on Part 1** - the basic model - in the class. 
+
+Part 2 modifies the basic model to include a refuge, and part 3 modifies the model to include carrying capacity. Feel free to continue to work on these if there is time, and if you are interested.
+
+
+
+Reference: Rosenzweig, M. L. and R. H. MacArthur. 1963. Graphical representation and stabil- ity conditions of predator-prey interactions. *American Naturalist* 97: 209–223.
