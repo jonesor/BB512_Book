@@ -200,7 +200,7 @@ The answers to the questions are [here](https://www.dropbox.com/s/mt43nvqu7cjif6
 ```
 
 
-```{asis, echo=today() > icalSchedule %>% filter(grepl("population biology",Topic)) %>% select(DTSTART2) %>% pull()}
+```{asis, echo=today() > icalSchedule %>% filter(grepl("From population biology to fitness",Topic)) %>% select(DTSTART2) %>% pull()}
 
 ## Solutions: From population biology to fitness
 
