@@ -199,6 +199,39 @@ The answers to the questions are [here](https://www.dropbox.com/s/mt43nvqu7cjif6
 
 ```
 
+
+```{asis, echo=today() > icalSchedule %>% filter(grepl("population biology",Topic)) %>% select(DTSTART2) %>% pull()}
+
+## Solutions: From population biology to fitness
+
+The matrix model with a trade off (increased juvenile survival, but reduced old adult survival) looks like this.
+
+#A3 <- matrix(c(0.00, 5.00, 1.00, 
+#               0.11, 0.80, 0.00, 
+#               0.00, 0.10, 0.20), 
+#            byrow = TRUE, nrow = 3)
+#
+#eigs(A3)$lambda
+
+We can compare the $\lambda$ value from this model to the original one to ask ourselves whether the large cost is worth paying for the small benefit. It turns out that it is. You can then ask how MUCH cost would be worth bearing, by repeating the exercise and slowly reducing old-adult survival until you reach the original $\lambda$ value.
+
+You should find that the cost can be huge, and still worth bearing. In fact, you could reduce old adult survival to 0 and it is still worth doing! You can even reduce old-age adult reproduction without much effect on fitness.
+
+HOWEVER, changes to prime age adults are much more important. You can only reduce survival to about 0.76 (from 0.8) before the cost is not worth bearing (population growth rate falls below that of the first baseline model). 
+
+Thus, old-age costs are "worth it" while prime age costs are much more important. This finding is central to the evolution of senescence and life span, which we will cover later in the course.
+
+
+
+
+
+
+
+
+
+
+```
+
 ```{asis, echo=today() > icalSchedule %>% filter(grepl("Hardy-Weinberg",Topic)) %>% select(DTSTART2) %>% pull()}
 
 ## Solutions: Hardy-Weinberg equilibrium
