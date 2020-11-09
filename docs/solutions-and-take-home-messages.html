@@ -24,7 +24,7 @@
 <meta name="author" content="Owen R. Jones (Course Coordinator)" />
 
 
-<meta name="date" content="2020-10-21" />
+<meta name="date" content="2020-11-09" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -271,6 +271,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="21.7" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#solutions-matrix-population-modeling"><i class="fa fa-check"></i><b>21.7</b> Solutions: Matrix population modeling</a></li>
 <li class="chapter" data-level="21.8" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#solutions-lotka-volterra-competition"><i class="fa fa-check"></i><b>21.8</b> Solutions: Lotka-Volterra competition</a></li>
 <li class="chapter" data-level="21.9" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#solutions-lotka-volterra-predator-prey-dynamics"><i class="fa fa-check"></i><b>21.9</b> Solutions: Lotka-Volterra predator-prey dynamics</a></li>
+<li class="chapter" data-level="21.10" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#solutions-from-population-biology-to-fitness"><i class="fa fa-check"></i><b>21.10</b> Solutions: From population biology to fitness</a></li>
+<li class="chapter" data-level="21.11" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#solutions-hardy-weinberg-equilibrium"><i class="fa fa-check"></i><b>21.11</b> Solutions: Hardy-Weinberg equilibrium</a>
+<ul>
+<li class="chapter" data-level="21.11.1" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#problem-1"><i class="fa fa-check"></i><b>21.11.1</b> Problem 1</a></li>
+<li class="chapter" data-level="21.11.2" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#problem-2"><i class="fa fa-check"></i><b>21.11.2</b> Problem 2</a></li>
+<li class="chapter" data-level="21.11.3" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#problem-3"><i class="fa fa-check"></i><b>21.11.3</b> Problem 3</a></li>
+<li class="chapter" data-level="21.11.4" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#problem-4"><i class="fa fa-check"></i><b>21.11.4</b> Problem 4</a></li>
+</ul></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -435,7 +443,56 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">21.9</span> Solutions: Lotka-Volterra predator-prey dynamics</h2>
 <p>You can find a completed Excel spreadsheet <a href="https://www.dropbox.com/s/wet7brtgxywdqi5/10.%20Pred-PreyDynamics.xlsx?dl=1">here</a>.</p>
 <p>The answers to the questions are <a href="https://www.dropbox.com/s/mt43nvqu7cjif69/10.%20Answers%20to%20Pred-Prey%20exercise.pdf?dl=1">here</a>.</p>
+</div>
+<div id="solutions-from-population-biology-to-fitness" class="section level2" number="21.10">
+<h2><span class="header-section-number">21.10</span> Solutions: From population biology to fitness</h2>
+<p>The matrix model with a trade off (increased juvenile survival, but reduced old adult survival) looks like this.</p>
+<p>#A3 &lt;- matrix(c(0.00, 5.00, 1.00,
+# 0.11, 0.80, 0.00,
+# 0.00, 0.10, 0.20),
+# byrow = TRUE, nrow = 3)
+#
+#eigs(A3)$lambda</p>
+<p>We can compare the <span class="math inline">\(\lambda\)</span> value from this model to the original one to ask ourselves whether the large cost is worth paying for the small benefit. It turns out that it is. You can then ask how MUCH cost would be worth bearing, by repeating the exercise and slowly reducing old-adult survival until you reach the original <span class="math inline">\(\lambda\)</span> value.</p>
+<p>You should find that the cost can be huge, and still worth bearing. In fact, you could reduce old adult survival to 0 and it is still worth doing! You can even reduce old-age adult reproduction without much effect on fitness.</p>
+<p>HOWEVER, changes to prime age adults are much more important. You can only reduce survival to about 0.76 (from 0.8) before the cost is not worth bearing (population growth rate falls below that of the first baseline model).</p>
+<p>Thus, old-age costs are “worth it” while prime age costs are much more important. This finding is central to the evolution of senescence and life span, which we will cover later in the course.</p>
+</div>
+<div id="solutions-hardy-weinberg-equilibrium" class="section level2" number="21.11">
+<h2><span class="header-section-number">21.11</span> Solutions: Hardy-Weinberg equilibrium</h2>
+<p>Answers to the Hardy-Weinberg questions.</p>
+<p>Remember the basic formulas:
+<span class="math inline">\(p^2 + 2pq + q^2 = 1\)</span> and <span class="math inline">\(p + q = 1\)</span></p>
+<p><span class="math inline">\(p\)</span> = frequency of the dominant allele in the population</p>
+<p><span class="math inline">\(q\)</span> = frequency of the recessive allele in the population</p>
+<p><span class="math inline">\(p^2\)</span> = percentage of homozygous dominant individuals</p>
+<p><span class="math inline">\(q^2\)</span> = percentage of homozygous recessive individuals</p>
+<p><span class="math inline">\(2pq\)</span> = percentage of heterozygous individuals</p>
+<div id="problem-1" class="section level3" number="21.11.1">
+<h3><span class="header-section-number">21.11.1</span> Problem 1</h3>
+<p>The frequency of the <em>aa</em> genotype: 36%, as given in the problem itself.</p>
+<p>The frequency of the <em>a</em> allele: The frequency of aa is 36%, which means that <span class="math inline">\(q^2 = 0.36\)</span>, by definition. If <span class="math inline">\(q^2 = 0.36\)</span>, then <span class="math inline">\(q = 0.6\)</span>. Since <span class="math inline">\(q\)</span> equals the frequency of the “a” allele, the frequency is 60%.</p>
+<p>The frequency of the <em>A</em> allele: Since <span class="math inline">\(q = 0.6\)</span>, and <span class="math inline">\(p + q = 1\)</span>, then <span class="math inline">\(p = 0.4\)</span>; the frequency of <em>A</em> is equal to <span class="math inline">\(p\)</span> (see the basic H-W equations), so the answer is 40%.</p>
+<p>The frequencies of the genotypes <em>AA</em> and <em>Aa</em>: The frequency of <em>AA</em> is equal to <span class="math inline">\(p^2\)</span>, and the frequency of <em>Aa</em> is equal to <span class="math inline">\(2pq\)</span>. So, using the information above, the frequency of <em>AA</em> is 16% (i.e. <span class="math inline">\(p^2 = 0.4 x 0.4 = 0.16\)</span> and Aa is 48% (<span class="math inline">\(2pq = 2 \times 0.4 \times 0.6 = 0.48\)</span>).</p>
+<p>The frequencies of the two possible phenotypes if <em>A</em> is completely dominant over <em>a</em>: Because <em>A</em> is totally dominate over <em>a</em>, the dominant phenotype will show if either the homozygous <em>AA</em> or heterozygous <em>Aa</em> genotypes occur. The recessive phenotype is controlled by the homozygous <em>aa</em> genotype. Therefore, the frequency of the dominant phenotype equals the sum of the frequencies of <em>AA</em> and <em>Aa</em>, and the recessive phenotype is simply the frequency of <em>aa</em>. Therefore, the dominant frequency is 64% and, in the first part of this question above, you have already shown that the recessive frequency is 36%.</p>
+</div>
+<div id="problem-2" class="section level3" number="21.11.2">
+<h3><span class="header-section-number">21.11.2</span> Problem 2</h3>
+<p>9% = 0.09 = ss = <span class="math inline">\(q^2\)</span>. To find <span class="math inline">\(q\)</span>, simply take the square root of 0.09 to get 0.3. Since <span class="math inline">\(p = 1 - 0.3\)</span>, then <span class="math inline">\(p\)</span> must equal 0.7. <span class="math inline">\(2pq = 2 \times 0.7 \times 0.3 = 0.42\)</span>, so 42% of the population are heterozygotes (carriers).</p>
+</div>
+<div id="problem-3" class="section level3" number="21.11.3">
+<h3><span class="header-section-number">21.11.3</span> Problem 3</h3>
+<p>The frequency of the recessive allele. Since we believe that the homozygous recessive for this gene (<span class="math inline">\(q^2\)</span>) represents 4% (i.e. = 0.04), the square root (<span class="math inline">\(q\)</span>) is therefore 0.2 (20%).</p>
+<p>The frequency of the dominant allele. Since <span class="math inline">\(q = 0.2\)</span>, and <span class="math inline">\(p + q = 1\)</span>, then <span class="math inline">\(p = 0.8\)</span> (80%).</p>
+<p>The frequency of heterozygous individuals. The frequency of heterozygous individuals is equal to <span class="math inline">\(2pq\)</span>. In this case, <span class="math inline">\(2pq = 0.32\)</span>, which means that the frequency of individuals heterozygous for this gene is equal to 32% (i.e. <span class="math inline">\(2 \times 0.8 \times 0.2) = 0.32\)</span>.</p>
+</div>
+<div id="problem-4" class="section level3" number="21.11.4">
+<h3><span class="header-section-number">21.11.4</span> Problem 4</h3>
+<p>The first thing you’ll need to do is obtain <span class="math inline">\(p\)</span> and <span class="math inline">\(q\)</span>. So, since white is recessive (i.e. <em>bb</em>), and 40% of the butterflies are white, then <em>bb</em> = <span class="math inline">\(q^2\)</span> = 0.4.
+To determine <span class="math inline">\(q\)</span>, which is the frequency of the recessive allele in the population, take the square root of <span class="math inline">\(q^2\)</span> which is 0.632. So, <span class="math inline">\(q = 0.63\)</span>. Since <span class="math inline">\(p + q = 1\)</span>, then <span class="math inline">\(p\)</span> must be <span class="math inline">\(1 - 0.63 = 0.37\)</span>.</p>
+<p>Now then, to answer our questions. First, what is the percentage of butterflies in the population that are heterozygous? Well, that would be <span class="math inline">\(2pq\)</span> so the answer is <span class="math inline">\(2 \times 0.37\times 0.63 = 0.47\)</span>. Second, what is the frequency of homozygous dominant individuals? That would be <span class="math inline">\(p^2\)</span> or <span class="math inline">\(0.37^2 = 0.14\)</span>.</p>
 
+</div>
 </div>
 </div>
 

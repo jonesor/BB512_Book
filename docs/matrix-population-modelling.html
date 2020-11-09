@@ -24,7 +24,7 @@
 <meta name="author" content="Owen R. Jones (Course Coordinator)" />
 
 
-<meta name="date" content="2020-10-21" />
+<meta name="date" content="2020-11-09" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -271,6 +271,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="21.7" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#solutions-matrix-population-modeling"><i class="fa fa-check"></i><b>21.7</b> Solutions: Matrix population modeling</a></li>
 <li class="chapter" data-level="21.8" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#solutions-lotka-volterra-competition"><i class="fa fa-check"></i><b>21.8</b> Solutions: Lotka-Volterra competition</a></li>
 <li class="chapter" data-level="21.9" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#solutions-lotka-volterra-predator-prey-dynamics"><i class="fa fa-check"></i><b>21.9</b> Solutions: Lotka-Volterra predator-prey dynamics</a></li>
+<li class="chapter" data-level="21.10" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#solutions-from-population-biology-to-fitness"><i class="fa fa-check"></i><b>21.10</b> Solutions: From population biology to fitness</a></li>
+<li class="chapter" data-level="21.11" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#solutions-hardy-weinberg-equilibrium"><i class="fa fa-check"></i><b>21.11</b> Solutions: Hardy-Weinberg equilibrium</a>
+<ul>
+<li class="chapter" data-level="21.11.1" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#problem-1"><i class="fa fa-check"></i><b>21.11.1</b> Problem 1</a></li>
+<li class="chapter" data-level="21.11.2" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#problem-2"><i class="fa fa-check"></i><b>21.11.2</b> Problem 2</a></li>
+<li class="chapter" data-level="21.11.3" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#problem-3"><i class="fa fa-check"></i><b>21.11.3</b> Problem 3</a></li>
+<li class="chapter" data-level="21.11.4" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#problem-4"><i class="fa fa-check"></i><b>21.11.4</b> Problem 4</a></li>
+</ul></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -327,7 +335,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="matrix-population-modelling.html#cb15-1" aria-hidden="true"></a>pr</span></code></pre></div>
 <pre><code>## 1 deterministic population projection over 10 time intervals.
 ## 
-##  [1]   21.0000   28.6000   45.9800   68.7940  110.7142  167.8147  267.2773  408.6193  646.1858  993.7152 1563.8309</code></pre>
+##  [1]   21.0000   28.6000   45.9800   68.7940  110.7142  167.8147
+##  [7]  267.2773  408.6193  646.1858  993.7152 1563.8309</code></pre>
 <p>You can access the population sizes of the different stages using <code>vec(pr)</code>.</p>
 <div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="matrix-population-modelling.html#cb17-1" aria-hidden="true"></a><span class="kw">vec</span>(pr)</span></code></pre></div>
 <pre><code>##              S1       S2        S3        S4
