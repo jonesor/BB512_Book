@@ -447,12 +447,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="solutions-from-population-biology-to-fitness" class="section level2" number="21.10">
 <h2><span class="header-section-number">21.10</span> Solutions: From population biology to fitness</h2>
 <p>The matrix model with a trade off (increased juvenile survival, but reduced old adult survival) looks like this.</p>
-<p>#A3 &lt;- matrix(c(0.00, 5.00, 1.00,
-# 0.11, 0.80, 0.00,
-# 0.00, 0.10, 0.20),
-# byrow = TRUE, nrow = 3)
-#
-#eigs(A3)$lambda</p>
+<pre><code>A3 &lt;- matrix(c(0.00, 5.00, 1.00, 
+               0.11, 0.80, 0.00, 
+               0.00, 0.10, 0.20), 
+            byrow = TRUE, nrow = 3)
+
+eigs(A3)$lambda</code></pre>
 <p>We can compare the <span class="math inline">\(\lambda\)</span> value from this model to the original one to ask ourselves whether the large cost is worth paying for the small benefit. It turns out that it is. You can then ask how MUCH cost would be worth bearing, by repeating the exercise and slowly reducing old-adult survival until you reach the original <span class="math inline">\(\lambda\)</span> value.</p>
 <p>You should find that the cost can be huge, and still worth bearing. In fact, you could reduce old adult survival to 0 and it is still worth doing! You can even reduce old-age adult reproduction without much effect on fitness.</p>
 <p>HOWEVER, changes to prime age adults are much more important. You can only reduce survival to about 0.76 (from 0.8) before the cost is not worth bearing (population growth rate falls below that of the first baseline model).</p>
