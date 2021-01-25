@@ -220,17 +220,17 @@ You should find that the cost can be huge, and still worth bearing. In fact, you
 HOWEVER, changes to prime age adults are much more important. You can only reduce survival to about 0.76 (from 0.8) before the cost is not worth bearing (population growth rate falls below that of the first baseline model). 
 
 Thus, old-age costs are "worth it" while prime age costs are much more important. This finding is central to the evolution of senescence and life span, which we will cover later in the course.
-
-
-
-
-
-
-
-
-
-
 ```
+
+
+## Solutions: Bug hunt camouflage
+
+[coming soon]
+
+## Solutions: Neutral or adaptive evolution in humans
+
+
+[coming soon]
 
 ```{asis, echo=today() > icalSchedule %>% filter(grepl("Hardy-Weinberg",Topic)) %>% select(DTSTART2) %>% pull()}
 
@@ -303,7 +303,7 @@ This fact reminds us that the environment (e.g. predation risk and resource abun
 
 ```{asis, echo=today() > icalSchedule %>% filter(grepl("force of selection",Topic)) %>% select(DTSTART2) %>% pull()}
 
-## Solutions: Trade-offs and the force of selection?
+## Solutions: Trade-offs and the force of selection
 
 *Simulate this by adding 1 to fertility (mx) in year 1 (the benefit) but reducing survival to 0 (all die) at age 25 (the cost). What is the fitness of this strategy?*
   
@@ -331,6 +331,17 @@ You should notice that changes made at younger ages have a bigger effect than th
 *Reset everything again (mx =10; survival = 0.8). Set mx from age 15 onwards to be 0. Now alter survival rate after this point (at ages 15-25). What happens to fitness?*
   
 You should notice that any changes you make to survival AFTER reproduction has been completed will have no effect on fitness. In other words evolution “doesn’t care about you” after you have finished with reproduction.
-
-
 ```
+
+
+## Making a phylogeny
+
+[coming soon]
+
+## Short answer exam discussion
+
+[coming soon]
+
+## The Red Queen game
+
+[coming soon]
