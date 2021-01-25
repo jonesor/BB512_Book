@@ -222,15 +222,47 @@ HOWEVER, changes to prime age adults are much more important. You can only reduc
 Thus, old-age costs are "worth it" while prime age costs are much more important. This finding is central to the evolution of senescence and life span, which we will cover later in the course.
 ```
 
-
 ## Solutions: Bug hunt camouflage
 
-[coming soon]
+*	_What happens to the average colour of the bug population with time as you hunt?_
+
+The colour evolves to become more similar to the background colour because you (the hunter) find it harder to find these better-camouflaged individuals.
+
+*	_What happens to your hunting efficiency?_
+
+Your hunting efficiency tends to decrease with time because the bugs are evolving to be harder to see. They are evolving camouflaged colours.
+
+*	_Would you say that the bug population becomes worse or better adapted to their environment?_
+
+The population becomes better-adapted to their environment with time.
+
+*	_Can you explain how this happens?_
+
+You (the hunter) kill the most obvious bugs first (i.e. those with contrasting colours to the background). These are the individuals that are not well-adapted to the environment. The survivors have offspring that are similar to them, while the ones you kill leave no offspring. So as time goes on, the population becomes dominated by individuals that are well-camouflaged.
+
+*	_After simulating in one environment (e.g. poppy field) for a few minutes, pause then switch to another environment. Are the bugs now well- or poorly-adapted to their environment?_
+
+Changing the environment means that the individuals are now porrly-adapted to their environment. This is because the individuals now find themselves in an environment that they did not evolve in. Their evolved camouflage does not work so well in a new environment.
+
+*	_Do the genotypes of individuals change (e.g. with individual age)?_
+
+No, individuals' genotypes are fixed. The change in the population occurs because of selection of individuals to reproduce. Better-adapted individuals are more likely to reproduce.
+
+*	_Increasing the “max-mutation-step” makes bug offspring less like their parents. How do you think this will influence the speed of adaptation of the bugs?_
+
+Increasing the amount of variation in offspring will tend to speed up adaptation. However, there are limits: too much variation can cause maladaptation of offspring. For example, if a parent is well-adapted (perfectly camouflaged), too much variation in offspring could lead to some offspring being poorly-camouflaged and therefore vulnerable to predation. 
 
 ## Solutions: Neutral or adaptive evolution in humans
 
+The take home message here is that whether traits are adaptive or neutral depends on the environment. 
 
-[coming soon]
+Consider genes that confer entibiotic resistance on bacteria. In the absence of antibiotics, these genes are not important and are not selected for. They still evolve (if they vary among individuals and are inherited), but this evolution is neutral with no selection. On the other hand, when antibiotics are introduced to the system, those same genes are strongly selected for and evolution of the genes for antibiotic resistance is now strongly adaptive. Context matters.
+
+The same is the case for traits in humans. Assuming the the traits vary among individuals and are inherited, their neutrality or adaptiveness depends on their effect on fitness. If the traits have strong effects on fitness then they will be under strong selection but if they have weak or no effects on fitness they will evolve via neutral evolution.
+
+Example traits that evolve via neutral evolution include fingerprint structure and iris structure. The detailed structures are not important to fitness, but are still genetically determined, and inherited.
+
+Traits like muscle strength, running speed may have been important for fitness when they helped our ancestors obtain food. In those environments, they would have been under selection and therefore evolve via adaptive evolution. In more modern times, these selection pressures are weaker.
 
 ```{asis, echo=today() > icalSchedule %>% filter(grepl("Hardy-Weinberg",Topic)) %>% select(DTSTART2) %>% pull()}
 
