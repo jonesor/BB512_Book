@@ -42,6 +42,9 @@ The course is divided into two parts: Population and Evolution.
 The population part comes first and covers ecological population dynamics including models of population growth, species interactions, and other demographic models. 
 
 The recommended textbook is:
+Neal, D. (2018). *Introduction to Population Biology* (2nd ed.). Cambridge: Cambridge University Press. doi:10.1017/9781139107976
+
+Another (optional) recommended text is:
 Gotelli, NJ (2008) *A Primer of Ecology*. Fourth Edition, Sinauer Associates. ISBN: 978-0878933181
 
 The evolution part comes second and covers microevolutionary processes (natural selection, neutral evolution etc.), population and quantitative genetics, and macroevolution (speciation, extinction and coevolution). 
