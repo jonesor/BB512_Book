@@ -2,7 +2,7 @@
 
 This is the schedule for the course. 
 Please note that it is liable to change (possibly at short notice). 
-If you find a mismatch between this schedule and the official one^[https://mitsdu.sdu.dk/skema/activity/N100007101/e20], then it is the official one that is correct.
+If you find a mismatch between this schedule and the official one^[https://mitsdu.sdu.dk/skema/activity/N100007101/e21], then it is the official one that is correct.
 
 The *Textbook* column tells you the chapter(s) of the two textbooks that are most relevant to the session. The two textbooks are Gotelli (G)^[
 Gotelli, NJ (2008) *A Primer of Ecology*. Fourth Edition, Sinauer Associates. ISBN: 978-0878933181] and Stearns and Hoekstra (SH)^[Stearns, SC & Hoekstra, RF (2005) *Evolution: An Introduction*. 2nd Edition, Oxford University Press. ISBN: 978-0199255634], and the numbers refer to the chapter numbers (e.g. SH.3, means Chapter 3 in Stearns and Hoekstra).
@@ -23,17 +23,21 @@ system("cp -r ~/Dropbox/_SDU_Teaching/BB512/'Course Documents'/BB512_Schedule.xl
 schedule <- readxl::read_excel("BB512_Schedule.xlsx")
 ```
 
-```{r echo = FALSE}
+```{r, echo = FALSE, message=FALSE,warning=FALSE, results = 'hide'}
+# Clean up old ics files
+ics_files <- list.files(pattern = "*.ics")
+file.remove(ics_files)
+
 library(lubridate)
 library(calendar)
 library(magrittr)
 library(dplyr)
-curl::curl_download("https://mitsdu.sdu.dk/skema/icalendar/activities/N100007101/e20/e20",destfile = "bb512.ics")
+curl::curl_download("https://mitsdu.sdu.dk/skema/icalendar/activities/N100007101/e21/e21",destfile = "bb512.ics")
 
 #Last sunday in October, 0300, CEST -> CET, 
 #So the time offset moves from +2 to +1
 
-savingsTimeSwitch <- with_tz(lubridate::as_datetime("2020-10-25 03:00:00"),"Europe/Copenhagen")
+savingsTimeSwitch <- with_tz(lubridate::as_datetime("2021-10-31 03:00:00"), "Europe/Copenhagen")
 
 courseCal <- ic_read("bb512.ics") %>% 
   arrange(DTSTART) %>% 
@@ -58,7 +62,7 @@ schedule <- left_join(courseCal,schedule)
 
 
 
-```{r, echo = FALSE, message=FALSE,eval=knitr::is_html_output()}
+```{r, echo = FALSE, message=FALSE,eval=knitr::is_html_output(), warning=FALSE}
 library(lubridate)
 library(officer)
 

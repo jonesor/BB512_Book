@@ -2,7 +2,7 @@
 
 The purpose of this exercise is (i) to look at the relationships between the exponential (or geometric) growth model and the logistic growth model and (ii) to emphasise different ways of looking at the models.
 
-I will begin by showing the equations on the (actual!) blackboard for exponential and logistic growth. I will highlight how the logistic model is a simple extension of the exponential model. I will show that when K is infinite the model $\frac{d N}{d t}=r N\left(1-\frac{N}{K}\right)$,  simplifies to the exponential model ($\frac{d N}{d t}=r N$), because the $(1-\frac{N}{K})$ bit drops out of the equation.^[These are equations 2.1 and 1.1 in Gotelli.]
+I will begin by showing the equations on the blackboard/whiteboard for exponential and logistic growth. I will highlight how the logistic model is a simple extension of the exponential model. I will show that when K is infinite the model $\frac{d N}{d t}=r N\left(1-\frac{N}{K}\right)$,  simplifies to the exponential model ($\frac{d N}{d t}=r N$), because the $(1-\frac{N}{K})$ bit drops out of the equation.^[These are equations 2.1 and 1.1 in Gotelli.]
 
 The same is true for the discrete version of the logistic growth model: Compare the equation  $N_{t+1}=N_{t}+r_{d} N_{t}\left(1-\frac{N_{t}}{K}\right)$ with $N_{t+1}=N_{t}+r_{d} N_{t}$. ^[These are Expression 1.13 (page. 11) and equation 2.4 from Gotelli.]
 
@@ -65,7 +65,7 @@ Start with a small $r_d$ that gives a smooth convergence to K with an ordinary l
  
 ## Optional: Cobweb diagrams
 
-The cobweb diagram is another useful tool to visualize and explore dynamics of logistic models. See the book section by Mathiopoulos in Blackboard. They would be very hard to implement in Excel, so I have made a webapp: (https://jonesor.shinyapps.io/cobweb/)
+The cobweb diagram is another useful tool to visualize and explore dynamics of logistic models. See the book section by Mathiopoulos on itsLearning. They would be very hard to implement in Excel, so I have made a webapp: (https://jonesor.shinyapps.io/cobweb/)
 
 The graph shows a “track” which follows the fate of a population. The track bounces between the parabola describing the relationship between $N_t$ and $N_{t+1}$ (Figure 3.1 in the excel sheet) and a 1:1 line. Try altering $r_d$ in the model and observe what different types of dynamics look like with this “view”. Check out what happens if you modify the starting population size. You should see that for non-chaotic dynamics, the starting population size doesn’t affect the fate of the population. For example, set initial population to be 0.01, and $r_d$ to be 0.9. You should see damped oscillations. Now move the initial population slider. You should see that the population always ends up with the same dynamics, heading towards carrying capacity.
 
