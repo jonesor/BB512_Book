@@ -7,9 +7,9 @@ set.seed(134)
 
 We will examine the effect of adding stochasticity (randomness) into the simple exponential/geometric growth model you have been looking at in the last couple of lectures. Remember – this model allows for unbounded population growth – the populations development is not influenced by population density.
 
-We'll focus on the discrete form:  $N_{t+1}=λN_t$  ^[Equation 1.15 in Gotelli]
+We'll focus on the discrete form:  $N_{t+1}=\lambda N_t$  ^[Equation 1.15 in Gotelli]
 
-In many cases it is unlikely that the finite rate of increase ($λ$) will be constant through time. Population growth rates are likely to vary through time because of environmental factors (weather, food supply etc.). This is called *environmental stochasticity*.
+In many cases it is unlikely that the finite rate of increase ($\lambda$) will be constant through time. Population growth rates are likely to vary through time because of environmental factors (weather, food supply etc.). This is called *environmental stochasticity*.
 
 We will create some models in Excel, and in R, to explore the effect that this variation has.
 
