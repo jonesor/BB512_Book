@@ -2,6 +2,16 @@
 
 Exponential growth is a powerful concept. To help us grasp it better lets use an ancient Indian chess legend as an example.
 
+```{block, type="do-something"}
+Learning outcomes: 
+
+- Use of Excel formulae for mathematical modeling.
+- Understanding the multiplicative process of exponential/geometric growth.
+
+```
+
+
+
 ```{r,out.width="50%",fig.align='center',echo = FALSE}
 knitr::include_graphics('images/Radha-Krishna_chess.jpg')
 ```

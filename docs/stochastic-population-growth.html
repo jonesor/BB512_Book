@@ -24,7 +24,7 @@
 <meta name="author" content="Owen R. Jones (Course Coordinator)" />
 
 
-<meta name="date" content="2021-08-24" />
+<meta name="date" content="2021-08-27" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -286,11 +286,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="stochastic-population-growth" class="section level1" number="5">
 <h1><span class="header-section-number">5</span> Stochastic population growth</h1>
 <p>We will examine the effect of adding stochasticity (randomness) into the simple exponential/geometric growth model you have been looking at in the last couple of lectures. Remember – this model allows for unbounded population growth – the populations development is not influenced by population density.</p>
-<p>We’ll focus on the discrete form: <span class="math inline">\(N_{t+1}=\lambda N_t\)</span><a href="#fn4" class="footnote-ref" id="fnref4"><sup>4</sup></a></p>
+<p>We’ll focus on the discrete form: <span class="math inline">\(N_{t+1}=\lambda N_t\)</span><a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a></p>
 <p>In many cases it is unlikely that the finite rate of increase (<span class="math inline">\(\lambda\)</span>) will be constant through time. Population growth rates are likely to vary through time because of environmental factors (weather, food supply etc.). This is called <em>environmental stochasticity</em>.</p>
 <p>We will create some models in Excel, and in R, to explore the effect that this variation has.</p>
 <p>A good way to begin thinking about this topic is to consider that the instantaneous rate of increase (<span class="math inline">\(r\)</span>) of the population can vary. We can simulate this by drawing a random number drawn from a normal distribution with a mean (<span class="math inline">\(\bar{r}\)</span>) and variance (<span class="math inline">\(\sigma_r^2\)</span>) (Fig. <a href="stochastic-population-growth.html#fig:stochGrowthRate">5.1</a>). In the figure you can see that the peak of the <span class="math inline">\(r\)</span> distribution is <span class="math inline">\(&gt;0\)</span> (approximately 0.1), so on average, the population will tend to grow. However, in poor years <span class="math inline">\(r\)</span> is <span class="math inline">\(&lt;\)</span> 0, so the population will decline in those cases. Both the mean value and the spread of the distribution (i.e. variance or standard deviation) determine the fate of the population.
-We can convert <span class="math inline">\(r\)</span> to <span class="math inline">\(\lambda\)</span> by taking the exponential, because <span class="math inline">\(r = ln(\lambda)\)</span><a href="#fn5" class="footnote-ref" id="fnref5"><sup>5</sup></a></p>
+We can convert <span class="math inline">\(r\)</span> to <span class="math inline">\(\lambda\)</span> by taking the exponential, because <span class="math inline">\(r = ln(\lambda)\)</span><a href="#fn3" class="footnote-ref" id="fnref3"><sup>3</sup></a></p>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:stochGrowthRate"></span>
 <img src="BB512_files/figure-html/stochGrowthRate-1.png" alt="A normal distribution of potential r values" width="576" />
 <p class="caption">
@@ -390,9 +390,9 @@ Figure 5.2: An example of stochastic population projection (100 simulations for 
 </div>
 <div class="footnotes">
 <hr />
-<ol start="4">
-<li id="fn4"><p>Equation 1.15 in Gotelli<a href="stochastic-population-growth.html#fnref4" class="footnote-back">↩︎</a></p></li>
-<li id="fn5"><p>equation 1.5 in Gotelli<a href="stochastic-population-growth.html#fnref5" class="footnote-back">↩︎</a></p></li>
+<ol start="2">
+<li id="fn2"><p>Equation 1.15 in Gotelli<a href="stochastic-population-growth.html#fnref2" class="footnote-back">↩︎</a></p></li>
+<li id="fn3"><p>equation 1.5 in Gotelli<a href="stochastic-population-growth.html#fnref3" class="footnote-back">↩︎</a></p></li>
 </ol>
 </div>
             </section>
