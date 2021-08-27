@@ -4,6 +4,23 @@
 library(tidyverse)
 ```
 
+Matrix population models are one of the most commonly used tools in population biology. They are extensively used in population management and conservation for both animals and plants. This practical aims to give you a good understanding of the basics of their construction and use.
+
+```{block, type="do-something"}
+Learning outcomes: 
+
+- Competence in constructing life cycle diagrams to represent the life history of real (or theoretical) organisms.
+- Understanding how to parameterise life-cycle diagrams and use them to produce a matrix population model.
+- Competence in using R to calculate a population growth rate and project a population.
+- Understanding how to connect these results to a management question.
+- Understanding the logic of "*in silico* experiments" to investigate a biological question (mathematical modelling).
+```
+
+
+
+
+
+
 Think of an organism you would like to model the dynamics of. It could be a mammal, a bird, a fish, insect or tree ... real or fantasy. 
 
 Think about their life cycle, and draw it as a life cycle diagram with circles indicating the stages and arrows representing transitions between stages and reproduction. Next to the arrows, write values for survival probability and fecundity (number of babies) using your biological knowledge.

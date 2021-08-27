@@ -285,6 +285,29 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="matrix-population-modelling" class="section level1" number="9">
 <h1><span class="header-section-number">9</span> Matrix population modelling</h1>
+<p>Matrix population models are one of the most commonly used tools in population biology. They are extensively used in population management and conservation for both animals and plants. This practical aims to give you a good understanding of the basics of their construction and use.</p>
+<div class="do-something">
+<p>
+Learning outcomes:
+</p>
+<ul>
+<li>
+Competence in constructing life cycle diagrams to represent the life history of real (or theoretical) organisms.
+</li>
+<li>
+Understanding how to parameterise life-cycle diagrams and use them to produce a matrix population model.
+</li>
+<li>
+Competence in using R to calculate a population growth rate and project a population.
+</li>
+<li>
+Understanding how to connect these results to a management question.
+</li>
+<li>
+Understanding the logic of “<em>in silico</em> experiments” to investigate a biological question (mathematical modelling).
+</li>
+</ul>
+</div>
 <p>Think of an organism you would like to model the dynamics of. It could be a mammal, a bird, a fish, insect or tree … real or fantasy.</p>
 <p>Think about their life cycle, and draw it as a life cycle diagram with circles indicating the stages and arrows representing transitions between stages and reproduction. Next to the arrows, write values for survival probability and fecundity (number of babies) using your biological knowledge.</p>
 <p>Things to think about:</p>
@@ -296,9 +319,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>Does the organism skip stages?</li>
 <li>Does the organism move backwards through the life cycle?</li>
 </ul>
-<p><img src="BB512_files/figure-html/unnamed-chunk-31-1.png" width="30%" /></p>
+<p><img src="BB512_files/figure-html/unnamed-chunk-37-1.png" width="30%" /></p>
 <p>Turn this diagram into a matrix population model by filling in a square of survival/fecundity values. There is space below for up to a 4-stage matrix model.</p>
-<p><img src="BB512_files/figure-html/unnamed-chunk-32-1.png" width="672" /></p>
+<p><img src="BB512_files/figure-html/unnamed-chunk-38-1.png" width="672" /></p>
 <p>Working with matrices is very tedious in Excel. However, in R you can use this information to predict the future dynamics of the population, and estimate population growth rate, and generation time etc.</p>
 <p>Open up <strong>RStudio</strong>, and lets see if we can predict future dynamics. First you will need to install a package called <code>popdemo</code>.</p>
 <div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="matrix-population-modelling.html#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;popdemo&quot;</span>)</span></code></pre></div>
@@ -338,7 +361,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="matrix-population-modelling.html#cb19-1" aria-hidden="true" tabindex="-1"></a>pop <span class="ot">&lt;-</span> <span class="fu">vec</span>(pr)</span>
 <span id="cb19-2"><a href="matrix-population-modelling.html#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="fu">matplot</span>(pop,<span class="at">type=</span><span class="st">&quot;l&quot;</span>,<span class="at">log=</span><span class="st">&quot;y&quot;</span>)</span>
 <span id="cb19-3"><a href="matrix-population-modelling.html#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="fu">legend</span>(<span class="st">&quot;topleft&quot;</span>,<span class="at">legend =</span> <span class="fu">colnames</span>(pop),<span class="at">col=</span><span class="dv">1</span><span class="sc">:</span><span class="fu">ncol</span>(pop),<span class="at">lty=</span><span class="dv">1</span><span class="sc">:</span><span class="fu">ncol</span>(pop))</span></code></pre></div>
-<p><img src="BB512_files/figure-html/unnamed-chunk-39-1.png" width="672" /></p>
+<p><img src="BB512_files/figure-html/unnamed-chunk-45-1.png" width="672" /></p>
 <p>You should see that the population increases exponentially. The population growth rate is the so-called “<em>dominant eigenvalue</em>” of the matrix <strong>A</strong>.</p>
 <p>We can ask R for the <em>eigen values</em> and <em>eigen vectors</em>. These are the population growth rate (<span class="math inline">\(\lambda\)</span>) and the stable stage distribution (<em>SSD</em>) and the reproductive values (<em>RV</em>) of the different stages. <em>SSD</em> is the expected <em>proportion</em> of individuals in the different stage classes at equilibrium and <em>RV</em> is the expected number of future offspring by individuals in each stage.</p>
 <p>You can see that in this case, using my example values the population is growing 55.74% per year.</p>

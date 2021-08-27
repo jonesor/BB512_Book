@@ -6,14 +6,17 @@ Life tables have been used extensively in population biology, in human demograph
 
 The basic algebra used in life tables is explained in Gotelli Chapter 3 (see table 3.1 for an example).
 
-The purpose of this exercise is:
 
-1. to allow you to calculate a life table yourself in Excel;
-2. to develop your Excel modeling skills by asking you to make the
-calculations following the equations given in Gotelli (and in the lecture
-slides);
-3. to allow you to explore different types of survivorship (Type I, II and III)
-and consider the relationship between these life tables and “life history strategy” (more on this in the evolution part of the course).
+```{block, type="do-something"}
+Learning outcomes: 
+
+- Increased competence in using Excel formulae for mathematical modeling.
+- Understanding how life tables are calculated.
+- Understanding the three types of survivorship curve and how they relate to mortality and survival probabilities (and their trajectories with age).
+- Competence in using mathematical models in Excel to strengthen own understanding of biological processes.
+
+```
+
 
 Open the Excel file `[Life tables exercises.xlsx](https://www.dropbox.com/s/ox0rk05zdwzrmwy/Life%20tables%20exercises.xlsx?dl=1)`.
 
