@@ -4,6 +4,10 @@ In a simple model of population growth where the population grows without any co
 
 Geometric growth is often seen as synonymous to exponential growth. It basically is, but with one important difference: exponential growth, strictly speaking, refers to “continuous time” scenarios, whereas geometric growth refers to models where the population changes in discrete time steps (e.g. each year).
 
+The relevant equations can be seen in Box 4.1 of the Neal textbook.
+
+
+
 
 ```{block, type="do-something"}
 Learning outcomes: 
@@ -12,6 +16,7 @@ Learning outcomes:
 - Understanding the the parameters of exponential/geometric growth.
 - Competence in using mathematical models in Excel to strengthen own understanding of biological processes.
 - Awareness of rearranging of mathematical formulae to produce different forms of models.
+- Knowing that the slope of the $ln(N_t)$ vs. $t$ relationship can tell you about population growth rate (it is $ln(\lambda)$).
 ```
 
 
@@ -23,6 +28,7 @@ Download and open the Excel file [`GeometricGrowth.xlsx`](https://www.dropbox.co
 3.	Make another plot of the same data, but this time use a natural logarithmic axis for the population size. The formula in Excel for natural log is `LN()`.
 4.	What do you notice about the curves in these different versions of plotting the same data?
 5.	Try altering the population growth rate. Try values of 0.8, 1 and 1.2 for example. What happens to the curves? What is special about the value of 1?
+6. Add an trendline with an equation to the log transformed graph. Identify the slope. The slope is $ln(\lambda)$), so you can work out $\lambda$ by "reversing" the $ln$ by taking its exponential. e.g. `=EXP(0.0953)` in Excel.
 
 
 Now reset the population growth rate to 1.1. Now lets see if the mathematical rules of so-called “geometric series” work...

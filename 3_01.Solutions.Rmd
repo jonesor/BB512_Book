@@ -3,7 +3,6 @@
 In this section you will find the solutions and/or main take home messages of the practical exercises used in this course.
 
 
-```{asis, echo=today() > icalSchedule %>% filter(grepl("Ambalapuzha",Topic)) %>% select(DTSTART2) %>% pull()}
 ## Solutions: The legend of Ambalapuzha
 
 You can find the completed Excel file [here](https://www.dropbox.com/s/ybe5qhmfltuhoyv/RiceOnAChessboard_completed.xlsx?dl=1).
@@ -11,9 +10,7 @@ You can find the completed Excel file [here](https://www.dropbox.com/s/ybe5qhmfl
 Take home messages:
 
 * Exponential/geometric growth is extremely powerful and can very quickly lead to very large numbers.
-```
 
-```{asis, echo=today() > icalSchedule %>% filter(grepl("Geometric growth",Topic)) %>% select(DTSTART2) %>% pull()}
 ## Solutions: Geometric growth
 
 You can find the completed Excel file [here](https://www.dropbox.com/s/sfxu1lbrxyqt462/GeometricGrowth%20-%20complete.xlsx?dl=1). 
@@ -22,11 +19,11 @@ Take home messages:
 
 * The rate of exponential/geometric growth depends on the population growth rate.
 * Lambda ($\lambda$) values $<1$ lead to a exponential *decrease*, while values $>1$ lead to exponential growth. A $\lambda$ of 1 indicates no change.
-* Growth traj"ectories can be plotted on the "natural scale* or on a *log scale*. Exponential growth (or decline) plotted on a log scale is a straight line. This could be useful to infer biological processes (or the lack of them). For example, exponential growth in population size indicates that there are no forces currently limiting the population (e.g. predators/competition/management actions).
+* Exponential growth is unlimited. This is unreasistic because very soon competition (what Darwin called "The struggle for existence") will soon take effect as the population runs out of space or resources.
+* Growth trajectories can be plotted on the *natural scale* or on a *log scale*. Exponential growth (or decline) plotted on a log scale is a straight line. This could be useful to infer biological processes (or the lack of them). For example, exponential growth in population size indicates that there are no forces currently limiting the population (e.g. predators/competition/management actions).
+* The slope of the population growth on the natural log scale can tell you what $\lambda$ is. The "opposite" of *ln* is *exp*, so you can ask Excel to `=EXP(slope).
 
-```
 
-```{asis, echo=today() > icalSchedule %>% filter(grepl("Stochastic population growth",Topic)) %>% select(DTSTART2) %>% pull()}
 ## Solutions: Stochastic population growth
 
 You can find the completed Excel file [here](https://www.dropbox.com/s/baao06vi0c0quns/StochasticPopulationGrowth-complete.xlsx?dl=1).
@@ -41,9 +38,8 @@ Take home messages:
 * We can repeatedly simulate a population projection (e.g. in R, or more laboriously in Excel) to get a feel for the likely fate of a population. E.g. "what percent of the projections show extinction within 50 years?".
 * We can use this relatively simple and "unrealistic" model to nevertheless get an intuition about general trends in population dynamics and extinction risk.
 * Extinction probability increases as (i) initial population size decreases; (ii) variance increases; (iii) growth rates decrease; (iv) the time frame increases.
-```
 
-```{asis, echo=today() > icalSchedule %>% filter(grepl("Basic logistic population growth",Topic)) %>% select(DTSTART2) %>% pull()}
+
 ## Solutions: Basic logistic population growth
 
 You were asked to use the Excel sheet to answer some questions about logistic growth by examining the graphs.
@@ -109,9 +105,7 @@ If you increase $r_d$ above 1, the shape of the relationship between $N_t$ and $
 *How would the same plots look for regular exponential growth?*
 
 The equivalent plot (for Graph 2) for exponential growth would be a horizontal line - because population growth rate does NOT depend on population size.
-```
 
-```{asis, echo=today() > icalSchedule %>% filter(grepl("Deeper into logistic growth",Topic)) %>% select(DTSTART2) %>% pull()}
 ## Solutions: Deeper into logistic growth
 
 ### Relationship between Logistic and Exponential growth equations
@@ -150,9 +144,6 @@ Time lagged density dependence results in oscillations. Therefore if we see osci
 Cobweb diagrams and bifurcation plots offer another way of visualising dynamics of populations (see the article about Chaos, by Mathiopoulos).
 
 Chaotic dynamics are deterministic in the sense that if you have the same initial conditions you will get the same results (dynamics). However, small changes in any parameters ($N_0$, $K$, or $r_d$) will lead to very different dynamics - so in that sense, because of measurement error, the population dynamics would be very hard to predict in practice.
-```
-
-```{asis, echo=today() > icalSchedule %>% filter(grepl("Life tables",Topic)) %>% select(DTSTART2) %>% pull()}
 
 ## Solutions: Life tables and survivorship types
 
@@ -163,9 +154,7 @@ You should understand the relationship between mortality risk and survivorship c
 
 The completed Excel spreadsheet is [here](https://www.dropbox.com/s/j8uv2wf7nz0ygmp/Life%20tables%20exercise%20-%20complete.xlsx?dl=1). 
 
-```
 
-```{asis, echo=today() > icalSchedule %>% filter(grepl("Matrix population modeling",Topic)) %>% select(DTSTART2) %>% pull()}
 
 ## Solutions: Matrix population modeling
 
@@ -176,9 +165,6 @@ The main take home messages for this class are that you should:
 (4) understand how population projection works, and to therefore interpret a figure or description showing a population projection.
 
 
-```
-
-```{asis, echo=today() > icalSchedule %>% filter(grepl("Lotka-Volterra competition",Topic)) %>% select(DTSTART2) %>% pull()}
 
 ## Solutions: Lotka-Volterra competition
 
@@ -186,10 +172,6 @@ You can find a completed Excel spreadsheet [here](https://www.dropbox.com/s/q1qo
 
 The answers to the questions are [here](https://www.dropbox.com/s/oz2c10bmyf8t7s6/9.%20Answers%20to%20questions.pdf?dl=1).
 
-```
-
-
-```{asis, echo=today() > icalSchedule %>% filter(grepl("Lotka-Volterra predator-prey dynamics",Topic)) %>% select(DTSTART2) %>% pull()}
 
 ## Solutions: Lotka-Volterra predator-prey dynamics
 
@@ -197,10 +179,6 @@ You can find a completed Excel spreadsheet [here](https://www.dropbox.com/s/wet7
 
 The answers to the questions are [here](https://www.dropbox.com/s/mt43nvqu7cjif69/10.%20Answers%20to%20Pred-Prey%20exercise.pdf?dl=1).
 
-```
-
-
-```{asis, echo=today() > icalSchedule %>% filter(grepl("From population biology to fitness",Topic)) %>% select(DTSTART2) %>% pull()}
 
 ## Solutions: From population biology to fitness
 
@@ -220,7 +198,6 @@ You should find that the cost can be huge, and still worth bearing. In fact, you
 HOWEVER, changes to prime age adults are much more important. You can only reduce survival to about 0.76 (from 0.8) before the cost is not worth bearing (population growth rate falls below that of the first baseline model). 
 
 Thus, old-age costs are "worth it" while prime age costs are much more important. This finding is central to the evolution of senescence and life span, which we will cover later in the course.
-```
 
 ## Solutions: Bug hunt camouflage
 
@@ -264,7 +241,7 @@ Example traits that evolve via neutral evolution include fingerprint structure a
 
 Traits like muscle strength, running speed may have been important for fitness when they helped our ancestors obtain food. In those environments, they would have been under selection and therefore evolve via adaptive evolution. In more modern times, these selection pressures are weaker.
 
-```{asis, echo=today() > icalSchedule %>% filter(grepl("Hardy-Weinberg",Topic)) %>% select(DTSTART2) %>% pull()}
+
 
 ## Solutions: Hardy-Weinberg equilibrium
 
@@ -314,9 +291,6 @@ The first thing you'll need to do is obtain $p$ and $q$. So, since white is rece
 To determine $q$, which is the frequency of the recessive allele in the population,  take the square root of $q^2$ which is 0.632. So, $q = 0.63$. Since $p + q = 1$, then $p$ must be $1 - 0.63 = 0.37$. 
 
 Now then, to answer our questions. First, what is the percentage of butterflies in the population that are heterozygous? Well, that would be $2pq$ so the answer is $2 \times 0.37\times 0.63 = 0.47$. Second, what is the frequency of homozygous dominant individuals? That would be $p^2$ or $0.37^2 = 0.14$.
-```
-
-```{asis, echo=today() > icalSchedule %>% filter(grepl("How many eggs",Topic)) %>% select(DTSTART2) %>% pull()}
 
 ## Solutions: How many eggs should a bird lay?
 
@@ -328,12 +302,6 @@ You can move this optimum if the trade-off is changed. For example, if you incre
 
 This fact reminds us that the environment (e.g. predation risk and resource abundance) will be an important factor in determining the evolution of life history parameters (like average number of babies). 
 
-```
-
-
-
-
-```{asis, echo=today() > icalSchedule %>% filter(grepl("force of selection",Topic)) %>% select(DTSTART2) %>% pull()}
 
 ## Solutions: Trade-offs and the force of selection
 
@@ -363,7 +331,6 @@ You should notice that changes made at younger ages have a bigger effect than th
 *Reset everything again (mx =10; survival = 0.8). Set mx from age 15 onwards to be 0. Now alter survival rate after this point (at ages 15-25). What happens to fitness?*
   
 You should notice that any changes you make to survival AFTER reproduction has been completed will have no effect on fitness. In other words evolution “doesn’t care about you” after you have finished with reproduction.
-```
 
 
 ## Making a phylogeny
