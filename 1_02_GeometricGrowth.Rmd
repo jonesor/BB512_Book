@@ -1,12 +1,25 @@
 # Geometric growth
 
-In a simple model of population growth where the population grows without any constraints, the speed a population increases in size can be described by the population growth rate. This is often given by the symbol lambda ($\lambda$). High values of $\lambda$ mean the population grows fast, while small values indicated that it grows slowly, or shrinks in size.
+In a simple model of population growth where the population grows without any constraints, the speed a population increases in size can be described by the population growth rate. This is often given by the symbol lambda ($\lambda$) which represents the population multiplication rate. High values of $\lambda$ mean the population grows fast, while small values indicated that it grows slowly, or if the $\lambda < 1$ shrinks in size. 
 
 Geometric growth is often seen as synonymous to exponential growth. It basically is, but with one important difference: exponential growth, strictly speaking, refers to “continuous time” scenarios, whereas geometric growth refers to models where the population changes in discrete time steps (e.g. each year).
 
-The relevant equations can be seen in Box 4.1 of the Neal textbook.
+The important quantities are as follows, but please be aware that different books/sources can use different symbols:
 
+- $N_t$ = population size at time $t$; and $N_0$, $N_1$ is population size at time 0, time 1 etc.
+- $\lambda$ = population growth (multiplication) rate over a single time step, $\Delta t$. THis is sometimes called the *finite rate of increase*.
+- $R_m$ = population rate of increase over a single time step, $\Delta t$. This is sometimes called the *discrete growth factor*.
+- $r_m$ = individual rate of increase over an infinitesimally small time step. This is sometimes called the *instantaneous rate of increase* or *intrinsic rate of increase*
 
+$R_m$ is  is related to $\lambda$ such that $R_m = \lambda - 1$ (and $\lambda = R_m + 1$).
+
+The relevant equations can be seen in Box 4.1 of the Neal textbook but here we will use the following:
+
+$N_{t+1} = N_t + (R_m N_t)$, 
+
+which leads to,
+
+$N_{t+1} = N_t (1 + R_m)$ and, equivalently, $N_{t+1} = N_t \lambda$. 
 
 
 ```{block, type="do-something"}

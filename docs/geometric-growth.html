@@ -24,7 +24,7 @@
 <meta name="author" content="Owen R. Jones (Course Coordinator)" />
 
 
-<meta name="date" content="2021-08-30" />
+<meta name="date" content="2021-09-03" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -311,9 +311,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="geometric-growth" class="section level1" number="4">
 <h1><span class="header-section-number">4</span> Geometric growth</h1>
-<p>In a simple model of population growth where the population grows without any constraints, the speed a population increases in size can be described by the population growth rate. This is often given by the symbol lambda (<span class="math inline">\(\lambda\)</span>). High values of <span class="math inline">\(\lambda\)</span> mean the population grows fast, while small values indicated that it grows slowly, or shrinks in size.</p>
+<p>In a simple model of population growth where the population grows without any constraints, the speed a population increases in size can be described by the population growth rate. This is often given by the symbol lambda (<span class="math inline">\(\lambda\)</span>) which represents the population multiplication rate. High values of <span class="math inline">\(\lambda\)</span> mean the population grows fast, while small values indicated that it grows slowly, or if the <span class="math inline">\(\lambda &lt; 1\)</span> shrinks in size.</p>
 <p>Geometric growth is often seen as synonymous to exponential growth. It basically is, but with one important difference: exponential growth, strictly speaking, refers to “continuous time” scenarios, whereas geometric growth refers to models where the population changes in discrete time steps (e.g. each year).</p>
-<p>The relevant equations can be seen in Box 4.1 of the Neal textbook.</p>
+<p>The important quantities are as follows, but please be aware that different books/sources can use different symbols:</p>
+<ul>
+<li><span class="math inline">\(N_t\)</span> = population size at time <span class="math inline">\(t\)</span>; and <span class="math inline">\(N_0\)</span>, <span class="math inline">\(N_1\)</span> is population size at time 0, time 1 etc.</li>
+<li><span class="math inline">\(\lambda\)</span> = population growth (multiplication) rate over a single time step, <span class="math inline">\(\Delta t\)</span>. THis is sometimes called the <em>finite rate of increase</em>.</li>
+<li><span class="math inline">\(R_m\)</span> = population rate of increase over a single time step, <span class="math inline">\(\Delta t\)</span>. This is sometimes called the <em>discrete growth factor</em>.</li>
+<li><span class="math inline">\(r_m\)</span> = individual rate of increase over an infinitesimally small time step. This is sometimes called the <em>instantaneous rate of increase</em> or <em>intrinsic rate of increase</em></li>
+</ul>
+<p><span class="math inline">\(R_m\)</span> is is related to <span class="math inline">\(\lambda\)</span> such that <span class="math inline">\(R_m = \lambda - 1\)</span> (and <span class="math inline">\(\lambda = R_m + 1\)</span>).</p>
+<p>The relevant equations can be seen in Box 4.1 of the Neal textbook but here we will use the following:</p>
+<p><span class="math inline">\(N_{t+1} = N_t + (R_m N_t)\)</span>,</p>
+<p>which leads to,</p>
+<p><span class="math inline">\(N_{t+1} = N_t (1 + R_m)\)</span> and, equivalently, <span class="math inline">\(N_{t+1} = N_t \lambda\)</span>.</p>
 <div class="do-something">
 <p>
 Learning outcomes:
@@ -330,6 +341,9 @@ Competence in using mathematical models in Excel to strengthen own understanding
 </li>
 <li>
 Awareness of rearranging of mathematical formulae to produce different forms of models.
+</li>
+<li>
+Knowing that the slope of the <span class="math inline"><span class="math inline">\(ln(N_t)\)</span></span> vs. <span class="math inline"><span class="math inline">\(t\)</span></span> relationship can tell you about population growth rate (it is <span class="math inline"><span class="math inline">\(ln(\lambda)\)</span></span>).
 </li>
 </ul>
 </div>
@@ -400,7 +414,7 @@ gitbook.start({
 "link": null,
 "text": null
 },
-"download": ["BB512.pdf", "BB512.epub"],
+"download": ["BB512.pdf"],
 "search": {
 "engine": "lunr",
 "options": null
