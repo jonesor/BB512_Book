@@ -24,7 +24,7 @@
 <meta name="author" content="Owen R. Jones (Course Coordinator)" />
 
 
-<meta name="date" content="2021-09-03" />
+<meta name="date" content="2021-09-06" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -264,7 +264,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="21.5" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#solutions-deeper-into-logistic-growth"><i class="fa fa-check"></i><b>21.5</b> Solutions: Deeper into logistic growth</a>
 <ul>
 <li class="chapter" data-level="21.5.1" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#relationship-between-logistic-and-exponential-growth-equations"><i class="fa fa-check"></i><b>21.5.1</b> Relationship between Logistic and Exponential growth equations</a></li>
-<li class="chapter" data-level="21.5.2" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#type-of-dynamics-depends-on-r_d."><i class="fa fa-check"></i><b>21.5.2</b> Type of dynamics depends on <span class="math inline">\(r_d\)</span>.</a></li>
+<li class="chapter" data-level="21.5.2" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#type-of-dynamics-depends-on-r_m."><i class="fa fa-check"></i><b>21.5.2</b> Type of dynamics depends on <span class="math inline">\(r_m\)</span>.</a></li>
 <li class="chapter" data-level="21.5.3" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#you-can-obtain-parameters-from-graphs"><i class="fa fa-check"></i><b>21.5.3</b> You can obtain parameters from graphs</a></li>
 <li class="chapter" data-level="21.5.4" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#time-lag"><i class="fa fa-check"></i><b>21.5.4</b> Time lag</a></li>
 <li class="chapter" data-level="21.5.5" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#cobweb-diagram"><i class="fa fa-check"></i><b>21.5.5</b> Cobweb diagram</a></li>
@@ -311,9 +311,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="basic-logistic-population-growth" class="section level1" number="6">
 <h1><span class="header-section-number">6</span> Basic logistic population growth</h1>
-<p>Population sizes have upper limits – they can only get so large. This is often modeled with the ‘logistic growth’ model<a href="#fn4" class="footnote-ref" id="fnref4"><sup>4</sup></a>:</p>
-<p><span class="math inline">\(N_{t+1}=N_{t}+r_{d} N_{t}\left(1-\frac{N_{t}}{K}\right)\)</span></p>
-<p>This equation models population at time <span class="math inline">\(t+1\)</span> (<span class="math inline">\(N_{t+1}\)</span>) as a function of the population at time <span class="math inline">\(t\)</span> (<span class="math inline">\(N_t\)</span>), the <em>discrete growth factor</em> (<span class="math inline">\(r_d\)</span>), and carrying capacity of the environment (<span class="math inline">\(K\)</span>).</p>
+<p>Population sizes have upper limits – they can only get so large. This is often modeled with the ‘logistic growth’ model<a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a>:</p>
+<p><span class="math inline">\(N_{t+1}=N_{t}+r_{m} N_{t}\left(1-\frac{N_{t}}{K}\right)\)</span></p>
+<p>This equation models population at time <span class="math inline">\(t+1\)</span> (<span class="math inline">\(N_{t+1}\)</span>) as a function of the population at time <span class="math inline">\(t\)</span> (<span class="math inline">\(N_t\)</span>), the <em>intrinsic rate of increase</em> (<span class="math inline">\(r_m\)</span>), and carrying capacity of the environment (<span class="math inline">\(K\)</span>).</p>
 <p>The idea is that the growth rate of the population (the difference between <span class="math inline">\(N_{t+1}\)</span> and <span class="math inline">\(N_t\)</span>) decreases as the population increases in size. When the population size at <span class="math inline">\(N_t\)</span> is equal to the <em>carrying capacity</em> of the environment (<span class="math inline">\(K\)</span>), the population growth rate is zero. For example, if the carrying capacity of the population is <em>200</em>, and there are already <em>200</em> individuals in the population, then the size of the population will remain unchanged through time (<span class="math inline">\(N_{t+1} = N_t = 200\)</span>).</p>
 <p>The aim of this Excel-based exercise is to explore this model and help you get an intuitive understanding of it by looking at it from different perspectives. Even though it is a fairly simple model, it leads us to some useful biological insights.</p>
 <div class="do-something">
@@ -344,7 +344,7 @@ During the exercise you only need to edit the pink block.</p>
 <p>The pink block gives the important parameters of the logistic model:</p>
 <ul>
 <li><code>Initial N</code> = the starting population size at time 1.</li>
-<li><code>r_d</code> = the maximum per capita population growth rate (<span class="math inline">\(r_d\)</span>). When <span class="math inline">\(r_d\)</span> is 0, the population does not grow. When <span class="math inline">\(r_d\)</span> is <span class="math inline">\(&gt;\)</span> 0 the population grows, and when it is <span class="math inline">\(&lt;\)</span> 0 it declines. The population cannot fall below 0.</li>
+<li><code>r_m</code> = the maximum per capita population growth rate (<span class="math inline">\(r_m\)</span>). When <span class="math inline">\(r_m\)</span> is 0, the population does not grow. When <span class="math inline">\(r_m\)</span> is <span class="math inline">\(&gt;\)</span> 0 the population grows, and when it is <span class="math inline">\(&lt;\)</span> 0 it declines. The population cannot fall below 0.</li>
 <li><code>K</code> = the carrying capacity of the population.</li>
 </ul>
 <p>The initial values for these are <em>10</em>, <em>0.8</em> and <em>200</em> respectively.</p>
@@ -362,41 +362,41 @@ During the exercise you only need to edit the pink block.</p>
 <li>How does this compare to carrying capacity (<code>K</code>)?</li>
 <li>What do you predict to happen if you increase <code>K</code> to <em>300</em>? (try it)</li>
 </ul>
-<!--You should notice that when `r_d` is around 1 or lower, the maximum population size is the same as the carrying capacity (`K`). As you change `K`, this maximum population size will change accordingly. 
-If `r_d` is markedly greater than 1, then the population size can exceed the carrying capacity. This is because the population grows so fast that it “overshoots” carrying capacity and then fluctuates around `K`.-->
+<!--You should notice that when `r_m` is around 1 or lower, the maximum population size is the same as the carrying capacity (`K`). As you change `K`, this maximum population size will change accordingly. 
+If `r_m` is markedly greater than 1, then the population size can exceed the carrying capacity. This is because the population grows so fast that it “overshoots” carrying capacity and then fluctuates around `K`.-->
 <ul>
 <li>At what time do you reach the maximum population size?</li>
-<li>If you halved the discrete growth factor (<code>r_d</code>) to <em>0.4</em>, what do you think will happen to the dynamics this time? (try it)</li>
+<li>If you halved the growth rate (<code>r_m</code>) to <em>0.4</em>, what do you think will happen to the dynamics this time? (try it)</li>
 </ul>
-<!-- You should notice that the time taken to reach the maximum population size is related to the growth rate (`r_d`). As you increase `r_d`, the time taken to hit the maximum population size decreases. If you halve the `r_d`, the time taken to reach maximum population size is doubled.
+<!-- You should notice that the time taken to reach the maximum population size is related to the growth rate (`r_m`). As you increase `r_m`, the time taken to hit the maximum population size decreases. If you halve the `r_m`, the time taken to reach maximum population size is doubled.
 -->
 <ul>
-<li>What do you think will happen if you <code>r_d</code> to <em>1.8</em>? (try it)</li>
+<li>What do you think will happen if you <code>r_m</code> to <em>1.8</em>? (try it)</li>
 <li>What do you notice about the population size through time?</li>
 <li>How does the maximum population size compare with the carrying capacity? How would you describe the ‘<em>dynamics</em>’ of this population?</li>
 </ul>
 <!--You should notice that the population overshoots carrying capacity (`K`), then oscillates around `K` with damped oscilllations that gradually move towards `K`. Therefore if a population has even a moderate population growth rate, and if it has density-dependence, then it can fluctuate in numbers without any extrinsic factor (like weather) acting. 
 -->
 <ul>
-<li>What happens if you increase the <code>r_d</code> even more, to <em>2</em> or <em>2.1</em>?</li>
+<li>What happens if you increase the <code>r_m</code> even more, to <em>2</em> or <em>2.1</em>?</li>
 <li>And even more to <em>2.8</em>, <em>2.9</em> or <em>3</em>?</li>
 <li>How would you describe these dynamics?</li>
-<li>Is there a limit to how high <code>r_d</code> can be? (hint: populations go extinct if N <span class="math inline">\(&lt;\)</span> 0).</li>
+<li>Is there a limit to how high <code>r_m</code> can be? (hint: populations go extinct if N <span class="math inline">\(&lt;\)</span> 0).</li>
 </ul>
 <!--
-You should notice that as you increase `r_d` the nature of the oscillations changes. In fact, this is predictable:  If `r_d` $<$ 1.0, then population will approach `K` smoothly.
+You should notice that as you increase `r_m` the nature of the oscillations changes. In fact, this is predictable:  If `r_m` $<$ 1.0, then population will approach `K` smoothly.
 
-If 1.0 $<$ `r_d` $<$ 2.0, then oscillations of decreasing amplitude around `K`.
+If 1.0 $<$ `r_m` $<$ 2.0, then oscillations of decreasing amplitude around `K`.
 
-If 2.0 $<$ `r_d` $<$ 2.57, then stable, cyclic oscillations around `K` . They can be 1 or 2+ point stable limit cycles.
+If 2.0 $<$ `r_m` $<$ 2.57, then stable, cyclic oscillations around `K` . They can be 1 or 2+ point stable limit cycles.
 
-If `r_d` $>$ 2.57, then population will fluctuate chaotically.
+If `r_m` $>$ 2.57, then population will fluctuate chaotically.
 
-If `r_d` is too high, the population will fluctuate and crash to extinction.
+If `r_m` is too high, the population will fluctuate and crash to extinction.
 -->
-<p>Finally, compare the population trajectory in <strong>Graph 1</strong> for populations with <code>r_d</code>= <em>2.8</em> and <em>2.81</em>. Then compare the trajectories where you fix <code>r_d</code> at <em>2.8</em> but vary initial population size by a small amount (e.g. <em>1</em>). Imagine you were a population manager – would these populations be easy or hard to predict? What kinds of species have high population growth rates like these?</p>
+<p>Finally, compare the population trajectory in <strong>Graph 1</strong> for populations with <code>r_m</code>= <em>2.8</em> and <em>2.81</em>. Then compare the trajectories where you fix <code>r_m</code> at <em>2.8</em> but vary initial population size by a small amount (e.g. <em>1</em>). Imagine you were a population manager – would these populations be easy or hard to predict? What kinds of species have high population growth rates like these?</p>
 <!--
-When `r_d` is high ($>$ 2.57) the population dynamics become extremely hard (impossible) to predict because they are chaotic. This means that even a very small change in `r_d` (which could simply be measurement error) will mean that predicted population size next year is suddenly very different. This would cause big problems to a population manager.
+When `r_m` is high ($>$ 2.57) the population dynamics become extremely hard (impossible) to predict because they are chaotic. This means that even a very small change in `r_m` (which could simply be measurement error) will mean that predicted population size next year is suddenly very different. This would cause big problems to a population manager.
 
 Many pest species and diseases have very high population growth rates. For example, locusts, or measles. This is one reason why it is hard to predict when the next pest/disease outbreak will happen
 -->
@@ -408,12 +408,12 @@ Many pest species and diseases have very high population growth rates. For examp
 <!--
 The line describing per capita growth rate crosses the x-axis (population size) at $K$. i.e. if $K$ = 100, the line crosses at 100. If you change $K$, the intercept on the axis also changes accordingly. The line intercepts the axis at this point no matter what the population growth rate is.
 -->
-<p><strong>Graph 3</strong> is shaped like a parabola, starting with small values, increasing to a maximum, then declining to small values again. The position of the maximum is dependent on the values of <code>K</code> and <code>r_d</code>. When <code>r_d</code> is small (around <em>1</em>), the peak is at <span class="math inline">\(x = K\)</span> and <span class="math inline">\(y = K\)</span>. Explore (1) how the peak moves around if you fix one of <code>K</code> or <code>r_d</code> and alter the other parameter and (2) how the slope of the line changes at <span class="math inline">\(N_t = K\)</span>.</p>
-<p><em>Hint: the slope of the line changes from positive to negative as <code>r_d</code> increases.</em></p>
+<p><strong>Graph 3</strong> is shaped like a parabola, starting with small values, increasing to a maximum, then declining to small values again. The position of the maximum is dependent on the values of <code>K</code> and <code>r_m</code>. When <code>r_m</code> is small (around <em>1</em>), the peak is at <span class="math inline">\(x = K\)</span> and <span class="math inline">\(y = K\)</span>. Explore (1) how the peak moves around if you fix one of <code>K</code> or <code>r_m</code> and alter the other parameter and (2) how the slope of the line changes at <span class="math inline">\(N_t = K\)</span>.</p>
+<p><em>Hint: the slope of the line changes from positive to negative as <code>r_m</code> increases.</em></p>
 <!--
-As mentioned above, the peak of the parabola will be at `K` on both axes when `r_d` is small.  You should see that this makes sense because if the population is at carrying capacity in Year 1 ($N_t$, on the x-axis) then next year (Year 2; $N_{t+1}$ on the y-axis) the population size will be the same because with logistic growth the population growth rate is always 0 when the population is at carrying capacity. Therefore, if you change $K$, the peak will move around accordingly, but always will be at $x = K$ and $y = K$.
+As mentioned above, the peak of the parabola will be at `K` on both axes when `r_m` is small.  You should see that this makes sense because if the population is at carrying capacity in Year 1 ($N_t$, on the x-axis) then next year (Year 2; $N_{t+1}$ on the y-axis) the population size will be the same because with logistic growth the population growth rate is always 0 when the population is at carrying capacity. Therefore, if you change $K$, the peak will move around accordingly, but always will be at $x = K$ and $y = K$.
 
-If you increase `r_d` above 1, the shape of the relationship between $N_t$ and $N_{t+1}$ remains parabolic, but the location of the peak changes relative to $K$.
+If you increase `r_m` above 1, the shape of the relationship between $N_t$ and $N_{t+1}$ remains parabolic, but the location of the peak changes relative to $K$.
 
 -->
 <div class="do-something">
@@ -437,8 +437,8 @@ How would the same plots look for regular exponential growth?
 </div>
 <div class="footnotes">
 <hr />
-<ol start="4">
-<li id="fn4"><p>This is equation 2.4 in Gotelli<a href="basic-logistic-population-growth.html#fnref4" class="footnote-back">↩︎</a></p></li>
+<ol start="2">
+<li id="fn2"><p>This is equation 2.4 in Gotelli<a href="basic-logistic-population-growth.html#fnref2" class="footnote-back">↩︎</a></p></li>
 </ol>
 </div>
             </section>

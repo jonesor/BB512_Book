@@ -3,9 +3,9 @@
 
 Population sizes have upper limits – they can only get so large. This is often modeled with the ‘logistic growth’ model^[This is equation 2.4 in Gotelli]: 
 
-$N_{t+1}=N_{t}+r_{d} N_{t}\left(1-\frac{N_{t}}{K}\right)$
+$N_{t+1}=N_{t}+r_{m} N_{t}\left(1-\frac{N_{t}}{K}\right)$
 
-This equation models population at time $t+1$ ($N_{t+1}$) as a function of the population at time $t$ ($N_t$), the *discrete growth factor* ($r_d$), and carrying capacity of the environment ($K$). 
+This equation models population at time $t+1$ ($N_{t+1}$) as a function of the population at time $t$ ($N_t$), the *intrinsic rate of increase* ($r_m$), and carrying capacity of the environment ($K$). 
 
 The idea is that the growth rate of the population (the difference between $N_{t+1}$ and $N_t$) decreases as the population increases in size. When the population size at $N_t$ is equal to the *carrying capacity* of the environment ($K$), the population growth rate is zero. For example, if the carrying capacity of the population is *200*, and there are already *200* individuals in the population, then the size of the population will remain unchanged through time ($N_{t+1} = N_t = 200$).
 
@@ -32,7 +32,7 @@ During the exercise you only need to edit the pink block.
 The pink block gives the important parameters of the logistic model:
 
 *	`Initial N` = the starting population size at time 1.
-*	`r_d` =  the maximum per capita population growth rate ($r_d$). When $r_d$ is 0, the population does not grow. When $r_d$ is $>$ 0 the population grows, and when it is $<$ 0 it declines. The population cannot fall below 0.
+*	`r_m` =  the maximum per capita population growth rate ($r_m$). When $r_m$ is 0, the population does not grow. When $r_m$ is $>$ 0 the population grows, and when it is $<$ 0 it declines. The population cannot fall below 0.
 *	`K` = the carrying capacity of the population.
 
 The initial values for these are *10*, *0.8* and *200* respectively.
@@ -51,43 +51,43 @@ First – take a look at **Graph 1**.
 * How does this compare to carrying capacity (`K`)? 
 * What do you predict to happen if you increase `K` to *300*? (try it)
 
-<!--You should notice that when `r_d` is around 1 or lower, the maximum population size is the same as the carrying capacity (`K`). As you change `K`, this maximum population size will change accordingly. 
-If `r_d` is markedly greater than 1, then the population size can exceed the carrying capacity. This is because the population grows so fast that it “overshoots” carrying capacity and then fluctuates around `K`.-->
+<!--You should notice that when `r_m` is around 1 or lower, the maximum population size is the same as the carrying capacity (`K`). As you change `K`, this maximum population size will change accordingly. 
+If `r_m` is markedly greater than 1, then the population size can exceed the carrying capacity. This is because the population grows so fast that it “overshoots” carrying capacity and then fluctuates around `K`.-->
 
 * At what time do you reach the maximum population size? 
-* If you halved the discrete growth factor (`r_d`) to *0.4*, what do you think will happen to the dynamics this time? (try it)
+* If you halved the growth rate (`r_m`) to *0.4*, what do you think will happen to the dynamics this time? (try it)
 
-<!-- You should notice that the time taken to reach the maximum population size is related to the growth rate (`r_d`). As you increase `r_d`, the time taken to hit the maximum population size decreases. If you halve the `r_d`, the time taken to reach maximum population size is doubled.
+<!-- You should notice that the time taken to reach the maximum population size is related to the growth rate (`r_m`). As you increase `r_m`, the time taken to hit the maximum population size decreases. If you halve the `r_m`, the time taken to reach maximum population size is doubled.
 -->
 
-* What do you think will happen if you `r_d` to *1.8*? (try it)
+* What do you think will happen if you `r_m` to *1.8*? (try it)
 * What do you notice about the population size through time? 
 * How does the maximum population size compare with the carrying capacity? How would you describe the ‘*dynamics*’ of this population?
 
 <!--You should notice that the population overshoots carrying capacity (`K`), then oscillates around `K` with damped oscilllations that gradually move towards `K`. Therefore if a population has even a moderate population growth rate, and if it has density-dependence, then it can fluctuate in numbers without any extrinsic factor (like weather) acting. 
 -->
 
-* What happens if you increase the `r_d` even more, to *2* or *2.1*? 
+* What happens if you increase the `r_m` even more, to *2* or *2.1*? 
 * And even more to *2.8*, *2.9* or *3*? 
 * How would you describe these dynamics? 
-* Is there a limit to how high `r_d` can be? (hint: populations go extinct if N $<$ 0).
+* Is there a limit to how high `r_m` can be? (hint: populations go extinct if N $<$ 0).
 
 <!--
-You should notice that as you increase `r_d` the nature of the oscillations changes. In fact, this is predictable:  If `r_d` $<$ 1.0, then population will approach `K` smoothly.
+You should notice that as you increase `r_m` the nature of the oscillations changes. In fact, this is predictable:  If `r_m` $<$ 1.0, then population will approach `K` smoothly.
 
-If 1.0 $<$ `r_d` $<$ 2.0, then oscillations of decreasing amplitude around `K`.
+If 1.0 $<$ `r_m` $<$ 2.0, then oscillations of decreasing amplitude around `K`.
 
-If 2.0 $<$ `r_d` $<$ 2.57, then stable, cyclic oscillations around `K` . They can be 1 or 2+ point stable limit cycles.
+If 2.0 $<$ `r_m` $<$ 2.57, then stable, cyclic oscillations around `K` . They can be 1 or 2+ point stable limit cycles.
 
-If `r_d` $>$ 2.57, then population will fluctuate chaotically.
+If `r_m` $>$ 2.57, then population will fluctuate chaotically.
 
-If `r_d` is too high, the population will fluctuate and crash to extinction.
+If `r_m` is too high, the population will fluctuate and crash to extinction.
 -->
 
-Finally, compare the population trajectory in **Graph 1** for populations with `r_d`= *2.8* and *2.81*. Then compare the trajectories where you fix `r_d` at *2.8* but vary initial population size by a small amount (e.g. *1*). Imagine you were a population manager – would these populations be easy or hard to predict? What kinds of species have high population growth rates like these?
+Finally, compare the population trajectory in **Graph 1** for populations with `r_m`= *2.8* and *2.81*. Then compare the trajectories where you fix `r_m` at *2.8* but vary initial population size by a small amount (e.g. *1*). Imagine you were a population manager – would these populations be easy or hard to predict? What kinds of species have high population growth rates like these?
 
 <!--
-When `r_d` is high ($>$ 2.57) the population dynamics become extremely hard (impossible) to predict because they are chaotic. This means that even a very small change in `r_d` (which could simply be measurement error) will mean that predicted population size next year is suddenly very different. This would cause big problems to a population manager.
+When `r_m` is high ($>$ 2.57) the population dynamics become extremely hard (impossible) to predict because they are chaotic. This means that even a very small change in `r_m` (which could simply be measurement error) will mean that predicted population size next year is suddenly very different. This would cause big problems to a population manager.
 
 Many pest species and diseases have very high population growth rates. For example, locusts, or measles. This is one reason why it is hard to predict when the next pest/disease outbreak will happen
 -->
@@ -103,14 +103,14 @@ In **Graph 2**, notice that the per capita growth rate always declines linearly 
 The line describing per capita growth rate crosses the x-axis (population size) at $K$. i.e. if $K$ = 100, the line crosses at 100. If you change $K$, the intercept on the axis also changes accordingly. The line intercepts the axis at this point no matter what the population growth rate is.
 -->
 
-**Graph 3** is shaped like a parabola, starting with small values, increasing to a maximum, then declining to small values again. The position of the maximum is dependent on the values of `K` and `r_d`. When `r_d` is small (around *1*), the peak is at $x = K$ and $y = K$. Explore (1) how the peak moves around if you fix one of `K` or `r_d` and alter the other parameter and (2) how the slope of the line changes at $N_t = K$. 
+**Graph 3** is shaped like a parabola, starting with small values, increasing to a maximum, then declining to small values again. The position of the maximum is dependent on the values of `K` and `r_m`. When `r_m` is small (around *1*), the peak is at $x = K$ and $y = K$. Explore (1) how the peak moves around if you fix one of `K` or `r_m` and alter the other parameter and (2) how the slope of the line changes at $N_t = K$. 
 
-*Hint: the slope of the line changes from positive to negative as `r_d` increases.*
+*Hint: the slope of the line changes from positive to negative as `r_m` increases.*
 
 <!--
-As mentioned above, the peak of the parabola will be at `K` on both axes when `r_d` is small.  You should see that this makes sense because if the population is at carrying capacity in Year 1 ($N_t$, on the x-axis) then next year (Year 2; $N_{t+1}$ on the y-axis) the population size will be the same because with logistic growth the population growth rate is always 0 when the population is at carrying capacity. Therefore, if you change $K$, the peak will move around accordingly, but always will be at $x = K$ and $y = K$.
+As mentioned above, the peak of the parabola will be at `K` on both axes when `r_m` is small.  You should see that this makes sense because if the population is at carrying capacity in Year 1 ($N_t$, on the x-axis) then next year (Year 2; $N_{t+1}$ on the y-axis) the population size will be the same because with logistic growth the population growth rate is always 0 when the population is at carrying capacity. Therefore, if you change $K$, the peak will move around accordingly, but always will be at $x = K$ and $y = K$.
 
-If you increase `r_d` above 1, the shape of the relationship between $N_t$ and $N_{t+1}$ remains parabolic, but the location of the peak changes relative to $K$.
+If you increase `r_m` above 1, the shape of the relationship between $N_t$ and $N_{t+1}$ remains parabolic, but the location of the peak changes relative to $K$.
 
 -->
 

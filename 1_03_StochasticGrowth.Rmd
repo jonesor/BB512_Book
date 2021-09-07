@@ -17,15 +17,21 @@ Learning outcomes:
 ```
 
 
+We'll focus on the discrete form:  $N_{t+1}=\lambda N_t$.
 
-We'll focus on the discrete form:  $N_{t+1}=\lambda N_t$  ^[Equation 1.15 in Gotelli]
+Because $\lambda = \mathrm{e}^{r_m}$ (and $r_m = ln(\lambda)$) we can also express this equation as $N_{t+1}=\mathrm{e}^{r_m} N_t$.
 
-In many cases it is unlikely that the finite rate of increase ($\lambda$) will be constant through time. Population growth rates are likely to vary through time because of environmental factors (weather, food supply etc.). This is called *environmental stochasticity*.
+Therefore, we can predict next year's population size from this year's population if we know either $r_m$ or $\lambda$.
+
+It is unlikely that the population growth rates will be constant through time. Population growth rates will vary through time because of environmental factors (weather, food supply etc.). This is called *environmental stochasticity*.
 
 We will create some models in Excel, and in R, to explore the effect that this variation has.
 
-A good way to begin thinking about this topic is to consider that the instantaneous rate of increase  ($r$) of the population can vary. We can simulate this by drawing a random number drawn from a normal distribution with a mean ($\bar{r}$) and variance ($\sigma_r^2$) (Fig. \@ref(fig:stochGrowthRate)). In the figure you can see that the peak of the $r$ distribution is $>0$ (approximately 0.1), so on average, the population will tend to grow.  However, in poor years $r$ is $<$ 0, so the population will decline in those cases. Both the mean value and the spread of the distribution (i.e. variance or standard deviation) determine the fate of the population. 
-We can convert $r$ to  $\lambda$ by taking the exponential, because $r = ln(\lambda)$^[equation 1.5 in Gotelli]
+We can simulate variation in $r_m$ by drawing a random number from a normal distribution with a particular mean ($\bar{r_m}$) and variance ($\sigma_{r_m}^2$) (Fig. \@ref(fig:stochGrowthRate)). The $\bar{r_m}$ value determines the long-term average while the $\sigma_{r_m}^2$ estimates how much "spread" there is in the data from year to year.
+
+In the figure you can see that the peak of the $r_m$ distribution is $>0$ (approximately 0.1), so on average, the population will tend to grow.  However, in poor years $r_m$ is $<$ 0, so the population will decline in those cases. Both the mean value and the spread of the distribution (i.e. variance) determine the fate of the population. 
+
+Remember that we can convert $r_m$ to $\lambda$ by taking the exponential, because $r_m = ln(\lambda)$.
 
 
 ```{r stochGrowthRate, echo=FALSE,fig.width=6,fig.height=4,fig.align='center',fig.cap="A normal distribution of potential r values"}
@@ -35,7 +41,7 @@ ggplot(pgr,aes(x=r))+geom_histogram(bins =30) +
   theme_minimal()
 ```
 
-When using the equation above to calculate population at time $t+1$ ($N_{t+1}$) from the population at time $t$ ($N_t$), one would draw a random $r$ value from this distribution. Sometimes $r$ will be high, other times it will be low, most of the time it will be from around the middle of the distribution.
+When using the equation above to calculate population at time $t+1$ ($N_{t+1}$) from the population at time $t$ ($N_t$), one would draw a random $r_m$ value from this distribution. Sometimes $r_m$ will be high, other times it will be low, most of the time it will be from around the middle of the distribution.
 
 
 ```{block, type="do-something"}
@@ -45,11 +51,11 @@ Use the Excel worksheet,  `[StochasticPopulationGrowth.xslx](https://www.dropbox
 
 1)	Use Excel formulae to calculate deterministic population size through time (20 generations, with starting population of 100), linking to the mean finite population growth rate.
 2)	Use charts to plot the results. (you already did this last time!)
-3)	Use a formula to generate a column of stochastic $r$ values, based on a particlar mean and variance. [English Excel: `=NORMINV(RAND(),$F$10,SQRT($F$11))`/ Danish Excel: `=NORMINV(SLUMP();$F$10;KVROD($F$11))`. If you get errors, check whether Excel is expecting commas or semi-colons]
-4)	Use the same procedure as before, to create a stochastic population size vector (stochastic N). Remember to convert $r$ to $\lambda$ by taking the exponential.
+3)	Use a formula to generate a column of stochastic $r_m$ values, based on a particlar mean and variance. [English Excel: `=NORMINV(RAND(),$F$10,SQRT($F$11))`/ Danish Excel: `=NORMINV(SLUMP();$F$10;KVROD($F$11))`. If you get errors, check whether Excel is expecting commas or semi-colons]
+4)	Use the same procedure as before, to create a stochastic population size vector (stochastic N). Remember to convert $r_m$ to $\lambda$ by taking the exponential.
 5)	Compare the two trajectories using a chart.
-6)	Try altering initial population size, the mean finite growth rate, and the amount of stochasticity (Variance).
-7)	Extinction occurs when N $\leq$ 0. What happens to extinction risk as stochasticity increases? What hapens when initial N is small?
+6)	Try altering initial population size, mean population growth, and the amount of stochasticity (Variance).
+7)	Extinction occurs when N $\leq$ 0. What happens to extinction risk as stochasticity (variance) increases? What happens when initial N is small? Does the population ALWAYS survive if the population growth rate, $r_m$ is $>$ 0?
 
 ```{block, type="do-something"}
 Note: Excel re-randomises the random numbers every time you change any cell in the sheet. This is OK, and allows you to explore a stochastic simulation many times.
@@ -70,7 +76,7 @@ Copy-and-paste the code below into a text file (or directly into *R*).
 
 The final line of the code (`nExtinct/nTrials`) gives you an estimate of extinction probability - the proportion of trials that lead to a population size of 1 (or less).
 
-Modify the simulation settings to explore what happens to (i) the plot of population growth and (ii) extinction risk, when you vary  `mean.r` ($\bar{r}$), the amount of stochasticity ($\sigma_r^2$) (`var.r`), and the number of generations (`nGen`).
+Modify the simulation settings to explore what happens to (i) the plot of population growth and (ii) extinction risk, when you vary  `mean.r` ($\bar{r_m}$), the amount of stochasticity ($\sigma_{r_m}^2$) (`var.r`), and the number of generations (`nGen`).
 ```
 
 ```{r eval = TRUE, echo = FALSE}
@@ -95,7 +101,8 @@ nTrials = 100 # number of repeated simulations
 pseudoExtinction = 1
 
 # First randomly generate some lambda values
-rValues<-matrix(rnorm(nTrials*nGen, mean = mean.r, sd = sqrt(var.r)),ncol=nTrials,nrow=nGen)
+rValues <- matrix(rnorm(nTrials*nGen, mean = mean.r, sd = sqrt(var.r)),
+                  ncol=nTrials,nrow=nGen)
 
 # Use a histogram to see what they look like (uncomment the line below)
 # hist(lambdas,col="grey",main="")

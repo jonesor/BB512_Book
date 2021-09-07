@@ -24,7 +24,7 @@
 <meta name="author" content="Owen R. Jones (Course Coordinator)" />
 
 
-<meta name="date" content="2021-09-03" />
+<meta name="date" content="2021-09-06" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -264,7 +264,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="21.5" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#solutions-deeper-into-logistic-growth"><i class="fa fa-check"></i><b>21.5</b> Solutions: Deeper into logistic growth</a>
 <ul>
 <li class="chapter" data-level="21.5.1" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#relationship-between-logistic-and-exponential-growth-equations"><i class="fa fa-check"></i><b>21.5.1</b> Relationship between Logistic and Exponential growth equations</a></li>
-<li class="chapter" data-level="21.5.2" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#type-of-dynamics-depends-on-r_d."><i class="fa fa-check"></i><b>21.5.2</b> Type of dynamics depends on <span class="math inline">\(r_d\)</span>.</a></li>
+<li class="chapter" data-level="21.5.2" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#type-of-dynamics-depends-on-r_m."><i class="fa fa-check"></i><b>21.5.2</b> Type of dynamics depends on <span class="math inline">\(r_m\)</span>.</a></li>
 <li class="chapter" data-level="21.5.3" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#you-can-obtain-parameters-from-graphs"><i class="fa fa-check"></i><b>21.5.3</b> You can obtain parameters from graphs</a></li>
 <li class="chapter" data-level="21.5.4" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#time-lag"><i class="fa fa-check"></i><b>21.5.4</b> Time lag</a></li>
 <li class="chapter" data-level="21.5.5" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#cobweb-diagram"><i class="fa fa-check"></i><b>21.5.5</b> Cobweb diagram</a></li>
@@ -331,18 +331,21 @@ Understanding how stochasticity relates to (i) uncertainty in the prediction of 
 </li>
 </ul>
 </div>
-<p>We’ll focus on the discrete form: <span class="math inline">\(N_{t+1}=\lambda N_t\)</span><a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a></p>
-<p>In many cases it is unlikely that the finite rate of increase (<span class="math inline">\(\lambda\)</span>) will be constant through time. Population growth rates are likely to vary through time because of environmental factors (weather, food supply etc.). This is called <em>environmental stochasticity</em>.</p>
+<p>We’ll focus on the discrete form: <span class="math inline">\(N_{t+1}=\lambda N_t\)</span>.</p>
+<p>Because <span class="math inline">\(\lambda = \mathrm{e}^{r_m}\)</span> (and <span class="math inline">\(r_m = ln(\lambda)\)</span>) we can also express this equation as <span class="math inline">\(N_{t+1}=\mathrm{e}^{r_m} N_t\)</span>.</p>
+<p>Therefore, we can predict next year’s population size from this year’s population if we know either <span class="math inline">\(r_m\)</span> or <span class="math inline">\(\lambda\)</span>.</p>
+<p>It is unlikely that the population growth rates will be constant through time. Population growth rates will vary through time because of environmental factors (weather, food supply etc.). This is called <em>environmental stochasticity</em>.</p>
 <p>We will create some models in Excel, and in R, to explore the effect that this variation has.</p>
-<p>A good way to begin thinking about this topic is to consider that the instantaneous rate of increase (<span class="math inline">\(r\)</span>) of the population can vary. We can simulate this by drawing a random number drawn from a normal distribution with a mean (<span class="math inline">\(\bar{r}\)</span>) and variance (<span class="math inline">\(\sigma_r^2\)</span>) (Fig. <a href="stochastic-population-growth.html#fig:stochGrowthRate">5.1</a>). In the figure you can see that the peak of the <span class="math inline">\(r\)</span> distribution is <span class="math inline">\(&gt;0\)</span> (approximately 0.1), so on average, the population will tend to grow. However, in poor years <span class="math inline">\(r\)</span> is <span class="math inline">\(&lt;\)</span> 0, so the population will decline in those cases. Both the mean value and the spread of the distribution (i.e. variance or standard deviation) determine the fate of the population.
-We can convert <span class="math inline">\(r\)</span> to <span class="math inline">\(\lambda\)</span> by taking the exponential, because <span class="math inline">\(r = ln(\lambda)\)</span><a href="#fn3" class="footnote-ref" id="fnref3"><sup>3</sup></a></p>
+<p>We can simulate variation in <span class="math inline">\(r_m\)</span> by drawing a random number from a normal distribution with a particular mean (<span class="math inline">\(\bar{r_m}\)</span>) and variance (<span class="math inline">\(\sigma_{r_m}^2\)</span>) (Fig. <a href="stochastic-population-growth.html#fig:stochGrowthRate">5.1</a>). The <span class="math inline">\(\bar{r_m}\)</span> value determines the long-term average while the <span class="math inline">\(\sigma_{r_m}^2\)</span> estimates how much “spread” there is in the data from year to year.</p>
+<p>In the figure you can see that the peak of the <span class="math inline">\(r_m\)</span> distribution is <span class="math inline">\(&gt;0\)</span> (approximately 0.1), so on average, the population will tend to grow. However, in poor years <span class="math inline">\(r_m\)</span> is <span class="math inline">\(&lt;\)</span> 0, so the population will decline in those cases. Both the mean value and the spread of the distribution (i.e. variance) determine the fate of the population.</p>
+<p>Remember that we can convert <span class="math inline">\(r_m\)</span> to <span class="math inline">\(\lambda\)</span> by taking the exponential, because <span class="math inline">\(r_m = ln(\lambda)\)</span>.</p>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:stochGrowthRate"></span>
 <img src="BB512_files/figure-html/stochGrowthRate-1.png" alt="A normal distribution of potential r values" width="576" />
 <p class="caption">
 Figure 5.1: A normal distribution of potential r values
 </p>
 </div>
-<p>When using the equation above to calculate population at time <span class="math inline">\(t+1\)</span> (<span class="math inline">\(N_{t+1}\)</span>) from the population at time <span class="math inline">\(t\)</span> (<span class="math inline">\(N_t\)</span>), one would draw a random <span class="math inline">\(r\)</span> value from this distribution. Sometimes <span class="math inline">\(r\)</span> will be high, other times it will be low, most of the time it will be from around the middle of the distribution.</p>
+<p>When using the equation above to calculate population at time <span class="math inline">\(t+1\)</span> (<span class="math inline">\(N_{t+1}\)</span>) from the population at time <span class="math inline">\(t\)</span> (<span class="math inline">\(N_t\)</span>), one would draw a random <span class="math inline">\(r_m\)</span> value from this distribution. Sometimes <span class="math inline">\(r_m\)</span> will be high, other times it will be low, most of the time it will be from around the middle of the distribution.</p>
 <div class="do-something">
 <p>
 Use the Excel worksheet, <code><a href="https://www.dropbox.com/s/1wpixbpgwlh54f0/StochasticPopulationGrowth.xlsx?dl=1">StochasticPopulationGrowth.xslx</a></code>, to study how stochastic population growth works with this simple model.
@@ -351,11 +354,11 @@ Use the Excel worksheet, <code><a href="https://www.dropbox.com/s/1wpixbpgwlh54f
 <ol style="list-style-type: decimal">
 <li>Use Excel formulae to calculate deterministic population size through time (20 generations, with starting population of 100), linking to the mean finite population growth rate.</li>
 <li>Use charts to plot the results. (you already did this last time!)</li>
-<li>Use a formula to generate a column of stochastic <span class="math inline">\(r\)</span> values, based on a particlar mean and variance. [English Excel: <code>=NORMINV(RAND(),$F$10,SQRT($F$11))</code>/ Danish Excel: <code>=NORMINV(SLUMP();$F$10;KVROD($F$11))</code>. If you get errors, check whether Excel is expecting commas or semi-colons]</li>
-<li>Use the same procedure as before, to create a stochastic population size vector (stochastic N). Remember to convert <span class="math inline">\(r\)</span> to <span class="math inline">\(\lambda\)</span> by taking the exponential.</li>
+<li>Use a formula to generate a column of stochastic <span class="math inline">\(r_m\)</span> values, based on a particlar mean and variance. [English Excel: <code>=NORMINV(RAND(),$F$10,SQRT($F$11))</code>/ Danish Excel: <code>=NORMINV(SLUMP();$F$10;KVROD($F$11))</code>. If you get errors, check whether Excel is expecting commas or semi-colons]</li>
+<li>Use the same procedure as before, to create a stochastic population size vector (stochastic N). Remember to convert <span class="math inline">\(r_m\)</span> to <span class="math inline">\(\lambda\)</span> by taking the exponential.</li>
 <li>Compare the two trajectories using a chart.</li>
-<li>Try altering initial population size, the mean finite growth rate, and the amount of stochasticity (Variance).</li>
-<li>Extinction occurs when N <span class="math inline">\(\leq\)</span> 0. What happens to extinction risk as stochasticity increases? What hapens when initial N is small?</li>
+<li>Try altering initial population size, mean population growth, and the amount of stochasticity (Variance).</li>
+<li>Extinction occurs when N <span class="math inline">\(\leq\)</span> 0. What happens to extinction risk as stochasticity (variance) increases? What happens when initial N is small? Does the population ALWAYS survive if the population growth rate, <span class="math inline">\(r_m\)</span> is <span class="math inline">\(&gt;\)</span> 0?</li>
 </ol>
 <div class="do-something">
 <p>
@@ -376,7 +379,7 @@ Copy-and-paste the code below into a text file (or directly into <em>R</em>).
 The final line of the code (<code>nExtinct/nTrials</code>) gives you an estimate of extinction probability - the proportion of trials that lead to a population size of 1 (or less).
 </p>
 <p>
-Modify the simulation settings to explore what happens to (i) the plot of population growth and (ii) extinction risk, when you vary <code>mean.r</code> (<span class="math inline"><span class="math inline">\(\bar{r}\)</span></span>), the amount of stochasticity (<span class="math inline"><span class="math inline">\(\sigma_r^2\)</span></span>) (<code>var.r</code>), and the number of generations (<code>nGen</code>).
+Modify the simulation settings to explore what happens to (i) the plot of population growth and (ii) extinction risk, when you vary <code>mean.r</code> (<span class="math inline"><span class="math inline">\(\bar{r_m}\)</span></span>), the amount of stochasticity (<span class="math inline"><span class="math inline">\(\sigma_{r_m}^2\)</span></span>) (<code>var.r</code>), and the number of generations (<code>nGen</code>).
 </p>
 </div>
 <div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="stochastic-population-growth.html#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Simulating stochastic geometric population growth rate</span></span>
@@ -395,27 +398,28 @@ Modify the simulation settings to explore what happens to (i) the plot of popula
 <span id="cb8-14"><a href="stochastic-population-growth.html#cb8-14" aria-hidden="true" tabindex="-1"></a>pseudoExtinction <span class="ot">=</span> <span class="dv">1</span></span>
 <span id="cb8-15"><a href="stochastic-population-growth.html#cb8-15" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb8-16"><a href="stochastic-population-growth.html#cb8-16" aria-hidden="true" tabindex="-1"></a><span class="co"># First randomly generate some lambda values</span></span>
-<span id="cb8-17"><a href="stochastic-population-growth.html#cb8-17" aria-hidden="true" tabindex="-1"></a>rValues<span class="ot">&lt;-</span><span class="fu">matrix</span>(<span class="fu">rnorm</span>(nTrials<span class="sc">*</span>nGen, <span class="at">mean =</span> mean.r, <span class="at">sd =</span> <span class="fu">sqrt</span>(var.r)),<span class="at">ncol=</span>nTrials,<span class="at">nrow=</span>nGen)</span>
-<span id="cb8-18"><a href="stochastic-population-growth.html#cb8-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-19"><a href="stochastic-population-growth.html#cb8-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Use a histogram to see what they look like (uncomment the line below)</span></span>
-<span id="cb8-20"><a href="stochastic-population-growth.html#cb8-20" aria-hidden="true" tabindex="-1"></a><span class="co"># hist(lambdas,col=&quot;grey&quot;,main=&quot;&quot;)</span></span>
-<span id="cb8-21"><a href="stochastic-population-growth.html#cb8-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-22"><a href="stochastic-population-growth.html#cb8-22" aria-hidden="true" tabindex="-1"></a><span class="co"># Now run the simulations to see what the resulting population growth looks like</span></span>
-<span id="cb8-23"><a href="stochastic-population-growth.html#cb8-23" aria-hidden="true" tabindex="-1"></a>trials <span class="ot">=</span> <span class="fu">matrix</span>(<span class="at">data =</span> <span class="cn">NA</span>, <span class="at">nrow =</span> nGen, <span class="at">ncol =</span> nTrials)</span>
-<span id="cb8-24"><a href="stochastic-population-growth.html#cb8-24" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (j <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>nTrials){</span>
-<span id="cb8-25"><a href="stochastic-population-growth.html#cb8-25" aria-hidden="true" tabindex="-1"></a>  popSize <span class="ot">=</span> startPop  </span>
-<span id="cb8-26"><a href="stochastic-population-growth.html#cb8-26" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">2</span><span class="sc">:</span> nGen){</span>
-<span id="cb8-27"><a href="stochastic-population-growth.html#cb8-27" aria-hidden="true" tabindex="-1"></a>  stoch.r <span class="ot">=</span> rValues[i,j]</span>
-<span id="cb8-28"><a href="stochastic-population-growth.html#cb8-28" aria-hidden="true" tabindex="-1"></a>  popSize <span class="ot">=</span> <span class="fu">append</span>(popSize, popSize[i<span class="dv">-1</span>]<span class="sc">*</span><span class="fu">exp</span>(stoch.r))</span>
-<span id="cb8-29"><a href="stochastic-population-growth.html#cb8-29" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb8-30"><a href="stochastic-population-growth.html#cb8-30" aria-hidden="true" tabindex="-1"></a>trials[,j] <span class="ot">=</span> popSize</span>
-<span id="cb8-31"><a href="stochastic-population-growth.html#cb8-31" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(popSize)</span>
-<span id="cb8-32"><a href="stochastic-population-growth.html#cb8-32" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb8-33"><a href="stochastic-population-growth.html#cb8-33" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-34"><a href="stochastic-population-growth.html#cb8-34" aria-hidden="true" tabindex="-1"></a><span class="co">#Calculate probability of (pseudo)extinction</span></span>
-<span id="cb8-35"><a href="stochastic-population-growth.html#cb8-35" aria-hidden="true" tabindex="-1"></a>minvals <span class="ot">&lt;-</span> <span class="fu">apply</span>(trials,<span class="dv">2</span>,min)</span>
-<span id="cb8-36"><a href="stochastic-population-growth.html#cb8-36" aria-hidden="true" tabindex="-1"></a>nExtinct <span class="ot">&lt;-</span> <span class="fu">length</span>(minvals[minvals<span class="sc">&lt;=</span>pseudoExtinction])</span>
-<span id="cb8-37"><a href="stochastic-population-growth.html#cb8-37" aria-hidden="true" tabindex="-1"></a>nExtinct<span class="sc">/</span>nTrials</span></code></pre></div>
+<span id="cb8-17"><a href="stochastic-population-growth.html#cb8-17" aria-hidden="true" tabindex="-1"></a>rValues <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">rnorm</span>(nTrials<span class="sc">*</span>nGen, <span class="at">mean =</span> mean.r, <span class="at">sd =</span> <span class="fu">sqrt</span>(var.r)),</span>
+<span id="cb8-18"><a href="stochastic-population-growth.html#cb8-18" aria-hidden="true" tabindex="-1"></a>                  <span class="at">ncol=</span>nTrials,<span class="at">nrow=</span>nGen)</span>
+<span id="cb8-19"><a href="stochastic-population-growth.html#cb8-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-20"><a href="stochastic-population-growth.html#cb8-20" aria-hidden="true" tabindex="-1"></a><span class="co"># Use a histogram to see what they look like (uncomment the line below)</span></span>
+<span id="cb8-21"><a href="stochastic-population-growth.html#cb8-21" aria-hidden="true" tabindex="-1"></a><span class="co"># hist(lambdas,col=&quot;grey&quot;,main=&quot;&quot;)</span></span>
+<span id="cb8-22"><a href="stochastic-population-growth.html#cb8-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-23"><a href="stochastic-population-growth.html#cb8-23" aria-hidden="true" tabindex="-1"></a><span class="co"># Now run the simulations to see what the resulting population growth looks like</span></span>
+<span id="cb8-24"><a href="stochastic-population-growth.html#cb8-24" aria-hidden="true" tabindex="-1"></a>trials <span class="ot">=</span> <span class="fu">matrix</span>(<span class="at">data =</span> <span class="cn">NA</span>, <span class="at">nrow =</span> nGen, <span class="at">ncol =</span> nTrials)</span>
+<span id="cb8-25"><a href="stochastic-population-growth.html#cb8-25" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (j <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>nTrials){</span>
+<span id="cb8-26"><a href="stochastic-population-growth.html#cb8-26" aria-hidden="true" tabindex="-1"></a>  popSize <span class="ot">=</span> startPop  </span>
+<span id="cb8-27"><a href="stochastic-population-growth.html#cb8-27" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">2</span><span class="sc">:</span> nGen){</span>
+<span id="cb8-28"><a href="stochastic-population-growth.html#cb8-28" aria-hidden="true" tabindex="-1"></a>  stoch.r <span class="ot">=</span> rValues[i,j]</span>
+<span id="cb8-29"><a href="stochastic-population-growth.html#cb8-29" aria-hidden="true" tabindex="-1"></a>  popSize <span class="ot">=</span> <span class="fu">append</span>(popSize, popSize[i<span class="dv">-1</span>]<span class="sc">*</span><span class="fu">exp</span>(stoch.r))</span>
+<span id="cb8-30"><a href="stochastic-population-growth.html#cb8-30" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb8-31"><a href="stochastic-population-growth.html#cb8-31" aria-hidden="true" tabindex="-1"></a>trials[,j] <span class="ot">=</span> popSize</span>
+<span id="cb8-32"><a href="stochastic-population-growth.html#cb8-32" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(popSize)</span>
+<span id="cb8-33"><a href="stochastic-population-growth.html#cb8-33" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb8-34"><a href="stochastic-population-growth.html#cb8-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-35"><a href="stochastic-population-growth.html#cb8-35" aria-hidden="true" tabindex="-1"></a><span class="co">#Calculate probability of (pseudo)extinction</span></span>
+<span id="cb8-36"><a href="stochastic-population-growth.html#cb8-36" aria-hidden="true" tabindex="-1"></a>minvals <span class="ot">&lt;-</span> <span class="fu">apply</span>(trials,<span class="dv">2</span>,min)</span>
+<span id="cb8-37"><a href="stochastic-population-growth.html#cb8-37" aria-hidden="true" tabindex="-1"></a>nExtinct <span class="ot">&lt;-</span> <span class="fu">length</span>(minvals[minvals<span class="sc">&lt;=</span>pseudoExtinction])</span>
+<span id="cb8-38"><a href="stochastic-population-growth.html#cb8-38" aria-hidden="true" tabindex="-1"></a>nExtinct<span class="sc">/</span>nTrials</span></code></pre></div>
 <pre><code>## [1] 0.08</code></pre>
 <div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="stochastic-population-growth.html#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Make a plot of the population trajectories</span></span>
 <span id="cb10-2"><a href="stochastic-population-growth.html#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="dv">1</span><span class="sc">:</span>nGen,<span class="fu">log</span>(<span class="fu">seq</span>(<span class="fl">0.1</span>,<span class="fu">max</span>(trials),<span class="at">length.out=</span>nGen)),<span class="at">type =</span> <span class="st">&quot;n&quot;</span>,<span class="at">axes=</span>F,<span class="at">xlab =</span><span class="st">&quot;Time&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;N&quot;</span>,<span class="at">ylim=</span><span class="fu">log</span>(<span class="fu">c</span>(<span class="fl">0.1</span>,<span class="dv">100000</span>)))</span>
@@ -432,13 +436,6 @@ Figure 5.2: An example of stochastic population projection (100 simulations for 
 </div>
 
 </div>
-</div>
-<div class="footnotes">
-<hr />
-<ol start="2">
-<li id="fn2"><p>Equation 1.15 in Gotelli<a href="stochastic-population-growth.html#fnref2" class="footnote-back">↩︎</a></p></li>
-<li id="fn3"><p>equation 1.5 in Gotelli<a href="stochastic-population-growth.html#fnref3" class="footnote-back">↩︎</a></p></li>
-</ol>
 </div>
             </section>
 

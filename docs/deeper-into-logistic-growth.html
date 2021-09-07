@@ -24,7 +24,7 @@
 <meta name="author" content="Owen R. Jones (Course Coordinator)" />
 
 
-<meta name="date" content="2021-09-03" />
+<meta name="date" content="2021-09-06" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -264,7 +264,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="21.5" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#solutions-deeper-into-logistic-growth"><i class="fa fa-check"></i><b>21.5</b> Solutions: Deeper into logistic growth</a>
 <ul>
 <li class="chapter" data-level="21.5.1" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#relationship-between-logistic-and-exponential-growth-equations"><i class="fa fa-check"></i><b>21.5.1</b> Relationship between Logistic and Exponential growth equations</a></li>
-<li class="chapter" data-level="21.5.2" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#type-of-dynamics-depends-on-r_d."><i class="fa fa-check"></i><b>21.5.2</b> Type of dynamics depends on <span class="math inline">\(r_d\)</span>.</a></li>
+<li class="chapter" data-level="21.5.2" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#type-of-dynamics-depends-on-r_m."><i class="fa fa-check"></i><b>21.5.2</b> Type of dynamics depends on <span class="math inline">\(r_m\)</span>.</a></li>
 <li class="chapter" data-level="21.5.3" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#you-can-obtain-parameters-from-graphs"><i class="fa fa-check"></i><b>21.5.3</b> You can obtain parameters from graphs</a></li>
 <li class="chapter" data-level="21.5.4" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#time-lag"><i class="fa fa-check"></i><b>21.5.4</b> Time lag</a></li>
 <li class="chapter" data-level="21.5.5" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#cobweb-diagram"><i class="fa fa-check"></i><b>21.5.5</b> Cobweb diagram</a></li>
@@ -334,8 +334,8 @@ Competence in using mathematical models in Excel to strengthen own understanding
 </li>
 </ul>
 </div>
-<p>I will begin by showing the equations on the blackboard (or whiteboard) for exponential and logistic growth. I will highlight how the logistic model is a simple extension of the exponential model. I will show that when K is infinite the model <span class="math inline">\(\frac{d N}{d t}=r N\left(1-\frac{N}{K}\right)\)</span>, simplifies to the exponential model (<span class="math inline">\(\frac{d N}{d t}=r N\)</span>), because the <span class="math inline">\((1-\frac{N}{K})\)</span> bit drops out of the equation.<a href="#fn5" class="footnote-ref" id="fnref5"><sup>5</sup></a></p>
-<p>The same is true for the discrete version of the logistic growth model: Compare the equation <span class="math inline">\(N_{t+1}=N_{t}+r_{d} N_{t}\left(1-\frac{N_{t}}{K}\right)\)</span> with <span class="math inline">\(N_{t+1}=N_{t}+r_{d} N_{t}\)</span>.<a href="#fn6" class="footnote-ref" id="fnref6"><sup>6</sup></a></p>
+<p>I will begin by showing the equations on the blackboard (or whiteboard) for exponential and logistic growth. I will highlight how the logistic model is a simple extension of the exponential model. I will show that when K is infinite the model <span class="math inline">\(\frac{d N}{d t}=r N\left(1-\frac{N}{K}\right)\)</span>, simplifies to the exponential model (<span class="math inline">\(\frac{d N}{d t}=r N\)</span>), because the <span class="math inline">\((1-\frac{N}{K})\)</span> bit drops out of the equation.<a href="#fn3" class="footnote-ref" id="fnref3"><sup>3</sup></a></p>
+<p>The same is true for the discrete version of the logistic growth model: Compare the equation <span class="math inline">\(N_{t+1}=N_{t}+r_{d} N_{t}\left(1-\frac{N_{t}}{K}\right)\)</span> with <span class="math inline">\(N_{t+1}=N_{t}+r_{d} N_{t}\)</span>.<a href="#fn4" class="footnote-ref" id="fnref4"><sup>4</sup></a></p>
 <p>You can then look at the Excel file <a href="https://www.dropbox.com/s/4xq399z7skl1akv/Deeper%20into%20Logistic%20Growth.xlsx?dl=1"><code>Deeper Into Logistic Growth.xlsx</code></a>.</p>
 <div id="different-views-of-the-basic-logistic-growth-model" class="section level2" number="7.1">
 <h2><span class="header-section-number">7.1</span> Different views of the basic logistic growth model</h2>
@@ -383,9 +383,9 @@ knitr::include_app('https://jonesor.shinyapps.io/cobweb/', height = '600px')
 </div>
 <div class="footnotes">
 <hr />
-<ol start="5">
-<li id="fn5"><p>These are equations 2.1 and 1.1 in Gotelli.<a href="deeper-into-logistic-growth.html#fnref5" class="footnote-back">↩︎</a></p></li>
-<li id="fn6"><p>These are Expression 1.13 (page. 11) and equation 2.4 from Gotelli.<a href="deeper-into-logistic-growth.html#fnref6" class="footnote-back">↩︎</a></p></li>
+<ol start="3">
+<li id="fn3"><p>These are equations 2.1 and 1.1 in Gotelli.<a href="deeper-into-logistic-growth.html#fnref3" class="footnote-back">↩︎</a></p></li>
+<li id="fn4"><p>These are Expression 1.13 (page. 11) and equation 2.4 from Gotelli.<a href="deeper-into-logistic-growth.html#fnref4" class="footnote-back">↩︎</a></p></li>
 </ol>
 </div>
             </section>
