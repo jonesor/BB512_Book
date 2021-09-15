@@ -14,9 +14,11 @@ Learning outcomes:
 ```
 
 
-I will begin by showing the equations on the blackboard (or whiteboard) for exponential and logistic growth. I will highlight how the logistic model is a simple extension of the exponential model. I will show that when K is infinite the model $\frac{d N}{d t}=r N\left(1-\frac{N}{K}\right)$,  simplifies to the exponential model ($\frac{d N}{d t}=r N$), because the $(1-\frac{N}{K})$ bit drops out of the equation.^[These are equations 2.1 and 1.1 in Gotelli.]
+I will begin by showing the equations on the blackboard (or whiteboard) for exponential and logistic growth. I will highlight how the logistic model is a simple extension of the exponential model. I will show that when $K$ is infinite the model $\frac{\delta N}{\delta t}=r_m N\left(1-\frac{N}{K}\right)$, simplifies to the exponential model ($\frac{\delta N}{\delta t}=r N$), because the $(1-\frac{N}{K})$ bit drops out of the equation.
 
-The same is true for the discrete version of the logistic growth model: Compare the equation  $N_{t+1}=N_{t}+r_{d} N_{t}\left(1-\frac{N_{t}}{K}\right)$ with $N_{t+1}=N_{t}+r_{d} N_{t}$. ^[These are Expression 1.13 (page. 11) and equation 2.4 from Gotelli.]
+The same is true for the discrete version of the logistic growth model: Compare the equation  $N_{t+1}=N_{t}+r_{d} N_{t}\left(1-\frac{N_{t}}{K}\right)$ with $N_{t+1}=N_{t}+r_{d} N_{t}$. 
+
+I will also remind you of the difference between $r_m$ (intrinsic rate of increase), which is a fixed value in the model, and $r$ (per capita growth rate) which is calculated as $r = r_m(1-N/K)$.
 
 You can then look at the Excel file [`Deeper Into Logistic Growth.xlsx`](https://www.dropbox.com/s/4xq399z7skl1akv/Deeper%20into%20Logistic%20Growth.xlsx?dl=1).
 
@@ -27,7 +29,7 @@ Take a look at the `BasicLogistic` Excel worksheet/ark.
 
 Focus first on **Figure 1**.
 
-Enter different values for `r_d`, e.g. 0.8, 1.2, 1.8, 2.4, 2.7…
+Enter different values for $r_d$, e.g. 0.8, 1.2, 1.8, 2.4, 2.7…
 
 Can you describe the dynamics of the population time series in Figure 1 using some of the following vocabulary: Oscillation, damped oscillation, stable cycle, 2-point cycle, chaotic, unpredictable, predictable?
 
@@ -35,7 +37,7 @@ Now focus on **Figure 2**.
 
 This figure shows the per capita population growth rate as a function of population size at time $t$. Note where the line intercepts the x- and y-axes. 
 
-What do you notice about these values? Hint: what are the values you have set for `r_d` and `K`? Try varying those values.
+What do you notice about these values? Hint: what are the values you have set for $r_m$ and $K$? Try varying those values.
 
 On paper, make a sketch of a graph for per capita population growth rate as a function of population size at time t for a logistic model with $r_d$ = 1.5 and $K$ = 250, indicating the values of the intercepts. Check your sketch by entering those values into the Excel model.
 
