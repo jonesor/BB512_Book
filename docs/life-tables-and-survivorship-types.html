@@ -24,7 +24,7 @@
 <meta name="author" content="Owen R. Jones (Course Coordinator)" />
 
 
-<meta name="date" content="2021-09-06" />
+<meta name="date" content="2021-09-16" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -195,7 +195,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="7.2" data-path="deeper-into-logistic-growth.html"><a href="deeper-into-logistic-growth.html#adding-a-time-lag"><i class="fa fa-check"></i><b>7.2</b> Adding a time lag</a></li>
 <li class="chapter" data-level="7.3" data-path="deeper-into-logistic-growth.html"><a href="deeper-into-logistic-growth.html#optional-cobweb-diagrams"><i class="fa fa-check"></i><b>7.3</b> Optional: Cobweb diagrams</a></li>
 </ul></li>
-<li class="chapter" data-level="8" data-path="life-tables-and-survivorship-types.html"><a href="life-tables-and-survivorship-types.html"><i class="fa fa-check"></i><b>8</b> Life tables and survivorship types</a></li>
+<li class="chapter" data-level="8" data-path="life-tables-and-survivorship-types.html"><a href="life-tables-and-survivorship-types.html"><i class="fa fa-check"></i><b>8</b> Life tables and survivorship types</a>
+<ul>
+<li class="chapter" data-level="8.0.1" data-path="life-tables-and-survivorship-types.html"><a href="life-tables-and-survivorship-types.html#life-table"><i class="fa fa-check"></i><b>8.0.1</b> Life table</a></li>
+<li class="chapter" data-level="8.0.2" data-path="life-tables-and-survivorship-types.html"><a href="life-tables-and-survivorship-types.html#survivorship-curves"><i class="fa fa-check"></i><b>8.0.2</b> Survivorship curves</a></li>
+</ul></li>
 <li class="chapter" data-level="9" data-path="matrix-population-modelling.html"><a href="matrix-population-modelling.html"><i class="fa fa-check"></i><b>9</b> Matrix population modelling</a>
 <ul>
 <li class="chapter" data-level="9.1" data-path="matrix-population-modelling.html"><a href="matrix-population-modelling.html#your-turn"><i class="fa fa-check"></i><b>9.1</b> Your turn…</a></li>
@@ -313,7 +317,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h1><span class="header-section-number">8</span> Life tables and survivorship types</h1>
 <p>Life tables are tables that shows for each age, the probability that an individual of that age will die before the next birthday (<em>probability of death</em>). This exercise deals with so-called <strong>cohort life tables</strong> which, as the name implies, follows a “<em>cohort</em>” of individuals from birth until they all die. A cohort is the group of individuals born within a particular time interval (e.g. “<em>all individuals born in 1998</em>”).</p>
 <p>Life tables have been used extensively in population biology, in human demography and in epidemiology. They are also important outside of biology, e.g. in the management of product life-cycles, such as in cars or other machinery.</p>
-<p>The basic algebra used in life tables is explained in Gotelli Chapter 3 (see table 3.1 for an example).</p>
+<p>The basic algebra used in life tables is explained in Neal Chapter 6 and in Gotelli Chapter 3.</p>
+<p>Ask for help if you don’t quite understand things during the exercises!</p>
 <div class="do-something">
 <p>
 Learning outcomes:
@@ -323,30 +328,43 @@ Learning outcomes:
 Increased competence in using Excel formulae for mathematical modeling.
 </li>
 <li>
+Competence in using mathematical models in Excel to strengthen own understanding of biological processes.
+</li>
+<li>
 Understanding how life tables are calculated.
 </li>
 <li>
 Understanding the three types of survivorship curve and how they relate to mortality and survival probabilities (and their trajectories with age).
 </li>
 <li>
-Competence in using mathematical models in Excel to strengthen own understanding of biological processes.
+Understanding the decline in the “force of selection.”
 </li>
 </ul>
 </div>
-<p>Open the Excel file <code>[Life tables exercises.xlsx](https://www.dropbox.com/s/ox0rk05zdwzrmwy/Life%20tables%20exercises.xlsx?dl=1)</code>.</p>
+<p>Download and open the Excel file <a href="https://www.dropbox.com/s/ox0rk05zdwzrmwy/Life%20tables%20exercises.xlsx?dl=1"><code>Life tables exercises.xlsx</code></a>.</p>
 <p>The file has three worksheets (“<em>Life table</em>,” “<em>Survivorship Curves</em>” and “<em>Gotelli
-Table 3.1 example</em>.”</p>
+Table 3.1 example</em>” (don’t worry if you don’t have the text book).</p>
+<div id="life-table" class="section level3" number="8.0.1">
+<h3><span class="header-section-number">8.0.1</span> Life table</h3>
 <p>Let’s start with “<strong>Life table</strong>.”</p>
 <p>The aim now is to use Excel as a modeling tool to produce a life table. I have provided some initial data collected from a cohort of animals. I know how many individuals survive each year (how many “enter the interval”). I also know how many babies (on average) are produced by each female.</p>
 <p>Start by calculating survivorship (<span class="math inline">\(l_x\)</span>). Survivorship is the <strong>probability of survival to a particular age</strong>. Therefore, at time 0, <span class="math inline">\(l_0 = 1\)</span>, since everyone is alive at this point. The next value (<span class="math inline">\(l_1\)</span>) must be calculated based on the number alive at that point. In this case it is <span class="math inline">\(352/500 = 0.704\)</span>. You must generalize this calculation into a formula that can be dragged to fill column <code>D</code> in the worksheet. In algebraic form, the equation is <span class="math inline">\(l_x = S_x/S_0\)</span>.</p>
-<p>Next, you can calculate age specific <strong>survival probability</strong>. Note that this is different from lx. Survival probability is simply the probability that an individual will survive its current age class. i.e. what is the probability that an individual currently aged 2 will survive to become age 3. In this case, the <span class="math inline">\(254/298 = 0.852\)</span>. The calculation is <span class="math inline">\(g_x = l_{x-1}/l_x\)</span>, or <span class="math inline">\(S_{x-1}/S_x\)</span>.</p>
+<p>Next, you can calculate age specific <strong>survival probability</strong>. Note that this is different from <span class="math inline">\(l_x\)</span>. Survival probability is simply the probability that an individual will survive its current age class. i.e., what is the probability that an individual currently aged 2 will survive to become age 3. In this case, the <span class="math inline">\(254/298 = 0.852\)</span>. The calculation is <span class="math inline">\(g_x = l_{x-1}/l_x\)</span>, or <span class="math inline">\(S_{x-1}/S_x\)</span>.</p>
 <p>Now complete the remaining two columns, and use them to calculate (a) <span class="math inline">\(R_0\)</span>; (b) <strong>Generation time</strong>; and an approximation of <span class="math inline">\(r\)</span>.
 <strong>Tip</strong> You need to understand the use of the <code>$</code> symbol in Excel, and how to drag the selected area to place the formula in the column. Refer to the sheet “<em>Gotelli Table 3.1 example</em>” if you get stuck (you should be able to see the formulae used there.</p>
+<p><strong>Investigate the force of selection:</strong> The force of selection describes the relative importance of events that happen during the life course on population growth (e.g. <span class="math inline">\(R0\)</span> or <span class="math inline">\(r\)</span>).
+To investigate this you can do a computer “experiment” by altering reproduction at different ages. You can think of these as “what if?” experiments. e.g. “What if there was a mutation that doubled reproduction at age 2 (or 8, 9 etc)?” or “What if there was a mutation that allowed reproduction at age 1?”</p>
+<p>Try imposing the same “experiment” on different ages. What effect happens to <span class="math inline">\(R0\)</span> or <span class="math inline">\(r\)</span>? If you like, try graphing your results in another sheet/ark as age vs. percent change in <span class="math inline">\(R0\)</span>.</p>
+</div>
+<div id="survivorship-curves" class="section level3" number="8.0.2">
+<h3><span class="header-section-number">8.0.2</span> Survivorship curves</h3>
 <p>In the second part we focus on the <strong>Survivorship Curves</strong> worksheet.
 The aim here is to start to explore how different types of organisms with different ways of life (“<strong>life history strategies</strong>”) can have qualitatively different kinds of life tables. The most important thing to observe is the difference in <strong>survivorship curves</strong> (<span class="math inline">\(l_x\)</span>). These changes become very obvious when you plot the log-transformed survivorship against age.</p>
 <p>In the Excel worksheet, I have placed tables showing the fate of cohorts of three populations of different species. Your job now is to calculate the survivorship curve (<span class="math inline">\(l_x\)</span>) for these species, take the natural log (using formula <code>=log(C3)</code>, for the first population, <code>=log(H3)</code> for the second population etc.</p>
 <p>You should see that the graphs automatically fill up with lines. These show Type I, II and III survivorship.</p>
+<p>Make sure that you are (1) able to “diagnose” survivorship type from looking at a graph of <span class="math inline">\(log(l_x)\)</span> vs <span class="math inline">\(x\)</span> (2) able to sketch a cartoon of mortality trajectory if shown one of these survivorship curve.</p>
 
+</div>
 </div>
             </section>
 

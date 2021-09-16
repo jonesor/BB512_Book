@@ -24,7 +24,7 @@
 <meta name="author" content="Owen R. Jones (Course Coordinator)" />
 
 
-<meta name="date" content="2021-09-06" />
+<meta name="date" content="2021-09-16" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -195,7 +195,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="7.2" data-path="deeper-into-logistic-growth.html"><a href="deeper-into-logistic-growth.html#adding-a-time-lag"><i class="fa fa-check"></i><b>7.2</b> Adding a time lag</a></li>
 <li class="chapter" data-level="7.3" data-path="deeper-into-logistic-growth.html"><a href="deeper-into-logistic-growth.html#optional-cobweb-diagrams"><i class="fa fa-check"></i><b>7.3</b> Optional: Cobweb diagrams</a></li>
 </ul></li>
-<li class="chapter" data-level="8" data-path="life-tables-and-survivorship-types.html"><a href="life-tables-and-survivorship-types.html"><i class="fa fa-check"></i><b>8</b> Life tables and survivorship types</a></li>
+<li class="chapter" data-level="8" data-path="life-tables-and-survivorship-types.html"><a href="life-tables-and-survivorship-types.html"><i class="fa fa-check"></i><b>8</b> Life tables and survivorship types</a>
+<ul>
+<li class="chapter" data-level="8.0.1" data-path="life-tables-and-survivorship-types.html"><a href="life-tables-and-survivorship-types.html#life-table"><i class="fa fa-check"></i><b>8.0.1</b> Life table</a></li>
+<li class="chapter" data-level="8.0.2" data-path="life-tables-and-survivorship-types.html"><a href="life-tables-and-survivorship-types.html#survivorship-curves"><i class="fa fa-check"></i><b>8.0.2</b> Survivorship curves</a></li>
+</ul></li>
 <li class="chapter" data-level="9" data-path="matrix-population-modelling.html"><a href="matrix-population-modelling.html"><i class="fa fa-check"></i><b>9</b> Matrix population modelling</a>
 <ul>
 <li class="chapter" data-level="9.1" data-path="matrix-population-modelling.html"><a href="matrix-population-modelling.html#your-turn"><i class="fa fa-check"></i><b>9.1</b> Your turn…</a></li>
@@ -403,19 +407,12 @@ Many pest species and diseases have very high population growth rates. For examp
 </div>
 <div id="graphs-2-3" class="section level2" number="6.2">
 <h2><span class="header-section-number">6.2</span> Graphs 2 &amp; 3</h2>
-<p>Now let’s turn to <strong>Graphs 2</strong> and <strong>3</strong>.</p>
-<p>In <strong>Graph 2</strong>, notice that the per capita growth rate always declines linearly with population size (<code>N</code>). Where does it cross the x-axis line? Modify the carrying capacity (<code>K</code>) – what do you notice?</p>
+<p>Now let’s turn to <strong>Graphs 2</strong> and <strong>3</strong>, which show the relationship between per capita population growth rate (<span class="math inline">\(r\)</span>) and N, and between <span class="math inline">\(dN/dt\)</span> and N respectively.</p>
+<p>In <strong>Graph 2</strong>, notice that the per capita growth rate (<span class="math inline">\(r\)</span>) always declines linearly with population size (<code>N</code>). Where does it cross the x-axis line? Modify the carrying capacity (<code>K</code>) – what do you notice about the intercepts on the y and x axes?</p>
 <!--
 The line describing per capita growth rate crosses the x-axis (population size) at $K$. i.e. if $K$ = 100, the line crosses at 100. If you change $K$, the intercept on the axis also changes accordingly. The line intercepts the axis at this point no matter what the population growth rate is.
 -->
-<p><strong>Graph 3</strong> is shaped like a parabola, starting with small values, increasing to a maximum, then declining to small values again. The position of the maximum is dependent on the values of <code>K</code> and <code>r_m</code>. When <code>r_m</code> is small (around <em>1</em>), the peak is at <span class="math inline">\(x = K\)</span> and <span class="math inline">\(y = K\)</span>. Explore (1) how the peak moves around if you fix one of <code>K</code> or <code>r_m</code> and alter the other parameter and (2) how the slope of the line changes at <span class="math inline">\(N_t = K\)</span>.</p>
-<p><em>Hint: the slope of the line changes from positive to negative as <code>r_m</code> increases.</em></p>
-<!--
-As mentioned above, the peak of the parabola will be at `K` on both axes when `r_m` is small.  You should see that this makes sense because if the population is at carrying capacity in Year 1 ($N_t$, on the x-axis) then next year (Year 2; $N_{t+1}$ on the y-axis) the population size will be the same because with logistic growth the population growth rate is always 0 when the population is at carrying capacity. Therefore, if you change $K$, the peak will move around accordingly, but always will be at $x = K$ and $y = K$.
-
-If you increase `r_m` above 1, the shape of the relationship between $N_t$ and $N_{t+1}$ remains parabolic, but the location of the peak changes relative to $K$.
-
--->
+<p><strong>Graph 3</strong> is shaped like a parabola, starting with small values, increasing to a maximum, then declining to small values again. The peak of the parabola is at <span class="math inline">\(K/2\)</span> and the line crosses the y-axis at <span class="math inline">\(0\)</span> and <span class="math inline">\(K\)</span>. Confirm to yourself, by changing the values for <span class="math inline">\(r_m\)</span> and <span class="math inline">\(K\)</span> that this is always the case.</p>
 <div class="do-something">
 <p>
 These three graphs are simply different ways to visualize the same model. It is important that you can make the connections between these graphs.

@@ -24,7 +24,7 @@
 <meta name="author" content="Owen R. Jones (Course Coordinator)" />
 
 
-<meta name="date" content="2021-09-06" />
+<meta name="date" content="2021-09-16" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -195,7 +195,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="7.2" data-path="deeper-into-logistic-growth.html"><a href="deeper-into-logistic-growth.html#adding-a-time-lag"><i class="fa fa-check"></i><b>7.2</b> Adding a time lag</a></li>
 <li class="chapter" data-level="7.3" data-path="deeper-into-logistic-growth.html"><a href="deeper-into-logistic-growth.html#optional-cobweb-diagrams"><i class="fa fa-check"></i><b>7.3</b> Optional: Cobweb diagrams</a></li>
 </ul></li>
-<li class="chapter" data-level="8" data-path="life-tables-and-survivorship-types.html"><a href="life-tables-and-survivorship-types.html"><i class="fa fa-check"></i><b>8</b> Life tables and survivorship types</a></li>
+<li class="chapter" data-level="8" data-path="life-tables-and-survivorship-types.html"><a href="life-tables-and-survivorship-types.html"><i class="fa fa-check"></i><b>8</b> Life tables and survivorship types</a>
+<ul>
+<li class="chapter" data-level="8.0.1" data-path="life-tables-and-survivorship-types.html"><a href="life-tables-and-survivorship-types.html#life-table"><i class="fa fa-check"></i><b>8.0.1</b> Life table</a></li>
+<li class="chapter" data-level="8.0.2" data-path="life-tables-and-survivorship-types.html"><a href="life-tables-and-survivorship-types.html#survivorship-curves"><i class="fa fa-check"></i><b>8.0.2</b> Survivorship curves</a></li>
+</ul></li>
 <li class="chapter" data-level="9" data-path="matrix-population-modelling.html"><a href="matrix-population-modelling.html"><i class="fa fa-check"></i><b>9</b> Matrix population modelling</a>
 <ul>
 <li class="chapter" data-level="9.1" data-path="matrix-population-modelling.html"><a href="matrix-population-modelling.html#your-turn"><i class="fa fa-check"></i><b>9.1</b> Your turn…</a></li>
@@ -330,7 +334,7 @@ Figure 16.1: Big bird, <em>Bigus canarius</em>
 </p>
 </div>
 <p>A recent study gathered data on chick survival probability as a function of number of eggs in the nest. These are given in the table below.</p>
-<template id="f4a25fc2-7928-4ccd-897c-9a04e4ef5344"><style>
+<template id="b7e8bbbc-f169-42b4-8487-6adae43f384c"><style>
 .tabwid table{
   border-collapse:collapse;
   line-height:1;
@@ -364,12 +368,12 @@ Figure 16.1: Big bird, <em>Bigus canarius</em>
 .tabwid table tr {
 background-color: transparent;
 }
-</style><div class="tabwid"><style>.cl-cbe8b9a8{border-collapse:collapse;}.cl-cbcdca30{font-family:'Helvetica';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-cbce02d4{margin:0;text-align:right;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-cbce9bcc{width:54pt;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-cbce9c12{width:54pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-cbce9c1c{width:54pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(102, 102, 102, 1.00);border-top: 2pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style><table class='cl-cbe8b9a8'>
-<thead><tr style="overflow-wrap:break-word;"><td class="cl-cbce9c1c"><p class="cl-cbce02d4"><span class="cl-cbcdca30">eggs</span></p></td><td class="cl-cbce9c1c"><p class="cl-cbce02d4"><span class="cl-cbcdca30">survival</span></p></td></tr></thead><tbody><tr style="overflow-wrap:break-word;"><td class="cl-cbce9bcc"><p class="cl-cbce02d4"><span class="cl-cbcdca30">1</span></p></td><td class="cl-cbce9bcc"><p class="cl-cbce02d4"><span class="cl-cbcdca30">0.90</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-cbce9bcc"><p class="cl-cbce02d4"><span class="cl-cbcdca30">2</span></p></td><td class="cl-cbce9bcc"><p class="cl-cbce02d4"><span class="cl-cbcdca30">0.85</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-cbce9bcc"><p class="cl-cbce02d4"><span class="cl-cbcdca30">3</span></p></td><td class="cl-cbce9bcc"><p class="cl-cbce02d4"><span class="cl-cbcdca30">0.82</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-cbce9bcc"><p class="cl-cbce02d4"><span class="cl-cbcdca30">4</span></p></td><td class="cl-cbce9bcc"><p class="cl-cbce02d4"><span class="cl-cbcdca30">0.70</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-cbce9bcc"><p class="cl-cbce02d4"><span class="cl-cbcdca30">5</span></p></td><td class="cl-cbce9bcc"><p class="cl-cbce02d4"><span class="cl-cbcdca30">0.50</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-cbce9bcc"><p class="cl-cbce02d4"><span class="cl-cbcdca30">6</span></p></td><td class="cl-cbce9bcc"><p class="cl-cbce02d4"><span class="cl-cbcdca30">0.30</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-cbce9bcc"><p class="cl-cbce02d4"><span class="cl-cbcdca30">7</span></p></td><td class="cl-cbce9bcc"><p class="cl-cbce02d4"><span class="cl-cbcdca30">0.22</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-cbce9bcc"><p class="cl-cbce02d4"><span class="cl-cbcdca30">8</span></p></td><td class="cl-cbce9bcc"><p class="cl-cbce02d4"><span class="cl-cbcdca30">0.15</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-cbce9bcc"><p class="cl-cbce02d4"><span class="cl-cbcdca30">9</span></p></td><td class="cl-cbce9bcc"><p class="cl-cbce02d4"><span class="cl-cbcdca30">0.10</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-cbce9c12"><p class="cl-cbce02d4"><span class="cl-cbcdca30">10</span></p></td><td class="cl-cbce9c12"><p class="cl-cbce02d4"><span class="cl-cbcdca30">0.05</span></p></td></tr></tbody></table></div></template>
-<div class="flextable-shadow-host" id="d73420b5-3909-4851-bfd2-b21db4545521"></div>
+</style><div class="tabwid"><style>.cl-79ef5380{border-collapse:collapse;}.cl-79e32ace{font-family:'Helvetica';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-79e41c72{margin:0;text-align:right;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-79e4a1ce{width:54pt;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-79e4a200{width:54pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-79e4a20a{width:54pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(102, 102, 102, 1.00);border-top: 2pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style><table class='cl-79ef5380'>
+<thead><tr style="overflow-wrap:break-word;"><td class="cl-79e4a20a"><p class="cl-79e41c72"><span class="cl-79e32ace">eggs</span></p></td><td class="cl-79e4a20a"><p class="cl-79e41c72"><span class="cl-79e32ace">survival</span></p></td></tr></thead><tbody><tr style="overflow-wrap:break-word;"><td class="cl-79e4a1ce"><p class="cl-79e41c72"><span class="cl-79e32ace">1</span></p></td><td class="cl-79e4a1ce"><p class="cl-79e41c72"><span class="cl-79e32ace">0.90</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-79e4a1ce"><p class="cl-79e41c72"><span class="cl-79e32ace">2</span></p></td><td class="cl-79e4a1ce"><p class="cl-79e41c72"><span class="cl-79e32ace">0.85</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-79e4a1ce"><p class="cl-79e41c72"><span class="cl-79e32ace">3</span></p></td><td class="cl-79e4a1ce"><p class="cl-79e41c72"><span class="cl-79e32ace">0.82</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-79e4a1ce"><p class="cl-79e41c72"><span class="cl-79e32ace">4</span></p></td><td class="cl-79e4a1ce"><p class="cl-79e41c72"><span class="cl-79e32ace">0.70</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-79e4a1ce"><p class="cl-79e41c72"><span class="cl-79e32ace">5</span></p></td><td class="cl-79e4a1ce"><p class="cl-79e41c72"><span class="cl-79e32ace">0.50</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-79e4a1ce"><p class="cl-79e41c72"><span class="cl-79e32ace">6</span></p></td><td class="cl-79e4a1ce"><p class="cl-79e41c72"><span class="cl-79e32ace">0.30</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-79e4a1ce"><p class="cl-79e41c72"><span class="cl-79e32ace">7</span></p></td><td class="cl-79e4a1ce"><p class="cl-79e41c72"><span class="cl-79e32ace">0.22</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-79e4a1ce"><p class="cl-79e41c72"><span class="cl-79e32ace">8</span></p></td><td class="cl-79e4a1ce"><p class="cl-79e41c72"><span class="cl-79e32ace">0.15</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-79e4a1ce"><p class="cl-79e41c72"><span class="cl-79e32ace">9</span></p></td><td class="cl-79e4a1ce"><p class="cl-79e41c72"><span class="cl-79e32ace">0.10</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-79e4a200"><p class="cl-79e41c72"><span class="cl-79e32ace">10</span></p></td><td class="cl-79e4a200"><p class="cl-79e41c72"><span class="cl-79e32ace">0.05</span></p></td></tr></tbody></table></div></template>
+<div class="flextable-shadow-host" id="973f6722-192d-46d4-a0ce-93863dd5049a"></div>
 <script>
-var dest = document.getElementById("d73420b5-3909-4851-bfd2-b21db4545521");
-var template = document.getElementById("f4a25fc2-7928-4ccd-897c-9a04e4ef5344");
+var dest = document.getElementById("973f6722-192d-46d4-a0ce-93863dd5049a");
+var template = document.getElementById("b7e8bbbc-f169-42b4-8487-6adae43f384c");
 var caption = template.content.querySelector("caption");
 if(caption) {
   caption.style.cssText = "display:block;text-align:center;";
@@ -383,7 +387,7 @@ fantome.appendChild(templateContent);
 </script>
 
 <p>Use these data to plot a graph in Excel with number of eggs on the x-axis and survival probability on the y-axis axis.</p>
-<p>Now, in another column in Excel, calculate, given the chick survival probability, what the expected number of surviving chicks will be for a big bird laying between 1 and 10 eggs<a href="#fn5" class="footnote-ref" id="fnref5"><sup>5</sup></a>.</p>
+<p>Now, in another column in Excel, calculate, given the chick survival probability, what the expected number of surviving chicks will be for a big bird laying between 1 and 10 eggs<a href="#fn3" class="footnote-ref" id="fnref3"><sup>3</sup></a>.</p>
 <p>Plot your result on another graph with number of eggs on the x-axis and number of surviving offspring on the y-axis.</p>
 <p>What do you notice? What is the optimum number of eggs to lay?</p>
 <p>Advanced: What happens to the optimum as you change the relationship between clutch size and survival.</p>
@@ -392,8 +396,8 @@ fantome.appendChild(templateContent);
 </div>
 <div class="footnotes">
 <hr />
-<ol start="5">
-<li id="fn5"><p>This may require some thought!<a href="how-many-eggs-should-a-bird-lay.html#fnref5" class="footnote-back">↩︎</a></p></li>
+<ol start="3">
+<li id="fn3"><p>This may require some thought!<a href="how-many-eggs-should-a-bird-lay.html#fnref3" class="footnote-back">↩︎</a></p></li>
 </ol>
 </div>
             </section>

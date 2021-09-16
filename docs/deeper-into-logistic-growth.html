@@ -24,7 +24,7 @@
 <meta name="author" content="Owen R. Jones (Course Coordinator)" />
 
 
-<meta name="date" content="2021-09-06" />
+<meta name="date" content="2021-09-16" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -195,7 +195,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="7.2" data-path="deeper-into-logistic-growth.html"><a href="deeper-into-logistic-growth.html#adding-a-time-lag"><i class="fa fa-check"></i><b>7.2</b> Adding a time lag</a></li>
 <li class="chapter" data-level="7.3" data-path="deeper-into-logistic-growth.html"><a href="deeper-into-logistic-growth.html#optional-cobweb-diagrams"><i class="fa fa-check"></i><b>7.3</b> Optional: Cobweb diagrams</a></li>
 </ul></li>
-<li class="chapter" data-level="8" data-path="life-tables-and-survivorship-types.html"><a href="life-tables-and-survivorship-types.html"><i class="fa fa-check"></i><b>8</b> Life tables and survivorship types</a></li>
+<li class="chapter" data-level="8" data-path="life-tables-and-survivorship-types.html"><a href="life-tables-and-survivorship-types.html"><i class="fa fa-check"></i><b>8</b> Life tables and survivorship types</a>
+<ul>
+<li class="chapter" data-level="8.0.1" data-path="life-tables-and-survivorship-types.html"><a href="life-tables-and-survivorship-types.html#life-table"><i class="fa fa-check"></i><b>8.0.1</b> Life table</a></li>
+<li class="chapter" data-level="8.0.2" data-path="life-tables-and-survivorship-types.html"><a href="life-tables-and-survivorship-types.html#survivorship-curves"><i class="fa fa-check"></i><b>8.0.2</b> Survivorship curves</a></li>
+</ul></li>
 <li class="chapter" data-level="9" data-path="matrix-population-modelling.html"><a href="matrix-population-modelling.html"><i class="fa fa-check"></i><b>9</b> Matrix population modelling</a>
 <ul>
 <li class="chapter" data-level="9.1" data-path="matrix-population-modelling.html"><a href="matrix-population-modelling.html#your-turn"><i class="fa fa-check"></i><b>9.1</b> Your turn…</a></li>
@@ -334,18 +338,19 @@ Competence in using mathematical models in Excel to strengthen own understanding
 </li>
 </ul>
 </div>
-<p>I will begin by showing the equations on the blackboard (or whiteboard) for exponential and logistic growth. I will highlight how the logistic model is a simple extension of the exponential model. I will show that when K is infinite the model <span class="math inline">\(\frac{d N}{d t}=r N\left(1-\frac{N}{K}\right)\)</span>, simplifies to the exponential model (<span class="math inline">\(\frac{d N}{d t}=r N\)</span>), because the <span class="math inline">\((1-\frac{N}{K})\)</span> bit drops out of the equation.<a href="#fn3" class="footnote-ref" id="fnref3"><sup>3</sup></a></p>
-<p>The same is true for the discrete version of the logistic growth model: Compare the equation <span class="math inline">\(N_{t+1}=N_{t}+r_{d} N_{t}\left(1-\frac{N_{t}}{K}\right)\)</span> with <span class="math inline">\(N_{t+1}=N_{t}+r_{d} N_{t}\)</span>.<a href="#fn4" class="footnote-ref" id="fnref4"><sup>4</sup></a></p>
+<p>I will begin by showing the equations on the blackboard (or whiteboard) for exponential and logistic growth. I will highlight how the logistic model is a simple extension of the exponential model. I will show that when <span class="math inline">\(K\)</span> is infinite the model <span class="math inline">\(\frac{\delta N}{\delta t}=r_m N\left(1-\frac{N}{K}\right)\)</span>, simplifies to the exponential model (<span class="math inline">\(\frac{\delta N}{\delta t}=r N\)</span>), because the <span class="math inline">\((1-\frac{N}{K})\)</span> bit drops out of the equation.</p>
+<p>The same is true for the discrete version of the logistic growth model: Compare the equation <span class="math inline">\(N_{t+1}=N_{t}+r_{d} N_{t}\left(1-\frac{N_{t}}{K}\right)\)</span> with <span class="math inline">\(N_{t+1}=N_{t}+r_{d} N_{t}\)</span>.</p>
+<p>I will also remind you of the difference between <span class="math inline">\(r_m\)</span> (intrinsic rate of increase), which is a fixed value in the model, and <span class="math inline">\(r\)</span> (per capita growth rate) which is calculated as <span class="math inline">\(r = r_m(1-N/K)\)</span>.</p>
 <p>You can then look at the Excel file <a href="https://www.dropbox.com/s/4xq399z7skl1akv/Deeper%20into%20Logistic%20Growth.xlsx?dl=1"><code>Deeper Into Logistic Growth.xlsx</code></a>.</p>
 <div id="different-views-of-the-basic-logistic-growth-model" class="section level2" number="7.1">
 <h2><span class="header-section-number">7.1</span> Different views of the basic logistic growth model</h2>
 <p>Take a look at the <code>BasicLogistic</code> Excel worksheet/ark.</p>
 <p>Focus first on <strong>Figure 1</strong>.</p>
-<p>Enter different values for <code>r_d</code>, e.g. 0.8, 1.2, 1.8, 2.4, 2.7…</p>
+<p>Enter different values for <span class="math inline">\(r_d\)</span>, e.g. 0.8, 1.2, 1.8, 2.4, 2.7…</p>
 <p>Can you describe the dynamics of the population time series in Figure 1 using some of the following vocabulary: Oscillation, damped oscillation, stable cycle, 2-point cycle, chaotic, unpredictable, predictable?</p>
 <p>Now focus on <strong>Figure 2</strong>.</p>
 <p>This figure shows the per capita population growth rate as a function of population size at time <span class="math inline">\(t\)</span>. Note where the line intercepts the x- and y-axes.</p>
-<p>What do you notice about these values? Hint: what are the values you have set for <code>r_d</code> and <code>K</code>? Try varying those values.</p>
+<p>What do you notice about these values? Hint: what are the values you have set for <span class="math inline">\(r_m\)</span> and <span class="math inline">\(K\)</span>? Try varying those values.</p>
 <p>On paper, make a sketch of a graph for per capita population growth rate as a function of population size at time t for a logistic model with <span class="math inline">\(r_d\)</span> = 1.5 and <span class="math inline">\(K\)</span> = 250, indicating the values of the intercepts. Check your sketch by entering those values into the Excel model.</p>
 <p>Based on what you know about what happens to the population dynamics for different values of <span class="math inline">\(r_d\)</span> and what you have just seen in Figure 2, you should now be able to sketch fairly accurate cartoon graphs if you are given values for <span class="math inline">\(r_d\)</span> and <span class="math inline">\(K\)</span>!</p>
 <p><em>Without using Excel</em>, draw a population time series, and a graph of per capita growth rate vs. N for when initial population size is 10, <span class="math inline">\(r_d\)</span> is 1.9 and <span class="math inline">\(K\)</span> is 500. Check your graph using Excel.</p>
@@ -380,13 +385,6 @@ knitr::include_app('https://jonesor.shinyapps.io/cobweb/', height = '600px')
 -->
 
 </div>
-</div>
-<div class="footnotes">
-<hr />
-<ol start="3">
-<li id="fn3"><p>These are equations 2.1 and 1.1 in Gotelli.<a href="deeper-into-logistic-growth.html#fnref3" class="footnote-back">↩︎</a></p></li>
-<li id="fn4"><p>These are Expression 1.13 (page. 11) and equation 2.4 from Gotelli.<a href="deeper-into-logistic-growth.html#fnref4" class="footnote-back">↩︎</a></p></li>
-</ol>
 </div>
             </section>
 
