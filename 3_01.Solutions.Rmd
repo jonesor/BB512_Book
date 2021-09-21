@@ -67,7 +67,7 @@ You should notice that the time taken to reach the maximum population size is re
 *	*How does the maximum population size compare with the carrying capacity?* 
 * *How would you describe the ‘dynamics’ of this population?*
 
-You should notice that the population overshoots carrying capacity ($K$), then oscillates around $K$ with damped oscilllations that gradually move towards $K$. Therefore if a population has even a moderate population growth rate, and if it has density-dependence, then it can fluctuate in numbers without any extrinsic factor (like weather) acting.
+You should notice that the population overshoots carrying capacity ($K$), then oscillates around $K$ with damped oscillations that gradually move towards $K$. Therefore if a population has even a moderate population growth rate, and if it has density-dependence, then it can fluctuate in numbers without any extrinsic factor (like weather) acting.
 
 *	*What happens if you increase the growth rate even more, to 2 or 2.1?* 
 *	*And even more to 2.8, 2.9 or 3?* 
@@ -96,11 +96,9 @@ Many pest species and diseases have very high population growth rates. For examp
 
 The line describing per capita growth rate crosses the x-axis (population size) at $K$. i.e. if $K = 100$, the line crosses at 100. If you change $K$, the intercept on the axis also changes accordingly. The line intercepts the axis at this point no matter what the population growth rate is.
 
-*Graph 3 is shaped like a parabola, starting with small values, increasing to a maximum, then declining to small values again. The position of the maximum is dependent on the values of K and r_m. When r_m is small (around 1), the peak is at $x=K$ and $y=K$. Explore (1) how the peak moves around if you fix one of $K$ or $r_m$ and alter the other parameter and (2) how the slope of the line changes at $N_t=K$. (Hint: the slope of the line changes from positive to negative as $r_m$ increases)*
+*Graph 3 is shaped like a parabola, starting with small values, increasing to a maximum, then declining to small values again. The peak of the parabola is at $K/2$ and the line crosses the y-axis at $0$ and $K$. Confirm to yourself, by changing the values for $r_m$ and $K$ that this is always the case.*
 
-As mentioned above, the peak of the parabola will be at $K$ on both axes when $r_m$ is small.  You should see that this makes sense because if the population is at carrying capacity in Year 1 (`Nt`, on the x-axis) then next year (Year 2; `Nt+1` on the y-axis) the population size will be the same because with logistic growth the population growth rate is always 0 when the population is at carrying capacity. Therefore, if you change $K$, the peak will move around accordingly, but always will be at $x=K$ and $y=K$.
-
-If you increase $r_m$ above 1, the shape of the relationship between $N_t$ and $N_{t+1}$ remains parabolic, but the location of the peak changes relative to $K$.
+The pattern remains whatever the values of $K$, and $r_m$
 
 *How would the same plots look for regular exponential growth?*
 
@@ -163,6 +161,8 @@ The main take home messages for this class are that you should:
 (2) be able to (roughly) parameterise a model shown in the life cycle diagram;
 (3) be able to write out a matrix model (the square of numbers) for a given life cycle diagram (and *vice versa*).
 (4) understand how population projection works, and to therefore interpret a figure or description showing a population projection.
+(5) understand what an elasticity matrix tells us (it tells us the relative importance of the transitions for population growth)
+(6) understand the concept of doing an LTRE to investigate management options.
 
 
 

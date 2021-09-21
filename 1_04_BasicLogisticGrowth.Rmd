@@ -95,7 +95,7 @@ Many pest species and diseases have very high population growth rates. For examp
 
 ## Graphs 2 & 3
 
-Now let’s turn to **Graphs 2** and **3**, which show the relationship between per capita population growth rate ($r$) and N, and between $dN/dt$ and N respectively.
+Now let’s turn to **Graphs 2** and **3**, which show the relationship between per capita population growth rate ($r$) and $N$, and between $dN/dt$ and $N_t$ respectively.
 
 In **Graph 2**, notice that the per capita growth rate ($r$) always declines linearly with population size (`N`). Where does it cross the x-axis line? Modify the carrying capacity (`K`) – what do you notice about the intercepts on the y and x axes?
 
@@ -116,6 +116,7 @@ How would the same plots look for regular exponential growth?
 Some useful keywords:
 
 * Oscillation
+* Damped oscillation
 * Cycle/cyclic dynamics
 * Stable-limit cycle (2-point, 3-point limit cycle)
 * Chaos/Chaotic dynamics
