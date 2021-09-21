@@ -38,8 +38,30 @@ Things to think about:
 
 Here's an example for a fictional organism.
 
+```{r include = FALSE}
+set.seed(123)
+matA_elas <- matrix(c(4, 4))
+
+while (length(which(matA_elas == max(matA_elas))) != 1) {
+  matA <- matrix(c(
+    sample(seq(0.05, .3, .05), 1), sample(seq(8, 10, .5), 1), sample(seq(0, 4, .5), 1),
+    sample(seq(0, .7, .05), 1), sample(seq(0, .7, .05), 1), 0.0,
+    0.0, sample(seq(0, .7, .05), 1), sample(seq(0, .9, .05), 1)
+  ), nrow = 3, ncol = 3, byrow = TRUE)
+  matA <- round(matA, 2)
+  (matA_elas <- round(popdemo::elas(matA), 2))
+}
+
+matA
+```
+
+
 ```{r echo=FALSE}
-matA <- matrix(c(0, 0, 6.51, 0.58, 0.19, 0, 0, 0.59, 0.24), nrow = 3, ncol = 3, byrow = TRUE)
+matA <- matrix(c(
+  0.3, 8.00, 2.00,
+  0.1, 0.50, 0.00,
+  0.0, 0.40, 0.40
+), nrow = 3, byrow = TRUE)
 matA <- round(matA, 2)
 ```
 ```{r, echo = FALSE, fig.cap="."}
@@ -101,12 +123,10 @@ You can put your matrix into R like in the example below (change the numbers to 
 
 ```{r}
 A <- matrix(c(
-  0.00, 0.00, 6.51,
-  0.58, 0.19, 0.00,
-  0.00, 0.59, 0.24
-),
-byrow = TRUE, nrow = 3
-)
+  0.3, 8.00, 2.00,
+  0.1, 0.50, 0.00,
+  0.0, 0.40, 0.40
+), ncol = 3, byrow = TRUE)
 ```
 
 ## Projecting the population
@@ -165,19 +185,19 @@ What transition is most important to population growth, according to the above?
 
 These don't have much to do with life tables (sorry, thats confusing!). The idea is very simple: you run "experiments" on your matrix model by asking "what if" questions. For example, what would happen if we could increase survival of the juveniles by 20%? what would happen if adults are hunted more, and thus have a decreased survival by 60%? what would happen if we provided supplemental food to reproducing females, and increase fecundity by 50%? etc. Use your imagination!
 
-In practice, we do that simply by modifying the matrix model. In the following, I am looking at the effect of increasing fertility by 50%:
+In practice, we do that simply by modifying the matrix model. In the following, I am looking at the effect of increasing fertility in adult and senescent individuals by 50%:
 
 ```{r}
 A <- matrix(c(
-  0.00, 0.00, 6.51*1.5,
-  0.58, 0.19, 0.00,
-  0.00, 0.59, 0.24
+  0.3, 8.00*1.5, 2.00*1.5,
+  0.1, 0.50, 0.00,
+  0.0, 0.40, 0.40
 ),
 byrow = TRUE, nrow = 3
 )
 
-popdemo::eigs(A,what = "lambda")
-
+popdemo::eigs(A, what = "lambda")
+elas(A)
 ```
 
 
