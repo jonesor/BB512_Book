@@ -24,7 +24,7 @@
 <meta name="author" content="Owen R. Jones (Course Coordinator)" />
 
 
-<meta name="date" content="2021-09-17" />
+<meta name="date" content="2021-09-21" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -202,8 +202,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="9" data-path="matrix-population-modelling.html"><a href="matrix-population-modelling.html"><i class="fa fa-check"></i><b>9</b> Matrix population modelling</a>
 <ul>
-<li class="chapter" data-level="9.1" data-path="matrix-population-modelling.html"><a href="matrix-population-modelling.html#your-turn"><i class="fa fa-check"></i><b>9.1</b> Your turn…</a></li>
-<li class="chapter" data-level="9.2" data-path="matrix-population-modelling.html"><a href="matrix-population-modelling.html#an-evolutionary-experiment"><i class="fa fa-check"></i><b>9.2</b> An evolutionary experiment</a></li>
+<li class="chapter" data-level="9.1" data-path="matrix-population-modelling.html"><a href="matrix-population-modelling.html#using-r-for-matrix-modelling"><i class="fa fa-check"></i><b>9.1</b> Using R for matrix modelling</a></li>
+<li class="chapter" data-level="9.2" data-path="matrix-population-modelling.html"><a href="matrix-population-modelling.html#projecting-the-population"><i class="fa fa-check"></i><b>9.2</b> Projecting the population</a></li>
+<li class="chapter" data-level="9.3" data-path="matrix-population-modelling.html"><a href="matrix-population-modelling.html#elasticity"><i class="fa fa-check"></i><b>9.3</b> Elasticity</a></li>
+<li class="chapter" data-level="9.4" data-path="matrix-population-modelling.html"><a href="matrix-population-modelling.html#life-table-response-experiment-ltre"><i class="fa fa-check"></i><b>9.4</b> Life table response experiment (LTRE)</a></li>
+<li class="chapter" data-level="9.5" data-path="matrix-population-modelling.html"><a href="matrix-population-modelling.html#your-turn"><i class="fa fa-check"></i><b>9.5</b> Your turn…</a>
+<ul>
+<li class="chapter" data-level="9.5.1" data-path="matrix-population-modelling.html"><a href="matrix-population-modelling.html#an-evolutionary-experiment"><i class="fa fa-check"></i><b>9.5.1</b> An evolutionary experiment</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="10" data-path="lotka-volterra-competition.html"><a href="lotka-volterra-competition.html"><i class="fa fa-check"></i><b>10</b> Lotka-Volterra competition</a>
 <ul>
@@ -328,24 +334,24 @@ This practical uses RStudio (R). It is similar to the previous exercise on matri
 <p>As you learned in the classes on age and stage structured population dynamics differences in survival and reproduction can be modelled using matrix population models (MPMs). These models can be simple or complex, and can be thought of as mathematical descriptions of the life history of the species (or population) in a particular environment.</p>
 <p>In an earlier you will have played with construction and analyses of these models by creating MPMs for species with different life histories such as high juvenile survival, or low juvenile survival etc.</p>
 <p>We will first need to load the <code>popdemo</code> package like this. Note that if you have not installed this package you should first install it with the command <code>install.packages("popdemo")</code>.</p>
-<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="from-population-biology-to-fitness.html#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(popdemo)</span></code></pre></div>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="from-population-biology-to-fitness.html#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(popdemo)</span></code></pre></div>
 <p>Let’s set up our baseline model. This model describes a population of some mammal species which we have divided into 3 stages: juvenile, adult and senescent (old).</p>
-<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="from-population-biology-to-fitness.html#cb23-1" aria-hidden="true" tabindex="-1"></a>A1 <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="fl">0.00</span>, <span class="fl">4.00</span>, <span class="fl">2.00</span>, </span>
-<span id="cb23-2"><a href="from-population-biology-to-fitness.html#cb23-2" aria-hidden="true" tabindex="-1"></a>               <span class="fl">0.10</span>, <span class="fl">0.80</span>, <span class="fl">0.00</span>, </span>
-<span id="cb23-3"><a href="from-population-biology-to-fitness.html#cb23-3" aria-hidden="true" tabindex="-1"></a>               <span class="fl">0.00</span>, <span class="fl">0.10</span>, <span class="fl">0.40</span>), </span>
-<span id="cb23-4"><a href="from-population-biology-to-fitness.html#cb23-4" aria-hidden="true" tabindex="-1"></a>            <span class="at">byrow =</span> <span class="cn">TRUE</span>, <span class="at">nrow =</span> <span class="dv">3</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="from-population-biology-to-fitness.html#cb27-1" aria-hidden="true" tabindex="-1"></a>A1 <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="fl">0.00</span>, <span class="fl">4.00</span>, <span class="fl">2.00</span>, </span>
+<span id="cb27-2"><a href="from-population-biology-to-fitness.html#cb27-2" aria-hidden="true" tabindex="-1"></a>               <span class="fl">0.10</span>, <span class="fl">0.80</span>, <span class="fl">0.00</span>, </span>
+<span id="cb27-3"><a href="from-population-biology-to-fitness.html#cb27-3" aria-hidden="true" tabindex="-1"></a>               <span class="fl">0.00</span>, <span class="fl">0.10</span>, <span class="fl">0.40</span>), </span>
+<span id="cb27-4"><a href="from-population-biology-to-fitness.html#cb27-4" aria-hidden="true" tabindex="-1"></a>            <span class="at">byrow =</span> <span class="cn">TRUE</span>, <span class="at">nrow =</span> <span class="dv">3</span>)</span></code></pre></div>
 <p>You can “read” the matrix by looking at the columns and rows: a value in the column <strong>3</strong> and row <strong>1</strong> tells you the “transition” <strong>from</strong> stage 3 <strong>to</strong> stage 1. In this case, it is saying that an individual in the adult age class produces an average of 5 babies, and one from the senescent age class produces 1 baby. Juveniles have a probability of 0.1 (10% chance) to survive to adulthood (and they reach maturity in 1 year, so there is no “stasis” where they can remain being juveniles). Adults can survive in 2 ways, they can survive and remain as adults (probability = 0.8) or they can survive and transition to being in the sensescent age class (probability = 0.1). Therefore, the total survival probability is 0.9. Senescent adults survive less well (probability = 0.4).</p>
 <p>We can project a population like this:</p>
-<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="from-population-biology-to-fitness.html#cb24-1" aria-hidden="true" tabindex="-1"></a>initial <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">10</span>,<span class="dv">5</span>,<span class="dv">3</span>) <span class="co"># just some random numbers</span></span>
-<span id="cb24-2"><a href="from-population-biology-to-fitness.html#cb24-2" aria-hidden="true" tabindex="-1"></a>pr <span class="ot">&lt;-</span> popdemo<span class="sc">::</span><span class="fu">project</span>(A1, <span class="at">vector =</span> initial, <span class="at">time=</span><span class="dv">8</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="from-population-biology-to-fitness.html#cb28-1" aria-hidden="true" tabindex="-1"></a>initial <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">10</span>,<span class="dv">5</span>,<span class="dv">3</span>) <span class="co"># just some random numbers</span></span>
+<span id="cb28-2"><a href="from-population-biology-to-fitness.html#cb28-2" aria-hidden="true" tabindex="-1"></a>pr <span class="ot">&lt;-</span> popdemo<span class="sc">::</span><span class="fu">project</span>(A1, <span class="at">vector =</span> initial, <span class="at">time=</span><span class="dv">8</span>)</span></code></pre></div>
 <p>Take a look at <code>pr</code>, the projected population. This gives you the total population size, and below that the population sizes in each stage.</p>
-<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="from-population-biology-to-fitness.html#cb25-1" aria-hidden="true" tabindex="-1"></a>pr</span></code></pre></div>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="from-population-biology-to-fitness.html#cb29-1" aria-hidden="true" tabindex="-1"></a>pr</span></code></pre></div>
 <pre><code>## 1 deterministic population projection over 8 time intervals.
 ## 
 ## [1] 18.00000 32.70000 31.18000 37.51200 42.93080 50.15272 58.36605 68.04116
 ## [9] 79.29730</code></pre>
 <p>You can access the population sizes of the different stages using <code>vec(pr)</code>.</p>
-<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="from-population-biology-to-fitness.html#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">vec</span>(pr)</span></code></pre></div>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="from-population-biology-to-fitness.html#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">vec</span>(pr)</span></code></pre></div>
 <pre><code>##             S1       S2       S3
 ##  [1,] 10.00000  5.00000 3.000000
 ##  [2,] 26.00000  5.00000 1.700000
@@ -357,12 +363,12 @@ This practical uses RStudio (R). It is similar to the previous exercise on matri
 ##  [8,] 51.97034 14.21211 1.858715
 ##  [9,] 60.56588 16.56672 2.164697</code></pre>
 <p>Let’s plot this… Check out how, after a “transient” period, there is exponential growth in all stages of the population. The population is growing steadily with a fixed population growth rate (<span class="math inline">\(\lambda\)</span>).</p>
-<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="from-population-biology-to-fitness.html#cb29-1" aria-hidden="true" tabindex="-1"></a>pop <span class="ot">&lt;-</span> <span class="fu">vec</span>(pr)</span>
-<span id="cb29-2"><a href="from-population-biology-to-fitness.html#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="fu">matplot</span>(pop,<span class="at">type=</span><span class="st">&quot;l&quot;</span>,<span class="at">log=</span><span class="st">&quot;y&quot;</span>)</span>
-<span id="cb29-3"><a href="from-population-biology-to-fitness.html#cb29-3" aria-hidden="true" tabindex="-1"></a><span class="fu">legend</span>(<span class="st">&quot;topleft&quot;</span>,<span class="at">legend =</span> <span class="fu">colnames</span>(pop),<span class="at">col=</span><span class="dv">1</span><span class="sc">:</span><span class="fu">ncol</span>(pop),<span class="at">lty=</span><span class="dv">1</span><span class="sc">:</span><span class="fu">ncol</span>(pop))</span></code></pre></div>
-<p><img src="BB512_files/figure-html/unnamed-chunk-57-1.png" width="672" /></p>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="from-population-biology-to-fitness.html#cb33-1" aria-hidden="true" tabindex="-1"></a>pop <span class="ot">&lt;-</span> <span class="fu">vec</span>(pr)</span>
+<span id="cb33-2"><a href="from-population-biology-to-fitness.html#cb33-2" aria-hidden="true" tabindex="-1"></a><span class="fu">matplot</span>(pop,<span class="at">type=</span><span class="st">&quot;l&quot;</span>,<span class="at">log=</span><span class="st">&quot;y&quot;</span>)</span>
+<span id="cb33-3"><a href="from-population-biology-to-fitness.html#cb33-3" aria-hidden="true" tabindex="-1"></a><span class="fu">legend</span>(<span class="st">&quot;topleft&quot;</span>,<span class="at">legend =</span> <span class="fu">colnames</span>(pop),<span class="at">col=</span><span class="dv">1</span><span class="sc">:</span><span class="fu">ncol</span>(pop),<span class="at">lty=</span><span class="dv">1</span><span class="sc">:</span><span class="fu">ncol</span>(pop))</span></code></pre></div>
+<p><img src="BB512_files/figure-html/unnamed-chunk-60-1.png" width="672" /></p>
 <p>You can see that the population is increasing and we can calculate the precise population growth rate (<span class="math inline">\(\lambda\)</span>) like this:</p>
-<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="from-population-biology-to-fitness.html#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">eigs</span>(A1)<span class="sc">$</span>lambda</span></code></pre></div>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="from-population-biology-to-fitness.html#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">eigs</span>(A1)<span class="sc">$</span>lambda</span></code></pre></div>
 <pre><code>## [1] 1.165587</code></pre>
 <p>Thus, the population is growing at 16.56% per year.</p>
 <p>So where does evolution come in?</p>
@@ -371,12 +377,12 @@ This practical uses RStudio (R). It is similar to the previous exercise on matri
 <h2><span class="header-section-number">12.2</span> The link to fitness</h2>
 <p>In this population consider that suddenly a mutation arises in an individual parent that causes it to give more care to their offspring. For example, maybe they provide milk with a higher fat content, or build a safer nest. Whatever the mechanism, let’s assume that it results in a small increase in juvenile survival.</p>
 <p>We can simulate this by increasing the juvenile survival in the matrix model from 0.10 to 0.11.</p>
-<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="from-population-biology-to-fitness.html#cb32-1" aria-hidden="true" tabindex="-1"></a>A2 <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="fl">0.00</span>, <span class="fl">4.00</span>, <span class="fl">2.00</span>, </span>
-<span id="cb32-2"><a href="from-population-biology-to-fitness.html#cb32-2" aria-hidden="true" tabindex="-1"></a>               <span class="fl">0.11</span>, <span class="fl">0.80</span>, <span class="fl">0.00</span>, </span>
-<span id="cb32-3"><a href="from-population-biology-to-fitness.html#cb32-3" aria-hidden="true" tabindex="-1"></a>               <span class="fl">0.00</span>, <span class="fl">0.10</span>, <span class="fl">0.40</span>), </span>
-<span id="cb32-4"><a href="from-population-biology-to-fitness.html#cb32-4" aria-hidden="true" tabindex="-1"></a>            <span class="at">byrow =</span> <span class="cn">TRUE</span>, <span class="at">nrow =</span> <span class="dv">3</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="from-population-biology-to-fitness.html#cb36-1" aria-hidden="true" tabindex="-1"></a>A2 <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="fl">0.00</span>, <span class="fl">4.00</span>, <span class="fl">2.00</span>, </span>
+<span id="cb36-2"><a href="from-population-biology-to-fitness.html#cb36-2" aria-hidden="true" tabindex="-1"></a>               <span class="fl">0.11</span>, <span class="fl">0.80</span>, <span class="fl">0.00</span>, </span>
+<span id="cb36-3"><a href="from-population-biology-to-fitness.html#cb36-3" aria-hidden="true" tabindex="-1"></a>               <span class="fl">0.00</span>, <span class="fl">0.10</span>, <span class="fl">0.40</span>), </span>
+<span id="cb36-4"><a href="from-population-biology-to-fitness.html#cb36-4" aria-hidden="true" tabindex="-1"></a>            <span class="at">byrow =</span> <span class="cn">TRUE</span>, <span class="at">nrow =</span> <span class="dv">3</span>)</span></code></pre></div>
 <p>What effect does that have on population growth rate?</p>
-<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="from-population-biology-to-fitness.html#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">eigs</span>(A2)<span class="sc">$</span>lambda</span></code></pre></div>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="from-population-biology-to-fitness.html#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">eigs</span>(A2)<span class="sc">$</span>lambda</span></code></pre></div>
 <pre><code>## [1] 1.192317</code></pre>
 <p>The small increase in juvenile survival has resulted in a small increase in population growth rate, from 16.56% to 19.23% per year.</p>
 <p>If you consider that the original population now consists of two genotypes – “ordinary” and “caring” – what do you think will happen to the percentage of the two genotypes through time?</p>

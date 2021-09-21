@@ -24,7 +24,7 @@
 <meta name="author" content="Owen R. Jones (Course Coordinator)" />
 
 
-<meta name="date" content="2021-09-17" />
+<meta name="date" content="2021-09-21" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -202,8 +202,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="9" data-path="matrix-population-modelling.html"><a href="matrix-population-modelling.html"><i class="fa fa-check"></i><b>9</b> Matrix population modelling</a>
 <ul>
-<li class="chapter" data-level="9.1" data-path="matrix-population-modelling.html"><a href="matrix-population-modelling.html#your-turn"><i class="fa fa-check"></i><b>9.1</b> Your turn…</a></li>
-<li class="chapter" data-level="9.2" data-path="matrix-population-modelling.html"><a href="matrix-population-modelling.html#an-evolutionary-experiment"><i class="fa fa-check"></i><b>9.2</b> An evolutionary experiment</a></li>
+<li class="chapter" data-level="9.1" data-path="matrix-population-modelling.html"><a href="matrix-population-modelling.html#using-r-for-matrix-modelling"><i class="fa fa-check"></i><b>9.1</b> Using R for matrix modelling</a></li>
+<li class="chapter" data-level="9.2" data-path="matrix-population-modelling.html"><a href="matrix-population-modelling.html#projecting-the-population"><i class="fa fa-check"></i><b>9.2</b> Projecting the population</a></li>
+<li class="chapter" data-level="9.3" data-path="matrix-population-modelling.html"><a href="matrix-population-modelling.html#elasticity"><i class="fa fa-check"></i><b>9.3</b> Elasticity</a></li>
+<li class="chapter" data-level="9.4" data-path="matrix-population-modelling.html"><a href="matrix-population-modelling.html#life-table-response-experiment-ltre"><i class="fa fa-check"></i><b>9.4</b> Life table response experiment (LTRE)</a></li>
+<li class="chapter" data-level="9.5" data-path="matrix-population-modelling.html"><a href="matrix-population-modelling.html#your-turn"><i class="fa fa-check"></i><b>9.5</b> Your turn…</a>
+<ul>
+<li class="chapter" data-level="9.5.1" data-path="matrix-population-modelling.html"><a href="matrix-population-modelling.html#an-evolutionary-experiment"><i class="fa fa-check"></i><b>9.5.1</b> An evolutionary experiment</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="10" data-path="lotka-volterra-competition.html"><a href="lotka-volterra-competition.html"><i class="fa fa-check"></i><b>10</b> Lotka-Volterra competition</a>
 <ul>
@@ -338,7 +344,7 @@ Figure 14.1: How will selection differ between these environments?
 </div>
 <div id="the-traits" class="section level2" number="14.4">
 <h2><span class="header-section-number">14.4</span> The traits</h2>
-<template id="40a3f3de-2802-481e-bfa5-b2ec29e07475"><style>
+<template id="802ba2a2-a4b9-4ed0-9d5b-9744aa0cd757"><style>
 .tabwid table{
   border-collapse:collapse;
   line-height:1;
@@ -372,12 +378,12 @@ Figure 14.1: How will selection differ between these environments?
 .tabwid table tr {
 background-color: transparent;
 }
-</style><div class="tabwid"><style>.cl-0f536efe{border-collapse:collapse;}.cl-0f474d90{font-family:'Helvetica';font-size:16pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-0f4769f6{margin:0;text-align:left;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-0f47df12{width:288pt;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style><table class='cl-0f536efe'>
-<tbody><tr style="overflow-wrap:break-word;"><td class="cl-0f47df12"><p class="cl-0f4769f6"><span class="cl-0f474d90">Eye/hair colour</span></p></td><td class="cl-0f47df12"><p class="cl-0f4769f6"><span class="cl-0f474d90">Metabolic efficiency</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-0f47df12"><p class="cl-0f4769f6"><span class="cl-0f474d90">Skin colour</span></p></td><td class="cl-0f47df12"><p class="cl-0f4769f6"><span class="cl-0f474d90">Amount of body hair</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-0f47df12"><p class="cl-0f4769f6"><span class="cl-0f474d90">Singing ability</span></p></td><td class="cl-0f47df12"><p class="cl-0f4769f6"><span class="cl-0f474d90">Intelligence</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-0f47df12"><p class="cl-0f4769f6"><span class="cl-0f474d90">Iris stucture</span></p></td><td class="cl-0f47df12"><p class="cl-0f4769f6"><span class="cl-0f474d90">Sperm motility</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-0f47df12"><p class="cl-0f4769f6"><span class="cl-0f474d90">Muscle strength</span></p></td><td class="cl-0f47df12"><p class="cl-0f4769f6"><span class="cl-0f474d90">Face symmetry</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-0f47df12"><p class="cl-0f4769f6"><span class="cl-0f474d90">Running speed</span></p></td><td class="cl-0f47df12"><p class="cl-0f4769f6"><span class="cl-0f474d90">Height</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-0f47df12"><p class="cl-0f4769f6"><span class="cl-0f474d90">Resistance to bubonic plague</span></p></td><td class="cl-0f47df12"><p class="cl-0f4769f6"><span class="cl-0f474d90">Sense of smell</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-0f47df12"><p class="cl-0f4769f6"><span class="cl-0f474d90">Resistance to common cold</span></p></td><td class="cl-0f47df12"><p class="cl-0f4769f6"><span class="cl-0f474d90">Eyesight acuity</span></p></td></tr></tbody></table></div></template>
-<div class="flextable-shadow-host" id="bd31fb73-d68f-4f55-aacb-ebec31e8edcd"></div>
+</style><div class="tabwid"><style>.cl-fbd356c6{border-collapse:collapse;}.cl-fbcb5e94{font-family:'Helvetica';font-size:16pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-fbcb6ec0{margin:0;text-align:left;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-fbcb9abc{width:288pt;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style><table class='cl-fbd356c6'>
+<tbody><tr style="overflow-wrap:break-word;"><td class="cl-fbcb9abc"><p class="cl-fbcb6ec0"><span class="cl-fbcb5e94">Eye/hair colour</span></p></td><td class="cl-fbcb9abc"><p class="cl-fbcb6ec0"><span class="cl-fbcb5e94">Metabolic efficiency</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-fbcb9abc"><p class="cl-fbcb6ec0"><span class="cl-fbcb5e94">Skin colour</span></p></td><td class="cl-fbcb9abc"><p class="cl-fbcb6ec0"><span class="cl-fbcb5e94">Amount of body hair</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-fbcb9abc"><p class="cl-fbcb6ec0"><span class="cl-fbcb5e94">Singing ability</span></p></td><td class="cl-fbcb9abc"><p class="cl-fbcb6ec0"><span class="cl-fbcb5e94">Intelligence</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-fbcb9abc"><p class="cl-fbcb6ec0"><span class="cl-fbcb5e94">Iris stucture</span></p></td><td class="cl-fbcb9abc"><p class="cl-fbcb6ec0"><span class="cl-fbcb5e94">Sperm motility</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-fbcb9abc"><p class="cl-fbcb6ec0"><span class="cl-fbcb5e94">Muscle strength</span></p></td><td class="cl-fbcb9abc"><p class="cl-fbcb6ec0"><span class="cl-fbcb5e94">Face symmetry</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-fbcb9abc"><p class="cl-fbcb6ec0"><span class="cl-fbcb5e94">Running speed</span></p></td><td class="cl-fbcb9abc"><p class="cl-fbcb6ec0"><span class="cl-fbcb5e94">Height</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-fbcb9abc"><p class="cl-fbcb6ec0"><span class="cl-fbcb5e94">Resistance to bubonic plague</span></p></td><td class="cl-fbcb9abc"><p class="cl-fbcb6ec0"><span class="cl-fbcb5e94">Sense of smell</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-fbcb9abc"><p class="cl-fbcb6ec0"><span class="cl-fbcb5e94">Resistance to common cold</span></p></td><td class="cl-fbcb9abc"><p class="cl-fbcb6ec0"><span class="cl-fbcb5e94">Eyesight acuity</span></p></td></tr></tbody></table></div></template>
+<div class="flextable-shadow-host" id="2826b104-0acd-48ef-a90a-73e618cb8b60"></div>
 <script>
-var dest = document.getElementById("bd31fb73-d68f-4f55-aacb-ebec31e8edcd");
-var template = document.getElementById("40a3f3de-2802-481e-bfa5-b2ec29e07475");
+var dest = document.getElementById("2826b104-0acd-48ef-a90a-73e618cb8b60");
+var template = document.getElementById("802ba2a2-a4b9-4ed0-9d5b-9744aa0cd757");
 var caption = template.content.querySelector("caption");
 if(caption) {
   caption.style.cssText = "display:block;text-align:center;";
