@@ -4,11 +4,22 @@ In ecology the there is a "rule" called the "competitive exclusion principle" wh
 
 How different do their niches need to be for coexistence? The general idea is that coexistence can occur if each species limits its own population growth rate more than it limits the growth rate of the other species. 
 
-If there the niches overlap too much, one species will competitively exclude the other (i.e. forces the other to extinction).
+If there the niches overlap too much, one species will competitively exclude the other (i.e. forces the other to extinction). The outcome of the competition between species depends on their *competition coefficients* and *carrying capacities*, (and sometimes their population sizes). The models include both INTER- and INTRA-specific competition.
 
-In this class you will be working from a PDF available [here](https://www.dropbox.com/s/oukr39oq0rsn8il/9.%20Interspecific%20Competition%20and%20Competitive%20Exclusion.pdf?dl=1) to explore this idea.
+In this class (over TWO sessions) you will be working from a PDF available [here](https://www.dropbox.com/s/oukr39oq0rsn8il/9.%20Interspecific%20Competition%20and%20Competitive%20Exclusion.pdf?dl=1) to explore this idea.
 
 This PDF walks you through the creation of an Excel spreadsheet exploring interspecific competition and competitive exclusion using the Lotka-Volterra model. 
+
+
+```{block, type="do-something"}
+Learning outcomes: 
+
+- Competence in constructing an Excel-based population model.
+- Understanding how the Lotka-Volterra competition model works.
+- Understanding the $\alpha$ and $\beta$ competition coefficients.
+
+```
+
 
 Your task:
 
