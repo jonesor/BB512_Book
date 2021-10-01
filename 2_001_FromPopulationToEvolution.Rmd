@@ -2,6 +2,15 @@
 
 The purpose of this practical is to draw clear links between the first part of the course (population biology) and the second part of the course (evolution).
 
+```{block, type="do-something"}
+Learning outcomes: 
+
+- Understanding the relationship between population growth and the concept of fitness.
+- Understanding the concept of an evolutionary trade-off.
+
+```
+
+
 We will focus on the concept of **fitness**.
 
 Fitness is a slippery concept, but it is widely accepted that it is closely related to population growth rate. In this class you will explore this concept using some mathematical modelling (aagh!).
@@ -64,10 +73,10 @@ legend("topleft",legend = colnames(pop),col=1:ncol(pop),lty=1:ncol(pop))
 You can see that the population is increasing and we can calculate the precise population growth rate ($\lambda$) like this:
 
 ```{r}
-eigs(A1)$lambda
+eigs(A1,what = "lambda")
 ```
 
-Thus, the population is growing at `r format(100*(eigs(A1)$lambda-1),2,4)`% per year.
+Thus, the population is growing at `r format(100*(eigs(A1,what = "lambda")-1),2,4)`% per year.
 
 So where does evolution come in?
 
@@ -87,7 +96,7 @@ A2 <- matrix(c(0.00, 4.00, 2.00,
 What effect does that have on population growth rate?
 
 ```{r}
-eigs(A2)$lambda
+eigs(A2,what = "lambda")
 ```
 
 The small increase in juvenile survival has resulted in a small increase in population growth rate, from `r format(100*(eigs(A1)$lambda-1),2,4)`% to `r format(100*(eigs(A2)$lambda-1),2,4)`% per year.
@@ -111,7 +120,7 @@ Is this new genotype viable? In other words, is the fitness of the genotype grea
 
 
 ```{block, type="do-something"}
-Modify the matrix to reduce old adult survival to, say 0.05 (5% survival) and re-calcualte the population growth rate.
+Modify the matrix to reduce old adult survival to, say 0.05 (5% survival) and re-calculate the population growth rate.
 
 Is this "trade-off genotype" fitter than the original one? i.e. is the small benefit worth the large cost?
 

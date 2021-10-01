@@ -4,6 +4,15 @@ In the classic Lotka-Volterra predator-prey model (Rosenzweig and MacArthur 1963
 
 In this class you will follow a PDF worksheet ([here](https://www.dropbox.com/s/bhwoe161wp9p6hp/10.%20Predator-prey%20dynamics.pdf?dl=1)) which guides you to build and explore a Lotka-Volterra predator-prey model in Excel. The model has parameters for the prey and for the predator, and you will explore how these parameters influence the dynamics of the populations.
 
+```{block, type="do-something"}
+Learning outcomes: 
+
+- Competence in constructing an Excel-based population model.
+- Understanding how the Lotka-Volterra predator-prey model works, and how it is visualised.
+
+```
+
+
 The worksheet is divided into three parts. We will mainly **focus on Part 1** - the basic model - in the class. 
 
 Part 2 modifies the basic model to include a refuge, and part 3 modifies the model to include carrying capacity. Feel free to continue to work on these if there is time, and if you are interested.

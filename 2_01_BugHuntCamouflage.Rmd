@@ -7,6 +7,16 @@ Open NetLogo and click File > Models Library. You can then use the search box at
 This is a model of natural/artificial selection that shows how a population hunted by a predator can develop camouflaging. For example, in a forest with green leaves, green bugs may emerge as the predominant bug color.
 In the simulation you assume the role of a predatory bird that feeds on insects, which can be different colours.  You will see what effect your hunting has on the colour traits/genetics of these simulated insects, and also how this evolution affects your hunting efficiency.
 
+```{block, type="do-something"}
+Learning outcomes: 
+
+- Understanding adaptive evolution via natural selection.
+- Understanding how concept of fitness depends on the environment.
+- Understanding the terms adaptation, selection, selection pressure, heritability.
+
+```
+
+
 ## Getting started
 
 1. When you open the model, you will see a screen with various purple and green “sliders”, buttons and menus that control parts of the model.
@@ -28,7 +38,7 @@ To understand what’s going on, you need to understand how the simulation works
 *Simple version:* 
 The simulation starts with bugs with random colours.
 
-Each time you kill a bug, one of the remaining bugs produces an offspring so that the population size stays constant. The colour of the offspring is inherited from its parent, though it can change slightly due to mutation (determined by the “max-mutation-step” slider). Therefore, the offspring of a red parent will be reddish, the offpring of a blue parent will be blueish and so on. Therefore, if you consistently kill off (e.g.) non-reddish bugs, the reddish bugs that remain will have offspring that are also red and the average colour of the population will then shift towards being redder. 
+Each time you kill a bug, one of the remaining bugs produces an offspring so that the population size stays constant. The colour of the offspring is inherited from its parent, though it can change slightly due to mutation (determined by the “max-mutation-step” slider). Therefore, the offspring of a red parent will be reddish, the offspring of a blue parent will be blueish and so on. Therefore, if you consistently kill off (e.g.) non-reddish bugs, the reddish bugs that remain will have offspring that are also red and the average colour of the population will then shift towards being redder. 
 
 Colour here is indicated by “hue”, “saturation” and “brightness” which range from 0 to 255. Basically, hue describes colour value (red/green/blue), saturation describes how “washed out” or vivid the colour is (a low value for saturation would look white), and brightness describes how bright the colour is (a low value for brightness would look black). See below for more details.
 

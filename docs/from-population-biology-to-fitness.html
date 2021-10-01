@@ -24,7 +24,7 @@
 <meta name="author" content="Owen R. Jones (Course Coordinator)" />
 
 
-<meta name="date" content="2021-09-24" />
+<meta name="date" content="2021-10-01" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -322,6 +322,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="from-population-biology-to-fitness" class="section level1" number="12">
 <h1><span class="header-section-number">12</span> From population biology to fitness</h1>
 <p>The purpose of this practical is to draw clear links between the first part of the course (population biology) and the second part of the course (evolution).</p>
+<div class="do-something">
+<p>
+Learning outcomes:
+</p>
+<ul>
+<li>
+Understanding the relationship between population growth and the concept of fitness.
+</li>
+<li>
+Understanding the concept of an evolutionary trade-off.
+</li>
+</ul>
+</div>
 <p>We will focus on the concept of <strong>fitness</strong>.</p>
 <p>Fitness is a slippery concept, but it is widely accepted that it is closely related to population growth rate. In this class you will explore this concept using some mathematical modelling (aagh!).</p>
 <div class="do-something">
@@ -366,9 +379,9 @@ This practical uses RStudio (R). It is similar to the previous exercise on matri
 <div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="from-population-biology-to-fitness.html#cb35-1" aria-hidden="true" tabindex="-1"></a>pop <span class="ot">&lt;-</span> <span class="fu">vec</span>(pr)</span>
 <span id="cb35-2"><a href="from-population-biology-to-fitness.html#cb35-2" aria-hidden="true" tabindex="-1"></a><span class="fu">matplot</span>(pop,<span class="at">type=</span><span class="st">&quot;l&quot;</span>,<span class="at">log=</span><span class="st">&quot;y&quot;</span>)</span>
 <span id="cb35-3"><a href="from-population-biology-to-fitness.html#cb35-3" aria-hidden="true" tabindex="-1"></a><span class="fu">legend</span>(<span class="st">&quot;topleft&quot;</span>,<span class="at">legend =</span> <span class="fu">colnames</span>(pop),<span class="at">col=</span><span class="dv">1</span><span class="sc">:</span><span class="fu">ncol</span>(pop),<span class="at">lty=</span><span class="dv">1</span><span class="sc">:</span><span class="fu">ncol</span>(pop))</span></code></pre></div>
-<p><img src="BB512_files/figure-html/unnamed-chunk-62-1.png" width="672" /></p>
+<p><img src="BB512_files/figure-html/unnamed-chunk-64-1.png" width="672" /></p>
 <p>You can see that the population is increasing and we can calculate the precise population growth rate (<span class="math inline">\(\lambda\)</span>) like this:</p>
-<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="from-population-biology-to-fitness.html#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">eigs</span>(A1)<span class="sc">$</span>lambda</span></code></pre></div>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="from-population-biology-to-fitness.html#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">eigs</span>(A1,<span class="at">what =</span> <span class="st">&quot;lambda&quot;</span>)</span></code></pre></div>
 <pre><code>## [1] 1.165587</code></pre>
 <p>Thus, the population is growing at 16.56% per year.</p>
 <p>So where does evolution come in?</p>
@@ -382,7 +395,7 @@ This practical uses RStudio (R). It is similar to the previous exercise on matri
 <span id="cb38-3"><a href="from-population-biology-to-fitness.html#cb38-3" aria-hidden="true" tabindex="-1"></a>               <span class="fl">0.00</span>, <span class="fl">0.10</span>, <span class="fl">0.40</span>), </span>
 <span id="cb38-4"><a href="from-population-biology-to-fitness.html#cb38-4" aria-hidden="true" tabindex="-1"></a>            <span class="at">byrow =</span> <span class="cn">TRUE</span>, <span class="at">nrow =</span> <span class="dv">3</span>)</span></code></pre></div>
 <p>What effect does that have on population growth rate?</p>
-<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="from-population-biology-to-fitness.html#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="fu">eigs</span>(A2)<span class="sc">$</span>lambda</span></code></pre></div>
+<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="from-population-biology-to-fitness.html#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="fu">eigs</span>(A2,<span class="at">what =</span> <span class="st">&quot;lambda&quot;</span>)</span></code></pre></div>
 <pre><code>## [1] 1.192317</code></pre>
 <p>The small increase in juvenile survival has resulted in a small increase in population growth rate, from 16.56% to 19.23% per year.</p>
 <p>If you consider that the original population now consists of two genotypes – “ordinary” and “caring” – what do you think will happen to the percentage of the two genotypes through time?</p>
@@ -398,7 +411,7 @@ But such changes often come with a cost: The new genotype allocates extra resour
 <p>Is this new genotype viable? In other words, is the fitness of the genotype greater than that of the original genotype? If so, the new genotype will come to dominate the population.</p>
 <div class="do-something">
 <p>
-Modify the matrix to reduce old adult survival to, say 0.05 (5% survival) and re-calcualte the population growth rate.
+Modify the matrix to reduce old adult survival to, say 0.05 (5% survival) and re-calculate the population growth rate.
 </p>
 <p>
 Is this “trade-off genotype” fitter than the original one? i.e. is the small benefit worth the large cost?
