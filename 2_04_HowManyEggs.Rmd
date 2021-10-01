@@ -1,6 +1,5 @@
 # How many eggs should a bird lay?
 
-## Objectives
 
 The objective of this exercise is to get an understanding the trade off between the benefits of producing large numbers of offspring and the costs of reduced survival of those offspring. This is known as “Lack’s clutch size”.
 

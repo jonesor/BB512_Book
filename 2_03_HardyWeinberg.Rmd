@@ -30,7 +30,7 @@ Given a small amount of information it is possible to figure out what the allele
 
 If the population is NOT at HWE, then it must be that one of the assumptions is violated.
 
-```{r fig.cap="The Hardy-Weinberg Equilibrium. The lines represent the genotype frequencies at HWE, given particular allele frequencies."}
+```{r echo = FALSE, fig.cap="The Hardy-Weinberg Equilibrium. The lines represent the genotype frequencies at HWE, given particular allele frequencies."}
 #Hardy Weinberg Principle
 
 p = seq(0,1,0.01)

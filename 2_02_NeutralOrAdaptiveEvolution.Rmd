@@ -1,6 +1,5 @@
 # Neutral or adaptive evolution in humans?
 
-## Objective
 
 The objective of this exercise is to develop an intuitive understanding of the effect of selection and genetic drift on traits. 
 
