@@ -4,6 +4,15 @@
 
 The objective of this exercise is to get an understanding the trade off between the benefits of producing large numbers of offspring and the costs of reduced survival of those offspring. This is known as “Lack’s clutch size”.
 
+
+```{block, type="do-something"}
+Learning outcomes: 
+
+- Understanding the concept of a life history trade off.
+- Understanding how balancing the benefits and drawbacks of trade offs tends to lead to intermediate trait values.
+
+```
+
 ## Background
 
 David Lack was a British ornithologist who proposed that the number of eggs a bird should lay was the result of a trade-off between the benefits of producing large numbers of offspring, and the survival costs of feeding the chicks that hatch.
@@ -34,5 +43,5 @@ Plot your result on another graph with number of eggs on the x-axis and number o
 
 What do you notice? What is the optimum number of eggs to lay? 
 
-Advanced: What happens to the optimum as you change the relationship between clutch size and survival.
+Advanced: What happens to the optimum as you change the relationship between clutch size and survival?
 

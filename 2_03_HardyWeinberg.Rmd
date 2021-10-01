@@ -1,5 +1,78 @@
 # Hardy-Weinberg equilibrium
 
+Hardy-Weinberg Equilibrium is the consequence of applying Mendel's laws to a population that is large, randomly mating, and diploid, with discrete non-overlapping generations and where there is no-selection and no gene flow. In this practical we will learn more about HWE and practice solving some HWE-related problems.
+
+
+
+```{block, type="do-something"}
+Learning outcomes: 
+
+- Understanding the difference between alleles and genotypes.
+- The ability to solve Hardy-Weinberg problems by understanding and applying the two key formulae of HW.
+- Knowing the assumptions of HWE.
+- Understanding what "being at Hardy-Weinberg Equilibrium" means in terms of evolutionary processes (which is related to the assumptions of HWE).
+
+```
+
+The key formulae of the Hardy-Weinberg Equilibrium are:
+
+Equation 1: $p + q = 1$
+
+and
+
+Equation 2: $p^2 + 2pq + q^2 = 1$. 
+
+An instructor (probably Owen) will explain how we get from equation 1 to equation 2 using the idea of the gene pool, random sampling (random mating), and probability.
+
+In these formulae, $p$ is the allele frequency of the dominant allele and $q$ is the frequency of the recessive allele. Thus, $p^2$ is the frequency of the homozygous dominant genotype (e.g., AA), $q^2$ is the frequency of the homozygous recessive genotype (e.g., aa) and $2pq$ is the frequency of the heterozygous genotype (e.g., Aa). From these equations we can produce the following plot that shows the possible genotype frequencies at HWE for any given pair of allele frequencies. HWE can be reached for any genotype frequency (it is a common misconception that ratios between the three genotypes should be 1:2:1, or that allele frequencies should tend towards being 50% $p$ and 50% $q$).
+
+Given a small amount of information it is possible to figure out what the allele and genotype frequencies should be *if the population is at HWE*.
+
+If the population is NOT at HWE, then it must be that one of the assumptions is violated.
+
+```{r fig.cap="The Hardy-Weinberg Equilibrium. The lines represent the genotype frequencies at HWE, given particular allele frequencies.}
+#Hardy Weinberg Principle
+
+p = seq(0,1,0.01)
+q = 1-p
+
+homo.p <- p^2 
+hetero <- 2*p*q
+homo.q <- q^2
+
+data.frame(p,q,homo.p,hetero,homo.q)
+
+plot(p,homo.p,type="n",axes=FALSE,xlab="",ylab="")
+
+abline(v=seq(0,1,0.1),col="#C0D9D9",lty=2)
+abline(h=seq(0,1,0.1),col="#C0D9D9",lty=2)
+
+points(p,homo.p,type="l",lwd=2,col="#3182bd")
+points(p,homo.q,type="l",lwd=2,col="#e34a33")
+points(p,hetero,type="l",lwd=2,col="#c994c7")
+
+axlab = seq(0,1,0.2)
+axis(1,line=1,col.axis="#3182bd",col="#3182bd",at=axlab,label=axlab)
+axis(1,line=3,col.axis="#e34a33",col="#e34a33",at=axlab,label=rev(axlab))
+axis(2)
+title(ylab="Frequency")
+text(x=0.05,y=1,"aa",col="#e34a33")
+text(x=0.95,y=1,"AA",col="#3182bd")
+text(x=0.5,y=0.55,"Aa",col="#c994c7")
+
+```
+
+
+```{block, type="do-something"}
+Learning outcomes: 
+
+- Understanding the difference between alleles and genotypes.
+- The ability to solve Hardy-Weinberg problems by understanding and applying the two key formulae of HW.
+- Knowing the assumptions of HWE.
+- Understanding what "being at Hardy-Weinberg Equilibrium" means in terms of evolutionary processes (which is related to the assumptions of HWE).
+
+```
+
 ## Problem #1.
 
 You have sampled a population in which you know that the percentage of the homozygous recessive genotype (aa) is 36%. Using that 36%, calculate the following: 

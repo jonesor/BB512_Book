@@ -3,6 +3,15 @@
 
 Why does evolution ‘care’ less and less about you as you age? Because there are trade-offs between early and late life events. 
 
+```{block, type="do-something"}
+Learning outcomes: 
+
+- Understanding the concept of a life history trade off.
+- Understanding what the force of selection is, why it declines with age, and the consequences for late-life deleterious genes.
+
+```
+
+
 ## Objective
 
 The aim of this exercise is to gain an understanding of early-life late-life trade offs. Specifically it is to understand why events early in life tend to be much more important to evolution than those that happen later in life.

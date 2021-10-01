@@ -4,6 +4,15 @@
 
 The objective of this exercise is to develop an intuitive understanding of the effect of selection and genetic drift on traits. 
 
+```{block, type="do-something"}
+Learning outcomes: 
+
+- Understanding the relationship selection pressure and where a trait falls on the neutral-adaptive continuum.
+- Understanding the idea that whether traits are mostly neutral or mostly adaptive can depend on the environment.
+- To be able to discuss and argue a point of view about trait evolution using hte correct terminology.
+
+```
+
 ## Background
 
 Traits that are under moderate or strong selection will tend to be restricted to some optimal value, or change directionally -- natural selection leading to adaptive evolution.  Traits that are under weak or no selection will not be restricted so much so will tend to change via a random process -- random genetic drift leading to neutral evolution.  Both of these changes require the existence of variation in the trait to begin with: if there is no, or very little, variation the trait will not respond much even if there is strong selection. 
