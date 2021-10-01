@@ -168,10 +168,9 @@ The main take home messages for this class are that you should:
 
 ## Solutions: Lotka-Volterra competition
 
-Solutions will be posted soon!
-<!-- You can find a completed Excel spreadsheet [here](https://www.dropbox.com/s/q1qoqxhnm82uugw/9.%20LV%20Competition.xlsx?dl=1). -->
+You can find a completed Excel spreadsheet [here](https://www.dropbox.com/s/q1qoqxhnm82uugw/9.%20LV%20Competition.xlsx?dl=1).
 
-<!-- The answers to the questions are [here](https://www.dropbox.com/s/oz2c10bmyf8t7s6/9.%20Answers%20to%20questions.pdf?dl=1). -->
+The answers to the questions are [here](https://www.dropbox.com/s/oz2c10bmyf8t7s6/9.%20Answers%20to%20questions.pdf?dl=1).
 
 
 ## Solutions: Lotka-Volterra predator-prey dynamics
