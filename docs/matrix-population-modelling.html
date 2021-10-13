@@ -24,7 +24,7 @@
 <meta name="author" content="Owen R. Jones (Course Coordinator)" />
 
 
-<meta name="date" content="2021-10-02" />
+<meta name="date" content="2021-10-13" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -403,7 +403,7 @@ A = \begin{bmatrix}0.3&amp;8&amp;2 \\0.1&amp;0.5&amp;0 \\0&amp;0.4&amp;0.4 \\\en
 <div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="matrix-population-modelling.html#cb19-1" aria-hidden="true" tabindex="-1"></a>pop <span class="ot">&lt;-</span> <span class="fu">vec</span>(pr)</span>
 <span id="cb19-2"><a href="matrix-population-modelling.html#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="fu">matplot</span>(pop, <span class="at">type =</span> <span class="st">&quot;l&quot;</span>, <span class="at">log =</span> <span class="st">&quot;y&quot;</span>)</span>
 <span id="cb19-3"><a href="matrix-population-modelling.html#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="fu">legend</span>(<span class="st">&quot;topleft&quot;</span>, <span class="at">legend =</span> <span class="fu">colnames</span>(pop), <span class="at">col =</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">ncol</span>(pop), <span class="at">lty =</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">ncol</span>(pop))</span></code></pre></div>
-<p><img src="BB512_files/figure-html/unnamed-chunk-47-1.png" width="672" /></p>
+<p><img src="BB512_files/figure-html/unnamed-chunk-49-1.png" width="672" /></p>
 <p>You should see that the population increases exponentially. The population growth rate is the so-called “<em>dominant eigenvalue</em>” of the matrix <strong>A</strong>.</p>
 <p>We can ask R for the <em>eigen values</em> and <em>eigen vectors</em>. These are the population growth rate (<span class="math inline">\(\lambda\)</span>) and the stable stage distribution (<em>SSD</em>) and the reproductive values (<em>RV</em>) of the different stages. <em>SSD</em> is the expected <em>proportion</em> of individuals in the different stage classes at equilibrium and <em>RV</em> is the expected number of future offspring by individuals in each stage.</p>
 <p>You can see that in this case, using my example values the population is growing 34.58% per year.</p>

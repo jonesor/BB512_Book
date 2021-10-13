@@ -11,8 +11,11 @@ plot(1,1,type = "n",axes = FALSE,xlab="",ylab="")
 text(1,1,labels = "The schedule is only available on the HTML version of this document")
 ```
 
+```{r echo = FALSE}
+updateSchedule <- FALSE
+```
 
-```{r, echo = FALSE, message=FALSE,warning=FALSE,eval=knitr::is_html_output()}
+```{r, echo = FALSE, message=FALSE,warning=FALSE}
 library(flextable)
 library(readxl)
 
@@ -20,16 +23,20 @@ system("cp -r ~/Dropbox/_SDU_Teaching/BB512/'Course Documents'/BB512_Schedule.xl
 schedule <- readxl::read_excel("BB512_Schedule.xlsx")
 ```
 
-```{r, echo = FALSE, message=FALSE,warning=FALSE, results = 'hide'}
+```{r, echo = FALSE, message=FALSE,warning=FALSE, results = 'hide',eval = all(knitr::is_html_output(),updateSchedule)}
 # Clean up old ics files
 ics_files <- list.files(pattern = "*.ics")
 file.remove(ics_files)
 
+
+curl::curl_download("https://mitsdu.sdu.dk/skema/icalendar/activities/N100007101/e21/e21",destfile = "bb512.ics")
+```
+
+```{r, echo = FALSE, message=FALSE,warning=FALSE, results = 'hide'}
 library(lubridate)
 library(calendar)
 library(magrittr)
 library(dplyr)
-curl::curl_download("https://mitsdu.sdu.dk/skema/icalendar/activities/N100007101/e21/e21",destfile = "bb512.ics")
 
 #Last sunday in October, 0300, CEST -> CET, 
 #So the time offset moves from +2 to +1
