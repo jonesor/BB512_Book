@@ -24,7 +24,7 @@
 <meta name="author" content="Owen R. Jones (Course Coordinator)" />
 
 
-<meta name="date" content="2021-10-14" />
+<meta name="date" content="2021-10-27" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,7 +33,7 @@
   
 <link rel="prev" href="lotka-volterra-predator-prey-dynamics.html"/>
 <link rel="next" href="bug-hunt-camouflage-netlogo.html"/>
-<script src="libs/header-attrs-2.9/header-attrs.js"></script>
+<script src="libs/header-attrs-2.10/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -87,6 +87,7 @@
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
 pre.sourceCode { margin: 0; }
 @media screen {
@@ -350,7 +351,7 @@ This practical uses RStudio (R). It is similar to the previous exercise on matri
 <span id="cb29-2"><a href="from-population-biology-to-fitness.html#cb29-2" aria-hidden="true" tabindex="-1"></a>               <span class="fl">0.10</span>, <span class="fl">0.80</span>, <span class="fl">0.00</span>, </span>
 <span id="cb29-3"><a href="from-population-biology-to-fitness.html#cb29-3" aria-hidden="true" tabindex="-1"></a>               <span class="fl">0.00</span>, <span class="fl">0.10</span>, <span class="fl">0.40</span>), </span>
 <span id="cb29-4"><a href="from-population-biology-to-fitness.html#cb29-4" aria-hidden="true" tabindex="-1"></a>            <span class="at">byrow =</span> <span class="cn">TRUE</span>, <span class="at">nrow =</span> <span class="dv">3</span>)</span></code></pre></div>
-<p>You can “read” the matrix by looking at the columns and rows: a value in the column <strong>3</strong> and row <strong>1</strong> tells you the “transition” <strong>from</strong> stage 3 <strong>to</strong> stage 1. In this case, it is saying that an individual in the adult age class produces an average of 5 babies, and one from the senescent age class produces 1 baby. Juveniles have a probability of 0.1 (10% chance) to survive to adulthood (and they reach maturity in 1 year, so there is no “stasis” where they can remain being juveniles). Adults can survive in 2 ways, they can survive and remain as adults (probability = 0.8) or they can survive and transition to being in the sensescent age class (probability = 0.1). Therefore, the total survival probability is 0.9. Senescent adults survive less well (probability = 0.4).</p>
+<p>You can “read” the matrix by looking at the columns and rows: a value in the column <strong>3</strong> and row <strong>1</strong> tells you the “transition” <strong>from</strong> stage 3 <strong>to</strong> stage 1. In this case, it is saying that an individual in the adult age class produces an average of 4 babies, and one from the senescent age class produces 2 babies. Juveniles have a probability of 0.1 (10% chance) to survive to adulthood (and they reach maturity in 1 year, so there is no “stasis” where they can remain being juveniles). Adults can survive in 2 ways, they can survive and remain as adults (probability = 0.8) or they can survive and transition to being in the sensescent age class (probability = 0.1). Therefore, the total survival probability is 0.9. Senescent adults survive less well (probability = 0.4).</p>
 <p>We can project a population like this:</p>
 <div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="from-population-biology-to-fitness.html#cb30-1" aria-hidden="true" tabindex="-1"></a>initial <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">10</span>,<span class="dv">5</span>,<span class="dv">3</span>) <span class="co"># just some random numbers</span></span>
 <span id="cb30-2"><a href="from-population-biology-to-fitness.html#cb30-2" aria-hidden="true" tabindex="-1"></a>pr <span class="ot">&lt;-</span> popdemo<span class="sc">::</span><span class="fu">project</span>(A1, <span class="at">vector =</span> initial, <span class="at">time=</span><span class="dv">8</span>)</span></code></pre></div>

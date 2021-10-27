@@ -24,7 +24,7 @@
 <meta name="author" content="Owen R. Jones (Course Coordinator)" />
 
 
-<meta name="date" content="2021-10-14" />
+<meta name="date" content="2021-10-27" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,7 +33,7 @@
   
 <link rel="prev" href="hardy-weinberg-equilibrium.html"/>
 <link rel="next" href="trade-offs-and-the-force-of-selection.html"/>
-<script src="libs/header-attrs-2.9/header-attrs.js"></script>
+<script src="libs/header-attrs-2.10/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -87,6 +87,7 @@
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
 pre.sourceCode { margin: 0; }
 @media screen {
@@ -347,7 +348,7 @@ Figure 16.1: Big bird, <em>Bigus canarius</em>
 </p>
 </div>
 <p>A recent study gathered data on chick survival probability as a function of number of eggs in the nest. These are given in the table below.</p>
-<template id="56584d51-4e61-43cc-951d-738c6b3f02f4"><style>
+<template id="b2e8fab7-031b-4a9a-a24e-c853507a2079"><style>
 .tabwid table{
   border-collapse:collapse;
   line-height:1;
@@ -381,12 +382,12 @@ Figure 16.1: Big bird, <em>Bigus canarius</em>
 .tabwid table tr {
 background-color: transparent;
 }
-</style><div class="tabwid"><style>.cl-50e61ec6{border-collapse:collapse;}.cl-50dc8726{font-family:'Helvetica';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-50dc9932{margin:0;text-align:right;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-50dcf3be{width:54pt;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-50dcf3e6{width:54pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-50dcf3f0{width:54pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(102, 102, 102, 1.00);border-top: 2pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style><table class='cl-50e61ec6'>
-<thead><tr style="overflow-wrap:break-word;"><td class="cl-50dcf3f0"><p class="cl-50dc9932"><span class="cl-50dc8726">eggs</span></p></td><td class="cl-50dcf3f0"><p class="cl-50dc9932"><span class="cl-50dc8726">survival</span></p></td></tr></thead><tbody><tr style="overflow-wrap:break-word;"><td class="cl-50dcf3be"><p class="cl-50dc9932"><span class="cl-50dc8726">1</span></p></td><td class="cl-50dcf3be"><p class="cl-50dc9932"><span class="cl-50dc8726">0.90</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-50dcf3be"><p class="cl-50dc9932"><span class="cl-50dc8726">2</span></p></td><td class="cl-50dcf3be"><p class="cl-50dc9932"><span class="cl-50dc8726">0.85</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-50dcf3be"><p class="cl-50dc9932"><span class="cl-50dc8726">3</span></p></td><td class="cl-50dcf3be"><p class="cl-50dc9932"><span class="cl-50dc8726">0.82</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-50dcf3be"><p class="cl-50dc9932"><span class="cl-50dc8726">4</span></p></td><td class="cl-50dcf3be"><p class="cl-50dc9932"><span class="cl-50dc8726">0.70</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-50dcf3be"><p class="cl-50dc9932"><span class="cl-50dc8726">5</span></p></td><td class="cl-50dcf3be"><p class="cl-50dc9932"><span class="cl-50dc8726">0.50</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-50dcf3be"><p class="cl-50dc9932"><span class="cl-50dc8726">6</span></p></td><td class="cl-50dcf3be"><p class="cl-50dc9932"><span class="cl-50dc8726">0.30</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-50dcf3be"><p class="cl-50dc9932"><span class="cl-50dc8726">7</span></p></td><td class="cl-50dcf3be"><p class="cl-50dc9932"><span class="cl-50dc8726">0.22</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-50dcf3be"><p class="cl-50dc9932"><span class="cl-50dc8726">8</span></p></td><td class="cl-50dcf3be"><p class="cl-50dc9932"><span class="cl-50dc8726">0.15</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-50dcf3be"><p class="cl-50dc9932"><span class="cl-50dc8726">9</span></p></td><td class="cl-50dcf3be"><p class="cl-50dc9932"><span class="cl-50dc8726">0.10</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-50dcf3e6"><p class="cl-50dc9932"><span class="cl-50dc8726">10</span></p></td><td class="cl-50dcf3e6"><p class="cl-50dc9932"><span class="cl-50dc8726">0.05</span></p></td></tr></tbody></table></div></template>
-<div class="flextable-shadow-host" id="e83f7bef-1263-4a3a-b26e-b3c1d99f6921"></div>
+</style><div class="tabwid"><style>.cl-d7536f00{border-collapse:collapse;}.cl-d74ccccc{font-family:'Helvetica';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-d74cdcb2{margin:0;text-align:right;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-d74d0a5c{width:54pt;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-d74d0a7a{width:54pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-d74d0a84{width:54pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(102, 102, 102, 1.00);border-top: 2pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style><table class='cl-d7536f00'>
+<thead><tr style="overflow-wrap:break-word;"><td class="cl-d74d0a84"><p class="cl-d74cdcb2"><span class="cl-d74ccccc">eggs</span></p></td><td class="cl-d74d0a84"><p class="cl-d74cdcb2"><span class="cl-d74ccccc">survival</span></p></td></tr></thead><tbody><tr style="overflow-wrap:break-word;"><td class="cl-d74d0a5c"><p class="cl-d74cdcb2"><span class="cl-d74ccccc">1</span></p></td><td class="cl-d74d0a5c"><p class="cl-d74cdcb2"><span class="cl-d74ccccc">0.90</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-d74d0a5c"><p class="cl-d74cdcb2"><span class="cl-d74ccccc">2</span></p></td><td class="cl-d74d0a5c"><p class="cl-d74cdcb2"><span class="cl-d74ccccc">0.85</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-d74d0a5c"><p class="cl-d74cdcb2"><span class="cl-d74ccccc">3</span></p></td><td class="cl-d74d0a5c"><p class="cl-d74cdcb2"><span class="cl-d74ccccc">0.82</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-d74d0a5c"><p class="cl-d74cdcb2"><span class="cl-d74ccccc">4</span></p></td><td class="cl-d74d0a5c"><p class="cl-d74cdcb2"><span class="cl-d74ccccc">0.70</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-d74d0a5c"><p class="cl-d74cdcb2"><span class="cl-d74ccccc">5</span></p></td><td class="cl-d74d0a5c"><p class="cl-d74cdcb2"><span class="cl-d74ccccc">0.50</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-d74d0a5c"><p class="cl-d74cdcb2"><span class="cl-d74ccccc">6</span></p></td><td class="cl-d74d0a5c"><p class="cl-d74cdcb2"><span class="cl-d74ccccc">0.30</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-d74d0a5c"><p class="cl-d74cdcb2"><span class="cl-d74ccccc">7</span></p></td><td class="cl-d74d0a5c"><p class="cl-d74cdcb2"><span class="cl-d74ccccc">0.22</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-d74d0a5c"><p class="cl-d74cdcb2"><span class="cl-d74ccccc">8</span></p></td><td class="cl-d74d0a5c"><p class="cl-d74cdcb2"><span class="cl-d74ccccc">0.15</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-d74d0a5c"><p class="cl-d74cdcb2"><span class="cl-d74ccccc">9</span></p></td><td class="cl-d74d0a5c"><p class="cl-d74cdcb2"><span class="cl-d74ccccc">0.10</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-d74d0a7a"><p class="cl-d74cdcb2"><span class="cl-d74ccccc">10</span></p></td><td class="cl-d74d0a7a"><p class="cl-d74cdcb2"><span class="cl-d74ccccc">0.05</span></p></td></tr></tbody></table></div></template>
+<div class="flextable-shadow-host" id="b973e063-cff0-4464-905f-98089766de81"></div>
 <script>
-var dest = document.getElementById("e83f7bef-1263-4a3a-b26e-b3c1d99f6921");
-var template = document.getElementById("56584d51-4e61-43cc-951d-738c6b3f02f4");
+var dest = document.getElementById("b973e063-cff0-4464-905f-98089766de81");
+var template = document.getElementById("b2e8fab7-031b-4a9a-a24e-c853507a2079");
 var caption = template.content.querySelector("caption");
 if(caption) {
   caption.style.cssText = "display:block;text-align:center;";

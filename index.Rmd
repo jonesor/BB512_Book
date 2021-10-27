@@ -29,7 +29,7 @@ description: "Course book for BB512 at the Biology Department, University of Sou
 
 ```{r setOptions, include=FALSE}
 knitr::opts_chunk$set(
-  warning = FALSE, message = FALSE, options(scipen = NULL)
+  warning = FALSE, message = FALSE
 )
 ```
 
@@ -58,7 +58,7 @@ This website is designed to hold most of the materials you need for the practica
 
 You will find other materials via itsLearning. Apart from the book, there will be some recommended scientific papers to read – these will be accessible via links on itsLearning.
 
-In some of the classes there will be exercises conducted on your personal laptops. Please bring them to class (and remember a power supply!).
+In some of the classes there will be exercises conducted on your personal laptops. Please bring them to class (and remember a power supply!)...
 
 ## Expectations
 
