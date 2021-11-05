@@ -40,7 +40,7 @@ homo.p <- p^2
 hetero <- 2*p*q
 homo.q <- q^2
 
-data.frame(p,q,homo.p,hetero,homo.q)
+#data.frame(p,q,homo.p,hetero,homo.q)
 
 plot(p,homo.p,type="n",axes=FALSE,xlab="",ylab="")
 
