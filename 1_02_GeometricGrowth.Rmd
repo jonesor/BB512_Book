@@ -2,6 +2,7 @@
 
 In a simple model of population growth where the population grows without any constraints, the speed a population increases in size can be described by the population growth rate. This is often given by the symbol lambda ($\lambda$) which represents the population multiplication rate. High values of $\lambda$ mean the population grows fast, while small values indicated that it grows slowly, or if the $\lambda < 1$ shrinks in size. 
 
+
 Geometric growth is often seen as synonymous to exponential growth. It basically is, but with one important difference: exponential growth, strictly speaking, refers to “continuous time” scenarios, whereas geometric growth refers to models where the population changes in discrete time steps (e.g. each year).
 
 The important quantities are as follows, but please be aware that different books/sources can use different symbols:
