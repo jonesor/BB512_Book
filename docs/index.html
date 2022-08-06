@@ -6,11 +6,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>BB512 - Population Biology and Evolution</title>
   <meta name="description" content="Course book for BB512 at the Biology Department, University of Southern Denmark" />
-  <meta name="generator" content="bookdown 0.23 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.27 and GitBook 2.6.7" />
 
   <meta property="og:title" content="BB512 - Population Biology and Evolution" />
   <meta property="og:type" content="book" />
-  
   
   <meta property="og:description" content="Course book for BB512 at the Biology Department, University of Southern Denmark" />
   
@@ -24,7 +23,7 @@
 <meta name="author" content="Owen R. Jones (Course Coordinator)" />
 
 
-<meta name="date" content="2021-11-26" />
+<meta name="date" content="2022-08-06" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,8 +32,8 @@
   
 
 <link rel="next" href="schedule.html"/>
-<script src="libs/header-attrs-2.10/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -50,10 +49,9 @@
 
 
 
-
-<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
-<link href="libs/tabwid-1.0.0/tabwid.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 <style type="text/css">
 
 .warning-box {
@@ -83,70 +81,6 @@
 
 
 
-<style type="text/css">
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-    color: #aaaaaa;
-  }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
-code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #7d9029; } /* Attribute */
-code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
-code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4070a0; } /* Char */
-code span.cn { color: #880000; } /* Constant */
-code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code span.dt { color: #902000; } /* DataType */
-code span.dv { color: #40a070; } /* DecVal */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.fl { color: #40a070; } /* Float */
-code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
-code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code span.op { color: #666666; } /* Operator */
-code span.ot { color: #007020; } /* Other */
-code span.pp { color: #bc7a00; } /* Preprocessor */
-code span.sc { color: #4070a0; } /* SpecialChar */
-code span.ss { color: #bb6688; } /* SpecialString */
-code span.st { color: #4070a0; } /* String */
-code span.va { color: #19177c; } /* Variable */
-code span.vs { color: #4070a0; } /* VerbatimString */
-code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
-</style>
 
 
 <link rel="stylesheet" href="style.css" type="text/css" />
@@ -320,41 +254,47 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="header">
 <h1 class="title">BB512 - Population Biology and Evolution</h1>
 <p class="author"><em>Owen R. Jones (Course Coordinator)</em></p>
-<p class="date"><em>2021-11-26</em></p>
+<p class="date"><em>2022-08-06</em></p>
 </div>
-<div id="welcome-to-bb512" class="section level1" number="1">
-<h1><span class="header-section-number">1</span> Welcome to BB512</h1>
-<p>Welcome to the Population and Evolution course.
-The course is divided into two parts: Population and Evolution.</p>
-<p>The population part comes first and covers ecological population dynamics including models of population growth, species interactions, and other demographic models.</p>
-<p>The recommended textbook is:
-Neal, D. (2018). <em>Introduction to Population Biology</em> (2nd ed.). Cambridge: Cambridge University Press. <a href="doi:10.1017/9781139107976" class="uri">doi:10.1017/9781139107976</a></p>
-<p>Another (optional) recommended text is:
-Gotelli, NJ (2008) <em>A Primer of Ecology</em>. Fourth Edition, Sinauer Associates. ISBN: 978-0878933181</p>
-<p>The evolution part comes second and covers microevolutionary processes (natural selection, neutral evolution etc.), population and quantitative genetics, and macroevolution (speciation, extinction and coevolution).</p>
-<p>The recommended textbook is:
-Stearns, SC &amp; Hoekstra, RF (2005) <em>Evolution: An Introduction</em>. 2nd Edition, Oxford University Press. ISBN: 978-0199255634</p>
-<div id="this-website-and-other-course-materials" class="section level2" number="1.1">
-<h2><span class="header-section-number">1.1</span> This website and other course materials</h2>
-<p>This website is designed to hold most of the materials you need for the practical (mainly computer) exercises you will do during the course. You will also find the <a href="https://jonesor.github.io/BB512_Book/schedule.html">Schedule</a> here.</p>
+<div id="welcome-to-bb512" class="section level1 hasAnchor" number="1">
+<h1><span class="header-section-number">1</span> Welcome to BB512<a href="index.html#welcome-to-bb512" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>Welcome to the 2022 Population and Evolution course.
+The course is divided into four parts:</p>
+<ul>
+<li>Evolution by Natural Selection</li>
+<li>Population Growth Models</li>
+<li>Population Genetics and Evolution</li>
+<li>Interactions Between Species and Community Structure</li>
+<li>Animal Behaviour, Altruism and Sexual Selection</li>
+</ul>
+<p>The recommended textbook is Neal (2018). Other useful textbooks, that are NOT mandatory, but could be useful are Gotelli (2008) and Stearns &amp; Hoekstra (2005).</p>
+<ul>
+<li>Neal, D. (2018). <em>Introduction to Population Biology</em> (2nd ed.). Cambridge: Cambridge University Press. <a href="doi:10.1017/9781139107976" class="uri">doi:10.1017/9781139107976</a></li>
+<li>Gotelli, NJ (2008) <em>A Primer of Ecology</em>. Fourth Edition, Sinauer Associates. ISBN: 978-0878933181</li>
+<li>Stearns, SC &amp; Hoekstra, RF (2005) <em>Evolution: An Introduction</em>. 2nd Edition, Oxford University Press. ISBN: 978-0199255634</li>
+</ul>
+<div id="this-website-and-other-course-materials" class="section level2 hasAnchor" number="1.1">
+<h2><span class="header-section-number">1.1</span> This website and other course materials<a href="index.html#this-website-and-other-course-materials" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>This website is designed to hold most of the materials you need for the practical exercises you will do during the course. You will also find the <a href="https://jonesor.github.io/BB512_Book/schedule.html">Schedule</a> here.</p>
+<p>We may not do ALL of these exercises, but you are welcome to do ones we miss in your own time.</p>
 <p>You will find other materials via itsLearning. Apart from the book, there will be some recommended scientific papers to read – these will be accessible via links on itsLearning.</p>
-<p>In some of the classes there will be exercises conducted on your personal laptops. Please bring them to class (and remember a power supply!).</p>
+<p>In many of the classes there will be exercises conducted on your personal laptops. Please bring them to class (and remember a power supply!).</p>
 </div>
-<div id="expectations" class="section level2" number="1.2">
-<h2><span class="header-section-number">1.2</span> Expectations</h2>
-<p>There are lectures and exercise sessions on the course. The exercise sessions are designed to help you understand the subject better and I expect students to attend and actively participate in both. There will also be some e-tests throughout the semester. These are intended to help you figure out whether you know the material, and whether there are areas you need to revisit. They do not contribute to your final grade, but I hope you will attempt them. They will definitely increase your understanding of the material! Note that the final assessment will be a similar format!</p>
+<div id="expectations" class="section level2 hasAnchor" number="1.2">
+<h2><span class="header-section-number">1.2</span> Expectations<a href="index.html#expectations" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>There are lectures and exercise sessions on the course. The exercise sessions are designed to help you understand the subject better and I expect students to attend and actively participate in both. There will also be some multiple choice quizes (e-tests) during the semester. These are intended to help you figure out whether you know the material, and whether there are areas you need to revisit. They do not contribute to your final grade, but I hope you will attempt them. They will definitely increase your understanding of the material. Note that the final assessment will be a similar format!</p>
 <p>I also expect students to make every effort to keep up with the core reading (mainly the textbook chapters), and to ask questions where they don’t understand.</p>
 </div>
-<div id="your-feedback" class="section level2" number="1.3">
-<h2><span class="header-section-number">1.3</span> Your feedback</h2>
+<div id="your-feedback" class="section level2 hasAnchor" number="1.3">
+<h2><span class="header-section-number">1.3</span> Your feedback<a href="index.html#your-feedback" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>I would really like your feedback on how the course is progressing so I can address any issues that come up as soon as possible. To help with this I have created a simple Google Form: <a href="http://goo.gl/gy2Q6B" class="uri">http://goo.gl/gy2Q6B</a>. You can use this to send me (Owen) comments (anonymously if you wish) at any time in the course. I promise to do my best to resolve any problems.</p>
 </div>
-<div id="assessment" class="section level2" number="1.4">
-<h2><span class="header-section-number">1.4</span> Assessment</h2>
+<div id="assessment" class="section level2 hasAnchor" number="1.4">
+<h2><span class="header-section-number">1.4</span> Assessment<a href="index.html#assessment" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>The assessment for the course will be an electronic exam held next January with multiple choice and short answer questions. It is worth noting that exam format will be similar to the quizzes mentioned above. The exact date is not yet set.</p>
 </div>
-<div id="instructors" class="section level2" number="1.5">
-<h2><span class="header-section-number">1.5</span> Instructors</h2>
+<div id="instructors" class="section level2 hasAnchor" number="1.5">
+<h2><span class="header-section-number">1.5</span> Instructors<a href="index.html#instructors" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>The instructors of the course are:</p>
 <ul>
 <li><a href="https://portal.findresearcher.sdu.dk/en/persons/jones">Owen Jones</a>, Associate Professor, <a href="mailto:jones@biology.sdu.dk" class="email">jones@biology.sdu.dk</a></li>
@@ -365,10 +305,14 @@ Stearns, SC &amp; Hoekstra, RF (2005) <em>Evolution: An Introduction</em>. 2nd E
 <p>Office location: <a href="https://clients.mapsindoors.com/sdu/573f26e4bc1f571b08094312/details/563cb94f423b7d0540c9a605">V12-410b-2</a></p>
 <div class="do-something">
 <p>
-<strong>Note:</strong> The website is an experimental “work in progress” and will change during the course as I add material. The latest version can always be found at the website.
+<strong>Note:</strong> The website is an experimental “work in
+progress” and will change during the course as I add material. The
+latest version can always be found at the website.
 </p>
 <p>
-Please let me know (<a href="mailto:jones@biology.sdu.dk">jones@biology.sdu.dk</a>) if you spot any errors, or have any suggestions for improvement.
+Please let me know (<a
+href="mailto:jones@biology.sdu.dk">jones@biology.sdu.dk</a>) if you spot
+any errors, or have any suggestions for improvement.
 </p>
 </div>
 
@@ -384,7 +328,6 @@ Please let me know (<a href="mailto:jones@biology.sdu.dk">jones@biology.sdu.dk</
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
 <script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
@@ -425,7 +368,7 @@ gitbook.start({
 },
 "download": ["BB512.pdf"],
 "search": {
-"engine": "lunr",
+"engine": "fuse",
 "options": null
 },
 "toc": {

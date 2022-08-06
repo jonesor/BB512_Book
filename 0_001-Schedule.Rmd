@@ -2,7 +2,7 @@
 
 This is the schedule for the course. 
 Please note that it is liable to change (possibly at short notice). 
-If you find a mismatch between this schedule and the official one^[https://mitsdu.sdu.dk/skema/activity/N100007101/e21], then it is the official one that is correct.
+If you find a mismatch between this schedule and the official one^[https://mitsdu.sdu.dk/skema/activity/N100007101/e22], then it is the official one that is correct.
 
 You should see the content of itsLearning for details of other tasks/assignments/reading etc.
 
@@ -29,7 +29,7 @@ ics_files <- list.files(pattern = "*.ics")
 file.remove(ics_files)
 
 
-curl::curl_download("https://mitsdu.sdu.dk/skema/icalendar/activities/N100007101/e21/e21",destfile = "bb512.ics")
+curl::curl_download("https://mitsdu.sdu.dk/skema/icalendar/activities/N100007101/e22/e22",destfile = "bb512.ics")
 ```
 
 ```{r, echo = FALSE, message=FALSE,warning=FALSE, results = 'hide'}
@@ -41,10 +41,17 @@ library(dplyr)
 #Last sunday in October, 0300, CEST -> CET, 
 #So the time offset moves from +2 to +1
 
-savingsTimeSwitch <- with_tz(lubridate::as_datetime("2021-10-31 03:00:00"), "Europe/Copenhagen")
+savingsTimeSwitch <- with_tz(lubridate::as_datetime("2022-10-31 03:00:00"), "Europe/Copenhagen")
 
-courseCal <- ic_read("bb512.ics") %>% 
-  arrange(DTSTART) %>% 
+xx <- readLines("bb512.ics")
+
+locationIndex <- grep("^LOCATION",xx)
+location <- gsub(pattern = "LOCATION:Odense ", replacement = "",x = xx[locationIndex])
+
+courseCal <- ical::ical_parse_df("bb512.ics") %>% 
+  filter(!is.na(uid)) %>% 
+  arrange(start) %>% 
+  select(summary,DTSTART = start,DTEND = end) %>% 
   mutate(Session = row_number()) %>% 
   mutate(savingsT = DTSTART < savingsTimeSwitch) %>% 
   mutate(offsetT = if_else(savingsT == TRUE, 2, 1)) %>% #Check this every year!
@@ -53,11 +60,14 @@ courseCal <- ic_read("bb512.ics") %>%
   mutate(St = hour(DTSTART2)) %>% 
   mutate(En = hour(DTEND2)) %>% 
   mutate(wd = lubridate::wday(DTSTART2,label= TRUE)) %>% 
-  mutate(Room = gsub(pattern = "Odense ",replacement = "", x = LOCATION)) %>% 
+  #mutate(Room = gsub(pattern = "Odense ",replacement = "", x = LOCATION)) %>% 
+  mutate(Room = location) %>% 
   mutate(Room = paste0("(",Room,")")) %>% 
   mutate(Date = paste0( month(DTSTART2,label = TRUE)," ",day(DTSTART2),", ",wd)) %>% 
   mutate(Time = paste0("kl.",St,"-",En)) %>% 
-  select(Session,Date, Time, Room)
+  select(Session, Date, Time, Room)
+
+
 
 schedule <- readxl::read_excel("BB512_Schedule.xlsx")
 

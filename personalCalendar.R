@@ -1,14 +1,24 @@
 #Create personal calendar for Owen and Thomas-----
-
-courseCal <- ic_read("bb512.ics") %>% 
-  arrange(DTSTART) %>% 
+courseCal <- ical::ical_parse_df("bb512.ics") %>% 
+  filter(!is.na(uid)) %>% 
+  arrange(start) %>% 
+  select(summary,DTSTART = start,DTEND = end) %>% 
   mutate(Session = row_number()) %>% 
   mutate(savingsT = DTSTART < savingsTimeSwitch) %>% 
   mutate(offsetT = if_else(savingsT == TRUE, 2, 1)) %>% #Check this every year!
   mutate(DTSTART2 = DTSTART + hours(offsetT)) %>% 
   mutate(DTEND2 = DTEND + hours(offsetT)) %>% 
-  mutate(Room = gsub(pattern = "Odense ",replacement = "", x = LOCATION)) %>% 
+  mutate(St = hour(DTSTART2)) %>% 
+  mutate(En = hour(DTEND2)) %>% 
+  mutate(wd = lubridate::wday(DTSTART2,label= TRUE)) %>% 
+  #mutate(Room = gsub(pattern = "Odense ",replacement = "", x = LOCATION)) %>% 
+  mutate(Room = location) %>% 
+  mutate(Room = paste0("(",Room,")")) %>% 
+  mutate(Date = paste0( month(DTSTART2,label = TRUE)," ",day(DTSTART2),", ",wd)) %>% 
+  mutate(Time = paste0("kl.",St,"-",En)) %>% 
   select(Session,DTSTART2,DTEND2, Room)
+
+
 
 schedule <- readxl::read_excel("BB512_Schedule.xlsx")
 
@@ -94,3 +104,4 @@ for(inst in 1:length(instructorList)){
       system(paste0("rm -r personalCalendar_",instructorList[inst]))}
     }
   system("rm -r studentCalendar")
+  

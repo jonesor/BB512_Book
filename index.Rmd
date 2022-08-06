@@ -36,33 +36,35 @@ knitr::opts_chunk$set(
 # Welcome to BB512
 
 
-Welcome to the Population and Evolution course. 
-The course is divided into two parts: Population and Evolution. 
+Welcome to the 2022 Population and Evolution course. 
+The course is divided into four parts:
 
-The population part comes first and covers ecological population dynamics including models of population growth, species interactions, and other demographic models. 
+- Evolution by Natural Selection
+- Population Growth Models
+- Population Genetics and Evolution
+- Interactions Between Species and Community Structure
+- Animal Behaviour, Altruism and Sexual Selection
 
-The recommended textbook is:
-Neal, D. (2018). *Introduction to Population Biology* (2nd ed.). Cambridge: Cambridge University Press. doi:10.1017/9781139107976
+The recommended textbook is Neal (2018). Other useful textbooks, that are NOT mandatory, but could be useful are Gotelli (2008) and Stearns & Hoekstra (2005).
 
-Another (optional) recommended text is:
-Gotelli, NJ (2008) *A Primer of Ecology*. Fourth Edition, Sinauer Associates. ISBN: 978-0878933181
 
-The evolution part comes second and covers microevolutionary processes (natural selection, neutral evolution etc.), population and quantitative genetics, and macroevolution (speciation, extinction and coevolution). 
-
-The recommended textbook is: 
-Stearns, SC & Hoekstra, RF (2005) *Evolution: An Introduction*. 2nd Edition, Oxford University Press. ISBN: 978-0199255634
+* Neal, D. (2018). *Introduction to Population Biology* (2nd ed.). Cambridge: Cambridge University Press. doi:10.1017/9781139107976
+* Gotelli, NJ (2008) *A Primer of Ecology*. Fourth Edition, Sinauer Associates. ISBN: 978-0878933181
+* Stearns, SC & Hoekstra, RF (2005) *Evolution: An Introduction*. 2nd Edition, Oxford University Press. ISBN: 978-0199255634
 
 ## This website and other course materials
 
-This website is designed to hold most of the materials you need for the practical (mainly computer) exercises you will do during the course. You will also find the [Schedule](https://jonesor.github.io/BB512_Book/schedule.html) here.
+This website is designed to hold most of the materials you need for the practical exercises you will do during the course. You will also find the [Schedule](https://jonesor.github.io/BB512_Book/schedule.html) here.
+
+We may not do ALL of these exercises, but you are welcome to do ones we miss in your own time.
 
 You will find other materials via itsLearning. Apart from the book, there will be some recommended scientific papers to read – these will be accessible via links on itsLearning.
 
-In some of the classes there will be exercises conducted on your personal laptops. Please bring them to class (and remember a power supply!).
+In many of the classes there will be exercises conducted on your personal laptops. Please bring them to class (and remember a power supply!).
 
 ## Expectations
 
-There are lectures and exercise sessions on the course. The exercise sessions are designed to help you understand the subject better and I expect students to attend and actively participate in both. There will also be some e-tests throughout the semester. These are intended to help you figure out whether you know the material, and whether there are areas you need to revisit. They do not contribute to your final grade, but I hope you will attempt them. They will definitely increase your understanding of the material! Note that the final assessment will be a similar format!
+There are lectures and exercise sessions on the course. The exercise sessions are designed to help you understand the subject better and I expect students to attend and actively participate in both. There will also be some multiple choice quizes (e-tests) during the semester. These are intended to help you figure out whether you know the material, and whether there are areas you need to revisit. They do not contribute to your final grade, but I hope you will attempt them. They will definitely increase your understanding of the material. Note that the final assessment will be a similar format!
 
 I also expect students to make every effort to keep up with the core reading (mainly the textbook chapters), and to ask questions where they don’t understand.
 

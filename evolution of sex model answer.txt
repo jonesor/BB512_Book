@@ -1,0 +1,44 @@
+
+Hi everyone,
+
+This is a message for the those of you that attempted the practice "short answer" question. 
+I am still working my way through your individual answers but in the meantime, I'll give some general feedback.
+
+Firstly, I messed up the scoring system in itsLearning. 
+I intended for this question to be scored out of 10 (in the real exam it is out of 5.)
+
+In general you all did a good job. Where some of you lost marks was in EXPLAINING the ideas. For example, some of you mentioned the two-fold cost of sex, or negative frequency dependence (red queen), but did not actually explain it. Bear that in mind during the real exam!
+
+Here's the rubric I used - you can cross reference your
+
+(i) Answer mentions sexual displays, behaviour, dimorphism, pollination, sex-related bahaviours. THe world would be more boring without sexual reproduction. [1 point]
+
+(ii) Two-fold cost of sex explained - sexual mutant would rapidly replace a sexually reproducing population. [1 point] 
+Shuffling effect of recombinations splits optimised sets of genes apart. [1 point]
+Selfish genetic elements might reduce whole-genome fitness [1 point]
+Other costs involved with finding a mate or reproducing with pollinators etc.[1 point]
+
+(iii) Accelerates evolution by creating novel combinations of genes. [1 point]
+Allows spread of genes among genetic lines and liberates beneficial mutations from harmful ones. [1 point]
+Cleaning mutational damage caused by Muller's ratchet. [1 point]
+Efficient: removal of groups of harmful mutations is possible because selection is associated with fitness.[1 point]
+Red-queen arms race: negative frequency dependent selection favours rare gene combinations that are only possible due to sex which allows recombination that generates genetic novelty. [1 point]
+
+Here is an example answer that ticks all the right boxes (even though it is not fantastically well-written!):
+
+(i) Without sexual reproduction the world would be very different. There would be no sexual dimorphism, no colourful displays to attract mates, no flowers to attract pollinators, no elaborate mating behaviours and so on. In short, the biological world would be much more boring.
+
+(ii) Sex has been called a puzzle because it is a costly trait. Sexual reproduction is costly for several reasons. Perhaps the most important cost is the so-called two-fold cost of sex. This can be explained as follows. In a hypothetical sexually reproducing population, females must use 50% of their resources to produce sons who cannot reproduce on their own. The per-capita birth rate of such a population would be half that of an asexually reproducing population (i.e. where females invest 100% of their resources into clonal daughters). Therefore, an asexual mutant would rapidly replace the sexually-reproducing part of the population. In this context it is hard to imagine that a sexual population could persist.
+
+Another cost of sex is that the shuffling effect of genetic recombination during sexual reproduction could cause optimised sets of genes to be split apart. If this happens, the resulting offspring may possess sets of genes that no longer work so well together and would thus be less fit than an asexually reproducing lineage. Furthermore, the fact that sexual reproduction means that not all genes are transmitted to offspring together means that some genes could act selfishly to increase their own fitness at the expense of the genome as a whole. This is thought to be particularly important for genes on the sex chromosomes. For example, genes on the X chromosome could evolve ways to reduce or prevent the transfer of Y sperm. 
+
+Finally, sexual reproduction requires that you find a mate, and perhaps compete for access to that mate. This means that elaborate mechanisms to do this must evolve including pheromones, the use of other organisms such as pollinator species (in plants), and the use fo wind/sea currents to transport genetic material to mates. 
+
+(iii) Despite these costs, sexual reproduction is common, so it must have considerable advantages in order to counteract the enormous costs. Perhaps the most important advantage is that it accelerates the rate of evolution by more easily spreading novel advantagous genes among genetic lines, and by liberating beneficial mutations from other harmful mutations that are on the same genome. Sex can also clean mutational damage. Asexual reproduction is simply a copying of genetic material and therefore harmful mutations are simply copied down the generations and accumulate through time. Sexual reproduction can eliminate this mutational damage because offspring are different from the parents. This elimination can be efficient because, presumably, the number of harmful mutations is is negatively correlated with fitness and thus the force of selection to eliminate those mutations would be stronger. Another striking advantage of sex is that rare genetic combinations can be produced bia recombinations. These rare combinations will be at a strong advantage in the evolutionary arms race between host and parasite (or other pathogen). This is a form of negative frequency-dependent selection.
+
+Since many organisms reproduce sexualy, it seems likely that collectively, these advantages must outweigh the disadvantages mentioned above, in most situations.
+
+
+Best wishes,
+Owen
+

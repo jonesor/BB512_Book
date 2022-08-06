@@ -129,9 +129,9 @@ The behaviour of the population dynamics depends only on $r_m$, not on $K$ or st
 
 You should notice that having some information about what the parameters are will allow you to sketch the dynamics. Conversely, if you have a graph showing aspects of the population dynamics, you could figure out what the parameters of the logistic equation are.
 
-For Exponential growth, populaiton size is unlimited and will grow exponentially if $r$ is $>0$ (or $\lambda > 1$). Logistic growth will show some kind of limit (damped oscillation, or whatver), as the population size is attracted to $K$ in some way.
+For Exponential growth, population size is unlimited and will grow exponentially if $r$ is $>0$ (or $\lambda > 1$). Logistic growth will show some kind of limit (damped oscillation, or whatever), as the population size is attracted to $K$ in some way.
 
-In logistic growth, the per capita growth rate declines as population size increases, and reaches $0$ when $N = K$. In exponential growth, the per capita growth rate remains constant and unaffected by $N$. Therefore the graphs of growth rate vs. N will be very different: Logistic = a negative slope, expontial = a horizontal line.
+In logistic growth, the per capita growth rate declines as population size increases, and reaches $0$ when $N = K$. In exponential growth, the per capita growth rate remains constant and unaffected by $N$. Therefore the graphs of growth rate vs. N will be very different: Logistic = a negative slope, exponential = a horizontal line.
 
 ### Time lag
 
@@ -221,7 +221,7 @@ You (the hunter) kill the most obvious bugs first (i.e. those with contrasting c
 
 *	_After simulating in one environment (e.g. poppy field) for a few minutes, pause then switch to another environment. Are the bugs now well- or poorly-adapted to their environment?_
 
-Changing the environment means that the individuals are now porrly-adapted to their environment. This is because the individuals now find themselves in an environment that they did not evolve in. Their evolved camouflage does not work so well in a new environment.
+Changing the environment means that the individuals are now poorly-adapted to their environment. This is because the individuals now find themselves in an environment that they did not evolve in. Their evolved camouflage does not work so well in a new environment.
 
 *	_Do the genotypes of individuals change (e.g. with individual age)?_
 
@@ -235,7 +235,7 @@ Increasing the amount of variation in offspring will tend to speed up adaptation
 
 The take home message here is that whether traits are adaptive or neutral depends on the environment. 
 
-Consider genes that confer entibiotic resistance on bacteria. In the absence of antibiotics, these genes are not important and are not selected for. They still evolve (if they vary among individuals and are inherited), but this evolution is neutral with no selection. On the other hand, when antibiotics are introduced to the system, those same genes are strongly selected for and evolution of the genes for antibiotic resistance is now strongly adaptive. Context matters.
+Consider genes that confer antibiotic resistance on bacteria. In the absence of antibiotics, these genes are not important and are not selected for. They still evolve (if they vary among individuals and are inherited), but this evolution is neutral with no selection. On the other hand, when antibiotics are introduced to the system, those same genes are strongly selected for and evolution of the genes for antibiotic resistance is now strongly adaptive. Context matters.
 
 The same is the case for traits in humans. Assuming the the traits vary among individuals and are inherited, their neutrality or adaptiveness depends on their effect on fitness. If the traits have strong effects on fitness then they will be under strong selection but if they have weak or no effects on fitness they will evolve via neutral evolution.
 
