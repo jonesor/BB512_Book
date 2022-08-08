@@ -4,19 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>14 Neutral or adaptive evolution in humans? | BB512 - Population Biology and Evolution</title>
+  <title>15 Neutral or adaptive evolution in humans? | BB512 - Population Biology and Evolution</title>
   <meta name="description" content="Course book for BB512 at the Biology Department, University of Southern Denmark" />
-  <meta name="generator" content="bookdown 0.23 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.27 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="14 Neutral or adaptive evolution in humans? | BB512 - Population Biology and Evolution" />
+  <meta property="og:title" content="15 Neutral or adaptive evolution in humans? | BB512 - Population Biology and Evolution" />
   <meta property="og:type" content="book" />
-  
   
   <meta property="og:description" content="Course book for BB512 at the Biology Department, University of Southern Denmark" />
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="14 Neutral or adaptive evolution in humans? | BB512 - Population Biology and Evolution" />
+  <meta name="twitter:title" content="15 Neutral or adaptive evolution in humans? | BB512 - Population Biology and Evolution" />
   
   <meta name="twitter:description" content="Course book for BB512 at the Biology Department, University of Southern Denmark" />
   
@@ -24,17 +23,17 @@
 <meta name="author" content="Owen R. Jones (Course Coordinator)" />
 
 
-<meta name="date" content="2021-11-26" />
+<meta name="date" content="2022-08-08" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="bug-hunt-camouflage-netlogo.html"/>
-<link rel="next" href="hardy-weinberg-equilibrium.html"/>
-<script src="libs/header-attrs-2.10/header-attrs.js"></script>
+<link rel="prev" href="hardy-weinberg-equilibrium.html"/>
+<link rel="next" href="lotka-volterra-competition.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -50,10 +49,11 @@
 
 
 
-
-<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 <link href="libs/tabwid-1.0.0/tabwid.css" rel="stylesheet" />
+<link href="libs/tabwid-1.0.0/scrool.css" rel="stylesheet" />
 <style type="text/css">
 
 .warning-box {
@@ -174,128 +174,128 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="1.5" data-path="index.html"><a href="index.html#instructors"><i class="fa fa-check"></i><b>1.5</b> Instructors</a></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="schedule.html"><a href="schedule.html"><i class="fa fa-check"></i><b>2</b> Schedule</a></li>
-<li class="part"><span><b>I Population Biology</b></span></li>
-<li class="chapter" data-level="3" data-path="the-legend-of-ambalapuzha.html"><a href="the-legend-of-ambalapuzha.html"><i class="fa fa-check"></i><b>3</b> The legend of Ambalapuzha</a>
+<li class="part"><span><b>I Evolution by Natural Selection</b></span></li>
+<li class="chapter" data-level="3" data-path="bug-hunt-camouflage-netlogo.html"><a href="bug-hunt-camouflage-netlogo.html"><i class="fa fa-check"></i><b>3</b> Bug hunt camouflage (Netlogo)</a>
 <ul>
-<li class="chapter" data-level="3.1" data-path="the-legend-of-ambalapuzha.html"><a href="the-legend-of-ambalapuzha.html#animalsplants-not-grains-of-rice."><i class="fa fa-check"></i><b>3.1</b> Animals/plants, not grains of rice.</a></li>
-<li class="chapter" data-level="3.2" data-path="the-legend-of-ambalapuzha.html"><a href="the-legend-of-ambalapuzha.html#optional-try-these-calculations-in-r"><i class="fa fa-check"></i><b>3.2</b> Optional: Try these calculations in R</a></li>
+<li class="chapter" data-level="3.1" data-path="bug-hunt-camouflage-netlogo.html"><a href="bug-hunt-camouflage-netlogo.html#getting-started"><i class="fa fa-check"></i><b>3.1</b> Getting started</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="bug-hunt-camouflage-netlogo.html"><a href="bug-hunt-camouflage-netlogo.html#how-the-simulation-works."><i class="fa fa-check"></i><b>3.1.1</b> How the simulation works.</a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="geometric-growth.html"><a href="geometric-growth.html"><i class="fa fa-check"></i><b>4</b> Geometric growth</a></li>
-<li class="chapter" data-level="5" data-path="stochastic-population-growth.html"><a href="stochastic-population-growth.html"><i class="fa fa-check"></i><b>5</b> Stochastic population growth</a>
-<ul>
-<li class="chapter" data-level="5.1" data-path="stochastic-population-growth.html"><a href="stochastic-population-growth.html#simulations-in-r"><i class="fa fa-check"></i><b>5.1</b> Simulations in R</a></li>
+<li class="chapter" data-level="3.2" data-path="bug-hunt-camouflage-netlogo.html"><a href="bug-hunt-camouflage-netlogo.html#questions"><i class="fa fa-check"></i><b>3.2</b> Questions</a></li>
+<li class="chapter" data-level="3.3" data-path="bug-hunt-camouflage-netlogo.html"><a href="bug-hunt-camouflage-netlogo.html#details-about-colours-optional"><i class="fa fa-check"></i><b>3.3</b> Details about colours (optional)</a></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="basic-logistic-population-growth.html"><a href="basic-logistic-population-growth.html"><i class="fa fa-check"></i><b>6</b> Basic logistic population growth</a>
+<li class="part"><span><b>II Population Growth Models</b></span></li>
+<li class="chapter" data-level="4" data-path="the-legend-of-ambalapuzha.html"><a href="the-legend-of-ambalapuzha.html"><i class="fa fa-check"></i><b>4</b> The legend of Ambalapuzha</a>
 <ul>
-<li class="chapter" data-level="6.1" data-path="basic-logistic-population-growth.html"><a href="basic-logistic-population-growth.html#graph-1"><i class="fa fa-check"></i><b>6.1</b> Graph 1</a></li>
-<li class="chapter" data-level="6.2" data-path="basic-logistic-population-growth.html"><a href="basic-logistic-population-growth.html#graphs-2-3"><i class="fa fa-check"></i><b>6.2</b> Graphs 2 &amp; 3</a></li>
+<li class="chapter" data-level="4.1" data-path="the-legend-of-ambalapuzha.html"><a href="the-legend-of-ambalapuzha.html#animalsplants-not-grains-of-rice."><i class="fa fa-check"></i><b>4.1</b> Animals/plants, not grains of rice.</a></li>
+<li class="chapter" data-level="4.2" data-path="the-legend-of-ambalapuzha.html"><a href="the-legend-of-ambalapuzha.html#optional-try-these-calculations-in-r"><i class="fa fa-check"></i><b>4.2</b> Optional: Try these calculations in R</a></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="deeper-into-logistic-growth.html"><a href="deeper-into-logistic-growth.html"><i class="fa fa-check"></i><b>7</b> Deeper into logistic growth</a>
+<li class="chapter" data-level="5" data-path="geometric-growth.html"><a href="geometric-growth.html"><i class="fa fa-check"></i><b>5</b> Geometric growth</a></li>
+<li class="chapter" data-level="6" data-path="from-population-biology-to-fitness.html"><a href="from-population-biology-to-fitness.html"><i class="fa fa-check"></i><b>6</b> From population biology to fitness</a>
 <ul>
-<li class="chapter" data-level="7.1" data-path="deeper-into-logistic-growth.html"><a href="deeper-into-logistic-growth.html#different-views-of-the-basic-logistic-growth-model"><i class="fa fa-check"></i><b>7.1</b> Different views of the basic logistic growth model</a></li>
-<li class="chapter" data-level="7.2" data-path="deeper-into-logistic-growth.html"><a href="deeper-into-logistic-growth.html#adding-a-time-lag"><i class="fa fa-check"></i><b>7.2</b> Adding a time lag</a></li>
-<li class="chapter" data-level="7.3" data-path="deeper-into-logistic-growth.html"><a href="deeper-into-logistic-growth.html#optional-cobweb-diagrams"><i class="fa fa-check"></i><b>7.3</b> Optional: Cobweb diagrams</a></li>
+<li class="chapter" data-level="6.1" data-path="from-population-biology-to-fitness.html"><a href="from-population-biology-to-fitness.html#an-in-silico-experiment"><i class="fa fa-check"></i><b>6.1</b> An <em>in silico</em> experiment</a></li>
+<li class="chapter" data-level="6.2" data-path="from-population-biology-to-fitness.html"><a href="from-population-biology-to-fitness.html#the-link-to-fitness"><i class="fa fa-check"></i><b>6.2</b> The link to fitness</a></li>
+<li class="chapter" data-level="6.3" data-path="from-population-biology-to-fitness.html"><a href="from-population-biology-to-fitness.html#introducing-a-trade-off"><i class="fa fa-check"></i><b>6.3</b> Introducing a trade-off</a></li>
 </ul></li>
-<li class="chapter" data-level="8" data-path="life-tables-and-survivorship-types.html"><a href="life-tables-and-survivorship-types.html"><i class="fa fa-check"></i><b>8</b> Life tables and survivorship types</a>
+<li class="chapter" data-level="7" data-path="how-many-eggs-should-a-bird-lay.html"><a href="how-many-eggs-should-a-bird-lay.html"><i class="fa fa-check"></i><b>7</b> How many eggs should a bird lay?</a>
 <ul>
-<li class="chapter" data-level="8.0.1" data-path="life-tables-and-survivorship-types.html"><a href="life-tables-and-survivorship-types.html#life-table"><i class="fa fa-check"></i><b>8.0.1</b> Life table</a></li>
-<li class="chapter" data-level="8.0.2" data-path="life-tables-and-survivorship-types.html"><a href="life-tables-and-survivorship-types.html#survivorship-curves"><i class="fa fa-check"></i><b>8.0.2</b> Survivorship curves</a></li>
+<li class="chapter" data-level="7.1" data-path="how-many-eggs-should-a-bird-lay.html"><a href="how-many-eggs-should-a-bird-lay.html#background"><i class="fa fa-check"></i><b>7.1</b> Background</a></li>
+<li class="chapter" data-level="7.2" data-path="how-many-eggs-should-a-bird-lay.html"><a href="how-many-eggs-should-a-bird-lay.html#your-task"><i class="fa fa-check"></i><b>7.2</b> Your task</a></li>
 </ul></li>
-<li class="chapter" data-level="9" data-path="matrix-population-modelling.html"><a href="matrix-population-modelling.html"><i class="fa fa-check"></i><b>9</b> Matrix population modelling</a>
+<li class="chapter" data-level="8" data-path="stochastic-population-growth.html"><a href="stochastic-population-growth.html"><i class="fa fa-check"></i><b>8</b> Stochastic population growth</a>
 <ul>
-<li class="chapter" data-level="9.1" data-path="matrix-population-modelling.html"><a href="matrix-population-modelling.html#using-r-for-matrix-modelling"><i class="fa fa-check"></i><b>9.1</b> Using R for matrix modelling</a></li>
-<li class="chapter" data-level="9.2" data-path="matrix-population-modelling.html"><a href="matrix-population-modelling.html#projecting-the-population"><i class="fa fa-check"></i><b>9.2</b> Projecting the population</a></li>
-<li class="chapter" data-level="9.3" data-path="matrix-population-modelling.html"><a href="matrix-population-modelling.html#elasticity"><i class="fa fa-check"></i><b>9.3</b> Elasticity</a></li>
-<li class="chapter" data-level="9.4" data-path="matrix-population-modelling.html"><a href="matrix-population-modelling.html#life-table-response-experiment-ltre"><i class="fa fa-check"></i><b>9.4</b> Life table response experiment (LTRE)</a></li>
-<li class="chapter" data-level="9.5" data-path="matrix-population-modelling.html"><a href="matrix-population-modelling.html#your-turn"><i class="fa fa-check"></i><b>9.5</b> Your turn…</a>
+<li class="chapter" data-level="8.1" data-path="stochastic-population-growth.html"><a href="stochastic-population-growth.html#simulations-in-r"><i class="fa fa-check"></i><b>8.1</b> Simulations in R</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="basic-logistic-population-growth.html"><a href="basic-logistic-population-growth.html"><i class="fa fa-check"></i><b>9</b> Basic logistic population growth</a>
 <ul>
-<li class="chapter" data-level="9.5.1" data-path="matrix-population-modelling.html"><a href="matrix-population-modelling.html#an-evolutionary-experiment"><i class="fa fa-check"></i><b>9.5.1</b> An evolutionary experiment</a></li>
+<li class="chapter" data-level="9.1" data-path="basic-logistic-population-growth.html"><a href="basic-logistic-population-growth.html#graph-1"><i class="fa fa-check"></i><b>9.1</b> Graph 1</a></li>
+<li class="chapter" data-level="9.2" data-path="basic-logistic-population-growth.html"><a href="basic-logistic-population-growth.html#graphs-2-3"><i class="fa fa-check"></i><b>9.2</b> Graphs 2 &amp; 3</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="trade-offs-and-the-force-of-selection.html"><a href="trade-offs-and-the-force-of-selection.html"><i class="fa fa-check"></i><b>10</b> Trade-offs and the force of selection</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="trade-offs-and-the-force-of-selection.html"><a href="trade-offs-and-the-force-of-selection.html#background-1"><i class="fa fa-check"></i><b>10.1</b> Background</a></li>
+<li class="chapter" data-level="10.2" data-path="trade-offs-and-the-force-of-selection.html"><a href="trade-offs-and-the-force-of-selection.html#exploring-different-life-history-strategies"><i class="fa fa-check"></i><b>10.2</b> Exploring different life history strategies</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="deeper-into-logistic-growth.html"><a href="deeper-into-logistic-growth.html"><i class="fa fa-check"></i><b>11</b> Deeper into logistic growth</a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="deeper-into-logistic-growth.html"><a href="deeper-into-logistic-growth.html#different-views-of-the-basic-logistic-growth-model"><i class="fa fa-check"></i><b>11.1</b> Different views of the basic logistic growth model</a></li>
+<li class="chapter" data-level="11.2" data-path="deeper-into-logistic-growth.html"><a href="deeper-into-logistic-growth.html#adding-a-time-lag"><i class="fa fa-check"></i><b>11.2</b> Adding a time lag</a></li>
+<li class="chapter" data-level="11.3" data-path="deeper-into-logistic-growth.html"><a href="deeper-into-logistic-growth.html#optional-cobweb-diagrams"><i class="fa fa-check"></i><b>11.3</b> Optional: Cobweb diagrams</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="life-tables-and-survivorship-types.html"><a href="life-tables-and-survivorship-types.html"><i class="fa fa-check"></i><b>12</b> Life tables and survivorship types</a>
+<ul>
+<li class="chapter" data-level="12.0.1" data-path="life-tables-and-survivorship-types.html"><a href="life-tables-and-survivorship-types.html#life-table"><i class="fa fa-check"></i><b>12.0.1</b> Life table</a></li>
+<li class="chapter" data-level="12.0.2" data-path="life-tables-and-survivorship-types.html"><a href="life-tables-and-survivorship-types.html#survivorship-curves"><i class="fa fa-check"></i><b>12.0.2</b> Survivorship curves</a></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="matrix-population-modelling.html"><a href="matrix-population-modelling.html"><i class="fa fa-check"></i><b>13</b> Matrix population modelling</a>
+<ul>
+<li class="chapter" data-level="13.1" data-path="matrix-population-modelling.html"><a href="matrix-population-modelling.html#using-r-for-matrix-modelling"><i class="fa fa-check"></i><b>13.1</b> Using R for matrix modelling</a></li>
+<li class="chapter" data-level="13.2" data-path="matrix-population-modelling.html"><a href="matrix-population-modelling.html#projecting-the-population"><i class="fa fa-check"></i><b>13.2</b> Projecting the population</a></li>
+<li class="chapter" data-level="13.3" data-path="matrix-population-modelling.html"><a href="matrix-population-modelling.html#elasticity"><i class="fa fa-check"></i><b>13.3</b> Elasticity</a></li>
+<li class="chapter" data-level="13.4" data-path="matrix-population-modelling.html"><a href="matrix-population-modelling.html#life-table-response-experiment-ltre"><i class="fa fa-check"></i><b>13.4</b> Life table response experiment (LTRE)</a></li>
+<li class="chapter" data-level="13.5" data-path="matrix-population-modelling.html"><a href="matrix-population-modelling.html#your-turn"><i class="fa fa-check"></i><b>13.5</b> Your turn…</a>
+<ul>
+<li class="chapter" data-level="13.5.1" data-path="matrix-population-modelling.html"><a href="matrix-population-modelling.html#an-evolutionary-experiment"><i class="fa fa-check"></i><b>13.5.1</b> An evolutionary experiment</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="10" data-path="lotka-volterra-competition.html"><a href="lotka-volterra-competition.html"><i class="fa fa-check"></i><b>10</b> Lotka-Volterra competition</a>
+<li class="part"><span><b>III Population Genetics and Evolution</b></span></li>
+<li class="chapter" data-level="14" data-path="hardy-weinberg-equilibrium.html"><a href="hardy-weinberg-equilibrium.html"><i class="fa fa-check"></i><b>14</b> Hardy-Weinberg equilibrium</a>
 <ul>
-<li class="chapter" data-level="10.0.1" data-path="lotka-volterra-competition.html"><a href="lotka-volterra-competition.html#the-questions"><i class="fa fa-check"></i><b>10.0.1</b> The questions</a></li>
+<li class="chapter" data-level="14.1" data-path="hardy-weinberg-equilibrium.html"><a href="hardy-weinberg-equilibrium.html#problem-1."><i class="fa fa-check"></i><b>14.1</b> Problem #1.</a></li>
+<li class="chapter" data-level="14.2" data-path="hardy-weinberg-equilibrium.html"><a href="hardy-weinberg-equilibrium.html#problem-2."><i class="fa fa-check"></i><b>14.2</b> Problem #2.</a></li>
+<li class="chapter" data-level="14.3" data-path="hardy-weinberg-equilibrium.html"><a href="hardy-weinberg-equilibrium.html#problem-3."><i class="fa fa-check"></i><b>14.3</b> Problem #3.</a></li>
+<li class="chapter" data-level="14.4" data-path="hardy-weinberg-equilibrium.html"><a href="hardy-weinberg-equilibrium.html#problem-4."><i class="fa fa-check"></i><b>14.4</b> Problem #4.</a></li>
 </ul></li>
-<li class="chapter" data-level="11" data-path="lotka-volterra-predator-prey-dynamics.html"><a href="lotka-volterra-predator-prey-dynamics.html"><i class="fa fa-check"></i><b>11</b> Lotka-Volterra predator-prey dynamics</a>
+<li class="chapter" data-level="15" data-path="neutral-or-adaptive-evolution-in-humans.html"><a href="neutral-or-adaptive-evolution-in-humans.html"><i class="fa fa-check"></i><b>15</b> Neutral or adaptive evolution in humans?</a>
 <ul>
-<li class="chapter" data-level="11.0.1" data-path="lotka-volterra-predator-prey-dynamics.html"><a href="lotka-volterra-predator-prey-dynamics.html#reference"><i class="fa fa-check"></i><b>11.0.1</b> Reference</a></li>
+<li class="chapter" data-level="15.1" data-path="neutral-or-adaptive-evolution-in-humans.html"><a href="neutral-or-adaptive-evolution-in-humans.html#background-2"><i class="fa fa-check"></i><b>15.1</b> Background</a></li>
+<li class="chapter" data-level="15.2" data-path="neutral-or-adaptive-evolution-in-humans.html"><a href="neutral-or-adaptive-evolution-in-humans.html#your-task-1"><i class="fa fa-check"></i><b>15.2</b> Your task</a></li>
+<li class="chapter" data-level="15.3" data-path="neutral-or-adaptive-evolution-in-humans.html"><a href="neutral-or-adaptive-evolution-in-humans.html#the-traits"><i class="fa fa-check"></i><b>15.3</b> The traits</a></li>
 </ul></li>
-<li class="part"><span><b>II Evolution</b></span></li>
-<li class="chapter" data-level="12" data-path="from-population-biology-to-fitness.html"><a href="from-population-biology-to-fitness.html"><i class="fa fa-check"></i><b>12</b> From population biology to fitness</a>
+<li class="part"><span><b>IV Interactions Between Species and Community Structure</b></span></li>
+<li class="chapter" data-level="16" data-path="lotka-volterra-competition.html"><a href="lotka-volterra-competition.html"><i class="fa fa-check"></i><b>16</b> Lotka-Volterra competition</a>
 <ul>
-<li class="chapter" data-level="12.1" data-path="from-population-biology-to-fitness.html"><a href="from-population-biology-to-fitness.html#an-in-silico-experiment"><i class="fa fa-check"></i><b>12.1</b> An <em>in silico</em> experiment</a></li>
-<li class="chapter" data-level="12.2" data-path="from-population-biology-to-fitness.html"><a href="from-population-biology-to-fitness.html#the-link-to-fitness"><i class="fa fa-check"></i><b>12.2</b> The link to fitness</a></li>
-<li class="chapter" data-level="12.3" data-path="from-population-biology-to-fitness.html"><a href="from-population-biology-to-fitness.html#introducing-a-trade-off"><i class="fa fa-check"></i><b>12.3</b> Introducing a trade-off</a></li>
+<li class="chapter" data-level="16.0.1" data-path="lotka-volterra-competition.html"><a href="lotka-volterra-competition.html#the-questions"><i class="fa fa-check"></i><b>16.0.1</b> The questions</a></li>
 </ul></li>
-<li class="chapter" data-level="13" data-path="bug-hunt-camouflage-netlogo.html"><a href="bug-hunt-camouflage-netlogo.html"><i class="fa fa-check"></i><b>13</b> Bug hunt camouflage (Netlogo)</a>
+<li class="chapter" data-level="17" data-path="lotka-volterra-predator-prey-dynamics.html"><a href="lotka-volterra-predator-prey-dynamics.html"><i class="fa fa-check"></i><b>17</b> Lotka-Volterra predator-prey dynamics</a>
 <ul>
-<li class="chapter" data-level="13.1" data-path="bug-hunt-camouflage-netlogo.html"><a href="bug-hunt-camouflage-netlogo.html#getting-started"><i class="fa fa-check"></i><b>13.1</b> Getting started</a>
-<ul>
-<li class="chapter" data-level="13.1.1" data-path="bug-hunt-camouflage-netlogo.html"><a href="bug-hunt-camouflage-netlogo.html#how-the-simulation-works."><i class="fa fa-check"></i><b>13.1.1</b> How the simulation works.</a></li>
+<li class="chapter" data-level="17.0.1" data-path="lotka-volterra-predator-prey-dynamics.html"><a href="lotka-volterra-predator-prey-dynamics.html#reference"><i class="fa fa-check"></i><b>17.0.1</b> Reference</a></li>
 </ul></li>
-<li class="chapter" data-level="13.2" data-path="bug-hunt-camouflage-netlogo.html"><a href="bug-hunt-camouflage-netlogo.html#questions"><i class="fa fa-check"></i><b>13.2</b> Questions</a></li>
-<li class="chapter" data-level="13.3" data-path="bug-hunt-camouflage-netlogo.html"><a href="bug-hunt-camouflage-netlogo.html#details-about-colours-optional"><i class="fa fa-check"></i><b>13.3</b> Details about colours (optional)</a></li>
-</ul></li>
-<li class="chapter" data-level="14" data-path="neutral-or-adaptive-evolution-in-humans.html"><a href="neutral-or-adaptive-evolution-in-humans.html"><i class="fa fa-check"></i><b>14</b> Neutral or adaptive evolution in humans?</a>
+<li class="part"><span><b>V Animal behaviour, altruism and sexual selection</b></span></li>
+<li class="part"><span><b>VI Solutions/answers</b></span></li>
+<li class="chapter" data-level="18" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html"><i class="fa fa-check"></i><b>18</b> Solutions and “take-home” messages</a>
 <ul>
-<li class="chapter" data-level="14.1" data-path="neutral-or-adaptive-evolution-in-humans.html"><a href="neutral-or-adaptive-evolution-in-humans.html#background"><i class="fa fa-check"></i><b>14.1</b> Background</a></li>
-<li class="chapter" data-level="14.2" data-path="neutral-or-adaptive-evolution-in-humans.html"><a href="neutral-or-adaptive-evolution-in-humans.html#your-task"><i class="fa fa-check"></i><b>14.2</b> Your task</a></li>
-<li class="chapter" data-level="14.3" data-path="neutral-or-adaptive-evolution-in-humans.html"><a href="neutral-or-adaptive-evolution-in-humans.html#the-traits"><i class="fa fa-check"></i><b>14.3</b> The traits</a></li>
-</ul></li>
-<li class="chapter" data-level="15" data-path="hardy-weinberg-equilibrium.html"><a href="hardy-weinberg-equilibrium.html"><i class="fa fa-check"></i><b>15</b> Hardy-Weinberg equilibrium</a>
+<li class="chapter" data-level="18.1" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#solutions-the-legend-of-ambalapuzha"><i class="fa fa-check"></i><b>18.1</b> Solutions: The legend of Ambalapuzha</a></li>
+<li class="chapter" data-level="18.2" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#solutions-geometric-growth"><i class="fa fa-check"></i><b>18.2</b> Solutions: Geometric growth</a></li>
+<li class="chapter" data-level="18.3" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#solutions-stochastic-population-growth"><i class="fa fa-check"></i><b>18.3</b> Solutions: Stochastic population growth</a></li>
+<li class="chapter" data-level="18.4" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#solutions-basic-logistic-population-growth"><i class="fa fa-check"></i><b>18.4</b> Solutions: Basic logistic population growth</a></li>
+<li class="chapter" data-level="18.5" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#solutions-deeper-into-logistic-growth"><i class="fa fa-check"></i><b>18.5</b> Solutions: Deeper into logistic growth</a>
 <ul>
-<li class="chapter" data-level="15.1" data-path="hardy-weinberg-equilibrium.html"><a href="hardy-weinberg-equilibrium.html#problem-1."><i class="fa fa-check"></i><b>15.1</b> Problem #1.</a></li>
-<li class="chapter" data-level="15.2" data-path="hardy-weinberg-equilibrium.html"><a href="hardy-weinberg-equilibrium.html#problem-2."><i class="fa fa-check"></i><b>15.2</b> Problem #2.</a></li>
-<li class="chapter" data-level="15.3" data-path="hardy-weinberg-equilibrium.html"><a href="hardy-weinberg-equilibrium.html#problem-3."><i class="fa fa-check"></i><b>15.3</b> Problem #3.</a></li>
-<li class="chapter" data-level="15.4" data-path="hardy-weinberg-equilibrium.html"><a href="hardy-weinberg-equilibrium.html#problem-4."><i class="fa fa-check"></i><b>15.4</b> Problem #4.</a></li>
+<li class="chapter" data-level="18.5.1" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#relationship-between-logistic-and-exponential-growth-equations"><i class="fa fa-check"></i><b>18.5.1</b> Relationship between Logistic and Exponential growth equations</a></li>
+<li class="chapter" data-level="18.5.2" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#type-of-dynamics-depends-on-r_m."><i class="fa fa-check"></i><b>18.5.2</b> Type of dynamics depends on <span class="math inline">\(r_m\)</span>.</a></li>
+<li class="chapter" data-level="18.5.3" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#you-can-obtain-parameters-from-graphs"><i class="fa fa-check"></i><b>18.5.3</b> You can obtain parameters from graphs</a></li>
+<li class="chapter" data-level="18.5.4" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#time-lag"><i class="fa fa-check"></i><b>18.5.4</b> Time lag</a></li>
+<li class="chapter" data-level="18.5.5" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#cobweb-diagram"><i class="fa fa-check"></i><b>18.5.5</b> Cobweb diagram</a></li>
 </ul></li>
-<li class="chapter" data-level="16" data-path="how-many-eggs-should-a-bird-lay.html"><a href="how-many-eggs-should-a-bird-lay.html"><i class="fa fa-check"></i><b>16</b> How many eggs should a bird lay?</a>
+<li class="chapter" data-level="18.6" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#solutions-life-tables-and-survivorship-types"><i class="fa fa-check"></i><b>18.6</b> Solutions: Life tables and survivorship types</a></li>
+<li class="chapter" data-level="18.7" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#solutions-matrix-population-modeling"><i class="fa fa-check"></i><b>18.7</b> Solutions: Matrix population modeling</a></li>
+<li class="chapter" data-level="18.8" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#solutions-lotka-volterra-competition"><i class="fa fa-check"></i><b>18.8</b> Solutions: Lotka-Volterra competition</a></li>
+<li class="chapter" data-level="18.9" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#solutions-lotka-volterra-predator-prey-dynamics"><i class="fa fa-check"></i><b>18.9</b> Solutions: Lotka-Volterra predator-prey dynamics</a></li>
+<li class="chapter" data-level="18.10" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#solutions-from-population-biology-to-fitness"><i class="fa fa-check"></i><b>18.10</b> Solutions: From population biology to fitness</a></li>
+<li class="chapter" data-level="18.11" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#solutions-bug-hunt-camouflage"><i class="fa fa-check"></i><b>18.11</b> Solutions: Bug hunt camouflage</a></li>
+<li class="chapter" data-level="18.12" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#solutions-neutral-or-adaptive-evolution-in-humans"><i class="fa fa-check"></i><b>18.12</b> Solutions: Neutral or adaptive evolution in humans</a></li>
+<li class="chapter" data-level="18.13" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#solutions-hardy-weinberg-equilibrium"><i class="fa fa-check"></i><b>18.13</b> Solutions: Hardy-Weinberg equilibrium</a>
 <ul>
-<li class="chapter" data-level="16.1" data-path="how-many-eggs-should-a-bird-lay.html"><a href="how-many-eggs-should-a-bird-lay.html#background-1"><i class="fa fa-check"></i><b>16.1</b> Background</a></li>
-<li class="chapter" data-level="16.2" data-path="how-many-eggs-should-a-bird-lay.html"><a href="how-many-eggs-should-a-bird-lay.html#your-task-1"><i class="fa fa-check"></i><b>16.2</b> Your task</a></li>
+<li class="chapter" data-level="18.13.1" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#problem-1"><i class="fa fa-check"></i><b>18.13.1</b> Problem 1</a></li>
+<li class="chapter" data-level="18.13.2" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#problem-2"><i class="fa fa-check"></i><b>18.13.2</b> Problem 2</a></li>
+<li class="chapter" data-level="18.13.3" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#problem-3"><i class="fa fa-check"></i><b>18.13.3</b> Problem 3</a></li>
+<li class="chapter" data-level="18.13.4" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#problem-4"><i class="fa fa-check"></i><b>18.13.4</b> Problem 4</a></li>
 </ul></li>
-<li class="chapter" data-level="17" data-path="trade-offs-and-the-force-of-selection.html"><a href="trade-offs-and-the-force-of-selection.html"><i class="fa fa-check"></i><b>17</b> Trade-offs and the force of selection</a>
-<ul>
-<li class="chapter" data-level="17.1" data-path="trade-offs-and-the-force-of-selection.html"><a href="trade-offs-and-the-force-of-selection.html#background-2"><i class="fa fa-check"></i><b>17.1</b> Background</a></li>
-<li class="chapter" data-level="17.2" data-path="trade-offs-and-the-force-of-selection.html"><a href="trade-offs-and-the-force-of-selection.html#exploring-different-life-history-strategies"><i class="fa fa-check"></i><b>17.2</b> Exploring different life history strategies</a></li>
-</ul></li>
-<li class="chapter" data-level="18" data-path="making-a-phylogeny.html"><a href="making-a-phylogeny.html"><i class="fa fa-check"></i><b>18</b> Making a phylogeny</a></li>
-<li class="chapter" data-level="19" data-path="short-answer-exam-discussion.html"><a href="short-answer-exam-discussion.html"><i class="fa fa-check"></i><b>19</b> Short answer exam discussion</a></li>
-<li class="chapter" data-level="20" data-path="the-red-queen-game.html"><a href="the-red-queen-game.html"><i class="fa fa-check"></i><b>20</b> The Red Queen Game</a></li>
-<li class="part"><span><b>III Solutions to exercises</b></span></li>
-<li class="chapter" data-level="21" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html"><i class="fa fa-check"></i><b>21</b> Solutions and “take-home” messages</a>
-<ul>
-<li class="chapter" data-level="21.1" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#solutions-the-legend-of-ambalapuzha"><i class="fa fa-check"></i><b>21.1</b> Solutions: The legend of Ambalapuzha</a></li>
-<li class="chapter" data-level="21.2" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#solutions-geometric-growth"><i class="fa fa-check"></i><b>21.2</b> Solutions: Geometric growth</a></li>
-<li class="chapter" data-level="21.3" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#solutions-stochastic-population-growth"><i class="fa fa-check"></i><b>21.3</b> Solutions: Stochastic population growth</a></li>
-<li class="chapter" data-level="21.4" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#solutions-basic-logistic-population-growth"><i class="fa fa-check"></i><b>21.4</b> Solutions: Basic logistic population growth</a></li>
-<li class="chapter" data-level="21.5" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#solutions-deeper-into-logistic-growth"><i class="fa fa-check"></i><b>21.5</b> Solutions: Deeper into logistic growth</a>
-<ul>
-<li class="chapter" data-level="21.5.1" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#relationship-between-logistic-and-exponential-growth-equations"><i class="fa fa-check"></i><b>21.5.1</b> Relationship between Logistic and Exponential growth equations</a></li>
-<li class="chapter" data-level="21.5.2" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#type-of-dynamics-depends-on-r_m."><i class="fa fa-check"></i><b>21.5.2</b> Type of dynamics depends on <span class="math inline">\(r_m\)</span>.</a></li>
-<li class="chapter" data-level="21.5.3" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#you-can-obtain-parameters-from-graphs"><i class="fa fa-check"></i><b>21.5.3</b> You can obtain parameters from graphs</a></li>
-<li class="chapter" data-level="21.5.4" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#time-lag"><i class="fa fa-check"></i><b>21.5.4</b> Time lag</a></li>
-<li class="chapter" data-level="21.5.5" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#cobweb-diagram"><i class="fa fa-check"></i><b>21.5.5</b> Cobweb diagram</a></li>
-</ul></li>
-<li class="chapter" data-level="21.6" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#solutions-life-tables-and-survivorship-types"><i class="fa fa-check"></i><b>21.6</b> Solutions: Life tables and survivorship types</a></li>
-<li class="chapter" data-level="21.7" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#solutions-matrix-population-modeling"><i class="fa fa-check"></i><b>21.7</b> Solutions: Matrix population modeling</a></li>
-<li class="chapter" data-level="21.8" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#solutions-lotka-volterra-competition"><i class="fa fa-check"></i><b>21.8</b> Solutions: Lotka-Volterra competition</a></li>
-<li class="chapter" data-level="21.9" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#solutions-lotka-volterra-predator-prey-dynamics"><i class="fa fa-check"></i><b>21.9</b> Solutions: Lotka-Volterra predator-prey dynamics</a></li>
-<li class="chapter" data-level="21.10" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#solutions-from-population-biology-to-fitness"><i class="fa fa-check"></i><b>21.10</b> Solutions: From population biology to fitness</a></li>
-<li class="chapter" data-level="21.11" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#solutions-bug-hunt-camouflage"><i class="fa fa-check"></i><b>21.11</b> Solutions: Bug hunt camouflage</a></li>
-<li class="chapter" data-level="21.12" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#solutions-neutral-or-adaptive-evolution-in-humans"><i class="fa fa-check"></i><b>21.12</b> Solutions: Neutral or adaptive evolution in humans</a></li>
-<li class="chapter" data-level="21.13" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#solutions-hardy-weinberg-equilibrium"><i class="fa fa-check"></i><b>21.13</b> Solutions: Hardy-Weinberg equilibrium</a>
-<ul>
-<li class="chapter" data-level="21.13.1" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#problem-1"><i class="fa fa-check"></i><b>21.13.1</b> Problem 1</a></li>
-<li class="chapter" data-level="21.13.2" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#problem-2"><i class="fa fa-check"></i><b>21.13.2</b> Problem 2</a></li>
-<li class="chapter" data-level="21.13.3" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#problem-3"><i class="fa fa-check"></i><b>21.13.3</b> Problem 3</a></li>
-<li class="chapter" data-level="21.13.4" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#problem-4"><i class="fa fa-check"></i><b>21.13.4</b> Problem 4</a></li>
-</ul></li>
-<li class="chapter" data-level="21.14" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#solutions-how-many-eggs-should-a-bird-lay"><i class="fa fa-check"></i><b>21.14</b> Solutions: How many eggs should a bird lay?</a></li>
-<li class="chapter" data-level="21.15" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#solutions-trade-offs-and-the-force-of-selection"><i class="fa fa-check"></i><b>21.15</b> Solutions: Trade-offs and the force of selection</a></li>
-<li class="chapter" data-level="21.16" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#making-a-phylogeny-1"><i class="fa fa-check"></i><b>21.16</b> Making a phylogeny</a></li>
-<li class="chapter" data-level="21.17" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#short-answer-exam-discussion-1"><i class="fa fa-check"></i><b>21.17</b> Short answer exam discussion</a></li>
-<li class="chapter" data-level="21.18" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#the-red-queen-game-1"><i class="fa fa-check"></i><b>21.18</b> The Red Queen game</a></li>
+<li class="chapter" data-level="18.14" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#solutions-how-many-eggs-should-a-bird-lay"><i class="fa fa-check"></i><b>18.14</b> Solutions: How many eggs should a bird lay?</a></li>
+<li class="chapter" data-level="18.15" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#solutions-trade-offs-and-the-force-of-selection"><i class="fa fa-check"></i><b>18.15</b> Solutions: Trade-offs and the force of selection</a></li>
+<li class="chapter" data-level="18.16" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#making-a-phylogeny"><i class="fa fa-check"></i><b>18.16</b> Making a phylogeny</a></li>
+<li class="chapter" data-level="18.17" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#short-answer-exam-discussion"><i class="fa fa-check"></i><b>18.17</b> Short answer exam discussion</a></li>
+<li class="chapter" data-level="18.18" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#the-red-queen-game"><i class="fa fa-check"></i><b>18.18</b> The Red Queen game</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -317,8 +317,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="neutral-or-adaptive-evolution-in-humans" class="section level1" number="14">
-<h1><span class="header-section-number">14</span> Neutral or adaptive evolution in humans?</h1>
+<div id="neutral-or-adaptive-evolution-in-humans" class="section level1 hasAnchor" number="15">
+<h1><span class="header-section-number">15</span> Neutral or adaptive evolution in humans?<a href="neutral-or-adaptive-evolution-in-humans.html#neutral-or-adaptive-evolution-in-humans" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p>The objective of this exercise is to develop an intuitive understanding of the effect of selection and genetic drift on traits.</p>
 <div class="do-something">
 <p>
@@ -326,37 +326,41 @@ Learning outcomes:
 </p>
 <ul>
 <li>
-Understanding the relationship selection pressure and where a trait falls on the neutral-adaptive continuum.
+Understanding the relationship selection pressure and where a trait
+falls on the neutral-adaptive continuum.
 </li>
 <li>
-Understanding the idea that whether traits are mostly neutral or mostly adaptive can depend on the environment.
+Understanding the idea that whether traits are mostly neutral or
+mostly adaptive can depend on the environment.
 </li>
 <li>
-To be able to discuss and argue a point of view about trait evolution using the correct terminology.
+To be able to discuss and argue a point of view about trait
+evolution using the correct terminology.
 </li>
 </ul>
 </div>
-<div id="background" class="section level2" number="14.1">
-<h2><span class="header-section-number">14.1</span> Background</h2>
+<div id="background-2" class="section level2 hasAnchor" number="15.1">
+<h2><span class="header-section-number">15.1</span> Background<a href="neutral-or-adaptive-evolution-in-humans.html#background-2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Traits that are under moderate or strong selection will tend to be restricted to some optimal value, or change directionally – natural selection leading to adaptive evolution. Traits that are under weak or no selection will not be restricted so much so will tend to change via a random process – random genetic drift leading to neutral evolution. Both of these changes require the existence of variation in the trait to begin with: if there is no, or very little, variation the trait will not respond much even if there is strong selection.</p>
 <p>Finally, the strength of selection will largely depend on the environment. Traits may be important in some environments but not others. There may also be traits that would be selected for in some environments, but against in others. E.g., production of the skin pigment, melanin, would be selected for in areas with high UV-radiation since it protects against skin cancer, but selected against in cool temperate zones with low UV radiation since it inhibits the ability to make vitamin D (deficiency is a health risk).</p>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:huntergatherer"></span>
 <img src="images/huntergathererDK.png" alt="How will selection differ between these environments?" width="50%" />
 <p class="caption">
-Figure 14.1: How will selection differ between these environments?
+Figure 15.1: How will selection differ between these environments?
 </p>
 </div>
 </div>
-<div id="your-task" class="section level2" number="14.2">
-<h2><span class="header-section-number">14.2</span> Your task</h2>
+<div id="your-task-1" class="section level2 hasAnchor" number="15.2">
+<h2><span class="header-section-number">15.2</span> Your task<a href="neutral-or-adaptive-evolution-in-humans.html#your-task-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>You are given a list of traits for humans (below). In small groups, write the traits onto PostIt notes. Then discuss them and place the traits in order of strength of natural selection that you think would be acting on the traits in hunter-gatherer-type societies. These populations are likely to be experiencing the conditions that humans have experienced over most of our time as a species.</p>
 <p>This should result in an ordering of the traits from ones which would evolve only by the neutral process of <strong>GENETIC DRIFT</strong> and ones that would evolve by <strong>ADAPTIVE EVOLUTION</strong> via <strong>NATURAL SELECTION</strong>.</p>
 <p>Now repeat this exercise for humans in modern industrialised countries like Denmark.</p>
 </div>
-<div id="the-traits" class="section level2" number="14.3">
-<h2><span class="header-section-number">14.3</span> The traits</h2>
-<template id="1fbec0c4-d2dd-46a0-bf7c-792b43d681b8"><style>
+<div id="the-traits" class="section level2 hasAnchor" number="15.3">
+<h2><span class="header-section-number">15.3</span> The traits<a href="neutral-or-adaptive-evolution-in-humans.html#the-traits" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<template id="c1ac6834-5210-4082-a898-32c41fdf4a23"><style>
 .tabwid table{
+  border-spacing:0px !important;
   border-collapse:collapse;
   line-height:1;
   margin-left:auto;
@@ -365,7 +369,6 @@ Figure 14.1: How will selection differ between these environments?
   display: table;
   margin-top: 1.275em;
   margin-bottom: 1.275em;
-  border-spacing: 0;
   border-color: transparent;
 }
 .tabwid_left table{
@@ -389,12 +392,12 @@ Figure 14.1: How will selection differ between these environments?
 .tabwid table tr {
 background-color: transparent;
 }
-</style><div class="tabwid"><style>.cl-ac643f3e{border-collapse:collapse;}.cl-ac5f1338{font-family:'Helvetica';font-size:16pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-ac5f2030{margin:0;text-align:left;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-ac5f420e{width:288pt;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style><table class='cl-ac643f3e'>
-<tbody><tr style="overflow-wrap:break-word;"><td class="cl-ac5f420e"><p class="cl-ac5f2030"><span class="cl-ac5f1338">Eye/hair colour</span></p></td><td class="cl-ac5f420e"><p class="cl-ac5f2030"><span class="cl-ac5f1338">Metabolic efficiency</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-ac5f420e"><p class="cl-ac5f2030"><span class="cl-ac5f1338">Skin colour</span></p></td><td class="cl-ac5f420e"><p class="cl-ac5f2030"><span class="cl-ac5f1338">Amount of body hair</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-ac5f420e"><p class="cl-ac5f2030"><span class="cl-ac5f1338">Singing ability</span></p></td><td class="cl-ac5f420e"><p class="cl-ac5f2030"><span class="cl-ac5f1338">Intelligence</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-ac5f420e"><p class="cl-ac5f2030"><span class="cl-ac5f1338">Iris stucture</span></p></td><td class="cl-ac5f420e"><p class="cl-ac5f2030"><span class="cl-ac5f1338">Sperm motility</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-ac5f420e"><p class="cl-ac5f2030"><span class="cl-ac5f1338">Muscle strength</span></p></td><td class="cl-ac5f420e"><p class="cl-ac5f2030"><span class="cl-ac5f1338">Face symmetry</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-ac5f420e"><p class="cl-ac5f2030"><span class="cl-ac5f1338">Running speed</span></p></td><td class="cl-ac5f420e"><p class="cl-ac5f2030"><span class="cl-ac5f1338">Height</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-ac5f420e"><p class="cl-ac5f2030"><span class="cl-ac5f1338">Resistance to bubonic plague</span></p></td><td class="cl-ac5f420e"><p class="cl-ac5f2030"><span class="cl-ac5f1338">Sense of smell</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-ac5f420e"><p class="cl-ac5f2030"><span class="cl-ac5f1338">Resistance to common cold</span></p></td><td class="cl-ac5f420e"><p class="cl-ac5f2030"><span class="cl-ac5f1338">Eyesight acuity</span></p></td></tr></tbody></table></div></template>
-<div class="flextable-shadow-host" id="972aec59-be77-4e6f-977d-777f62bc52ec"></div>
+</style><div class="tabwid"><style>.cl-2793e0de{}.cl-27777a70{font-family:'Helvetica';font-size:16pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-277793ac{margin:0;text-align:left;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-2778c042{width:288pt;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style><table class='cl-2793e0de'>
+<tbody><tr style="overflow-wrap:break-word;"><td class="cl-2778c042"><p class="cl-277793ac"><span class="cl-27777a70">Eye/hair colour</span></p></td><td class="cl-2778c042"><p class="cl-277793ac"><span class="cl-27777a70">Metabolic efficiency</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-2778c042"><p class="cl-277793ac"><span class="cl-27777a70">Skin colour</span></p></td><td class="cl-2778c042"><p class="cl-277793ac"><span class="cl-27777a70">Amount of body hair</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-2778c042"><p class="cl-277793ac"><span class="cl-27777a70">Singing ability</span></p></td><td class="cl-2778c042"><p class="cl-277793ac"><span class="cl-27777a70">Intelligence</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-2778c042"><p class="cl-277793ac"><span class="cl-27777a70">Iris stucture</span></p></td><td class="cl-2778c042"><p class="cl-277793ac"><span class="cl-27777a70">Sperm motility</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-2778c042"><p class="cl-277793ac"><span class="cl-27777a70">Muscle strength</span></p></td><td class="cl-2778c042"><p class="cl-277793ac"><span class="cl-27777a70">Face symmetry</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-2778c042"><p class="cl-277793ac"><span class="cl-27777a70">Running speed</span></p></td><td class="cl-2778c042"><p class="cl-277793ac"><span class="cl-27777a70">Height</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-2778c042"><p class="cl-277793ac"><span class="cl-27777a70">Resistance to bubonic plague</span></p></td><td class="cl-2778c042"><p class="cl-277793ac"><span class="cl-27777a70">Sense of smell</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-2778c042"><p class="cl-277793ac"><span class="cl-27777a70">Resistance to common cold</span></p></td><td class="cl-2778c042"><p class="cl-277793ac"><span class="cl-27777a70">Eyesight acuity</span></p></td></tr></tbody></table></div></template>
+<div class="flextable-shadow-host" id="5a9efcf6-3d2e-4b28-9a32-80ac15d25153"></div>
 <script>
-var dest = document.getElementById("972aec59-be77-4e6f-977d-777f62bc52ec");
-var template = document.getElementById("1fbec0c4-d2dd-46a0-bf7c-792b43d681b8");
+var dest = document.getElementById("5a9efcf6-3d2e-4b28-9a32-80ac15d25153");
+var template = document.getElementById("c1ac6834-5210-4082-a898-32c41fdf4a23");
 var caption = template.content.querySelector("caption");
 if(caption) {
   caption.style.cssText = "display:block;text-align:center;";
@@ -410,17 +413,20 @@ fantome.appendChild(templateContent);
 
 </div>
 </div>
+
+
+
+</div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="bug-hunt-camouflage-netlogo.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="hardy-weinberg-equilibrium.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="hardy-weinberg-equilibrium.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="lotka-volterra-competition.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
 <script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
@@ -448,7 +454,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/jonesor/BB512_Book/edit/master/2_02_NeutralOrAdaptiveEvolution.Rmd",
+"link": "https://github.com/jonesor/BB512_Book/edit/master/3_02_NeutralOrAdaptiveEvolution.Rmd",
 "text": "Edit"
 },
 "history": {
@@ -459,9 +465,9 @@ gitbook.start({
 "link": null,
 "text": null
 },
-"download": ["BB512.pdf"],
+"download": null,
 "search": {
-"engine": "lunr",
+"engine": "fuse",
 "options": null
 },
 "toc": {
