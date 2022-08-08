@@ -37,13 +37,13 @@ knitr::opts_chunk$set(
 
 
 Welcome to the 2022 Population and Evolution course. 
-The course is divided into four parts:
+The course, and this website, is divided into five parts:
 
-- Evolution by Natural Selection
-- Population Growth Models
-- Population Genetics and Evolution
-- Interactions Between Species and Community Structure
-- Animal Behaviour, Altruism and Sexual Selection
+1. Evolution by Natural Selection
+2. Population Growth Models
+3. Population Genetics and Evolution
+4. Interactions Between Species and Community Structure
+5. Animal Behaviour, Altruism and Sexual Selection
 
 The recommended textbook is Neal (2018). Other useful textbooks, that are NOT mandatory, but could be useful are Gotelli (2008) and Stearns & Hoekstra (2005).
 

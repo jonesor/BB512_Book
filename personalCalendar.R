@@ -1,28 +1,10 @@
 #Create personal calendar for Owen and Thomas-----
-courseCal <- ical::ical_parse_df("bb512.ics") %>% 
-  filter(!is.na(uid)) %>% 
-  arrange(start) %>% 
-  select(summary,DTSTART = start,DTEND = end) %>% 
-  mutate(Session = row_number()) %>% 
-  mutate(savingsT = DTSTART < savingsTimeSwitch) %>% 
-  mutate(offsetT = if_else(savingsT == TRUE, 2, 1)) %>% #Check this every year!
-  mutate(DTSTART2 = DTSTART + hours(offsetT)) %>% 
-  mutate(DTEND2 = DTEND + hours(offsetT)) %>% 
-  mutate(St = hour(DTSTART2)) %>% 
-  mutate(En = hour(DTEND2)) %>% 
-  mutate(wd = lubridate::wday(DTSTART2,label= TRUE)) %>% 
-  #mutate(Room = gsub(pattern = "Odense ",replacement = "", x = LOCATION)) %>% 
-  mutate(Room = location) %>% 
-  mutate(Room = paste0("(",Room,")")) %>% 
-  mutate(Date = paste0( month(DTSTART2,label = TRUE)," ",day(DTSTART2),", ",wd)) %>% 
-  mutate(Time = paste0("kl.",St,"-",En)) %>% 
+courseCal_ics <- courseCal %>% 
   select(Session,DTSTART2,DTEND2, Room)
-
-
 
 schedule <- readxl::read_excel("BB512_Schedule.xlsx")
 
-icalSchedule <- left_join(courseCal,schedule) %>% 
+icalSchedule <- left_join(courseCal_ics,schedule) %>% 
   select(DTSTART2,DTEND2,Room,Type,Topic,Instructor) 
 
 instructorList <- na.omit(unique(icalSchedule$Instructor))

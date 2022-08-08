@@ -54,7 +54,8 @@ courseCal <- ical::ical_parse_df("bb512.ics") %>%
   select(summary,DTSTART = start,DTEND = end) %>% 
   mutate(Session = row_number()) %>% 
   mutate(savingsT = DTSTART < savingsTimeSwitch) %>% 
-  mutate(offsetT = if_else(savingsT == TRUE, 2, 1)) %>% #Check this every year!
+  #mutate(offsetT = if_else(savingsT == TRUE, 2, 1)) %>% #Check this every year!
+  mutate(offsetT = 0) %>% #Check this every year!
   mutate(DTSTART2 = DTSTART + hours(offsetT)) %>% 
   mutate(DTEND2 = DTEND + hours(offsetT)) %>% 
   mutate(St = hour(DTSTART2)) %>% 
@@ -64,14 +65,15 @@ courseCal <- ical::ical_parse_df("bb512.ics") %>%
   mutate(Room = location) %>% 
   mutate(Room = paste0("(",Room,")")) %>% 
   mutate(Date = paste0( month(DTSTART2,label = TRUE)," ",day(DTSTART2),", ",wd)) %>% 
-  mutate(Time = paste0("kl.",St,"-",En)) %>% 
-  select(Session, Date, Time, Room)
+  mutate(Time = paste0("kl.",St,"-",En)) 
 
+courseCal_web <- courseCal %>% 
+  select(Session, Date, Time, Room)
 
 
 schedule <- readxl::read_excel("BB512_Schedule.xlsx")
 
-schedule <- left_join(courseCal,schedule)
+schedule <- left_join(courseCal_web,schedule)
 ```
 
 
@@ -103,6 +105,12 @@ ft <- flextable(schedule2, cwidth = c(2,9,4,1,.5,1,4,.75,.75)) %>%
   
 ft
 ```
+
+```{r, echo =FALSE,message=FALSE,warning=FALSE}
+library(xlsx)
+write.xlsx(schedule2,"BB512_schedule_with_dates.xlsx",col.names = TRUE,row.names = FALSE)
+```
+
 
 ```{r, echo =FALSE,message=FALSE,warning=FALSE}
 source("personalCalendar.R")
