@@ -7,8 +7,8 @@ If you find a mismatch between this schedule and the official one^[https://mitsd
 You should see the content of itsLearning for details of other tasks/assignments/reading etc.
 
 ```{r, echo = FALSE, include=knitr::is_latex_output()}
-plot(1,1,type = "n",axes = FALSE,xlab="",ylab="")
-text(1,1,labels = "The schedule is only available on the HTML version of this document")
+plot(1, 1, type = "n", axes = FALSE, xlab = "", ylab = "")
+text(1, 1, labels = "The schedule is only available on the HTML version of this document")
 ```
 
 ```{r echo = FALSE}
@@ -29,7 +29,7 @@ ics_files <- list.files(pattern = "*.ics")
 file.remove(ics_files)
 
 
-curl::curl_download("https://mitsdu.sdu.dk/skema/icalendar/activities/N100007101/e22/e22",destfile = "bb512.ics")
+curl::curl_download("https://mitsdu.sdu.dk/skema/icalendar/activities/N100007101/e22/e22", destfile = "bb512.ics")
 ```
 
 ```{r, echo = FALSE, message=FALSE,warning=FALSE, results = 'hide'}
@@ -38,42 +38,42 @@ library(calendar)
 library(magrittr)
 library(dplyr)
 
-#Last sunday in October, 0300, CEST -> CET, 
-#So the time offset moves from +2 to +1
+# Last sunday in October, 0300, CEST -> CET,
+# So the time offset moves from +2 to +1
 
 savingsTimeSwitch <- with_tz(lubridate::as_datetime("2022-10-31 03:00:00"), "Europe/Copenhagen")
 
 xx <- readLines("bb512.ics")
 
-locationIndex <- grep("^LOCATION",xx)
-location <- gsub(pattern = "LOCATION:Odense ", replacement = "",x = xx[locationIndex])
+locationIndex <- grep("^LOCATION", xx)
+location <- gsub(pattern = "LOCATION:Odense ", replacement = "", x = xx[locationIndex])
 
-courseCal <- ical::ical_parse_df("bb512.ics") %>% 
-  filter(!is.na(uid)) %>% 
-  arrange(start) %>% 
-  select(summary,DTSTART = start,DTEND = end) %>% 
-  mutate(Session = row_number()) %>% 
-  mutate(savingsT = DTSTART < savingsTimeSwitch) %>% 
-  #mutate(offsetT = if_else(savingsT == TRUE, 2, 1)) %>% #Check this every year!
-  mutate(offsetT = 0) %>% #Check this every year!
-  mutate(DTSTART2 = DTSTART + hours(offsetT)) %>% 
-  mutate(DTEND2 = DTEND + hours(offsetT)) %>% 
-  mutate(St = hour(DTSTART2)) %>% 
-  mutate(En = hour(DTEND2)) %>% 
-  mutate(wd = lubridate::wday(DTSTART2,label= TRUE)) %>% 
-  #mutate(Room = gsub(pattern = "Odense ",replacement = "", x = LOCATION)) %>% 
-  mutate(Room = location) %>% 
-  mutate(Room = paste0("(",Room,")")) %>% 
-  mutate(Date = paste0( month(DTSTART2,label = TRUE)," ",day(DTSTART2),", ",wd)) %>% 
-  mutate(Time = paste0("kl.",St,"-",En)) 
+courseCal <- ical::ical_parse_df("bb512.ics") %>%
+  filter(!is.na(uid)) %>%
+  arrange(start) %>%
+  select(summary, DTSTART = start, DTEND = end) %>%
+  mutate(Session = row_number()) %>%
+  mutate(savingsT = DTSTART < savingsTimeSwitch) %>%
+  # mutate(offsetT = if_else(savingsT == TRUE, 2, 1)) %>% #Check this every year!
+  mutate(offsetT = 0) %>% # Check this every year!
+  mutate(DTSTART2 = DTSTART + hours(offsetT)) %>%
+  mutate(DTEND2 = DTEND + hours(offsetT)) %>%
+  mutate(St = hour(DTSTART2)) %>%
+  mutate(En = hour(DTEND2)) %>%
+  mutate(wd = lubridate::wday(DTSTART2, label = TRUE)) %>%
+  # mutate(Room = gsub(pattern = "Odense ",replacement = "", x = LOCATION)) %>%
+  mutate(Room = location) %>%
+  mutate(Room = paste0("(", Room, ")")) %>%
+  mutate(Date = paste0(month(DTSTART2, label = TRUE), " ", day(DTSTART2), ", ", wd)) %>%
+  mutate(Time = paste0("kl.", St, "-", En))
 
-courseCal_web <- courseCal %>% 
+courseCal_web <- courseCal %>%
   select(Session, Date, Time, Room)
 
 
 schedule <- readxl::read_excel("BB512_Schedule.xlsx")
 
-schedule <- left_join(courseCal_web,schedule)
+schedule <- left_join(courseCal_web, schedule)
 ```
 
 
@@ -82,37 +82,38 @@ schedule <- left_join(courseCal_web,schedule)
 library(lubridate)
 library(officer)
 
-schedule2 <- schedule %>% 
+schedule2 <- schedule %>%
   select(Part, Date, Time, Room, Session, Type, Topic, Instructor)
 
-big_b <- fp_border(color="gray70", width = 3)
-std_b <- fp_border(color="gray70", style = "dashed")
-big_b_end <- fp_border(color="white", width = 3)
+big_b <- fp_border(color = "gray70", width = 3)
+std_b <- fp_border(color = "gray70", style = "dashed")
+big_b_end <- fp_border(color = "white", width = 3)
 
-ft <- flextable(schedule2, cwidth = c(2,9,4,1,.5,1,4,.75,.75)) %>% 
-  bold(part = "header") %>% 
-  bold(j = 1) %>% 
-  color(i = ~ Type == "Lecture",
-         j = ~  Session  + Type + Topic,
-        color="red") %>% 
-  merge_v(j = ~ Date + Part ) %>% 
-  fontsize(part = "all", size = 14) %>% 
-  vline(border = std_b, j = 1:4) %>% 
-  rotate(j = ~ Part, align = 'top', rotation = 'tblr') %>% 
-  hline(border = std_b ,i = seq(2,nrow(schedule2),2)) %>% 
-  hline(border = big_b_end ,i =nrow(schedule2))
+ft <- flextable(schedule2, cwidth = c(2, 9, 4, 1, .5, 1, 4, .75, .75)) %>%
+  bold(part = "header") %>%
+  bold(j = 1) %>%
+  color(
+    i = ~ Type == "Lecture",
+    j = ~ Session + Type + Topic,
+    color = "red"
+  ) %>%
+  merge_v(j = ~ Date + Part) %>%
+  fontsize(part = "all", size = 14) %>%
+  vline(border = std_b, j = 1:4) %>%
+  rotate(j = ~Part, align = "top", rotation = "tblr") %>%
+  hline(border = std_b, i = seq(2, nrow(schedule2), 2)) %>%
+  hline(border = big_b_end, i = nrow(schedule2))
 
-  
+
 ft
 ```
 
 ```{r, echo =FALSE,message=FALSE,warning=FALSE}
 library(xlsx)
-write.xlsx(schedule2,"BB512_schedule_with_dates.xlsx",col.names = TRUE,row.names = FALSE)
+write.xlsx(schedule2, "BB512_schedule_with_dates.xlsx", col.names = TRUE, row.names = FALSE)
 ```
 
 
 ```{r, echo =FALSE,message=FALSE,warning=FALSE}
 source("personalCalendar.R")
 ```
-
