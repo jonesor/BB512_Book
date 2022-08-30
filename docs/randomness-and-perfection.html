@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>6 Geometric growth | BB512 - Population Biology and Evolution</title>
+  <title>3 Randomness and perfection | BB512 - Population Biology and Evolution</title>
   <meta name="description" content="Course book for BB512 at the Biology Department, University of Southern Denmark" />
   <meta name="generator" content="bookdown 0.27 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="6 Geometric growth | BB512 - Population Biology and Evolution" />
+  <meta property="og:title" content="3 Randomness and perfection | BB512 - Population Biology and Evolution" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="Course book for BB512 at the Biology Department, University of Southern Denmark" />
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="6 Geometric growth | BB512 - Population Biology and Evolution" />
+  <meta name="twitter:title" content="3 Randomness and perfection | BB512 - Population Biology and Evolution" />
   
   <meta name="twitter:description" content="Course book for BB512 at the Biology Department, University of Southern Denmark" />
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="the-legend-of-ambalapuzha.html"/>
-<link rel="next" href="from-population-biology-to-fitness.html"/>
+<link rel="prev" href="schedule.html"/>
+<link rel="next" href="bug-hunt-camouflage-netlogo.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -322,73 +322,99 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="geometric-growth" class="section level1 hasAnchor" number="6">
-<h1><span class="header-section-number">6</span> Geometric growth<a href="geometric-growth.html#geometric-growth" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p>In a simple model of population growth where the population grows without any constraints, the speed a population increases in size can be described by the population growth rate. This is often given by the symbol lambda (<span class="math inline">\(\lambda\)</span>) which represents the population multiplication rate. High values of <span class="math inline">\(\lambda\)</span> mean the population grows fast, while small values indicated that it grows slowly, or if the <span class="math inline">\(\lambda &lt; 1\)</span> shrinks in size.</p>
-<p>Geometric growth is often seen as synonymous to exponential growth. It basically is, but with one important difference: exponential growth, strictly speaking, refers to “continuous time” scenarios, whereas geometric growth refers to models where the population changes in discrete time steps (e.g. each year).</p>
-<p>The important quantities are as follows, but please be aware that different books/sources can use different symbols:</p>
-<ul>
-<li><span class="math inline">\(N_t\)</span> = population size at time <span class="math inline">\(t\)</span>; and <span class="math inline">\(N_0\)</span>, <span class="math inline">\(N_1\)</span> is population size at time 0, time 1 etc.</li>
-<li><span class="math inline">\(\lambda\)</span> = population growth (multiplication) rate over a single time step, <span class="math inline">\(\Delta t\)</span>. THis is sometimes called the <em>finite rate of increase</em>.</li>
-<li><span class="math inline">\(R_m\)</span> = population rate of increase over a single time step, <span class="math inline">\(\Delta t\)</span>. This is sometimes called the <em>discrete growth factor</em>.</li>
-<li><span class="math inline">\(r_m\)</span> = individual rate of increase over an infinitesimally small time step. This is sometimes called the <em>instantaneous rate of increase</em> or <em>intrinsic rate of increase</em></li>
-</ul>
-<p><span class="math inline">\(R_m\)</span> is is related to <span class="math inline">\(\lambda\)</span> such that <span class="math inline">\(R_m = \lambda - 1\)</span> (and <span class="math inline">\(\lambda = R_m + 1\)</span>).</p>
-<p>The relevant equations can be seen in Box 4.1 of the Neal textbook but here we will use the following:</p>
-<p><span class="math inline">\(N_{t+1} = N_t + (R_m N_t)\)</span>,</p>
-<p>which leads to,</p>
-<p><span class="math inline">\(N_{t+1} = N_t (1 + R_m)\)</span> and, equivalently, <span class="math inline">\(N_{t+1} = N_t \lambda\)</span>.</p>
+<div id="randomness-and-perfection" class="section level1 hasAnchor" number="3">
+<h1><span class="header-section-number">3</span> Randomness and perfection<a href="randomness-and-perfection.html#randomness-and-perfection" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>An early criticism of natural selection used an analogy of a watchmaker to conclude that species must have been designed by a supernatural being.</p>
+<p>Paraphrased: <strong>If a pocket watch is found on a heath, it is most reasonable to assume that someone dropped it and that it was made by at least one watchmaker, not by natural forces</strong></p>
+<p>In this exercise you will use a program written in R to explore how random change, when paired with strong selection, can result in seemingly improbable results.</p>
+<p>Imagine if you randomly typed letters into a type writer. How long would it take to come up with a sensible sentence?</p>
+<p>Let’s think about a particular sentence “<code>I LOVE SCIENCE</code>”, which has 14 characters (including the spaces).</p>
+<p>In English there are 26 letters in the alphabet, plus the space. So if we hit a random key, probability of getting the first letter correct is 1/27 (= 0.037).
+The chances of getting the first two letters correct is (1/27) * (1/27), or (1/27)^2, which is 0.0014. Our sentence has 14 characters, so the probability of getting it right with random key presses is (1/27)^14 = 9.139181e-21. This is a vanishingly small probability.</p>
+<p>You will explore how SELECTION, can turn the impossible into a possible.</p>
 <div class="do-something">
 <p>
 Learning outcomes:
 </p>
 <ul>
 <li>
-Competence in using Excel formulae for mathematical modeling.
+Greater understanding of adaptive evolution via natural
+selection.
 </li>
 <li>
-Understanding the the parameters of exponential/geometric
-growth.
+Understanding that random change does NOT result in disorder, if
+paired with selection.
 </li>
 <li>
-Competence in using mathematical models in Excel to strengthen own
-understanding of biological processes.
-</li>
-<li>
-Awareness of rearranging of mathematical formulae to produce
-different forms of models.
-</li>
-<li>
-Knowing that the slope of the <span class="math inline"><span class="math inline">\(ln(N_t)\)</span></span> vs. <span class="math inline"><span class="math inline">\(t\)</span></span> relationship can tell you about
-population growth rate (it is <span class="math inline"><span class="math inline">\(ln(\lambda)\)</span></span>).
+Use of R for exploring biological phenomenon.
 </li>
 </ul>
 </div>
-<p>Download and open the Excel file <a href="https://www.dropbox.com/s/xxx05sckvop5i52/GeometricGrowth.xlsx?dl=1"><code>GeometricGrowth.xlsx</code></a>.</p>
-<ol style="list-style-type: decimal">
-<li>Starting with an initial population size (<code>N</code>) of 10 [at time (<code>t</code>) =0], and with a <span class="math inline">\(\lambda\)</span> of <code>1.1</code>, use Excel’s equation functions to work out the population size from <code>t=1</code> through to <code>t=20</code>. E.g. The formula might look something like this “<code>=B8*$F$8</code>”.</li>
-<li>Use charts to plot the results. On the horizontal axis (x-axis) you should have time, and on the vertical axis (y-axis) you should have population size (<code>N</code>). A scatterplot would be best for this.</li>
-<li>Make another plot of the same data, but this time use a natural logarithmic axis for the population size. The formula in Excel for natural log is <code>LN()</code>.</li>
-<li>What do you notice about the curves in these different versions of plotting the same data?</li>
-<li>Try altering the population growth rate. Try values of 0.8, 1 and 1.2 for example. What happens to the curves? What is special about the value of 1?</li>
-<li>Add an trendline with an equation to the log transformed graph. Identify the slope. The slope is <span class="math inline">\(ln(\lambda)\)</span>), so you can work out <span class="math inline">\(\lambda\)</span> by “reversing” the <span class="math inline">\(ln\)</span> by taking its exponential. e.g. <code>=EXP(0.0953)</code> in Excel.</li>
+<div id="getting-started" class="section level2 hasAnchor" number="3.1">
+<h2><span class="header-section-number">3.1</span> Getting started<a href="randomness-and-perfection.html#getting-started" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ol start="0" style="list-style-type: decimal">
+<li>Make sure you have both R and RStudio installed.</li>
+<li>Open RStudio.</li>
+<li>Open a new script (File &gt; New File &gt; New Script)</li>
+<li>Cut and paste the R code (below) into your script.</li>
+<li>Save your script with a memorable file name.</li>
 </ol>
-<p>Now reset the population growth rate to 1.1. Now lets see if the mathematical rules of so-called “geometric series” work…</p>
-<ol style="list-style-type: decimal">
-<li>If the population starts at t=0, <span class="math inline">\(N_t = N_0 \lambda^t\)</span> . In words, the population at time <span class="math inline">\(t\)</span> is the initial population size multiplied by the finite population growth rate raised to the power of <span class="math inline">\(t\)</span>.</li>
-<li>Your instructor will explain how this works on the blackboard.</li>
-<li>Following these rules, the population size at time <span class="math inline">\(t=5\)</span> (<span class="math inline">\(N_5\)</span>), is <span class="math inline">\(10 * 1.1^5\)</span>, or <span class="math inline">\(10* 1.61051\)</span>, which is <span class="math inline">\(16.1051\)</span>. Check that this matches what you got earlier.</li>
-<li>This approach can be really useful because it can save lots of time. For example, what is the population after 900 generations? It would be tedious to work this out using the first, “simple” approach, but very easy if you use the geometric series rules.</li>
-</ol>
+<p>Note, only edit the top part of the file (above the marked comment)</p>
+</div>
+<div id="the-code" class="section level2 hasAnchor" number="3.2">
+<h2><span class="header-section-number">3.2</span> The code<a href="randomness-and-perfection.html#the-code" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<pre><code>phrase &lt;- &quot;With your feet on the air and your head on the ground&quot;
+nGenerations &lt;- 100
+selection &lt;- TRUE
 
+###################################################
+#Do not edit between the ##
+phraseSplit &lt;- unlist(strsplit(toupper(phrase), &quot;&quot;))
+output &lt;- data.frame(generation = 1:nGenerations, 
+                     phrase = rep(NA, nGenerations))
+fixed &lt;- NULL
+for (i in 1:nGenerations){
+  randomPhrase &lt;- sample(c(LETTERS,&quot; &quot;,&quot;&#39;&quot;,&quot;Å&quot;,&quot;Æ&quot;,&quot;Ø&quot;,&quot;!&quot;), length(phraseSplit), replace = TRUE)
+  if(selection == TRUE) {
+    randomPhrase[fixed] &lt;- phraseSplit[fixed]
+    fixed &lt;- append(fixed,which(randomPhrase == phraseSplit))
+  }
+  output$phrase[i] &lt;- paste(randomPhrase,collapse = &quot;&quot;)
+}
+###################################################
+
+output
+</code></pre>
+</div>
+<div id="how-the-simulation-works." class="section level2 hasAnchor" number="3.3">
+<h2><span class="header-section-number">3.3</span> How the simulation works.<a href="randomness-and-perfection.html#how-the-simulation-works." class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>You provide the small program with a target phrase (<code>phrase</code>). This phrase can include Danish characters, spaces and an exclamation point!
+The program then generates a random “phrase” with the same number of characters as your target phrase. This certainly be complete nonsense - literally random letters – but some of the letters might match with your target phrase.</p>
+<p>If selection is operating (<code>selection &lt;- TRUE</code>), then these matching letters are held in place, and in the next iteration only the unmatched letters are randomised. This process continues for many generations (<code>nGenerations</code>).</p>
+<p>The <code>output</code> of the code (at the bottom) will print out a sequence of the phrases. You should see that, when selection is turned on, the target phrase is reached after some generations.</p>
+<p>Try editing the code:
+1) Change the phrase - make it shorter/longer (remember that not all characters are allowed).
+2) Change the number of generations.</p>
+</div>
+<div id="questions" class="section level2 hasAnchor" number="3.4">
+<h2><span class="header-section-number">3.4</span> Questions<a href="randomness-and-perfection.html#questions" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Answer the following questions, then make sure you confirm your understanding and have the right answers with an instructor.</p>
+<ul>
+<li>What happens if selection is turned OFF?</li>
+<li>Does the number of generations affect whether the target phrase is reached?</li>
+<li>Does the speed of reaching the target phrase depend on the length of the phrase?</li>
+<li>How does this simulation differ from real natural selection?</li>
+</ul>
+
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="the-legend-of-ambalapuzha.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="from-population-biology-to-fitness.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="schedule.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="bug-hunt-camouflage-netlogo.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -419,7 +445,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/jonesor/BB512_Book/edit/master/2_02_GeometricGrowth.Rmd",
+"link": "https://github.com/jonesor/BB512_Book/edit/master/1_01_NatSelectionR.Rmd",
 "text": "Edit"
 },
 "history": {
