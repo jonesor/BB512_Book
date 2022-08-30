@@ -1,0 +1,86 @@
+# Randomness and perfection
+
+An early criticism of natural selection used an analogy of a watchmaker to conclude that species must have been designed by a supernatural being.
+
+Paraphrased: **If a pocket watch is found on a heath, it is most reasonable to assume that someone dropped it and that it was made by at least one watchmaker, not by natural forces**
+
+In this exercise you will use a program written in R to explore how random change, when paired with strong selection, can result in seemingly improbable results. 
+
+Imagine if you randomly typed letters into a type writer. How long would it take to come up with a sensible sentence?
+
+Let's think about a particular sentence "`I LOVE SCIENCE`", which has 14 characters (including the spaces).
+
+In English there are 26 letters in the alphabet, plus the space. So if we hit a random key, probability of getting the first letter correct is 1/27 (= 0.037).
+The chances of getting the first two letters correct is (1/27) * (1/27), or (1/27)^2, which is 0.0014. Our sentence has 14 characters, so the probability of getting it right with random key presses is (1/27)^14 = 9.139181e-21. This is a vanishingly small probability.
+
+You will explore how SELECTION, can turn the impossible into a possible.
+
+
+```{block, type="do-something"}
+Learning outcomes: 
+
+- Greater understanding of adaptive evolution via natural selection.
+- Understanding that random change does NOT result in disorder, if paired with selection.
+- Use of R for exploring biological phenomenon.
+```
+
+
+## Getting started
+
+0. Make sure you have both R and RStudio installed.
+1. Open RStudio.
+2. Open a new script (File > New File > New Script)
+3. Cut and paste the R code (below) into your script.
+4. Save your script with a memorable file name.
+
+Note, only edit the top part of the file (above the marked comment)
+
+## The code
+
+```
+phrase <- "With your feet on the air and your head on the ground"
+nGenerations <- 100
+selection <- TRUE
+
+###################################################
+#Do not edit between the ##
+phraseSplit <- unlist(strsplit(toupper(phrase), ""))
+output <- data.frame(generation = 1:nGenerations, 
+                     phrase = rep(NA, nGenerations))
+fixed <- NULL
+for (i in 1:nGenerations){
+  randomPhrase <- sample(c(LETTERS," ","'","Å","Æ","Ø","!"), length(phraseSplit), replace = TRUE)
+  if(selection == TRUE) {
+    randomPhrase[fixed] <- phraseSplit[fixed]
+    fixed <- append(fixed,which(randomPhrase == phraseSplit))
+  }
+  output$phrase[i] <- paste(randomPhrase,collapse = "")
+}
+###################################################
+
+output
+
+```
+
+## How the simulation works.
+
+You provide the small program with a target phrase (`phrase`). This phrase can include Danish characters, spaces and an exclamation point! 
+The program then generates a random "phrase" with the same number of characters as your target phrase. This certainly be complete nonsense - literally random letters -- but some of the letters might match with your target phrase.
+
+If selection is operating (`selection <- TRUE`), then these matching letters are held in place, and in the next iteration only the unmatched letters are randomised. This process continues for many generations (`nGenerations`).
+
+The `output` of the code (at the bottom) will print out a sequence of the phrases. You should see that, when selection is turned on, the target phrase is reached after some generations.
+
+Try editing the code: 
+1) Change the phrase - make it shorter/longer (remember that not all characters are allowed).
+2) Change the number of generations.
+
+## Questions
+
+Answer the following questions, then make sure you confirm your understanding and have the right answers with an instructor.
+
+*	What happens if selection is turned OFF? 
+* Does the number of generations affect whether the target phrase is reached?
+* Does the speed of reaching the target phrase depend on the length of the phrase?
+* How does this simulation differ from real natural selection?
+
