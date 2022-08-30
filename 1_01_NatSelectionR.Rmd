@@ -64,6 +64,8 @@ output
 
 ## How the simulation works.
 
+Owen will walk you through the code, and what it means. He will also demonstrate its use. 
+
 You provide the small program with a target phrase (`phrase`). This phrase can include Danish characters, spaces and an exclamation point! 
 The program then generates a random "phrase" with the same number of characters as your target phrase. This certainly be complete nonsense - literally random letters -- but some of the letters might match with your target phrase.
 
