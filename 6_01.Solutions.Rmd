@@ -2,6 +2,57 @@
 
 In this section you will find the solutions and/or main take home messages of the practical exercises used in this course.
 
+## Solutions: Randomness and perfection
+
+*	_What happens if selection is turned OFF?_
+
+If there is no selection, then there is no adaptation. Selection is required to retain the changes and pass to the next generation. With no selection the result is purely random.
+
+* _Does the number of generations affect whether the target phrase is reached?_
+
+Yes, if the phrase is complex, it may take many generations to reach. Increasing the number of generations will improve the chance that the target is reached.
+
+* _Does the speed of reaching the target phrase depend on the length of the phrase?_
+
+Yes. Shorter target phrases are achieved quicker than longer ones.
+
+* _How does this simulation differ from real natural selection?_
+
+Two ways. Firstly, natural selection does not have a specific long-term goal (i.e. target). It is simply that the better survivors are more represented in the next generation. Secondly, in natural selection each intermediate step needs to be advantageous compared to the previous step, which is not necessarily the case here.
+
+
+
+## Solutions: Bug hunt camouflage
+
+*	_What happens to the average colour of the bug population with time as you hunt?_
+
+The colour evolves to become more similar to the background colour because you (the hunter) find it harder to find these better-camouflaged individuals.
+
+*	_What happens to your hunting efficiency?_
+
+Your hunting efficiency tends to decrease with time because the bugs are evolving to be harder to see. They are evolving camouflaged colours.
+
+*	_Would you say that the bug population becomes worse or better adapted to their environment?_
+
+The population becomes better-adapted to their environment with time.
+
+*	_Can you explain how this happens?_
+
+You (the hunter) kill the most obvious bugs first (i.e. those with contrasting colours to the background). These are the individuals that are not well-adapted to the environment. The survivors have offspring that are similar to them, while the ones you kill leave no offspring. So as time goes on, the population becomes dominated by individuals that are well-camouflaged.
+
+*	_After simulating in one environment (e.g. poppy field) for a few minutes, pause then switch to another environment. Are the bugs now well- or poorly-adapted to their environment?_
+
+Changing the environment means that the individuals are now poorly-adapted to their environment. This is because the individuals now find themselves in an environment that they did not evolve in. Their evolved camouflage does not work so well in a new environment.
+
+*	_Do the genotypes of individuals change (e.g. with individual age)?_
+
+No, individuals' genotypes are fixed. The change in the population occurs because of selection of individuals to reproduce. Better-adapted individuals are more likely to reproduce.
+
+*	_Increasing the “max-mutation-step” makes bug offspring less like their parents. How do you think this will influence the speed of adaptation of the bugs?_
+
+Increasing the amount of variation in offspring will tend to speed up adaptation. However, there are limits: too much variation can cause maladaptation of offspring. For example, if a parent is well-adapted (perfectly camouflaged), too much variation in offspring could lead to some offspring being poorly-camouflaged and therefore vulnerable to predation. 
+
+
 
 ## Solutions: The legend of Ambalapuzha
 
@@ -22,6 +73,36 @@ Take home messages:
 * Exponential growth is unlimited. This is unrealistic because very soon competition (what Darwin called "The struggle for existence") will soon take effect as the population runs out of space or resources. Nevertheless, the model is useful and realistic for some limited situations (e.g. early population growth for new invaders)
 * Growth trajectories can be plotted on the *natural scale* or on a *log scale*. Exponential growth (or decline) plotted on a log scale is a straight line. This could be useful to infer biological processes (or the lack of them). For example, exponential growth in population size indicates that there are no forces currently limiting the population (e.g. predators/competition/management actions).
 * The slope of the population growth on the natural log scale can tell you what $\lambda$ is. The "opposite" of *ln* is *exp*, so you can ask Excel to `=EXP(slope).
+
+## Solutions: From population biology to fitness
+
+The matrix model with a trade off (increased juvenile survival, but reduced old adult survival) looks like this.
+
+    A3 <- matrix(c(0.00, 5.00, 1.00, 
+                   0.11, 0.80, 0.00, 
+                   0.00, 0.10, 0.20), 
+                byrow = TRUE, nrow = 3)
+    
+    eigs(A3)$lambda
+
+We can compare the $\lambda$ value from this model to the original one to ask ourselves whether the large cost is worth paying for the small benefit. It turns out that it is. You can then ask how MUCH cost would be worth bearing, by repeating the exercise and slowly reducing old-adult survival until you reach the original $\lambda$ value.
+
+You should find that the cost can be huge, and still worth bearing. In fact, you could reduce old adult survival to 0 and it is still worth doing! You can even reduce old-age adult reproduction without much effect on fitness.
+
+HOWEVER, changes to prime age adults are much more important. You can only reduce survival to about 0.76 (from 0.8) before the cost is not worth bearing (population growth rate falls below that of the first baseline model). 
+
+Thus, old-age costs are "worth it" while prime age costs are much more important. This finding is central to the evolution of senescence and life span, which we will cover later in the course.
+
+## Solutions: How many eggs should a bird lay?
+
+You can find a completed Excel spreadsheet [here](https://www.dropbox.com/s/tcpxmdfvm35jzgr/How%20many%20eggs%20-%20answers.xlsx?dl=1).
+
+The take-home message is that the trade-off between number of eggs and juvenile survival leads to an optimum number of eggs required to maximise reproductive success (i.e. number of surviving chicks).
+
+You can move this optimum if the trade-off is changed. For example, if you increase survival of the chicks from larger clutches, then the optimum number of eggs will increase.
+
+This fact reminds us that the environment (e.g. predation risk and resource abundance) will be an important factor in determining the evolution of life history parameters (like average number of babies). 
+
 
 
 ## Solutions: Stochastic population growth
@@ -104,6 +185,37 @@ The pattern remains whatever the values of $K$, and $r_m$
 
 The equivalent plot (for Graph 2) for exponential growth would be a horizontal line - because population growth rate does NOT depend on population size.
 
+## Solutions: Trade-offs and the force of selection
+
+*Simulate this by adding 1 to fertility (mx) in year 1 (the benefit) but reducing survival to 0 (all die) at age 25 (the cost). What is the fitness of this strategy?*
+  
+Fitness (R0) would be 50.76 (compared to 49.81).
+
+*By setting survival to 0 at other ages, determine how many years of life could be lost before this cost is no longer worth bearing. Is this surprising?*
+  
+You could “kill” the species at 18, losing 8 years of life, before the new strategy of a small increase in fertility at the expense of years of life at the end of life becomes unfavourable. In other words, a cost of losing 8 yrs of life is worth bearing if the benefit is an extra baby in year 1.
+
+
+*Now reset everything (mx =10; survival = 0.8). Recall what fitness was when you added 1 to mx at age 1 (R0=50.811). 
+If, instead of adding to mx at age 1 you were to increase mx at age 25, how much would you need to increase it to to reach this figure?* 
+
+At age 25 you would need to increase Fertility from 10 to 222 to reach the same level of improvement in fitness as increasing Fertility from 10 to 11 at age 1.
+
+*What about at age 20?*   10 to 80
+*Age 15?* 10 to 33
+*Age 10?*  10 to 18
+*Age 5?* 10 to 13
+
+*What do you notice?*
+
+You should notice that changes made at younger ages have a bigger effect than those at older ages. I have plotted this to the right. The plot shows the amount of increase in fertility that would be required to raise fitness (R0) from 49.81 to >50.81 at ages 1 through to 25 (i.e. the figures you estimated above). You can see that you only need to change fertility a little bit at young ages, but you would need to make BIG changes at older ages. 
+
+*Reset everything again (mx =10; survival = 0.8). Set mx from age 15 onwards to be 0. Now alter survival rate after this point (at ages 15-25). What happens to fitness?*
+  
+You should notice that any changes you make to survival AFTER reproduction has been completed will have no effect on fitness. In other words evolution “doesn’t care about you” after you have finished with reproduction.
+
+
+
 ## Solutions: Deeper into logistic growth
 
 ### Relationship between Logistic and Exponential growth equations
@@ -164,87 +276,6 @@ The main take home messages for this class are that you should:
 (5) understand what an elasticity matrix tells us (it tells us the relative importance of the transitions for population growth)
 (6) understand the concept of doing an LTRE to investigate management options.
 
-
-
-## Solutions: Lotka-Volterra competition
-
-You can find a completed Excel spreadsheet [here](https://www.dropbox.com/s/q1qoqxhnm82uugw/9.%20LV%20Competition.xlsx?dl=1).
-
-The answers to the questions are [here](https://www.dropbox.com/s/oz2c10bmyf8t7s6/9.%20Answers%20to%20questions.pdf?dl=1).
-
-
-## Solutions: Lotka-Volterra predator-prey dynamics
-
-
-<!-- Solutions will be posted soon! -->
-You can find a completed Excel spreadsheet [here](https://www.dropbox.com/s/wet7brtgxywdqi5/10.%20Pred-PreyDynamics.xlsx?dl=1).
-
-The answers to the questions are [here](https://www.dropbox.com/s/mt43nvqu7cjif69/10.%20Answers%20to%20Pred-Prey%20exercise.pdf?dl=1).
-
-
-## Solutions: From population biology to fitness
-
-The matrix model with a trade off (increased juvenile survival, but reduced old adult survival) looks like this.
-
-    A3 <- matrix(c(0.00, 5.00, 1.00, 
-                   0.11, 0.80, 0.00, 
-                   0.00, 0.10, 0.20), 
-                byrow = TRUE, nrow = 3)
-    
-    eigs(A3)$lambda
-
-We can compare the $\lambda$ value from this model to the original one to ask ourselves whether the large cost is worth paying for the small benefit. It turns out that it is. You can then ask how MUCH cost would be worth bearing, by repeating the exercise and slowly reducing old-adult survival until you reach the original $\lambda$ value.
-
-You should find that the cost can be huge, and still worth bearing. In fact, you could reduce old adult survival to 0 and it is still worth doing! You can even reduce old-age adult reproduction without much effect on fitness.
-
-HOWEVER, changes to prime age adults are much more important. You can only reduce survival to about 0.76 (from 0.8) before the cost is not worth bearing (population growth rate falls below that of the first baseline model). 
-
-Thus, old-age costs are "worth it" while prime age costs are much more important. This finding is central to the evolution of senescence and life span, which we will cover later in the course.
-
-## Solutions: Bug hunt camouflage
-
-*	_What happens to the average colour of the bug population with time as you hunt?_
-
-The colour evolves to become more similar to the background colour because you (the hunter) find it harder to find these better-camouflaged individuals.
-
-*	_What happens to your hunting efficiency?_
-
-Your hunting efficiency tends to decrease with time because the bugs are evolving to be harder to see. They are evolving camouflaged colours.
-
-*	_Would you say that the bug population becomes worse or better adapted to their environment?_
-
-The population becomes better-adapted to their environment with time.
-
-*	_Can you explain how this happens?_
-
-You (the hunter) kill the most obvious bugs first (i.e. those with contrasting colours to the background). These are the individuals that are not well-adapted to the environment. The survivors have offspring that are similar to them, while the ones you kill leave no offspring. So as time goes on, the population becomes dominated by individuals that are well-camouflaged.
-
-*	_After simulating in one environment (e.g. poppy field) for a few minutes, pause then switch to another environment. Are the bugs now well- or poorly-adapted to their environment?_
-
-Changing the environment means that the individuals are now poorly-adapted to their environment. This is because the individuals now find themselves in an environment that they did not evolve in. Their evolved camouflage does not work so well in a new environment.
-
-*	_Do the genotypes of individuals change (e.g. with individual age)?_
-
-No, individuals' genotypes are fixed. The change in the population occurs because of selection of individuals to reproduce. Better-adapted individuals are more likely to reproduce.
-
-*	_Increasing the “max-mutation-step” makes bug offspring less like their parents. How do you think this will influence the speed of adaptation of the bugs?_
-
-Increasing the amount of variation in offspring will tend to speed up adaptation. However, there are limits: too much variation can cause maladaptation of offspring. For example, if a parent is well-adapted (perfectly camouflaged), too much variation in offspring could lead to some offspring being poorly-camouflaged and therefore vulnerable to predation. 
-
-## Solutions: Neutral or adaptive evolution in humans
-
-The take home message here is that whether traits are adaptive or neutral depends on the environment. 
-
-Consider genes that confer antibiotic resistance on bacteria. In the absence of antibiotics, these genes are not important and are not selected for. They still evolve (if they vary among individuals and are inherited), but this evolution is neutral with no selection. On the other hand, when antibiotics are introduced to the system, those same genes are strongly selected for and evolution of the genes for antibiotic resistance is now strongly adaptive. Context matters.
-
-The same is the case for traits in humans. Assuming the the traits vary among individuals and are inherited, their neutrality or adaptiveness depends on their effect on fitness. If the traits have strong effects on fitness then they will be under strong selection but if they have weak or no effects on fitness they will evolve via neutral evolution.
-
-Example traits that evolve via neutral evolution include fingerprint structure and iris structure. The detailed structures are not important to fitness, but are still genetically determined, and inherited.
-
-Traits like muscle strength, running speed may have been important for fitness when they helped our ancestors obtain food. In those environments, they would have been under selection and therefore evolve via adaptive evolution. In more modern times, these selection pressures are weaker.
-
-
-
 ## Solutions: Hardy-Weinberg equilibrium
 
 Answers to the Hardy-Weinberg questions.
@@ -294,55 +325,31 @@ To determine $q$, which is the frequency of the recessive allele in the populati
 
 Now then, to answer our questions. First, what is the percentage of butterflies in the population that are heterozygous? Well, that would be $2pq$ so the answer is $2 \times 0.37\times 0.63 = 0.47$. Second, what is the frequency of homozygous dominant individuals? That would be $p^2$ or $0.37^2 = 0.14$.
 
-## Solutions: How many eggs should a bird lay?
+## Solutions: Neutral or adaptive evolution in humans
 
-You can find a completed Excel spreadsheet [here](https://www.dropbox.com/s/tcpxmdfvm35jzgr/How%20many%20eggs%20-%20answers.xlsx?dl=1).
+The take home message here is that whether traits are adaptive or neutral depends on the environment. 
 
-The take-home message is that the trade-off between number of eggs and juvenile survival leads to an optimum number of eggs required to maximise reproductive success (i.e. number of surviving chicks).
+Consider genes that confer antibiotic resistance on bacteria. In the absence of antibiotics, these genes are not important and are not selected for. They still evolve (if they vary among individuals and are inherited), but this evolution is neutral with no selection. On the other hand, when antibiotics are introduced to the system, those same genes are strongly selected for and evolution of the genes for antibiotic resistance is now strongly adaptive. Context matters.
 
-You can move this optimum if the trade-off is changed. For example, if you increase survival of the chicks from larger clutches, then the optimum number of eggs will increase.
+The same is the case for traits in humans. Assuming the the traits vary among individuals and are inherited, their neutrality or adaptiveness depends on their effect on fitness. If the traits have strong effects on fitness then they will be under strong selection but if they have weak or no effects on fitness they will evolve via neutral evolution.
 
-This fact reminds us that the environment (e.g. predation risk and resource abundance) will be an important factor in determining the evolution of life history parameters (like average number of babies). 
+Example traits that evolve via neutral evolution include fingerprint structure and iris structure. The detailed structures are not important to fitness, but are still genetically determined, and inherited.
 
-
-## Solutions: Trade-offs and the force of selection
-
-*Simulate this by adding 1 to fertility (mx) in year 1 (the benefit) but reducing survival to 0 (all die) at age 25 (the cost). What is the fitness of this strategy?*
-  
-Fitness (R0) would be 50.76 (compared to 49.81).
-
-*By setting survival to 0 at other ages, determine how many years of life could be lost before this cost is no longer worth bearing. Is this surprising?*
-  
-You could “kill” the species at 18, losing 8 years of life, before the new strategy of a small increase in fertility at the expense of years of life at the end of life becomes unfavourable. In other words, a cost of losing 8 yrs of life is worth bearing if the benefit is an extra baby in year 1.
+Traits like muscle strength, running speed may have been important for fitness when they helped our ancestors obtain food. In those environments, they would have been under selection and therefore evolve via adaptive evolution. In more modern times, these selection pressures are weaker.
 
 
-*Now reset everything (mx =10; survival = 0.8). Recall what fitness was when you added 1 to mx at age 1 (R0=50.811). 
-If, instead of adding to mx at age 1 you were to increase mx at age 25, how much would you need to increase it to to reach this figure?* 
+## Solutions: Lotka-Volterra competition
 
-At age 25 you would need to increase Fertility from 10 to 222 to reach the same level of improvement in fitness as increasing Fertility from 10 to 11 at age 1.
+You can find a completed Excel spreadsheet [here](https://www.dropbox.com/s/q1qoqxhnm82uugw/9.%20LV%20Competition.xlsx?dl=1).
 
-*What about at age 20?*   10 to 80
-*Age 15?* 10 to 33
-*Age 10?*  10 to 18
-*Age 5?* 10 to 13
-
-*What do you notice?*
-
-You should notice that changes made at younger ages have a bigger effect than those at older ages. I have plotted this to the right. The plot shows the amount of increase in fertility that would be required to raise fitness (R0) from 49.81 to >50.81 at ages 1 through to 25 (i.e. the figures you estimated above). You can see that you only need to change fertility a little bit at young ages, but you would need to make BIG changes at older ages. 
-
-*Reset everything again (mx =10; survival = 0.8). Set mx from age 15 onwards to be 0. Now alter survival rate after this point (at ages 15-25). What happens to fitness?*
-  
-You should notice that any changes you make to survival AFTER reproduction has been completed will have no effect on fitness. In other words evolution “doesn’t care about you” after you have finished with reproduction.
+The answers to the questions are [here](https://www.dropbox.com/s/oz2c10bmyf8t7s6/9.%20Answers%20to%20questions.pdf?dl=1).
 
 
-## Making a phylogeny
+## Solutions: Lotka-Volterra predator-prey dynamics
 
-[coming soon]
 
-## Short answer exam discussion
+<!-- Solutions will be posted soon! -->
+You can find a completed Excel spreadsheet [here](https://www.dropbox.com/s/wet7brtgxywdqi5/10.%20Pred-PreyDynamics.xlsx?dl=1).
 
-[coming soon]
+The answers to the questions are [here](https://www.dropbox.com/s/mt43nvqu7cjif69/10.%20Answers%20to%20Pred-Prey%20exercise.pdf?dl=1).
 
-## The Red Queen game
-
-[coming soon]
