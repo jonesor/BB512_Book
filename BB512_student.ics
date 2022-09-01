@@ -19,7 +19,7 @@ BEGIN:VEVENT
 UID:ical-aa3dbb74-8cba-47cd-ad13-bf912342da2c
 DTSTART:20220902T090000
 DTEND:20220902T100000
-SUMMARY:BB512 Exercises on natural selection w.ORJ. Practical in (U42)
+SUMMARY:BB512 Exercise - Randomness and Perfection w.ORJ. Practical in (U42)
 END:VEVENT
 
 
@@ -271,7 +271,7 @@ BEGIN:VEVENT
 UID:ical-bfe5994f-6175-468c-985f-d0c4cec9645e
 DTSTART:20221101T080000
 DTEND:20221101T090000
-SUMMARY:BB512 Migration, Gene Flow and Differentiation of Populations w.ORJ. Lecture in (U42)
+SUMMARY:BB512 Migration, Gene Flow and Differentiation of Populations w.ORJ. Lecture in (U20)
 END:VEVENT
 
 
@@ -535,7 +535,7 @@ BEGIN:VEVENT
 UID:ical-cdfb3338-5473-4107-baa5-f5216962ffea
 DTSTART:20221207T120000
 DTEND:20221207T130000
-SUMMARY:BB512 Sexual Selection and Mating Systems w.ORJ. Lecture in (U20)
+SUMMARY:BB512 Sexual Selection and Mating Systems w.ORJ. Lecture in (U42)
 END:VEVENT
 
 
