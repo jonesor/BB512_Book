@@ -23,7 +23,7 @@
 <meta name="author" content="Owen R. Jones (Course Coordinator)" />
 
 
-<meta name="date" content="2022-08-30" />
+<meta name="date" content="2022-09-01" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -388,6 +388,7 @@ output
 </div>
 <div id="how-the-simulation-works." class="section level2 hasAnchor" number="3.3">
 <h2><span class="header-section-number">3.3</span> How the simulation works.<a href="randomness-and-perfection.html#how-the-simulation-works." class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Owen will walk you through the code, and what it means. He will also demonstrate its use.</p>
 <p>You provide the small program with a target phrase (<code>phrase</code>). This phrase can include Danish characters, spaces and an exclamation point!
 The program then generates a random “phrase” with the same number of characters as your target phrase. This certainly be complete nonsense - literally random letters – but some of the letters might match with your target phrase.</p>
 <p>If selection is operating (<code>selection &lt;- TRUE</code>), then these matching letters are held in place, and in the next iteration only the unmatched letters are randomised. This process continues for many generations (<code>nGenerations</code>).</p>
