@@ -53,6 +53,7 @@ for (i in 1:nGenerations){
   if(selection == TRUE) {
     randomPhrase[fixed] <- phraseSplit[fixed]
     fixed <- append(fixed,which(randomPhrase == phraseSplit))
+    fixed <- sort(unique(fixed))
   }
   output$phrase[i] <- paste(randomPhrase,collapse = "")
 }
