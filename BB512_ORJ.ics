@@ -247,7 +247,7 @@ BEGIN:VEVENT
 UID:ical-74330300-4f64-46d5-8121-7d7fd0651a99
 DTSTART:20221101T080000
 DTEND:20221101T090000
-SUMMARY:BB512 Migration, Gene Flow and Differentiation of Populations, Lecture in (U20)
+SUMMARY:BB512 Migration, Gene Flow and Differentiation of Populations, Lecture in (U42)
 END:VEVENT
 
 
@@ -439,7 +439,7 @@ BEGIN:VEVENT
 UID:ical-7a62171b-a77d-4d67-8b7c-568841799a32
 DTSTART:20221207T120000
 DTEND:20221207T130000
-SUMMARY:BB512 Sexual Selection and Mating Systems, Lecture in (U42)
+SUMMARY:BB512 Sexual Selection and Mating Systems, Lecture in (U20)
 END:VEVENT
 
 
