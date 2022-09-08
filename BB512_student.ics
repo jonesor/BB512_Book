@@ -67,7 +67,7 @@ BEGIN:VEVENT
 UID:ical-07c9169e-63d3-4ae6-81ad-1d06b48a3529
 DTSTART:20220909T130000
 DTEND:20220909T140000
-SUMMARY:BB512 Exercises - Legend of Ambalapuzha; Geometric growth; Stochastic growth w.ORJ. Practical in (U42)
+SUMMARY:BB512 Exercises - Geometric growth (in class); Stochastic growth (as homework) w.ORJ. Practical in (U42)
 END:VEVENT
 
 
@@ -91,7 +91,7 @@ BEGIN:VEVENT
 UID:ical-05d10966-8fe9-429a-b610-67bd45759200
 DTSTART:20220913T130000
 DTEND:20220913T140000
-SUMMARY:BB512 Exercises - Basic logistic population growth; Deeper into logistic growth w.ORJ. Practical in (U42)
+SUMMARY:BB512 Exercises - Basic logistic population growth (in class); Deeper into logistic growth (as homework) w.ORJ. Practical in (U42)
 END:VEVENT
 
 
