@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>14 Matrix population modelling | BB512 - Population Biology and Evolution</title>
+  <title>12 Matrix population modelling | BB512 - Population Biology and Evolution</title>
   <meta name="description" content="Course book for BB512 at the Biology Department, University of Southern Denmark" />
-  <meta name="generator" content="bookdown 0.27 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.26 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="14 Matrix population modelling | BB512 - Population Biology and Evolution" />
+  <meta property="og:title" content="12 Matrix population modelling | BB512 - Population Biology and Evolution" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="Course book for BB512 at the Biology Department, University of Southern Denmark" />
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="14 Matrix population modelling | BB512 - Population Biology and Evolution" />
+  <meta name="twitter:title" content="12 Matrix population modelling | BB512 - Population Biology and Evolution" />
   
   <meta name="twitter:description" content="Course book for BB512 at the Biology Department, University of Southern Denmark" />
   
@@ -23,7 +23,7 @@
 <meta name="author" content="Owen R. Jones (Course Coordinator)" />
 
 
-<meta name="date" content="2022-09-08" />
+<meta name="date" content="2022-09-19" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -31,7 +31,7 @@
   
   
 <link rel="prev" href="life-tables-and-survivorship-types.html"/>
-<link rel="next" href="hardy-weinberg-equilibrium.html"/>
+<link rel="next" href="how-many-eggs-should-a-bird-lay.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -53,7 +53,6 @@
 <link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 <link href="libs/tabwid-1.0.0/tabwid.css" rel="stylesheet" />
-<link href="libs/tabwid-1.0.0/scrool.css" rel="stylesheet" />
 <style type="text/css">
 
 .warning-box {
@@ -204,46 +203,46 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="7.2" data-path="from-population-biology-to-fitness.html"><a href="from-population-biology-to-fitness.html#the-link-to-fitness"><i class="fa fa-check"></i><b>7.2</b> The link to fitness</a></li>
 <li class="chapter" data-level="7.3" data-path="from-population-biology-to-fitness.html"><a href="from-population-biology-to-fitness.html#introducing-a-trade-off"><i class="fa fa-check"></i><b>7.3</b> Introducing a trade-off</a></li>
 </ul></li>
-<li class="chapter" data-level="8" data-path="how-many-eggs-should-a-bird-lay.html"><a href="how-many-eggs-should-a-bird-lay.html"><i class="fa fa-check"></i><b>8</b> How many eggs should a bird lay?</a>
+<li class="chapter" data-level="8" data-path="stochastic-population-growth.html"><a href="stochastic-population-growth.html"><i class="fa fa-check"></i><b>8</b> Stochastic population growth</a>
 <ul>
-<li class="chapter" data-level="8.1" data-path="how-many-eggs-should-a-bird-lay.html"><a href="how-many-eggs-should-a-bird-lay.html#background"><i class="fa fa-check"></i><b>8.1</b> Background</a></li>
-<li class="chapter" data-level="8.2" data-path="how-many-eggs-should-a-bird-lay.html"><a href="how-many-eggs-should-a-bird-lay.html#your-task"><i class="fa fa-check"></i><b>8.2</b> Your task</a></li>
+<li class="chapter" data-level="8.1" data-path="stochastic-population-growth.html"><a href="stochastic-population-growth.html#simulations-in-r"><i class="fa fa-check"></i><b>8.1</b> Simulations in R</a></li>
 </ul></li>
-<li class="chapter" data-level="9" data-path="stochastic-population-growth.html"><a href="stochastic-population-growth.html"><i class="fa fa-check"></i><b>9</b> Stochastic population growth</a>
+<li class="chapter" data-level="9" data-path="basic-logistic-population-growth.html"><a href="basic-logistic-population-growth.html"><i class="fa fa-check"></i><b>9</b> Basic logistic population growth</a>
 <ul>
-<li class="chapter" data-level="9.1" data-path="stochastic-population-growth.html"><a href="stochastic-population-growth.html#simulations-in-r"><i class="fa fa-check"></i><b>9.1</b> Simulations in R</a></li>
+<li class="chapter" data-level="9.1" data-path="basic-logistic-population-growth.html"><a href="basic-logistic-population-growth.html#graph-1"><i class="fa fa-check"></i><b>9.1</b> Graph 1</a></li>
+<li class="chapter" data-level="9.2" data-path="basic-logistic-population-growth.html"><a href="basic-logistic-population-growth.html#graphs-2-3"><i class="fa fa-check"></i><b>9.2</b> Graphs 2 &amp; 3</a></li>
 </ul></li>
-<li class="chapter" data-level="10" data-path="basic-logistic-population-growth.html"><a href="basic-logistic-population-growth.html"><i class="fa fa-check"></i><b>10</b> Basic logistic population growth</a>
+<li class="chapter" data-level="10" data-path="deeper-into-logistic-growth.html"><a href="deeper-into-logistic-growth.html"><i class="fa fa-check"></i><b>10</b> Deeper into logistic growth</a>
 <ul>
-<li class="chapter" data-level="10.1" data-path="basic-logistic-population-growth.html"><a href="basic-logistic-population-growth.html#graph-1"><i class="fa fa-check"></i><b>10.1</b> Graph 1</a></li>
-<li class="chapter" data-level="10.2" data-path="basic-logistic-population-growth.html"><a href="basic-logistic-population-growth.html#graphs-2-3"><i class="fa fa-check"></i><b>10.2</b> Graphs 2 &amp; 3</a></li>
+<li class="chapter" data-level="10.1" data-path="deeper-into-logistic-growth.html"><a href="deeper-into-logistic-growth.html#different-views-of-the-basic-logistic-growth-model"><i class="fa fa-check"></i><b>10.1</b> Different views of the basic logistic growth model</a></li>
+<li class="chapter" data-level="10.2" data-path="deeper-into-logistic-growth.html"><a href="deeper-into-logistic-growth.html#adding-a-time-lag"><i class="fa fa-check"></i><b>10.2</b> Adding a time lag</a></li>
+<li class="chapter" data-level="10.3" data-path="deeper-into-logistic-growth.html"><a href="deeper-into-logistic-growth.html#optional-cobweb-diagrams"><i class="fa fa-check"></i><b>10.3</b> Optional: Cobweb diagrams</a></li>
 </ul></li>
-<li class="chapter" data-level="11" data-path="trade-offs-and-the-force-of-selection.html"><a href="trade-offs-and-the-force-of-selection.html"><i class="fa fa-check"></i><b>11</b> Trade-offs and the force of selection</a>
+<li class="chapter" data-level="11" data-path="life-tables-and-survivorship-types.html"><a href="life-tables-and-survivorship-types.html"><i class="fa fa-check"></i><b>11</b> Life tables and survivorship types</a>
 <ul>
-<li class="chapter" data-level="11.1" data-path="trade-offs-and-the-force-of-selection.html"><a href="trade-offs-and-the-force-of-selection.html#background-1"><i class="fa fa-check"></i><b>11.1</b> Background</a></li>
-<li class="chapter" data-level="11.2" data-path="trade-offs-and-the-force-of-selection.html"><a href="trade-offs-and-the-force-of-selection.html#exploring-different-life-history-strategies"><i class="fa fa-check"></i><b>11.2</b> Exploring different life history strategies</a></li>
+<li class="chapter" data-level="11.0.1" data-path="life-tables-and-survivorship-types.html"><a href="life-tables-and-survivorship-types.html#life-table"><i class="fa fa-check"></i><b>11.0.1</b> Life table</a></li>
+<li class="chapter" data-level="11.0.2" data-path="life-tables-and-survivorship-types.html"><a href="life-tables-and-survivorship-types.html#survivorship-curves"><i class="fa fa-check"></i><b>11.0.2</b> Survivorship curves</a></li>
 </ul></li>
-<li class="chapter" data-level="12" data-path="deeper-into-logistic-growth.html"><a href="deeper-into-logistic-growth.html"><i class="fa fa-check"></i><b>12</b> Deeper into logistic growth</a>
+<li class="chapter" data-level="12" data-path="matrix-population-modelling.html"><a href="matrix-population-modelling.html"><i class="fa fa-check"></i><b>12</b> Matrix population modelling</a>
 <ul>
-<li class="chapter" data-level="12.1" data-path="deeper-into-logistic-growth.html"><a href="deeper-into-logistic-growth.html#different-views-of-the-basic-logistic-growth-model"><i class="fa fa-check"></i><b>12.1</b> Different views of the basic logistic growth model</a></li>
-<li class="chapter" data-level="12.2" data-path="deeper-into-logistic-growth.html"><a href="deeper-into-logistic-growth.html#adding-a-time-lag"><i class="fa fa-check"></i><b>12.2</b> Adding a time lag</a></li>
-<li class="chapter" data-level="12.3" data-path="deeper-into-logistic-growth.html"><a href="deeper-into-logistic-growth.html#optional-cobweb-diagrams"><i class="fa fa-check"></i><b>12.3</b> Optional: Cobweb diagrams</a></li>
+<li class="chapter" data-level="12.1" data-path="matrix-population-modelling.html"><a href="matrix-population-modelling.html#using-r-for-matrix-modelling"><i class="fa fa-check"></i><b>12.1</b> Using R for matrix modelling</a></li>
+<li class="chapter" data-level="12.2" data-path="matrix-population-modelling.html"><a href="matrix-population-modelling.html#projecting-the-population"><i class="fa fa-check"></i><b>12.2</b> Projecting the population</a></li>
+<li class="chapter" data-level="12.3" data-path="matrix-population-modelling.html"><a href="matrix-population-modelling.html#elasticity"><i class="fa fa-check"></i><b>12.3</b> Elasticity</a></li>
+<li class="chapter" data-level="12.4" data-path="matrix-population-modelling.html"><a href="matrix-population-modelling.html#life-table-response-experiment-ltre"><i class="fa fa-check"></i><b>12.4</b> Life table response experiment (LTRE)</a></li>
+<li class="chapter" data-level="12.5" data-path="matrix-population-modelling.html"><a href="matrix-population-modelling.html#your-turn"><i class="fa fa-check"></i><b>12.5</b> Your turn…</a>
+<ul>
+<li class="chapter" data-level="12.5.1" data-path="matrix-population-modelling.html"><a href="matrix-population-modelling.html#an-evolutionary-experiment"><i class="fa fa-check"></i><b>12.5.1</b> An evolutionary experiment</a></li>
 </ul></li>
-<li class="chapter" data-level="13" data-path="life-tables-and-survivorship-types.html"><a href="life-tables-and-survivorship-types.html"><i class="fa fa-check"></i><b>13</b> Life tables and survivorship types</a>
-<ul>
-<li class="chapter" data-level="13.0.1" data-path="life-tables-and-survivorship-types.html"><a href="life-tables-and-survivorship-types.html#life-table"><i class="fa fa-check"></i><b>13.0.1</b> Life table</a></li>
-<li class="chapter" data-level="13.0.2" data-path="life-tables-and-survivorship-types.html"><a href="life-tables-and-survivorship-types.html#survivorship-curves"><i class="fa fa-check"></i><b>13.0.2</b> Survivorship curves</a></li>
 </ul></li>
-<li class="chapter" data-level="14" data-path="matrix-population-modelling.html"><a href="matrix-population-modelling.html"><i class="fa fa-check"></i><b>14</b> Matrix population modelling</a>
+<li class="chapter" data-level="13" data-path="how-many-eggs-should-a-bird-lay.html"><a href="how-many-eggs-should-a-bird-lay.html"><i class="fa fa-check"></i><b>13</b> How many eggs should a bird lay?</a>
 <ul>
-<li class="chapter" data-level="14.1" data-path="matrix-population-modelling.html"><a href="matrix-population-modelling.html#using-r-for-matrix-modelling"><i class="fa fa-check"></i><b>14.1</b> Using R for matrix modelling</a></li>
-<li class="chapter" data-level="14.2" data-path="matrix-population-modelling.html"><a href="matrix-population-modelling.html#projecting-the-population"><i class="fa fa-check"></i><b>14.2</b> Projecting the population</a></li>
-<li class="chapter" data-level="14.3" data-path="matrix-population-modelling.html"><a href="matrix-population-modelling.html#elasticity"><i class="fa fa-check"></i><b>14.3</b> Elasticity</a></li>
-<li class="chapter" data-level="14.4" data-path="matrix-population-modelling.html"><a href="matrix-population-modelling.html#life-table-response-experiment-ltre"><i class="fa fa-check"></i><b>14.4</b> Life table response experiment (LTRE)</a></li>
-<li class="chapter" data-level="14.5" data-path="matrix-population-modelling.html"><a href="matrix-population-modelling.html#your-turn"><i class="fa fa-check"></i><b>14.5</b> Your turn…</a>
-<ul>
-<li class="chapter" data-level="14.5.1" data-path="matrix-population-modelling.html"><a href="matrix-population-modelling.html#an-evolutionary-experiment"><i class="fa fa-check"></i><b>14.5.1</b> An evolutionary experiment</a></li>
+<li class="chapter" data-level="13.1" data-path="how-many-eggs-should-a-bird-lay.html"><a href="how-many-eggs-should-a-bird-lay.html#background"><i class="fa fa-check"></i><b>13.1</b> Background</a></li>
+<li class="chapter" data-level="13.2" data-path="how-many-eggs-should-a-bird-lay.html"><a href="how-many-eggs-should-a-bird-lay.html#your-task"><i class="fa fa-check"></i><b>13.2</b> Your task</a></li>
 </ul></li>
+<li class="chapter" data-level="14" data-path="trade-offs-and-the-force-of-selection.html"><a href="trade-offs-and-the-force-of-selection.html"><i class="fa fa-check"></i><b>14</b> Trade-offs and the force of selection</a>
+<ul>
+<li class="chapter" data-level="14.1" data-path="trade-offs-and-the-force-of-selection.html"><a href="trade-offs-and-the-force-of-selection.html#background-1"><i class="fa fa-check"></i><b>14.1</b> Background</a></li>
+<li class="chapter" data-level="14.2" data-path="trade-offs-and-the-force-of-selection.html"><a href="trade-offs-and-the-force-of-selection.html#exploring-different-life-history-strategies"><i class="fa fa-check"></i><b>14.2</b> Exploring different life history strategies</a></li>
 </ul></li>
 <li class="part"><span><b>III Population Genetics and Evolution</b></span></li>
 <li class="chapter" data-level="15" data-path="hardy-weinberg-equilibrium.html"><a href="hardy-weinberg-equilibrium.html"><i class="fa fa-check"></i><b>15</b> Hardy-Weinberg equilibrium</a>
@@ -322,8 +321,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="matrix-population-modelling" class="section level1 hasAnchor" number="14">
-<h1><span class="header-section-number">14</span> Matrix population modelling<a href="matrix-population-modelling.html#matrix-population-modelling" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="matrix-population-modelling" class="section level1 hasAnchor" number="12">
+<h1><span class="header-section-number">12</span> Matrix population modelling<a href="matrix-population-modelling.html#matrix-population-modelling" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p>Matrix population models are one of the most commonly used tools in population biology. They are extensively used in population management and conservation for both animals and plants. This practical aims to give you a good understanding of the basics of their construction and use.</p>
 <div class="do-something">
 <p>
@@ -370,8 +369,8 @@ investigate a biological question (mathematical modelling).
 <p><span class="math display">\[
 A = \begin{bmatrix}0.3&amp;8&amp;2 \\0.1&amp;0.5&amp;0 \\0&amp;0.4&amp;0.4 \\\end{bmatrix}
 \]</span></p>
-<div id="using-r-for-matrix-modelling" class="section level2 hasAnchor" number="14.1">
-<h2><span class="header-section-number">14.1</span> Using R for matrix modelling<a href="matrix-population-modelling.html#using-r-for-matrix-modelling" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="using-r-for-matrix-modelling" class="section level2 hasAnchor" number="12.1">
+<h2><span class="header-section-number">12.1</span> Using R for matrix modelling<a href="matrix-population-modelling.html#using-r-for-matrix-modelling" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Working with matrices is very tedious in Excel. However, in R you can use this information to predict the future dynamics of the population, and estimate population growth rate, and generation time etc.</p>
 <p>Open up <strong>RStudio</strong>, and lets see if we can predict future dynamics. First you will need to install a package called <code>popdemo</code>.</p>
 <div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="matrix-population-modelling.html#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;popdemo&quot;</span>)</span></code></pre></div>
@@ -384,8 +383,8 @@ A = \begin{bmatrix}0.3&amp;8&amp;2 \\0.1&amp;0.5&amp;0 \\0&amp;0.4&amp;0.4 \\\en
 <span id="cb27-4"><a href="matrix-population-modelling.html#cb27-4" aria-hidden="true" tabindex="-1"></a>  <span class="fl">0.0</span>, <span class="fl">0.40</span>, <span class="fl">0.40</span></span>
 <span id="cb27-5"><a href="matrix-population-modelling.html#cb27-5" aria-hidden="true" tabindex="-1"></a>), <span class="at">ncol =</span> <span class="dv">3</span>, <span class="at">byrow =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
 </div>
-<div id="projecting-the-population" class="section level2 hasAnchor" number="14.2">
-<h2><span class="header-section-number">14.2</span> Projecting the population<a href="matrix-population-modelling.html#projecting-the-population" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="projecting-the-population" class="section level2 hasAnchor" number="12.2">
+<h2><span class="header-section-number">12.2</span> Projecting the population<a href="matrix-population-modelling.html#projecting-the-population" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>And now you can use the project function to project what happens to the population, then plot it. Look at what happens if you log or don’t log the y-axis. First you need to define an initial starting population structure.</p>
 <p>In my example, I have 3 stages, so I have 3 values for the initial population sizes. Then I use the <code>popdemo</code> function <code>project</code> to do a population projection for 10 time steps.</p>
 <div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="matrix-population-modelling.html#cb28-1" aria-hidden="true" tabindex="-1"></a>initial <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">5</span>, <span class="dv">3</span>)</span>
@@ -413,7 +412,7 @@ A = \begin{bmatrix}0.3&amp;8&amp;2 \\0.1&amp;0.5&amp;0 \\0&amp;0.4&amp;0.4 \\\en
 <div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="matrix-population-modelling.html#cb33-1" aria-hidden="true" tabindex="-1"></a>pop <span class="ot">&lt;-</span> <span class="fu">vec</span>(pr)</span>
 <span id="cb33-2"><a href="matrix-population-modelling.html#cb33-2" aria-hidden="true" tabindex="-1"></a><span class="fu">matplot</span>(pop, <span class="at">type =</span> <span class="st">&quot;l&quot;</span>, <span class="at">log =</span> <span class="st">&quot;y&quot;</span>)</span>
 <span id="cb33-3"><a href="matrix-population-modelling.html#cb33-3" aria-hidden="true" tabindex="-1"></a><span class="fu">legend</span>(<span class="st">&quot;topleft&quot;</span>, <span class="at">legend =</span> <span class="fu">colnames</span>(pop), <span class="at">col =</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">ncol</span>(pop), <span class="at">lty =</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">ncol</span>(pop))</span></code></pre></div>
-<p><img src="BB512_files/figure-html/unnamed-chunk-74-1.png" width="672" /></p>
+<p><img src="BB512_files/figure-html/unnamed-chunk-69-1.png" width="672" /></p>
 <p>You should see that the population increases exponentially. The population growth rate is the so-called “<em>dominant eigenvalue</em>” of the matrix <strong>A</strong>.</p>
 <p>We can ask R for the <em>eigen values</em> and <em>eigen vectors</em>. These are the population growth rate (<span class="math inline">\(\lambda\)</span>) and the stable stage distribution (<em>SSD</em>) and the reproductive values (<em>RV</em>) of the different stages. <em>SSD</em> is the expected <em>proportion</em> of individuals in the different stage classes at equilibrium and <em>RV</em> is the expected number of future offspring by individuals in each stage.</p>
 <p>You can see that in this case, using my example values the population is growing 34.58% per year.</p>
@@ -427,8 +426,8 @@ A = \begin{bmatrix}0.3&amp;8&amp;2 \\0.1&amp;0.5&amp;0 \\0&amp;0.4&amp;0.4 \\\en
 ## $rv
 ## [1] 0.4987772 5.2163301 1.0546939</code></pre>
 </div>
-<div id="elasticity" class="section level2 hasAnchor" number="14.3">
-<h2><span class="header-section-number">14.3</span> Elasticity<a href="matrix-population-modelling.html#elasticity" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="elasticity" class="section level2 hasAnchor" number="12.3">
+<h2><span class="header-section-number">12.3</span> Elasticity<a href="matrix-population-modelling.html#elasticity" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Elasticity analysis is a way of analysing a matrix model to identify the most important transitions to population growth. This is very important in management and conservation when we ask questions like, “which parts of the lifecycle should we focus on to preserve the population?”. The mathematics of this are beyond this course, but in a nutshell, we are adding a small value to the elements of the matrix one-at-a-time and asking what difference this makes to population growth rate (lambda). We then express that as a proportion, so that the elasticities sum up to one and are easier to interpret. They can be calculated easily in R.</p>
 <div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="matrix-population-modelling.html#cb36-1" aria-hidden="true" tabindex="-1"></a>popdemo<span class="sc">::</span><span class="fu">elas</span>(A)</span></code></pre></div>
 <pre><code>##            [,1]       [,2]       [,3]
@@ -437,8 +436,8 @@ A = \begin{bmatrix}0.3&amp;8&amp;2 \\0.1&amp;0.5&amp;0 \\0&amp;0.4&amp;0.4 \\\en
 ## [3,] 0.00000000 0.03172421 0.01341654</code></pre>
 <p>What transition is most important to population growth, according to the above?</p>
 </div>
-<div id="life-table-response-experiment-ltre" class="section level2 hasAnchor" number="14.4">
-<h2><span class="header-section-number">14.4</span> Life table response experiment (LTRE)<a href="matrix-population-modelling.html#life-table-response-experiment-ltre" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="life-table-response-experiment-ltre" class="section level2 hasAnchor" number="12.4">
+<h2><span class="header-section-number">12.4</span> Life table response experiment (LTRE)<a href="matrix-population-modelling.html#life-table-response-experiment-ltre" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>These don’t have much to do with life tables (sorry, thats confusing!). The idea is very simple: you run “experiments” on your matrix model by asking “what if” questions. For example, what would happen if we could increase survival of the juveniles by 20%? what would happen if adults are hunted more, and thus have a decreased survival by 60%? what would happen if we provided supplemental food to reproducing females, and increase fecundity by 50%? etc. Use your imagination!</p>
 <p>In practice, we do that simply by modifying the matrix model. In the following, I am looking at the effect of increasing fertility in adult and senescent individuals by 50%:</p>
 <div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="matrix-population-modelling.html#cb38-1" aria-hidden="true" tabindex="-1"></a>A <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(</span>
@@ -457,24 +456,20 @@ A = \begin{bmatrix}0.3&amp;8&amp;2 \\0.1&amp;0.5&amp;0 \\0&amp;0.4&amp;0.4 \\\en
 ## [2,] 0.35378119 0.16901684 0.000000000
 ## [3,] 0.00000000 0.02838002 0.009900705</code></pre>
 </div>
-<div id="your-turn" class="section level2 hasAnchor" number="14.5">
-<h2><span class="header-section-number">14.5</span> Your turn…<a href="matrix-population-modelling.html#your-turn" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="your-turn" class="section level2 hasAnchor" number="12.5">
+<h2><span class="header-section-number">12.5</span> Your turn…<a href="matrix-population-modelling.html#your-turn" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Work through the above process for your own species.</p>
 <ol style="list-style-type: decimal">
 <li>Do a projection,</li>
 <li>calculate (and interpret) lambda and elasticity,</li>
 <li>do an LTRE</li>
 </ol>
-<div id="an-evolutionary-experiment" class="section level3 hasAnchor" number="14.5.1">
-<h3><span class="header-section-number">14.5.1</span> An evolutionary experiment<a href="matrix-population-modelling.html#an-evolutionary-experiment" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="an-evolutionary-experiment" class="section level3 hasAnchor" number="12.5.1">
+<h3><span class="header-section-number">12.5.1</span> An evolutionary experiment<a href="matrix-population-modelling.html#an-evolutionary-experiment" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>You can think of lambda (population growth rate) as being a measure of fitness. Imagine that some of your population had a mutation that caused them to have, say, 1 extra baby, but at the expense of reduced survival in one of the younger stages. Would this mutation persist in the population? Do an LTRE to find out!</p>
 
 </div>
 </div>
-</div>
-
-
-
 </div>
             </section>
 
@@ -482,7 +477,7 @@ A = \begin{bmatrix}0.3&amp;8&amp;2 \\0.1&amp;0.5&amp;0 \\0&amp;0.4&amp;0.4 \\\en
         </div>
       </div>
 <a href="life-tables-and-survivorship-types.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="hardy-weinberg-equilibrium.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="how-many-eggs-should-a-bird-lay.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -513,7 +508,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/jonesor/BB512_Book/edit/master/2_08_matrixModels.Rmd",
+"link": "https://github.com/jonesor/BB512_Book/edit/master/2_07.5_matrixModels.Rmd",
 "text": "Edit"
 },
 "history": {

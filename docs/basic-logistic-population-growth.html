@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>10 Basic logistic population growth | BB512 - Population Biology and Evolution</title>
+  <title>9 Basic logistic population growth | BB512 - Population Biology and Evolution</title>
   <meta name="description" content="Course book for BB512 at the Biology Department, University of Southern Denmark" />
-  <meta name="generator" content="bookdown 0.27 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.26 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="10 Basic logistic population growth | BB512 - Population Biology and Evolution" />
+  <meta property="og:title" content="9 Basic logistic population growth | BB512 - Population Biology and Evolution" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="Course book for BB512 at the Biology Department, University of Southern Denmark" />
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="10 Basic logistic population growth | BB512 - Population Biology and Evolution" />
+  <meta name="twitter:title" content="9 Basic logistic population growth | BB512 - Population Biology and Evolution" />
   
   <meta name="twitter:description" content="Course book for BB512 at the Biology Department, University of Southern Denmark" />
   
@@ -23,7 +23,7 @@
 <meta name="author" content="Owen R. Jones (Course Coordinator)" />
 
 
-<meta name="date" content="2022-09-08" />
+<meta name="date" content="2022-09-19" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -31,7 +31,7 @@
   
   
 <link rel="prev" href="stochastic-population-growth.html"/>
-<link rel="next" href="trade-offs-and-the-force-of-selection.html"/>
+<link rel="next" href="deeper-into-logistic-growth.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -53,7 +53,6 @@
 <link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 <link href="libs/tabwid-1.0.0/tabwid.css" rel="stylesheet" />
-<link href="libs/tabwid-1.0.0/scrool.css" rel="stylesheet" />
 <style type="text/css">
 
 .warning-box {
@@ -204,46 +203,46 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="7.2" data-path="from-population-biology-to-fitness.html"><a href="from-population-biology-to-fitness.html#the-link-to-fitness"><i class="fa fa-check"></i><b>7.2</b> The link to fitness</a></li>
 <li class="chapter" data-level="7.3" data-path="from-population-biology-to-fitness.html"><a href="from-population-biology-to-fitness.html#introducing-a-trade-off"><i class="fa fa-check"></i><b>7.3</b> Introducing a trade-off</a></li>
 </ul></li>
-<li class="chapter" data-level="8" data-path="how-many-eggs-should-a-bird-lay.html"><a href="how-many-eggs-should-a-bird-lay.html"><i class="fa fa-check"></i><b>8</b> How many eggs should a bird lay?</a>
+<li class="chapter" data-level="8" data-path="stochastic-population-growth.html"><a href="stochastic-population-growth.html"><i class="fa fa-check"></i><b>8</b> Stochastic population growth</a>
 <ul>
-<li class="chapter" data-level="8.1" data-path="how-many-eggs-should-a-bird-lay.html"><a href="how-many-eggs-should-a-bird-lay.html#background"><i class="fa fa-check"></i><b>8.1</b> Background</a></li>
-<li class="chapter" data-level="8.2" data-path="how-many-eggs-should-a-bird-lay.html"><a href="how-many-eggs-should-a-bird-lay.html#your-task"><i class="fa fa-check"></i><b>8.2</b> Your task</a></li>
+<li class="chapter" data-level="8.1" data-path="stochastic-population-growth.html"><a href="stochastic-population-growth.html#simulations-in-r"><i class="fa fa-check"></i><b>8.1</b> Simulations in R</a></li>
 </ul></li>
-<li class="chapter" data-level="9" data-path="stochastic-population-growth.html"><a href="stochastic-population-growth.html"><i class="fa fa-check"></i><b>9</b> Stochastic population growth</a>
+<li class="chapter" data-level="9" data-path="basic-logistic-population-growth.html"><a href="basic-logistic-population-growth.html"><i class="fa fa-check"></i><b>9</b> Basic logistic population growth</a>
 <ul>
-<li class="chapter" data-level="9.1" data-path="stochastic-population-growth.html"><a href="stochastic-population-growth.html#simulations-in-r"><i class="fa fa-check"></i><b>9.1</b> Simulations in R</a></li>
+<li class="chapter" data-level="9.1" data-path="basic-logistic-population-growth.html"><a href="basic-logistic-population-growth.html#graph-1"><i class="fa fa-check"></i><b>9.1</b> Graph 1</a></li>
+<li class="chapter" data-level="9.2" data-path="basic-logistic-population-growth.html"><a href="basic-logistic-population-growth.html#graphs-2-3"><i class="fa fa-check"></i><b>9.2</b> Graphs 2 &amp; 3</a></li>
 </ul></li>
-<li class="chapter" data-level="10" data-path="basic-logistic-population-growth.html"><a href="basic-logistic-population-growth.html"><i class="fa fa-check"></i><b>10</b> Basic logistic population growth</a>
+<li class="chapter" data-level="10" data-path="deeper-into-logistic-growth.html"><a href="deeper-into-logistic-growth.html"><i class="fa fa-check"></i><b>10</b> Deeper into logistic growth</a>
 <ul>
-<li class="chapter" data-level="10.1" data-path="basic-logistic-population-growth.html"><a href="basic-logistic-population-growth.html#graph-1"><i class="fa fa-check"></i><b>10.1</b> Graph 1</a></li>
-<li class="chapter" data-level="10.2" data-path="basic-logistic-population-growth.html"><a href="basic-logistic-population-growth.html#graphs-2-3"><i class="fa fa-check"></i><b>10.2</b> Graphs 2 &amp; 3</a></li>
+<li class="chapter" data-level="10.1" data-path="deeper-into-logistic-growth.html"><a href="deeper-into-logistic-growth.html#different-views-of-the-basic-logistic-growth-model"><i class="fa fa-check"></i><b>10.1</b> Different views of the basic logistic growth model</a></li>
+<li class="chapter" data-level="10.2" data-path="deeper-into-logistic-growth.html"><a href="deeper-into-logistic-growth.html#adding-a-time-lag"><i class="fa fa-check"></i><b>10.2</b> Adding a time lag</a></li>
+<li class="chapter" data-level="10.3" data-path="deeper-into-logistic-growth.html"><a href="deeper-into-logistic-growth.html#optional-cobweb-diagrams"><i class="fa fa-check"></i><b>10.3</b> Optional: Cobweb diagrams</a></li>
 </ul></li>
-<li class="chapter" data-level="11" data-path="trade-offs-and-the-force-of-selection.html"><a href="trade-offs-and-the-force-of-selection.html"><i class="fa fa-check"></i><b>11</b> Trade-offs and the force of selection</a>
+<li class="chapter" data-level="11" data-path="life-tables-and-survivorship-types.html"><a href="life-tables-and-survivorship-types.html"><i class="fa fa-check"></i><b>11</b> Life tables and survivorship types</a>
 <ul>
-<li class="chapter" data-level="11.1" data-path="trade-offs-and-the-force-of-selection.html"><a href="trade-offs-and-the-force-of-selection.html#background-1"><i class="fa fa-check"></i><b>11.1</b> Background</a></li>
-<li class="chapter" data-level="11.2" data-path="trade-offs-and-the-force-of-selection.html"><a href="trade-offs-and-the-force-of-selection.html#exploring-different-life-history-strategies"><i class="fa fa-check"></i><b>11.2</b> Exploring different life history strategies</a></li>
+<li class="chapter" data-level="11.0.1" data-path="life-tables-and-survivorship-types.html"><a href="life-tables-and-survivorship-types.html#life-table"><i class="fa fa-check"></i><b>11.0.1</b> Life table</a></li>
+<li class="chapter" data-level="11.0.2" data-path="life-tables-and-survivorship-types.html"><a href="life-tables-and-survivorship-types.html#survivorship-curves"><i class="fa fa-check"></i><b>11.0.2</b> Survivorship curves</a></li>
 </ul></li>
-<li class="chapter" data-level="12" data-path="deeper-into-logistic-growth.html"><a href="deeper-into-logistic-growth.html"><i class="fa fa-check"></i><b>12</b> Deeper into logistic growth</a>
+<li class="chapter" data-level="12" data-path="matrix-population-modelling.html"><a href="matrix-population-modelling.html"><i class="fa fa-check"></i><b>12</b> Matrix population modelling</a>
 <ul>
-<li class="chapter" data-level="12.1" data-path="deeper-into-logistic-growth.html"><a href="deeper-into-logistic-growth.html#different-views-of-the-basic-logistic-growth-model"><i class="fa fa-check"></i><b>12.1</b> Different views of the basic logistic growth model</a></li>
-<li class="chapter" data-level="12.2" data-path="deeper-into-logistic-growth.html"><a href="deeper-into-logistic-growth.html#adding-a-time-lag"><i class="fa fa-check"></i><b>12.2</b> Adding a time lag</a></li>
-<li class="chapter" data-level="12.3" data-path="deeper-into-logistic-growth.html"><a href="deeper-into-logistic-growth.html#optional-cobweb-diagrams"><i class="fa fa-check"></i><b>12.3</b> Optional: Cobweb diagrams</a></li>
+<li class="chapter" data-level="12.1" data-path="matrix-population-modelling.html"><a href="matrix-population-modelling.html#using-r-for-matrix-modelling"><i class="fa fa-check"></i><b>12.1</b> Using R for matrix modelling</a></li>
+<li class="chapter" data-level="12.2" data-path="matrix-population-modelling.html"><a href="matrix-population-modelling.html#projecting-the-population"><i class="fa fa-check"></i><b>12.2</b> Projecting the population</a></li>
+<li class="chapter" data-level="12.3" data-path="matrix-population-modelling.html"><a href="matrix-population-modelling.html#elasticity"><i class="fa fa-check"></i><b>12.3</b> Elasticity</a></li>
+<li class="chapter" data-level="12.4" data-path="matrix-population-modelling.html"><a href="matrix-population-modelling.html#life-table-response-experiment-ltre"><i class="fa fa-check"></i><b>12.4</b> Life table response experiment (LTRE)</a></li>
+<li class="chapter" data-level="12.5" data-path="matrix-population-modelling.html"><a href="matrix-population-modelling.html#your-turn"><i class="fa fa-check"></i><b>12.5</b> Your turn…</a>
+<ul>
+<li class="chapter" data-level="12.5.1" data-path="matrix-population-modelling.html"><a href="matrix-population-modelling.html#an-evolutionary-experiment"><i class="fa fa-check"></i><b>12.5.1</b> An evolutionary experiment</a></li>
 </ul></li>
-<li class="chapter" data-level="13" data-path="life-tables-and-survivorship-types.html"><a href="life-tables-and-survivorship-types.html"><i class="fa fa-check"></i><b>13</b> Life tables and survivorship types</a>
-<ul>
-<li class="chapter" data-level="13.0.1" data-path="life-tables-and-survivorship-types.html"><a href="life-tables-and-survivorship-types.html#life-table"><i class="fa fa-check"></i><b>13.0.1</b> Life table</a></li>
-<li class="chapter" data-level="13.0.2" data-path="life-tables-and-survivorship-types.html"><a href="life-tables-and-survivorship-types.html#survivorship-curves"><i class="fa fa-check"></i><b>13.0.2</b> Survivorship curves</a></li>
 </ul></li>
-<li class="chapter" data-level="14" data-path="matrix-population-modelling.html"><a href="matrix-population-modelling.html"><i class="fa fa-check"></i><b>14</b> Matrix population modelling</a>
+<li class="chapter" data-level="13" data-path="how-many-eggs-should-a-bird-lay.html"><a href="how-many-eggs-should-a-bird-lay.html"><i class="fa fa-check"></i><b>13</b> How many eggs should a bird lay?</a>
 <ul>
-<li class="chapter" data-level="14.1" data-path="matrix-population-modelling.html"><a href="matrix-population-modelling.html#using-r-for-matrix-modelling"><i class="fa fa-check"></i><b>14.1</b> Using R for matrix modelling</a></li>
-<li class="chapter" data-level="14.2" data-path="matrix-population-modelling.html"><a href="matrix-population-modelling.html#projecting-the-population"><i class="fa fa-check"></i><b>14.2</b> Projecting the population</a></li>
-<li class="chapter" data-level="14.3" data-path="matrix-population-modelling.html"><a href="matrix-population-modelling.html#elasticity"><i class="fa fa-check"></i><b>14.3</b> Elasticity</a></li>
-<li class="chapter" data-level="14.4" data-path="matrix-population-modelling.html"><a href="matrix-population-modelling.html#life-table-response-experiment-ltre"><i class="fa fa-check"></i><b>14.4</b> Life table response experiment (LTRE)</a></li>
-<li class="chapter" data-level="14.5" data-path="matrix-population-modelling.html"><a href="matrix-population-modelling.html#your-turn"><i class="fa fa-check"></i><b>14.5</b> Your turn…</a>
-<ul>
-<li class="chapter" data-level="14.5.1" data-path="matrix-population-modelling.html"><a href="matrix-population-modelling.html#an-evolutionary-experiment"><i class="fa fa-check"></i><b>14.5.1</b> An evolutionary experiment</a></li>
+<li class="chapter" data-level="13.1" data-path="how-many-eggs-should-a-bird-lay.html"><a href="how-many-eggs-should-a-bird-lay.html#background"><i class="fa fa-check"></i><b>13.1</b> Background</a></li>
+<li class="chapter" data-level="13.2" data-path="how-many-eggs-should-a-bird-lay.html"><a href="how-many-eggs-should-a-bird-lay.html#your-task"><i class="fa fa-check"></i><b>13.2</b> Your task</a></li>
 </ul></li>
+<li class="chapter" data-level="14" data-path="trade-offs-and-the-force-of-selection.html"><a href="trade-offs-and-the-force-of-selection.html"><i class="fa fa-check"></i><b>14</b> Trade-offs and the force of selection</a>
+<ul>
+<li class="chapter" data-level="14.1" data-path="trade-offs-and-the-force-of-selection.html"><a href="trade-offs-and-the-force-of-selection.html#background-1"><i class="fa fa-check"></i><b>14.1</b> Background</a></li>
+<li class="chapter" data-level="14.2" data-path="trade-offs-and-the-force-of-selection.html"><a href="trade-offs-and-the-force-of-selection.html#exploring-different-life-history-strategies"><i class="fa fa-check"></i><b>14.2</b> Exploring different life history strategies</a></li>
 </ul></li>
 <li class="part"><span><b>III Population Genetics and Evolution</b></span></li>
 <li class="chapter" data-level="15" data-path="hardy-weinberg-equilibrium.html"><a href="hardy-weinberg-equilibrium.html"><i class="fa fa-check"></i><b>15</b> Hardy-Weinberg equilibrium</a>
@@ -322,9 +321,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="basic-logistic-population-growth" class="section level1 hasAnchor" number="10">
-<h1><span class="header-section-number">10</span> Basic logistic population growth<a href="basic-logistic-population-growth.html#basic-logistic-population-growth" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p>Population sizes have upper limits – they can only get so large. This is often modeled with the ‘logistic growth’ model<a href="#fn3" class="footnote-ref" id="fnref3"><sup>3</sup></a>:</p>
+<div id="basic-logistic-population-growth" class="section level1 hasAnchor" number="9">
+<h1><span class="header-section-number">9</span> Basic logistic population growth<a href="basic-logistic-population-growth.html#basic-logistic-population-growth" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>Population sizes have upper limits – they can only get so large. This is often modeled with the ‘logistic growth’ model<a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a>:</p>
 <p><span class="math inline">\(N_{t+1}=N_{t}+r_{m} N_{t}\left(1-\frac{N_{t}}{K}\right)\)</span></p>
 <p>This equation models population at time <span class="math inline">\(t+1\)</span> (<span class="math inline">\(N_{t+1}\)</span>) as a function of the population at time <span class="math inline">\(t\)</span> (<span class="math inline">\(N_t\)</span>), the <em>intrinsic rate of increase</em> (<span class="math inline">\(r_m\)</span>), and carrying capacity of the environment (<span class="math inline">\(K\)</span>).</p>
 <p>The idea is that the growth rate of the population (the difference between <span class="math inline">\(N_{t+1}\)</span> and <span class="math inline">\(N_t\)</span>) decreases as the population increases in size. When the population size at <span class="math inline">\(N_t\)</span> is equal to the <em>carrying capacity</em> of the environment (<span class="math inline">\(K\)</span>), the population growth rate is zero. For example, if the carrying capacity of the population is <em>200</em>, and there are already <em>200</em> individuals in the population, then the size of the population will remain unchanged through time (<span class="math inline">\(N_{t+1} = N_t = 200\)</span>).</p>
@@ -373,8 +372,8 @@ During the exercise you only need to edit the pink block.</p>
 <li>The per capita growth rate of the population in relation to population size</li>
 <li>The relationship between population size at time t and at time t+1</li>
 </ol>
-<div id="graph-1" class="section level2 hasAnchor" number="10.1">
-<h2><span class="header-section-number">10.1</span> Graph 1<a href="basic-logistic-population-growth.html#graph-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="graph-1" class="section level2 hasAnchor" number="9.1">
+<h2><span class="header-section-number">9.1</span> Graph 1<a href="basic-logistic-population-growth.html#graph-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>First – take a look at <strong>Graph 1</strong>.</p>
 <ul>
 <li>What is the maximum population size?</li>
@@ -420,8 +419,8 @@ When `r_m` is high ($>$ 2.57) the population dynamics become extremely hard (imp
 Many pest species and diseases have very high population growth rates. For example, locusts, or measles. This is one reason why it is hard to predict when the next pest/disease outbreak will happen
 -->
 </div>
-<div id="graphs-2-3" class="section level2 hasAnchor" number="10.2">
-<h2><span class="header-section-number">10.2</span> Graphs 2 &amp; 3<a href="basic-logistic-population-growth.html#graphs-2-3" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="graphs-2-3" class="section level2 hasAnchor" number="9.2">
+<h2><span class="header-section-number">9.2</span> Graphs 2 &amp; 3<a href="basic-logistic-population-growth.html#graphs-2-3" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Now let’s turn to <strong>Graphs 2</strong> and <strong>3</strong>, which show the relationship between per capita population growth rate (<span class="math inline">\(r\)</span>) and <span class="math inline">\(N\)</span>, and between <span class="math inline">\(dN/dt\)</span> and <span class="math inline">\(N_t\)</span> respectively.</p>
 <p>In <strong>Graph 2</strong>, notice that the per capita growth rate (<span class="math inline">\(r\)</span>) always declines linearly with population size (<code>N</code>). Where does it cross the x-axis line? Modify the carrying capacity (<code>K</code>) – what do you notice about the intercepts on the y and x axes?</p>
 <!--
@@ -452,8 +451,8 @@ How would the same plots look for regular exponential growth?
 </div>
 <div class="footnotes">
 <hr />
-<ol start="3">
-<li id="fn3"><p>This is equation 2.4 in Gotelli<a href="basic-logistic-population-growth.html#fnref3" class="footnote-back">↩︎</a></p></li>
+<ol start="2">
+<li id="fn2"><p>This is equation 2.4 in Gotelli<a href="basic-logistic-population-growth.html#fnref2" class="footnote-back">↩︎</a></p></li>
 </ol>
 </div>
             </section>
@@ -462,7 +461,7 @@ How would the same plots look for regular exponential growth?
         </div>
       </div>
 <a href="stochastic-population-growth.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="trade-offs-and-the-force-of-selection.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="deeper-into-logistic-growth.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
