@@ -10,6 +10,9 @@ expectations
 your-feedback
 assessment
 instructors
+software
+excel
+r-and-rstudio
 schedule
 randomness-and-perfection
 getting-started

@@ -23,7 +23,7 @@
 <meta name="author" content="Owen R. Jones (Course Coordinator)" />
 
 
-<meta name="date" content="2022-09-19" />
+<meta name="date" content="2022-09-20" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -171,6 +171,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#your-feedback"><i class="fa fa-check"></i><b>1.3</b> Your feedback</a></li>
 <li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#assessment"><i class="fa fa-check"></i><b>1.4</b> Assessment</a></li>
 <li class="chapter" data-level="1.5" data-path="index.html"><a href="index.html#instructors"><i class="fa fa-check"></i><b>1.5</b> Instructors</a></li>
+<li class="chapter" data-level="1.6" data-path="index.html"><a href="index.html#software"><i class="fa fa-check"></i><b>1.6</b> Software</a>
+<ul>
+<li class="chapter" data-level="1.6.1" data-path="index.html"><a href="index.html#excel"><i class="fa fa-check"></i><b>1.6.1</b> Excel</a></li>
+<li class="chapter" data-level="1.6.2" data-path="index.html"><a href="index.html#r-and-rstudio"><i class="fa fa-check"></i><b>1.6.2</b> R and RStudio</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="schedule.html"><a href="schedule.html"><i class="fa fa-check"></i><b>2</b> Schedule</a></li>
 <li class="part"><span><b>I Evolution by Natural Selection</b></span></li>
@@ -411,52 +416,52 @@ the amount of stochasticity (<span class="math inline"><span class="math inline"
 the number of generations (<code>nGen</code>).
 </p>
 </div>
-<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="stochastic-population-growth.html#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Simulating stochastic geometric population growth rate</span></span>
-<span id="cb22-2"><a href="stochastic-population-growth.html#cb22-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-3"><a href="stochastic-population-growth.html#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="co">#Simulation settings (try changing these)</span></span>
-<span id="cb22-4"><a href="stochastic-population-growth.html#cb22-4" aria-hidden="true" tabindex="-1"></a>mean.r <span class="ot">=</span> <span class="fl">0.05</span> <span class="co"># the mean value of r</span></span>
-<span id="cb22-5"><a href="stochastic-population-growth.html#cb22-5" aria-hidden="true" tabindex="-1"></a>var.r <span class="ot">=</span> <span class="fl">0.1</span> <span class="co"># the variance in r (stochasticity)</span></span>
-<span id="cb22-6"><a href="stochastic-population-growth.html#cb22-6" aria-hidden="true" tabindex="-1"></a>startPop <span class="ot">=</span> <span class="dv">10</span> <span class="co"># pop size at start</span></span>
-<span id="cb22-7"><a href="stochastic-population-growth.html#cb22-7" aria-hidden="true" tabindex="-1"></a>nGen <span class="ot">=</span> <span class="dv">50</span> <span class="co"># number of generations</span></span>
-<span id="cb22-8"><a href="stochastic-population-growth.html#cb22-8" aria-hidden="true" tabindex="-1"></a>nTrials <span class="ot">=</span> <span class="dv">100</span> <span class="co"># number of repeated simulations</span></span>
-<span id="cb22-9"><a href="stochastic-population-growth.html#cb22-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-10"><a href="stochastic-population-growth.html#cb22-10" aria-hidden="true" tabindex="-1"></a><span class="do">####################################################################</span></span>
-<span id="cb22-11"><a href="stochastic-population-growth.html#cb22-11" aria-hidden="true" tabindex="-1"></a><span class="co">#If you are unfamiliar with R, do not edit anything below this line!</span></span>
-<span id="cb22-12"><a href="stochastic-population-growth.html#cb22-12" aria-hidden="true" tabindex="-1"></a><span class="do">####################################################################</span></span>
-<span id="cb22-13"><a href="stochastic-population-growth.html#cb22-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-14"><a href="stochastic-population-growth.html#cb22-14" aria-hidden="true" tabindex="-1"></a>pseudoExtinction <span class="ot">=</span> <span class="dv">1</span></span>
-<span id="cb22-15"><a href="stochastic-population-growth.html#cb22-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-16"><a href="stochastic-population-growth.html#cb22-16" aria-hidden="true" tabindex="-1"></a><span class="co"># First randomly generate some lambda values</span></span>
-<span id="cb22-17"><a href="stochastic-population-growth.html#cb22-17" aria-hidden="true" tabindex="-1"></a>rValues <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">rnorm</span>(nTrials<span class="sc">*</span>nGen, <span class="at">mean =</span> mean.r, <span class="at">sd =</span> <span class="fu">sqrt</span>(var.r)),</span>
-<span id="cb22-18"><a href="stochastic-population-growth.html#cb22-18" aria-hidden="true" tabindex="-1"></a>                  <span class="at">ncol=</span>nTrials,<span class="at">nrow=</span>nGen)</span>
-<span id="cb22-19"><a href="stochastic-population-growth.html#cb22-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-20"><a href="stochastic-population-growth.html#cb22-20" aria-hidden="true" tabindex="-1"></a><span class="co"># Use a histogram to see what they look like (uncomment the line below)</span></span>
-<span id="cb22-21"><a href="stochastic-population-growth.html#cb22-21" aria-hidden="true" tabindex="-1"></a><span class="co"># hist(lambdas,col=&quot;grey&quot;,main=&quot;&quot;)</span></span>
-<span id="cb22-22"><a href="stochastic-population-growth.html#cb22-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-23"><a href="stochastic-population-growth.html#cb22-23" aria-hidden="true" tabindex="-1"></a><span class="co"># Now run the simulations to see what the resulting population growth looks like</span></span>
-<span id="cb22-24"><a href="stochastic-population-growth.html#cb22-24" aria-hidden="true" tabindex="-1"></a>trials <span class="ot">=</span> <span class="fu">matrix</span>(<span class="at">data =</span> <span class="cn">NA</span>, <span class="at">nrow =</span> nGen, <span class="at">ncol =</span> nTrials)</span>
-<span id="cb22-25"><a href="stochastic-population-growth.html#cb22-25" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (j <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>nTrials){</span>
-<span id="cb22-26"><a href="stochastic-population-growth.html#cb22-26" aria-hidden="true" tabindex="-1"></a>  popSize <span class="ot">=</span> startPop  </span>
-<span id="cb22-27"><a href="stochastic-population-growth.html#cb22-27" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">2</span><span class="sc">:</span> nGen){</span>
-<span id="cb22-28"><a href="stochastic-population-growth.html#cb22-28" aria-hidden="true" tabindex="-1"></a>  stoch.r <span class="ot">=</span> rValues[i,j]</span>
-<span id="cb22-29"><a href="stochastic-population-growth.html#cb22-29" aria-hidden="true" tabindex="-1"></a>  popSize <span class="ot">=</span> <span class="fu">append</span>(popSize, popSize[i<span class="dv">-1</span>]<span class="sc">*</span><span class="fu">exp</span>(stoch.r))</span>
-<span id="cb22-30"><a href="stochastic-population-growth.html#cb22-30" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb22-31"><a href="stochastic-population-growth.html#cb22-31" aria-hidden="true" tabindex="-1"></a>trials[,j] <span class="ot">=</span> popSize</span>
-<span id="cb22-32"><a href="stochastic-population-growth.html#cb22-32" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(popSize)</span>
-<span id="cb22-33"><a href="stochastic-population-growth.html#cb22-33" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb22-34"><a href="stochastic-population-growth.html#cb22-34" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-35"><a href="stochastic-population-growth.html#cb22-35" aria-hidden="true" tabindex="-1"></a><span class="co">#Calculate probability of (pseudo)extinction</span></span>
-<span id="cb22-36"><a href="stochastic-population-growth.html#cb22-36" aria-hidden="true" tabindex="-1"></a>minvals <span class="ot">&lt;-</span> <span class="fu">apply</span>(trials,<span class="dv">2</span>,min)</span>
-<span id="cb22-37"><a href="stochastic-population-growth.html#cb22-37" aria-hidden="true" tabindex="-1"></a>nExtinct <span class="ot">&lt;-</span> <span class="fu">length</span>(minvals[minvals<span class="sc">&lt;=</span>pseudoExtinction])</span>
-<span id="cb22-38"><a href="stochastic-population-growth.html#cb22-38" aria-hidden="true" tabindex="-1"></a>nExtinct<span class="sc">/</span>nTrials</span></code></pre></div>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="stochastic-population-growth.html#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Simulating stochastic geometric population growth rate</span></span>
+<span id="cb23-2"><a href="stochastic-population-growth.html#cb23-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-3"><a href="stochastic-population-growth.html#cb23-3" aria-hidden="true" tabindex="-1"></a><span class="co">#Simulation settings (try changing these)</span></span>
+<span id="cb23-4"><a href="stochastic-population-growth.html#cb23-4" aria-hidden="true" tabindex="-1"></a>mean.r <span class="ot">=</span> <span class="fl">0.05</span> <span class="co"># the mean value of r</span></span>
+<span id="cb23-5"><a href="stochastic-population-growth.html#cb23-5" aria-hidden="true" tabindex="-1"></a>var.r <span class="ot">=</span> <span class="fl">0.1</span> <span class="co"># the variance in r (stochasticity)</span></span>
+<span id="cb23-6"><a href="stochastic-population-growth.html#cb23-6" aria-hidden="true" tabindex="-1"></a>startPop <span class="ot">=</span> <span class="dv">10</span> <span class="co"># pop size at start</span></span>
+<span id="cb23-7"><a href="stochastic-population-growth.html#cb23-7" aria-hidden="true" tabindex="-1"></a>nGen <span class="ot">=</span> <span class="dv">50</span> <span class="co"># number of generations</span></span>
+<span id="cb23-8"><a href="stochastic-population-growth.html#cb23-8" aria-hidden="true" tabindex="-1"></a>nTrials <span class="ot">=</span> <span class="dv">100</span> <span class="co"># number of repeated simulations</span></span>
+<span id="cb23-9"><a href="stochastic-population-growth.html#cb23-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-10"><a href="stochastic-population-growth.html#cb23-10" aria-hidden="true" tabindex="-1"></a><span class="do">####################################################################</span></span>
+<span id="cb23-11"><a href="stochastic-population-growth.html#cb23-11" aria-hidden="true" tabindex="-1"></a><span class="co">#If you are unfamiliar with R, do not edit anything below this line!</span></span>
+<span id="cb23-12"><a href="stochastic-population-growth.html#cb23-12" aria-hidden="true" tabindex="-1"></a><span class="do">####################################################################</span></span>
+<span id="cb23-13"><a href="stochastic-population-growth.html#cb23-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-14"><a href="stochastic-population-growth.html#cb23-14" aria-hidden="true" tabindex="-1"></a>pseudoExtinction <span class="ot">=</span> <span class="dv">1</span></span>
+<span id="cb23-15"><a href="stochastic-population-growth.html#cb23-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-16"><a href="stochastic-population-growth.html#cb23-16" aria-hidden="true" tabindex="-1"></a><span class="co"># First randomly generate some lambda values</span></span>
+<span id="cb23-17"><a href="stochastic-population-growth.html#cb23-17" aria-hidden="true" tabindex="-1"></a>rValues <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">rnorm</span>(nTrials<span class="sc">*</span>nGen, <span class="at">mean =</span> mean.r, <span class="at">sd =</span> <span class="fu">sqrt</span>(var.r)),</span>
+<span id="cb23-18"><a href="stochastic-population-growth.html#cb23-18" aria-hidden="true" tabindex="-1"></a>                  <span class="at">ncol=</span>nTrials,<span class="at">nrow=</span>nGen)</span>
+<span id="cb23-19"><a href="stochastic-population-growth.html#cb23-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-20"><a href="stochastic-population-growth.html#cb23-20" aria-hidden="true" tabindex="-1"></a><span class="co"># Use a histogram to see what they look like (uncomment the line below)</span></span>
+<span id="cb23-21"><a href="stochastic-population-growth.html#cb23-21" aria-hidden="true" tabindex="-1"></a><span class="co"># hist(lambdas,col=&quot;grey&quot;,main=&quot;&quot;)</span></span>
+<span id="cb23-22"><a href="stochastic-population-growth.html#cb23-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-23"><a href="stochastic-population-growth.html#cb23-23" aria-hidden="true" tabindex="-1"></a><span class="co"># Now run the simulations to see what the resulting population growth looks like</span></span>
+<span id="cb23-24"><a href="stochastic-population-growth.html#cb23-24" aria-hidden="true" tabindex="-1"></a>trials <span class="ot">=</span> <span class="fu">matrix</span>(<span class="at">data =</span> <span class="cn">NA</span>, <span class="at">nrow =</span> nGen, <span class="at">ncol =</span> nTrials)</span>
+<span id="cb23-25"><a href="stochastic-population-growth.html#cb23-25" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (j <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>nTrials){</span>
+<span id="cb23-26"><a href="stochastic-population-growth.html#cb23-26" aria-hidden="true" tabindex="-1"></a>  popSize <span class="ot">=</span> startPop  </span>
+<span id="cb23-27"><a href="stochastic-population-growth.html#cb23-27" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">2</span><span class="sc">:</span> nGen){</span>
+<span id="cb23-28"><a href="stochastic-population-growth.html#cb23-28" aria-hidden="true" tabindex="-1"></a>  stoch.r <span class="ot">=</span> rValues[i,j]</span>
+<span id="cb23-29"><a href="stochastic-population-growth.html#cb23-29" aria-hidden="true" tabindex="-1"></a>  popSize <span class="ot">=</span> <span class="fu">append</span>(popSize, popSize[i<span class="dv">-1</span>]<span class="sc">*</span><span class="fu">exp</span>(stoch.r))</span>
+<span id="cb23-30"><a href="stochastic-population-growth.html#cb23-30" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb23-31"><a href="stochastic-population-growth.html#cb23-31" aria-hidden="true" tabindex="-1"></a>trials[,j] <span class="ot">=</span> popSize</span>
+<span id="cb23-32"><a href="stochastic-population-growth.html#cb23-32" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(popSize)</span>
+<span id="cb23-33"><a href="stochastic-population-growth.html#cb23-33" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb23-34"><a href="stochastic-population-growth.html#cb23-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-35"><a href="stochastic-population-growth.html#cb23-35" aria-hidden="true" tabindex="-1"></a><span class="co">#Calculate probability of (pseudo)extinction</span></span>
+<span id="cb23-36"><a href="stochastic-population-growth.html#cb23-36" aria-hidden="true" tabindex="-1"></a>minvals <span class="ot">&lt;-</span> <span class="fu">apply</span>(trials,<span class="dv">2</span>,min)</span>
+<span id="cb23-37"><a href="stochastic-population-growth.html#cb23-37" aria-hidden="true" tabindex="-1"></a>nExtinct <span class="ot">&lt;-</span> <span class="fu">length</span>(minvals[minvals<span class="sc">&lt;=</span>pseudoExtinction])</span>
+<span id="cb23-38"><a href="stochastic-population-growth.html#cb23-38" aria-hidden="true" tabindex="-1"></a>nExtinct<span class="sc">/</span>nTrials</span></code></pre></div>
 <pre><code>## [1] 0.08</code></pre>
-<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="stochastic-population-growth.html#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Make a plot of the population trajectories</span></span>
-<span id="cb24-2"><a href="stochastic-population-growth.html#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="dv">1</span><span class="sc">:</span>nGen,<span class="fu">log</span>(<span class="fu">seq</span>(<span class="fl">0.1</span>,<span class="fu">max</span>(trials),<span class="at">length.out=</span>nGen)),<span class="at">type =</span> <span class="st">&quot;n&quot;</span>,<span class="at">axes=</span>F,<span class="at">xlab =</span><span class="st">&quot;Time&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;N&quot;</span>,<span class="at">ylim=</span><span class="fu">log</span>(<span class="fu">c</span>(<span class="fl">0.1</span>,<span class="dv">100000</span>)))</span>
-<span id="cb24-3"><a href="stochastic-population-growth.html#cb24-3" aria-hidden="true" tabindex="-1"></a><span class="fu">matlines</span>(<span class="fu">log</span>(trials),<span class="at">col =</span> <span class="st">&quot;#FF234520&quot;</span>,<span class="at">lty=</span><span class="dv">1</span>,<span class="at">lwd=</span><span class="dv">3</span>)</span>
-<span id="cb24-4"><a href="stochastic-population-growth.html#cb24-4" aria-hidden="true" tabindex="-1"></a><span class="fu">axis</span>(<span class="dv">1</span>)</span>
-<span id="cb24-5"><a href="stochastic-population-growth.html#cb24-5" aria-hidden="true" tabindex="-1"></a><span class="fu">axis</span>(<span class="dv">2</span>,<span class="at">at =</span> <span class="fu">log</span>(<span class="fu">c</span>(<span class="fl">0.1</span>,<span class="dv">1</span>,<span class="dv">10</span>,<span class="dv">100</span>,<span class="dv">1000</span>,<span class="dv">10000</span>,<span class="dv">100000</span>)),</span>
-<span id="cb24-6"><a href="stochastic-population-growth.html#cb24-6" aria-hidden="true" tabindex="-1"></a>     <span class="at">label =</span> <span class="fu">c</span>(<span class="fl">0.1</span>,<span class="dv">1</span>,<span class="dv">10</span>,<span class="dv">100</span>,<span class="dv">1000</span>,<span class="dv">10000</span>,<span class="dv">100000</span>))</span>
-<span id="cb24-7"><a href="stochastic-population-growth.html#cb24-7" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">h=</span><span class="fu">log</span>(pseudoExtinction),<span class="at">lty=</span><span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="stochastic-population-growth.html#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Make a plot of the population trajectories</span></span>
+<span id="cb25-2"><a href="stochastic-population-growth.html#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="dv">1</span><span class="sc">:</span>nGen,<span class="fu">log</span>(<span class="fu">seq</span>(<span class="fl">0.1</span>,<span class="fu">max</span>(trials),<span class="at">length.out=</span>nGen)),<span class="at">type =</span> <span class="st">&quot;n&quot;</span>,<span class="at">axes=</span>F,<span class="at">xlab =</span><span class="st">&quot;Time&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;N&quot;</span>,<span class="at">ylim=</span><span class="fu">log</span>(<span class="fu">c</span>(<span class="fl">0.1</span>,<span class="dv">100000</span>)))</span>
+<span id="cb25-3"><a href="stochastic-population-growth.html#cb25-3" aria-hidden="true" tabindex="-1"></a><span class="fu">matlines</span>(<span class="fu">log</span>(trials),<span class="at">col =</span> <span class="st">&quot;#FF234520&quot;</span>,<span class="at">lty=</span><span class="dv">1</span>,<span class="at">lwd=</span><span class="dv">3</span>)</span>
+<span id="cb25-4"><a href="stochastic-population-growth.html#cb25-4" aria-hidden="true" tabindex="-1"></a><span class="fu">axis</span>(<span class="dv">1</span>)</span>
+<span id="cb25-5"><a href="stochastic-population-growth.html#cb25-5" aria-hidden="true" tabindex="-1"></a><span class="fu">axis</span>(<span class="dv">2</span>,<span class="at">at =</span> <span class="fu">log</span>(<span class="fu">c</span>(<span class="fl">0.1</span>,<span class="dv">1</span>,<span class="dv">10</span>,<span class="dv">100</span>,<span class="dv">1000</span>,<span class="dv">10000</span>,<span class="dv">100000</span>)),</span>
+<span id="cb25-6"><a href="stochastic-population-growth.html#cb25-6" aria-hidden="true" tabindex="-1"></a>     <span class="at">label =</span> <span class="fu">c</span>(<span class="fl">0.1</span>,<span class="dv">1</span>,<span class="dv">10</span>,<span class="dv">100</span>,<span class="dv">1000</span>,<span class="dv">10000</span>,<span class="dv">100000</span>))</span>
+<span id="cb25-7"><a href="stochastic-population-growth.html#cb25-7" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">h=</span><span class="fu">log</span>(pseudoExtinction),<span class="at">lty=</span><span class="dv">2</span>)</span></code></pre></div>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:stochProjection"></span>
 <img src="BB512_files/figure-html/stochProjection-1.png" alt="An example of stochastic population projection (100 simulations for 50 generations)" width="576" />
 <p class="caption">

@@ -162,7 +162,7 @@ legend("topleft", legend = colnames(pop), col = 1:ncol(pop), lty = 1:ncol(pop))
 
 You should see that the population increases exponentially. The population growth rate is the so-called "*dominant eigenvalue*" of the matrix **A**.
 
-We can ask R for the  *eigen values* and *eigen vectors*. These are the population growth rate ($\lambda$) and the stable stage distribution (*SSD*) and the reproductive values (*RV*) of the different stages. *SSD* is the expected *proportion* of individuals in the different stage classes at equilibrium and *RV* is the expected number of future offspring by individuals in each stage.
+We can ask R for the  *eigen values* and *eigen vectors*. These are the population growth rate ($\lambda$) and the stable stage distribution (*SSD*) and the reproductive values (*RV*) of the different stages. *SSD* is the expected *proportion* of individuals in the different stage classes at equilibrium (i.e. the long-term timeframe) and *RV* is the expected number of future offspring by individuals in each stage.
 
 You can see that in this case, using my example values the population is growing `r format(100*(eigs(A)$lambda-1),2,4)`% per year.
 
@@ -172,7 +172,7 @@ eigs(A)
 
 ## Elasticity
 
-Elasticity analysis is a way of analysing a matrix model to identify the most important transitions to population growth. This is very important in management and conservation when we ask questions like, "which parts of the lifecycle should we focus on to preserve the population?". The mathematics of this are beyond this course, but in a nutshell, we are adding a small value to the elements of the matrix one-at-a-time and asking what difference this makes to population growth rate (lambda). We then express that as a proportion, so that the elasticities sum up to one and are easier to interpret. They can be calculated easily in R.
+Elasticity analysis is a way of analysing a matrix model to identify the most important transitions to population growth. This is very important in management and conservation when we ask questions like, "which parts of the lifecycle should we focus on to preserve the population?". The mathematics of this are beyond this course, but in a nutshell, we are adding a small value to the elements of the matrix one-at-a-time and asking what difference this makes to population growth rate (lambda). We then express that as a *proportion*, so that the elasticities sum up to one and are easier to interpret. They can be calculated easily in R.
 
 ```{r}
 popdemo::elas(A)
