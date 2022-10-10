@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>12 Matrix population modelling | BB512 - Population Biology and Evolution</title>
   <meta name="description" content="Course book for BB512 at the Biology Department, University of Southern Denmark" />
-  <meta name="generator" content="bookdown 0.26 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.27 and GitBook 2.6.7" />
 
   <meta property="og:title" content="12 Matrix population modelling | BB512 - Population Biology and Evolution" />
   <meta property="og:type" content="book" />
@@ -23,7 +23,7 @@
 <meta name="author" content="Owen R. Jones (Course Coordinator)" />
 
 
-<meta name="date" content="2022-09-20" />
+<meta name="date" content="2022-10-10" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -53,6 +53,7 @@
 <link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 <link href="libs/tabwid-1.0.0/tabwid.css" rel="stylesheet" />
+<link href="libs/tabwid-1.0.0/scrool.css" rel="stylesheet" />
 <style type="text/css">
 
 .warning-box {
@@ -398,8 +399,7 @@ A = \begin{bmatrix}0.3&amp;8&amp;2 \\0.1&amp;0.5&amp;0 \\0&amp;0.4&amp;0.4 \\\en
 <div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="matrix-population-modelling.html#cb30-1" aria-hidden="true" tabindex="-1"></a>pr</span></code></pre></div>
 <pre><code>## 1 deterministic population projection over 10 time intervals.
 ## 
-##  [1]  18.0000  55.7000  58.4300  85.2570 111.5643 151.4946 203.2634 273.8278 368.4012 495.8572
-## [11] 667.3121</code></pre>
+##  [1]  18.0000  55.7000  58.4300  85.2570 111.5643 151.4946 203.2634 273.8278 368.4012 495.8572 667.3121</code></pre>
 <p>You can access the population sizes of the different stages using <code>vec(pr)</code>.</p>
 <div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="matrix-population-modelling.html#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">vec</span>(pr)</span></code></pre></div>
 <pre><code>##             S1       S2        S3
