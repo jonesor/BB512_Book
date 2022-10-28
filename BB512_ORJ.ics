@@ -223,7 +223,7 @@ BEGIN:VEVENT
 UID:ical-dbb024bb-0704-4c05-bfea-b5558a5560af
 DTSTART:20221014T100000
 DTEND:20221014T110000
-SUMMARY:BB512 Genetic Drift and Effective Population Size, Lecture in (U42)
+SUMMARY:BB512 Cancelled, Lecture in (U42)
 END:VEVENT
 
 
@@ -235,7 +235,7 @@ BEGIN:VEVENT
 UID:ical-bd0e860f-37fa-4adf-8593-17fbb5b9350f
 DTSTART:20221014T110000
 DTEND:20221014T120000
-SUMMARY:BB512 Exercises - Neutral/adaptive in humans, Practical in (U42)
+SUMMARY:BB512 Cancelled, Practical in (U42)
 END:VEVENT
 
 
@@ -247,7 +247,7 @@ BEGIN:VEVENT
 UID:ical-74330300-4f64-46d5-8121-7d7fd0651a99
 DTSTART:20221101T080000
 DTEND:20221101T090000
-SUMMARY:BB512 Migration, Gene Flow and Differentiation of Populations, Lecture in (U42)
+SUMMARY:BB512 Genetic Drift and Effective Population Size, Lecture in (U20)
 END:VEVENT
 
 
@@ -259,7 +259,7 @@ BEGIN:VEVENT
 UID:ical-564fc7f1-e2a1-4137-b82a-5c87e5af34d2
 DTSTART:20221101T090000
 DTEND:20221101T100000
-SUMMARY:BB512 Exercise on migration/gene flow, Practical in (U42)
+SUMMARY:BB512 Exercises - Neutral/adaptive in humans, Practical in (U42)
 END:VEVENT
 
 
@@ -271,7 +271,7 @@ BEGIN:VEVENT
 UID:ical-0afd1f6b-48d7-48df-934d-c503e017d34e
 DTSTART:20221103T100000
 DTEND:20221103T110000
-SUMMARY:BB512 Haploid and Zygotic Selection, Lecture in (U42)
+SUMMARY:BB512 Migration, Gene Flow and Differentiation of Populations, Lecture in (U42)
 END:VEVENT
 
 
@@ -283,7 +283,7 @@ BEGIN:VEVENT
 UID:ical-29fb4a2a-83b9-40f1-9236-1adf0b57197f
 DTSTART:20221103T110000
 DTEND:20221103T120000
-SUMMARY:BB512 Exercise on selection, Practical in (U42)
+SUMMARY:BB512 Exercise on migration/gene flow, Practical in (U42)
 END:VEVENT
 
 
@@ -295,7 +295,7 @@ BEGIN:VEVENT
 UID:ical-83fae48f-2db2-45f9-8bd1-5b6898f6a3d5
 DTSTART:20221108T100000
 DTEND:20221108T110000
-SUMMARY:BB512 Applying Zygotic Selection Models to Natural Systems, Lecture in (U42)
+SUMMARY:BB512 Haploid and Zygotic Selection, Lecture in (U42)
 END:VEVENT
 
 
@@ -439,7 +439,7 @@ BEGIN:VEVENT
 UID:ical-7a62171b-a77d-4d67-8b7c-568841799a32
 DTSTART:20221207T120000
 DTEND:20221207T130000
-SUMMARY:BB512 Sexual Selection and Mating Systems, Lecture in (U20)
+SUMMARY:BB512 Sexual Selection and Mating Systems, Lecture in (U42)
 END:VEVENT
 
 
