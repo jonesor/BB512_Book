@@ -271,7 +271,7 @@ BEGIN:VEVENT
 UID:ical-bfe5994f-6175-468c-985f-d0c4cec9645e
 DTSTART:20221101T080000
 DTEND:20221101T090000
-SUMMARY:BB512 Genetic Drift and Effective Population Size w.ORJ. Lecture in (U20)
+SUMMARY:BB512 Genetic Drift and Effective Population Size w.ORJ. Lecture in (U42)
 END:VEVENT
 
 
@@ -283,7 +283,7 @@ BEGIN:VEVENT
 UID:ical-91a84927-f33c-4749-b912-7352d91bb59a
 DTSTART:20221101T090000
 DTEND:20221101T100000
-SUMMARY:BB512 Exercises - Neutral/adaptive in humans w.ORJ. Practical in (U42)
+SUMMARY:BB512 Inbreeding w.ORJ. Lecture in (U42)
 END:VEVENT
 
 
@@ -307,7 +307,7 @@ BEGIN:VEVENT
 UID:ical-5dc0c824-e29d-428b-9836-bcc4e69ec767
 DTSTART:20221103T110000
 DTEND:20221103T120000
-SUMMARY:BB512 Exercise on migration/gene flow w.ORJ. Practical in (U42)
+SUMMARY:BB512 Exercises - Neutral/adaptive in humans w.ORJ. Practical in (U42)
 END:VEVENT
 
 
@@ -535,7 +535,7 @@ BEGIN:VEVENT
 UID:ical-cdfb3338-5473-4107-baa5-f5216962ffea
 DTSTART:20221207T120000
 DTEND:20221207T130000
-SUMMARY:BB512 Sexual Selection and Mating Systems w.ORJ. Lecture in (U42)
+SUMMARY:BB512 Sexual Selection and Mating Systems w.ORJ. Lecture in (U20)
 END:VEVENT
 
 
