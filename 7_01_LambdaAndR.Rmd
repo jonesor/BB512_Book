@@ -1,0 +1,31 @@
+# r and lambda
+
+The relationship between $r$ and $λ$.
+
+$λ =N_{t+1}/N_t$, thus when the population is neither growing nor declining (when $N_{t+1}=N_t$), $λ = 1$
+
+$r = ln(λ)$ which is the same as saying $r = ln(N_{t+1}/N_t)$
+We say that $r = ln(λ)$ "r is the natural log of lambda"
+
+
+To back-transform from a natural log, we use the exponential. Therefore, $λ = e^r$: "lambda is the exponential of r".
+
+In Excel, these are `= LN(x)` and `= EXP(x)`, in R, they are `log(x)` and `exp(x)`.
+
+When the population is steady, r = 0 and lambda = 1. This relationship that λ is r+1 only applies when population is not growing: Do not make the common mistake to think that λ is simply r + 1!
+
+This is what the relationship looks like graphically:
+
+```{r}
+require(tidyverse)
+df1 <- data.frame(r = seq(-1,1,0.1)) %>% 
+  mutate(lambda = exp(r))
+
+ggplot(df1,aes(x = r, y = lambda)) +
+  geom_line() + 
+  ylab("λ")
+
+```
+
+
+One way to think about the relationship between $r$ and $λ$ is that $λ$ is the contribution of an individual to the total population size, whereas $r$ is the contribution of an individual to the rate of change in population size.
