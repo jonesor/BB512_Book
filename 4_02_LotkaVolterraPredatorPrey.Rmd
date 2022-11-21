@@ -15,6 +15,17 @@ Learning outcomes:
 
 The worksheet is divided into three parts. We will mainly **focus on Part 1** - the basic model - in the class. 
 
+After completing the Excel sheet, try to answer the following questions:
+
+1. Does a larger prey population growth rate (R) increase or decrease the stability of the predator-prey interaction?
+2. What happens if the predators starve more quickly? Less quickly?
+3. What happens if the predator is more efficient at converting prey into offspring? Less efficient?
+4. What happens if the predator is better at finding prey? Worse?
+5. Is the behavior of the model sensitive to starting populations? Begin with populations near the point where the isoclines cross, and move slowly farther out.
+6. What is the ultimate outcome of the predator-prey interaction, regardless of parameter values? How does this compare to real predator and prey populations? What factors not included in the model may explain the differences between model predictions and reality?
+
+## Optional extras
+
 Part 2 modifies the basic model to include a refuge, and part 3 modifies the model to include carrying capacity. Feel free to continue to work on these if there is time, and if you are interested.
 
 
