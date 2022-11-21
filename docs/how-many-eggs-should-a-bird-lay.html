@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>13 How many eggs should a bird lay? | BB512 - Population Biology and Evolution</title>
   <meta name="description" content="Course book for BB512 at the Biology Department, University of Southern Denmark" />
-  <meta name="generator" content="bookdown 0.27 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.26 and GitBook 2.6.7" />
 
   <meta property="og:title" content="13 How many eggs should a bird lay? | BB512 - Population Biology and Evolution" />
   <meta property="og:type" content="book" />
@@ -23,7 +23,7 @@
 <meta name="author" content="Owen R. Jones (Course Coordinator)" />
 
 
-<meta name="date" content="2022-11-01" />
+<meta name="date" content="2022-11-21" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -53,7 +53,6 @@
 <link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 <link href="libs/tabwid-1.0.0/tabwid.css" rel="stylesheet" />
-<link href="libs/tabwid-1.0.0/scrool.css" rel="stylesheet" />
 <style type="text/css">
 
 .warning-box {
@@ -271,7 +270,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="18" data-path="lotka-volterra-predator-prey-dynamics.html"><a href="lotka-volterra-predator-prey-dynamics.html"><i class="fa fa-check"></i><b>18</b> Lotka-Volterra predator-prey dynamics</a>
 <ul>
-<li class="chapter" data-level="18.0.1" data-path="lotka-volterra-predator-prey-dynamics.html"><a href="lotka-volterra-predator-prey-dynamics.html#reference"><i class="fa fa-check"></i><b>18.0.1</b> Reference</a></li>
+<li class="chapter" data-level="18.1" data-path="lotka-volterra-predator-prey-dynamics.html"><a href="lotka-volterra-predator-prey-dynamics.html#optional-extras"><i class="fa fa-check"></i><b>18.1</b> Optional extras</a>
+<ul>
+<li class="chapter" data-level="18.1.1" data-path="lotka-volterra-predator-prey-dynamics.html"><a href="lotka-volterra-predator-prey-dynamics.html#reference"><i class="fa fa-check"></i><b>18.1.1</b> Reference</a></li>
+</ul></li>
 </ul></li>
 <li class="part"><span><b>V Animal behaviour, altruism and sexual selection</b></span></li>
 <li class="part"><span><b>VI Solutions/answers</b></span></li>
@@ -307,6 +309,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="19.15" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#solutions-lotka-volterra-competition"><i class="fa fa-check"></i><b>19.15</b> Solutions: Lotka-Volterra competition</a></li>
 <li class="chapter" data-level="19.16" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#solutions-lotka-volterra-predator-prey-dynamics"><i class="fa fa-check"></i><b>19.16</b> Solutions: Lotka-Volterra predator-prey dynamics</a></li>
 </ul></li>
+<li class="part"><span><b>VII Appendix - extras</b></span></li>
+<li class="chapter" data-level="20" data-path="r-and-lambda.html"><a href="r-and-lambda.html"><i class="fa fa-check"></i><b>20</b> r and lambda</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 
@@ -359,7 +363,7 @@ Figure 13.1: Big bird, <em>Bigus canarius</em>
 </p>
 </div>
 <p>A recent study gathered data on chick survival probability as a function of number of eggs in the nest. These are given in the table below.</p>
-<template id="5ba818f3-9771-4ff2-b2ca-3576a6b30756"><style>
+<template id="49f3aa08-b1f8-4b24-b6f9-dd9f4411b96e"><style>
 .tabwid table{
   border-spacing:0px !important;
   border-collapse:collapse;
@@ -393,12 +397,12 @@ Figure 13.1: Big bird, <em>Bigus canarius</em>
 .tabwid table tr {
 background-color: transparent;
 }
-</style><div class="tabwid"><style>.cl-05515d28{}.cl-053aea7a{font-family:'Helvetica';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-053b00b4{margin:0;text-align:right;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-053b687e{width:54pt;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-053b6888{width:54pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-053b68ba{width:54pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(102, 102, 102, 1.00);border-top: 2pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style><table class='cl-05515d28'>
-<thead><tr style="overflow-wrap:break-word;"><td class="cl-053b68ba"><p class="cl-053b00b4"><span class="cl-053aea7a">eggs</span></p></td><td class="cl-053b68ba"><p class="cl-053b00b4"><span class="cl-053aea7a">survival</span></p></td></tr></thead><tbody><tr style="overflow-wrap:break-word;"><td class="cl-053b687e"><p class="cl-053b00b4"><span class="cl-053aea7a">1</span></p></td><td class="cl-053b687e"><p class="cl-053b00b4"><span class="cl-053aea7a">0.90</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-053b687e"><p class="cl-053b00b4"><span class="cl-053aea7a">2</span></p></td><td class="cl-053b687e"><p class="cl-053b00b4"><span class="cl-053aea7a">0.85</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-053b687e"><p class="cl-053b00b4"><span class="cl-053aea7a">3</span></p></td><td class="cl-053b687e"><p class="cl-053b00b4"><span class="cl-053aea7a">0.82</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-053b687e"><p class="cl-053b00b4"><span class="cl-053aea7a">4</span></p></td><td class="cl-053b687e"><p class="cl-053b00b4"><span class="cl-053aea7a">0.70</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-053b687e"><p class="cl-053b00b4"><span class="cl-053aea7a">5</span></p></td><td class="cl-053b687e"><p class="cl-053b00b4"><span class="cl-053aea7a">0.50</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-053b687e"><p class="cl-053b00b4"><span class="cl-053aea7a">6</span></p></td><td class="cl-053b687e"><p class="cl-053b00b4"><span class="cl-053aea7a">0.30</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-053b687e"><p class="cl-053b00b4"><span class="cl-053aea7a">7</span></p></td><td class="cl-053b687e"><p class="cl-053b00b4"><span class="cl-053aea7a">0.22</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-053b687e"><p class="cl-053b00b4"><span class="cl-053aea7a">8</span></p></td><td class="cl-053b687e"><p class="cl-053b00b4"><span class="cl-053aea7a">0.15</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-053b687e"><p class="cl-053b00b4"><span class="cl-053aea7a">9</span></p></td><td class="cl-053b687e"><p class="cl-053b00b4"><span class="cl-053aea7a">0.10</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-053b6888"><p class="cl-053b00b4"><span class="cl-053aea7a">10</span></p></td><td class="cl-053b6888"><p class="cl-053b00b4"><span class="cl-053aea7a">0.05</span></p></td></tr></tbody></table></div></template>
-<div class="flextable-shadow-host" id="459f80cf-83b8-4d31-b7db-3ccd0fba18c3"></div>
+</style><div class="tabwid"><style>.cl-042c8344{}.cl-0419daaa{font-family:'Helvetica';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-0419f292{margin:0;text-align:right;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-041a3824{width:54pt;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-041a3842{width:54pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-041a3860{width:54pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(102, 102, 102, 1.00);border-top: 2pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style><table class='cl-042c8344'>
+<thead><tr style="overflow-wrap:break-word;"><td class="cl-041a3860"><p class="cl-0419f292"><span class="cl-0419daaa">eggs</span></p></td><td class="cl-041a3860"><p class="cl-0419f292"><span class="cl-0419daaa">survival</span></p></td></tr></thead><tbody><tr style="overflow-wrap:break-word;"><td class="cl-041a3824"><p class="cl-0419f292"><span class="cl-0419daaa">1</span></p></td><td class="cl-041a3824"><p class="cl-0419f292"><span class="cl-0419daaa">0.90</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-041a3824"><p class="cl-0419f292"><span class="cl-0419daaa">2</span></p></td><td class="cl-041a3824"><p class="cl-0419f292"><span class="cl-0419daaa">0.85</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-041a3824"><p class="cl-0419f292"><span class="cl-0419daaa">3</span></p></td><td class="cl-041a3824"><p class="cl-0419f292"><span class="cl-0419daaa">0.82</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-041a3824"><p class="cl-0419f292"><span class="cl-0419daaa">4</span></p></td><td class="cl-041a3824"><p class="cl-0419f292"><span class="cl-0419daaa">0.70</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-041a3824"><p class="cl-0419f292"><span class="cl-0419daaa">5</span></p></td><td class="cl-041a3824"><p class="cl-0419f292"><span class="cl-0419daaa">0.50</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-041a3824"><p class="cl-0419f292"><span class="cl-0419daaa">6</span></p></td><td class="cl-041a3824"><p class="cl-0419f292"><span class="cl-0419daaa">0.30</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-041a3824"><p class="cl-0419f292"><span class="cl-0419daaa">7</span></p></td><td class="cl-041a3824"><p class="cl-0419f292"><span class="cl-0419daaa">0.22</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-041a3824"><p class="cl-0419f292"><span class="cl-0419daaa">8</span></p></td><td class="cl-041a3824"><p class="cl-0419f292"><span class="cl-0419daaa">0.15</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-041a3824"><p class="cl-0419f292"><span class="cl-0419daaa">9</span></p></td><td class="cl-041a3824"><p class="cl-0419f292"><span class="cl-0419daaa">0.10</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-041a3842"><p class="cl-0419f292"><span class="cl-0419daaa">10</span></p></td><td class="cl-041a3842"><p class="cl-0419f292"><span class="cl-0419daaa">0.05</span></p></td></tr></tbody></table></div></template>
+<div class="flextable-shadow-host" id="b25e3aaf-cb64-4c61-a9d0-2c7ac7bb2c71"></div>
 <script>
-var dest = document.getElementById("459f80cf-83b8-4d31-b7db-3ccd0fba18c3");
-var template = document.getElementById("5ba818f3-9771-4ff2-b2ca-3576a6b30756");
+var dest = document.getElementById("b25e3aaf-cb64-4c61-a9d0-2c7ac7bb2c71");
+var template = document.getElementById("49f3aa08-b1f8-4b24-b6f9-dd9f4411b96e");
 var caption = template.content.querySelector("caption");
 if(caption) {
   caption.style.cssText = "display:block;text-align:center;";

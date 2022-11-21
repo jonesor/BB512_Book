@@ -69,6 +69,7 @@ the-traits
 lotka-volterra-competition
 the-questions
 lotka-volterra-predator-prey-dynamics
+optional-extras
 reference
 solutions-and-take-home-messages
 solutions-randomness-and-perfection
@@ -96,3 +97,4 @@ problem-4
 solutions-neutral-or-adaptive-evolution-in-humans
 solutions-lotka-volterra-competition
 solutions-lotka-volterra-predator-prey-dynamics
+r-and-lambda
