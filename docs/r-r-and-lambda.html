@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>3 Randomness and perfection | BB512 - Population Biology and Evolution</title>
+  <title>21 R, r and lambda | BB512 - Population Biology and Evolution</title>
   <meta name="description" content="Course book for BB512 at the Biology Department, University of Southern Denmark" />
   <meta name="generator" content="bookdown 0.27 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="3 Randomness and perfection | BB512 - Population Biology and Evolution" />
+  <meta property="og:title" content="21 R, r and lambda | BB512 - Population Biology and Evolution" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="Course book for BB512 at the Biology Department, University of Southern Denmark" />
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="3 Randomness and perfection | BB512 - Population Biology and Evolution" />
+  <meta name="twitter:title" content="21 R, r and lambda | BB512 - Population Biology and Evolution" />
   
   <meta name="twitter:description" content="Course book for BB512 at the Biology Department, University of Southern Denmark" />
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="schedule.html"/>
-<link rel="next" href="bug-hunt-camouflage-netlogo.html"/>
+<link rel="prev" href="solutions-and-take-home-messages.html"/>
+
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -353,101 +353,164 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="randomness-and-perfection" class="section level1 hasAnchor" number="3">
-<h1><span class="header-section-number">3</span> Randomness and perfection<a href="randomness-and-perfection.html#randomness-and-perfection" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p>An early criticism of natural selection used an analogy of a watchmaker to conclude that species must have been designed by a supernatural being.</p>
-<p>Paraphrased: <strong>If a pocket watch is found on a heath, it is most reasonable to assume that someone dropped it and that it was made by at least one watchmaker, not by natural forces</strong></p>
-<p>In this exercise you will use a program written in R to explore how random change, when paired with strong selection, can result in seemingly improbable results.</p>
-<p>Imagine if you randomly typed letters into a type writer. How long would it take to come up with a sensible sentence?</p>
-<p>Let’s think about a particular sentence “<code>I LOVE SCIENCE</code>”, which has 14 characters (including the spaces).</p>
-<p>In English there are 26 letters in the alphabet, plus the space. So if we hit a random key, probability of getting the first letter correct is 1/27 (= 0.037).
-The chances of getting the first two letters correct is (1/27) * (1/27), or (1/27)^2, which is 0.0014. Our sentence has 14 characters, so the probability of getting it right with random key presses is (1/27)^14 = 9.139181e-21. This is a vanishingly small probability.</p>
-<p>You will explore how SELECTION, can turn the impossible into a possible.</p>
-<div class="do-something">
-<p>
-Learning outcomes:
-</p>
-<ul>
-<li>
-Greater understanding of adaptive evolution via natural
-selection.
-</li>
-<li>
-Understanding that random change does NOT result in disorder, if
-paired with selection.
-</li>
-<li>
-Use of R for exploring biological phenomenon.
-</li>
-</ul>
+<div id="r-r-and-lambda" class="section level1 hasAnchor" number="21">
+<h1><span class="header-section-number">21</span> R, r and lambda<a href="r-r-and-lambda.html#r-r-and-lambda" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="discrete-time-model" class="section level2 hasAnchor" number="21.1">
+<h2><span class="header-section-number">21.1</span> Discrete time model<a href="r-r-and-lambda.html#discrete-time-model" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>We’ll first look at <em>discrete</em> population growth, which is the population growth that is considered to grow over distinct time steps (e.g., 1 year intervals). This is also called <strong>Geometric Population Growth</strong>.</p>
+<p>A population at time <span class="math inline">\(t\)</span> has size <span class="math inline">\(N\)</span>: <span class="math inline">\(N_t\)</span>.</p>
+<p>After one time interval, there will be some births (<span class="math inline">\(B\)</span>), and some deaths (<span class="math inline">\(D\)</span>). Births will have the effect of increasing the population size at time <span class="math inline">\(t+1\)</span> while deaths will decrease population size. The population at the next time step (<span class="math inline">\(N_{t+1}\)</span>) is thus:</p>
+<p><strong>eqn. 1.</strong> <span class="math inline">\(N_{t+1} = N_t + B - D\)</span></p>
+<p>We can think about the birth/death processes on a per-individual basis, and use per-capita birth rate (<span class="math inline">\(b\)</span>) and per-capita death rate (<span class="math inline">\(d\)</span>). We can think of <span class="math inline">\(b\)</span> as the average number of offspring produced by an individual during the time interval starting at <span class="math inline">\(N_t\)</span> and ending at <span class="math inline">\(N_{t+1}\)</span>. Similarly, <span class="math inline">\(d\)</span> is the probability that an individual alive at <span class="math inline">\(N_t\)</span> will die at some point during the interval.</p>
+<p>The <strong>total</strong> number of births within a time interval depends on the number of individuals there are at the start of the interval (<span class="math inline">\(N_t\)</span>), and the total number of births in the population during the time interval is <span class="math inline">\(bN_t\)</span>. Similarly, the total number of deaths is <span class="math inline">\(dN_t\)</span>. Thus:</p>
+<p><strong>eqn. 2.</strong> <span class="math inline">\(N_{t+1} = N_t + bN_t - dN_t\)</span>.</p>
+<p>This equation can be simplified to:</p>
+<p><strong>eqn. 3.</strong> <span class="math inline">\(N_{t+1} = N_t + (b-d)N_t\)</span>.</p>
+<p>Furthermore, because the expression <span class="math inline">\((b-d)\)</span> is important, we can give it its own symbol, <span class="math inline">\(R\)</span>. <span class="math inline">\(R\)</span> is called the <em>per capita rate of increase</em> or the <em>intrinsic rate of increase</em>. (Note that the nomenclature varies depending on the book/paper! In other places this is called <span class="math inline">\(r_d\)</span>, or <span class="math inline">\(R_m\)</span>).</p>
+<p>So we now have:</p>
+<p><strong>eqn. 4.</strong> <span class="math inline">\(N_{t+1} = N_t + RN_t\)</span>.</p>
+<p>Or, if we are only interested in the <strong>change</strong> in population size:</p>
+<p><strong>eqn. 5.</strong> <span class="math inline">\(\frac{\Delta N}{\Delta t} = RN_t\)</span>.</p>
+<p>Equation 4 can be simplified again, by factoring out the <span class="math inline">\(N_t\)</span> on the right hand side:</p>
+<p><strong>eqn. 6.</strong> <span class="math inline">\(N_{t+1} = (R + 1)N_t\)</span>.</p>
+<p>The quantity <span class="math inline">\((R+1)\)</span> is given its own symbol: <span class="math inline">\(λ\)</span>, the <strong>population multiplication rate</strong> (also known as the “finite rate of increase”).</p>
+<p><strong>eqn. 7.</strong> <span class="math inline">\(N_{t+1} = λN_t\)</span>.</p>
+<p>By rearranging this equation (eqn. 7) we can see that <span class="math inline">\(λ\)</span> is simply the ratio of population size at time <span class="math inline">\(t+1\)</span> and <span class="math inline">\(t\)</span>:</p>
+<p><strong>eqn. 8.</strong> <span class="math inline">\(λ = N_{t+1}/N_t\)</span>.</p>
+<p>It follows, therefore, that when the population is neither growing nor declining (when <span class="math inline">\(N_{t+1}=N_t\)</span>), <span class="math inline">\(λ = 1\)</span> (and when <span class="math inline">\(R\)</span> = 0).</p>
+<div id="calculating-n-for-any-future-time-point" class="section level3 hasAnchor" number="21.1.1">
+<h3><span class="header-section-number">21.1.1</span> Calculating N for any future time point<a href="r-r-and-lambda.html#calculating-n-for-any-future-time-point" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Assuming the population growth rate remains constant, we can calculate the population at any time in the future.</p>
+<p>As a starting point, consider equation 7: <span class="math inline">\(N_{t+1} = λN_t\)</span>.</p>
+<p>If we want to calculate <span class="math inline">\(N_{t+2}\)</span>, we would need to plug in <span class="math inline">\(N_{t+1}\)</span> instead of <span class="math inline">\(N_t\)</span>: <span class="math inline">\(N_{t+2} = λN_{t+1}\)</span>,</p>
+<p>and, since we know that <span class="math inline">\(N_{t+1} = λN_t\)</span>,: <span class="math inline">\(N_{t+2} = λ λN_t\)</span>.</p>
+<p>Similarly, if we wanted to calculate <span class="math inline">\(N_{t+2}\)</span>, we’d end up with: <span class="math inline">\(N_{t+3} = λλλN_t\)</span>.</p>
+<p>This can be simplified by raising λ to a suitable power, and using the starting population at time = 0, <span class="math inline">\(N_0\)</span>:</p>
+<p><strong>eqn. 9.</strong> <span class="math inline">\(N_{t} = λ^tN_0\)</span>.</p>
+<p>This should be familiar to those of you that did (or remember!) the concept of geometric series which was covered in MM554 Mathematics for Biology.</p>
 </div>
-<div id="getting-started" class="section level2 hasAnchor" number="3.1">
-<h2><span class="header-section-number">3.1</span> Getting started<a href="randomness-and-perfection.html#getting-started" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<ol start="0" style="list-style-type: decimal">
-<li>Make sure you have both R and RStudio installed.</li>
-<li>Open RStudio.</li>
-<li>Open a new script (File &gt; New File &gt; New Script)</li>
-<li>Cut and paste the R code (below) into your script.</li>
-<li>Save your script with a memorable file name.</li>
-</ol>
-<p>Note, only edit the top part of the file (above the marked comment)</p>
+<div id="applying-the-model" class="section level3 hasAnchor" number="21.1.2">
+<h3><span class="header-section-number">21.1.2</span> Applying the model<a href="r-r-and-lambda.html#applying-the-model" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>If we plot exponential growth on a log scale we can see that it is straight line. For example, in the plot below I show the sequence for a population with a starting population of 18 and a λ (population multiplication rate) of 1.2 (i.e., the population increases by 20% each year). In (A) the time series is plotted on the natural scale while in (B) it is plotted on the log scale.</p>
+<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="r-r-and-lambda.html#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="fu">require</span>(tidyverse)</span>
+<span id="cb44-2"><a href="r-r-and-lambda.html#cb44-2" aria-hidden="true" tabindex="-1"></a>startPop <span class="ot">&lt;-</span> <span class="dv">10</span></span>
+<span id="cb44-3"><a href="r-r-and-lambda.html#cb44-3" aria-hidden="true" tabindex="-1"></a>lambda <span class="ot">&lt;-</span> <span class="fl">1.2</span></span>
+<span id="cb44-4"><a href="r-r-and-lambda.html#cb44-4" aria-hidden="true" tabindex="-1"></a>df1 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">time =</span> <span class="dv">0</span><span class="sc">:</span><span class="dv">20</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb44-5"><a href="r-r-and-lambda.html#cb44-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">N =</span> lambda<span class="sc">^</span>time <span class="sc">*</span> startPop)</span></code></pre></div>
+<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="r-r-and-lambda.html#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>))</span>
+<span id="cb45-2"><a href="r-r-and-lambda.html#cb45-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(df1<span class="sc">$</span>time, df1<span class="sc">$</span>N, <span class="at">type =</span> <span class="st">&quot;b&quot;</span>)</span>
+<span id="cb45-3"><a href="r-r-and-lambda.html#cb45-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(df1<span class="sc">$</span>time, <span class="fu">log</span>(df1<span class="sc">$</span>N), <span class="at">type =</span> <span class="st">&quot;b&quot;</span>)</span></code></pre></div>
+<p><img src="BB512_files/figure-html/unnamed-chunk-252-1.png" width="672" />
+In fact, we can linearise the relationship by log transforming both sides of equation 9:</p>
+<p><span class="math inline">\(\ln{N_t} = \ln(λ^tN_0)\)</span>,</p>
+<p>which can be re-written as:</p>
+<p><span class="math inline">\(\ln{N_t} = \ln(λ)t + \ln(N_0)\)</span>.</p>
+<p>This looks familiar. Indeed, the equation of a straight line (<span class="math inline">\(y = ax + b\)</span>) maps onto this. In this equation, the slope <span class="math inline">\(a\)</span> is equivalent to <span class="math inline">\(\ln(λ)\)</span> and the intercept (<span class="math inline">\(b\)</span>) is equivalent to <span class="math inline">\(\ln(N_0)\)</span>.</p>
+<p>This is very convenient because now we can use simple regression methods to estimate <span class="math inline">\(\ln(λ)\)</span> (the slope) of the relationship, and therefore the value of <span class="math inline">\(λ\)</span> (or <span class="math inline">\(R\)</span>, which is <span class="math inline">\(λ-1\)</span>).</p>
+<p>Here’s an example from the Neal text book, breeding pairs of merlin (<em>Falco columbarius</em>).:</p>
+<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="r-r-and-lambda.html#cb46-1" aria-hidden="true" tabindex="-1"></a>df1 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">year =</span> <span class="dv">1970</span><span class="sc">:</span><span class="dv">1982</span>, <span class="at">N =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">4</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">7</span>,<span class="dv">10</span>,<span class="dv">12</span>,<span class="dv">14</span>,<span class="dv">16</span>))</span>
+<span id="cb46-2"><a href="r-r-and-lambda.html#cb46-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(df1<span class="sc">$</span>year,df1<span class="sc">$</span>N, <span class="at">type =</span> <span class="st">&quot;both&quot;</span>)</span></code></pre></div>
+<p><img src="BB512_files/figure-html/unnamed-chunk-253-1.png" width="672" /></p>
+<p>I’ll replot the data on a log scale then fit a regression model and add the line to the plot:</p>
+<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="r-r-and-lambda.html#cb47-1" aria-hidden="true" tabindex="-1"></a>df1<span class="sc">$</span>logN <span class="ot">&lt;-</span> <span class="fu">log</span>(df1<span class="sc">$</span>N)</span>
+<span id="cb47-2"><a href="r-r-and-lambda.html#cb47-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(df1<span class="sc">$</span>year,df1<span class="sc">$</span>logN)</span>
+<span id="cb47-3"><a href="r-r-and-lambda.html#cb47-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb47-4"><a href="r-r-and-lambda.html#cb47-4" aria-hidden="true" tabindex="-1"></a>mod1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(logN<span class="sc">~</span>year,<span class="at">data =</span> df1)</span>
+<span id="cb47-5"><a href="r-r-and-lambda.html#cb47-5" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(mod1)</span></code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = logN ~ year, data = df1)
+## 
+## Residuals:
+##      Min       1Q   Median       3Q      Max 
+## -0.32858 -0.13684 -0.01967  0.10104  0.60054 
+## 
+## Coefficients:
+##               Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept) -464.77072   36.12270  -12.87 5.66e-08 ***
+## year           0.23596    0.01828   12.91 5.48e-08 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 0.2466 on 11 degrees of freedom
+## Multiple R-squared:  0.9381, Adjusted R-squared:  0.9324 
+## F-statistic: 166.6 on 1 and 11 DF,  p-value: 5.478e-08</code></pre>
+<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="r-r-and-lambda.html#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(mod1)</span></code></pre></div>
+<p><img src="BB512_files/figure-html/unnamed-chunk-254-1.png" width="672" /></p>
+<p>The summary of the model tells us that the slope of the relationship between <code>year</code> and <code>logN</code> is 0.2359637. Therefore, <span class="math inline">\(R\)</span> is 0.236 and <span class="math inline">\(\lambda\)</span> is 1.236.</p>
 </div>
-<div id="the-code" class="section level2 hasAnchor" number="3.2">
-<h2><span class="header-section-number">3.2</span> The code<a href="randomness-and-perfection.html#the-code" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<pre><code>phrase &lt;- &quot;With your feet on the air and your head on the ground&quot;
-nGenerations &lt;- 100
-selection &lt;- TRUE
+</div>
+<div id="continuous-time-model" class="section level2 hasAnchor" number="21.2">
+<h2><span class="header-section-number">21.2</span> Continuous time model<a href="r-r-and-lambda.html#continuous-time-model" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>In the discrete time model, the finite rate of increase
+The starting point for this model is</p>
+<p><span class="math inline">\(r = ln(λ)\)</span> which is the same as saying <span class="math inline">\(r = ln(N_{t+1}/N_t)\)</span></p>
+<p>We say that <span class="math inline">\(r = ln(λ)\)</span> “r is the natural log of lambda”.</p>
+<p>To back-transform from a natural log, we use the exponential. Therefore, <span class="math inline">\(λ = e^r\)</span>: “lambda is the exponential of r”.</p>
+<p>From the section above, we know that <span class="math inline">\(λ = 1 + R\)</span>, so:</p>
+<p><span class="math inline">\(1+R = e^r\)</span></p>
+<p><span class="math inline">\(R = e^r - 1\)</span></p>
+<div id="zero-population-growth" class="section level3 hasAnchor" number="21.2.1">
+<h3><span class="header-section-number">21.2.1</span> Zero population growth<a href="r-r-and-lambda.html#zero-population-growth" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>When the population is steady, <span class="math inline">\(r = 0\)</span> and <span class="math inline">\(λ = 1\)</span>. Note that this relationship, that <span class="math inline">\(λ\)</span> is <span class="math inline">\(r+1\)</span>, only applies when population is not growing: Do not make the common mistake to think that <span class="math inline">\(λ\)</span> is simply <span class="math inline">\(r + 1\)</span>!</p>
+</div>
+<div id="nomenclature" class="section level3 hasAnchor" number="21.2.2">
+<h3><span class="header-section-number">21.2.2</span> Nomenclature<a href="r-r-and-lambda.html#nomenclature" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<table>
+<colgroup>
+<col width="25%" />
+<col width="28%" />
+<col width="45%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Symbol</th>
+<th>Meaning</th>
+<th>Alternatives</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(R\)</span></td>
+<td>Per capita rate of increase, per capita population growth rate</td>
+<td><span class="math inline">\(R_m\)</span> (Neal), <span class="math inline">\(r\)</span> (Gotelli), <span class="math inline">\(r_c\)</span> is used as the <span class="math inline">\(R\)</span> <em>estimated</em> from a life table in Neal</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(r\)</span></td>
+<td>Intrinsic rate of increase</td>
+<td><span class="math inline">\(r_m\)</span></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(λ\)</span></td>
+<td>Population growth rate, population multiplication rate</td>
+<td></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(R0\)</span></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
 
-###################################################
-#Do not edit between the ##
-phraseSplit &lt;- unlist(strsplit(toupper(phrase), &quot;&quot;))
-output &lt;- data.frame(generation = 1:nGenerations, 
-                     phrase = rep(NA, nGenerations))
-fixed &lt;- NULL
-for (i in 1:nGenerations){
-  randomPhrase &lt;- sample(c(LETTERS,&quot; &quot;,&quot;&#39;&quot;,&quot;Å&quot;,&quot;Æ&quot;,&quot;Ø&quot;,&quot;!&quot;), length(phraseSplit), replace = TRUE)
-  if(selection == TRUE) {
-    randomPhrase[fixed] &lt;- phraseSplit[fixed]
-    fixed &lt;- append(fixed,which(randomPhrase == phraseSplit))
-    fixed &lt;- sort(unique(fixed))
-  }
-  output$phrase[i] &lt;- paste(randomPhrase,collapse = &quot;&quot;)
-}
-###################################################
+</div>
+</div>
+</div>
 
-output
-</code></pre>
-</div>
-<div id="how-the-simulation-works." class="section level2 hasAnchor" number="3.3">
-<h2><span class="header-section-number">3.3</span> How the simulation works.<a href="randomness-and-perfection.html#how-the-simulation-works." class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Owen will walk you through the code, and what it means. He will also demonstrate its use.</p>
-<p>You provide the small program with a target phrase (<code>phrase</code>). This phrase can include Danish characters, spaces and an exclamation point!
-The program then generates a random “phrase” with the same number of characters as your target phrase. This certainly be complete nonsense - literally random letters – but some of the letters might match with your target phrase.</p>
-<p>If selection is operating (<code>selection &lt;- TRUE</code>), then these matching letters are held in place, and in the next iteration only the unmatched letters are randomised. This process continues for many generations (<code>nGenerations</code>).</p>
-<p>The <code>output</code> of the code (at the bottom) will print out a sequence of the phrases. You should see that, when selection is turned on, the target phrase is reached after some generations.</p>
-<p>Try editing the code:
-1) Change the phrase - make it shorter/longer (remember that not all characters are allowed).
-2) Change the number of generations.</p>
-</div>
-<div id="questions" class="section level2 hasAnchor" number="3.4">
-<h2><span class="header-section-number">3.4</span> Questions<a href="randomness-and-perfection.html#questions" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Answer the following questions, then make sure you confirm your understanding and have the right answers with an instructor.</p>
-<ul>
-<li>What happens if selection is turned OFF?</li>
-<li>Does the number of generations affect whether the target phrase is reached?</li>
-<li>Does the speed of reaching the target phrase depend on the length of the phrase?</li>
-<li>How does this simulation differ from real natural selection?</li>
-</ul>
 
-</div>
-</div>
+
+
+
+
+
+
             </section>
 
           </div>
         </div>
       </div>
-<a href="schedule.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="bug-hunt-camouflage-netlogo.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="solutions-and-take-home-messages.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -478,7 +541,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/jonesor/BB512_Book/edit/master/1_01_NatSelectionR.Rmd",
+"link": "https://github.com/jonesor/BB512_Book/edit/master/7_01_LambdaAndR.Rmd",
 "text": "Edit"
 },
 "history": {

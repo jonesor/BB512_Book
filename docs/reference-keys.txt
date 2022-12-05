@@ -2,7 +2,7 @@ fig:colours
 fig:stochGrowthRate
 fig:stochProjection
 fig:bigbird
-fig:unnamed-chunk-81
+fig:unnamed-chunk-235
 fig:huntergatherer
 welcome-to-bb512
 this-website-and-other-course-materials
@@ -71,6 +71,13 @@ the-questions
 lotka-volterra-predator-prey-dynamics
 optional-extras
 reference
+game-theory-hawks-and-doves
+the-payoff-table
+hypotheses
+game-one
+game-two
+summarise-results
+acknowldgement
 solutions-and-take-home-messages
 solutions-randomness-and-perfection
 solutions-bug-hunt-camouflage
@@ -97,4 +104,10 @@ problem-4
 solutions-neutral-or-adaptive-evolution-in-humans
 solutions-lotka-volterra-competition
 solutions-lotka-volterra-predator-prey-dynamics
-r-and-lambda
+r-r-and-lambda
+discrete-time-model
+calculating-n-for-any-future-time-point
+applying-the-model
+continuous-time-model
+zero-population-growth
+nomenclature
