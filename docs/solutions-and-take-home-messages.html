@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>20 Solutions and “take-home” messages | BB512 - Population Biology and Evolution</title>
   <meta name="description" content="Course book for BB512 at the Biology Department, University of Southern Denmark" />
-  <meta name="generator" content="bookdown 0.27 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.26 and GitBook 2.6.7" />
 
   <meta property="og:title" content="20 Solutions and “take-home” messages | BB512 - Population Biology and Evolution" />
   <meta property="og:type" content="book" />
@@ -53,7 +53,6 @@
 <link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 <link href="libs/tabwid-1.0.0/tabwid.css" rel="stylesheet" />
-<link href="libs/tabwid-1.0.0/scrool.css" rel="stylesheet" />
 <style type="text/css">
 
 .warning-box {
@@ -318,6 +317,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="20.14" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#solutions-neutral-or-adaptive-evolution-in-humans"><i class="fa fa-check"></i><b>20.14</b> Solutions: Neutral or adaptive evolution in humans</a></li>
 <li class="chapter" data-level="20.15" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#solutions-lotka-volterra-competition"><i class="fa fa-check"></i><b>20.15</b> Solutions: Lotka-Volterra competition</a></li>
 <li class="chapter" data-level="20.16" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#solutions-lotka-volterra-predator-prey-dynamics"><i class="fa fa-check"></i><b>20.16</b> Solutions: Lotka-Volterra predator-prey dynamics</a></li>
+<li class="chapter" data-level="20.17" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#results-of-the-hawk-dove-games"><i class="fa fa-check"></i><b>20.17</b> Results of the hawk-dove games</a>
+<ul>
+<li class="chapter" data-level="20.17.1" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#game-1"><i class="fa fa-check"></i><b>20.17.1</b> Game 1</a></li>
+<li class="chapter" data-level="20.17.2" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#game-2"><i class="fa fa-check"></i><b>20.17.2</b> GAME 2</a></li>
+</ul></li>
 </ul></li>
 <li class="part"><span><b>VII Appendix - extras</b></span></li>
 <li class="chapter" data-level="21" data-path="r-r-and-lambda.html"><a href="r-r-and-lambda.html"><i class="fa fa-check"></i><b>21</b> R, r and lambda</a>
@@ -633,6 +637,35 @@ To determine <span class="math inline">\(q\)</span>, which is the frequency of t
 <p>You can find a completed Excel spreadsheet <a href="https://www.dropbox.com/s/wet7brtgxywdqi5/10.%20Pred-PreyDynamics.xlsx?dl=1">here</a>.</p>
 <p>The answers to the questions are <a href="https://www.dropbox.com/s/mt43nvqu7cjif69/10.%20Answers%20to%20Pred-Prey%20exercise.pdf?dl=1">here</a>.</p>
 
+</div>
+<div id="results-of-the-hawk-dove-games" class="section level2 hasAnchor" number="20.17">
+<h2><span class="header-section-number">20.17</span> Results of the hawk-dove games<a href="solutions-and-take-home-messages.html#results-of-the-hawk-dove-games" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>I have crunched the numbers for 2022 and will summarise the results of the hawk-dove game.</p>
+<p>If you are interested in playing with the data yourself you can find the data <a href="https://www.dropbox.com/s/7ompsbe4iwirqar/gametheoryResults.xlsx?dl=0">here</a>.</p>
+<div id="game-1" class="section level3 hasAnchor" number="20.17.1">
+<h3><span class="header-section-number">20.17.1</span> Game 1<a href="solutions-and-take-home-messages.html#game-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>In this game, you were asked to compete with one person 15 times in a row.</p>
+<p>The average hawkishness, overall is 0.611.</p>
+<p>We can now ask whether the level of hawkishness changed during the game on average across all the participants.</p>
+<p>We can see from this graph that as the game proceeds round-by-round, there is no significant change in the level of hawkishness (p=0.737).</p>
+<p><img src="BB512_files/figure-html/unnamed-chunk-98-1.png" width="672" />
+Next, we can ask whether the amount of benefits received (fitness) is associated with the degree of hawkishness.</p>
+<p>What we see is that the maximum benefits I received when hawkishness is it an intermediate level of around 0.5-0.6.</p>
+<p><img src="BB512_files/figure-html/unnamed-chunk-100-1.png" width="672" /></p>
+</div>
+<div id="game-2" class="section level3 hasAnchor" number="20.17.2">
+<h3><span class="header-section-number">20.17.2</span> GAME 2<a href="solutions-and-take-home-messages.html#game-2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>In the next game you’re asked to compete against a new opponent every round. The idea was that this would make it much harder to learn your opponents strategy and may be harder to come to a agreement that reduces aggression.</p>
+<p>Firstly I have calculated the average hawkishness as 0.681, which is not so different from the previous game.</p>
+<p>Again, we can ask whether hawkishness changed during the game.</p>
+<p>In this case, it DOES look like hawkishness declines more during the game. However, this trend is not significantly different from horizontal (p = 0.184).</p>
+<p><img src="BB512_files/figure-html/unnamed-chunk-103-1.png" width="672" /></p>
+<p>Finally we can look at what the best strategy is in Game 2.</p>
+<p><img src="BB512_files/figure-html/unnamed-chunk-104-1.png" width="672" /></p>
+<p>It looks like the best strategy has changed a lot! Now the best strategy is to be a hawk.</p>
+<p>In this setting we might expect natural selection to drive towards the evolution of more aggressive individuals.</p>
+
+</div>
 </div>
 </div>
 

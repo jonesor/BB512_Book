@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>21 R, r and lambda | BB512 - Population Biology and Evolution</title>
   <meta name="description" content="Course book for BB512 at the Biology Department, University of Southern Denmark" />
-  <meta name="generator" content="bookdown 0.27 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.26 and GitBook 2.6.7" />
 
   <meta property="og:title" content="21 R, r and lambda | BB512 - Population Biology and Evolution" />
   <meta property="og:type" content="book" />
@@ -53,7 +53,6 @@
 <link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 <link href="libs/tabwid-1.0.0/tabwid.css" rel="stylesheet" />
-<link href="libs/tabwid-1.0.0/scrool.css" rel="stylesheet" />
 <style type="text/css">
 
 .warning-box {
@@ -318,6 +317,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="20.14" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#solutions-neutral-or-adaptive-evolution-in-humans"><i class="fa fa-check"></i><b>20.14</b> Solutions: Neutral or adaptive evolution in humans</a></li>
 <li class="chapter" data-level="20.15" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#solutions-lotka-volterra-competition"><i class="fa fa-check"></i><b>20.15</b> Solutions: Lotka-Volterra competition</a></li>
 <li class="chapter" data-level="20.16" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#solutions-lotka-volterra-predator-prey-dynamics"><i class="fa fa-check"></i><b>20.16</b> Solutions: Lotka-Volterra predator-prey dynamics</a></li>
+<li class="chapter" data-level="20.17" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#results-of-the-hawk-dove-games"><i class="fa fa-check"></i><b>20.17</b> Results of the hawk-dove games</a>
+<ul>
+<li class="chapter" data-level="20.17.1" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#game-1"><i class="fa fa-check"></i><b>20.17.1</b> Game 1</a></li>
+<li class="chapter" data-level="20.17.2" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#game-2"><i class="fa fa-check"></i><b>20.17.2</b> GAME 2</a></li>
+</ul></li>
 </ul></li>
 <li class="part"><span><b>VII Appendix - extras</b></span></li>
 <li class="chapter" data-level="21" data-path="r-r-and-lambda.html"><a href="r-r-and-lambda.html"><i class="fa fa-check"></i><b>21</b> R, r and lambda</a>
@@ -400,7 +404,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="r-r-and-lambda.html#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>))</span>
 <span id="cb45-2"><a href="r-r-and-lambda.html#cb45-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(df1<span class="sc">$</span>time, df1<span class="sc">$</span>N, <span class="at">type =</span> <span class="st">&quot;b&quot;</span>)</span>
 <span id="cb45-3"><a href="r-r-and-lambda.html#cb45-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(df1<span class="sc">$</span>time, <span class="fu">log</span>(df1<span class="sc">$</span>N), <span class="at">type =</span> <span class="st">&quot;b&quot;</span>)</span></code></pre></div>
-<p><img src="BB512_files/figure-html/unnamed-chunk-98-1.png" width="672" />
+<p><img src="BB512_files/figure-html/unnamed-chunk-108-1.png" width="672" />
 In fact, we can linearise the relationship by log transforming both sides of equation 9:</p>
 <p><span class="math inline">\(\ln{N_t} = \ln(λ^tN_0)\)</span>,</p>
 <p>which can be re-written as:</p>
@@ -410,7 +414,7 @@ In fact, we can linearise the relationship by log transforming both sides of equ
 <p>Here’s an example from the Neal text book, breeding pairs of merlin (<em>Falco columbarius</em>).:</p>
 <div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="r-r-and-lambda.html#cb46-1" aria-hidden="true" tabindex="-1"></a>df1 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">year =</span> <span class="dv">1970</span><span class="sc">:</span><span class="dv">1982</span>, <span class="at">N =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">4</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">7</span>,<span class="dv">10</span>,<span class="dv">12</span>,<span class="dv">14</span>,<span class="dv">16</span>))</span>
 <span id="cb46-2"><a href="r-r-and-lambda.html#cb46-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(df1<span class="sc">$</span>year,df1<span class="sc">$</span>N, <span class="at">type =</span> <span class="st">&quot;both&quot;</span>)</span></code></pre></div>
-<p><img src="BB512_files/figure-html/unnamed-chunk-99-1.png" width="672" /></p>
+<p><img src="BB512_files/figure-html/unnamed-chunk-109-1.png" width="672" /></p>
 <p>I’ll replot the data on a log scale then fit a regression model and add the line to the plot:</p>
 <div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="r-r-and-lambda.html#cb47-1" aria-hidden="true" tabindex="-1"></a>df1<span class="sc">$</span>logN <span class="ot">&lt;-</span> <span class="fu">log</span>(df1<span class="sc">$</span>N)</span>
 <span id="cb47-2"><a href="r-r-and-lambda.html#cb47-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(df1<span class="sc">$</span>year,df1<span class="sc">$</span>logN)</span>
@@ -436,7 +440,7 @@ In fact, we can linearise the relationship by log transforming both sides of equ
 ## Multiple R-squared:  0.9381, Adjusted R-squared:  0.9324 
 ## F-statistic: 166.6 on 1 and 11 DF,  p-value: 5.478e-08</code></pre>
 <div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="r-r-and-lambda.html#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(mod1)</span></code></pre></div>
-<p><img src="BB512_files/figure-html/unnamed-chunk-100-1.png" width="672" /></p>
+<p><img src="BB512_files/figure-html/unnamed-chunk-110-1.png" width="672" /></p>
 <p>The summary of the model tells us that the slope of the relationship between <code>year</code> and <code>logN</code> is 0.2359637. Therefore, <span class="math inline">\(R\)</span> is 0.236 and <span class="math inline">\(\lambda\)</span> is 1.236.</p>
 </div>
 </div>
