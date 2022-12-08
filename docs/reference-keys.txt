@@ -105,9 +105,9 @@ solutions-neutral-or-adaptive-evolution-in-humans
 solutions-lotka-volterra-competition
 solutions-lotka-volterra-predator-prey-dynamics
 results-of-the-hawk-dove-games
-game-1
-game-2
-r-r-and-lambda
+game-1---same-opponent
+game-2---different-opponents
+exponential-growth-in-detail
 discrete-time-model
 calculating-n-for-any-future-time-point
 applying-the-model

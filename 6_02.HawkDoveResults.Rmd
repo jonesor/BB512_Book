@@ -6,7 +6,7 @@ If you are interested in playing with the data yourself you can find the data [h
 
 
 
-### Game 1
+### Game 1 - same opponent
 
 In this game, you were asked to compete with one person 15 times in a row.
 
@@ -65,7 +65,7 @@ ggplot(perIndiv,aes(x = meanHawkishness,y = benefit)) +
   geom_smooth(method="lm", formula=y~poly(x, 2))
 ```
 
-### GAME 2
+### Game 2 - different opponents
 
 
 In the next game you're asked to compete against a new opponent every round. The idea was that this would make it much harder to learn your opponents strategy and may be harder to come to a agreement that reduces aggression.

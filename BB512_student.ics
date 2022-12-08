@@ -271,7 +271,7 @@ BEGIN:VEVENT
 UID:ical-0e507e9b-1890-4731-a92c-f046487c1854
 DTSTART:20221101T080000
 DTEND:20221101T090000
-SUMMARY:BB512 Genetic Drift and Effective Population Size w.ORJ. Lecture in (U20)
+SUMMARY:BB512 Genetic Drift and Effective Population Size w.ORJ. Lecture in (U42)
 END:VEVENT
 
 
@@ -535,7 +535,7 @@ BEGIN:VEVENT
 UID:ical-aa86e1e5-dde1-42b1-9cce-15e0352813f8
 DTSTART:20221207T120000
 DTEND:20221207T130000
-SUMMARY:BB512 Sexual Selection and Mating Systems w.ORJ. Lecture in (U42)
+SUMMARY:BB512 Sexual Selection and Mating Systems w.ORJ. Lecture in (U20)
 END:VEVENT
 
 

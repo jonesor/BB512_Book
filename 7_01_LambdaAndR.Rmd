@@ -1,4 +1,4 @@
-# R, r and lambda
+# Exponential growth in detail
 
 
 ## Discrete time model
@@ -35,76 +35,79 @@ Equation 4 can be simplified again, by factoring out the $N_t$ on the right hand
 
 **eqn. 6.** $N_{t+1} = (R + 1)N_t$.
 
-The quantity $(R+1)$ is given its own symbol: $λ$, the **population multiplication rate** (also known as the "finite rate of increase").
+The quantity $(R+1)$ is given its own symbol: $\lambda$, the **population multiplication rate** (also known as the "finite rate of increase").
 
 
-**eqn. 7.**  $N_{t+1} = λN_t$.
+**eqn. 7.**  $N_{t+1} = \lambda N_t$.
 
-By rearranging this equation (eqn. 7) we can see that $λ$ is simply the ratio of population size at time $t+1$ and $t$: 
+By rearranging this equation (eqn. 7) we can see that $\lambda$ is simply the ratio of population size at time $t+1$ and $t$: 
 
 
-**eqn. 8.** $λ = N_{t+1}/N_t$.
+**eqn. 8.** $\lambda = N_{t+1}/N_t$.
 
-It follows, therefore, that when the population is neither growing nor declining (when $N_{t+1}=N_t$), $λ = 1$ (and when $R$ = 0).
+It follows, therefore, that when the population is neither growing nor declining (when $N_{t+1}=N_t$), $\lambda = 1$ (and when $R$ = 0).
 
 
 ### Calculating N for any future time point
 
 Assuming the population growth rate remains constant, we can calculate the population at any time in the future.
 
-As a starting point, consider equation 7: $N_{t+1} = λN_t$.
+As a starting point, consider equation 7: $N_{t+1} = \lambda N_t$.
 
-If we want to calculate $N_{t+2}$, we would need to plug in $N_{t+1}$ instead of $N_t$: $N_{t+2} = λN_{t+1}$, 
+If we want to calculate $N_{t+2}$, we would need to plug in $N_{t+1}$ instead of $N_t$: $N_{t+2} = \lambda N_{t+1}$, 
 
-and, since we know that $N_{t+1} = λN_t$,: $N_{t+2} = λ  λN_t$.
+and, since we know that $N_{t+1} = \lambda N_t$,: $N_{t+2} = \lambda   \lambda N_t$.
 
-Similarly, if we wanted to calculate $N_{t+2}$, we'd end up with:  $N_{t+3} = λλλN_t$.
+Similarly, if we wanted to calculate $N_{t+2}$, we'd end up with:  $N_{t+3} = \lambda \lambda \lambda N_t$.
 
-This can be simplified by raising λ to a suitable power, and using the starting population at time = 0, $N_0$:
+This can be simplified by raising $\lambda$ to a suitable power, and using the starting population at time = 0, $N_0$:
 
-**eqn. 9.**  $N_{t} = λ^tN_0$.
+**eqn. 9.**  $N_{t} = \lambda ^tN_0$.
 
 This should be familiar to those of you that did (or remember!) the concept of geometric series which was covered in MM554 Mathematics for Biology.
 
 ### Applying the model
 
-If we plot exponential growth on a log scale we can see that it is straight line. For example, in the plot below I show the sequence for a population with a starting population of 18 and a λ (population multiplication rate) of 1.2 (i.e., the population increases by 20% each year). In (A) the time series is plotted on the natural scale while in (B) it is plotted on the log scale.
+If we plot exponential growth on a log scale we can see that it is straight line. For example, in the plot below I show the sequence for a population with a starting population of 1 and a $\lambda$  (population multiplication rate) of 1.2 (i.e., the population increases by 20% each year). In (A) the time series is plotted on the natural scale while in (B) it is plotted on the log scale.
 
-```{r}
+```{r, echo = FALSE, message=FALSE}
 require(tidyverse)
-startPop <- 10
+startPop <- 1
 lambda <- 1.2
 df1 <- data.frame(time = 0:20) %>% 
   mutate(N = lambda^time * startPop)
 ```
 
-```{r}
+```{r echo = FALSE}
 par(mfrow=c(1,2))
-plot(df1$time, df1$N, type = "b")
-plot(df1$time, log(df1$N), type = "b")
+plot(df1$time, df1$N, type = "b", xlab = "time", ylab = "N")
+title("A")
+plot(df1$time, log(df1$N), type = "b", xlab = "time", ylab = "log(N)")
+title("B")
 ```
+
 In fact, we can linearise the relationship by log transforming both sides of equation 9:
 
-$\ln{N_t} = \ln(λ^tN_0)$,
+$\ln{N_t} = \ln(\lambda ^tN_0)$,
 
 which can be re-written as:
 
-$\ln{N_t} =  \ln(λ)t + \ln(N_0)$.
+$\ln{N_t} =  \ln(\lambda )t + \ln(N_0)$.
 
-This looks familiar. Indeed, the equation of a straight line ($y = ax + b$) maps onto this. In this equation, the slope $a$ is equivalent to $\ln(λ)$ and the intercept ($b$) is equivalent to $\ln(N_0)$.
+This looks familiar. Indeed, the equation of a straight line ($y = ax + b$) maps onto this. In this equation, the slope $a$ is equivalent to $\ln(\lambda )$ and the intercept ($b$) is equivalent to $\ln(N_0)$.
 
-This is very convenient because now we can use simple regression methods to estimate $\ln(λ)$ (the slope) of the relationship, and therefore the value of $λ$ (or $R$, which is  $λ-1$).
+This is very convenient because now we can use simple regression methods to estimate $\ln(\lambda)$ (the slope) of the relationship, and therefore the value of $\lambda$ (or $R$, which is  $\lambda -1$).
 
 Here's an example from the Neal text book, breeding pairs of merlin (_Falco columbarius_).:
 
-```{r}
+```{r, message = FALSE}
 df1 <- data.frame(year = 1970:1982, N = c(1,1,2,4,2,3,5,6,7,10,12,14,16))
-plot(df1$year,df1$N, type = "both")
+plot(df1$year,df1$N, type = "b")
 ```
 
-I'll replot the data on a log scale then fit a regression model and add the line to the plot:
+I'll re-plot the data on a log scale then fit a regression model and add the line to the plot:
 
-```{r}
+```{r, message = FALSE}
 df1$logN <- log(df1$N)
 plot(df1$year,df1$logN)
 
@@ -116,7 +119,7 @@ abline(mod1)
 
 ```
 
-The summary of the model tells us that the slope of the relationship between `year` and `logN` is `r as.vector(mod1$coefficients[2])`. Therefore, $R$ is `r round(as.vector(coef(mod1)[2]),3)` and $\lambda$ is `r 1+round(as.vector(coef(mod1)[2]),3)`.
+The summary of the model tells us that the slope of the relationship between `year` and `logN` is `r as.vector(mod1$coefficients[2])`. Therefore, $R$ (per capita growth rate) is `r round(as.vector(coef(mod1)[2]),3)` and $\lambda$ (population multiplication rate) is `r 1+round(as.vector(coef(mod1)[2]),3)`.
 
 
 ## Continuous time model
@@ -126,14 +129,14 @@ In the discrete time model, the finite rate of increase
 The starting point for this model is 
 
 
-$r = ln(λ)$ which is the same as saying $r = ln(N_{t+1}/N_t)$
+$r = ln(\lambda)$ which is the same as saying $r = ln(N_{t+1}/N_t)$
 
-We say that $r = ln(λ)$ "r is the natural log of lambda".
+We say that $r = ln(\lambda)$ "r is the natural log of lambda".
 
 
-To back-transform from a natural log, we use the exponential. Therefore, $λ = e^r$: "lambda is the exponential of r".
+To back-transform from a natural log, we use the exponential. Therefore, $\lambda = e^r$: "lambda is the exponential of r".
 
-From the section above, we know that $λ = 1 + R$, so: 
+From the section above, we know that $\lambda = 1 + R$, so: 
 
 $1+R = e^r$
 
@@ -142,7 +145,7 @@ $R = e^r - 1$
 
 ### Zero population growth
 
-When the population is steady, $r = 0$ and $λ = 1$. Note that this relationship, that $λ$ is $r+1$, only applies when population is not growing: Do not make the common mistake to think that $λ$ is simply $r + 1$!
+When the population is steady, $r = 0$ and $\lambda  = 1$. Note that this relationship, that $\lambda$ is $r+1$, only applies when population is not growing: Do not make the common mistake to think that $\lambda$ is simply $r + 1$!
 
 ### Nomenclature
 
@@ -150,5 +153,5 @@ When the population is steady, $r = 0$ and $λ = 1$. Note that this relationship
 |---------|----------|----------------|
 | $R$     | Per capita rate of increase, per capita population growth rate   | $R_m$ (Neal), $r$ (Gotelli), $r_c$ is used as the  $R$ *estimated* from a life table in Neal    |
 | $r$     | Intrinsic rate of increase      | $r_m$  |
-|  $λ$    | Population growth rate, population multiplication rate      |   |
+|  $\lambda$    | Population growth rate, population multiplication rate      |   |
 |  $R0$   |       |   |

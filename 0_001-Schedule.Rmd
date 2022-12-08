@@ -12,7 +12,7 @@ text(1, 1, labels = "The schedule is only available on the HTML version of this 
 ```
 
 ```{r echo = FALSE}
-updateSchedule <- TRUE
+updateSchedule <- FALSE
 ```
 
 ```{r, echo = FALSE, message=FALSE,warning=FALSE}
