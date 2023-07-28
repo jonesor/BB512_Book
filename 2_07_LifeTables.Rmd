@@ -1,10 +1,21 @@
 # Life tables and survivorship types
 
-Life tables are tables that shows for each age, the probability that an individual of that age will die before the next birthday (*probability of death*). This exercise deals with so-called **cohort life tables** which, as the name implies, follows a “*cohort*” of individuals from birth until they all die. A cohort is the group of individuals born within a particular time interval (e.g. “*all individuals born in 1998*”).
+Life tables are powerful analytical tools used in various fields to understand and quantify mortality patterns and life expectancy within populations.  Originating in population biology and demography, life tables have found extensive applications in epidemiology, human mortality studies, and even product life-cycle management. By systematically tracking and analyzing the survival and mortality rates of individuals within specific cohorts, life tables reveal essential information about population dynamics, age-specific risks, and the factors that influence longevity. As a result, life tables play a vital role in shaping policies, making informed decisions, and gaining a deeper understanding of the complex interplay between age, health, and mortality.
 
-Life tables have been used extensively in population biology, in human demography and in epidemiology. They are also important outside of biology, e.g. in the management of product life-cycles, such as in cars or other machinery.
+This exercise deals with so-called **cohort life tables** which, as the name implies, follows a “*cohort*” of individuals from birth until they all die. A cohort is the group of individuals born within a particular time interval (e.g. “*all individuals born in 1998*”).
 
 The basic algebra used in life tables is explained in Neal Chapter 6 and in Gotelli Chapter 3.
+
+In addition to providing valuable insights into mortality patterns and life expectancy, life tables also allow us to consider mortality patterns in the context of distinct survivorship types based on how mortality risk is distributed through a life course. Survivorship types are crucial in understanding the overall survival patterns and demographic characteristics of different populations.
+
+Three primary survivorship types are commonly identified, based on survivorship curves on a log scale:
+
+- Type I (Convex Curve): This survivorship type is characterized by a low mortality rate during early life, with an increase in mortality rates at older ages. It indicates that individuals in the population have a high probability of surviving to advanced ages, and the majority of deaths occur in older age groups. Type I survivorship is observed in humans and other long-lived species with strong parental care and relatively low early-life mortality.
+- Type II (Straight Line): In this survivorship type, the mortality rate remains relatively constant across all age groups. It suggests that individuals have an approximately equal chance of dying at any age throughout their life. Type II survivorship is commonly observed in species where mortality rates are consistent, regardless of age. Some small mammals and birds exhibit this survivorship pattern.
+- Type III (Concave Curve): Type III survivorship is characterized by high early-life mortality rates, followed by a decline in mortality at older ages. This pattern indicates that survival rates are low in the early stages of life, but those who survive the initial vulnerable period have a greater likelihood of reaching older ages. Type III survivorship is often seen in species that produce numerous offspring but provide limited parental care, where only a fraction of the offspring survive to adulthood.
+
+By identifying and understanding these survivorship types, researchers gain critical insights into the demographic structure of populations and the selective pressures that influence survival and longevity. Survivorship patterns play a significant role in shaping the dynamics of populations and help scientists make informed decisions regarding conservation efforts, healthcare planning, and population management strategies.
+
 
 Ask for help if you don't quite understand things during the exercises!
 
