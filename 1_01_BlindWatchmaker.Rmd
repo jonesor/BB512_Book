@@ -1,10 +1,15 @@
-# Randomness and perfection
+# The Blind Watchmaker
 
-An early criticism of natural selection used an analogy of a watchmaker to conclude that species must have been designed by a supernatural being.
+**If a pocket watch is found on a heath, it is most reasonable to assume that someone dropped it and that it was made by at least one watchmaker, not by natural forces**
 
-Paraphrased: **If a pocket watch is found on a heath, it is most reasonable to assume that someone dropped it and that it was made by at least one watchmaker, not by natural forces**
 
-In this exercise you will use a program written in R to explore how random change, when paired with strong selection, can result in seemingly improbable results. 
+In the early days of evolutionary theory, Charles Darwin's concept of natural selection faced criticism from those who struggled to reconcile the idea of unguided evolution with the apparent complexity of life. One prominent criticism was an analogy often referred to as the "watchmaker analogy," which argued that finding a pocket watch on a heath would naturally lead one to infer the existence of a skilled watchmaker, rather than attributing it to chance or natural forces. This analogy was frequently employed to challenge the notion that natural selection could account for the intricate structures and adaptations observed in living organisms.
+
+However, in response to the watchmaker analogy, the evolutionary biologist Richard Dawkins introduced the concept of "The Blind Watchmaker". In his 1986 book of the same name, Dawkins presented a compelling counterargument, highlighting that evolution by natural selection is a blind and unguided process, similar to a watchmaker who lacks foresight or intent. According to this idea, the remarkable complexity and diversity of life can emerge through the cumulative effects of small, incremental changes driven by natural selection over vast periods of time, without the need for an external intelligent designer.
+
+In this exercise, we will use a program written in R to explore the interplay between random change and strong selection, inspired by the watchmaker analogy and the Blind Watchmaker concept. We will examine how seemingly improbable results, such as generating a specific sentence through random typing, can be achieved through the power of selection without the need for supernatural intervention. By simulating the process of randomly typing a particular sentence and applying selection mechanisms, we will witness firsthand how unguided processes, over time, can lead to meaningful and purposeful outcomes. 
+
+Let's start...
 
 Imagine if you randomly typed letters into a type writer. How long would it take to come up with a sensible sentence?
 
@@ -65,7 +70,7 @@ output
 
 ## How the simulation works.
 
-Owen will walk you through the code, and what it means. He will also demonstrate its use. 
+An instructor will walk you through the code, and what it means. They will also demonstrate its use. 
 
 You provide the small program with a target phrase (`phrase`). This phrase can include Danish characters, spaces and an exclamation point! 
 The program then generates a random "phrase" with the same number of characters as your target phrase. This certainly be complete nonsense - literally random letters -- but some of the letters might match with your target phrase.
