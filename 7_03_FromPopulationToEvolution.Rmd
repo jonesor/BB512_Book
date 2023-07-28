@@ -1,0 +1,140 @@
+# From population biology to fitness
+
+The purpose of this practical is to draw clear links between the first part of the course (population biology) and the second part of the course (evolution).
+
+```{block, type="do-something"}
+Learning outcomes: 
+
+- Understanding the relationship between population growth and the concept of fitness.
+- Understanding the concept of an evolutionary trade-off.
+
+```
+
+
+We will focus on the concept of **fitness**.
+
+Fitness is a slippery concept, but it is widely accepted that it is closely related to population growth rate. In this class you will explore this concept using some mathematical modelling (aagh!).
+
+```{block, type="do-something"}
+This practical uses RStudio (R). It is similar to the previous exercise on matrix population models, but ask for help if you get stuck!
+```
+
+## An *in silico* experiment
+
+As you learned in the classes on age and stage structured population dynamics differences in survival and reproduction can be modelled using matrix population models (MPMs). These models can be simple or complex, and can be thought of as mathematical descriptions of the life history of the species (or population) in a particular environment.  
+
+In an earlier you will have played with construction and analyses of these models by creating MPMs for species with different life histories such as high juvenile survival, or low juvenile survival etc.
+
+We will first need to load the `popdemo` package like this. Note that if you have not installed this package you should first install it with the command `install.packages("popdemo")`.
+
+```{r,message=FALSE}
+library(popdemo)
+```
+
+
+Let's set up our baseline model. This model describes a population of some mammal species which we have divided into 3 stages: juvenile, adult and senescent (old). 
+
+```{r}
+A1 <- matrix(c(0.00, 4.00, 2.00, 
+               0.10, 0.80, 0.00, 
+               0.00, 0.10, 0.40), 
+            byrow = TRUE, nrow = 3)
+```
+
+You can "read" the matrix by looking at the columns and rows: a value in the column **3** and row **1** tells you the "transition" **from** stage 3 **to** stage 1. In this case, it is saying that an individual in the adult age class produces an average of `r A1[1,2]` babies, and one from the senescent age class produces `r A1[1,3]` babies. Juveniles have a probability of `r A1[2,1]` (10% chance) to survive to adulthood (and they reach maturity in 1 year, so there is no "stasis" where they can remain being juveniles). Adults can survive in 2 ways, they can survive and remain as adults (probability = `r A1[2,2]`) or they can survive and transition to being in the senescent age class (probability = `r A1[3,2]`). Therefore, the total survival probability is `r sum(A1[2:3,2])`. Senescent adults survive less well (probability = `r A1[3,3]`).
+
+
+We can project a population like this:
+
+```{r}
+initial <- c(10,5,3) # just some random numbers
+pr <- popdemo::project(A1, vector = initial, time=8)
+```
+
+Take a look at `pr`, the projected population. This gives you the total population size, and below that the population sizes in each stage. 
+
+```{r}
+pr
+```
+
+You can access the population sizes of the different stages using `vec(pr)`.
+
+```{r}
+vec(pr)
+```
+
+Let's plot this... Check out how, after a "transient" period, there is exponential growth in all stages of the population. The population is growing steadily with a fixed population growth rate ($\lambda$).
+
+```{r}
+pop <- vec(pr)
+matplot(pop,type="l",log="y")
+legend("topleft",legend = colnames(pop),col=1:ncol(pop),lty=1:ncol(pop))
+```
+
+You can see that the population is increasing and we can calculate the precise population growth rate ($\lambda$) like this:
+
+```{r}
+eigs(A1,what = "lambda")
+```
+
+Thus, the population is growing at `r format(100*(eigs(A1,what = "lambda")-1),2,4)`% per year.
+
+So where does evolution come in?
+
+## The link to fitness
+
+In this population consider that suddenly a mutation arises in an individual parent that causes it to give more care to their offspring. For example, maybe they provide milk with a higher fat content, or build a safer nest. Whatever the mechanism, let's assume that it results in a small increase in juvenile survival. 
+
+We can simulate this by increasing the juvenile survival in the matrix model from 0.10 to 0.11.
+
+```{r}
+A2 <- matrix(c(0.00, 4.00, 2.00, 
+               0.11, 0.80, 0.00, 
+               0.00, 0.10, 0.40), 
+            byrow = TRUE, nrow = 3)
+```
+
+What effect does that have on population growth rate?
+
+```{r}
+eigs(A2,what = "lambda")
+```
+
+The small increase in juvenile survival has resulted in a small increase in population growth rate, from `r format(100*(eigs(A1)$lambda-1),2,4)`% to `r format(100*(eigs(A2)$lambda-1),2,4)`% per year.
+
+If you consider that the original population now consists of two genotypes -- "ordinary" and "caring" -- what do you think will happen to the percentage of the two genotypes through time?
+
+You can be sure that the proportion of the caring genotype will grow faster than the ordinary genotype. It is the FITTER genotype.
+
+## Introducing a trade-off
+
+It is common that apparently beneficial behaviours or innovations come at a cost. In evolutionary biology these are called **trade-offs**. 
+
+Let's explore such a trade-off now and see how it might affect fitness.
+
+We'll stick with the same example above, but we'll introduce a new genotype that has a trade-off between juvenile survival and old-adult survival. 
+
+The benefit is clear: a change in adult behaviour or physiology increases juvenile survival a little bit. 
+But such changes often come with a cost: The new genotype allocates extra resources to babies but this exhausts the adults causing older adults to have very small survival probability. 
+
+Is this new genotype viable? In other words, is the fitness of the genotype greater than that of the original genotype? If so, the new genotype will come to dominate the population.
+
+
+```{block, type="do-something"}
+Modify the matrix to reduce old adult survival to, say 0.05 (5% survival) and re-calculate the population growth rate.
+
+Is this "trade-off genotype" fitter than the original one? i.e. is the small benefit worth the large cost?
+
+Try doing the same thing for the prime-age adults. How much can you reduce survival before the cost is not worth bearing?
+```
+<!---
+```{r}
+A3 <- matrix(c(0.00, 4.00, 2.00, 
+               0.11, 0.80, 0.00, 
+               0.00, 0.10, 0.20), 
+            byrow = TRUE, nrow = 3)
+
+eigs(A3)$lambda
+eigs(A1)$lambda
+```
+-->
