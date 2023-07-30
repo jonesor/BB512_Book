@@ -49,7 +49,7 @@ knitr::opts_chunk$set(
 # Welcome to BB512
 
 
-Welcome to the 2022 Population and Evolution course. 
+Welcome to the Population and Evolution course. 
 The course, and this website, is divided into five parts:
 
 1. Evolution by Natural Selection
@@ -65,13 +65,15 @@ The recommended textbook is Neal (2018). Other useful textbooks, that are NOT ma
 * Gotelli, NJ (2008) *A Primer of Ecology*. Fourth Edition, Sinauer Associates. ISBN: 978-0878933181
 * Stearns, SC & Hoekstra, RF (2005) *Evolution: An Introduction*. 2nd Edition, Oxford University Press. ISBN: 978-0199255634
 
+In addition to this, I will provide a reading list of journal articles that are relevant to the material. These are optional, but highly recommended because they give extra context and background to the course and show you how the theory is used in recent research.
+
 ## This website and other course materials
 
 This website is designed to hold most of the materials you need for the practical exercises you will do during the course. You will also find the [Schedule](https://jonesor.github.io/BB512_Book/schedule.html) here.
 
 We may not do ALL of these exercises, but you are welcome to do ones we miss in your own time.
 
-You will find other materials via itsLearning. Apart from the book, there will be some recommended scientific papers to read – these will be accessible via links on itsLearning.
+You will find other materials via itsLearning. 
 
 In many of the classes there will be exercises conducted on your personal laptops. Please bring them to class (and remember a power supply!).
 
@@ -97,14 +99,13 @@ The instructors of the course are:
 *	[Owen Jones](https://portal.findresearcher.sdu.dk/en/persons/jones), Associate Professor, jones@biology.sdu.dk 
 *	[Thomas Bjørneboe Berg](https://portal.findresearcher.sdu.dk/en/persons/thomasbb), Associate Prof./Senior Scientist at Naturama, thomas@naturama.dk  
 
-Finally, if you have any problems accessing materials, or have any questions regarding the course feel free to send me an email, or make a comment in the form I mentioned above. You can also make an appointment to see me via Zoom or in my office if necessary*.
+Finally, if you have any problems accessing materials, or have any questions regarding the course feel free to send me an email, or make a comment in the form I mentioned above. You can also make an appointment to see me via Zoom or in my office if necessary*. PLEASE REMEMBER to tell me which course you are referring to if you send an email!
 
 Owen Jones, course coordinator - [jones@biology.sdu.dk](mailto:jones@biology.sdu.dk ) 
 
 Office location: [V12-410b-2](https://clients.mapsindoors.com/sdu/573f26e4bc1f571b08094312/details/563cb94f423b7d0540c9a605)
 
 ## Software
-
 
 We will use Excel and R/RStudio during this course.
 
@@ -117,11 +118,9 @@ See [here](https://easy-excel.com/excel-in-other-languages/excel-formulas-in-dan
 
 ### R and RStudio
 
-R and RStudio are two separate pieces of software. RStudio is an interface to talk to R, it cannot work if you have not got R installed. So, when you install these two programs, install R first, then RStudio.
+R and RStudio are two separate pieces of software. RStudio is a user-friendly interface to talk to R, it cannot work if you have not got R installed. So, when you install these two programs, install R first, then RStudio.
 
-Already have them installed?  I strongly recommend to update to the latest version of R, which you can download [here](https://cran.r-project.org). 
-
-You may also want to update RStudio Desktop, which you can find [here](https://www.rstudio.com/products/rstudio/). 
+Already have them installed?  I strongly recommend to update to the latest versions of R, which you can download [here](https://cran.r-project.org) and RStudio Desktop, which you can find [here](https://www.rstudio.com/products/rstudio/). 
 
 
 If you are unsure whether you should update your R or RStudio try the following code. If it produces a nice graph, then your R is sufficiently up-to-date. If there are error messages, then you probably need to update R.
@@ -173,14 +172,21 @@ text(1, 1, labels = "The schedule is only available on the HTML version of this 
 ```
 
 ```{r echo = FALSE}
-updateSchedule <- FALSE
+updateSchedule <- TRUE
 ```
 
 ```{r, echo = FALSE, message=FALSE,warning=FALSE}
 library(flextable)
 library(readxl)
+library(lubridate)
+library(magrittr)
+library(dplyr)
+library(calendar)
+library(officer)
+library(xlsx)
+library(ical)
 
-system("cp -r ~/Dropbox/_SDU_Teaching/BB512/'Course Documents'/BB512_Schedule.xlsx ~/Dropbox/_SDU_Teaching/BB512/BB512_Book/BB512_Schedule.xlsx")
+# The BB512_Schedule.xlsx file is where I plan the course "by day"
 schedule <- readxl::read_excel("BB512_Schedule.xlsx")
 ```
 
@@ -189,47 +195,74 @@ schedule <- readxl::read_excel("BB512_Schedule.xlsx")
 ics_files <- list.files(pattern = "*.ics")
 file.remove(ics_files)
 
-
-curl::curl_download("https://mitsdu.sdu.dk/skema/icalendar/activities/N100007101/e23/e23", destfile = "bb512.ics")
+#Download the new calendar to an ics file
+curl::curl_download("https://mitsdu.sdu.dk/skema/icalendar/activities/N100007101/e23/e23", 
+                    destfile = "bb512.ics")
 ```
 
 ```{r, echo = FALSE, message=FALSE,warning=FALSE, results = 'hide'}
-library(lubridate)
-library(calendar)
-library(magrittr)
-library(dplyr)
-
 # Last sunday in October, 0300, CEST -> CET,
 # So the time offset moves from +2 to +1
+# Get the current year
+current_year <- format(Sys.Date(), "%Y")
 
-savingsTimeSwitch <- with_tz(lubridate::as_datetime("2022-10-31 03:00:00"), "Europe/Copenhagen")
+# Create a sequence of dates for October of the current year
+october_dates <- seq(as.Date(paste0(current_year, "-10-01")),
+  as.Date(paste0(current_year, "-10-31")),
+  by = "day"
+)
 
+# Filter the sequence for Sundays
+sundays_in_october <- october_dates[weekdays(october_dates) == "Sunday"]
+
+# Get the last Sunday
+last_sunday_in_october <- sundays_in_october[length(sundays_in_october)]
+
+# Create a time object
+my_time <- as.POSIXct("03:00:00", format = "%H:%M:%S")
+
+# Combine the date and time objects
+savingsTimeSwitch <- as.POSIXct(paste(last_sunday_in_october, format(my_time, "%H:%M:%S")), format = "%Y-%m-%d %H:%M:%S")
+
+# Read in calendar
 xx <- readLines("bb512.ics")
 
 locationIndex <- grep("^LOCATION", xx)
-location <- gsub(pattern = "LOCATION:Odense ", replacement = "", x = xx[locationIndex])
+location <- gsub(
+  pattern = "LOCATION:Odense ", replacement = "",
+  x = xx[locationIndex]
+)
 
-courseCal <- ical::ical_parse_df("bb512.ics") %>%
+
+courseCal <- ical_parse_df("bb512.ics") %>%
   filter(!is.na(uid)) %>%
   arrange(start) %>%
   select(summary, DTSTART = start, DTEND = end) %>%
   mutate(Session = row_number()) %>%
   mutate(savingsT = DTSTART < savingsTimeSwitch) %>%
-  # mutate(offsetT = if_else(savingsT == TRUE, 2, 1)) %>% #Check this every year!
+  # Check this every year!
+  # mutate(offsetT = if_else(savingsT == TRUE, 2, 1)) %>%
   mutate(offsetT = 0) %>% # Check this every year!
   mutate(DTSTART2 = DTSTART + hours(offsetT)) %>%
   mutate(DTEND2 = DTEND + hours(offsetT)) %>%
   mutate(St = hour(DTSTART2)) %>%
   mutate(En = hour(DTEND2)) %>%
   mutate(wd = lubridate::wday(DTSTART2, label = TRUE)) %>%
-  # mutate(Room = gsub(pattern = "Odense ",replacement = "", x = LOCATION)) %>%
   mutate(Room = location) %>%
   mutate(Room = paste0("(", Room, ")")) %>%
-  mutate(Date = paste0(month(DTSTART2, label = TRUE), " ", day(DTSTART2), ", ", wd)) %>%
+  mutate(Date = paste0(
+    month(DTSTART2, label = TRUE),
+    " ", day(DTSTART2), ", ", wd
+  )) %>%
   mutate(Time = paste0("kl.", St, "-", En))
 
 courseCal_web <- courseCal %>%
   select(Session, Date, Time, Room)
+
+if (any(hour(courseCal$DTSTART) < 8)) {
+  stop("Some start times are before 0800.
+       Check the schedule and daylight savings.")
+}
 
 
 schedule <- readxl::read_excel("BB512_Schedule.xlsx")
@@ -240,9 +273,6 @@ schedule <- left_join(courseCal_web, schedule)
 
 
 ```{r, echo = FALSE, message=FALSE,eval=knitr::is_html_output(), warning=FALSE}
-library(lubridate)
-library(officer)
-
 schedule2 <- schedule %>%
   select(Part, Date, Time, Room, Session, Type, Topic, Instructor)
 
@@ -265,12 +295,10 @@ ft <- flextable(schedule2, cwidth = c(2, 9, 4, 1, .5, 1, 4, .75, .75)) %>%
   hline(border = std_b, i = seq(2, nrow(schedule2), 2)) %>%
   hline(border = big_b_end, i = nrow(schedule2))
 
-
 ft
 ```
 
 ```{r, echo =FALSE,message=FALSE,warning=FALSE}
-library(xlsx)
 write.xlsx(schedule2, "BB512_schedule_with_dates.xlsx", col.names = TRUE, row.names = FALSE)
 ```
 

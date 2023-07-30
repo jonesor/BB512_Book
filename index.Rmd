@@ -36,7 +36,7 @@ knitr::opts_chunk$set(
 # Welcome to BB512
 
 
-Welcome to the 2023 Population and Evolution course. 
+Welcome to the Population and Evolution course. 
 The course, and this website, is divided into five parts:
 
 1. Evolution by Natural Selection
