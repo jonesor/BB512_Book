@@ -1,7 +1,18 @@
 # Neutral or adaptive evolution in humans?
 
+## Background
+
+Traits that are under moderate or strong selection will tend to be restricted to some optimal value, or change directionally -- natural selection leading to adaptive evolution.  Traits that are under weak or no selection will not be restricted so much so will tend to change via a random process -- random genetic drift leading to neutral evolution.  Both of these changes require the existence of variation in the trait to begin with: if there is no, or very little, variation the trait will not respond much even if there is strong selection. 
+
+Finally, the strength of selection will largely depend on the environment. Traits may be important in some environments but not others. There may also be traits that would be selected for in some environments, but against in others. E.g., production of the skin pigment, melanin, would be selected for in areas with high UV-radiation since it protects against skin cancer, but selected against in cool temperate zones with low UV radiation since it inhibits the ability to make vitamin D (deficiency is a health risk). 
 
 The objective of this exercise is to develop an intuitive understanding of the effect of selection and genetic drift on traits. 
+
+
+```{r huntergatherer, out.width="50%",fig.align='center',echo = FALSE, fig.cap="How will selection differ between these environments?"}
+knitr::include_graphics("images/huntergathererDK.png")
+```
+
 
 ```{block, type="do-something"}
 Learning outcomes: 
@@ -10,16 +21,6 @@ Learning outcomes:
 - Understanding the idea that whether traits are mostly neutral or mostly adaptive can depend on the environment.
 - To be able to discuss and argue a point of view about trait evolution using the correct terminology.
 
-```
-
-## Background
-
-Traits that are under moderate or strong selection will tend to be restricted to some optimal value, or change directionally -- natural selection leading to adaptive evolution.  Traits that are under weak or no selection will not be restricted so much so will tend to change via a random process -- random genetic drift leading to neutral evolution.  Both of these changes require the existence of variation in the trait to begin with: if there is no, or very little, variation the trait will not respond much even if there is strong selection. 
-
-Finally, the strength of selection will largely depend on the environment. Traits may be important in some environments but not others. There may also be traits that would be selected for in some environments, but against in others. E.g., production of the skin pigment, melanin, would be selected for in areas with high UV-radiation since it protects against skin cancer, but selected against in cool temperate zones with low UV radiation since it inhibits the ability to make vitamin D (deficiency is a health risk). 
-
-```{r huntergatherer, out.width="50%",fig.align='center',echo = FALSE, fig.cap="How will selection differ between these environments?"}
-knitr::include_graphics('images/huntergathererDK.png')
 ```
 
 ## Your task
@@ -33,13 +34,28 @@ Now repeat this exercise for humans in modern industrialised countries like Denm
 ## The traits
 
 ```{r echo = FALSE, message=FALSE, eval=knitr::is_html_output()}
-traits<-read_excel("CourseData/humanevoltraits.xlsx")
-traits_mat<-matrix(traits$Traits,ncol = 2,nrow=8)
-traits_mat<- as.data.frame(traits_mat)
-traits_ft<-flextable(traits_mat) %>% delete_part(part="header") %>% 
-  width(width = c(4,4)) %>% 
-  fontsize(size = 16) %>% 
+traits <- c(
+  "Metabolic efficiency",
+  "Amount of body hair",
+  "Singing ability",
+  "Intelligence",
+  "Iris stucture",
+  "Sperm motility",
+  "Muscle strength",
+  "Face symmetry",
+  "Running speed",
+  "Height",
+  "Resistance to bubonic plague",
+  "Sense of smell",
+  "Resistance to common cold",
+  "Eyesight acuity"
+)
+traits_mat <- matrix(traits, ncol = 2, nrow = 7)
+traits_mat <- as.data.frame(traits_mat)
+traits_ft <- flextable(traits_mat) %>%
+  delete_part(part = "header") %>%
+  width(width = c(4, 4)) %>%
+  fontsize(size = 16) %>%
   border_remove()
 traits_ft
 ```
-
