@@ -1,8 +1,13 @@
 # Lotka-Volterra predator-prey dynamics
 
-In the classic Lotka-Volterra predator-prey model (Rosenzweig and MacArthur 1963), the predator and prey populations grow exponentially. Modifications to the model include the availability of refuges (places where the prey are safe from predators) and carrying capacity (i.e. using logistic growth).
+## Background 
 
-In this class you will follow a PDF worksheet ([here](https://www.dropbox.com/s/bhwoe161wp9p6hp/10.%20Predator-prey%20dynamics.pdf?dl=1)) which guides you to build and explore a Lotka-Volterra predator-prey model in Excel. The model has parameters for the prey and for the predator, and you will explore how these parameters influence the dynamics of the populations.
+The Lotka-Volterra predator-prey model (Rosenzweig and MacArthur 1963) is a fundamental concept in ecological dynamics, widely used to study the dynamics between predator and prey populations in a shared ecosystem. The model assumes that the predator's population growth is directly influenced by the availability of its prey, while the prey's population growth is affected by predation pressure. As predator numbers increase, the prey population declines, which, in turn, leads to a decrease in predator numbers due to reduced food availability. This cyclical pattern continues as predator and prey populations oscillate over time. 
+
+The Lotka-Volterra predator-prey model offers a foundational framework for understanding the complex dynamics between species interactions and the delicate balance that shapes the stability and persistence of predator-prey relationships in diverse ecological communities. In the classic Lotka-Volterra predator-prey model, the predator and prey populations grow exponentially. Modifications to the model include the availability of refuges (places where the prey are safe from predators) and carrying capacity (i.e. using logistic growth).
+
+In this class you will build and explore a Lotka-Volterra predator-prey model in Excel to gain insight into the ecology of interacting predators and prey.
+
 
 ```{block, type="do-something"}
 Learning outcomes: 
@@ -11,6 +16,12 @@ Learning outcomes:
 - Understanding how the Lotka-Volterra predator-prey model works, and how it is visualised.
 
 ```
+
+
+## Your task 
+
+Follow the PDF worksheet ([here](https://www.dropbox.com/s/bhwoe161wp9p6hp/10.%20Predator-prey%20dynamics.pdf?dl=1)), which guides you to build and explore a Lotka-Volterra predator-prey model in Excel. The model has parameters for the prey and for the predator, and you will explore how these parameters influence the dynamics of the populations.
+
 
 
 The worksheet is divided into three parts. We will mainly **focus on Part 1** - the basic model - in the class. 
