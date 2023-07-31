@@ -1,18 +1,9 @@
 # Hardy-Weinberg equilibrium
 
-Hardy-Weinberg Equilibrium is the consequence of applying Mendel's laws to a population that is large, randomly mating, and diploid, with discrete non-overlapping generations and where there is no-selection and no gene flow. In this practical we will learn more about HWE and practice solving some HWE-related problems.
+## Background
 
+Hardy-Weinberg equilibrium is a fundamental concept in population genetics that serves as a cornerstone for understanding the genetic dynamics of populations. Named after British mathematician G.H. Hardy and German physician Wilhelm Weinberg, this principle describes the stable genetic proportions in a population under specific conditions of no evolution. In an idealized population, where mating is random, genetic mutations are absent, natural selection is not acting, and there is no gene flow or genetic drift, the frequencies of alleles and genotypes remain constant across generations. The Hardy-Weinberg equilibrium provides a baseline against which real populations can be compared, allowing researchers to detect factors that may cause deviations from this equilibrium and, in turn, understand the forces driving evolution and genetic changes within populations. It is a valuable tool in studying genetic diversity, inheritance patterns, and the mechanisms that shape the genetic structure of populations. In this practical we will learn more about HWE and practice solving some HWE-related problems.
 
-
-```{block, type="do-something"}
-Learning outcomes: 
-
-- Understanding the difference between alleles and genotypes.
-- The ability to solve Hardy-Weinberg problems by understanding and applying the two key formulae of HW.
-- Knowing the assumptions of HWE.
-- Understanding what "being at Hardy-Weinberg Equilibrium" means in terms of evolutionary processes (which is related to the assumptions of HWE).
-
-```
 
 The key formulae of the Hardy-Weinberg Equilibrium are:
 
@@ -73,7 +64,11 @@ Learning outcomes:
 
 ```
 
-## Problem #1.
+## Your task
+
+Tackle the following problems, using the HWE theory outlined above ...
+
+### Problem #1.
 
 You have sampled a population in which you know that the percentage of the homozygous recessive genotype (aa) is 36%. Using that 36%, calculate the following: 
 *	The frequency of the "aa" genotype. 
@@ -82,13 +77,13 @@ You have sampled a population in which you know that the percentage of the homoz
 *	The frequencies of the genotypes "AA" and "Aa." 
 *	The frequencies of the two possible phenotypes if "A" is completely dominant over "a." 
 
-## Problem #2. 
+### Problem #2. 
 
 Sickle-cell anemia is an interesting genetic disease. Normal homozygous individials (SS) have normal blood cells that are easily infected with the malarial parasite. Thus, many of these individuals become very ill from the parasite and many die. Individuals homozygous for the sickle-cell trait (ss) have red blood cells that readily collapse when deoxygenated. Although malaria cannot grow in these red blood cells, individuals often die because of the genetic defect. However, individuals with the heterozygous condition (Ss) have some sickling of red blood cells, but generally not enough to cause mortality. In addition, malaria cannot survive well within these "partially defective" red blood cells. Thus, heterozygotes tend to survive better than either of the homozygous conditions. 
 
 *	If 9% of an African population is born with a severe form of sickle-cell anemia (ss), what percentage of the population will be more resistant to malaria because they are heterozygous for the sickle-cell gene? 
 
-## Problem #3. 
+### Problem #3. 
 
 There are 100 students in a class. Ninety-six did well in the course whereas four blew it totally and received a grade of F.  In the highly unlikely event that these traits are genetic rather than environmental, if these traits involve dominant and recessive alleles, and if the four (4%) represent the frequency of the homozygous recessive condition, please calculate the following: 
 
@@ -96,7 +91,7 @@ There are 100 students in a class. Ninety-six did well in the course whereas fou
 *	The frequency of the dominant allele. 
 *	The frequency of heterozygous individuals. 
 
-## Problem #4. 
+### Problem #4. 
 
 Within a population of butterflies, the color brown (B) is dominant over the color white (b). And, 40% of all butterflies are white. Given this simple information calculate the following: 
 
