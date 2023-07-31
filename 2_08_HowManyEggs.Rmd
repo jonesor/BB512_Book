@@ -1,7 +1,10 @@
 # How many eggs should a bird lay?
 
+## Background
 
-The objective of this exercise is to get an understanding the trade off between the benefits of producing large numbers of offspring and the costs of reduced survival of those offspring. This is known as “Lack’s clutch size”.
+Trade-offs are inherent compromises in biology, where allocating limited resources to one trait may come at the expense of another. Organisms face these trade-offs when making crucial life-history decisions. One classic example is the British ornithologist David Lack's clutch size trade-off, where bird species must balance between producing more eggs with reduced individual investment or fewer eggs with higher individual investment. In other words, although may be beneficial  to have many offspring, the survival of those offspring will decline if they cannot be cared for.
+
+Understanding such trade-offs sheds light on the fascinating strategies that organisms employ to optimize their fitness and evolutionary success.
 
 
 ```{block, type="do-something"}
@@ -12,13 +15,9 @@ Learning outcomes:
 
 ```
 
-## Background
-
-David Lack was a British ornithologist who proposed that the number of eggs a bird should lay was the result of a trade-off between the benefits of producing large numbers of offspring, and the survival costs of feeding the chicks that hatch.
-
-In other words, although it is beneficial in fitness terms to have many offspring, the survival of those offspring will decline if they cannot be cared for.
 
 ## Your task
+
 The big bird (*Bigus canarius*) (Fig  \@ref(fig:bigbird)) can lay up to 10 eggs per breeding season. If there is only 1 egg, the probability that the parents can adequately feed the chick and ensure it survives is very high (0.9). However, as the number of siblings increases, the amount of energy and food that the parents can dedicate to caring for *each* chick decreases, and the probability of survival therefore declines . With a clutch size of 10 eggs, there is so little food *per chick* that the survival rates are close to zero.
 
 ```{r bigbird, out.width="50%",fig.align='center',echo = FALSE, fig.cap="Big bird, *Bigus canarius*"}
@@ -34,6 +33,7 @@ bbeggs_ft <- flextable(bbeggs)
 bbeggs_ft 
 
 ```
+
 Use these data to plot a graph in Excel with number of eggs on the x-axis and survival probability on the y-axis axis.
 
 Now, in another column in Excel, calculate, given the chick survival probability, what the expected number of surviving chicks will be for a big bird laying between 1 and 10 eggs^[This may require some thought!].
@@ -43,4 +43,11 @@ Plot your result on another graph with number of eggs on the x-axis and number o
 What do you notice? What is the optimum number of eggs to lay? 
 
 Advanced: What happens to the optimum as you change the relationship between clutch size and survival?
+
+
+## Questions
+
+- What is Lack's clutch size trade-off, and why is it considered a fundamental concept in evolutionary ecology?
+- How does the trade-off between clutch size and offspring quality manifest in different bird species, and what factors influence their clutch size decisions?
+- What are the potential advantages and disadvantages of producing larger clutches with smaller-sized eggs compared to smaller clutches with larger-sized eggs?
 
