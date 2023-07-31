@@ -1,6 +1,6 @@
 # The Blind Watchmaker
 
-**If a pocket watch is found on a heath, it is most reasonable to assume that someone dropped it and that it was made by at least one watchmaker, not by natural forces**
+*If a pocket watch is found on a heath, it is most reasonable to assume that someone dropped it and that it was made by at least one watchmaker, not by natural forces*
 
 
 In the early days of evolutionary theory, Charles Darwin's concept of natural selection faced criticism from those who struggled to reconcile the idea of unguided evolution with the apparent complexity of life. One prominent criticism was an analogy often referred to as the "watchmaker analogy," which argued that finding a pocket watch on a heath would naturally lead one to infer the existence of a skilled watchmaker, rather than attributing it to chance or natural forces. This analogy was frequently employed to challenge the notion that natural selection could account for the intricate structures and adaptations observed in living organisms.
