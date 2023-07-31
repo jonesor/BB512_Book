@@ -8,7 +8,11 @@ library(rsvg)
 library(DiagrammeRsvg)
 ```
 
-Matrix population models are one of the most commonly used tools in population biology. They are extensively used in population management and conservation for both animals and plants. This practical aims to give you a good understanding of the basics of their construction and use.
+## Background 
+
+Matrix population models are powerful and widely used tools in population ecology that offer a comprehensive framework for studying the dynamics of structured populations. Unlike simple growth models that assume homogeneous populations, matrix population models take into account the variation in vital rates, such as birth, death, and growth rates, across different life stages or age classes. These models are particularly well-suited for species with distinct life stages, such as plants with seedlings, juveniles, and adults, or animals with different age classes. Matrix population models use transition matrices to represent the relationships between different age classes and how individuals move from one stage to another over time. By incorporating demographic data and life-history traits, matrix population models provide a more realistic and detailed understanding of population dynamics, making them invaluable for predicting the future trends of populations and assessing their vulnerability to environmental changes and management actions.
+
+This practical aims to give you a good understanding of the basics of their construction and use.
 
 ```{block, type="do-something"}
 Learning outcomes: 
@@ -21,6 +25,7 @@ Learning outcomes:
 ```
 
 
+## Your task
 
 Think of an organism you would like to model the dynamics of. It could be a mammal, a bird, a fish, insect or tree ... real or fantasy. 
 
