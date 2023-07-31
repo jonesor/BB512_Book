@@ -1,5 +1,7 @@
 # Game theory: Hawks and doves
 
+## Background
+
 Game theory is a mathematical discipline that examines decision-making in competitive environments. It provides a framework to analyze strategic interactions between rational actors and understand their choices. One particularly fascinating concept in game theory is the Hawk and Dove idea. Representing two distinct strategies, the Hawk embodies aggression and assertiveness, always seeking to escalate conflicts and dominate opponents. On the other hand, the Dove adopts a more peaceful and conciliatory approach, aiming to avoid confrontations and achieve cooperative outcomes. 
 
 By studying the Hawk and Dove strategies we can gain insights into understanding the delicate balance between competition and cooperation, shedding light on the dynamics of conflicts and the evolution of cooperative behavior in both the natural world and human societies. 
@@ -7,6 +9,18 @@ By studying the Hawk and Dove strategies we can gain insights into understanding
 The simple model unravels the intricacies of strategic decision-making, with profound implications across various fields, from biology and social sciences to economics and politics.
 
 In this activity, you will play the hawk and dove game with a single partner and then with multiple partners to observe the hypothetical costs and benefits of the antagonist or cooperative behavior, respectively.
+
+```{block, type="do-something"}
+Learning outcomes: 
+
+- Understanding of the fundamental concepts of game theory and its application in analyzing strategic interactions in competitive environments.
+- Ability to apply game theory concepts to real-world contexts in biology, or politics.
+- Appreciation of how simple models can be used to address complex biological or political decision making.
+
+```
+
+
+## Your task
 
 Before the activity starts, review the cost-benefit payoff table below to understand how to score the game.
 
@@ -31,11 +45,11 @@ You can determine the benefit by looking at the left column and choosing the row
 
 
 
-## Hypotheses
+### Hypotheses
 
 The experimental hypothesis for this exercise could be that the dove strategy will become more frequent between repeated partners, and the hawk strategy will become more frequent when interacting with a variety of partners. Conversely, the null hypothesis could be that there will be no change in strategy over time with repeat or different partner combinations. 
 
-## GAME ONE
+### GAME ONE
 
 1. Collect a set of two game cards.
 
@@ -51,7 +65,7 @@ The experimental hypothesis for this exercise could be that the dove strategy wi
 
 7. As a class, determine the percentages of hawks and doves played as well as the average benefit received for each round, using this formula: *Class average benefit = (sum total benefit)/(number of players)*
 
-## GAME TWO
+### GAME TWO
 
 1. For the second game, you should find a new partner for each of the 15 rounds (if possible).
 
