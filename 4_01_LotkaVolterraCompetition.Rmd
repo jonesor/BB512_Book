@@ -1,14 +1,10 @@
 # Lotka-Volterra competition
 
-In ecology the there is a "rule" called the "competitive exclusion principle" which states that two species cannot coexist unless their niches are sufficiently different. 
+The Lotka-Volterra competition model is fundamental to ecological dynamics, particularly in the study of competition between species. The model describes the dynamics of two competing species in a shared environment. The model assumes that both species have similar resource requirements and compete for limited resources such as food, space, or nesting sites. It explores how the population sizes of the competing species change over time, taking into account their interaction strengths and carrying capacities. 
 
-How different do their niches need to be for coexistence? The general idea is that coexistence can occur if each species limits its own population growth rate more than it limits the growth rate of the other species. 
+One of the key principles derived from the Lotka-Volterra competition model is the competitive exclusion principle, which states that two species with identical ecological niches cannot coexist indefinitely in a stable environment. Instead, the more competitive species will eventually outcompete and exclude the other from the ecosystem. Understanding the dynamics of interspecific competition through the Lotka-Volterra model provides valuable insights into community structure, species coexistence, and the mechanisms that influence the composition and stability of ecological communities.
 
-If their niches overlap too much, one species will competitively exclude the other (i.e. forces the other to extinction). The outcome of the competition between species depends on their *competition coefficients* and *carrying capacities*, (and sometimes their population sizes). The models include both INTER- and INTRA-specific competition.
-
-In this class (over TWO sessions) you will be working from a PDF available [here](https://www.dropbox.com/s/oukr39oq0rsn8il/9.%20Interspecific%20Competition%20and%20Competitive%20Exclusion.pdf?dl=1) to explore this idea.
-
-This PDF walks you through the creation of an Excel spreadsheet exploring interspecific competition and competitive exclusion using the Lotka-Volterra model. 
+The general idea is that coexistence can occur if each species limits its own population growth rate more than it limits the growth rate of the other species. If the species' niches overlap too much, one species will competitively exclude the other (i.e. forces the other to extinction). The outcome of the competition between species depends on their *competition coefficients* and *carrying capacities*, (and sometimes their population sizes). The models include both INTER- and INTRA-specific competition.
 
 
 ```{block, type="do-something"}
@@ -20,8 +16,12 @@ Learning outcomes:
 
 ```
 
+## Your task
 
-Your task:
+In this class (over TWO sessions) you will be working from a PDF available [here](https://www.dropbox.com/s/oukr39oq0rsn8il/9.%20Interspecific%20Competition%20and%20Competitive%20Exclusion.pdf?dl=1) to make a model exploring this idea.
+
+This PDF walks you through the creation of an Excel spreadsheet exploring interspecific competition and competitive exclusion using the Lotka-Volterra model. 
+
 
 * Create the Excel spreadsheet by following the instructions in the PDF
 * Use the Lotka-Volterra model you have created to answer the questions at the end of the PDF.
@@ -29,7 +29,7 @@ Your task:
 
 ### The questions
 
-1.  What parameter values will cause species 1 to exclude species 2 from the habitat? What do these values mean in ecological terms?
+1. What parameter values will cause species 1 to exclude species 2 from the habitat? What do these values mean in ecological terms?
 2. What parameter values will reverse this outcome? What do these values mean in ecological terms?
 3. What parameter values will allow the two species to coexist indefinitely and stably? What do these values mean in ecological terms?
 4. Are there parameter values under which the outcome depends on initial population sizes or rates of population growth? What do these values mean in ecological terms?
