@@ -1,12 +1,12 @@
 # Life tables and survivorship types
 
-Life tables are powerful analytical tools used in various fields to understand and quantify mortality patterns and life expectancy within populations.  Originating in population biology and demography, life tables have found extensive applications in epidemiology, human mortality studies, and even product life-cycle management. By systematically tracking and analyzing the survival and mortality rates of individuals within specific cohorts, life tables reveal essential information about population dynamics, age-specific risks, and the factors that influence longevity. As a result, life tables play a vital role in shaping policies, making informed decisions, and gaining a deeper understanding of the complex interplay between age, health, and mortality.
+## Background 
 
-This exercise deals with so-called **cohort life tables** which, as the name implies, follows a “*cohort*” of individuals from birth until they all die. A cohort is the group of individuals born within a particular time interval (e.g. “*all individuals born in 1998*”).
+Life tables are powerful analytical tools used in various fields to understand and quantify mortality patterns and life expectancy within populations.  Originating in population biology and demography, life tables have found extensive applications in epidemiology, human mortality studies, and even product life-cycle management. By systematically tracking and analyzing the survival and mortality rates of individuals within specific cohorts, life tables reveal essential information about population dynamics, age-specific risks, and the factors that influence longevity. As a result, life tables play a vital role in shaping policies, making informed decisions, and gaining a deeper understanding of the complex interplay between age, health, and mortality.
 
 The basic algebra used in life tables is explained in Neal Chapter 6 and in Gotelli Chapter 3.
 
-In addition to providing valuable insights into mortality patterns and life expectancy, life tables also allow us to consider mortality patterns in the context of distinct survivorship types based on how mortality risk is distributed through a life course. Survivorship types are crucial in understanding the overall survival patterns and demographic characteristics of different populations.
+In addition to providing valuable insights into mortality patterns and life expectancy, life tables also allow us to consider mortality patterns in the context of distinct survivorship types that result from the distribution of mortality risk through a life course. Survivorship types are crucial in understanding the overall survival patterns and demographic characteristics of different populations.
 
 Three primary survivorship types are commonly identified, based on survivorship curves on a log scale:
 
@@ -16,8 +16,6 @@ Three primary survivorship types are commonly identified, based on survivorship 
 
 By identifying and understanding these survivorship types, researchers gain critical insights into the demographic structure of populations and the selective pressures that influence survival and longevity. Survivorship patterns play a significant role in shaping the dynamics of populations and help scientists make informed decisions regarding conservation efforts, healthcare planning, and population management strategies.
 
-
-Ask for help if you don't quite understand things during the exercises!
 
 ```{block, type="do-something"}
 Learning outcomes: 
@@ -29,6 +27,8 @@ Learning outcomes:
 - Understanding the decline in the "force of selection".
 
 ```
+
+## Your task
 
 Download and open the Excel file [`Life tables exercises.xlsx`](https://www.dropbox.com/s/ox0rk05zdwzrmwy/Life%20tables%20exercises.xlsx?dl=1).
 
