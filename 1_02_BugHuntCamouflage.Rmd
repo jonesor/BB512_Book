@@ -1,10 +1,31 @@
 # Bug hunt camouflage (Netlogo)
 
-In this exercise you are going to impose selection pressure to cause adaptive evolution in  a creature on a virtual landscape. The exercise is done using one of the built-in models in a computer program called NetLogo (https://ccl.northwestern.edu/netlogo/).
+## Background
 
-There are two ways to use NetLogo: (1) You can download and install NetLogo from the site above; (2) You can log in to our SDU Ucloud computing system at https://cloud.sdu.dk/, and use it there.
+Adaptive evolution via natural selection is a fundamental concept in evolutionary biology and is one of the central mechanisms driving the diversity of life on Earth. This process is shaped by the interplay between variation in heritable traits within a population, differential survival and reproduction rates, and the environmental challenges faced by organisms. One illustrative example of natural selection is the phenomenon of camouflage in predator-prey systems. 
 
-If using the UCloud option, please follow these steps: (i) search for NetLogo in the search bar at the top of the screen; (ii) click on Applications and then on the NetLogo icon; (iii) click on "Run Application"; (iv) Give your job a name (e.g., "BB512") and under "Hours" enter 1 hour; (v) under Machine Type, select "u1-standard-1"; (vi) click on Submit. After a few moments while Ucloud is preparing your job, an new screen appears. Click on Open Interface to open a virtual desktop. There, you can open NetLogo and use it as if it was on your own computer by clicking on its icon.
+In an environment where predators rely on visual cues to locate their prey, individuals with better camouflage that matches their surroundings are more likely to avoid detection and capture, leading to higher survival rates. Over generations, the frequency of camouflage traits increases in the prey population due to higher survival and increased reproduction of well-camouflaged individuals. 
+
+On the other hand, predators with better detection skills, like keen eyesight, are more successful at capturing prey, leading to increased survival and reproduction of these individuals. Consequently, traits associated with effective predation also become more prevalent in the predator population. This dynamic interplay between camouflage in prey and predator detection abilities exemplifies the power of natural selection in driving the adaptation and evolution of species to their ecological niches.
+
+```{block, type="do-something"}
+Learning outcomes: 
+
+- Understanding adaptive evolution via natural selection.
+- Understanding how fitness depends on the environment.
+- Understanding the terms adaptation, selection, selection pressure, heritability.
+
+```
+
+## Your task
+
+In this exercise, you will use an individual-based simulation to examine adaptive evolution and natural selection, exploring how living organisms can undergo transformations to better survive and thrive in their environments. You step into the role of a predatory bird and hunt bugs living in a virtual landscape. You will see how the colours of the bugs ("traits") influence their survival. The bugs that blend into their surroundings have a higher chance of avoiding detection, leading to greater survival and more opportunities to pass on their advantageous traits to future generations.
+
+The exercise is done using one of the built-in models in a computer program called NetLogo (https://ccl.northwestern.edu/netlogo/).
+
+There are two ways to use NetLogo: (1) You can log in to our SDU Ucloud computing system at https://cloud.sdu.dk/, and use it there; (2) You can download and install NetLogo from the site above.
+
+I recommend the UCloud option: Please follow these steps: (i) search for NetLogo in the search bar at the top of the screen; (ii) click on Applications and then on the NetLogo icon; (iii) click on "Run Application"; (iv) Give your job a name (e.g., "BB512") and under "Hours" enter 1 hour; (v) under Machine Type, select "u1-standard-1"; (vi) click on Submit. After a few moments while Ucloud is preparing your job, an new screen appears. Click on Open Interface to open a virtual desktop. There, you can open NetLogo and use it as if it was on your own computer by clicking on its icon.
 
 Open NetLogo and click File > Models Library. You can then use the search box at the bottom of the screen to find the model called “Bug Hunt Camouflage”.
 
@@ -12,17 +33,10 @@ This is a model of natural/artificial selection that shows how a population hunt
 
 In the simulation you assume the role of a predatory bird that feeds on insects, which can be different colours.  You will see what effect your hunting has on the colour traits/genetics of these simulated insects, and also how this evolution affects your hunting efficiency.
 
-```{block, type="do-something"}
-Learning outcomes: 
-
-- Understanding adaptive evolution via natural selection.
-- Understanding how concept of fitness depends on the environment.
-- Understanding the terms adaptation, selection, selection pressure, heritability.
-
-```
 
 
-## Getting started
+
+### Getting started
 
 1. When you open the model, you will see a screen with various purple and green “sliders”, buttons and menus that control parts of the model.
 2. Start with 30 bugs, by moving the “carrying-capacity” slider until it reads 30.
@@ -38,7 +52,7 @@ You should notice that bugs with contrasting colours (e.g. black on white) are e
 To understand what’s going on, you need to understand how the simulation works.
 
  
-### How the simulation works.
+#### How the simulation works.
 
 *Simple version:* 
 The simulation starts with bugs with random colours.
