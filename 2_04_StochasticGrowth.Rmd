@@ -4,28 +4,21 @@
 set.seed(134)
 ```
 
+## Background
 
-We will examine the effect of adding stochasticity (randomness) into the simple exponential/geometric growth model you have been looking at in the last couple of lectures. Remember – this model allows for unbounded population growth – the populations development is not influenced by population density.
+In contrast to the deterministic nature of the geometric growth model, a stochastic version of the model introduces an element of randomness, making it more reflective of real-world scenarios.  Instead of assuming fixed and predictable growth rates, the stochastic model incorporates uncertainties and fluctuations that occur due to various factors, such as environmental variability, chance events, and individual-level variations in reproductive success. By embracing this stochastic approach, the population dynamics become more realistic, allowing us to better understand and predict the inherent variability and uncertainties associated with natural populations. This stochastic framework provides a valuable tool for ecologists and researchers to explore the dynamics of real populations under more complex and dynamic conditions.
 
-```{block, type="do-something"}
-Learning outcomes: 
-
-- Increased competence in using Excel formulae for mathematical modeling.
-- Understanding the concept of stochasticity in simple population models.
-- Competence in using mathematical models in Excel to strengthen own understanding of biological processes.
-- Understanding how stochasticity relates to (i) uncertainty in the prediction of population trajectories and (ii) probability of (local) extinction.
-```
+Remember – this model still allows for unbounded population growth – the populations are not influenced by population density.
 
 
-We'll focus on the discrete form:  $N_{t+1}=\lambda N_t$.
 
-Because $\lambda = \mathrm{e}^{r_m}$ (and $r_m = ln(\lambda)$) we can also express this equation as $N_{t+1}=\mathrm{e}^{r_m} N_t$.
+We'll focus on the discrete (Geometric) growth) model:  $N_{t+1}=\lambda N_t$.
+
+Because $\lambda = \mathrm{e}^{r_m}$ (and $r_m = ln(\lambda)$), we can rearrange the equation to express it as $N_{t+1}=\mathrm{e}^{r_m} N_t$.
 
 Therefore, we can predict next year's population size from this year's population if we know either $r_m$ or $\lambda$.
 
-It is unlikely that the population growth rates will be constant through time. Population growth rates will vary through time because of environmental factors (weather, food supply etc.). This is called *environmental stochasticity*.
-
-We will create some models in Excel, and in R, to explore the effect that this variation has.
+We will create some models in Excel, and then in R, to explore the effect of stochastic variation in the population growth rate.
 
 We can simulate variation in $r_m$ by drawing a random number from a normal distribution with a particular mean ($\bar{r_m}$) and variance ($\sigma_{r_m}^2$) (Fig. \@ref(fig:stochGrowthRate)). The $\bar{r_m}$ value determines the long-term average while the $\sigma_{r_m}^2$ estimates how much "spread" there is in the data from year to year.
 
@@ -43,6 +36,16 @@ ggplot(pgr,aes(x=r))+geom_histogram(bins =30) +
 
 When using the equation above to calculate population at time $t+1$ ($N_{t+1}$) from the population at time $t$ ($N_t$), one would draw a random $r_m$ value from this distribution. Sometimes $r_m$ will be high, other times it will be low, most of the time it will be from around the middle of the distribution.
 
+```{block, type="do-something"}
+Learning outcomes: 
+
+- Increased competence in using Excel formulae for mathematical modeling.
+- Understanding the concept of stochasticity in simple population models.
+- Competence in using mathematical models in Excel to strengthen own understanding of biological processes.
+- Understanding how stochasticity relates to (i) uncertainty in the prediction of population trajectories and (ii) probability of (local) extinction.
+```
+
+## Your task
 
 ```{block, type="do-something"}
 Use the Excel worksheet,  `[StochasticPopulationGrowth.xslx](https://www.dropbox.com/s/1wpixbpgwlh54f0/StochasticPopulationGrowth.xlsx?dl=1)`,  to study how stochastic population growth works with this simple model.
@@ -132,3 +135,11 @@ axis(2,at = log(c(0.1,1,10,100,1000,10000,100000)),
      label = c(0.1,1,10,100,1000,10000,100000))
 abline(h=log(pseudoExtinction),lty=2)
 ```
+
+## Questions
+
+- What is the main difference between deterministic and stochastic population growth models?
+- Describe how incorporating randomness into the stochastic model makes it more realistic for understanding real-world populations.
+- Simulate a scenario where two populations with identical growth rates experience different outcomes due to stochastic factors. Explain the implications of these findings.
+- What can this stochastic model tell us about extinction risk and population size?
+- What can this stochastic model tell us about extinction risk and environmental variation?
