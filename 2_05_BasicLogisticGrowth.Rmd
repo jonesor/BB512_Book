@@ -1,7 +1,10 @@
 # Basic logistic population growth
 
+## Background
 
-Population sizes have upper limits – they can only get so large. This is often modeled with the ‘logistic growth’ model^[This is equation 2.4 in Gotelli]: 
+Population sizes usually have upper limits - they can only get so large before leveling off due to environmental constraints. The logistic growth model is a powerful tool in population ecology that takes this limitation into account, providing a more realistic depiction of population dynamics. Unlike the simplistic geometric growth model, which assumes unlimited resources and unrestricted growth, the logistic model recognizes that natural populations face a finite carrying capacity (K). This carrying capacity represents the maximum population size an environment can sustain over the long term, considering factors such as available resources, competition for food and space, predation, and disease. As a population approaches its carrying capacity, its growth rate gradually slows down, eventually reaching a point of equilibrium where birth rates equal death rates, leading to a stable population size. This concept of limited growth and self-regulation enables the logistic growth model to offer deeper insights into the delicate balance between a population's reproductive potential and the constraints imposed by its habitat, making it an invaluable tool for understanding ecological dynamics and conservation efforts.
+
+The logistic growth model can be expressed like this, which is derived from Eqn. 5.2 in Neal: 
 
 $N_{t+1}=N_{t}+r_{m} N_{t}\left(1-\frac{N_{t}}{K}\right)$
 
@@ -22,6 +25,7 @@ Learning outcomes:
 
 ```
 
+## Your task
 
 
 Download and open the Excel file: [`Basic Logistic Growth.xslx`](https://www.dropbox.com/s/oxxyyn4zf4wsvkg/Basic%20Logistic%20Growth.xlsx?dl=1).
@@ -121,3 +125,12 @@ Some useful keywords:
 * Stable-limit cycle (2-point, 3-point limit cycle)
 * Chaos/Chaotic dynamics
 * Unpredictable/predictable
+
+
+## Additional questions
+
+- In the logistic growth model, what happens to the population growth rate as the population size approaches the carrying capacity (K)? How does this lead to population stability?
+- In the logistic growth model, what factors can cause a population to overshoot its carrying capacity temporarily? How does the population respond to such overshooting?
+- How can a ballpark knowledge of maximum per capita population growth rate be useful to a population manager?
+- Consider the relevance of the logistic growth model in ecological conservation. How can an understanding of logistic growth help in managing and conserving endangered species?
+
