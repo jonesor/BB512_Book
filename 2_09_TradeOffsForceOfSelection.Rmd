@@ -1,9 +1,18 @@
-# Trade-offs and the force of selection
+# Trade-offs and the declining force of selection
 
 
-Why does evolution ‘care’ less and less about you as you age? Because there are trade-offs between early and late life events. 
+*Why does evolution ‘care’ less and less about you as you age? Because there are trade-offs between early and late life events. *
 
-The aim of this exercise is to gain an understanding of early-life late-life trade offs. Specifically it is to understand why events early in life tend to be much more important to evolution than those that happen later in life.
+## Background 
+
+
+An important kind of trade off are those which occur between processes in early and late life. For example, it may be beneficial to increase reproduction at younger ages, but this might lead to increased risk of death at older ages. A mechanism for this could be that limited resources are allocated to producing offspring rather than maintaining/repairing the body. 
+
+The balance of the trade off between these early and late life processes is shaped by the force of selection: The extent to which natural selection influences the prevalence of specific traits in a population. Crucially, the force of selection tends to decline with age meaning that late-life processes are not as important as early-life processes. This means that a mutation giving a modest reproductive advantage at an early age, alongside a harmful or even deadly effect late in life can be "seen" by natural selection as advantageous.
+
+This highlights the significance of early-late life trade-offs and their role in shaping aging patterns in various organisms. Understanding this concept is essential for comprehending life history evolution, aging, and longevity across species.
+
+The aim of this exercise is to gain an understanding of early-life late-life trade offs and to understand why events early in life tend to be much more important to evolution than those that happen later in life.
 
 ```{block, type="do-something"}
 Learning outcomes: 
@@ -15,10 +24,10 @@ Learning outcomes:
 
 
 
-## Background
 
-An important kind of trade off are those which occur between early and late life. For example, it may be beneficial to increase reproduction at younger ages, but this might lead to increased risk of death at older ages. A mechanism for this could be that limited resources are allocated to producing offspring rather than maintaining/repairing the body.
-Methods
+
+
+## Your task
 
 Open the Excel file [TradeOffsAndForceOfSelection.xlsx](https://www.dropbox.com/s/7eyoencvqc3hwv7/TradeOffsAndForceOfSelection.xlsx?dl=1).
 
@@ -46,4 +55,11 @@ Consider a trade-off between early reproduction and late life survival (i.e. via
 Plot the increase required vs. age (make a new worksheet/ark in Excel) What do you notice?
 
 * Reset everything again ($m_x$ =10; survival = 0.8). Set $m_x$ from age 15 onwards to be 0. Now alter survival rate after this point (at ages 15-25). What happens to fitness?
+
+## Questions
+
+- Explain the concept of the declining force of selection in the context of life history evolution and aging. How does this phenomenon contribute to the evolution of life history strategies in different organisms?
+- Use concepts of life history evolution, including the force of selection, to explain why age-related diseases are common in humans.
+- How would predation risk influence the early-late life trade off in resource allocation to reproduction vs. body maintenance?
+
 
