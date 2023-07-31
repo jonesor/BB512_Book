@@ -1,11 +1,14 @@
 # Geometric growth
 
-In a simple model of population growth where the population grows without any constraints, the speed a population increases in size can be described by the population growth rate. This is often given by the symbol lambda ($\lambda$) which represents the population multiplication rate. High values of $\lambda$ mean the population grows fast, while small values indicated that it grows slowly, or if the $\lambda < 1$ shrinks in size. 
+## Background 
+
+The geometric growth model is a simple model of unconstrained population growth. In other words, the population can grow to infinite size and is not affected by competition (population density). In the model, the rate at which a population grows is described by the population growth rate, often represented by the symbol lambda ($\lambda$ ). Higher values of $\lambda$  indicate rapid population growth, while smaller values suggest slow growth. If $\lambda < 1$, the population shrinks in size. 
+
+Geometric growth is often used interchangeably with exponential growth, but there is an important distinction. Exponential growth pertains to "continuous time" scenarios, whereas geometric growth involves models where the population changes in discrete time steps, such as yearly intervals.
 
 
-Geometric growth is often seen as synonymous to exponential growth. It basically is, but with one important difference: exponential growth, strictly speaking, refers to “continuous time” scenarios, whereas geometric growth refers to models where the population changes in discrete time steps (e.g. each year).
+The key quantities involved in this model are as follows, although it's important to note that different books or sources may use varying symbols:
 
-The important quantities are as follows, but please be aware that different books/sources can use different symbols:
 
 - $N_t$ = population size at time $t$; and $N_0$, $N_1$ is population size at time 0, time 1 etc.
 - $\lambda$ = population growth (multiplication) rate over a single time step, $\Delta t$. THis is sometimes called the *finite rate of increase*.
@@ -33,7 +36,7 @@ Learning outcomes:
 - Knowing that the slope of the $ln(N_t)$ vs. $t$ relationship can tell you about population growth rate (it is $ln(\lambda)$).
 ```
 
-
+## Your task
 
 Download and open the Excel file [`GeometricGrowth.xlsx`](https://www.dropbox.com/s/xxx05sckvop5i52/GeometricGrowth.xlsx?dl=1).
 
@@ -50,6 +53,13 @@ Now reset the population growth rate to 1.1. Now lets see if the mathematical ru
 1.	If the population starts at t=0, $N_t = N_0 \lambda^t$ . In words, the population at time $t$ is the initial population size multiplied by the finite population growth rate raised to the power of $t$.
 2.	Your instructor will explain how this works on the blackboard.
 3.	Following these rules, the population size at time $t=5$ ($N_5$), is $10 * 1.1^5$, or $10* 1.61051$, which is $16.1051$. Check that this matches what you got earlier.
-4.	This approach can be really useful because it can save lots of time. For example, what is the population after 900 generations? It would be tedious to work this out using the first, "simple" approach, but very easy if you use the geometric series rules.
+4.	This approach can be really useful because it can save lots of time. For example, what is the population after 900 generations? It would be tedious to work this out using the first, "simple" approach, but very easy if you use the geometric series rules and have access to a calculator/computer.
+
+## Questions
+
+- In geometric growth, what does a constant growth rate imply for the population's future growth? Explain with an example.
+- What makes the geometric growth model "unrealistic" for real-world scenarios? Explain your reasoning.
+- Give an example of real-world populations where geometric growth might be a suitable model. Explain your reasoning.
+- Suppose a population's size decreases by 25% every year due to environmental factors. If there are initially 800 individuals, determine the population size after 4 years.
 
 
