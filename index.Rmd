@@ -66,18 +66,13 @@ For most classes you will need your personal laptops: Please bring them to class
 
 ## Expectations
 
-There are lectures and exercise sessions on the course. The exercise sessions are designed to help you understand the subject better and I expect students to attend and actively participate in both. There will also be some multiple choice quizzes (e-tests) during the semester. These are intended to help you figure out whether you know the material, and whether there are areas you need to revisit. They do not contribute to your final grade, but I hope you will attempt them. They will definitely increase your understanding of the material. Note that the final assessment will be a similar format!
+There are lectures and practical exercise sessions on the course. The practical sessions are designed to help you understand the subject better and I expect students to attend and actively participate in both. There will also be some multiple choice quizzes (e-tests) during the semester. These are intended to help you figure out whether you know the material, and whether there are areas you need to revisit. They do not contribute to your final grade, but I hope you will attempt them. They will definitely increase your understanding of the material. Note that the final assessment will be a similar format!
 
 I expect students to make every effort to keep up with the core reading (mainly the textbook chapters), and to ask questions where they don’t understand.
 
-## Your feedback
-
-I would really like your feedback on how the course is progressing so I can address any issues that come up as soon as possible. To help with this I have created a simple Google Form: http://goo.gl/gy2Q6B. You can use this to send me (Owen) comments (anonymously if you wish) at any time in the course. I promise to do my best to resolve any problems.
- 
 ## Assessment
 
-The assessment for the course will be an electronic exam held next January with multiple choice and short answer questions. It is worth noting that exam format will be similar to the quizzes mentioned above. The exact date is not yet set.
-
+The assessment for the course will be an electronic exam held in January with multiple choice and short answer questions. It is worth noting that exam format will be similar to the quizzes mentioned above. The date for the exam will be finalised in December.
 
 ## Instructors
 
@@ -124,8 +119,67 @@ plot(pr)
 
 
 ```{block, type="do-something"}
-**Note:** The website is a "work in progress" and might change during the course as I add material. The latest version can always be found at the website.
+**This website includes equations. **
 
-Please let me know ([jones@biology.sdu.dk](mailto:jones@biology.sdu.dk)) if you spot any errors, or have any suggestions for improvement.
+Equations sometimes do not render correctly on some web browsers. 
+
+From experience, Chrome tends to be the most reliable, Safari (Mac only) also works well.
+
+Can you see the following equation?
+
+$N_{t+1}=N_{t}+r_{m} N_{t}\left(1-\frac{N_{t}}{K}\right)$
+
+It should like this:
+
+![](testEquation.png)
+
+If it doesn't look right, then you should try another browser (maybe even your phone browser) or investigate a solution.
 ```
 
+# Schedule
+
+```{r echo = FALSE}
+# Get current year and use it to build the link to the official time table.
+current_year <- format(Sys.Date(), "%Y")
+link_to_schedule <- paste0("https://mitsdu.sdu.dk/skema/activity/N100007101/e",substr(current_year,3,4))
+```
+
+
+This is the schedule for the course. You can check itsLearning for the dates, times and locations.
+Also check itsLearning for details of other tasks/assignments/reading etc.
+
+```{r, echo = FALSE, message=FALSE, warning=FALSE}
+schedule <- readxl::read_excel("BB512_Schedule.xlsx")
+```
+
+
+
+```{r, echo = FALSE, message=FALSE,eval=knitr::is_html_output(), warning=FALSE}
+schedule2 <- schedule %>%
+  select(Part, Session, Type, Topic, Instructor)
+
+big_b <- fp_border(color = "gray70", width = 3)
+std_b <- fp_border(color = "gray70", style = "dashed")
+big_b_end <- fp_border(color = "white", width = 3)
+
+ft <- flextable(schedule2, cwidth = c(2, .5, 1, 4, .75, .75)) %>%
+  bold(part = "header") %>%
+  bold(j = 1) %>%
+  color(
+    i = ~ Type == "Lecture",
+    j = ~ Session + Type + Topic,
+    color = "red"
+  ) %>%
+  fontsize(part = "all", size = 14) %>%
+  vline(border = std_b, j = 1:4) %>%
+  rotate(j = ~Part, align = "top", rotation = "tblr") %>%
+  hline(border = std_b, i = seq(2, nrow(schedule2), 2)) %>%
+  hline(border = big_b_end, i = nrow(schedule2))
+
+ft
+```
+
+
+```{r, echo =FALSE,message=FALSE,warning=FALSE}
+source("personalCalendar.R")
+```

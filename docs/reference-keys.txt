@@ -2,12 +2,11 @@ fig:colours
 fig:stochGrowthRate
 fig:stochProjection
 fig:bigbird
-fig:unnamed-chunk-58
+fig:unnamed-chunk-53
 fig:huntergatherer
 welcome-to-bb512
 this-website-and-other-course-materials
 expectations
-your-feedback
 assessment
 instructors
 software

@@ -23,7 +23,7 @@
 <meta name="author" content="Owen R. Jones (Course Coordinator)" />
 
 
-<meta name="date" content="2023-07-31" />
+<meta name="date" content="2023-08-02" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -169,13 +169,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#this-website-and-other-course-materials"><i class="fa fa-check"></i><b>1.1</b> This website and other course materials</a></li>
 <li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#expectations"><i class="fa fa-check"></i><b>1.2</b> Expectations</a></li>
-<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#your-feedback"><i class="fa fa-check"></i><b>1.3</b> Your feedback</a></li>
-<li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#assessment"><i class="fa fa-check"></i><b>1.4</b> Assessment</a></li>
-<li class="chapter" data-level="1.5" data-path="index.html"><a href="index.html#instructors"><i class="fa fa-check"></i><b>1.5</b> Instructors</a></li>
-<li class="chapter" data-level="1.6" data-path="index.html"><a href="index.html#software"><i class="fa fa-check"></i><b>1.6</b> Software</a>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#assessment"><i class="fa fa-check"></i><b>1.3</b> Assessment</a></li>
+<li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#instructors"><i class="fa fa-check"></i><b>1.4</b> Instructors</a></li>
+<li class="chapter" data-level="1.5" data-path="index.html"><a href="index.html#software"><i class="fa fa-check"></i><b>1.5</b> Software</a>
 <ul>
-<li class="chapter" data-level="1.6.1" data-path="index.html"><a href="index.html#excel"><i class="fa fa-check"></i><b>1.6.1</b> Excel</a></li>
-<li class="chapter" data-level="1.6.2" data-path="index.html"><a href="index.html#r-and-rstudio"><i class="fa fa-check"></i><b>1.6.2</b> R and RStudio</a></li>
+<li class="chapter" data-level="1.5.1" data-path="index.html"><a href="index.html#excel"><i class="fa fa-check"></i><b>1.5.1</b> Excel</a></li>
+<li class="chapter" data-level="1.5.2" data-path="index.html"><a href="index.html#r-and-rstudio"><i class="fa fa-check"></i><b>1.5.2</b> R and RStudio</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="schedule.html"><a href="schedule.html"><i class="fa fa-check"></i><b>2</b> Schedule</a></li>
@@ -495,7 +494,7 @@ A = \begin{bmatrix}0.3&amp;8&amp;2 \\0.1&amp;0.5&amp;0 \\0&amp;0.4&amp;0.4 \\\en
 <div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="matrix-population-modelling.html#cb14-1" tabindex="-1"></a>pop <span class="ot">&lt;-</span> <span class="fu">vec</span>(pr)</span>
 <span id="cb14-2"><a href="matrix-population-modelling.html#cb14-2" tabindex="-1"></a><span class="fu">matplot</span>(pop, <span class="at">type =</span> <span class="st">&quot;l&quot;</span>, <span class="at">log =</span> <span class="st">&quot;y&quot;</span>)</span>
 <span id="cb14-3"><a href="matrix-population-modelling.html#cb14-3" tabindex="-1"></a><span class="fu">legend</span>(<span class="st">&quot;topleft&quot;</span>, <span class="at">legend =</span> <span class="fu">colnames</span>(pop), <span class="at">col =</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">ncol</span>(pop), <span class="at">lty =</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">ncol</span>(pop))</span></code></pre></div>
-<p><img src="BB512_files/figure-html/unnamed-chunk-47-1.png" width="672" /></p>
+<p><img src="BB512_files/figure-html/unnamed-chunk-42-1.png" width="672" /></p>
 <p>You should see that the population increases exponentially. The population growth rate is the so-called “<em>dominant eigenvalue</em>” of the matrix <strong>A</strong>.</p>
 <p>We can ask R for the <em>eigen values</em> and <em>eigen vectors</em>. These are the population growth rate (<span class="math inline">\(\lambda\)</span>) and the stable stage distribution (<em>SSD</em>) and the reproductive values (<em>RV</em>) of the different stages. <em>SSD</em> is the expected <em>proportion</em> of individuals in the different stage classes at equilibrium (i.e. the long-term timeframe) and <em>RV</em> is the expected number of future offspring by individuals in each stage.</p>
 <p>You can see that in this case, using my example values the population is growing 34.58% per year.</p>
