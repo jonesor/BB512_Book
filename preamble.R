@@ -9,3 +9,6 @@ library(patchwork)
 library(xfun)
 library(htmltools)
 library(mime)
+
+library(officer)
+library(flextable)

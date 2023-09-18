@@ -40,7 +40,7 @@ Table 3.1 example*” (don't worry if you don't have the text book).
 
 Let’s start with “**Life table**”.
 
-The aim now is to use Excel as a modeling tool to produce a life table. I have provided some initial data collected from a cohort of animals. I know how many individuals survive each year (how many “enter the interval”). I also know how many babies (on average) are produced by each female.
+The aim now is to use Excel as a modeling tool to produce a life table. I have provided some initial data collected from a cohort of animals. I know how many individuals start each year (i.e. how many “enter an interval”) and therefore I can see how many survive each year (i.e. how many “enter the *next* interval). I also know how many (female) babies (on average) are produced by each female.
 
 Start by calculating survivorship ($l_x$). Survivorship is the **probability of survival to a particular age**. Therefore, at time 0, $l_0 = 1$, since everyone is alive at this point. The next value ($l_1$) must be calculated based on the number alive at that point. In this case it is $352/500 = 0.704$. You must generalize this calculation into a formula that can be dragged to fill column `D` in the worksheet. In algebraic form, the equation is $l_x = S_x/S_0$.
 
@@ -52,7 +52,7 @@ Now complete the remaining two columns, and use them to calculate (a) $R_0$; (b)
 **Investigate the force of selection:** The force of selection describes the relative importance of events that happen during the life course on population growth (e.g. $R0$ or $r$). 
 To investigate this you can do a computer "experiment" by altering reproduction at different ages. You can think of these as "what if?" experiments. e.g. "What if there was a mutation that doubled reproduction at age 2 (or 8, 9 etc)?" or  "What if there was a mutation that allowed reproduction at age 1?"
 
-Try imposing the same "experiment" on different ages. What effect happens to $R0$ or $r$? If you like, try graphing your results in another sheet/ark as age vs. percent change in $R0$.
+Try imposing the same "experiment" on different ages. What effect happens to $R0$ or $r$? If you like, try graphing your results in another sheet/ark as age vs. *percent* change in $R0$.
 
 
 
@@ -61,7 +61,9 @@ Try imposing the same "experiment" on different ages. What effect happens to $R0
 In the second part we focus on the **Survivorship Curves** worksheet.
 The aim here is to start to explore how different types of organisms with different ways of life (“**life history strategies**”) can have qualitatively different kinds of life tables. The most important thing to observe is the difference in **survivorship curves** ($l_x$). These changes become very obvious when you plot the log-transformed survivorship against age.
 
-In the Excel worksheet, I have placed tables showing the fate of cohorts of three populations of different species. Your job now is to calculate the survivorship curve ($l_x$) for these species, take the natural log (using formula `=log(C3)`, for the first population, `=log(H3)` for the second population etc.
+In the Excel worksheet, I have placed tables showing the fate of cohorts of three populations of different species. Your job now is to calculate the survivorship curve ($l_x$) for these species, take the natural log (using formula `=log(C3)`, for the first population, `=log(J3)` for the second population etc.
+
+Next, calculate the age-specific probability of survival ($g_x$) and of death ($q_x$). This is the proportion of individuals that **enter** the age interval that **do** survive and **do not** survive to the end of the interval, respectively. You can calculate it as `=B4/B3` and `=1-(B4/B3)` for the first row of the first population.
 
 You should see that the graphs automatically fill up with lines. These show Type I, II and III survivorship.
 
