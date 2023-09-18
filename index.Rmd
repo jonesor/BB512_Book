@@ -59,7 +59,7 @@ In addition to this, I will provide a reading list of journal articles that are 
 
 This website holds most of the materials you need for the practical exercises you will do during the course. You will also find the [Schedule](https://jonesor.github.io/BB512_Book/schedule.html) here.
 
-We may not do ALL of these exercises, but you are welcome to do ones we miss in your own time.
+**We may not do ALL of these exercises, but you are welcome to do ones we miss in your own time.**
 
 You will find other materials via itsLearning. 
 

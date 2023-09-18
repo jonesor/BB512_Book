@@ -451,17 +451,18 @@ Table 3.1 example</em>” (don’t worry if you don’t have the text book).</p>
 <p>Now complete the remaining two columns, and use them to calculate (a) <span class="math inline">\(R_0\)</span>; (b) <strong>Generation time</strong>; and an approximation of <span class="math inline">\(r\)</span>.
 <strong>Tip</strong> You need to understand the use of the <code>$</code> symbol in Excel, and how to drag the selected area to place the formula in the column. Refer to the sheet “<em>Gotelli Table 3.1 example</em>” if you get stuck (you should be able to see the formulae used there.</p>
 <p><strong>Investigate the force of selection:</strong> The force of selection describes the relative importance of events that happen during the life course on population growth (e.g. <span class="math inline">\(R0\)</span> or <span class="math inline">\(r\)</span>).
-To investigate this you can do a computer “experiment” by altering reproduction at different ages. You can think of these as “what if?” experiments. e.g. “What if there was a mutation that doubled reproduction at age 2 (or 8, 9 etc)?” or “What if there was a mutation that allowed reproduction at age 1?”</p>
-<p>Try imposing the same “experiment” on different ages. What effect happens to <span class="math inline">\(R0\)</span> or <span class="math inline">\(r\)</span>? If you like, try graphing your results in another sheet/ark as age vs. <em>percent</em> change in <span class="math inline">\(R0\)</span>.</p>
+To investigate this you can do a computer “experiment” by altering reproduction at different ages. You can think of these as “what if?” experiments. e.g. “What if there was a mutation that added 1 to reproduction at age 0-1, or 1-2 etc.?”</p>
+<p>Specifically, we can look at the effect of this experiment on <span class="math inline">\(R0\)</span> or <span class="math inline">\(r\)</span>, which are measures of <strong>fitness</strong>?
+Try graphing your results as age vs. change in <span class="math inline">\(R0\)</span>. What you should see is that changes early in life matter more than changes later in life.</p>
 </div>
 <div id="survivorship-curves" class="section level3 hasAnchor" number="9.2.2">
 <h3><span class="header-section-number">9.2.2</span> Survivorship curves<a href="life-tables-and-survivorship-types.html#survivorship-curves" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>In the second part we focus on the <strong>Survivorship Curves</strong> worksheet.
-The aim here is to start to explore how different types of organisms with different ways of life (“<strong>life history strategies</strong>”) can have qualitatively different kinds of life tables. The most important thing to observe is the difference in <strong>survivorship curves</strong> (<span class="math inline">\(l_x\)</span>). These changes become very obvious when you plot the log-transformed survivorship against age.</p>
-<p>In the Excel worksheet, I have placed tables showing the fate of cohorts of three populations of different species. Your job now is to calculate the survivorship curve (<span class="math inline">\(l_x\)</span>) for these species, take the natural log (using formula <code>=log(C3)</code>, for the first population, <code>=log(J3)</code> for the second population etc.</p>
-<p>Next, calculate the age-specific probability of survival (<span class="math inline">\(g_x\)</span>) and of death (<span class="math inline">\(q_x\)</span>). This is the proportion of individuals that <strong>enter</strong> the age interval that <strong>do</strong> survive and <strong>do not</strong> survive to the end of the interval, respectively. You can calculate it as <code>=B4/B3</code> and <code>=1-(B4/B3)</code> for the first row of the first population.</p>
+<p>In the second part of this class we focus on the <strong>Survivorship Curves</strong> worksheet.</p>
+<p>The aim here is to start to explore how different types of organisms with different ways of life (“<strong>life history strategies</strong>”) can have qualitatively different kinds of life tables. The most important thing to observe is the difference in <strong>survivorship curves</strong> (<span class="math inline">\(l_x\)</span>). These changes become very obvious when you plot the log-transformed survivorship against age.</p>
+<p>In the Excel worksheet, I have placed tables showing the fate of cohorts of three populations of different species. Your job now is to calculate the survivorship curve (<span class="math inline">\(l_x\)</span>) for these species, take the natural log (using formula <code>=LN(C3)</code>, for the first population, <code>=LN(J3)</code> for the second population etc.</p>
 <p>You should see that the graphs automatically fill up with lines. These show Type I, II and III survivorship.</p>
-<p>Make sure that you are (1) able to “diagnose” survivorship type from looking at a graph of <span class="math inline">\(log(l_x)\)</span> vs <span class="math inline">\(x\)</span> (2) able to sketch a cartoon of mortality trajectory if shown one of these survivorship curve.</p>
+<p>Next, calculate the age-specific probability of survival (<span class="math inline">\(g_x\)</span>) and of death (<span class="math inline">\(q_x\)</span>). This is the proportion of individuals that <strong>enter</strong> the age interval that <strong>do</strong> survive and <strong>do not</strong> survive to the end of the interval, respectively. You can calculate it as <code>=B4/B3</code> and <code>=1-(B4/B3)</code> for the first row of the first population. Plot graphs of these.</p>
+<p>Make sure that you are (1) able to “diagnose” survivorship type from looking at a graph of <span class="math inline">\(ln(l_x)\)</span> vs <span class="math inline">\(x\)</span> (2) able to sketch a cartoon of mortality trajectory if shown one of these survivorship curve.</p>
 
 </div>
 </div>
@@ -514,7 +515,7 @@ gitbook.start({
 "link": null,
 "text": null
 },
-"download": null,
+"download": ["BB512.pdf"],
 "search": {
 "engine": "fuse",
 "options": null
