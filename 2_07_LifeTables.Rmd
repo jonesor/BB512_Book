@@ -2,7 +2,7 @@
 
 ## Background 
 
-Life tables are powerful analytical tools used in various fields to understand and quantify mortality patterns and life expectancy within populations.  Originating in population biology and demography, life tables have found extensive applications in epidemiology, human mortality studies, and even product life-cycle management. By systematically tracking and analyzing the survival and mortality rates of individuals within specific cohorts, life tables reveal essential information about population dynamics, age-specific risks, and the factors that influence longevity. As a result, life tables play a vital role in shaping policies, making informed decisions, and gaining a deeper understanding of the complex interplay between age, health, and mortality.
+Life tables are powerful analytical tools used in various fields to understand and quantify mortality patterns and life expectancy within populations. Originating in population biology and demography, life tables have found extensive applications in epidemiology, human mortality studies, and even product life-cycle management. By systematically tracking and analyzing the survival and mortality rates of individuals within specific cohorts, life tables reveal essential information about population dynamics, age-specific risks, and the factors that influence longevity. As a result, life tables play a vital role in shaping policies, making informed decisions, and gaining a deeper understanding of the complex interplay between age, health, and mortality.
 
 The basic algebra used in life tables is explained in Neal Chapter 6 and in Gotelli Chapter 3.
 
@@ -40,20 +40,33 @@ Table 3.1 example*” (don't worry if you don't have the text book).
 
 Let’s start with “**Life table**”.
 
-The aim now is to use Excel as a modeling tool to produce a life table. I have provided some initial data collected from a cohort of animals. I know how many individuals start each year (i.e. how many “enter an interval”) and therefore I can see how many survive each year (i.e. how many “enter the *next* interval). I also know how many (female) babies (on average) are produced by each female.
+The aim now is to use Excel as a modeling tool to produce a life table. 
 
-Start by calculating survivorship ($l_x$). Survivorship is the **probability of survival to a particular age**. Therefore, at time 0, $l_0 = 1$, since everyone is alive at this point. The next value ($l_1$) must be calculated based on the number alive at that point. In this case it is $352/500 = 0.704$. You must generalize this calculation into a formula that can be dragged to fill column `D` in the worksheet. In algebraic form, the equation is $l_x = S_x/S_0$.
+I have provided some initial data collected from a cohort of animals. I know how many individuals start each year (i.e. how many “**enter** an interval”) and therefore I can see how many survive each year (i.e. how many “enter the **next** interval). I also know how many (female) babies (on average) are produced by each female.
 
-Next, you can calculate age specific **survival probability**. Note that this is different from $l_x$. Survival probability is simply the probability that an individual will survive its current age class. i.e., what is the probability that an individual currently aged 2 will survive to become age 3. In this case, the $254/298 = 0.852$. The calculation is $g_x = l_{x+1}/l_x$, or $S_{x+1}/S_x$.
+Start by calculating survivorship ($l_x$). Survivorship is the **probability of survival to a particular age**. Therefore, at time 0, $l_0 = 1$, since everyone is alive at this point. The next value ($l_1$) must be calculated based on the number alive at that point. In this case it is $352/500 = 0.704$. You must generalize this calculation into a formula that can be dragged to fill column `D` in the worksheet. In algebraic form, the equation is $l_x = S_x/S_0$. 
 
-Now complete the remaining two columns, and use them to calculate (a) $R_0$; (b) **Generation time**; and an approximation of $r$.
-**Tip** You need to understand the use of the `$` symbol in Excel, and how to drag the selected area to place the formula in the column. Refer to the sheet “*Gotelli Table 3.1 example*” if you get stuck (you should be able to see the formulae used there.
+Next, you can calculate age-specific **survival probability**. Note that this is different from $l_x$. Survival probability is simply the probability that an individual will survive its current age class. i.e., what is the probability that an individual currently aged 2 will survive to become age 3. In this case, the $254/298 = 0.852$. The calculation is $g_x = l_{x+1}/l_x$, or $S_{x+1}/S_x$.
 
-**Investigate the force of selection:** The force of selection describes the relative importance of events that happen during the life course on population growth (e.g. $R0$ or $r$). 
+From there you can calculate the age-specific **probability of death**. This is simply $1 - g_x$: the probilities of survival and death **must** sum to 1.
+
+Now complete the remaining columns $l_x m_x$ and $l_x m_x x$, and use them to calculate (a) $R_0$; (b) **Generation time**; and an approximation of $r$.
+
+**Tip** You need to understand the use of the `$` symbol in Excel, and how to drag the selected area to place the formula in the column.
+
+Refer to the sheet “*Gotelli Table 3.1 example*” if you get stuck (click on the cells to see the formulae used there).
+
+#### Declining force of selection
+
+The force of selection describes the relative importance of events that happen during the life course on population growth (e.g. $R0$ or $r$). 
+
 To investigate this you can do a computer "experiment" by altering reproduction at different ages. You can think of these as "what if?" experiments. e.g. "What if there was a mutation that added 1 to reproduction at age 0-1, or 1-2 etc.?" 
 
 Specifically, we can look at the effect of this experiment on $R0$ or $r$, which are measures of **fitness**? 
-Try graphing your results as age vs. change in $R0$. What you should see is that changes early in life matter more than changes later in life.
+
+Try graphing your results as age vs. change in $R0$. 
+
+What you should see is that changes early in life matter more than changes later in life.
 
 
 
@@ -67,7 +80,9 @@ In the Excel worksheet, I have placed tables showing the fate of cohorts of thre
 
 You should see that the graphs automatically fill up with lines. These show Type I, II and III survivorship.
 
-Next, calculate the age-specific probability of survival ($g_x$) and of death ($q_x$). This is the proportion of individuals that **enter** the age interval that **do** survive and **do not** survive to the end of the interval, respectively. You can calculate it as `=B4/B3` and `=1-(B4/B3)` for the first row of the first population. Plot graphs of these.
+Next, calculate the age-specific probability of survival ($g_x$) and of death ($q_x$). This is the proportion of individuals that **enter** the age interval that **do** survive and **do not** survive to the end of the interval, respectively. You can calculate it as `=B4/B3` and `=1-(B4/B3)` for the first row of the first population. 
+
+Plot graphs of these.
 
 Make sure that you are (1) able to "diagnose" survivorship type from looking at a graph of $ln(l_x)$ vs $x$ (2) able to sketch a cartoon of mortality trajectory if shown one of these survivorship curve.
 

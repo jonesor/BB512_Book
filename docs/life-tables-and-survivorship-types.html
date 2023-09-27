@@ -23,7 +23,7 @@
 <meta name="author" content="Owen R. Jones (Course Coordinator)" />
 
 
-<meta name="date" content="2023-09-18" />
+<meta name="date" content="2023-09-19" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -214,8 +214,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="7.1" data-path="basic-logistic-population-growth.html"><a href="basic-logistic-population-growth.html#background-3"><i class="fa fa-check"></i><b>7.1</b> Background</a></li>
 <li class="chapter" data-level="7.2" data-path="basic-logistic-population-growth.html"><a href="basic-logistic-population-growth.html#your-task-3"><i class="fa fa-check"></i><b>7.2</b> Your task</a></li>
-<li class="chapter" data-level="7.3" data-path="basic-logistic-population-growth.html"><a href="basic-logistic-population-growth.html#graph-1"><i class="fa fa-check"></i><b>7.3</b> Graph 1</a></li>
-<li class="chapter" data-level="7.4" data-path="basic-logistic-population-growth.html"><a href="basic-logistic-population-growth.html#graphs-2-3"><i class="fa fa-check"></i><b>7.4</b> Graphs 2 &amp; 3</a></li>
+<li class="chapter" data-level="7.3" data-path="basic-logistic-population-growth.html"><a href="basic-logistic-population-growth.html#graph-1-population-size-through-time"><i class="fa fa-check"></i><b>7.3</b> Graph 1: Population size through time</a></li>
+<li class="chapter" data-level="7.4" data-path="basic-logistic-population-growth.html"><a href="basic-logistic-population-growth.html#graph-2-per-capita-growth-rate-vs.-n"><i class="fa fa-check"></i><b>7.4</b> Graph 2: Per capita growth rate vs. N</a></li>
 <li class="chapter" data-level="7.5" data-path="basic-logistic-population-growth.html"><a href="basic-logistic-population-growth.html#additional-questions"><i class="fa fa-check"></i><b>7.5</b> Additional questions</a></li>
 </ul></li>
 <li class="chapter" data-level="8" data-path="deeper-into-logistic-growth.html"><a href="deeper-into-logistic-growth.html"><i class="fa fa-check"></i><b>8</b> Deeper into logistic growth</a>
@@ -445,15 +445,22 @@ Table 3.1 example</em>” (don’t worry if you don’t have the text book).</p>
 <div id="life-table" class="section level3 hasAnchor" number="9.2.1">
 <h3><span class="header-section-number">9.2.1</span> Life table<a href="life-tables-and-survivorship-types.html#life-table" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Let’s start with “<strong>Life table</strong>”.</p>
-<p>The aim now is to use Excel as a modeling tool to produce a life table. I have provided some initial data collected from a cohort of animals. I know how many individuals start each year (i.e. how many “enter an interval”) and therefore I can see how many survive each year (i.e. how many “enter the <em>next</em> interval). I also know how many (female) babies (on average) are produced by each female.</p>
+<p>The aim now is to use Excel as a modeling tool to produce a life table.</p>
+<p>I have provided some initial data collected from a cohort of animals. I know how many individuals start each year (i.e. how many “<strong>enter</strong> an interval”) and therefore I can see how many survive each year (i.e. how many “enter the <strong>next</strong> interval). I also know how many (female) babies (on average) are produced by each female.</p>
 <p>Start by calculating survivorship (<span class="math inline">\(l_x\)</span>). Survivorship is the <strong>probability of survival to a particular age</strong>. Therefore, at time 0, <span class="math inline">\(l_0 = 1\)</span>, since everyone is alive at this point. The next value (<span class="math inline">\(l_1\)</span>) must be calculated based on the number alive at that point. In this case it is <span class="math inline">\(352/500 = 0.704\)</span>. You must generalize this calculation into a formula that can be dragged to fill column <code>D</code> in the worksheet. In algebraic form, the equation is <span class="math inline">\(l_x = S_x/S_0\)</span>.</p>
-<p>Next, you can calculate age specific <strong>survival probability</strong>. Note that this is different from <span class="math inline">\(l_x\)</span>. Survival probability is simply the probability that an individual will survive its current age class. i.e., what is the probability that an individual currently aged 2 will survive to become age 3. In this case, the <span class="math inline">\(254/298 = 0.852\)</span>. The calculation is <span class="math inline">\(g_x = l_{x+1}/l_x\)</span>, or <span class="math inline">\(S_{x+1}/S_x\)</span>.</p>
-<p>Now complete the remaining two columns, and use them to calculate (a) <span class="math inline">\(R_0\)</span>; (b) <strong>Generation time</strong>; and an approximation of <span class="math inline">\(r\)</span>.
-<strong>Tip</strong> You need to understand the use of the <code>$</code> symbol in Excel, and how to drag the selected area to place the formula in the column. Refer to the sheet “<em>Gotelli Table 3.1 example</em>” if you get stuck (you should be able to see the formulae used there.</p>
-<p><strong>Investigate the force of selection:</strong> The force of selection describes the relative importance of events that happen during the life course on population growth (e.g. <span class="math inline">\(R0\)</span> or <span class="math inline">\(r\)</span>).
-To investigate this you can do a computer “experiment” by altering reproduction at different ages. You can think of these as “what if?” experiments. e.g. “What if there was a mutation that added 1 to reproduction at age 0-1, or 1-2 etc.?”</p>
-<p>Specifically, we can look at the effect of this experiment on <span class="math inline">\(R0\)</span> or <span class="math inline">\(r\)</span>, which are measures of <strong>fitness</strong>?
-Try graphing your results as age vs. change in <span class="math inline">\(R0\)</span>. What you should see is that changes early in life matter more than changes later in life.</p>
+<p>Next, you can calculate age-specific <strong>survival probability</strong>. Note that this is different from <span class="math inline">\(l_x\)</span>. Survival probability is simply the probability that an individual will survive its current age class. i.e., what is the probability that an individual currently aged 2 will survive to become age 3. In this case, the <span class="math inline">\(254/298 = 0.852\)</span>. The calculation is <span class="math inline">\(g_x = l_{x+1}/l_x\)</span>, or <span class="math inline">\(S_{x+1}/S_x\)</span>.</p>
+<p>From there you can calculate the age-specific <strong>probability of death</strong>. This is simply <span class="math inline">\(1 - g_x\)</span>: the probilities of survival and death <strong>must</strong> sum to 1.</p>
+<p>Now complete the remaining columns <span class="math inline">\(l_x m_x\)</span> and <span class="math inline">\(l_x m_x x\)</span>, and use them to calculate (a) <span class="math inline">\(R_0\)</span>; (b) <strong>Generation time</strong>; and an approximation of <span class="math inline">\(r\)</span>.</p>
+<p><strong>Tip</strong> You need to understand the use of the <code>$</code> symbol in Excel, and how to drag the selected area to place the formula in the column.</p>
+<p>Refer to the sheet “<em>Gotelli Table 3.1 example</em>” if you get stuck (click on the cells to see the formulae used there).</p>
+<div id="declining-force-of-selection" class="section level4 hasAnchor" number="9.2.1.1">
+<h4><span class="header-section-number">9.2.1.1</span> Declining force of selection<a href="life-tables-and-survivorship-types.html#declining-force-of-selection" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>The force of selection describes the relative importance of events that happen during the life course on population growth (e.g. <span class="math inline">\(R0\)</span> or <span class="math inline">\(r\)</span>).</p>
+<p>To investigate this you can do a computer “experiment” by altering reproduction at different ages. You can think of these as “what if?” experiments. e.g. “What if there was a mutation that added 1 to reproduction at age 0-1, or 1-2 etc.?”</p>
+<p>Specifically, we can look at the effect of this experiment on <span class="math inline">\(R0\)</span> or <span class="math inline">\(r\)</span>, which are measures of <strong>fitness</strong>?</p>
+<p>Try graphing your results as age vs. change in <span class="math inline">\(R0\)</span>.</p>
+<p>What you should see is that changes early in life matter more than changes later in life.</p>
+</div>
 </div>
 <div id="survivorship-curves" class="section level3 hasAnchor" number="9.2.2">
 <h3><span class="header-section-number">9.2.2</span> Survivorship curves<a href="life-tables-and-survivorship-types.html#survivorship-curves" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -461,7 +468,8 @@ Try graphing your results as age vs. change in <span class="math inline">\(R0\)
 <p>The aim here is to start to explore how different types of organisms with different ways of life (“<strong>life history strategies</strong>”) can have qualitatively different kinds of life tables. The most important thing to observe is the difference in <strong>survivorship curves</strong> (<span class="math inline">\(l_x\)</span>). These changes become very obvious when you plot the log-transformed survivorship against age.</p>
 <p>In the Excel worksheet, I have placed tables showing the fate of cohorts of three populations of different species. Your job now is to calculate the survivorship curve (<span class="math inline">\(l_x\)</span>) for these species, take the natural log (using formula <code>=LN(C3)</code>, for the first population, <code>=LN(J3)</code> for the second population etc.</p>
 <p>You should see that the graphs automatically fill up with lines. These show Type I, II and III survivorship.</p>
-<p>Next, calculate the age-specific probability of survival (<span class="math inline">\(g_x\)</span>) and of death (<span class="math inline">\(q_x\)</span>). This is the proportion of individuals that <strong>enter</strong> the age interval that <strong>do</strong> survive and <strong>do not</strong> survive to the end of the interval, respectively. You can calculate it as <code>=B4/B3</code> and <code>=1-(B4/B3)</code> for the first row of the first population. Plot graphs of these.</p>
+<p>Next, calculate the age-specific probability of survival (<span class="math inline">\(g_x\)</span>) and of death (<span class="math inline">\(q_x\)</span>). This is the proportion of individuals that <strong>enter</strong> the age interval that <strong>do</strong> survive and <strong>do not</strong> survive to the end of the interval, respectively. You can calculate it as <code>=B4/B3</code> and <code>=1-(B4/B3)</code> for the first row of the first population.</p>
+<p>Plot graphs of these.</p>
 <p>Make sure that you are (1) able to “diagnose” survivorship type from looking at a graph of <span class="math inline">\(ln(l_x)\)</span> vs <span class="math inline">\(x\)</span> (2) able to sketch a cartoon of mortality trajectory if shown one of these survivorship curve.</p>
 
 </div>

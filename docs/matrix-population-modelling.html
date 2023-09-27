@@ -23,7 +23,7 @@
 <meta name="author" content="Owen R. Jones (Course Coordinator)" />
 
 
-<meta name="date" content="2023-09-18" />
+<meta name="date" content="2023-09-19" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -214,8 +214,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="7.1" data-path="basic-logistic-population-growth.html"><a href="basic-logistic-population-growth.html#background-3"><i class="fa fa-check"></i><b>7.1</b> Background</a></li>
 <li class="chapter" data-level="7.2" data-path="basic-logistic-population-growth.html"><a href="basic-logistic-population-growth.html#your-task-3"><i class="fa fa-check"></i><b>7.2</b> Your task</a></li>
-<li class="chapter" data-level="7.3" data-path="basic-logistic-population-growth.html"><a href="basic-logistic-population-growth.html#graph-1"><i class="fa fa-check"></i><b>7.3</b> Graph 1</a></li>
-<li class="chapter" data-level="7.4" data-path="basic-logistic-population-growth.html"><a href="basic-logistic-population-growth.html#graphs-2-3"><i class="fa fa-check"></i><b>7.4</b> Graphs 2 &amp; 3</a></li>
+<li class="chapter" data-level="7.3" data-path="basic-logistic-population-growth.html"><a href="basic-logistic-population-growth.html#graph-1-population-size-through-time"><i class="fa fa-check"></i><b>7.3</b> Graph 1: Population size through time</a></li>
+<li class="chapter" data-level="7.4" data-path="basic-logistic-population-growth.html"><a href="basic-logistic-population-growth.html#graph-2-per-capita-growth-rate-vs.-n"><i class="fa fa-check"></i><b>7.4</b> Graph 2: Per capita growth rate vs. N</a></li>
 <li class="chapter" data-level="7.5" data-path="basic-logistic-population-growth.html"><a href="basic-logistic-population-growth.html#additional-questions"><i class="fa fa-check"></i><b>7.5</b> Additional questions</a></li>
 </ul></li>
 <li class="chapter" data-level="8" data-path="deeper-into-logistic-growth.html"><a href="deeper-into-logistic-growth.html"><i class="fa fa-check"></i><b>8</b> Deeper into logistic growth</a>
@@ -432,20 +432,27 @@ investigate a biological question (mathematical modelling).
 </div>
 <div id="your-task-6" class="section level2 hasAnchor" number="10.2">
 <h2><span class="header-section-number">10.2</span> Your task<a href="matrix-population-modelling.html#your-task-6" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Think of an organism you would like to model the dynamics of. It could be a mammal, a bird, a fish, insect or tree … real or fantasy.</p>
-<p>Think about their life cycle, and draw it as a life cycle diagram with circles indicating the stages and arrows representing transitions between stages (e.g. growth) and reproduction. Next to the arrows, write values for survival probability and fecundity (number of babies) using your biological knowledge. It is fine to use “ballpark” estimates.</p>
+<ol style="list-style-type: decimal">
+<li><p>First, think of an organism you would like to model the dynamics of. It could be a mammal, a bird, a fish, insect or tree … real or fantasy.</p></li>
+<li><p>Think about their life cycle, and draw it as a life cycle diagram with circles indicating the stages and arrows representing transitions between stages (e.g. growth) and reproduction. Keep it simple if you can (max. 3 stages).</p></li>
+</ol>
 <p>Things to think about:</p>
 <ul>
 <li>Is it age based or stage based?</li>
-<li>How many stages are there?</li>
-<li>If it is stage, how are stages defined? E.g. by size, by development, etc.</li>
+<li>How many stages are there? Can you simplify (e.g. instead of age in years, you could use life stage)</li>
+<li>If using stages, how are stages defined? E.g. by size, by development, etc.</li>
 <li>Are the survival and fecundity higher in earlier or later life?</li>
-<li>Does the organism skip stages?</li>
-<li>Does the organism move backwards through the life cycle?</li>
+<li>Does the organism ever skip stages?</li>
+<li>Can the organism move “backwards” through the life cycle?</li>
 </ul>
+<ol start="3" style="list-style-type: decimal">
+<li>Next to the arrows, write values for survival probability and fecundity (number of babies) using your biological knowledge. It is fine to use “ballpark” estimates.</li>
+</ol>
 <p>Here’s an example for a fictional organism.</p>
 <p><img src="tempLifeCycleDiagram.png" /></p>
-<p>Now you can turn this diagram into a matrix population model by filling in a square of survival/fecundity values.</p>
+<ol start="4" style="list-style-type: decimal">
+<li>Now you can turn this diagram into a matrix population model by filling in a square of survival/fecundity values.</li>
+</ol>
 <p>The life cycle shown above looks like this:</p>
 <p><span class="math display">\[
 A = \begin{bmatrix}0.3&amp;8&amp;2 \\0.1&amp;0.5&amp;0 \\0&amp;0.4&amp;0.4 \\\end{bmatrix}

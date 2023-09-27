@@ -47,7 +47,7 @@ In this exercises you will be altering these parameters and observing the outcom
 2.	The per capita growth rate of the population in relation to population size
 3.	The relationship between population size at time t and at time t+1
 
-## Graph 1
+## Graph 1: Population size through time
 
 First – take a look at **Graph 1**. 
 
@@ -97,9 +97,9 @@ Many pest species and diseases have very high population growth rates. For examp
 -->
 
 
-## Graphs 2 & 3
+## Graph 2: Per capita growth rate vs. N
 
-Now let’s turn to **Graphs 2** and **3**, which show the relationship between per capita population growth rate ($r$) and $N$, and between $dN/dt$ and $N_t$ respectively.
+Now let’s turn to **Graphs 2**  which shows the relationship between per capita population growth rate ($r$) and $N$.
 
 In **Graph 2**, notice that the per capita growth rate ($r$) always declines linearly with population size (`N`). Where does it cross the x-axis line? Modify the carrying capacity (`K`) – what do you notice about the intercepts on the y and x axes?
 
@@ -107,12 +107,11 @@ In **Graph 2**, notice that the per capita growth rate ($r$) always declines lin
 The line describing per capita growth rate crosses the x-axis (population size) at $K$. i.e. if $K$ = 100, the line crosses at 100. If you change $K$, the intercept on the axis also changes accordingly. The line intercepts the axis at this point no matter what the population growth rate is.
 -->
 
-**Graph 3** is shaped like a parabola, starting with small values, increasing to a maximum, then declining to small values again. The peak of the parabola is at $K/2$ and the line crosses the y-axis at $0$ and $K$. Confirm to yourself, by changing the values for $r_m$ and $K$ that this is always the case.
-
-
 
 ```{block, type="do-something"}
-These three graphs are simply different ways to visualize the same model. It is important that you can make the connections between these graphs.
+These two graphs are simply different ways to visualize the same model. 
+
+It is important that you can make the connections between these graphs.
 
 How would the same plots look for regular exponential growth?
 ```

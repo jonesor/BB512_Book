@@ -27,18 +27,21 @@ Learning outcomes:
 
 ## Your task
 
-Think of an organism you would like to model the dynamics of. It could be a mammal, a bird, a fish, insect or tree ... real or fantasy. 
+1) First, think of an organism you would like to model the dynamics of. It could be a mammal, a bird, a fish, insect or tree ... real or fantasy.  
 
-Think about their life cycle, and draw it as a life cycle diagram with circles indicating the stages and arrows representing transitions between stages (e.g. growth) and reproduction. Next to the arrows, write values for survival probability and fecundity (number of babies) using your biological knowledge. It is fine to use "ballpark" estimates.
+2) Think about their life cycle, and draw it as a life cycle diagram with circles indicating the stages and arrows representing transitions between stages (e.g. growth) and reproduction. Keep it simple if you can (max. 3 stages).
 
 Things to think about:
 
 * Is it age based or stage based?
-* How many stages are there?
-* If it is stage, how are stages defined? E.g. by size, by development, etc.
+* How many stages are there? Can you simplify (e.g. instead of age in years, you could use life stage)
+* If using stages, how are stages defined? E.g. by size, by development, etc.
 * Are the survival and fecundity higher in earlier or later life?
-* Does the organism skip stages?
-* Does the organism move backwards through the life cycle?
+* Does the organism ever skip stages?
+* Can the organism move "backwards" through the life cycle?
+
+3) Next to the arrows, write values for survival probability and fecundity (number of babies) using your biological knowledge. It is fine to use "ballpark" estimates.
+
 
 
 Here's an example for a fictional organism.
@@ -84,7 +87,7 @@ rsvg::rsvg_png(tmp, "tempLifeCycleDiagram.png") # saved graph as png in current 
 ![ ](tempLifeCycleDiagram.png)
 
 
-Now you can turn this diagram into a matrix population model by filling in a square of survival/fecundity values. 
+4) Now you can turn this diagram into a matrix population model by filling in a square of survival/fecundity values. 
 
 The life cycle shown above looks like this:
 

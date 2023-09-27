@@ -6,7 +6,6 @@ The geometric growth model is a simple model of unconstrained population growth.
 
 Geometric growth is often used interchangeably with exponential growth, but there is an important distinction. Exponential growth pertains to "continuous time" scenarios, whereas geometric growth involves models where the population changes in discrete time steps, such as yearly intervals.
 
-
 The key quantities involved in this model are as follows, although it's important to note that different books or sources may use varying symbols:
 
 

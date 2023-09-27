@@ -23,7 +23,7 @@
 <meta name="author" content="Owen R. Jones (Course Coordinator)" />
 
 
-<meta name="date" content="2023-09-18" />
+<meta name="date" content="2023-09-19" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -214,8 +214,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="7.1" data-path="basic-logistic-population-growth.html"><a href="basic-logistic-population-growth.html#background-3"><i class="fa fa-check"></i><b>7.1</b> Background</a></li>
 <li class="chapter" data-level="7.2" data-path="basic-logistic-population-growth.html"><a href="basic-logistic-population-growth.html#your-task-3"><i class="fa fa-check"></i><b>7.2</b> Your task</a></li>
-<li class="chapter" data-level="7.3" data-path="basic-logistic-population-growth.html"><a href="basic-logistic-population-growth.html#graph-1"><i class="fa fa-check"></i><b>7.3</b> Graph 1</a></li>
-<li class="chapter" data-level="7.4" data-path="basic-logistic-population-growth.html"><a href="basic-logistic-population-growth.html#graphs-2-3"><i class="fa fa-check"></i><b>7.4</b> Graphs 2 &amp; 3</a></li>
+<li class="chapter" data-level="7.3" data-path="basic-logistic-population-growth.html"><a href="basic-logistic-population-growth.html#graph-1-population-size-through-time"><i class="fa fa-check"></i><b>7.3</b> Graph 1: Population size through time</a></li>
+<li class="chapter" data-level="7.4" data-path="basic-logistic-population-growth.html"><a href="basic-logistic-population-growth.html#graph-2-per-capita-growth-rate-vs.-n"><i class="fa fa-check"></i><b>7.4</b> Graph 2: Per capita growth rate vs. N</a></li>
 <li class="chapter" data-level="7.5" data-path="basic-logistic-population-growth.html"><a href="basic-logistic-population-growth.html#additional-questions"><i class="fa fa-check"></i><b>7.5</b> Additional questions</a></li>
 </ul></li>
 <li class="chapter" data-level="8" data-path="deeper-into-logistic-growth.html"><a href="deeper-into-logistic-growth.html"><i class="fa fa-check"></i><b>8</b> Deeper into logistic growth</a>
@@ -454,8 +454,8 @@ During the exercise you only need to edit the pink block.</p>
 <li>The relationship between population size at time t and at time t+1</li>
 </ol>
 </div>
-<div id="graph-1" class="section level2 hasAnchor" number="7.3">
-<h2><span class="header-section-number">7.3</span> Graph 1<a href="basic-logistic-population-growth.html#graph-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="graph-1-population-size-through-time" class="section level2 hasAnchor" number="7.3">
+<h2><span class="header-section-number">7.3</span> Graph 1: Population size through time<a href="basic-logistic-population-growth.html#graph-1-population-size-through-time" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>First – take a look at <strong>Graph 1</strong>.</p>
 <ul>
 <li>What is the maximum population size?</li>
@@ -501,18 +501,20 @@ When `r_m` is high ($>$ 2.57) the population dynamics become extremely hard (imp
 Many pest species and diseases have very high population growth rates. For example, locusts, or measles. This is one reason why it is hard to predict when the next pest/disease outbreak will happen
 -->
 </div>
-<div id="graphs-2-3" class="section level2 hasAnchor" number="7.4">
-<h2><span class="header-section-number">7.4</span> Graphs 2 &amp; 3<a href="basic-logistic-population-growth.html#graphs-2-3" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Now let’s turn to <strong>Graphs 2</strong> and <strong>3</strong>, which show the relationship between per capita population growth rate (<span class="math inline">\(r\)</span>) and <span class="math inline">\(N\)</span>, and between <span class="math inline">\(dN/dt\)</span> and <span class="math inline">\(N_t\)</span> respectively.</p>
+<div id="graph-2-per-capita-growth-rate-vs.-n" class="section level2 hasAnchor" number="7.4">
+<h2><span class="header-section-number">7.4</span> Graph 2: Per capita growth rate vs. N<a href="basic-logistic-population-growth.html#graph-2-per-capita-growth-rate-vs.-n" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Now let’s turn to <strong>Graphs 2</strong> which shows the relationship between per capita population growth rate (<span class="math inline">\(r\)</span>) and <span class="math inline">\(N\)</span>.</p>
 <p>In <strong>Graph 2</strong>, notice that the per capita growth rate (<span class="math inline">\(r\)</span>) always declines linearly with population size (<code>N</code>). Where does it cross the x-axis line? Modify the carrying capacity (<code>K</code>) – what do you notice about the intercepts on the y and x axes?</p>
 <!--
 The line describing per capita growth rate crosses the x-axis (population size) at $K$. i.e. if $K$ = 100, the line crosses at 100. If you change $K$, the intercept on the axis also changes accordingly. The line intercepts the axis at this point no matter what the population growth rate is.
 -->
-<p><strong>Graph 3</strong> is shaped like a parabola, starting with small values, increasing to a maximum, then declining to small values again. The peak of the parabola is at <span class="math inline">\(K/2\)</span> and the line crosses the y-axis at <span class="math inline">\(0\)</span> and <span class="math inline">\(K\)</span>. Confirm to yourself, by changing the values for <span class="math inline">\(r_m\)</span> and <span class="math inline">\(K\)</span> that this is always the case.</p>
 <div class="do-something">
 <p>
-These three graphs are simply different ways to visualize the same
-model. It is important that you can make the connections between these
+These two graphs are simply different ways to visualize the same
+model.
+</p>
+<p>
+It is important that you can make the connections between these
 graphs.
 </p>
 <p>
