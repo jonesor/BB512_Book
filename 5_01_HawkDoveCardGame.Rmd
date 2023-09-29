@@ -51,43 +51,49 @@ The experimental hypothesis for this exercise could be that the dove strategy wi
 
 ### GAME ONE
 
+0. On a piece of paper, or in Excel (you could use this file [here](https://www.dropbox.com/s/48lypfd6o0hi46e/Table_2_Group_behavior.xlsx?dl=1)), use a form to collect your results. It should have enough rows for 15 rounds of the game and look like this (where I include an example in the first row):
+
+| Round  |player 1 card   | player 2 card  | P1 benefit  | P2 benefit |
+|---|---|---|---|---|
+| 1  | hawk   | hawk  | 0.5   | 0.5   |
+| 2  |...   |...   |...   | ...  |
+| ...  |...   |  ... |...   |...   |
+| 15  |...   |...   | ...  |...   |
+
 1. Collect a set of two game cards.
 
 2. Take out the cards labeled hawk and dove and place them face down on the table or conceal them in your hands.
 
 3. When the instructor gives the signal, show either of the two cards to the student sitting across from you. Try to strategise how to receive the highest benefit from every interaction, but do not communicate with your partner.
 
-4. In the Single Partner Recording Table (Table 2, [download](https://www.dropbox.com/s/48lypfd6o0hi46e/Table_2_Group_behavior.xlsx?dl=1)) provided by your instructor, note the cards played and the benefit you received for that round.
+4. In each round, note the cards played and the benefit recieved by each player. Also do it here on [this Google Form](https://forms.gle/3fjBGF7xVAYRQ5hXA).
 
 5. Repeat the interaction by showing cards to the same partner and determining the benefit,  on your instructor's signal, for a total of 15 rounds.
 
 6. At the end of those 15 rounds, the student with the highest total benefit value is determined to be the "winner", or the most fit.
 
-7. As a class, determine the percentages of hawks and doves played as well as the average benefit received for each round, using this formula: *Class average benefit = (sum total benefit)/(number of players)*
+7. As a class, I will determine the percentages of hawks and doves played as well as the average benefit received for each round, using this formula: *Class average benefit = (sum total benefit)/(number of players)*
 
 ### GAME TWO
 
-1. For the second game, you should find a new partner for each of the 15 rounds (if possible).
+1. For the second game, you should find a new partner for EACH of the 15 rounds (if possible).
 
-2. Continue playing for 15 rounds or until students end up back in their starting positions, recording the data in the Multiple Partner Recording Table (Table 3, [download](https://www.dropbox.com/s/3tjkck3kmpek6xc/Table_3_Group_behavior.xlsx?dl=1)) given to you by your instructor.
+2. Continue playing for 15 rounds or until students end up back in their starting positions, recording the data as before in  [Excel](https://www.dropbox.com/s/3tjkck3kmpek6xc/Table_3_Group_behavior.xlsx?dl=1)) or on paper. Also record the results on a Google Form [here](https://forms.gle/F9YhYcTWRvoF4djt7).
 
-3. For each round, determine the percentages of hawks and doves played that round and the average benefit received, again using the formula: *Class average benefit = (sum total benefit)/(number of players)*
+3. For each round, I will determine the percentages of hawks and doves played that round and the average benefit received, again using the formula: *Class average benefit = (sum total benefit)/(number of players)*
 
 
 ## SUMMARISE RESULTS
 
-For both the single partner hawk-dove game and the multiple partners hawk-dove game, use the whole class data to plot the percentages as two separate lines - one for the percentage of hawks, and one for the percentage of doves, for each of the 15 rounds.
+For both the single partner hawk-dove game and the multiple partners hawk-dove game, I will use the whole class data to plot the percentages as two separate lines - one for the percentage of hawks, and one for the percentage of doves, for each of the 15 rounds.
 
-Take note of whether the cards played changed as more rounds were played.
+We will take note of whether the cards played changed as more rounds were played.
 
-Consider which type of strategy would most likely evolve in a setting where partners interact repeatedly.
+We will consider which type of strategy would most likely evolve in a setting where partners interact repeatedly.
 
-Then, note which tactic might be beneficial for a species that relies on cooperation.
+Think about which tactic might be beneficial for a species that relies on cooperation.
 
 Discuss as a class what would likely happen if you increased or decreased the relative value of the benefits you receive.
-
-
-If we have time: Manipulate the values for B and C to see if you can find the point at which values of B and C would render the hawk strategy no longer effective (this would be the point when there is no benefit to choosing the hawk strategy over always choosing the dove strategy).
 
 
 ## Acknowldgement
