@@ -2,7 +2,7 @@
 
 In this section you will find the solutions and/or main take home messages of the practical exercises used in this course.
 
-## Solutions: Randomness and perfection
+## Solutions: The blind watchmaker
 
 *	_What happens if selection is turned OFF?_
 
@@ -53,15 +53,6 @@ No, individuals' genotypes are fixed. The change in the population occurs becaus
 Increasing the amount of variation in offspring will tend to speed up adaptation. However, there are limits: too much variation can cause maladaptation of offspring. For example, if a parent is well-adapted (perfectly camouflaged), too much variation in offspring could lead to some offspring being poorly-camouflaged and therefore vulnerable to predation. 
 
 
-
-## Solutions: The legend of Ambalapuzha
-
-You can find the completed Excel file [here](https://www.dropbox.com/s/ybe5qhmfltuhoyv/RiceOnAChessboard_completed.xlsx?dl=1).
-
-Take home messages:
-
-* Exponential/geometric growth is extremely powerful and can very quickly lead to very large numbers.
-
 ## Solutions: Geometric growth
 
 You can find the completed Excel file [here](https://www.dropbox.com/s/sfxu1lbrxyqt462/GeometricGrowth%20-%20complete.xlsx?dl=1). 
@@ -73,35 +64,6 @@ Take home messages:
 * Exponential growth is unlimited. This is unrealistic because very soon competition (what Darwin called "The struggle for existence") will soon take effect as the population runs out of space or resources. Nevertheless, the model is useful and realistic for some limited situations (e.g. early population growth for new invaders)
 * Growth trajectories can be plotted on the *natural scale* or on a *log scale*. Exponential growth (or decline) plotted on a log scale is a straight line. This could be useful to infer biological processes (or the lack of them). For example, exponential growth in population size indicates that there are no forces currently limiting the population (e.g. predators/competition/management actions).
 * The slope of the population growth on the natural log scale can tell you what $\lambda$ is. The "opposite" of *ln* is *exp*, so you can ask Excel to `=EXP(slope).
-
-## Solutions: From population biology to fitness
-
-The matrix model with a trade off (increased juvenile survival, but reduced old adult survival) looks like this.
-
-    A3 <- matrix(c(0.00, 5.00, 1.00, 
-                   0.11, 0.80, 0.00, 
-                   0.00, 0.10, 0.20), 
-                byrow = TRUE, nrow = 3)
-    
-    eigs(A3)$lambda
-
-We can compare the $\lambda$ value from this model to the original one to ask ourselves whether the large cost is worth paying for the small benefit. It turns out that it is. You can then ask how MUCH cost would be worth bearing, by repeating the exercise and slowly reducing old-adult survival until you reach the original $\lambda$ value.
-
-You should find that the cost can be huge, and still worth bearing. In fact, you could reduce old adult survival to 0 and it is still worth doing! You can even reduce old-age adult reproduction without much effect on fitness.
-
-HOWEVER, changes to prime age adults are much more important. You can only reduce survival to about 0.76 (from 0.8) before the cost is not worth bearing (population growth rate falls below that of the first baseline model). 
-
-Thus, old-age costs are "worth it" while prime age costs are much more important. This finding is central to the evolution of senescence and life span, which we will cover later in the course.
-
-## Solutions: How many eggs should a bird lay?
-
-You can find a completed Excel spreadsheet [here](https://www.dropbox.com/s/tcpxmdfvm35jzgr/How%20many%20eggs%20-%20answers.xlsx?dl=1).
-
-The take-home message is that the trade-off between number of eggs and juvenile survival leads to an optimum number of eggs required to maximise reproductive success (i.e. number of surviving chicks).
-
-You can move this optimum if the trade-off is changed. For example, if you increase survival of the chicks from larger clutches, then the optimum number of eggs will increase.
-
-This fact reminds us that the environment (e.g. predation risk and resource abundance) will be an important factor in determining the evolution of life history parameters (like average number of babies). 
 
 
 
@@ -119,6 +81,8 @@ Take home messages:
 * We can repeatedly simulate a population projection (e.g. in R, or more laboriously in Excel) to get a feel for the likely fate of a population. E.g. "what percent of the projections show extinction within 50 years?".
 * We can use this relatively simple and "unrealistic" model to nevertheless get an intuition about general trends in population dynamics and extinction risk.
 * Extinction probability increases as (i) initial population size decreases; (ii) variance increases; (iii) growth rates decrease; (iv) the time frame increases.
+
+
 
 
 ## Solutions: Basic logistic population growth
@@ -171,49 +135,15 @@ When $r_m$ is high ($>2.57$) the population dynamics become extremely hard (impo
 
 Many pest species and diseases have very high population growth rates. For example, locusts, or measles. This is one reason why it is hard to predict when the next pest/disease outbreak will happen
 
-**Now let’s turn to Graphs 2 and 3**
+**Now let’s turn to Graph 2**
 
 *In graph 2, notice that the per capita growth rate always declines linearly with population size ($N$). Where does it cross the x-axis line? Modify the carrying capacity ($K$) – what do you notice?*
 
-The line describing per capita growth rate crosses the x-axis (population size) at $K$. i.e. if $K = 100$, the line crosses at 100. If you change $K$, the intercept on the axis also changes accordingly. The line intercepts the axis at this point no matter what the population growth rate is.
-
-*Graph 3 is shaped like a parabola, starting with small values, increasing to a maximum, then declining to small values again. The peak of the parabola is at $K/2$ and the line crosses the y-axis at $0$ and $K$. Confirm to yourself, by changing the values for $r_m$ and $K$ that this is always the case.*
-
-The pattern remains whatever the values of $K$, and $r_m$
+The line describing per capita growth rate crosses the x-axis (population size) at $K$. i.e. if $K = 100$, the line crosses at 100. If you change $K$, the intercept on the axis also changes accordingly. The line intercepts the x-axis at this point no matter what the population growth rate is. It intercepts the y-axis at $r_m$.
 
 *How would the same plots look for regular exponential growth?*
 
 The equivalent plot (for Graph 2) for exponential growth would be a horizontal line - because population growth rate does NOT depend on population size.
-
-## Solutions: Trade-offs and the force of selection
-
-*Simulate this by adding 1 to fertility (mx) in year 1 (the benefit) but reducing survival to 0 (all die) at age 25 (the cost). What is the fitness of this strategy?*
-  
-Fitness (R0) would be 50.76 (compared to 49.81).
-
-*By setting survival to 0 at other ages, determine how many years of life could be lost before this cost is no longer worth bearing. Is this surprising?*
-  
-You could “kill” the species at 18, losing 8 years of life, before the new strategy of a small increase in fertility at the expense of years of life at the end of life becomes unfavourable. In other words, a cost of losing 8 yrs of life is worth bearing if the benefit is an extra baby in year 1.
-
-
-*Now reset everything (mx =10; survival = 0.8). Recall what fitness was when you added 1 to mx at age 1 (R0=50.811). 
-If, instead of adding to mx at age 1 you were to increase mx at age 25, how much would you need to increase it to to reach this figure?* 
-
-At age 25 you would need to increase Fertility from 10 to 222 to reach the same level of improvement in fitness as increasing Fertility from 10 to 11 at age 1.
-
-*What about at age 20?*   10 to 80
-*Age 15?* 10 to 33
-*Age 10?*  10 to 18
-*Age 5?* 10 to 13
-
-*What do you notice?*
-
-You should notice that changes made at younger ages have a bigger effect than those at older ages. I have plotted this to the right. The plot shows the amount of increase in fertility that would be required to raise fitness (R0) from 49.81 to >50.81 at ages 1 through to 25 (i.e. the figures you estimated above). You can see that you only need to change fertility a little bit at young ages, but you would need to make BIG changes at older ages. 
-
-*Reset everything again (mx =10; survival = 0.8). Set mx from age 15 onwards to be 0. Now alter survival rate after this point (at ages 15-25). What happens to fitness?*
-  
-You should notice that any changes you make to survival AFTER reproduction has been completed will have no effect on fitness. In other words evolution “doesn’t care about you” after you have finished with reproduction.
-
 
 
 ## Solutions: Deeper into logistic growth
@@ -249,9 +179,7 @@ In logistic growth, the per capita growth rate declines as population size incre
 
 Time lagged density dependence results in oscillations. Therefore if we see oscillations in dynamics it could be due to a particular $r_m$ value or lagged density dependence.
 
-### Cobweb diagram
-
-Cobweb diagrams and bifurcation plots offer another way of visualising dynamics of populations (see the article about Chaos, by Mathiopoulos).
+### Chaotic dynamics
 
 Chaotic dynamics are deterministic in the sense that if you have the same initial conditions you will get the same results (dynamics). However, small changes in any parameters ($N_0$, $K$, or $r_m$) will lead to very different dynamics - so in that sense, because of measurement error, the population dynamics would be very hard to predict in practice.
 
@@ -266,6 +194,7 @@ The completed Excel spreadsheet is [here](https://www.dropbox.com/s/j8uv2wf7nz0y
 
 
 
+
 ## Solutions: Matrix population modeling
 
 The main take home messages for this class are that you should: 
@@ -275,6 +204,49 @@ The main take home messages for this class are that you should:
 (4) understand how population projection works, and to therefore interpret a figure or description showing a population projection.
 (5) understand what an elasticity matrix tells us (it tells us the relative importance of the transitions for population growth)
 (6) understand the concept of doing an LTRE to investigate management options.
+
+
+
+## Solutions: How many eggs should a bird lay?
+
+You can find a completed Excel spreadsheet [here](https://www.dropbox.com/s/tcpxmdfvm35jzgr/How%20many%20eggs%20-%20answers.xlsx?dl=1).
+
+The take-home message is that the trade-off between number of eggs and juvenile survival leads to an optimum number of eggs required to maximise reproductive success (i.e. number of surviving chicks).
+
+You can move this optimum if the trade-off is changed. For example, if you increase survival of the chicks from larger clutches, then the optimum number of eggs will increase.
+
+This fact reminds us that the environment (e.g. predation risk and resource abundance) will be an important factor in determining the evolution of life history parameters (like average number of babies). 
+
+
+
+## Solutions: Trade-offs and the force of selection
+
+*Simulate this by adding 1 to fertility (mx) in year 1 (the benefit) but reducing survival to 0 (all die) at age 25 (the cost). What is the fitness of this strategy?*
+  
+Fitness (R0) would be 50.76 (compared to 49.81).
+
+*By setting survival to 0 at other ages, determine how many years of life could be lost before this cost is no longer worth bearing. Is this surprising?*
+  
+You could “kill” the species at 18, losing 8 years of life, before the new strategy of a small increase in fertility at the expense of years of life at the end of life becomes unfavourable. In other words, a cost of losing 8 yrs of life is worth bearing if the benefit is an extra baby in year 1.
+
+
+*Now reset everything (mx =10; survival = 0.8). Recall what fitness was when you added 1 to mx at age 1 (R0=50.811). 
+If, instead of adding to mx at age 1 you were to increase mx at age 25, how much would you need to increase it to to reach this figure?* 
+
+At age 25 you would need to increase Fertility from 10 to 222 to reach the same level of improvement in fitness as increasing Fertility from 10 to 11 at age 1.
+
+*What about at age 20?*   10 to 80
+*Age 15?* 10 to 33
+*Age 10?*  10 to 18
+*Age 5?* 10 to 13
+
+*What do you notice?*
+
+You should notice that changes made at younger ages have a bigger effect than those at older ages. I have plotted this to the right. The plot shows the amount of increase in fertility that would be required to raise fitness (R0) from 49.81 to >50.81 at ages 1 through to 25 (i.e. the figures you estimated above). You can see that you only need to change fertility a little bit at young ages, but you would need to make BIG changes at older ages. 
+
+*Reset everything again (mx =10; survival = 0.8). Set mx from age 15 onwards to be 0. Now alter survival rate after this point (at ages 15-25). What happens to fitness?*
+  
+You should notice that any changes you make to survival AFTER reproduction has been completed will have no effect on fitness. In other words evolution “doesn’t care about you” after you have finished with reproduction.
 
 ## Solutions: Hardy-Weinberg equilibrium
 
@@ -325,6 +297,8 @@ To determine $q$, which is the frequency of the recessive allele in the populati
 
 Now then, to answer our questions. First, what is the percentage of butterflies in the population that are heterozygous? Well, that would be $2pq$ so the answer is $2 \times 0.37\times 0.63 = 0.47$. Second, what is the frequency of homozygous dominant individuals? That would be $p^2$ or $0.37^2 = 0.14$.
 
+
+
 ## Solutions: Neutral or adaptive evolution in humans
 
 The take home message here is that whether traits are adaptive or neutral depends on the environment. 
@@ -338,6 +312,9 @@ Example traits that evolve via neutral evolution include fingerprint structure a
 Traits like muscle strength, running speed may have been important for fitness when they helped our ancestors obtain food. In those environments, they would have been under selection and therefore evolve via adaptive evolution. In more modern times, these selection pressures are weaker.
 
 
+
+
+
 ## Solutions: Lotka-Volterra competition
 
 You can find a completed Excel spreadsheet [here](https://www.dropbox.com/s/q1qoqxhnm82uugw/9.%20LV%20Competition.xlsx?dl=1).
@@ -348,8 +325,41 @@ The answers to the questions are [here](https://www.dropbox.com/s/oz2c10bmyf8t7s
 ## Solutions: Lotka-Volterra predator-prey dynamics
 
 
-<!-- Solutions will be posted soon! -->
 You can find a completed Excel spreadsheet [here](https://www.dropbox.com/s/wet7brtgxywdqi5/10.%20Pred-PreyDynamics.xlsx?dl=1).
 
 The answers to the questions are [here](https://www.dropbox.com/s/mt43nvqu7cjif69/10.%20Answers%20to%20Pred-Prey%20exercise.pdf?dl=1).
+
+
+
+## Solutions: The legend of Ambalapuzha
+
+You can find the completed Excel file [here](https://www.dropbox.com/s/ybe5qhmfltuhoyv/RiceOnAChessboard_completed.xlsx?dl=1).
+
+Take home messages:
+
+* Exponential/geometric growth is extremely powerful and can very quickly lead to very large numbers.
+
+
+
+## Solutions: From population biology to fitness
+
+The matrix model with a trade off (increased juvenile survival, but reduced old adult survival) looks like this.
+
+    A3 <- matrix(c(0.00, 5.00, 1.00, 
+                   0.11, 0.80, 0.00, 
+                   0.00, 0.10, 0.20), 
+                byrow = TRUE, nrow = 3)
+    
+    eigs(A3)$lambda
+
+We can compare the $\lambda$ value from this model to the original one to ask ourselves whether the large cost is worth paying for the small benefit. It turns out that it is. You can then ask how MUCH cost would be worth bearing, by repeating the exercise and slowly reducing old-adult survival until you reach the original $\lambda$ value.
+
+You should find that the cost can be huge, and still worth bearing. In fact, you could reduce old adult survival to 0 and it is still worth doing! You can even reduce old-age adult reproduction without much effect on fitness.
+
+HOWEVER, changes to prime age adults are much more important. You can only reduce survival to about 0.76 (from 0.8) before the cost is not worth bearing (population growth rate falls below that of the first baseline model). 
+
+Thus, old-age costs are "worth it" while prime age costs are much more important. This finding is central to the evolution of senescence and life span, which we will cover later in the course.
+
+
+Cobweb diagrams and bifurcation plots offer another way of visualising dynamics of populations (see the article about Chaos, by Mathiopoulos).
 
