@@ -1,0 +1,162 @@
+# The Gene Pool Model
+
+## Background
+
+Evolutionary biology helps us understand how life's genetic makeup changes over time. One important idea is the "gene pool," which contains all the different versions of genes within a group of organisms. These genes determine traits and characteristics. To grasp how genes evolve, we need to study how their frequencies change in a population.
+
+In this practical, we'll use the R programming language to simulate how genes change in a population over generations. By changing some factors, you'll see how genetic diversity shifts in different situations. This exercise will deepen your understanding of evolution and give you practical skills to explore real genetic questions. So, let's start this journey into the world of genes and evolution, using code and data to learn how it all works.
+
+
+## A simple model.
+
+First we can set the initial population size to be very large, say 5000.
+
+```{r}
+init_pop_size <- 5000
+```
+
+
+There are two alleles (gene variants) per individual (one allele came from the father, and one from the mother).
+
+Therefore the gene pool contains 2 x N alleles (in this case, 10,000 alleles).
+
+```{r}
+pool_size <- 2 * init_pop_size
+```
+
+Initial allele frequency
+
+
+```{r}
+initial_frequency_A <- 0.5351
+initial_frequency_a <- 1 - initial_frequency_A
+```
+
+We can work out the number of A and a like this:
+
+```{r}
+number_A <- 2 * round(initial_frequency_A * init_pop_size)
+number_a <- 2 * round(initial_frequency_a * init_pop_size)
+```
+
+
+And following this, the gene pool can be filled like this. 
+
+```{r}
+gene_pool <- c(rep("A", number_A), rep("a", number_a))
+table(gene_pool)
+```
+
+
+## Projecting allele frequency through time
+
+Lets assume the population size remains constant at `N = 1000`.
+
+During the next time step (i.e. 1 generation), the individuals in the population mate with each other randomly. We can use the `sample` function to simulate this.
+
+This code is saying "**sample, from the gene pool, 1000 individuals**".
+
+```{r}
+new_gene_pool <- sample(gene_pool, 1000, replace = TRUE)
+```
+
+Let's look at the new gene pool. It should be similar, but probably not exactly the same as the initial gene pool.
+
+```{r}
+table(new_gene_pool)
+```
+
+The reason it is (probably) not identical, is that it is a random sample from the gene pool, not simply a carbon copy.
+
+To simulate the passage of time, we need to do this sampling procedure many times...
+
+We can do this using a loop in R. 
+
+We first set up the gene pool with an initial population size, an initial allele frequency for allele A.
+
+```{r}
+# Set initial population size
+init_pop_size <- 1000
+
+# Set initial allele frequency
+init_allele_freq_A <- 0.5
+```
+
+Then we calculate the number of each allele based on this frequency, and generate the gene pool.
+
+```{r}
+number_A <- 2 * init_allele_freq_A * init_pop_size
+number_a <- 2 * init_pop_size - number_A
+
+init_gene_pool <- c(rep("A", number_A), rep("a", number_a))
+```
+
+We can summarise the gene pool with a table.
+
+```{r}
+(gene_pool_table <- table(init_gene_pool))
+```
+
+From this table we can calculate the frequency of allele A to ensure that it matches what we expect. Here I am calling it the `init_allele_freq_A` (initial allele frequency for A).
+
+```{r}
+(init_allele_freq_A <- gene_pool_table[2] / sum(gene_pool_table))
+```
+
+In our loop, we will repeat this process many times (one time per generation). Each time we go through the loop, we sample alleles from the *old* gene pool from time $n$ to create a *new* gene pool for time $n+1$. And each time through the loop we make sure to calculate the allele frequency for A so we can track how it changes through time.
+
+Let's set up a simulation that runs for 50 generations.
+You can cut-paste this code, which is a complete gene-pool model.
+
+```{r}
+# Set number of generations
+n_gen <- 50
+pop_size <- 100
+
+# Set up an empty vector of length n_gen to contain results
+allele_freq_A <- rep(NA, n_gen)
+
+# Put in an initial value for frequency of A
+allele_freq_A[1] <- 0.5
+
+# Establish the initial gene pool and name it gene_pool_time_n
+# This part looks complicated, but I am just condensing the code from above into 1 line.
+gene_pool_time_n <- c(rep("A", round(2 * allele_freq_A[1] * pop_size)), 
+                    rep("a", round(2 * (1-allele_freq_A[1]) * pop_size)))
+
+for (i in 2:n_gen) {
+  gene_pool_time_n_plus_1 <- sample(gene_pool_time_n, pop_size * 2, replace = TRUE)
+  gene_pool_table <- table(gene_pool_time_n_plus_1)
+  allele_freq_A[i] <- gene_pool_table[2] / sum(gene_pool_table)
+
+  # Replace the old gene pool with the new one.
+  gene_pool_time_n <- gene_pool_time_n_plus_1
+}
+```
+
+
+Now we can plot this result.
+
+```{r}
+allele_freq_A[is.na(allele_freq_A)] <- 0
+plot(1:n_gen, allele_freq_A, type = "l", xlab = "time", ylim = c(0, 1))
+```
+
+## What next?
+
+Well done for making it this far. R programming is not for the fainthearted.
+
+Next up, I want you to take the code, and try modifying the parameters to explore what would happen in different situations.
+
+### Situation 1: small population size
+
+
+
+
+### Situation 2: a genetic bottle neck
+
+For this, we start with a large population size, but then impose a bottle neck.
+We can add a line of code to the model to simulate that.
+
+
+
