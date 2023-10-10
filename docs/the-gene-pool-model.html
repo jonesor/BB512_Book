@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>16 Lotka-Volterra competition | BB512 - Population Biology and Evolution</title>
+  <title>14 The Gene Pool Model | BB512 - Population Biology and Evolution</title>
   <meta name="description" content="Course book for BB512 at the Biology Department, University of Southern Denmark" />
   <meta name="generator" content="bookdown 0.35 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="16 Lotka-Volterra competition | BB512 - Population Biology and Evolution" />
+  <meta property="og:title" content="14 The Gene Pool Model | BB512 - Population Biology and Evolution" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="Course book for BB512 at the Biology Department, University of Southern Denmark" />
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="16 Lotka-Volterra competition | BB512 - Population Biology and Evolution" />
+  <meta name="twitter:title" content="14 The Gene Pool Model | BB512 - Population Biology and Evolution" />
   
   <meta name="twitter:description" content="Course book for BB512 at the Biology Department, University of Southern Denmark" />
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="neutral-or-adaptive-evolution-in-humans.html"/>
-<link rel="next" href="lotka-volterra-predator-prey-dynamics.html"/>
+<link rel="prev" href="hardy-weinberg-equilibrium.html"/>
+<link rel="next" href="neutral-or-adaptive-evolution-in-humans.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -410,45 +410,109 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="lotka-volterra-competition" class="section level1 hasAnchor" number="16">
-<h1><span class="header-section-number">16</span> Lotka-Volterra competition<a href="lotka-volterra-competition.html#lotka-volterra-competition" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p>The Lotka-Volterra competition model is fundamental to ecological dynamics, particularly in the study of competition between species. The model describes the dynamics of two competing species in a shared environment. The model assumes that both species have similar resource requirements and compete for limited resources such as food, space, or nesting sites. It explores how the population sizes of the competing species change over time, taking into account their interaction strengths and carrying capacities.</p>
-<p>One of the key principles derived from the Lotka-Volterra competition model is the competitive exclusion principle, which states that two species with identical ecological niches cannot coexist indefinitely in a stable environment. Instead, the more competitive species will eventually outcompete and exclude the other from the ecosystem. Understanding the dynamics of interspecific competition through the Lotka-Volterra model provides valuable insights into community structure, species coexistence, and the mechanisms that influence the composition and stability of ecological communities.</p>
-<p>The general idea is that coexistence can occur if each species limits its own population growth rate more than it limits the growth rate of the other species. If the species’ niches overlap too much, one species will competitively exclude the other (i.e. forces the other to extinction). The outcome of the competition between species depends on their <em>competition coefficients</em> and <em>carrying capacities</em>, (and sometimes their population sizes). The models include both INTER- and INTRA-specific competition.</p>
-<div class="do-something">
-<p>
-Learning outcomes:
-</p>
-<ul>
-<li>
-Competence in constructing an Excel-based population model.
-</li>
-<li>
-Understanding how the Lotka-Volterra competition model works.
-</li>
-<li>
-Understanding the <span class="math inline"><span class="math inline">\(\alpha\)</span></span> and
-<span class="math inline"><span class="math inline">\(\beta\)</span></span> competition
-coefficients.
-</li>
-</ul>
+<div id="the-gene-pool-model" class="section level1 hasAnchor" number="14">
+<h1><span class="header-section-number">14</span> The Gene Pool Model<a href="the-gene-pool-model.html#the-gene-pool-model" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="background-10" class="section level2 hasAnchor" number="14.1">
+<h2><span class="header-section-number">14.1</span> Background<a href="the-gene-pool-model.html#background-10" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Evolutionary biology helps us understand how life’s genetic makeup changes over time. One important idea is the “gene pool,” which contains all the different versions of genes within a group of organisms. These genes determine traits and characteristics. To grasp how genes evolve, we need to study how their frequencies change in a population.</p>
+<p>In this practical, we’ll use the R programming language to simulate how genes change in a population over generations. By changing some factors, you’ll see how genetic diversity shifts in different situations. This exercise will deepen your understanding of evolution and give you practical skills to explore real genetic questions. So, let’s start this journey into the world of genes and evolution, using code and data to learn how it all works.</p>
 </div>
-<div id="your-task-11" class="section level2 hasAnchor" number="16.1">
-<h2><span class="header-section-number">16.1</span> Your task<a href="lotka-volterra-competition.html#your-task-11" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>In this class (over TWO sessions) you will be working from a PDF available <a href="https://www.dropbox.com/s/oukr39oq0rsn8il/9.%20Interspecific%20Competition%20and%20Competitive%20Exclusion.pdf?dl=1">here</a> to make a model exploring this idea.</p>
-<p>This PDF walks you through the creation of an Excel spreadsheet exploring interspecific competition and competitive exclusion using the Lotka-Volterra model.</p>
-<ul>
-<li>Create the Excel spreadsheet by following the instructions in the PDF</li>
-<li>Use the Lotka-Volterra model you have created to answer the questions at the end of the PDF.</li>
-</ul>
-<div id="the-questions" class="section level3 hasAnchor" number="16.1.1">
-<h3><span class="header-section-number">16.1.1</span> The questions<a href="lotka-volterra-competition.html#the-questions" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<ol style="list-style-type: decimal">
-<li>What parameter values will cause species 1 to exclude species 2 from the habitat? What do these values mean in ecological terms?</li>
-<li>What parameter values will reverse this outcome? What do these values mean in ecological terms?</li>
-<li>What parameter values will allow the two species to coexist indefinitely and stably? What do these values mean in ecological terms?</li>
-<li>Are there parameter values under which the outcome depends on initial population sizes or rates of population growth? What do these values mean in ecological terms?</li>
-</ol>
+<div id="a-simple-model." class="section level2 hasAnchor" number="14.2">
+<h2><span class="header-section-number">14.2</span> A simple model.<a href="the-gene-pool-model.html#a-simple-model." class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>First we can set the initial population size to be very large, say 5000.</p>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="the-gene-pool-model.html#cb23-1" tabindex="-1"></a>init_pop_size <span class="ot">&lt;-</span> <span class="dv">5000</span></span></code></pre></div>
+<p>There are two alleles (gene variants) per individual (one allele came from the father, and one from the mother).</p>
+<p>Therefore the gene pool contains 2 x N alleles (in this case, 10,000 alleles).</p>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="the-gene-pool-model.html#cb24-1" tabindex="-1"></a>pool_size <span class="ot">&lt;-</span> <span class="dv">2</span> <span class="sc">*</span> init_pop_size</span></code></pre></div>
+<p>Initial allele frequency</p>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="the-gene-pool-model.html#cb25-1" tabindex="-1"></a>initial_frequency_A <span class="ot">&lt;-</span> <span class="fl">0.5351</span></span>
+<span id="cb25-2"><a href="the-gene-pool-model.html#cb25-2" tabindex="-1"></a>initial_frequency_a <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="sc">-</span> initial_frequency_A</span></code></pre></div>
+<p>We can work out the number of A and a like this:</p>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="the-gene-pool-model.html#cb26-1" tabindex="-1"></a>number_A <span class="ot">&lt;-</span> <span class="dv">2</span> <span class="sc">*</span> <span class="fu">round</span>(initial_frequency_A <span class="sc">*</span> init_pop_size)</span>
+<span id="cb26-2"><a href="the-gene-pool-model.html#cb26-2" tabindex="-1"></a>number_a <span class="ot">&lt;-</span> <span class="dv">2</span> <span class="sc">*</span> <span class="fu">round</span>(initial_frequency_a <span class="sc">*</span> init_pop_size)</span></code></pre></div>
+<p>And following this, the gene pool can be filled like this.</p>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="the-gene-pool-model.html#cb27-1" tabindex="-1"></a>gene_pool <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fu">rep</span>(<span class="st">&quot;A&quot;</span>, number_A), <span class="fu">rep</span>(<span class="st">&quot;a&quot;</span>, number_a))</span>
+<span id="cb27-2"><a href="the-gene-pool-model.html#cb27-2" tabindex="-1"></a><span class="fu">table</span>(gene_pool)</span></code></pre></div>
+<pre><code>## gene_pool
+##    a    A 
+## 4648 5352</code></pre>
+</div>
+<div id="projecting-allele-frequency-through-time" class="section level2 hasAnchor" number="14.3">
+<h2><span class="header-section-number">14.3</span> Projecting allele frequency through time<a href="the-gene-pool-model.html#projecting-allele-frequency-through-time" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Lets assume the population size remains constant at <code>N = 1000</code>.</p>
+<p>During the next time step (i.e. 1 generation), the individuals in the population mate with each other randomly. We can use the <code>sample</code> function to simulate this.</p>
+<p>This code is saying “<strong>sample, from the gene pool, 1000 individuals</strong>”.</p>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="the-gene-pool-model.html#cb29-1" tabindex="-1"></a>new_gene_pool <span class="ot">&lt;-</span> <span class="fu">sample</span>(gene_pool, <span class="dv">1000</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<p>Let’s look at the new gene pool. It should be similar, but probably not exactly the same as the initial gene pool.</p>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="the-gene-pool-model.html#cb30-1" tabindex="-1"></a><span class="fu">table</span>(new_gene_pool)</span></code></pre></div>
+<pre><code>## new_gene_pool
+##   a   A 
+## 461 539</code></pre>
+<p>The reason it is (probably) not identical, is that it is a random sample from the gene pool, not simply a carbon copy.</p>
+<p>To simulate the passage of time, we need to do this sampling procedure many times…</p>
+<p>We can do this using a loop in R.</p>
+<p>We first set up the gene pool with an initial population size, an initial allele frequency for allele A.</p>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="the-gene-pool-model.html#cb32-1" tabindex="-1"></a><span class="co"># Set initial population size</span></span>
+<span id="cb32-2"><a href="the-gene-pool-model.html#cb32-2" tabindex="-1"></a>init_pop_size <span class="ot">&lt;-</span> <span class="dv">1000</span></span>
+<span id="cb32-3"><a href="the-gene-pool-model.html#cb32-3" tabindex="-1"></a></span>
+<span id="cb32-4"><a href="the-gene-pool-model.html#cb32-4" tabindex="-1"></a><span class="co"># Set initial allele frequency</span></span>
+<span id="cb32-5"><a href="the-gene-pool-model.html#cb32-5" tabindex="-1"></a>init_allele_freq_A <span class="ot">&lt;-</span> <span class="fl">0.5</span></span></code></pre></div>
+<p>Then we calculate the number of each allele based on this frequency, and generate the gene pool.</p>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="the-gene-pool-model.html#cb33-1" tabindex="-1"></a>number_A <span class="ot">&lt;-</span> <span class="dv">2</span> <span class="sc">*</span> init_allele_freq_A <span class="sc">*</span> init_pop_size</span>
+<span id="cb33-2"><a href="the-gene-pool-model.html#cb33-2" tabindex="-1"></a>number_a <span class="ot">&lt;-</span> <span class="dv">2</span> <span class="sc">*</span> init_pop_size <span class="sc">-</span> number_A</span>
+<span id="cb33-3"><a href="the-gene-pool-model.html#cb33-3" tabindex="-1"></a></span>
+<span id="cb33-4"><a href="the-gene-pool-model.html#cb33-4" tabindex="-1"></a>init_gene_pool <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fu">rep</span>(<span class="st">&quot;A&quot;</span>, number_A), <span class="fu">rep</span>(<span class="st">&quot;a&quot;</span>, number_a))</span></code></pre></div>
+<p>We can summarise the gene pool with a table.</p>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="the-gene-pool-model.html#cb34-1" tabindex="-1"></a>(gene_pool_table <span class="ot">&lt;-</span> <span class="fu">table</span>(init_gene_pool))</span></code></pre></div>
+<pre><code>## init_gene_pool
+##    a    A 
+## 1000 1000</code></pre>
+<p>From this table we can calculate the frequency of allele A to ensure that it matches what we expect. Here I am calling it the <code>init_allele_freq_A</code> (initial allele frequency for A).</p>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="the-gene-pool-model.html#cb36-1" tabindex="-1"></a>(init_allele_freq_A <span class="ot">&lt;-</span> gene_pool_table[<span class="dv">2</span>] <span class="sc">/</span> <span class="fu">sum</span>(gene_pool_table))</span></code></pre></div>
+<pre><code>##   A 
+## 0.5</code></pre>
+<p>In our loop, we will repeat this process many times (one time per generation). Each time we go through the loop, we sample alleles from the <em>old</em> gene pool from time <span class="math inline">\(n\)</span> to create a <em>new</em> gene pool for time <span class="math inline">\(n+1\)</span>. And each time through the loop we make sure to calculate the allele frequency for A so we can track how it changes through time.</p>
+<p>Let’s set up a simulation that runs for 50 generations.
+You can cut-paste this code, which is a complete gene-pool model.</p>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="the-gene-pool-model.html#cb38-1" tabindex="-1"></a><span class="co"># Set number of generations</span></span>
+<span id="cb38-2"><a href="the-gene-pool-model.html#cb38-2" tabindex="-1"></a>n_gen <span class="ot">&lt;-</span> <span class="dv">50</span></span>
+<span id="cb38-3"><a href="the-gene-pool-model.html#cb38-3" tabindex="-1"></a>pop_size <span class="ot">&lt;-</span> <span class="dv">100</span></span>
+<span id="cb38-4"><a href="the-gene-pool-model.html#cb38-4" tabindex="-1"></a></span>
+<span id="cb38-5"><a href="the-gene-pool-model.html#cb38-5" tabindex="-1"></a><span class="co"># Set up an empty vector of length n_gen to contain results</span></span>
+<span id="cb38-6"><a href="the-gene-pool-model.html#cb38-6" tabindex="-1"></a>allele_freq_A <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="cn">NA</span>, n_gen)</span>
+<span id="cb38-7"><a href="the-gene-pool-model.html#cb38-7" tabindex="-1"></a></span>
+<span id="cb38-8"><a href="the-gene-pool-model.html#cb38-8" tabindex="-1"></a><span class="co"># Put in an initial value for frequency of A</span></span>
+<span id="cb38-9"><a href="the-gene-pool-model.html#cb38-9" tabindex="-1"></a>allele_freq_A[<span class="dv">1</span>] <span class="ot">&lt;-</span> <span class="fl">0.5</span></span>
+<span id="cb38-10"><a href="the-gene-pool-model.html#cb38-10" tabindex="-1"></a></span>
+<span id="cb38-11"><a href="the-gene-pool-model.html#cb38-11" tabindex="-1"></a><span class="co"># Establish the initial gene pool and name it gene_pool_time_n</span></span>
+<span id="cb38-12"><a href="the-gene-pool-model.html#cb38-12" tabindex="-1"></a><span class="co"># This part looks complicated, but I am just condensing the code from above into 1 line.</span></span>
+<span id="cb38-13"><a href="the-gene-pool-model.html#cb38-13" tabindex="-1"></a>gene_pool_time_n <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fu">rep</span>(<span class="st">&quot;A&quot;</span>, <span class="fu">round</span>(<span class="dv">2</span> <span class="sc">*</span> allele_freq_A[<span class="dv">1</span>] <span class="sc">*</span> pop_size)), </span>
+<span id="cb38-14"><a href="the-gene-pool-model.html#cb38-14" tabindex="-1"></a>                    <span class="fu">rep</span>(<span class="st">&quot;a&quot;</span>, <span class="fu">round</span>(<span class="dv">2</span> <span class="sc">*</span> (<span class="dv">1</span><span class="sc">-</span>allele_freq_A[<span class="dv">1</span>]) <span class="sc">*</span> pop_size)))</span>
+<span id="cb38-15"><a href="the-gene-pool-model.html#cb38-15" tabindex="-1"></a></span>
+<span id="cb38-16"><a href="the-gene-pool-model.html#cb38-16" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">2</span><span class="sc">:</span>n_gen) {</span>
+<span id="cb38-17"><a href="the-gene-pool-model.html#cb38-17" tabindex="-1"></a>  gene_pool_time_n_plus_1 <span class="ot">&lt;-</span> <span class="fu">sample</span>(gene_pool_time_n, pop_size <span class="sc">*</span> <span class="dv">2</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb38-18"><a href="the-gene-pool-model.html#cb38-18" tabindex="-1"></a>  gene_pool_table <span class="ot">&lt;-</span> <span class="fu">table</span>(gene_pool_time_n_plus_1)</span>
+<span id="cb38-19"><a href="the-gene-pool-model.html#cb38-19" tabindex="-1"></a>  allele_freq_A[i] <span class="ot">&lt;-</span> gene_pool_table[<span class="dv">2</span>] <span class="sc">/</span> <span class="fu">sum</span>(gene_pool_table)</span>
+<span id="cb38-20"><a href="the-gene-pool-model.html#cb38-20" tabindex="-1"></a></span>
+<span id="cb38-21"><a href="the-gene-pool-model.html#cb38-21" tabindex="-1"></a>  <span class="co"># Replace the old gene pool with the new one.</span></span>
+<span id="cb38-22"><a href="the-gene-pool-model.html#cb38-22" tabindex="-1"></a>  gene_pool_time_n <span class="ot">&lt;-</span> gene_pool_time_n_plus_1</span>
+<span id="cb38-23"><a href="the-gene-pool-model.html#cb38-23" tabindex="-1"></a>}</span></code></pre></div>
+<p>Now we can plot this result.</p>
+<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="the-gene-pool-model.html#cb39-1" tabindex="-1"></a>allele_freq_A[<span class="fu">is.na</span>(allele_freq_A)] <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb39-2"><a href="the-gene-pool-model.html#cb39-2" tabindex="-1"></a><span class="fu">plot</span>(<span class="dv">1</span><span class="sc">:</span>n_gen, allele_freq_A, <span class="at">type =</span> <span class="st">&quot;l&quot;</span>, <span class="at">xlab =</span> <span class="st">&quot;time&quot;</span>, <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>))</span></code></pre></div>
+<p><img src="BB512_files/figure-html/unnamed-chunk-68-1.png" width="672" /></p>
+</div>
+<div id="what-next" class="section level2 hasAnchor" number="14.4">
+<h2><span class="header-section-number">14.4</span> What next?<a href="the-gene-pool-model.html#what-next" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Well done for making it this far. R programming is not for the fainthearted.</p>
+<p>Next up, I want you to take the code, and try modifying the parameters to explore what would happen in different situations.</p>
+<div id="situation-1-small-population-size" class="section level3 hasAnchor" number="14.4.1">
+<h3><span class="header-section-number">14.4.1</span> Situation 1: small population size<a href="the-gene-pool-model.html#situation-1-small-population-size" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+</div>
+<div id="situation-2-a-genetic-bottle-neck" class="section level3 hasAnchor" number="14.4.2">
+<h3><span class="header-section-number">14.4.2</span> Situation 2: a genetic bottle neck<a href="the-gene-pool-model.html#situation-2-a-genetic-bottle-neck" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>For this, we start with a large population size, but then impose a bottle neck.
+We can add a line of code to the model to simulate that.</p>
 
 </div>
 </div>
@@ -458,8 +522,8 @@ coefficients.
           </div>
         </div>
       </div>
-<a href="neutral-or-adaptive-evolution-in-humans.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="lotka-volterra-predator-prey-dynamics.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="hardy-weinberg-equilibrium.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="neutral-or-adaptive-evolution-in-humans.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -490,7 +554,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/jonesor/BB512_Book/edit/master/4_01_LotkaVolterraCompetition.Rmd",
+"link": "https://github.com/jonesor/BB512_Book/edit/master/3_01.5_GenePool.Rmd",
 "text": "Edit"
 },
 "history": {

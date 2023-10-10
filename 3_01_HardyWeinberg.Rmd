@@ -71,6 +71,7 @@ Tackle the following problems, using the HWE theory outlined above ...
 ### Problem #1.
 
 You have sampled a population in which you know that the percentage of the homozygous recessive genotype (aa) is 36%. Using that 36%, calculate the following: 
+
 *	The frequency of the "aa" genotype. 
 *	The frequency of the "a" allele. 
 *	The frequency of the "A" allele. 
