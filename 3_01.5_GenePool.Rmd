@@ -16,23 +16,23 @@ init_pop_size <- 5000
 ```
 
 
-There are two alleles (gene variants) per individual (one allele came from the father, and one from the mother).
+There are two alleles (gene variants) per individual: one allele came from the father, and one from the mother.
 
-Therefore the gene pool contains 2 x N alleles (in this case, 10,000 alleles).
+Therefore, the gene pool contains 2 x N alleles (in this case, 10,000 alleles).
 
 ```{r}
 pool_size <- 2 * init_pop_size
 ```
 
-Initial allele frequency
+I now set the initial allele frequency to be 0.5. You can use other values, but 0.5 is best to start with.
 
 
 ```{r}
-initial_frequency_A <- 0.5351
+initial_frequency_A <- 0.5
 initial_frequency_a <- 1 - initial_frequency_A
 ```
 
-We can work out the number of A and a like this:
+We can work out the number of A and a like this. I `round` the result to the closest whole number.
 
 ```{r}
 number_A <- 2 * round(initial_frequency_A * init_pop_size)
@@ -67,6 +67,10 @@ table(new_gene_pool)
 ```
 
 The reason it is (probably) not identical, is that it is a random sample from the gene pool, not simply a carbon copy.
+
+**Try to vary the population size and do this several times at small and large population sizes.** You should notice that the frequencies/numbers are more similar when you repeat them for large population sizes than for small population sizes.
+
+## Simulation through time
 
 To simulate the passage of time, we need to do this sampling procedure many times...
 
@@ -142,6 +146,8 @@ allele_freq_A[is.na(allele_freq_A)] <- 0
 plot(1:n_gen, allele_freq_A, type = "l", xlab = "time", ylim = c(0, 1))
 ```
 
+**Tip: make a new script and paste the code loop, and the plot command so that you can run both together easily**
+
 ## What next?
 
 Well done for making it this far. R programming is not for the fainthearted.
@@ -150,13 +156,23 @@ Next up, I want you to take the code, and try modifying the parameters to explor
 
 ### Situation 1: small population size
 
+Repeat the simulation using the code above using small population size, and large population size.
 
 
+ - Is stochasticity in genetic diversity higher or lower with a small population size?
+ - Is the probability of losing genetic variation higher or lower with a small population size?
+ - Is "fixation" more or less likely with a small population?
+ 
 
 ### Situation 2: a genetic bottle neck
 
 For this, we start with a large population size, but then impose a bottle neck.
-We can add a line of code to the model to simulate that.
+We can add a line of code into the loop part of the model to simulate that.
 
+This code means, if the generation time is 5, make the population size 10.
 
+`if(i == 5){pop_size = 10}`
+
+- How does a genetic bottle neck impact the genetic make-up of the population?
+- How might a bottle neck impact the probability, over the long term, of genetic fixation?
 

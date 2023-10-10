@@ -284,10 +284,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="14.1" data-path="the-gene-pool-model.html"><a href="the-gene-pool-model.html#background-10"><i class="fa fa-check"></i><b>14.1</b> Background</a></li>
 <li class="chapter" data-level="14.2" data-path="the-gene-pool-model.html"><a href="the-gene-pool-model.html#a-simple-model."><i class="fa fa-check"></i><b>14.2</b> A simple model.</a></li>
 <li class="chapter" data-level="14.3" data-path="the-gene-pool-model.html"><a href="the-gene-pool-model.html#projecting-allele-frequency-through-time"><i class="fa fa-check"></i><b>14.3</b> Projecting allele frequency through time</a></li>
-<li class="chapter" data-level="14.4" data-path="the-gene-pool-model.html"><a href="the-gene-pool-model.html#what-next"><i class="fa fa-check"></i><b>14.4</b> What next?</a>
+<li class="chapter" data-level="14.4" data-path="the-gene-pool-model.html"><a href="the-gene-pool-model.html#simulation-through-time"><i class="fa fa-check"></i><b>14.4</b> Simulation through time</a></li>
+<li class="chapter" data-level="14.5" data-path="the-gene-pool-model.html"><a href="the-gene-pool-model.html#what-next"><i class="fa fa-check"></i><b>14.5</b> What next?</a>
 <ul>
-<li class="chapter" data-level="14.4.1" data-path="the-gene-pool-model.html"><a href="the-gene-pool-model.html#situation-1-small-population-size"><i class="fa fa-check"></i><b>14.4.1</b> Situation 1: small population size</a></li>
-<li class="chapter" data-level="14.4.2" data-path="the-gene-pool-model.html"><a href="the-gene-pool-model.html#situation-2-a-genetic-bottle-neck"><i class="fa fa-check"></i><b>14.4.2</b> Situation 2: a genetic bottle neck</a></li>
+<li class="chapter" data-level="14.5.1" data-path="the-gene-pool-model.html"><a href="the-gene-pool-model.html#situation-1-small-population-size"><i class="fa fa-check"></i><b>14.5.1</b> Situation 1: small population size</a></li>
+<li class="chapter" data-level="14.5.2" data-path="the-gene-pool-model.html"><a href="the-gene-pool-model.html#situation-2-a-genetic-bottle-neck"><i class="fa fa-check"></i><b>14.5.2</b> Situation 2: a genetic bottle neck</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="15" data-path="neutral-or-adaptive-evolution-in-humans.html"><a href="neutral-or-adaptive-evolution-in-humans.html"><i class="fa fa-check"></i><b>15</b> Neutral or adaptive evolution in humans?</a>
@@ -421,13 +422,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">14.2</span> A simple model.<a href="the-gene-pool-model.html#a-simple-model." class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>First we can set the initial population size to be very large, say 5000.</p>
 <div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="the-gene-pool-model.html#cb23-1" tabindex="-1"></a>init_pop_size <span class="ot">&lt;-</span> <span class="dv">5000</span></span></code></pre></div>
-<p>There are two alleles (gene variants) per individual (one allele came from the father, and one from the mother).</p>
-<p>Therefore the gene pool contains 2 x N alleles (in this case, 10,000 alleles).</p>
+<p>There are two alleles (gene variants) per individual: one allele came from the father, and one from the mother.</p>
+<p>Therefore, the gene pool contains 2 x N alleles (in this case, 10,000 alleles).</p>
 <div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="the-gene-pool-model.html#cb24-1" tabindex="-1"></a>pool_size <span class="ot">&lt;-</span> <span class="dv">2</span> <span class="sc">*</span> init_pop_size</span></code></pre></div>
-<p>Initial allele frequency</p>
-<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="the-gene-pool-model.html#cb25-1" tabindex="-1"></a>initial_frequency_A <span class="ot">&lt;-</span> <span class="fl">0.5351</span></span>
+<p>I now set the initial allele frequency to be 0.5. You can use other values, but 0.5 is best to start with.</p>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="the-gene-pool-model.html#cb25-1" tabindex="-1"></a>initial_frequency_A <span class="ot">&lt;-</span> <span class="fl">0.5</span></span>
 <span id="cb25-2"><a href="the-gene-pool-model.html#cb25-2" tabindex="-1"></a>initial_frequency_a <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="sc">-</span> initial_frequency_A</span></code></pre></div>
-<p>We can work out the number of A and a like this:</p>
+<p>We can work out the number of A and a like this. I <code>round</code> the result to the closest whole number.</p>
 <div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="the-gene-pool-model.html#cb26-1" tabindex="-1"></a>number_A <span class="ot">&lt;-</span> <span class="dv">2</span> <span class="sc">*</span> <span class="fu">round</span>(initial_frequency_A <span class="sc">*</span> init_pop_size)</span>
 <span id="cb26-2"><a href="the-gene-pool-model.html#cb26-2" tabindex="-1"></a>number_a <span class="ot">&lt;-</span> <span class="dv">2</span> <span class="sc">*</span> <span class="fu">round</span>(initial_frequency_a <span class="sc">*</span> init_pop_size)</span></code></pre></div>
 <p>And following this, the gene pool can be filled like this.</p>
@@ -435,7 +436,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb27-2"><a href="the-gene-pool-model.html#cb27-2" tabindex="-1"></a><span class="fu">table</span>(gene_pool)</span></code></pre></div>
 <pre><code>## gene_pool
 ##    a    A 
-## 4648 5352</code></pre>
+## 5000 5000</code></pre>
 </div>
 <div id="projecting-allele-frequency-through-time" class="section level2 hasAnchor" number="14.3">
 <h2><span class="header-section-number">14.3</span> Projecting allele frequency through time<a href="the-gene-pool-model.html#projecting-allele-frequency-through-time" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -447,8 +448,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="the-gene-pool-model.html#cb30-1" tabindex="-1"></a><span class="fu">table</span>(new_gene_pool)</span></code></pre></div>
 <pre><code>## new_gene_pool
 ##   a   A 
-## 461 539</code></pre>
+## 490 510</code></pre>
 <p>The reason it is (probably) not identical, is that it is a random sample from the gene pool, not simply a carbon copy.</p>
+<p><strong>Try to vary the population size and do this several times at small and large population sizes.</strong> You should notice that the frequencies/numbers are more similar when you repeat them for large population sizes than for small population sizes.</p>
+</div>
+<div id="simulation-through-time" class="section level2 hasAnchor" number="14.4">
+<h2><span class="header-section-number">14.4</span> Simulation through time<a href="the-gene-pool-model.html#simulation-through-time" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>To simulate the passage of time, we need to do this sampling procedure many times…</p>
 <p>We can do this using a loop in R.</p>
 <p>We first set up the gene pool with an initial population size, an initial allele frequency for allele A.</p>
@@ -501,18 +506,31 @@ You can cut-paste this code, which is a complete gene-pool model.</p>
 <div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="the-gene-pool-model.html#cb39-1" tabindex="-1"></a>allele_freq_A[<span class="fu">is.na</span>(allele_freq_A)] <span class="ot">&lt;-</span> <span class="dv">0</span></span>
 <span id="cb39-2"><a href="the-gene-pool-model.html#cb39-2" tabindex="-1"></a><span class="fu">plot</span>(<span class="dv">1</span><span class="sc">:</span>n_gen, allele_freq_A, <span class="at">type =</span> <span class="st">&quot;l&quot;</span>, <span class="at">xlab =</span> <span class="st">&quot;time&quot;</span>, <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>))</span></code></pre></div>
 <p><img src="BB512_files/figure-html/unnamed-chunk-68-1.png" width="672" /></p>
+<p><strong>Tip: make a new script and paste the code loop, and the plot command so that you can run both together easily</strong></p>
 </div>
-<div id="what-next" class="section level2 hasAnchor" number="14.4">
-<h2><span class="header-section-number">14.4</span> What next?<a href="the-gene-pool-model.html#what-next" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="what-next" class="section level2 hasAnchor" number="14.5">
+<h2><span class="header-section-number">14.5</span> What next?<a href="the-gene-pool-model.html#what-next" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Well done for making it this far. R programming is not for the fainthearted.</p>
 <p>Next up, I want you to take the code, and try modifying the parameters to explore what would happen in different situations.</p>
-<div id="situation-1-small-population-size" class="section level3 hasAnchor" number="14.4.1">
-<h3><span class="header-section-number">14.4.1</span> Situation 1: small population size<a href="the-gene-pool-model.html#situation-1-small-population-size" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="situation-1-small-population-size" class="section level3 hasAnchor" number="14.5.1">
+<h3><span class="header-section-number">14.5.1</span> Situation 1: small population size<a href="the-gene-pool-model.html#situation-1-small-population-size" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Repeat the simulation using the code above using small population size, and large population size.</p>
+<ul>
+<li>Is stochasticity in genetic diversity higher or lower with a small population size?</li>
+<li>Is the probability of losing genetic variation higher or lower with a small population size?</li>
+<li>Is “fixation” more or less likely with a small population?</li>
+</ul>
 </div>
-<div id="situation-2-a-genetic-bottle-neck" class="section level3 hasAnchor" number="14.4.2">
-<h3><span class="header-section-number">14.4.2</span> Situation 2: a genetic bottle neck<a href="the-gene-pool-model.html#situation-2-a-genetic-bottle-neck" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="situation-2-a-genetic-bottle-neck" class="section level3 hasAnchor" number="14.5.2">
+<h3><span class="header-section-number">14.5.2</span> Situation 2: a genetic bottle neck<a href="the-gene-pool-model.html#situation-2-a-genetic-bottle-neck" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>For this, we start with a large population size, but then impose a bottle neck.
-We can add a line of code to the model to simulate that.</p>
+We can add a line of code into the loop part of the model to simulate that.</p>
+<p>This code means, if the generation time is 5, make the population size 10.</p>
+<p><code>if(i == 5){pop_size = 10}</code></p>
+<ul>
+<li>How does a genetic bottle neck impact the genetic make-up of the population?</li>
+<li>How might a bottle neck impact the probability, over the long term, of genetic fixation?</li>
+</ul>
 
 </div>
 </div>
