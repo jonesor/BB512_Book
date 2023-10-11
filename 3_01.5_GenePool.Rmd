@@ -1,13 +1,41 @@
 # The Gene Pool Model
 
+```{r echo = FALSE}
+set.seed(123)
+```
+
 ## Background
 
-Evolutionary biology helps us understand how life's genetic makeup changes over time. One important idea is the "gene pool," which contains all the different versions of genes within a group of organisms. These genes determine traits and characteristics. To grasp how genes evolve, we need to study how their frequencies change in a population.
+A central goal in evolutionary biology is to understand variation -- including genetic variation -- and how it changes through time. One important idea is the "gene pool," which contains all the different versions of genes within a group of organisms. These genes/alleles determine pheotypic traits and other characteristics. To grasp how populations evolve, we need to understand how allele frequencies change in a population. Over time, genetic diversity changes as the relative numbers of alleles changes. Some alleles may be lost from the population while others may become "fixed" -- where the allele is present in every individual in the population. 
 
-In this practical, we'll use the R programming language to simulate how genes change in a population over generations. By changing some factors, you'll see how genetic diversity shifts in different situations. This exercise will deepen your understanding of evolution and give you practical skills to explore real genetic questions. So, let's start this journey into the world of genes and evolution, using code and data to learn how it all works.
+The primary factor that influences genetic drift in the gene pool model is population size. In small populations, "sampling error" means that, just by chance, large changes often occur in the allele frequencies. In large populations, dramatic changes are much less likely.
 
+Two related concepts are critical in understanding genetic drift: bottlenecks and founding effects. A genetic bottleneck occurrs when a population dramatically reduces in size due to events like environmental catastrophes. During a bottleneck, allele frequency (and genetic diversity) can change dramatically due to sampling effects during the bottleneck. The founding effect is a similar scenario where a small group (a sample from the population) establishes a new population. The fact that the new population is a small sample of the ancestral population means that the new population can have rather different a genetic composition to the ancestral population.
+
+
+```{block, type="do-something"}
+Learning outcomes: 
+
+- Greater understanding of evolution via genetic drift (neutral).
+- Understanding of genetic bottlenecks and founder effect.
+- Understanding the relationship between stochasticity and genetic variation.
+- Use of R for exploring biological phenomenon.
+```
+
+
+## Your task
+
+In this practical, we'll use the R programming language to simulate how allele frequencies change in a population over generations. By changing some factors, you'll see how allele frequencies change in different situations. This exercise will deepen your understanding of evolution and give you practical skills to explore real genetic questions. 
+
+The exercise is divided into two parts: 
+
+(1) understanding the gene pool, and how the gene pool in the next generation is a *sample* of the ancestral gene pool.
+(2) projecting the allele frequency of the gene pool through time to investigate the importance of population size 
+(3) modifying the code to understand genetic bottlenecks.
 
 ## A simple model
+
+We will first aim to get an understanding of what a gene pool is, using a simple model. We will use R to make a gene pool, then look at how allele frequency in the gene pool changes over a single generation.
 
 ### The gene pool
 
@@ -49,7 +77,7 @@ table(gene_pool)
 ```
 
 
-## Projecting allele frequency over one time step.
+### Projecting allele frequency over one time step.
 
 Lets assume the population size remains constant at N = `r pop_size`.
 
@@ -71,19 +99,20 @@ There are a total of `r pop_size` individuals, but the numbers are (probably) no
 
 **Try to vary the population size and do this several times at small and large population sizes.** You should notice that the frequencies/numbers are more similar when you repeat them for large population sizes than for small population sizes.
 
-## Simulation through time
+## Simulation of allele frequency through time
 
 To simulate the passage of time, we need to do this sampling procedure many times.
+
 We can do this using a loop in R. 
 
 In our loop, we will repeat this gene pool sampling process many times (one time per generation). Each time we go through the loop, we sample alleles from the *old* gene pool from time $n$ to create a *new* gene pool for time $n+1$. And each time through the loop we calculate the allele frequency for A so we can track how it changes through time.
 
-Let's set up a simulation that runs for 50 generations.
+Let's set up a simulation that runs for 100 generations.
 You can cut-paste this code, which is a complete gene-pool model.
 
 ```{r}
 # Set number of generations
-n_gen <- 50
+n_gen <- 100
 pop_size <- 100
 
 # Set up an empty vector of length n_gen to contain results
@@ -94,13 +123,16 @@ allele_freq_A[1] <- 0.5
 
 # Establish the initial gene pool and name it gene_pool_time_n
 # This part looks complicated, but I am just condensing the code from above into 1 line.
-gene_pool_time_n <- c(rep("A", round(2 * allele_freq_A[1] * pop_size)), 
-                    rep("a", round(2 * (1-allele_freq_A[1]) * pop_size)))
+gene_pool_time_n <- c(
+  rep("A", round(2 * allele_freq_A[1] * pop_size)),
+  rep("a", round(2 * (1 - allele_freq_A[1]) * pop_size))
+)
 
 for (i in 2:n_gen) {
-  gene_pool_time_n_plus_1 <- sample(gene_pool_time_n, 
-                                    pop_size * 2, 
-                                    replace = TRUE)
+  gene_pool_time_n_plus_1 <- sample(gene_pool_time_n,
+    pop_size * 2,
+    replace = TRUE
+  )
   gene_pool_table <- table(gene_pool_time_n_plus_1)
   allele_freq_A[i] <- gene_pool_table[2] / sum(gene_pool_table)
 
@@ -110,39 +142,109 @@ for (i in 2:n_gen) {
 ```
 
 
-Now we can plot this result.
+Now we can plot this result (Figure \@ref(fig:simulation1))
 
-```{r}
+```{r simulation1,fig.cap = "Simulation of allele frequency through time"}
 plot(1:n_gen, allele_freq_A, type = "l", xlab = "time", ylim = c(0, 1))
 ```
 
-**Tip: make a new script and paste the code loop, and the plot command so that you can run both together easily**
+Use the code to investigate the following questions:
 
-## What next?
+
+* How does population size affect the variation through time in allele frequencies? Why do you see these patterns?
+* How does the probability of *fixation* change with population size?
+* When the population size is large (say 1000), is it still possible for alleles to become fixed?
+* Are rare alleles (defined with allele frequency) more or less likely to be lost than common ones? What implications does this have for new alleles (mutations)?
+
+```{block, type="do-something"}
+Tip: make a new script and paste the code loop along with with the plot command so that you can run both together easily.
+```
+
+## Bottlenecks
 
 Well done for making it this far. R programming is not for the fainthearted.
 
-Next up, I want you to take the code, and try modifying the parameters to explore what would happen in different situations.
+Next up, I want you to take the code, and modify the code within the loop to simulate a genetic bottleneck. A genetic bottleneck occurs when the population goes through a period of small population size. 
 
-### Situation 1: small population size
+```{r, eval=FALSE}
+if (i %in% 30:50) {
+  pop_size <- 10
+} else {
+  pop_size <- 1000
+}
+```
 
-Repeat the simulation using the code above using small population size, and large population size.
+This code means, "*...if the generation time is between `30` and `50`, make the population size 10, otherwise make the population size 1000*". In other words, the population goes through a bottleneck period of 20 generations. You could modify this line of code to change the characteristics of the bottleneck.
+
+Figure \@ref(fig:bottleneck) shows an example of what your plot of a genetic bottleneck simulation may look like. I have added some lines to show where the bottleneck starts/ends.
+
+```{r bottleneck,fig.cap = "Simulation of a genetic bottleneck", echo = FALSE}
+# Set number of generations
+n_gen <- 100
+
+# Set up an empty vector of length n_gen to contain results
+allele_freq_A <- rep(NA, n_gen)
+
+# Put in an initial value for frequency of A
+allele_freq_A[1] <- 0.5
+
+# Establish the initial gene pool and name it gene_pool_time_n
+# This part looks complicated, but I am just condensing the code from above into 1 line.
+gene_pool_time_n <- c(
+  rep("A", round(2 * allele_freq_A[1] * pop_size)),
+  rep("a", round(2 * (1 - allele_freq_A[1]) * pop_size))
+)
+
+for (i in 2:n_gen) {
+  if (i %in% 30:50) {
+  pop_size <- 15
+} else {
+  pop_size <- 1000
+}
+  gene_pool_time_n_plus_1 <- sample(gene_pool_time_n,
+    pop_size * 2,
+    replace = TRUE
+  )
+  gene_pool_table <- table(gene_pool_time_n_plus_1)
+  allele_freq_A[i] <- gene_pool_table[2] / sum(gene_pool_table)
+
+  # Replace the old gene pool with the new one.
+  gene_pool_time_n <- gene_pool_time_n_plus_1
+}
+plot(1:n_gen, allele_freq_A, type = "l", xlab = "time", ylim = c(0, 1))
+abline(v = 30,col= "red", lty = 3)
+abline(v = 50,col= "red", lty = 3)
+text(40,0.95,"bottleneck", col = "red")
+
+```
+
+Now use your new bottleneck code to answer the following questions:
+
+* How does a genetic bottle neck influence the genetic composition of the population?
+* How might a genetic bottleneck impact the probability of genetic fixation?
+* Does the severity of the bottleneck (i.e. length and population size) matter?
 
 
- - Is stochasticity in genetic diversity higher or lower with a small population size?
- - Is the probability of losing genetic variation higher or lower with a small population size?
- - Is "fixation" more or less likely with a small population?
- 
+## Conclusions
 
-### Situation 2: a genetic bottle neck
+You should now have a good idea of what a gene pool model is, the importance of population size, the concept of sampling from a population and genetic bottlenecks.
 
-For this, we start with a large population size, but then impose a bottle neck.
-We can add a line of code into the loop part of the model to simulate that.
+Let's finish with some more general questions:
 
-This code means, if the generation time is 5, make the population size 10.
+*  What are the limitations of this simulation. What other real-world factors and complexities are not considered in this simplified model?
 
-`if(i == 5){pop_size = 10}`
+<!----
+No selection
+Mating is random
+There is no mutation
+--->
 
-- How does a genetic bottle neck impact the genetic make-up of the population?
-- How might a bottle neck impact the probability, over the long term, of genetic fixation?
+* Why is genetic diversity important to a population, for example in a conservation context?
 
+<!---
+Genetic diversity allows populations to explore paramter space
+--->
+
+* Can you think of real-life scenarios where understanding gene pool dynamics would be valuable, such as in conservation biology or medical genetics?
+
+* Can you think of a way to simulate the genetics of a population that is steadily shrinking through time?
