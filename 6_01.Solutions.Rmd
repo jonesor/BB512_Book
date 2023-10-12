@@ -297,6 +297,60 @@ To determine $q$, which is the frequency of the recessive allele in the populati
 
 Now then, to answer our questions. First, what is the percentage of butterflies in the population that are heterozygous? Well, that would be $2pq$ so the answer is $2 \times 0.37\times 0.63 = 0.47$. Second, what is the frequency of homozygous dominant individuals? That would be $p^2$ or $0.37^2 = 0.14$.
 
+## Solutions: Gene pool model
+
+### Discussion questions
+1. **How does population size affect the variation through time in allele frequencies? Why do you see these patterns?**
+   - Population size plays a crucial role in determining the variation in allele frequencies over time. In small populations, random genetic drift has a more pronounced effect, leading to larger fluctuations in allele frequencies. This is because in smaller populations, the random sampling of alleles during reproduction can result in significant changes in allele frequencies. In contrast, in larger populations, these random fluctuations are dampened due to the "averaging" effect of having more individuals. Hence, allele frequencies in larger populations tend to be more stable over time.
+
+2. **How does the probability of *fixation* change with population size?**
+   - The probability of fixation of a new mutation is equal to its initial frequency. For a new mutation appearing in a population, its initial frequency is 1/2N, where N is the population size. Thus, in smaller populations, a new allele has a slightly higher chance of becoming fixed compared to in larger populations. However, it's essential to note that while the probability of fixation is higher in smaller populations, the overall genetic drift's effect is also more pronounced, which means alleles might be lost or fixed more rapidly.
+
+3. **When the population size is large (say 1000), is it still possible for alleles to become fixed?**
+   - Yes, it is still possible for alleles to become fixed in a large population, but it typically takes a longer time compared to smaller populations. The larger the population, the more generations it usually takes for an allele to become fixed purely by chance (genetic drift). However, other factors like selection can expedite this process.
+
+4. **Are rare alleles (defined with allele frequency) more or less likely to be lost than common ones? What implications does this have for new alleles (mutations)?**
+   - Rare alleles are more likely to be lost from a population than common ones due to genetic drift. This is especially true in small populations where random events can have a more pronounced impact on allele frequencies. For new alleles (which start as rare alleles when they first appear), this means they have a higher likelihood of being lost from the population before they can increase in frequency. However, if a new mutation provides a selective advantage, it can increase in frequency and become common, reducing its chance of being lost.
+
+### Bottlenecks
+
+Of course, let's dive into the answers for the discussion questions related to genetic bottlenecks:
+
+1. **How does a genetic bottleneck influence the genetic composition of the population?**
+   - **Answer:** A genetic bottleneck results in a sudden and drastic reduction in the size of a population. This means that only a subset of the genetic variation present before the bottleneck remains in the population that survives. As a consequence, the genetic composition of the population post-bottleneck is often less diverse. Certain alleles may be lost entirely, while others might become more prevalent or even fixed. This change in allele frequencies due to the bottleneck can lead to reduced genetic diversity and can make the population more vulnerable to diseases, environmental changes, and other threats because of the lack of genetic variability.
+
+2. **How might a genetic bottleneck impact the probability of genetic fixation?**
+   - **Answer:** A genetic bottleneck can significantly increase the probability of genetic fixation, especially if the bottleneck is severe and the population size is drastically reduced. When the population size is small, random genetic drift has a more pronounced effect, leading to rapid changes in allele frequencies. In such scenarios, certain alleles might quickly become fixed in the population purely by chance, even if they don't confer any selective advantage. Conversely, beneficial alleles could also be lost entirely, a phenomenon known as "drift override."
+
+3. **Does the severity of the bottleneck (i.e. length and population size) matter?**
+   - **Answer:** Yes, the severity of the bottleneck, both in terms of its duration (length) and the remaining population size, plays a crucial role in determining its genetic consequences. A more extended bottleneck or one that drastically reduces the population size can lead to a more significant loss of genetic diversity. The longer a population remains small, the more time there is for genetic drift to affect allele frequencies, leading to the potential loss or fixation of alleles. Similarly, the smaller the surviving population, the greater the influence of random sampling effects on genetic composition. Thus, both the duration and the intensity of the bottleneck are critical factors in determining its genetic impact.
+
+### Broader questions
+
+1. **What are the limitations of this simulation? What other real-world factors and complexities are not considered in this simplified model?**
+   - **Answer:** The simulation is a simplified representation of real-world gene pool dynamics. Some of the limitations include:
+     - **Selection Pressure:** The model does not account for natural selection, where certain alleles may confer a survival or reproductive advantage.
+     - **Migration:** In the real world, populations are not always isolated. Gene flow between populations due to migration can significantly influence allele frequencies.
+     - **Mutations:** Over time, new alleles can arise in a population due to mutations, introducing additional genetic variability.
+     - **Non-Random Mating:** The model assumes random mating, but in nature, there might be preferences or restrictions that influence mating choices.
+     - **Environmental Factors:** In real-world scenarios, changing environments can influence which alleles are beneficial or detrimental.
+
+2. **Why is genetic diversity important to a population, for example in a conservation context?**
+   - **Answer:** Genetic diversity is crucial for the adaptability and survival of a population. In a conservation context:
+     - **Resilience to Diseases:** A genetically diverse population is less likely to be wiped out by a single disease, as some individuals might have resistance.
+     - **Adaptation to Changing Environments:** Diverse genes mean a higher chance that some individuals in the population have traits beneficial for surviving in changing conditions.
+     - **Reduced Inbreeding:** High genetic diversity reduces the chances of inbreeding, which can lead to the expression of deleterious recessive alleles and overall reduced fitness of the population.
+     - **Long-Term Survival:** Over many generations, genetic diversity ensures that populations can evolve and adapt to long-term changes in their environment.
+
+3. **Can you think of real-life scenarios where understanding gene pool dynamics would be valuable, such as in conservation biology or medical genetics?**
+   - **Answer:** Absolutely! 
+     - **Conservation Biology:** When trying to revive endangered species, understanding gene pool dynamics can help conservationists make informed decisions about breeding programs to maintain or increase genetic diversity.
+     - **Medical Genetics:** Understanding the gene pool is crucial when studying the prevalence of genetic disorders within specific populations or tracing the origin and spread of certain genetic traits.
+     - **Agriculture:** Crop breeders often need to understand gene pool dynamics to develop strains that are resistant to diseases, pests, or changing climate conditions.
+     - **Pharmacogenomics:** In medicine, understanding how different populations metabolise or react to drugs based on their genetic makeup can be invaluable.
+
+4. **Can you think of a way to simulate the genetics of a population that is steadily shrinking through time?**
+   - **Answer:** To simulate a steadily shrinking population, one could adjust the model to reduce the population size in each subsequent generation. This could be achieved by setting a percentage reduction or a fixed number by which the population decreases in each time step. During each iteration of the simulation, the model would then sample from an increasingly smaller gene pool, reflecting the reduction in population size. Over time, this would likely lead to more pronounced effects of genetic drift, with alleles potentially being lost or becoming fixed at a faster rate.
 
 
 ## Solutions: Neutral or adaptive evolution in humans

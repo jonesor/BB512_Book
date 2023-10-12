@@ -76,6 +76,13 @@ gene_pool <- c(rep("A", number_A), rep("a", number_a))
 table(gene_pool)
 ```
 
+We can express these numbers as allele frequencies (i.e. as proportions of the total) by wrapping the `table` command with `prop.table` like this:
+
+```{r}
+prop.table(table(gene_pool))
+```
+
+
 
 ### Projecting allele frequency over one time step.
 
@@ -89,10 +96,10 @@ This code is saying "**sample, from the gene pool, `r 2*pop_size` alleles**". We
 new_gene_pool <- sample(gene_pool, 2 * pop_size, replace = TRUE)
 ```
 
-Let's look at the new gene pool. It should be similar, but probably not exactly the same as the initial gene pool.
+Let's look at the allele frequency in the new gene pool. It should be similar, but probably not exactly the same as the initial gene pool.
 
 ```{r}
-table(new_gene_pool)
+prop.table(table(new_gene_pool))
 ```
 
 There are a total of `r pop_size` individuals, but the numbers are (probably) not exactly the same as in the initial gene pool. The reason the gene pool is (probably) not identical, is that it is a random sample, not simply a carbon copy.
@@ -103,7 +110,7 @@ There are a total of `r pop_size` individuals, but the numbers are (probably) no
 
 To simulate the passage of time, we need to do this sampling procedure many times.
 
-We can do this using a loop in R. 
+We can do this using a loop in R. Loops are used to repeatedly simulate the gene pool sampling process across multiple generations. This allows us to observe how allele frequencies change over time, mimicking the natural progression of generations in a population.
 
 In our loop, we will repeat this gene pool sampling process many times (one time per generation). Each time we go through the loop, we sample alleles from the *old* gene pool from time $n$ to create a *new* gene pool for time $n+1$. And each time through the loop we calculate the allele frequency for A so we can track how it changes through time.
 
