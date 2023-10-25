@@ -13,7 +13,33 @@ and
 
 Equation 2: $p^2 + 2pq + q^2 = 1$. 
 
-An instructor (probably Owen) will explain how we get from equation 1 to equation 2 using the idea of the gene pool, random sampling (random mating), and probability.
+Let's first consider where these equations come from. First, Equation 1.
+
+In a diploid organism, each individual carries two alleles for a particular gene. Let's consider a gene with two alleles, A and a. In a given population:
+
+$p$ is the frequency of the dominant allele (A)
+$q$ is the frequency of the recessive allele (a)
+
+The sum of the frequencies of these two alleles in the population must equal 1, as they are the only two possibilities for this gene, so $p+q=1$.
+
+Equation 1 serves as the foundational stepping stone for Equation 2. In Equation 1, we establish the sum of allele frequencies, $p$ and $q$, in the gene pool. This equation sets the stage for the more complex Equation 2, where we translate these allele frequencies into genotype frequencies for the population.
+
+We can derive Equation 2 based on the gene pool and random mating. Let's consider a mating event between two random alleles. The possible combinations of alleles are:
+
+$p \times p = p^2$ (AA)
+$q \times q = q^2$ (aa)
+$p \times q = pq$ (Aa)
+$q \times p = pq$ (aA)
+
+Notice that we have two $pq$ terms (Aa and aA). The order of alleles doesn't matter, so they are summed together: $2pq$.
+
+So, the total probability for all possible combinations is:
+
+$p^2 + 2pq + q^2$. 
+
+This must equal 1 (100% probability), which gives us Equation 2:
+
+$p^2 + 2pq + q^2 = 1$. 
 
 In these formulae, $p$ is the allele frequency of the dominant allele and $q$ is the frequency of the recessive allele. Thus, $p^2$ is the frequency of the homozygous dominant genotype (e.g., AA), $q^2$ is the frequency of the homozygous recessive genotype (e.g., aa) and $2pq$ is the frequency of the heterozygous genotype (e.g., Aa). From these equations we can produce the following plot that shows the possible genotype frequencies at HWE for any given pair of allele frequencies. HWE can be reached for any genotype frequency (it is a common misconception that ratios between the three genotypes should be 1:2:1, or that allele frequencies should tend towards being 50% $p$ and 50% $q$).
 
@@ -46,12 +72,25 @@ axlab = seq(0,1,0.2)
 axis(1,line=1,col.axis="#3182bd",col="#3182bd",at=axlab,label=axlab)
 axis(1,line=3,col.axis="#e34a33",col="#e34a33",at=axlab,label=rev(axlab))
 axis(2)
-title(ylab="Frequency")
+title(ylab="Genotype frequency")
 text(x=0.05,y=1,"aa",col="#e34a33")
 text(x=0.95,y=1,"AA",col="#3182bd")
 text(x=0.5,y=0.55,"Aa",col="#c994c7")
+mtext("Allele\nfrequencies", side=1, line=3, at=-0.16, adj=0)
 
 ```
+
+## Assumptions of Hardy-Weinberg Equilibrium
+
+For a population to be in Hardy-Weinberg Equilibrium, certain assumptions must be met:
+
+- Random mating: There is no preference in mate selection based on genotype.
+- No mutations: The gene pool is stable with no new alleles being added.
+- Large population size: To negate the effects of genetic drift.
+- No gene flow: No new individuals enter or leave the population.
+- No natural selection: All genotypes in the population have an equal chance of reproductive success.
+
+Any deviation from these assumptions could result in a population that is not in Hardy-Weinberg Equilibrium.
 
 
 ```{block, type="do-something"}
@@ -91,6 +130,9 @@ There are 100 students in a class. Ninety-six did well in the course whereas fou
 *	The frequency of the recessive allele. 
 *	The frequency of the dominant allele. 
 *	The frequency of heterozygous individuals. 
+
+**Note**: This scenario is hypothetical and simplifies the complex factors that contribute to academic performance for the sake of this exercise. Academic performance is influenced by a myriad of factors, not solely genetics!
+
 
 ### Problem #4. 
 

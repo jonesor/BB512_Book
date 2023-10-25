@@ -366,7 +366,111 @@ Example traits that evolve via neutral evolution include fingerprint structure a
 Traits like muscle strength, running speed may have been important for fitness when they helped our ancestors obtain food. In those environments, they would have been under selection and therefore evolve via adaptive evolution. In more modern times, these selection pressures are weaker.
 
 
+## Solutions: Heritability
 
+You can read in data like this:
+
+```{r, eval = FALSE}
+population_1 <- read.csv("heritability_pop1.csv")
+```
+
+Though you can also use the "Wizard" in RStudio.
+
+```{r echo = FALSE, eval = TRUE}
+pop_1 <- read.csv(file.path(pathToDirectory,"heritability_pop1.csv"))
+```
+
+Plot the data as follows.
+
+```{r}
+# Plot the relationship
+plot(pop_1$Parent_value, pop_1$Offspring_value,
+     xlab ="Parent value",
+     ylab ="Offsping value")
+
+# fit the linear regression model
+mod1 <- lm(Offspring_value~ Parent_value, data = pop_1)
+
+# summarise the model
+summary(mod1)
+
+# add the regression line to the model
+abline(mod1)
+```
+
+
+The heritability is the slope of the relationship, so is `r round(as.vector(coef(mod1)[2]),3)` in this case. This is fairly high heritability.
+
+*What does the heritability tell us about the amount of variation explained by genetic factors?*
+
+A heritability of `r round(as.vector(coef(mod1)[2]),3)` for wing length indicates that `r round(as.vector(coef(mod1)[2]),3)*100`% of the observed variation in this trait within the population can be attributed to genetic factors. In other words, a significant portion of the variation in wing length is genetically determined.
+
+*What other factors might explain the remaining variation?*
+
+There are many other factors at play. The remaining 30% of variation could be due to environmental factors such as diet, climate, or social interactions. It might also include measurement error or other stochastic events.
+
+*How would the heritability estimate change if you used a different trait (e.g., beak length instead of wing length)?*
+
+Heritability is trait-specific. The heritability estimate for beak length could be higher, lower, or the same as that for wing length, depending on the genetic and environmental variances contributing to this particular trait.
+
+*What does the heritability tell us about how fast a trait might change due to selection?*
+
+A higher heritability (like `r round(as.vector(coef(mod1)[2]),3)`) suggests that the trait would respond more quickly to selection because a large proportion of the variation is genetic. Traits with lower heritability would be slower to respond to selection as they have a larger environmental component.
+
+The graph for the second population looks like this:
+
+
+```{r echo = FALSE, eval = TRUE}
+pop_2 <- read.csv(file.path(pathToDirectory,"heritability_pop2.csv"))
+```
+Plot the data as follows.
+
+```{r}
+plot(pop_2$Parent_value, pop_2$Offspring_value,
+     xlab ="Parent value",
+     ylab ="Offsping value")
+
+# fit the model.
+mod2 <- lm(Offspring_value~ Parent_value, data = pop_1)
+abline(mod2)
+summary(mod1)
+```
+
+For this population, the heritability (slope of the relationship) is `r round(as.vector(coef(mod2)[2]),3)` in this case. This is fairly low heritability.
+
+*What does the heritability tell us this time?*
+
+A heritability of `r round(as.vector(coef(mod2)[2]),3)` in the second population indicates that only `r round(as.vector(coef(mod2)[2]),3)*100`% of the variation in wing length is attributable to genetic factors. This is substantially lower compared to the first population, suggesting that environmental factors have a greater influence on the trait in this particular population.
+
+*Can you identify any environmental factors that might explain the difference?*
+
+Various environmental factors could explain the lower heritability in the second population. These might include (but are not limited to):
+Nutrition: Inadequate nutrition can lead to stunted growth or development, which could introduce a significant environmental variable into wing length. Poor nutrition might limit the expression of genes related to wing growth, thereby reducing the observed heritability as the environment (nutrition) plays a more substantial role.
+
+Predation Pressure: In a population under higher predation pressure, there could be strong selection for specific wing lengths that allow for more agile flight. However, if this selection pressure varies frequently (e.g., due to fluctuations in predator populations), it could introduce more environmental variance in wing length. The heritability would then appear lower because of this inconsistency in selection pressure.
+Climate: Variable climates, especially those that are more extreme, could influence the development of wing length. Cold climates may lead to smaller wings due to the need for a more rounded body shape to conserve heat (Bergmann's rule). In contrast, hot and arid climates may lead to longer wings for more efficient soaring. If the second population is exposed to a more variable or extreme climate, this could contribute to lower heritability.
+Social Structure: Different mating systems could impact heritability. For instance, if the second population has a polygamous system where a few males sire most of the offspring, genetic variance could be skewed and less representative, thus affecting heritability calculations.
+e.
+
+*Can you think of any real-world applications where understanding heritability would be important?*
+
+- Agriculture: Plant and animal breeding programs often rely on heritability estimates to improve desirable traits like yield, disease resistance, or growth rate.
+- Medicine: In personalized medicine, understanding the heritability of certain conditions or responses to treatments can lead to more effective, tailored interventions.
+- Conservation Biology: For endangered species, understanding the heritability of traits related to survival and reproduction can guide conservation efforts.
+- Public Health: Understanding the heritability of traits like BMI or cholesterol levels can inform public health policies and preventative measures.
+- Psychology and Education: Knowing the heritability of cognitive traits or educational attainment can help in developing targeted educational programs.
+
+
+*Violation of assumptions*
+
+- Additive Genetic Effects: Epistasis or gene-gene interactions could violate this assumption, affecting the predicted heritability.
+- No Shared Environment: If parent and offspring share significant environmental influences, like diet or habitat, this assumption is compromised.
+- Linearity: Non-linear relationships between parent and offspring traits would violate this assumption.
+- Measurement Accuracy: Instrumental errors or observer bias could invalidate this assumption.
+- Random Mating: If there is assortative mating based on the trait of interest, this assumption is violated.
+- No Selection Bias: If the sample is not representative of the population, perhaps due to selective pressures, this assumption is compromised.
+- Statistical Independence: If data from sibling or repeated measures are included, this assumption is broken.
+- No Genetic Drift or Migration: A sudden influx of new individuals or loss of existing ones due to various factors can violate this assumption.
 
 
 ## Solutions: Lotka-Volterra competition

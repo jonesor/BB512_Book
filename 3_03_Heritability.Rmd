@@ -1,0 +1,130 @@
+# Heritability from a linear regression
+
+```{r set up, echo = FALSE}
+
+# Function to simulate data
+simulate_data <- function(n, m, min_x, max_x, r_squared) {
+  # Generate random x values
+  x <- runif(n, min_x, max_x)
+  
+  # Calculate standard deviation of y based on the desired R-squared value
+  y_mean <- mean(x) * m
+  y_sd <- sqrt((1 - r_squared) * var(x * m) / r_squared)
+  
+  # Generate y values based on x, slope (m), and standard deviation
+  y <- m * x + rnorm(n, 0, y_sd)
+  
+  # Return the simulated data as a data frame
+  return(data.frame(x = x, y = y))
+}
+
+#set seed
+set.seed(123)
+
+# Create two data sets
+population_1 <- simulate_data(n = 33, m = 0.7, r_squared = 0.5, min_x = 80, max_x = 110)
+population_2 <- simulate_data(n = 37, m = 0.1, r_squared = 0.5, min_x = 80, max_x = 110)
+
+#Rename columns of data
+names(population_1) <- c("Parent_value", "Offspring_value")
+names(population_2) <- c("Parent_value", "Offspring_value")
+
+pathToDirectory <- "/Users/jones/Dropbox/_SDU_Teaching/BB512/Practicals/Heritability"
+
+
+write.csv(x = population_1,file = file.path(pathToDirectory,"heritability_pop1.csv"), row.names = FALSE)
+write.csv(x = population_2,file = file.path(pathToDirectory,"heritability_pop2.csv"), row.names = FALSE)
+```
+
+
+## Background
+
+Heritability is a measure of how much of the variation in a particular trait within a population can be attributed to genetic factors, as opposed to environmental factors or random chance. It is expressed as a ratio ranging from 0 to 1, and quantifies the degree to which offspring resemble their parents for a trait. Understanding heritability is crucial in many fields, including medicine, agriculture, and conservation biology. For example, in population dynamics, heritability can give us insights into how quickly a population could adapt to changing environmental conditions.
+
+In statistical terms, heritability is a ratio of variances, specifically, the variance due to additive genetic factors divided by the total phenotypic variance:
+
+$h^2 = \frac{V_A}{V_P}$
+
+
+A heritability value close to 1 suggests that genetic factors strongly influence the trait, making it likely that offspring will inherit similar trait values from their parents. On the other hand, a heritability value close to 0 indicates that environmental factors or random events play a larger role in determining the trait's expression. 
+
+Across different traits and species heritablity will vary. For example, due to differences in **genetic architecture**  where different species may have different numbers of genes affecting the trait, or the same genes may have different effects. In some places **environmental variation** might be greater causing a bigger influence on the trait than genetic factors, reducing heritability. Across populations and traits there may also be variation in **developmental plasticity** whereby a trait might be more plastic and thus less heritable. Furthermore, past **selection pressure** could have altered the amount of genetic variation in traits making them highly heritable in some species, while still being more plastic in others. 
+
+Focusing on the impact of selection is particularly revealing. A trait with a lot of genetic variance contributing to its expression may initially have high heritability. However, the influence of strong selection on heritability can be complex. Over time, strong selection can reduce genetic variance as the population becomes more homogenous for the selected trait. Consequently, heritability can decrease due to the reduction in total genetic variance. When the total genetic variation approaches zero, calculating heritability can lead to estimates that are statistically unstable. Because heritability is the ratio of genetic variance to total variance, a near-zero denominator can make this ratio extremely sensitive to minor variations in either the numerator or the denominator. As a result, even tiny fluctuations in measured variances could dramatically alter the estimate, reducing its reliability and interpretability.
+
+So, the relationship between the strength of selection and heritability isn't straightforward and can be influenced by various factors such as environmental conditions, mutation rates, and genetic architecture.
+
+Nevertheless, heritablity can be useful, and it is possible to estimate heritability by examining the relationship between parent and offspring trait values using linear regression. The slope of the regression line gives an estimate of heritability.
+
+**Reference**
+
+[Wray, N. & Visscher, P. (2008) Estimating trait heritability. Nature Education 1(1):29](https://www.nature.com/scitable/topicpage/estimating-trait-heritability-46889/)
+
+```{block, type="do-something"}
+Learning Outcomes:
+
+- Learn to import and manipulate data in R or Excel for the purpose of heritability estimation.
+- Develop a conceptual understanding of heritability and its importance in trait evolution.
+- Gain practical skills in performing linear regression analysis to estimate heritability.
+```
+
+## Your Task
+
+### Estimating heritability (15 minutes)
+
+You are provided with two datasets containing parent and offspring trait values for a given bird species (wing length). 
+
+[Data set 1](https://www.dropbox.com/scl/fi/8oe1can46pshxojw1p29m/heritability_pop1.csv?rlkey=ssg6ymzr85gkrzw9e1y63ghzu&dl=0)
+
+[Data set 2](https://www.dropbox.com/scl/fi/yoy0x7kczvlr1eku5057m/heritability_pop2.csv?rlkey=30hta1di8v6w93ghbhq09dlbm&dl=0)
+
+1) Import the first data set into R (RStudio).
+2) Plot the data to make a graph of parent value on the x-axis and offspring value on the y-axis.
+3) Fit a linear regression model of the form `y ~ x`. 
+4) Summarise the model and take note of the slope of the relationship between the parent and offspring trait values: this is the heritability.
+
+**Questions**
+
+* What does the heritability tell us about the amount of variation explained by genetic factors?
+* What other factors might explain the remaining variation?
+* How would the heritability estimate change if you used a different trait (e.g., beak length instead of wing length)?
+* What does the heritability tell us about how fast a trait might change due to selection?
+
+<!-- If the heritability is high, significant changes in the trait could occur in fewer generations through natural selection. The rate would also depend on other factors like generation time and strength of selection.
+Low heritability of a critical trait like disease resistance would be concerning for conservation efforts. It suggests that natural selection would have limited scope to act upon the trait, making rapid adaptation unlikely.
+-->
+
+
+### Comparative Analysis (10 minutes)
+
+After you have completed the linear regression analysis for the first dataset, analyse the second data set. This dataset features the same trait, for the same species but from a different population with potentially different environmental factors. The analysis steps are the same:
+
+1) Import the second data set into R (RStudio).
+2) Plot the data to make a graph of parent value on the x-axis and offspring value on the y-axis.
+3) Fit a linear regression model of the form `y ~ x`. 
+4) Summarise the model and take note of the slope of the relationship between the parent and offspring trait values.
+
+**Questions**
+
+* What does the heritability tell us this time?
+* Can you identify any environmental factors that might explain the difference?
+* Can you think of any real-world applications where understanding heritability would be important?
+
+
+
+### Assumptions (10 mins)
+
+These methods assume the following.
+
+* Additive Genetic Effects: Assumes that the trait is influenced by additive effects of multiple genes and does not account for gene-gene or gene-environment interactions.
+No Shared Environment: Assumes that the shared environment between parent and offspring does not significantly contribute to the trait similarity. Otherwise, the heritability may be overestimated.
+* Linearity: Assumes that the relationship between the parent and offspring trait values can be adequately captured by a linear model. A non-linear relationship would make the linear model inappropriate, skewing the heritability estimate.
+* Measurement Accuracy: Assumes that trait values are measured without error. Measurement errors can introduce noise and affect the regression slope, thus affecting the heritability estimate.
+* Random Mating: Assumes that mating occurs randomly with respect to the trait being measured. Non-random mating can skew the estimates.
+* No Selection Bias: Assumes that the sample used in the estimation is representative of the population. If only a subset of the population is available or selected for study (e.g., only the largest individuals), estimates can be biased.
+* Statistical Independence: Assumes that each parent-offspring pair is statistically independent from each other. This may not hold true in case of repeated measures or closely related individuals in the sample.
+* No Genetic Drift or Migration: Assumes the genetic composition of the population is stable over the time period being considered. Introduction of new genetic variants or loss of existing variants can affect heritability.
+
+**Question**
+
+* How might some of these assumptions be violated?

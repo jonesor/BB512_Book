@@ -1,11 +1,12 @@
 # Lotka-Volterra competition
 
-The Lotka-Volterra competition model is fundamental to ecological dynamics, particularly in the study of competition between species. The model describes the dynamics of two competing species in a shared environment. The model assumes that both species have similar resource requirements and compete for limited resources such as food, space, or nesting sites. It explores how the population sizes of the competing species change over time, taking into account their interaction strengths and carrying capacities. 
+The Lotka-Volterra competition model is a foundational tool in ecology for understanding interspecific competition, or competition between different species for shared resources such as food, space, and nesting sites. It examines how population sizes evolve in a shared environment by considering factors like interaction strength and environmental carrying capacities.
 
-One of the key principles derived from the Lotka-Volterra competition model is the competitive exclusion principle, which states that two species with identical ecological niches cannot coexist indefinitely in a stable environment. Instead, the more competitive species will eventually outcompete and exclude the other from the ecosystem. Understanding the dynamics of interspecific competition through the Lotka-Volterra model provides valuable insights into community structure, species coexistence, and the mechanisms that influence the composition and stability of ecological communities.
+A key principle derived from this model is "competitive exclusion", which posits that two species with identical ecological roles can't coexist indefinitely. Eventually, one species will outcompete and exclude the other from the ecosystem.
 
-The general idea is that coexistence can occur if each species limits its own population growth rate more than it limits the growth rate of the other species. If the species' niches overlap too much, one species will competitively exclude the other (i.e. forces the other to extinction). The outcome of the competition between species depends on their *competition coefficients* and *carrying capacities*, (and sometimes their population sizes). The models include both INTER- and INTRA-specific competition.
+The model also explores the role of both inter- and intra-specific competition. It identifies conditions for species coexistence, influenced by parameters like competition coefficients and carrying capacities. These insights are vital for understanding community structure, species interactions, and ecological stability.
 
+The model suggests that coexistence is possible if each species limits its own population growth more than it affects the other species. Overlapping niches could lead to competitive exclusion, influenced by their competition coefficients and carrying capacities.
 
 ```{block, type="do-something"}
 Learning outcomes: 
