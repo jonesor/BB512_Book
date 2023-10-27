@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>14 The Gene Pool Model | BB512 - Population Biology and Evolution</title>
+  <title>16 Heritability from a linear regression | BB512 - Population Biology and Evolution</title>
   <meta name="description" content="Course book for BB512 at the Biology Department, University of Southern Denmark" />
   <meta name="generator" content="bookdown 0.35 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="14 The Gene Pool Model | BB512 - Population Biology and Evolution" />
+  <meta property="og:title" content="16 Heritability from a linear regression | BB512 - Population Biology and Evolution" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="Course book for BB512 at the Biology Department, University of Southern Denmark" />
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="14 The Gene Pool Model | BB512 - Population Biology and Evolution" />
+  <meta name="twitter:title" content="16 Heritability from a linear regression | BB512 - Population Biology and Evolution" />
   
   <meta name="twitter:description" content="Course book for BB512 at the Biology Department, University of Southern Denmark" />
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="hardy-weinberg-equilibrium.html"/>
-<link rel="next" href="neutral-or-adaptive-evolution-in-humans-what-drives-evolution-of-our-traits.html"/>
+<link rel="prev" href="neutral-or-adaptive-evolution-in-humans-what-drives-evolution-of-our-traits.html"/>
+<link rel="next" href="lotka-volterra-competition.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -438,201 +438,112 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="the-gene-pool-model" class="section level1 hasAnchor" number="14">
-<h1><span class="header-section-number">14</span> The Gene Pool Model<a href="the-gene-pool-model.html#the-gene-pool-model" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<div id="background-10" class="section level2 hasAnchor" number="14.1">
-<h2><span class="header-section-number">14.1</span> Background<a href="the-gene-pool-model.html#background-10" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>A central goal in evolutionary biology is to understand variation – including genetic variation – and how it changes through time. One important idea is the “gene pool,” which contains all the different versions of genes within a group of organisms. These genes/alleles determine pheotypic traits and other characteristics. To grasp how populations evolve, we need to understand how allele frequencies change in a population. Over time, genetic diversity changes as the relative numbers of alleles changes. Some alleles may be lost from the population while others may become “fixed” – where the allele is present in every individual in the population.</p>
-<p>The primary factor that influences genetic drift in the gene pool model is population size. In small populations, “sampling error” means that, just by chance, large changes often occur in the allele frequencies. In large populations, dramatic changes are much less likely.</p>
-<p>Two related concepts are critical in understanding genetic drift: bottlenecks and founding effects. A genetic bottleneck occurrs when a population dramatically reduces in size due to events like environmental catastrophes. During a bottleneck, allele frequency (and genetic diversity) can change dramatically due to sampling effects during the bottleneck. The founding effect is a similar scenario where a small group (a sample from the population) establishes a new population. The fact that the new population is a small sample of the ancestral population means that the new population can have rather different a genetic composition to the ancestral population.</p>
+<div id="heritability-from-a-linear-regression" class="section level1 hasAnchor" number="16">
+<h1><span class="header-section-number">16</span> Heritability from a linear regression<a href="heritability-from-a-linear-regression.html#heritability-from-a-linear-regression" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="background-12" class="section level2 hasAnchor" number="16.1">
+<h2><span class="header-section-number">16.1</span> Background<a href="heritability-from-a-linear-regression.html#background-12" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Heritability is a measure of how much of the variation in a particular trait within a population can be attributed to genetic factors, as opposed to environmental factors or random chance. It is expressed as a ratio ranging from 0 to 1, and quantifies the degree to which offspring resemble their parents for a trait. Understanding heritability is crucial in many fields, including medicine, agriculture, and conservation biology. For example, in population dynamics, heritability can give us insights into how quickly a population could adapt to changing environmental conditions.</p>
+<p>In statistical terms, heritability is a ratio of variances, specifically, the variance due to additive genetic factors divided by the total phenotypic variance:</p>
+<p><span class="math inline">\(h^2 = \frac{V_A}{V_P}\)</span></p>
+<p>A heritability value close to 1 suggests that genetic factors strongly influence the trait, making it likely that offspring will inherit similar trait values from their parents. On the other hand, a heritability value close to 0 indicates that environmental factors or random events play a larger role in determining the trait’s expression.</p>
+<p>Across different traits and species heritablity will vary. For example, due to differences in <strong>genetic architecture</strong> where different species may have different numbers of genes affecting the trait, or the same genes may have different effects. In some places <strong>environmental variation</strong> might be greater causing a bigger influence on the trait than genetic factors, reducing heritability. Across populations and traits there may also be variation in <strong>developmental plasticity</strong> whereby a trait might be more plastic and thus less heritable. Furthermore, past <strong>selection pressure</strong> could have altered the amount of genetic variation in traits making them highly heritable in some species, while still being more plastic in others.</p>
+<p>Focusing on the impact of selection is particularly revealing. A trait with a lot of genetic variance contributing to its expression may initially have high heritability. However, the influence of strong selection on heritability can be complex. Over time, strong selection can reduce genetic variance as the population becomes more homogenous for the selected trait. Consequently, heritability can decrease due to the reduction in total genetic variance. When the total genetic variation approaches zero, calculating heritability can lead to estimates that are statistically unstable. Because heritability is the ratio of genetic variance to total variance, a near-zero denominator can make this ratio extremely sensitive to minor variations in either the numerator or the denominator. As a result, even tiny fluctuations in measured variances could dramatically alter the estimate, reducing its reliability and interpretability.</p>
+<p>So, the relationship between the strength of selection and heritability isn’t straightforward and can be influenced by various factors such as environmental conditions, mutation rates, and genetic architecture.</p>
+<p>Nevertheless, heritablity can be useful, and it is possible to estimate heritability by examining the relationship between parent and offspring trait values using linear regression. The slope of the regression line gives an estimate of heritability.</p>
+<p><strong>Reference</strong></p>
+<p><a href="https://www.nature.com/scitable/topicpage/estimating-trait-heritability-46889/">Wray, N. &amp; Visscher, P. (2008) Estimating trait heritability. Nature Education 1(1):29</a></p>
 <div class="do-something">
 <p>
-Learning outcomes:
+Learning Outcomes:
 </p>
 <ul>
 <li>
-Greater understanding of evolution via genetic drift (neutral).
+Learn to import and manipulate data in R or Excel for the purpose of
+heritability estimation.
 </li>
 <li>
-Understanding of genetic bottlenecks and founder effect.
+Develop a conceptual understanding of heritability and its
+importance in trait evolution.
 </li>
 <li>
-Understanding the relationship between stochasticity and genetic
-variation.
-</li>
-<li>
-Use of R for exploring biological phenomenon.
+Gain practical skills in performing linear regression analysis to
+estimate heritability.
 </li>
 </ul>
 </div>
 </div>
-<div id="your-task-10" class="section level2 hasAnchor" number="14.2">
-<h2><span class="header-section-number">14.2</span> Your task<a href="the-gene-pool-model.html#your-task-10" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>In this practical, we’ll use the R programming language to simulate how allele frequencies change in a population over generations. By changing some factors, you’ll see how allele frequencies change in different situations. This exercise will deepen your understanding of evolution and give you practical skills to explore real genetic questions.</p>
-<p>The exercise is divided into two parts:</p>
+<div id="your-task-11" class="section level2 hasAnchor" number="16.2">
+<h2><span class="header-section-number">16.2</span> Your Task<a href="heritability-from-a-linear-regression.html#your-task-11" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="estimating-heritability-15-minutes" class="section level3 hasAnchor" number="16.2.1">
+<h3><span class="header-section-number">16.2.1</span> Estimating heritability (15 minutes)<a href="heritability-from-a-linear-regression.html#estimating-heritability-15-minutes" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>You are provided with two datasets containing parent and offspring trait values for a given bird species (wing length).</p>
+<p><a href="https://www.dropbox.com/scl/fi/8oe1can46pshxojw1p29m/heritability_pop1.csv?rlkey=ssg6ymzr85gkrzw9e1y63ghzu&amp;dl=0">Data set 1</a></p>
+<p><a href="https://www.dropbox.com/scl/fi/yoy0x7kczvlr1eku5057m/heritability_pop2.csv?rlkey=30hta1di8v6w93ghbhq09dlbm&amp;dl=0">Data set 2</a></p>
 <ol style="list-style-type: decimal">
-<li>understanding the gene pool, and how the gene pool in the next generation is a <em>sample</em> of the ancestral gene pool.</li>
-<li>projecting the allele frequency of the gene pool through time to investigate the importance of population size</li>
-<li>modifying the code to understand genetic bottlenecks.</li>
+<li>Import the first data set into R (RStudio).</li>
+<li>Plot the data to make a graph of parent value on the x-axis and offspring value on the y-axis.</li>
+<li>Fit a linear regression model of the form <code>y ~ x</code>.</li>
+<li>Summarise the model and take note of the slope of the relationship between the parent and offspring trait values: this is the heritability.</li>
 </ol>
-</div>
-<div id="a-simple-model" class="section level2 hasAnchor" number="14.3">
-<h2><span class="header-section-number">14.3</span> A simple model<a href="the-gene-pool-model.html#a-simple-model" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>We will first aim to get an understanding of what a gene pool is, using a simple model. We will use R to make a gene pool, then look at how allele frequency in the gene pool changes over a single generation.</p>
-<div id="the-gene-pool" class="section level3 hasAnchor" number="14.3.1">
-<h3><span class="header-section-number">14.3.1</span> The gene pool<a href="the-gene-pool-model.html#the-gene-pool" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>To establish the gene pool we first set the initial population size. I set this to be reasonably large, at 500 individuals.</p>
-<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="the-gene-pool-model.html#cb23-1" tabindex="-1"></a>pop_size <span class="ot">&lt;-</span> <span class="dv">500</span></span></code></pre></div>
-<p>There are two alleles (gene variants) per individual: one allele came from the father, and one from the mother.</p>
-<p>Therefore, the gene pool contains 2 x N alleles (in this case, 1000 alleles).</p>
-<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="the-gene-pool-model.html#cb24-1" tabindex="-1"></a>pool_size <span class="ot">&lt;-</span> pop_size <span class="sc">*</span> <span class="dv">2</span></span></code></pre></div>
-<p>I now set the initial allele frequency to be 0.5. You can use other values, but 0.5 is best to start with.</p>
-<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="the-gene-pool-model.html#cb25-1" tabindex="-1"></a>initial_frequency_A <span class="ot">&lt;-</span> <span class="fl">0.5</span></span>
-<span id="cb25-2"><a href="the-gene-pool-model.html#cb25-2" tabindex="-1"></a>initial_frequency_a <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="sc">-</span> initial_frequency_A</span></code></pre></div>
-<p>We can now calculate the <strong>number</strong> of <em>A</em> and <em>a</em> alleles, by multiplying the frequency by the pool size and rounding the result to the closest whole number.</p>
-<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="the-gene-pool-model.html#cb26-1" tabindex="-1"></a>number_A <span class="ot">&lt;-</span> <span class="fu">round</span>(initial_frequency_A <span class="sc">*</span> pool_size)</span>
-<span id="cb26-2"><a href="the-gene-pool-model.html#cb26-2" tabindex="-1"></a>number_a <span class="ot">&lt;-</span> <span class="fu">round</span>(initial_frequency_a <span class="sc">*</span> pool_size)</span></code></pre></div>
-<p>Following this, the gene pool can be filled like this.
-What we are saying here is “repeat <code>A</code>, <code>number_A</code> times, then repeat <code>a</code> <code>number_a</code> times”</p>
-<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="the-gene-pool-model.html#cb27-1" tabindex="-1"></a>gene_pool <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fu">rep</span>(<span class="st">&quot;A&quot;</span>, number_A), <span class="fu">rep</span>(<span class="st">&quot;a&quot;</span>, number_a))</span>
-<span id="cb27-2"><a href="the-gene-pool-model.html#cb27-2" tabindex="-1"></a><span class="fu">table</span>(gene_pool)</span></code></pre></div>
-<pre><code>## gene_pool
-##   a   A 
-## 500 500</code></pre>
-<p>We can express these numbers as allele frequencies (i.e. as proportions of the total) by wrapping the <code>table</code> command with <code>prop.table</code> like this:</p>
-<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="the-gene-pool-model.html#cb29-1" tabindex="-1"></a><span class="fu">prop.table</span>(<span class="fu">table</span>(gene_pool))</span></code></pre></div>
-<pre><code>## gene_pool
-##   a   A 
-## 0.5 0.5</code></pre>
-</div>
-<div id="projecting-allele-frequency-over-one-time-step." class="section level3 hasAnchor" number="14.3.2">
-<h3><span class="header-section-number">14.3.2</span> Projecting allele frequency over one time step.<a href="the-gene-pool-model.html#projecting-allele-frequency-over-one-time-step." class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Lets assume the population size remains constant at N = 500.</p>
-<p>During the next time step (i.e. 1 generation), the individuals in the population mate with each other randomly. We can use the <code>sample</code> function to simulate this.</p>
-<p>This code is saying “<strong>sample, from the gene pool, 1000 alleles</strong>”. We need to sample <span class="math inline">\(2 \times\)</span> the population size because each individual contains two alleles.</p>
-<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="the-gene-pool-model.html#cb31-1" tabindex="-1"></a>new_gene_pool <span class="ot">&lt;-</span> <span class="fu">sample</span>(gene_pool, <span class="dv">2</span> <span class="sc">*</span> pop_size, <span class="at">replace =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
-<p>Let’s look at the allele frequency in the new gene pool. It should be similar, but probably not exactly the same as the initial gene pool.</p>
-<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="the-gene-pool-model.html#cb32-1" tabindex="-1"></a><span class="fu">prop.table</span>(<span class="fu">table</span>(new_gene_pool))</span></code></pre></div>
-<pre><code>## new_gene_pool
-##     a     A 
-## 0.491 0.509</code></pre>
-<p>There are a total of 500 individuals, but the numbers are (probably) not exactly the same as in the initial gene pool. The reason the gene pool is (probably) not identical, is that it is a random sample, not simply a carbon copy.</p>
-<p><strong>Try to vary the population size and do this several times at small and large population sizes.</strong> You should notice that the frequencies/numbers are more similar when you repeat them for large population sizes than for small population sizes.</p>
-</div>
-</div>
-<div id="simulation-of-allele-frequency-through-time" class="section level2 hasAnchor" number="14.4">
-<h2><span class="header-section-number">14.4</span> Simulation of allele frequency through time<a href="the-gene-pool-model.html#simulation-of-allele-frequency-through-time" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>To simulate the passage of time, we need to do this sampling procedure many times.</p>
-<p>We can do this using a loop in R. Loops are used to repeatedly simulate the gene pool sampling process across multiple generations. This allows us to observe how allele frequencies change over time, mimicking the natural progression of generations in a population.</p>
-<p>In our loop, we will repeat this gene pool sampling process many times (one time per generation). Each time we go through the loop, we sample alleles from the <em>old</em> gene pool from time <span class="math inline">\(n\)</span> to create a <em>new</em> gene pool for time <span class="math inline">\(n+1\)</span>. And each time through the loop we calculate the allele frequency for A so we can track how it changes through time.</p>
-<p>Let’s set up a simulation that runs for 100 generations.
-You can cut-paste this code, which is a complete gene-pool model.</p>
-<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="the-gene-pool-model.html#cb34-1" tabindex="-1"></a><span class="co"># Set number of generations</span></span>
-<span id="cb34-2"><a href="the-gene-pool-model.html#cb34-2" tabindex="-1"></a>n_gen <span class="ot">&lt;-</span> <span class="dv">100</span></span>
-<span id="cb34-3"><a href="the-gene-pool-model.html#cb34-3" tabindex="-1"></a>pop_size <span class="ot">&lt;-</span> <span class="dv">100</span></span>
-<span id="cb34-4"><a href="the-gene-pool-model.html#cb34-4" tabindex="-1"></a></span>
-<span id="cb34-5"><a href="the-gene-pool-model.html#cb34-5" tabindex="-1"></a><span class="co"># Set up an empty vector of length n_gen to contain results</span></span>
-<span id="cb34-6"><a href="the-gene-pool-model.html#cb34-6" tabindex="-1"></a>allele_freq_A <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="cn">NA</span>, n_gen)</span>
-<span id="cb34-7"><a href="the-gene-pool-model.html#cb34-7" tabindex="-1"></a></span>
-<span id="cb34-8"><a href="the-gene-pool-model.html#cb34-8" tabindex="-1"></a><span class="co"># Put in an initial value for frequency of A</span></span>
-<span id="cb34-9"><a href="the-gene-pool-model.html#cb34-9" tabindex="-1"></a>allele_freq_A[<span class="dv">1</span>] <span class="ot">&lt;-</span> <span class="fl">0.5</span></span>
-<span id="cb34-10"><a href="the-gene-pool-model.html#cb34-10" tabindex="-1"></a></span>
-<span id="cb34-11"><a href="the-gene-pool-model.html#cb34-11" tabindex="-1"></a><span class="co"># Establish the initial gene pool and name it gene_pool_time_n</span></span>
-<span id="cb34-12"><a href="the-gene-pool-model.html#cb34-12" tabindex="-1"></a><span class="co"># This part looks complicated, but I am just condensing the code from above into 1 line.</span></span>
-<span id="cb34-13"><a href="the-gene-pool-model.html#cb34-13" tabindex="-1"></a>gene_pool_time_n <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
-<span id="cb34-14"><a href="the-gene-pool-model.html#cb34-14" tabindex="-1"></a>  <span class="fu">rep</span>(<span class="st">&quot;A&quot;</span>, <span class="fu">round</span>(<span class="dv">2</span> <span class="sc">*</span> allele_freq_A[<span class="dv">1</span>] <span class="sc">*</span> pop_size)),</span>
-<span id="cb34-15"><a href="the-gene-pool-model.html#cb34-15" tabindex="-1"></a>  <span class="fu">rep</span>(<span class="st">&quot;a&quot;</span>, <span class="fu">round</span>(<span class="dv">2</span> <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">-</span> allele_freq_A[<span class="dv">1</span>]) <span class="sc">*</span> pop_size))</span>
-<span id="cb34-16"><a href="the-gene-pool-model.html#cb34-16" tabindex="-1"></a>)</span>
-<span id="cb34-17"><a href="the-gene-pool-model.html#cb34-17" tabindex="-1"></a></span>
-<span id="cb34-18"><a href="the-gene-pool-model.html#cb34-18" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">2</span><span class="sc">:</span>n_gen) {</span>
-<span id="cb34-19"><a href="the-gene-pool-model.html#cb34-19" tabindex="-1"></a>  gene_pool_time_n_plus_1 <span class="ot">&lt;-</span> <span class="fu">sample</span>(gene_pool_time_n,</span>
-<span id="cb34-20"><a href="the-gene-pool-model.html#cb34-20" tabindex="-1"></a>    pop_size <span class="sc">*</span> <span class="dv">2</span>,</span>
-<span id="cb34-21"><a href="the-gene-pool-model.html#cb34-21" tabindex="-1"></a>    <span class="at">replace =</span> <span class="cn">TRUE</span></span>
-<span id="cb34-22"><a href="the-gene-pool-model.html#cb34-22" tabindex="-1"></a>  )</span>
-<span id="cb34-23"><a href="the-gene-pool-model.html#cb34-23" tabindex="-1"></a>  gene_pool_table <span class="ot">&lt;-</span> <span class="fu">table</span>(gene_pool_time_n_plus_1)</span>
-<span id="cb34-24"><a href="the-gene-pool-model.html#cb34-24" tabindex="-1"></a>  allele_freq_A[i] <span class="ot">&lt;-</span> gene_pool_table[<span class="dv">2</span>] <span class="sc">/</span> <span class="fu">sum</span>(gene_pool_table)</span>
-<span id="cb34-25"><a href="the-gene-pool-model.html#cb34-25" tabindex="-1"></a></span>
-<span id="cb34-26"><a href="the-gene-pool-model.html#cb34-26" tabindex="-1"></a>  <span class="co"># Replace the old gene pool with the new one.</span></span>
-<span id="cb34-27"><a href="the-gene-pool-model.html#cb34-27" tabindex="-1"></a>  gene_pool_time_n <span class="ot">&lt;-</span> gene_pool_time_n_plus_1</span>
-<span id="cb34-28"><a href="the-gene-pool-model.html#cb34-28" tabindex="-1"></a>}</span></code></pre></div>
-<p>Now we can plot this result (Figure <a href="the-gene-pool-model.html#fig:simulation1">14.1</a>)</p>
-<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="the-gene-pool-model.html#cb35-1" tabindex="-1"></a><span class="fu">plot</span>(<span class="dv">1</span><span class="sc">:</span>n_gen, allele_freq_A, <span class="at">type =</span> <span class="st">&quot;l&quot;</span>, <span class="at">xlab =</span> <span class="st">&quot;time&quot;</span>, <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>))</span></code></pre></div>
-<div class="figure"><span style="display:block;" id="fig:simulation1"></span>
-<img src="BB512_files/figure-html/simulation1-1.png" alt="Simulation of allele frequency through time" width="672" />
-<p class="caption">
-Figure 14.1: Simulation of allele frequency through time
-</p>
-</div>
-<p>Use the code to investigate the following questions:</p>
+<p><strong>Questions</strong></p>
 <ul>
-<li>How does population size affect the variation through time in allele frequencies? Why do you see these patterns?</li>
-<li>How does the probability of <em>fixation</em> change with population size?</li>
-<li>When the population size is large (say 1000), is it still possible for alleles to become fixed?</li>
-<li>Are rare alleles (defined with allele frequency) more or less likely to be lost than common ones? What implications does this have for new alleles (mutations)?</li>
+<li>What does the heritability tell us about the amount of variation explained by genetic factors?</li>
+<li>What other factors might explain the remaining variation?</li>
+<li>How would the heritability estimate change if you used a different trait (e.g., beak length instead of wing length)?</li>
+<li>What does the heritability tell us about how fast a trait might change due to selection?</li>
 </ul>
-<div class="do-something">
-<p>
-Tip: make a new script and paste the code loop along with with the
-plot command so that you can run both together easily.
-</p>
+<!-- If the heritability is high, significant changes in the trait could occur in fewer generations through natural selection. The rate would also depend on other factors like generation time and strength of selection.
+Low heritability of a critical trait like disease resistance would be concerning for conservation efforts. It suggests that natural selection would have limited scope to act upon the trait, making rapid adaptation unlikely.
+-->
 </div>
-</div>
-<div id="bottlenecks" class="section level2 hasAnchor" number="14.5">
-<h2><span class="header-section-number">14.5</span> Bottlenecks<a href="the-gene-pool-model.html#bottlenecks" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Well done for making it this far. R programming is not for the fainthearted.</p>
-<p>Next up, I want you to take the code, and modify the code within the loop to simulate a genetic bottleneck. A genetic bottleneck occurs when the population goes through a period of small population size.</p>
-<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="the-gene-pool-model.html#cb36-1" tabindex="-1"></a><span class="cf">if</span> (i <span class="sc">%in%</span> <span class="dv">30</span><span class="sc">:</span><span class="dv">50</span>) {</span>
-<span id="cb36-2"><a href="the-gene-pool-model.html#cb36-2" tabindex="-1"></a>  pop_size <span class="ot">&lt;-</span> <span class="dv">10</span></span>
-<span id="cb36-3"><a href="the-gene-pool-model.html#cb36-3" tabindex="-1"></a>} <span class="cf">else</span> {</span>
-<span id="cb36-4"><a href="the-gene-pool-model.html#cb36-4" tabindex="-1"></a>  pop_size <span class="ot">&lt;-</span> <span class="dv">1000</span></span>
-<span id="cb36-5"><a href="the-gene-pool-model.html#cb36-5" tabindex="-1"></a>}</span></code></pre></div>
-<p>This code means, “<em>…if the generation time is between <code>30</code> and <code>50</code>, make the population size 10, otherwise make the population size 1000</em>”. In other words, the population goes through a bottleneck period of 20 generations. You could modify this line of code to change the characteristics of the bottleneck.</p>
-<p>Figure <a href="the-gene-pool-model.html#fig:bottleneck">14.2</a> shows an example of what your plot of a genetic bottleneck simulation may look like. I have added some lines to show where the bottleneck starts/ends.</p>
-<div class="figure"><span style="display:block;" id="fig:bottleneck"></span>
-<img src="BB512_files/figure-html/bottleneck-1.png" alt="Simulation of a genetic bottleneck" width="672" />
-<p class="caption">
-Figure 14.2: Simulation of a genetic bottleneck
-</p>
-</div>
-<p>Now use your new bottleneck code to answer the following questions:</p>
+<div id="comparative-analysis-10-minutes" class="section level3 hasAnchor" number="16.2.2">
+<h3><span class="header-section-number">16.2.2</span> Comparative Analysis (10 minutes)<a href="heritability-from-a-linear-regression.html#comparative-analysis-10-minutes" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>After you have completed the linear regression analysis for the first dataset, analyse the second data set. This dataset features the same trait, for the same species but from a different population with potentially different environmental factors. The analysis steps are the same:</p>
+<ol style="list-style-type: decimal">
+<li>Import the second data set into R (RStudio).</li>
+<li>Plot the data to make a graph of parent value on the x-axis and offspring value on the y-axis.</li>
+<li>Fit a linear regression model of the form <code>y ~ x</code>.</li>
+<li>Summarise the model and take note of the slope of the relationship between the parent and offspring trait values.</li>
+</ol>
+<p><strong>Questions</strong></p>
 <ul>
-<li>How does a genetic bottle neck influence the genetic composition of the population?</li>
-<li>How might a genetic bottleneck impact the probability of genetic fixation?</li>
-<li>Does the severity of the bottleneck (i.e. length and population size) matter?</li>
+<li>What does the heritability tell us this time?</li>
+<li>Can you identify any environmental factors that might explain the difference?</li>
+<li>Can you think of any real-world applications where understanding heritability would be important?</li>
 </ul>
 </div>
-<div id="conclusions" class="section level2 hasAnchor" number="14.6">
-<h2><span class="header-section-number">14.6</span> Conclusions<a href="the-gene-pool-model.html#conclusions" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>You should now have a good idea of what a gene pool model is, the importance of population size, the concept of sampling from a population and genetic bottlenecks.</p>
-<p>Let’s finish with some more general questions:</p>
+<div id="assumptions-10-mins" class="section level3 hasAnchor" number="16.2.3">
+<h3><span class="header-section-number">16.2.3</span> Assumptions (10 mins)<a href="heritability-from-a-linear-regression.html#assumptions-10-mins" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>These methods assume the following.</p>
 <ul>
-<li>What are the limitations of this simulation. What other real-world factors and complexities are not considered in this simplified model?</li>
+<li>Additive Genetic Effects: Assumes that the trait is influenced by additive effects of multiple genes and does not account for gene-gene or gene-environment interactions.
+No Shared Environment: Assumes that the shared environment between parent and offspring does not significantly contribute to the trait similarity. Otherwise, the heritability may be overestimated.</li>
+<li>Linearity: Assumes that the relationship between the parent and offspring trait values can be adequately captured by a linear model. A non-linear relationship would make the linear model inappropriate, skewing the heritability estimate.</li>
+<li>Measurement Accuracy: Assumes that trait values are measured without error. Measurement errors can introduce noise and affect the regression slope, thus affecting the heritability estimate.</li>
+<li>Random Mating: Assumes that mating occurs randomly with respect to the trait being measured. Non-random mating can skew the estimates.</li>
+<li>No Selection Bias: Assumes that the sample used in the estimation is representative of the population. If only a subset of the population is available or selected for study (e.g., only the largest individuals), estimates can be biased.</li>
+<li>Statistical Independence: Assumes that each parent-offspring pair is statistically independent from each other. This may not hold true in case of repeated measures or closely related individuals in the sample.</li>
+<li>No Genetic Drift or Migration: Assumes the genetic composition of the population is stable over the time period being considered. Introduction of new genetic variants or loss of existing variants can affect heritability.</li>
 </ul>
-<!----
-No selection
-Mating is random
-There is no mutation
---->
+<p><strong>Question</strong></p>
 <ul>
-<li>Why is genetic diversity important to a population, for example in a conservation context?</li>
-</ul>
-<!---
-Genetic diversity allows populations to explore paramter space
---->
-<ul>
-<li><p>Can you think of real-life scenarios where understanding gene pool dynamics would be valuable, such as in conservation biology or medical genetics?</p></li>
-<li><p>Can you think of a way to simulate the genetics of a population that is steadily shrinking through time?</p></li>
+<li>How might some of these assumptions be violated?</li>
 </ul>
 
 </div>
+</div>
+</div>
+
+
+
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="hardy-weinberg-equilibrium.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="neutral-or-adaptive-evolution-in-humans-what-drives-evolution-of-our-traits.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="neutral-or-adaptive-evolution-in-humans-what-drives-evolution-of-our-traits.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="lotka-volterra-competition.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -663,7 +574,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/jonesor/BB512_Book/edit/master/3_01.5_GenePool.Rmd",
+"link": "https://github.com/jonesor/BB512_Book/edit/master/3_03_Heritability.Rmd",
 "text": "Edit"
 },
 "history": {

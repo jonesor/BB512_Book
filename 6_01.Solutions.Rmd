@@ -377,6 +377,7 @@ population_1 <- read.csv("heritability_pop1.csv")
 Though you can also use the "Wizard" in RStudio.
 
 ```{r echo = FALSE, eval = TRUE}
+pathToDirectory <- "/Users/jones/Dropbox/_SDU_Teaching/BB512/Practicals/Heritability"
 pop_1 <- read.csv(file.path(pathToDirectory,"heritability_pop1.csv"))
 ```
 
@@ -421,6 +422,7 @@ The graph for the second population looks like this:
 
 
 ```{r echo = FALSE, eval = TRUE}
+pathToDirectory <- "/Users/jones/Dropbox/_SDU_Teaching/BB512/Practicals/Heritability"
 pop_2 <- read.csv(file.path(pathToDirectory,"heritability_pop2.csv"))
 ```
 Plot the data as follows.

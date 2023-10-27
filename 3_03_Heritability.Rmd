@@ -3,7 +3,7 @@
 ```{r set up, echo = FALSE}
 
 # Function to simulate data
-simulate_data <- function(n, m, min_x, max_x, r_squared) {
+simulate_data <- function(n, m, min_x, max_x, r_squared, precision) {
   # Generate random x values
   x <- runif(n, min_x, max_x)
   
@@ -15,15 +15,15 @@ simulate_data <- function(n, m, min_x, max_x, r_squared) {
   y <- m * x + rnorm(n, 0, y_sd)
   
   # Return the simulated data as a data frame
-  return(data.frame(x = x, y = y))
+  return(data.frame(x = round(x,precision), y = round(y,precision)))
 }
 
 #set seed
 set.seed(123)
 
 # Create two data sets
-population_1 <- simulate_data(n = 33, m = 0.7, r_squared = 0.5, min_x = 80, max_x = 110)
-population_2 <- simulate_data(n = 37, m = 0.1, r_squared = 0.5, min_x = 80, max_x = 110)
+population_1 <- simulate_data(n = 33, m = 0.7, r_squared = 0.5, min_x = 80, max_x = 110, precision = 1)
+population_2 <- simulate_data(n = 37, m = 0.1, r_squared = 0.5, min_x = 80, max_x = 110, precision = 1)
 
 #Rename columns of data
 names(population_1) <- c("Parent_value", "Offspring_value")
