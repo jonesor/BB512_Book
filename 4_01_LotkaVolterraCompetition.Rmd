@@ -6,14 +6,21 @@ A key principle derived from this model is "competitive exclusion", which posits
 
 The model also explores the role of both inter- and intra-specific competition. It identifies conditions for species coexistence, influenced by parameters like competition coefficients and carrying capacities. These insights are vital for understanding community structure, species interactions, and ecological stability.
 
-The model suggests that coexistence is possible if each species limits its own population growth more than it affects the other species. Overlapping niches could lead to competitive exclusion, influenced by their competition coefficients and carrying capacities.
+In a two-species system there are four possible outcomes:
+
+1. *Predictable Exclusion of Species 1 by Species 2:* Species 2 outcompetes and excludes species 1 from the environment.
+2. *Predictable Exclusion of Species 2 by Species 1:* Species 1 outcompetes and excludes species 2 from the environment.
+3. *Exclusion Dependent on Initial Densities:* Depending on the starting numbers of each species, either one could exclude the other.
+4. *Stable Coexistence:* Both species may reach a stable equilibrium where they coexist without one excluding the other.
+
+The model suggests that stable coexistence is possible if each species limits its own population growth more than it affects the other species. Overlapping niches could lead to competitive exclusion, influenced by their competition coefficients and carrying capacities.
 
 ```{block, type="do-something"}
 Learning outcomes: 
 
 - Competence in constructing an Excel-based population model.
 - Understanding how the Lotka-Volterra competition model works.
-- Understanding the $\alpha$ and $\beta$ competition coefficients.
+- Understanding the competition coefficients. These are called $\alpha$ and $\beta$ in the Neal textbook, and $\alpha_{12}$ and $\alpha_{21}$ in the PDF here.
 
 ```
 
@@ -22,6 +29,7 @@ Learning outcomes:
 In this class (over TWO sessions) you will be working from a PDF available [here](https://www.dropbox.com/s/oukr39oq0rsn8il/9.%20Interspecific%20Competition%20and%20Competitive%20Exclusion.pdf?dl=1) to make a model exploring this idea.
 
 This PDF walks you through the creation of an Excel spreadsheet exploring interspecific competition and competitive exclusion using the Lotka-Volterra model. 
+
 
 
 * Create the Excel spreadsheet by following the instructions in the PDF

@@ -482,6 +482,24 @@ You can find a completed Excel spreadsheet [here](https://www.dropbox.com/s/q1qo
 The answers to the questions are [here](https://www.dropbox.com/s/oz2c10bmyf8t7s6/9.%20Answers%20to%20questions.pdf?dl=1).
 
 
+
+To add to this document, you can see the conditions for coexistence in the Neal textbook (p. 278). Note that in this textbook, $\alpha_{12}$ is written as $\alpha$ and $\alpha_{21}$ is written as $\beta$
+
+Let's break down the implications of the conditions $ \alpha_{12} < \frac{K_1}{K_2} $ and $ \alpha_{21} < \frac{K_2}{K_1} $ for stable coexistence in a more intuitive way:
+
+1. **Carrying Capacities $K_1$ and $K_2$**: Think of the carrying capacity as the maximum number of guests each species can have at their own "party" (their environment) before it becomes too crowded.
+
+2. **Competition Coefficients ($\alpha_{12}$ and $\alpha_{21}$)**: The competition coefficients are like how much each uninvited guest from the other species "eats" if they crash the party. If they eat too much (high α), they could ruin the party by leaving not enough food for the intended guests.
+
+3. **Condition $\alpha_{12} < \frac{K_1}{K_2}$**: This means that the uninvited guests from species 2 don't eat too much at species 1's party. Even if they eat some food, there's still enough for all of species 1's intended guests — so species 1 can still have a successful party.
+
+4. **Condition $\alpha_{21} < \frac{K_2}{K_1}$**: Similarly, this means that the uninvited guests from species 1 are polite enough not to eat too much at species 2's party, leaving enough for species 2's intended guests.
+
+When both conditions are met, it's like both species can have their parties without ruining each other's. They both manage to have enough resources (food) to sustain a good number of guests (population) without the other species taking so much that it causes a problem.
+
+In ecological terms, these conditions mean that while there is some competition for resources between the two species, it's not so severe that one species would prevent the other from surviving. They can both maintain healthy populations without outcompeting each other to the point of extinction. Each species manages to "live and let live," with neither being too greedy for the shared environment to handle.
+
+
 ## Solutions: Lotka-Volterra predator-prey dynamics
 
 

@@ -23,7 +23,7 @@
 <meta name="author" content="Owen R. Jones (Course Coordinator)" />
 
 
-<meta name="date" content="2023-11-08" />
+<meta name="date" content="2023-11-21" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -439,7 +439,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>The Lotka-Volterra competition model is a foundational tool in ecology for understanding interspecific competition, or competition between different species for shared resources such as food, space, and nesting sites. It examines how population sizes evolve in a shared environment by considering factors like interaction strength and environmental carrying capacities.</p>
 <p>A key principle derived from this model is “competitive exclusion”, which posits that two species with identical ecological roles can’t coexist indefinitely. Eventually, one species will outcompete and exclude the other from the ecosystem.</p>
 <p>The model also explores the role of both inter- and intra-specific competition. It identifies conditions for species coexistence, influenced by parameters like competition coefficients and carrying capacities. These insights are vital for understanding community structure, species interactions, and ecological stability.</p>
-<p>The model suggests that coexistence is possible if each species limits its own population growth more than it affects the other species. Overlapping niches could lead to competitive exclusion, influenced by their competition coefficients and carrying capacities.</p>
+<p>In a two-species system there are four possible outcomes:</p>
+<ol style="list-style-type: decimal">
+<li><em>Predictable Exclusion of Species 1 by Species 2:</em> Species 2 outcompetes and excludes species 1 from the environment.</li>
+<li><em>Predictable Exclusion of Species 2 by Species 1:</em> Species 1 outcompetes and excludes species 2 from the environment.</li>
+<li><em>Exclusion Dependent on Initial Densities:</em> Depending on the starting numbers of each species, either one could exclude the other.</li>
+<li><em>Stable Coexistence:</em> Both species may reach a stable equilibrium where they coexist without one excluding the other.</li>
+</ol>
+<p>The model suggests that stable coexistence is possible if each species limits its own population growth more than it affects the other species. Overlapping niches could lead to competitive exclusion, influenced by their competition coefficients and carrying capacities.</p>
 <div class="do-something">
 <p>
 Learning outcomes:
@@ -452,9 +459,7 @@ Competence in constructing an Excel-based population model.
 Understanding how the Lotka-Volterra competition model works.
 </li>
 <li>
-Understanding the <span class="math inline"><span class="math inline">\(\alpha\)</span></span> and
-<span class="math inline"><span class="math inline">\(\beta\)</span></span> competition
-coefficients.
+Understanding the competition coefficients. These are called <span class="math inline"><span class="math inline">\(\alpha\)</span></span> and <span class="math inline"><span class="math inline">\(\beta\)</span></span> in the Neal textbook, and <span class="math inline"><span class="math inline">\(\alpha_{12}\)</span></span> and <span class="math inline"><span class="math inline">\(\alpha_{21}\)</span></span> in the PDF here.
 </li>
 </ul>
 </div>
