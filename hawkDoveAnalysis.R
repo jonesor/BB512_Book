@@ -1,63 +1,72 @@
 library(tidyverse)
 library(readxl)
 library(janitor)
+require(googledrive)
 
-hdg <- readxl::read_xlsx("/Users/jones/Dropbox/_SDU_Teaching/BB512/Practicals/HawkAndDoveGame/gametheoryResults.xlsx", sheet = 3) %>%
-  clean_names() %>%
-  select(individual, round, player_1, player_2, benefit)
+# Download from Google Drive
+file <- googledrive::drive_find(pattern = "Game theory part 1", type = "spreadsheet")
+file
+googledrive::drive_download(
+  file = googledrive::as_id(file$id),
+  path = paste("data/", file$name, ".xlsx", sep = ""),
+  type = "xlsx", overwrite = TRUE
+)
 
+hdg <- readxl::read_xlsx("data/Game theory part 1 (Responses).xlsx", sheet = 1) %>%
+  clean_names() 
+
+names(hdg) <- c("timestamp","teamID","round","player_1_card","player_2_card","player_1_benefit", "player_2_benefit")
+
+hdg <- hdg %>% 
+  select(teamID, round, player_1_card, player_2_card, player_1_benefit, player_2_benefit)
+
+#Filter name errors
+table(hdg$teamID)
+fewRecordsTeams <- names(which(table(hdg$teamID)<10))
+
+hdg <- hdg %>% 
+  filter(!teamID %in% fewRecordsTeams)
 
 # Does hawkishness change during the game?
-hawkishness <- hdg %>%
-  mutate(hawkNumeric_player1 = ifelse(player_1 == "H", 1, 0)) %>%
+hawkishness1 <- hdg %>%
+  mutate(hawkNumeric_player1 = ifelse(player_1_card == "Hawk", 1, 0)) %>%
   group_by(round) %>%
   summarise(meanHawk = mean(hawkNumeric_player1))
+
+hawkishness2 <- hdg %>%
+  mutate(hawkNumeric_player2 = ifelse(player_2_card == "Hawk", 1, 0)) %>%
+  group_by(round) %>%
+  summarise(meanHawk = mean(hawkNumeric_player2))
+
+hawkishness <- bind_rows(hawkishness1,hawkishness2)
 
 ggplot(hawkishness,aes(x = round,y = meanHawk)) + 
   geom_point() + 
   geom_smooth(method = "lm") +
-  ggtitle("Hawkishness doesn't decline much with\ntime for Game 1")
+  ggtitle("Hawkishness doesn't decline much with\ntime for Game 1") + 
+  ylim(0,1)
 
-# How does the hawkishness of individuals relate to the benefits recieved?
-perIndiv <- hdg %>%
-  mutate(hawkNumeric_player1 = ifelse(player_1 == "H", 1, 0)) %>%
-  group_by(individual) %>%
-  summarise(meanHawkishness = mean(hawkNumeric_player1), benefit = sum(benefit, na.rm = TRUE))
+# How does the average hawkishness of individuals relate to the benefits received?
+perIndiv_player1 <- hdg %>%
+  mutate(hawkNumeric_player1 = ifelse(player_1_card == "Hawk", 1, 0)) %>%
+  group_by(teamID) %>%
+  summarise(mean_Hawkishness = mean(hawkNumeric_player1), mean_benefit = sum(player_1_benefit, na.rm = TRUE))
 
-ggplot(perIndiv,aes(x = meanHawkishness,y = benefit)) + 
+perIndiv_player2 <- hdg %>%
+  mutate(hawkNumeric_player2 = ifelse(player_2_card == "Hawk", 1, 0)) %>%
+  group_by(teamID) %>%
+  summarise(mean_Hawkishness = mean(hawkNumeric_player2), mean_benefit = sum(player_2_benefit, na.rm = TRUE))
+
+perIndiv_bothPlayers <- bind_rows(perIndiv_player2,perIndiv_player1)
+
+ggplot(perIndiv_bothPlayers,aes(x = mean_Hawkishness)) + 
+  geom_histogram(bins = 13) + 
+  xlim(0,1) + 
+  ggtitle("There is variation strategy among individuals")
+
+ggplot(perIndiv_bothPlayers,aes(x = mean_Hawkishness,y = mean_benefit)) + 
   geom_point() + 
-  geom_smooth(method="lm", formula=y~poly(x, 2))+
-  ggtitle("The best strategy in Game 1\nis an intermediate level of hawkishness")
+  stat_smooth(method="lm",formula=y~poly(x, 2),fullrange=TRUE)+
+  ggtitle("The best strategy in Game 1\nis an intermediate level of hawkishness") + 
+  xlim(0,1)
 
-# GAME 2
-
-hdg2 <- readxl::read_xlsx("/Users/jones/Dropbox/_SDU_Teaching/BB512/Practicals/HawkAndDoveGame/gametheoryResults.xlsx", sheet = 4) %>%
-  clean_names() %>%
-  select(individual, round, player_1, player_2, benefit)
-
-hdg2
-
-
-# Does hawkishness change during the game?
-hawkishness <- hdg2 %>%
-  mutate(hawkNumeric_player1 = ifelse(player_1 == "H", 1, 0)) %>%
-  group_by(round) %>%
-  summarise(meanHawk = mean(hawkNumeric_player1))
-
-ggplot(hawkishness,aes(x = round,y = meanHawk)) + 
-  geom_point() + 
-  geom_smooth(method = "lm") + 
-  ggtitle("Hawkishness declines with time for Game 2")
-
-
-
-# How does the hawkishness of individuals relate to the benefits recieved?
-perIndiv <- hdg2 %>%
-  mutate(hawkNumeric_player1 = ifelse(player_1 == "H", 1, 0)) %>%
-  group_by(individual) %>%
-  summarise(meanHawkishness = mean(hawkNumeric_player1), benefit = sum(benefit, na.rm = TRUE))
-
-ggplot(perIndiv,aes(x = meanHawkishness,y = benefit)) + 
-  geom_point() + 
-  geom_smooth(method="lm", formula=y~poly(x, 2))+
-  ggtitle("The best strategy in Game 2\nwas to be a hawk")

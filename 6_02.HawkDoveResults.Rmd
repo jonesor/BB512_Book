@@ -1,78 +1,130 @@
 ## Results of the hawk-dove games
 
-I have crunched the numbers for 2022 and will summarise the results of the hawk-dove game.
-
-If you are interested in playing with the data yourself you can find the data [here](https://www.dropbox.com/s/7ompsbe4iwirqar/gametheoryResults.xlsx?dl=0).
+I have crunched the numbers for 2023 and will summarise the results of the hawk-dove game.
 
 
-
-### Game 1 - same opponent
-
-In this game, you were asked to compete with one person 15 times in a row.
+In the game, you were asked to compete with the same person 15 times in a row.
 
 
 ```{r, echo=FALSE, message=FALSE}
 library(tidyverse)
 library(readxl)
 library(janitor)
+require(googledrive)
 
-hdg <- readxl::read_xlsx("/Users/jones/Dropbox/_SDU_Teaching/BB512/Practicals/HawkAndDoveGame/gametheoryResults.xlsx", sheet = 3) %>%
-  clean_names() %>%
-  select(individual, round, player_1, player_2, benefit)
+downloadNewData <- FALSE
 
+if(downloadNewData == TRUE){
+# Download from Google Drive
+file <- googledrive::drive_find(pattern = "Game theory part 1", type = "spreadsheet")
+file
+googledrive::drive_download(
+  file = googledrive::as_id(file$id),
+  path = paste("data/", file$name, ".xlsx", sep = ""),
+  type = "xlsx", overwrite = TRUE
+)
+}
+
+hdg <- readxl::read_xlsx("data/Game theory part 1 (Responses).xlsx", sheet = 1) %>%
+  clean_names() 
+
+names(hdg) <- c("timestamp","teamID","round","player_1_card","player_2_card","player_1_benefit", "player_2_benefit")
+
+hdg <- hdg %>% 
+  select(teamID, round, player_1_card, player_2_card, player_1_benefit, player_2_benefit)
+
+#Filter name errors
+fewRecordsTeams <- names(which(table(hdg$teamID)<10))
+
+hdg <- hdg %>% 
+  filter(!teamID %in% fewRecordsTeams)
 
 # Does hawkishness change during the game?
-hawkishness <- hdg %>%
-  mutate(hawkNumeric_player1 = ifelse(player_1 == "H", 1, 0)) %>%
+hawkishness1 <- hdg %>%
+  mutate(hawkNumeric_player1 = ifelse(player_1_card == "Hawk", 1, 0)) %>%
   group_by(round) %>%
   summarise(meanHawk = mean(hawkNumeric_player1))
 
+hawkishness2 <- hdg %>%
+  mutate(hawkNumeric_player2 = ifelse(player_2_card == "Hawk", 1, 0)) %>%
+  group_by(round) %>%
+  summarise(meanHawk = mean(hawkNumeric_player2))
 
+hawkishness <- bind_rows(hawkishness1,hawkishness2)
+
+# How does the average hawkishness of individuals relate to the benefits received?
+perIndiv_player1 <- hdg %>%
+  mutate(hawkNumeric_player1 = ifelse(player_1_card == "Hawk", 1, 0)) %>%
+  group_by(teamID) %>%
+  summarise(mean_Hawkishness = mean(hawkNumeric_player1), mean_benefit = sum(player_1_benefit, na.rm = TRUE))
+
+perIndiv_player2 <- hdg %>%
+  mutate(hawkNumeric_player2 = ifelse(player_2_card == "Hawk", 1, 0)) %>%
+  group_by(teamID) %>%
+  summarise(mean_Hawkishness = mean(hawkNumeric_player2), mean_benefit = sum(player_2_benefit, na.rm = TRUE))
+
+perIndiv_bothPlayers <- bind_rows(perIndiv_player2,perIndiv_player1)
 ```
+
+
+
 ```{r echo=FALSE,results='hide'}
 mod1 <- lm(meanHawk ~ round, data = hawkishness)
 summary(mod1)
 round(summary(mod1)$coefficients[2,4],3)
 ```
 
-The average hawkishness, overall is `r round(mean(hawkishness$meanHawk),3)`.
+The average hawkishness overall is `r round(mean(hawkishness$meanHawk),3)`, but there is some variation among individuals.
+
+```{r, echo = FALSE, message = FALSE}
+ggplot(perIndiv_bothPlayers,aes(x = mean_Hawkishness)) + 
+  geom_histogram(bins = 13) + 
+  xlim(0,1) + 
+  ggtitle("There is variation strategy among individuals") +
+  xlab("Mean hawkishness")
+```
+
+
+
 
 We can now ask whether the level of hawkishness changed during the game on average across all the participants.
 
-We can see from this graph that as the game proceeds round-by-round, there is no significant change in the level of hawkishness (p=`r round(summary(mod1)$coefficients[2,4],3)`).
+We can see from this graph that as the game proceeds round-by-round, there is no significant change in the level of hawkishness (p=`r round(summary(mod1)$coefficients[2,4],3)`). 
 
-```{r echo = FALSE}
+In other cases, it has been found the the average level of hawkishness tends to decline with the amount time playing together, as opponents build trust and begin to see the value in cooperation.
+
+```{r, echo = FALSE, message = FALSE}
 ggplot(hawkishness,aes(x = round,y = meanHawk)) + 
   geom_point() + 
-  geom_smooth(method = "lm") 
+  geom_smooth(method = "lm") +
+  ylim(0,1) + 
+  ylab("Mean hawkishness") + 
+  xlab("Round")
 ```
-Next, we can ask whether the amount of benefits received (fitness) is associated with the degree of hawkishness.
+Next, we can ask whether the amount of benefits received (fitness) is associated with the degree of hawkishness. This, in evolutionary terms, is a way of seeing what the Evolutionary Stable Strategy (ESS) is. Is it 
 
-What we see is that the maximum benefits I received when hawkishness is it an intermediate level of around 0.5-0.6.
+What we see is that the maximum benefits I received when hawkishness is it an intermediate level of around 0.5-0.6, though we clearly suffered from a lack of dove-like individuals in the study group!
 
 
-```{r echo = FALSE}
-# How does the hawkishness of individuals relate to the benefits recieved?
-perIndiv <- hdg %>%
-  mutate(hawkNumeric_player1 = ifelse(player_1 == "H", 1, 0)) %>%
-  group_by(individual) %>%
-  summarise(meanHawkishness = mean(hawkNumeric_player1), benefit = sum(benefit, na.rm = TRUE))
-```
-
-```{r echo = FALSE}
-ggplot(perIndiv,aes(x = meanHawkishness,y = benefit)) + 
+```{r, echo = FALSE, message = FALSE}
+ggplot(perIndiv_bothPlayers,aes(x = mean_Hawkishness,y = mean_benefit)) + 
   geom_point() + 
-  geom_smooth(method="lm", formula=y~poly(x, 2))
+  stat_smooth(method="lm",formula=y~poly(x, 2),fullrange=TRUE)+
+  ggtitle("The best strategy in Game 1\nis an intermediate level of hawkishness") + 
+  xlim(0,1) +
+    ylab("Mean hawkishness") + 
+  xlab("Mean benefit")
 ```
 
 ### Game 2 - different opponents
 
+We didn't do this one in class this year, so here is what we found last year.
 
-In the next game you're asked to compete against a new opponent every round. The idea was that this would make it much harder to learn your opponents strategy and may be harder to come to a agreement that reduces aggression.
+The students were asked to compete against a new opponent every round. The idea was that this would make it much harder to learn your opponents strategy and may be harder to come to a agreement that reduces aggression.
 
 
 ```{r echo = FALSE,warning=FALSE}
-hdg2 <- readxl::read_xlsx("/Users/jones/Dropbox/_SDU_Teaching/BB512/Practicals/HawkAndDoveGame/gametheoryResults.xlsx", sheet = 4) %>%
+hdg2 <- readxl::read_xlsx("/Users/jones/Dropbox/_SDU_Teaching/BB512/Practicals/HawkAndDoveGame/gametheoryResults2022.xlsx", sheet = 4) %>%
   clean_names() %>%
   select(individual, round, player_1, player_2, benefit)
 ```
@@ -127,6 +179,10 @@ ggplot(perIndiv,aes(x = meanHawkishness,y = benefit)) +
 It looks like the best strategy has changed a lot! Now the best strategy is to be a hawk.
 
 In this setting we might expect  natural selection to drive towards the evolution of more aggressive individuals.
+
+Think about what this means in terms of human cooperation and conflict avoidance. 
+
+Can you see the value of understanding your opponent/competitor?
 
 
 
