@@ -1,0 +1,10 @@
+# Life Table Response Experiments
+
+## Introduction
+
+A LTRE, or Life Table Response Experiment, in matrix population modelling, is a technique used to analyse how differences in demographic parameters between two or more populations or "treatments" contribute to differences in their overall growth rate. It's particularly useful for understanding how specific factors like survival rates, fecundity, or stage transitions influence the growth or decline of a population under different conditions. 
+
+The method involves comparing matrix models of the populations in question and decomposing the differences in growth rates different models into contributions from individual matrix elements. This approach provides insights into which life cycle stages or transitions are most important for population growth and can inform conservation or management strategies.
+
+
+
