@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Page not found | BB512 - Population Biology and Evolution</title>
+  <title>10 Life Table Response Experiments | BB512 - Population Biology and Evolution</title>
   <meta name="description" content="Course book for BB512 at the Biology Department, University of Southern Denmark" />
   <meta name="generator" content="bookdown 0.33 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Page not found | BB512 - Population Biology and Evolution" />
+  <meta property="og:title" content="10 Life Table Response Experiments | BB512 - Population Biology and Evolution" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="Course book for BB512 at the Biology Department, University of Southern Denmark" />
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Page not found | BB512 - Population Biology and Evolution" />
+  <meta name="twitter:title" content="10 Life Table Response Experiments | BB512 - Population Biology and Evolution" />
   
   <meta name="twitter:description" content="Course book for BB512 at the Biology Department, University of Southern Denmark" />
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-
-
+<link rel="prev" href="matrix-population-modelling.html"/>
+<link rel="next" href="how-many-eggs-should-a-bird-lay.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -441,19 +441,79 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="page-not-found" class="section level1">
-<h1>Page not found</h1>
-<p>The page you requested cannot be found (perhaps it was moved or renamed).</p>
-<p>You may want to try searching to find the page's new location, or use
-the table of contents to find the page you are looking for.</p>
+<div id="life-table-response-experiments" class="section level1 hasAnchor" number="10">
+<h1><span class="header-section-number">10</span> Life Table Response Experiments<a href="life-table-response-experiments.html#life-table-response-experiments" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="introduction" class="section level2 hasAnchor" number="10.1">
+<h2><span class="header-section-number">10.1</span> Introduction<a href="life-table-response-experiments.html#introduction" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>A Life Table Response Experiment (LTRE), in matrix population modelling, is a technique used to analyse how differences in demographic parameters between two or more populations or “treatments” contribute to differences in their overall growth rate. It’s particularly useful for understanding how specific factors like survival rates, fecundity, or other stage-to-stage transitions influence the growth or decline of a population under different conditions.</p>
+<p>The method involves comparing matrix models of the populations in question and decomposing the differences in growth rates different models into contributions from individual matrix elements. This approach provides insights into which life cycle stages or transitions are most important for population growth and can inform conservation or management strategies.</p>
+</div>
+<div id="set-up" class="section level2 hasAnchor" number="10.2">
+<h2><span class="header-section-number">10.2</span> Set up<a href="life-table-response-experiments.html#set-up" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>First we need to ensure that we have the R packages we need loaded. If you get an error doing this, remember to install them first (<code>install.packages("PACKAGE_NAME")</code>)</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="life-table-response-experiments.html#cb1-1" tabindex="-1"></a><span class="fu">library</span>(popbio)</span>
+<span id="cb1-2"><a href="life-table-response-experiments.html#cb1-2" tabindex="-1"></a><span class="fu">library</span>(popdemo)</span></code></pre></div>
+<pre><code>## Welcome to popdemo! This is version 1.3-0
+## Use ?popdemo for an intro, or browseVignettes(&#39;popdemo&#39;) for vignettes
+## Citation for popdemo is here: doi.org/10.1111/j.2041-210X.2012.00222.x
+## Development and legacy versions are here: github.com/iainmstott/popdemo</code></pre>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="life-table-response-experiments.html#cb3-1" tabindex="-1"></a><span class="fu">library</span>(Rcompadre)</span></code></pre></div>
+</div>
+<div id="a-worked-example" class="section level2 hasAnchor" number="10.3">
+<h2><span class="header-section-number">10.3</span> A worked example<a href="life-table-response-experiments.html#a-worked-example" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Imagine we have a population of a species</p>
+<p><img src="tempLifeCycleDiagramLTRE.png" /></p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="life-table-response-experiments.html#cb4-1" tabindex="-1"></a>A_ref <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="fl">0.1</span>,<span class="fl">2.3</span>,</span>
+<span id="cb4-2"><a href="life-table-response-experiments.html#cb4-2" tabindex="-1"></a>               <span class="fl">0.5</span>,<span class="fl">0.6</span>), <span class="at">nrow =</span> <span class="dv">2</span>, <span class="at">ncol =</span> <span class="dv">2</span>, <span class="at">byrow =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb4-3"><a href="life-table-response-experiments.html#cb4-3" tabindex="-1"></a></span>
+<span id="cb4-4"><a href="life-table-response-experiments.html#cb4-4" tabindex="-1"></a>A_treat <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="fl">0.1</span>,<span class="fl">1.3</span>,</span>
+<span id="cb4-5"><a href="life-table-response-experiments.html#cb4-5" tabindex="-1"></a>               <span class="fl">0.2</span>,<span class="fl">0.7</span>), <span class="at">nrow =</span> <span class="dv">2</span>, <span class="at">ncol =</span> <span class="dv">2</span>, <span class="at">byrow =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<div id="comparing-transition-rates" class="section level3 hasAnchor" number="10.3.1">
+<h3><span class="header-section-number">10.3.1</span> Comparing transition rates<a href="life-table-response-experiments.html#comparing-transition-rates" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The two matrices, <code>A_ref</code> and <code>A_treat</code>, are different.
+We can check what overall difference there is between the matrix in a couple of ways.</p>
+<p>Firstly, we can examine the differences in the individual transition rates between the matrices by subtracting one from the other.</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="life-table-response-experiments.html#cb5-1" tabindex="-1"></a>A_ref <span class="sc">-</span> A_treat</span></code></pre></div>
+<pre><code>##      [,1] [,2]
+## [1,]  0.0  1.0
+## [2,]  0.3 -0.1</code></pre>
+</div>
+<div id="comparing-population-growth-rates" class="section level3 hasAnchor" number="10.3.2">
+<h3><span class="header-section-number">10.3.2</span> Comparing population growth rates<a href="life-table-response-experiments.html#comparing-population-growth-rates" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Next, we can ask what impact these differences have on the population growth rate (lambda).
+Note that putting the command in parentheses tells R to both create the new object (e.g. <code>lambdaA1</code>) <strong>and</strong> print the result to the screen.</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="life-table-response-experiments.html#cb7-1" tabindex="-1"></a>(lambda_A_ref <span class="ot">&lt;-</span> <span class="fu">eigs</span>(A_ref, <span class="at">what =</span> <span class="st">&quot;lambda&quot;</span>))</span></code></pre></div>
+<pre><code>## [1] 1.451136</code></pre>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="life-table-response-experiments.html#cb9-1" tabindex="-1"></a>(lambda_A_treat <span class="ot">&lt;-</span><span class="fu">eigs</span>(A_treat, <span class="at">what =</span> <span class="st">&quot;lambda&quot;</span>))</span></code></pre></div>
+<pre><code>## [1] 0.991608</code></pre>
+<p>We could express this as a difference, or as a proportional difference.</p>
+<p>The difference in growth rates between the matrices is 0.46.</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="life-table-response-experiments.html#cb11-1" tabindex="-1"></a>(lambdaDiff <span class="ot">&lt;-</span> lambda_A_ref <span class="sc">-</span> lambda_A_treat)</span></code></pre></div>
+<pre><code>## [1] 0.4595278</code></pre>
+<p>This is a 32% reduction, compared to the reference matrix.</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="life-table-response-experiments.html#cb13-1" tabindex="-1"></a>(lambdaDiff<span class="sc">/</span>lambda_A_ref) <span class="sc">*</span> <span class="dv">100</span></span></code></pre></div>
+<pre><code>## [1] 31.66677</code></pre>
+<p>So far, so good. We can see that treatment reduces the population growth rate, but we don’t know exactly how. There are 3 changes in the matrix. Which of these changes is most instrumental in driving change in the population growth rate?</p>
+</div>
+<div id="contributions-from-individual-matrix-elements" class="section level3 hasAnchor" number="10.3.3">
+<h3><span class="header-section-number">10.3.3</span> Contributions from individual matrix elements<a href="life-table-response-experiments.html#contributions-from-individual-matrix-elements" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="life-table-response-experiments.html#cb15-1" tabindex="-1"></a>popbio<span class="sc">::</span><span class="fu">LTRE</span>(A_treat,A_ref)</span></code></pre></div>
+<pre><code>##            [,1]        [,2]
+## [1,]  0.0000000 -0.20832964
+## [2,] -0.3214229  0.06636876</code></pre>
+<p>This summary quantifies the relative importance (and direction) of the effect of the differences between the two matrices on the difference in population growth rate.
+One of the changes actually has a positive impact on growth rate, but this is opposed by the other two changes. The most important of these two is the lower left element, which represents the ontogenetic development from juvenile to adult stage.</p>
+
+</div>
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-
-
+<a href="matrix-population-modelling.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="how-many-eggs-should-a-bird-lay.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -484,7 +544,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/jonesor/BB512_Book/edit/master/%s",
+"link": "https://github.com/jonesor/BB512_Book/edit/master/2_07.6_LTRE.Rmd",
 "text": "Edit"
 },
 "history": {
