@@ -1,0 +1,34 @@
+# Pre- and Post-reproduction census
+
+```{r}
+p0 <- 0.2
+p1 <- 0.9
+p2 <- 0.6
+m2 <- 3.0
+m3 <- 6.0
+
+A1 <- matrix(c(0.0, m2 * p1, m3 * p2,
+               p0, 0.0, 0.0,
+               0.0,p1,0), byrow = TRUE, nrow = 3)
+
+```
+
+
+
+Convert to pre-breeding
+
+```{r}
+A2 <- matrix(c(0.0, m2 * p0, m3 * p0,
+               p1, 0.0, 0.0,
+               0.0,p2,0), byrow = TRUE, nrow = 3)
+```
+
+Compare pgr
+
+```{r}
+(popdemo::eigs(A1, what = "lambda"))
+(popdemo::eigs(A2, what = "lambda"))
+```
+
+
+
