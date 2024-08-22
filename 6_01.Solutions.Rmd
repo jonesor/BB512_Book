@@ -383,7 +383,7 @@ pop_1 <- read.csv(file.path(pathToDirectory,"heritability_pop1.csv"))
 
 Plot the data as follows.
 
-```{r}
+```{r plotheritability}
 # Plot the relationship
 plot(pop_1$Parent_value, pop_1$Offspring_value,
      xlab ="Parent value",
@@ -427,7 +427,7 @@ pop_2 <- read.csv(file.path(pathToDirectory,"heritability_pop2.csv"))
 ```
 Plot the data as follows.
 
-```{r}
+```{r plotparentoffspring}
 plot(pop_2$Parent_value, pop_2$Offspring_value,
      xlab ="Parent value",
      ylab ="Offsping value")
@@ -485,11 +485,11 @@ The answers to the questions are [here](https://www.dropbox.com/s/oz2c10bmyf8t7s
 
 To add to this document, you can see the conditions for coexistence in the Neal textbook (p. 278). Note that in this textbook, $\alpha_{12}$ is written as $\alpha$ and $\alpha_{21}$ is written as $\beta$
 
-Let's break down the implications of the conditions $ \alpha_{12} < \frac{K_1}{K_2} $ and $ \alpha_{21} < \frac{K_2}{K_1} $ for stable coexistence in a more intuitive way:
+Let's break down the implications of the conditions $\alpha_{12} < \frac{K_1}{K_2}$ and $\alpha_{21} < \frac{K_2}{K_1}$ for stable coexistence in a more intuitive way:
 
 1. **Carrying Capacities $K_1$ and $K_2$**: Think of the carrying capacity as the maximum number of guests each species can have at their own "party" (their environment) before it becomes too crowded.
 
-2. **Competition Coefficients ($\alpha_{12}$ and $\alpha_{21}$)**: The competition coefficients are like how much each uninvited guest from the other species "eats" if they crash the party. If they eat too much (high α), they could ruin the party by leaving not enough food for the intended guests.
+2. **Competition Coefficients ($\alpha_{12}$ and $\alpha_{21}$)**: The competition coefficients are like how much each uninvited guest from the other species "eats" if they crash the party. If they eat too much (high $\alpha$), they could ruin the party by leaving not enough food for the intended guests.
 
 3. **Condition $\alpha_{12} < \frac{K_1}{K_2}$**: This means that the uninvited guests from species 2 don't eat too much at species 1's party. Even if they eat some food, there's still enough for all of species 1's intended guests — so species 1 can still have a successful party.
 

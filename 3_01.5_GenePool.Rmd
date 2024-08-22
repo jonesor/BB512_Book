@@ -41,7 +41,7 @@ We will first aim to get an understanding of what a gene pool is, using a simple
 
 To establish the gene pool we first set the initial population size. I set this to be reasonably large, at 500 individuals.
 
-```{r}
+```{r setpopsize}
 pop_size <- 500
 ```
 
@@ -49,20 +49,20 @@ There are two alleles (gene variants) per individual: one allele came from the f
 
 Therefore, the gene pool contains 2 x N alleles (in this case, `r pop_size * 2` alleles).
 
-```{r}
+```{r setalleles}
 pool_size <- pop_size * 2
 ```
 
 I now set the initial allele frequency to be 0.5. You can use other values, but 0.5 is best to start with.
 
-```{r}
+```{r setinitialfreq}
 initial_frequency_A <- 0.5
 initial_frequency_a <- 1 - initial_frequency_A
 ```
 
 We can now calculate the **number** of *A* and *a* alleles, by multiplying the frequency by the pool size and rounding the result to the closest whole number.
 
-```{r}
+```{r calcnumbers}
 number_A <- round(initial_frequency_A * pool_size)
 number_a <- round(initial_frequency_a * pool_size)
 ```
@@ -71,14 +71,14 @@ number_a <- round(initial_frequency_a * pool_size)
 Following this, the gene pool can be filled like this. 
 What we are saying here is "repeat `A`, `number_A` times, then repeat `a` `number_a` times"
 
-```{r}
+```{r creategenepool}
 gene_pool <- c(rep("A", number_A), rep("a", number_a))
 table(gene_pool)
 ```
 
 We can express these numbers as allele frequencies (i.e. as proportions of the total) by wrapping the `table` command with `prop.table` like this:
 
-```{r}
+```{r genepooldisplay}
 prop.table(table(gene_pool))
 ```
 
@@ -92,13 +92,13 @@ During the next time step (i.e. 1 generation), the individuals in the population
 
 This code is saying "**sample, from the gene pool, `r 2*pop_size` alleles**". We need to sample $2 \times$ the population size because each individual contains two alleles.
 
-```{r}
+```{r projectgenepool}
 new_gene_pool <- sample(gene_pool, 2 * pop_size, replace = TRUE)
 ```
 
 Let's look at the allele frequency in the new gene pool. It should be similar, but probably not exactly the same as the initial gene pool.
 
-```{r}
+```{r showtable}
 prop.table(table(new_gene_pool))
 ```
 
@@ -117,7 +117,7 @@ In our loop, we will repeat this gene pool sampling process many times (one time
 Let's set up a simulation that runs for 100 generations.
 You can cut-paste this code, which is a complete gene-pool model.
 
-```{r}
+```{r simulationsetup}
 # Set number of generations
 n_gen <- 100
 pop_size <- 100
@@ -149,9 +149,9 @@ for (i in 2:n_gen) {
 ```
 
 
-Now we can plot this result (Figure \@ref(fig:simulation1))
+Now we can plot this result (Figure \@ref(fig:simulationplot))
 
-```{r simulation1,fig.cap = "Simulation of allele frequency through time"}
+```{r simulationplot,fig.cap = "Simulation of allele frequency through time"}
 plot(1:n_gen, allele_freq_A, type = "l", xlab = "time", ylim = c(0, 1))
 ```
 
@@ -173,7 +173,7 @@ Well done for making it this far. R programming is not for the fainthearted.
 
 Next up, I want you to take the code, and modify the code within the loop to simulate a genetic bottleneck. A genetic bottleneck occurs when the population goes through a period of small population size. 
 
-```{r, eval=FALSE}
+```{r bottlenecksimulation, eval=FALSE}
 if (i %in% 30:50) {
   pop_size <- 10
 } else {
@@ -183,9 +183,9 @@ if (i %in% 30:50) {
 
 This code means, "*...if the generation time is between `30` and `50`, make the population size 10, otherwise make the population size 1000*". In other words, the population goes through a bottleneck period of 20 generations. You could modify this line of code to change the characteristics of the bottleneck.
 
-Figure \@ref(fig:bottleneck) shows an example of what your plot of a genetic bottleneck simulation may look like. I have added some lines to show where the bottleneck starts/ends.
+Figure \@ref(fig:bottlenecksimulationplot) shows an example of what your plot of a genetic bottleneck simulation may look like. I have added some lines to show where the bottleneck starts/ends.
 
-```{r bottleneck,fig.cap = "Simulation of a genetic bottleneck", echo = FALSE}
+```{r bottlenecksimulationplot,fig.cap = "Simulation of a genetic bottleneck", echo = FALSE}
 # Set number of generations
 n_gen <- 100
 

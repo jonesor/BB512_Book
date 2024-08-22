@@ -95,7 +95,7 @@ This should be familiar to those of you that did (or remember!) the concept of g
 
 If we plot exponential growth on a log scale we can see that it is straight line. For example, in the plot below I show the sequence for a population with a starting population of 1 and a $\lambda$  (population multiplication rate) of 1.2 (i.e., the population increases by 20% each year). In (A) the time series is plotted on the natural scale while in (B) it is plotted on the log scale.
 
-```{r, echo = FALSE, message=FALSE}
+```{r plotprojections, echo = FALSE, message=FALSE}
 # Load required libraries
 require(tidyverse)
 
@@ -139,7 +139,7 @@ To bring these mathematical concepts to life, let's consider an example from the
 
 This is not much data, so we can simply put it into R manually, and plot it, like this:
 
-```{r, message = FALSE}
+```{r plotnewproj, message = FALSE}
 df1 <- data.frame(year = 1970:1982, N = c(1,1,2,4,2,3,5,6,7,10,12,14,16))
 plot(df1$year,df1$N, type = "b")
 ```
@@ -152,7 +152,7 @@ It is clear from the graph that the number of breeding pairs is increasing over 
 
 To analyse this data, we'll use the exponential growth model. We'll plot the data on a log scale and fit a regression model:
 
-```{r, message = FALSE}
+```{r plotproj2, message = FALSE}
 df1$logN <- log(df1$N)
 plot(df1$year,df1$logN)
 

@@ -6,7 +6,7 @@ I have crunched the numbers for 2023 and will summarise the results of the hawk-
 In the game, you were asked to compete with the same person 15 times in a row.
 
 
-```{r, echo=FALSE, message=FALSE}
+```{r hawkdoveresults1, echo=FALSE, message=FALSE}
 library(tidyverse)
 library(readxl)
 library(janitor)
@@ -68,7 +68,7 @@ perIndiv_bothPlayers <- bind_rows(perIndiv_player2,perIndiv_player1)
 
 
 
-```{r echo=FALSE,results='hide'}
+```{r hawkdoveresults2, echo=FALSE,results='hide'}
 mod1 <- lm(meanHawk ~ round, data = hawkishness)
 summary(mod1)
 round(summary(mod1)$coefficients[2,4],3)
@@ -76,7 +76,7 @@ round(summary(mod1)$coefficients[2,4],3)
 
 The average hawkishness overall is `r round(mean(hawkishness$meanHawk),3)`, but there is some variation among individuals.
 
-```{r, echo = FALSE, message = FALSE}
+```{r hawkdoveresults3, echo = FALSE, message = FALSE}
 ggplot(perIndiv_bothPlayers,aes(x = mean_Hawkishness)) + 
   geom_histogram(bins = 13) + 
   xlim(0,1) + 
@@ -93,7 +93,7 @@ We can see from this graph that as the game proceeds round-by-round, there is no
 
 In other cases, it has been found the the average level of hawkishness tends to decline with the amount time playing together, as opponents build trust and begin to see the value in cooperation.
 
-```{r, echo = FALSE, message = FALSE}
+```{r hawkdoveresults5, echo = FALSE, message = FALSE}
 ggplot(hawkishness,aes(x = round,y = meanHawk)) + 
   geom_point() + 
   geom_smooth(method = "lm") +
@@ -106,7 +106,7 @@ Next, we can ask whether the amount of benefits received (fitness) is associated
 What we see is that the maximum benefits I received when hawkishness is it an intermediate level of around 0.5-0.6, though we clearly suffered from a lack of dove-like individuals in the study group!
 
 
-```{r, echo = FALSE, message = FALSE}
+```{r hawkdoveresults6, echo = FALSE, message = FALSE}
 ggplot(perIndiv_bothPlayers,aes(x = mean_Hawkishness,y = mean_benefit)) + 
   geom_point() + 
   stat_smooth(method="lm",formula=y~poly(x, 2),fullrange=TRUE)+
@@ -123,7 +123,7 @@ We didn't do this one in class this year, so here is what we found last year.
 The students were asked to compete against a new opponent every round. The idea was that this would make it much harder to learn your opponents strategy and may be harder to come to a agreement that reduces aggression.
 
 
-```{r echo = FALSE,warning=FALSE}
+```{r hawkdoveresults7, echo = FALSE,warning=FALSE}
 hdg2 <- readxl::read_xlsx("/Users/jones/Dropbox/_SDU_Teaching/BB512/Practicals/HawkAndDoveGame/gametheoryResults2022.xlsx", sheet = 4) %>%
   clean_names() %>%
   select(individual, round, player_1, player_2, benefit)
@@ -132,7 +132,7 @@ hdg2 <- readxl::read_xlsx("/Users/jones/Dropbox/_SDU_Teaching/BB512/Practicals/H
 
 
 
-```{r echo = FALSE, results='hide'}
+```{r hawkdoveresults8, echo = FALSE, results='hide'}
 # Does hawkishness change during the game?
 hawkishness <- hdg2 %>%
   mutate(hawkNumeric_player1 = ifelse(player_1 == "H", 1, 0)) %>%
@@ -152,7 +152,7 @@ Again, we can ask whether hawkishness changed during the game.
 
 In this case, it DOES look like hawkishness declines more during the game. However, this trend is not significantly different from horizontal (p = `r round(summary(mod1)$coefficients[2,4],3)`).
 
-```{r echo = FALSE}
+```{r hawkdoveresults9, echo = FALSE}
 ggplot(hawkishness,aes(x = round,y = meanHawk)) + 
   geom_point() + 
   geom_smooth(method = "lm")
@@ -163,7 +163,7 @@ Finally we can look at what the best strategy is in Game 2.
 
 
 
-```{r echo = FALSE}
+```{r hawkdoveresults10, echo = FALSE}
 # How does the hawkishness of individuals relate to the benefits recieved?
 perIndiv <- hdg2 %>%
   mutate(hawkNumeric_player1 = ifelse(player_1 == "H", 1, 0)) %>%

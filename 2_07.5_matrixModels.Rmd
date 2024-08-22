@@ -46,7 +46,7 @@ Things to think about:
 
 Here's an example for a fictional organism.
 
-```{r include = FALSE}
+```{r setup, include = FALSE}
 set.seed(123)
 matA_elas <- matrix(c(4, 4))
 
@@ -64,7 +64,7 @@ matA
 ```
 
 
-```{r echo=FALSE}
+```{r showmatrix, echo=FALSE}
 matA <- matrix(c(
   0.3, 8.00, 2.00,
   0.1, 0.50, 0.00,
@@ -72,7 +72,7 @@ matA <- matrix(c(
 ), nrow = 3, byrow = TRUE)
 matA <- round(matA, 2)
 ```
-```{r, echo = FALSE, fig.cap="."}
+```{r plotmatrix, echo = FALSE, fig.cap="."}
 matA_plot <- Rage::plot_life_cycle(matA, stages = c("A", "B", "C"))
 
 # 1. Make a play graph
@@ -91,7 +91,7 @@ rsvg::rsvg_png(tmp, "tempLifeCycleDiagram.png") # saved graph as png in current 
 
 The life cycle shown above looks like this:
 
-```{r echo = FALSE}
+```{r showmatrix2, echo = FALSE}
 # Function to write matrix as LaTeX
 write_matex2 <- function(x) {
   begin <- "\\begin{bmatrix}"
@@ -116,20 +116,20 @@ Working with matrices is very tedious in Excel. However, in R you can use this i
 
 Open up **RStudio**, and lets see if we can predict future dynamics. First you will need to install a package called `popdemo`.
 
-```{r,eval=FALSE}
+```{r install,eval=FALSE}
 install.packages("popdemo")
 ```
  
-You only need to install packages once. After thatyou can load the package for use by using the `library` function.
+You only need to install packages once. After that you can load the package for use by using the `library` function.
 
-```{r, message=FALSE}
+```{r library, message=FALSE}
 library(popdemo)
 ```
 
 You can put your matrix into R like in the example below (change the numbers to match YOUR model). If your model has fewer, or more, stages then you will need to modify the code a bit. Ask for help if you get stuck.
 
 
-```{r}
+```{r createMatrix}
 A <- matrix(c(
   0.3, 8.00, 2.00,
   0.1, 0.50, 0.00,
@@ -143,26 +143,26 @@ And now you can use the project function to project what happens to the populati
 
 In my example, I have 3 stages, so I have 3 values for the initial population sizes. Then I use the `popdemo` function `project` to do a population projection for 10 time steps.
 
-```{r}
+```{r projectpopulation}
 initial <- c(10, 5, 3)
 pr <- popdemo::project(A, vector = initial, time = 10)
 ```
 
 Take a look at `pr`, the projected population. This gives you the total population size, and below that the population sizes in each stage. 
 
-```{r}
+```{r showprojection}
 pr
 ```
 
 You can access the population sizes of the different stages using `vec(pr)`.
 
-```{r}
+```{r showprojection2}
 vec(pr)
 ```
 
 Let's plot this... 
 
-```{r}
+```{r plotprojectiongraph}
 pop <- vec(pr)
 matplot(pop, type = "l", log = "y")
 legend("topleft", legend = colnames(pop), col = 1:ncol(pop), lty = 1:ncol(pop))
@@ -174,7 +174,7 @@ We can ask R for the  *eigen values* and *eigen vectors*. These are the populati
 
 You can see that in this case, using my example values the population is growing `r format(100*(eigs(A)$lambda-1),2,4)`% per year.
 
-```{r}
+```{r eigenproperties}
 eigs(A)
 ```
 
@@ -182,7 +182,7 @@ eigs(A)
 
 Elasticity analysis is a way of analysing a matrix model to identify the most important transitions to population growth. This is very important in management and conservation when we ask questions like, "which parts of the lifecycle should we focus on to preserve the population?". The mathematics of this are beyond this course, but in a nutshell, we are adding a small value to the elements of the matrix one-at-a-time and asking what difference this makes to population growth rate (lambda). We then express that as a *proportion*, so that the elasticities sum up to one and are easier to interpret. They can be calculated easily in R.
 
-```{r}
+```{r elasticity}
 popdemo::elas(A)
 ```
 
@@ -195,7 +195,7 @@ These don't have much to do with life tables (sorry, thats confusing!). The idea
 
 In practice, we do that simply by modifying the matrix model. In the following, I am looking at the effect of increasing fertility in adult and senescent individuals by 50%:
 
-```{r}
+```{r ltre}
 A <- matrix(c(
   0.3, 8.00*1.5, 2.00*1.5,
   0.1, 0.50, 0.00,
