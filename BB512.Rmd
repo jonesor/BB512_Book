@@ -2929,6 +2929,32 @@ Take home messages:
 * Growth trajectories can be plotted on the *natural scale* or on a *log scale*. Exponential growth (or decline) plotted on a log scale is a straight line. This could be useful to infer biological processes (or the lack of them). For example, exponential growth in population size indicates that there are no forces currently limiting the population (e.g. predators/competition/management actions).
 * The slope of the population growth on the natural log scale can tell you what $\lambda$ is. The "opposite" of *ln* is *exp*, so you can ask Excel to `=EXP(slope).
 
+## Solutions: Estimating Population Growth Rate
+
+You can find the completed Excel file [here](https://www.dropbox.com/scl/fi/sxvtkuwxs0mn9ohgwh0ot/EstimatingGrowth_completed.xlsx?rlkey=lzefpmqt3ishxze4weoy9nz65&dl=1). 
+
+1. What does the log-transformed plot of population size over time tell you about the population's growth trend? Does the population grow exponentially?
+
+
+- The log-transformed plot should show a straight line if the population is growing exponentially, because the natural logarithm of an exponentially growing population will linearize the exponential curve. The slope of this line represents the natural log of the population growth rate $log(\lambda)$. If the line has a positive slope, it indicates the population is growing; if it's flat, the population is stable; and if it's negative, the population is shrinking.
+- In this exercise, assuming $\lambda > 1$, the population is indeed growing exponentially, which will be reflected by a positively sloped line in the log-transformed plot.
+
+2. What is the estimated population growth rate ($\lambda$) based on your regression analysis?
+
+
+- From the linear regression performed on the log-transformed data, the slope of the line corresponds to $log(\lambda)$. To find $\lambda$, exponentiate the slope: $\lambda = e^{\text{slope}}$.
+- For example, if the slope of the regression line is 0.086, then $\lambda = e^{0.086} \approx 1.09$. This means the population grows by approximately 9% per year, matching the initial assumption of $\lambda = 1.09$.
+
+3. What assumptions does this model make? Discuss any potential real-world factors that might affect the accuracy of your estimate for $\lambda$.
+
+
+  - The model assumes a constant growth rate over time. It does not account for environmental changes, resource limitations, or carrying capacity (which would lead to logistic rather than exponential growth).
+  - The model also assumes no immigration, emigration, or catastrophic events that might disrupt the population trend.
+  
+  - **Environmental variability**: In reality, populations experience fluctuations due to weather, food availability, disease, and other stochastic factors, which can cause growth rates to change over time.
+  - **Density dependence**: As populations grow larger, they may face resource limitations or increased competition, leading to a slowdown in growth, which would not be captured by a simple geometric model.
+  - **Measurement errors**: In practice, the measurement of population sizes may not be precise, as discussed earlier with the introduction of noise. These errors can lead to inaccuracies in estimating $\lambda$.
+
 
 
 ## Solutions: Stochastic population growth
