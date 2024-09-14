@@ -1,0 +1,105 @@
+# Estimating Population Growth Rate
+
+## Background
+In population biology, one important measure of population dynamics is the population growth rate (\(\lambda\)). This rate tells us how fast a population is growing or shrinking over time. When \(\lambda > 1\), the population grows exponentially; when \(\lambda = 1\), it stays constant, and when \(\lambda < 1\), the population declines.
+
+In this exercise, you will estimate the population growth rate (\(\lambda\)) from real population data. The method involves plotting the population size over time, applying a log transformation to linearise the data, and fitting a linear regression model to estimate \(\lambda\). This method is widely used in ecology to analyse growth trends and make predictions.
+
+```{r generateDataPopGrowth,eval = FALSE,echo=FALSE}
+#Simulate data for this exercise
+# Set parameters for the simulation
+set.seed(9)  # For reproducibility
+
+lambda <- 1.09  # Base growth rate (lambda)
+N0 <- 16       # Initial population size
+years <- 25     # Number of years to simulate
+noise_level <- 0.1  # Noise level (as a fraction of lambda)
+measurement_error_level <- 0.15  # Noise level for measurement error (as a fraction of population size)
+
+# Initialize a vector to store true population sizes
+population <- numeric(years)
+population[1] <- N0
+
+# Simulate population growth with noise added to the growth rate (lambda)
+for (t in 2:years) {
+  # Add random noise to lambda
+  noisy_lambda <- rnorm(1, mean = lambda, sd = noise_level * lambda)
+  
+  # Ensure that noisy lambda is positive to avoid negative growth
+  noisy_lambda <- max(noisy_lambda, 0)
+  
+  # Calculate new population size with the noisy growth rate and ensure it's an integer
+  new_population <- population[t-1] * noisy_lambda
+  
+  # Round to the nearest integer and ensure it's non-negative
+  population[t] <- max(round(new_population), 0)
+}
+
+# Create a vector for measured population sizes with measurement error
+measured_population <- population  # Copy true population data
+for (t in 1:years) {
+  # Add random measurement error proportional to the population size
+  measurement_noise <- rnorm(1, mean = 0, sd = measurement_error_level * population[t])
+  
+  # Ensure the measured population size is an integer and non-negative
+  measured_population[t] <- max(round(population[t] + measurement_noise), 0)
+}
+
+# Create a data frame for easier plotting or further analysis
+data <- data.frame(Year = seq(1, years), True_Population = population, Measured_Population = measured_population)
+
+# # Plot the true vs. measured population growth over time
+# plot(data$Year, data$True_Population, type = "o", col = "blue", pch = 16,
+#      xlab = "Year", ylab = "Population Size",
+#      main = "True vs. Measured Population with Measurement Error", ylim = c(0, max(data$True_Population, data$Measured_Population)))
+# lines(data$Year, data$Measured_Population, type = "o", col = "red", pch = 1)
+# legend("topleft", legend = c("True Population", "Measured Population"), col = c("blue", "red"), pch = c(16, 1))
+
+# Write the data to a CSV file
+write.csv(data, file = "data/population_growth_with_measurement_error.csv", row.names = FALSE)
+
+```
+
+
+```{block, type="do-something"}
+Learning outcomes: 
+
+- Competence in using Excel formulae for data transformation and regression analysis.
+- Understanding the role of $\lambda$ in population growth and its estimation through log-transformed data.
+- Competence in applying mathematical models in Excel to analyse real biological data.
+- Awareness of how log transformations can linearise exponential growth data for easier interpretation.
+- Knowing that the slope of the $ln(N)$ vs. time relationship represents $ln(\lambda)$ and can be used to estimate population growth rate.
+```
+
+## Your task
+
+### Step 1: Download and Open the Data
+- Download the provided Excel file: [`EstimatingGrowth.xlsx`](https://www.dropbox.com/scl/fi/k9z32wndllofihsyhj728/EstimatingGrowth.xlsx?rlkey=7gukyzvdm4pv1wsbnljfymvx1&dl=1).
+- Open the file in Excel to view the population data for a species recorded annually over a 25-year period.
+
+### Step 2: Plot the Population Size Over Time
+- In Excel, create an x-y scatter plot of the **population size** (\(N_t\)) on the y-axis and **time** (Year) on the x-axis.
+
+### Step 3: Log-Transform the Population Size
+- Add a new column in Excel for the natural logarithm of the population size using the formula `=LN(cell)`. This transformation helps linearise the exponential growth data.
+- Create a new scatter plot with **log-transformed population size** (\(\log_e(N_t)\)) on the y-axis and **time** (Year) on the x-axis.
+
+### Step 4: Fit a Linear Regression Model
+- In the log-transformed scatter plot, add a trendline by right-clicking on the data points and selecting "Add Trendline."
+- Choose "Linear" and ensure you check the box to "Display Equation on Chart."
+- The slope of the trendline represents \(\log(\lambda)\).
+
+### Step 5: Calculate \(\lambda\)
+- Use the slope from the regression equation to calculate \(\lambda\) with the formula: \(\lambda = e^{\text{slope}}\). In Excel, you can do this with the equation `=EXP(cell)`
+
+## Questions
+1. **Interpret the Plot**: What does the log-transformed plot of population size over time tell you about the population's growth trend? Does the population appear to grow exponentially?
+2. **Estimate Growth Rate**: What is the estimated population growth rate (\(\lambda\)) based on your linear regression analysis?
+3. **Model Assumptions**: What assumptions does this model make about population growth? Discuss any potential real-world factors that might affect the accuracy of your estimate for \(\lambda\).
+
+
+
+### Key Quantities
+- **\(N_t\)**: population size at time \(t\).
+- **\(\lambda\)**: population growth (multiplication) rate per time step. 
+- **\(\log_e(N_t)\)**: natural logarithm of the population size at time \(t\), used to linearise the data for regression analysis.

@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Page not found | BB512 - Population Biology and Evolution</title>
+  <title>5 Estimating Population Growth Rate | BB512 - Population Biology and Evolution</title>
   <meta name="description" content="Course book for BB512 at the Biology Department, University of Southern Denmark" />
   <meta name="generator" content="bookdown 0.40 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Page not found | BB512 - Population Biology and Evolution" />
+  <meta property="og:title" content="5 Estimating Population Growth Rate | BB512 - Population Biology and Evolution" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="Course book for BB512 at the Biology Department, University of Southern Denmark" />
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Page not found | BB512 - Population Biology and Evolution" />
+  <meta name="twitter:title" content="5 Estimating Population Growth Rate | BB512 - Population Biology and Evolution" />
   
   <meta name="twitter:description" content="Course book for BB512 at the Biology Department, University of Southern Denmark" />
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-
-
+<link rel="prev" href="geometric-growth.html"/>
+<link rel="next" href="stochastic-population-growth.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -398,19 +398,103 @@
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="page-not-found" class="section level1">
-<h1>Page not found</h1>
-<p>The page you requested cannot be found (perhaps it was moved or renamed).</p>
-<p>You may want to try searching to find the page's new location, or use
-the table of contents to find the page you are looking for.</p>
+<div id="estimating-population-growth-rate" class="section level1 hasAnchor" number="5">
+<h1><span class="header-section-number">5</span> Estimating Population Growth Rate<a href="estimating-population-growth-rate.html#estimating-population-growth-rate" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="background-2" class="section level2 hasAnchor" number="5.1">
+<h2><span class="header-section-number">5.1</span> Background<a href="estimating-population-growth-rate.html#background-2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>In population biology, one important measure of population dynamics is the population growth rate (<span class="math inline">\(\lambda\)</span>). This rate tells us how fast a population is growing or shrinking over time. When <span class="math inline">\(\lambda &gt; 1\)</span>, the population grows exponentially; when <span class="math inline">\(\lambda = 1\)</span>, it stays constant, and when <span class="math inline">\(\lambda &lt; 1\)</span>, the population declines.</p>
+<p>In this exercise, you will estimate the population growth rate (<span class="math inline">\(\lambda\)</span>) from real population data. The method involves plotting the population size over time, applying a log transformation to linearise the data, and fitting a linear regression model to estimate <span class="math inline">\(\lambda\)</span>. This method is widely used in ecology to analyse growth trends and make predictions.</p>
+<div class="do-something">
+<p>
+Learning outcomes:
+</p>
+<ul>
+<li>
+Competence in using Excel formulae for data transformation and
+regression analysis.
+</li>
+<li>
+Understanding the role of <span class="math inline"><span class="math inline">\(\lambda\)</span></span> in population growth and its
+estimation through log-transformed data.
+</li>
+<li>
+Competence in applying mathematical models in Excel to analyse real
+biological data.
+</li>
+<li>
+Awareness of how log transformations can linearise exponential
+growth data for easier interpretation.
+</li>
+<li>
+Knowing that the slope of the <span class="math inline"><span class="math inline">\(ln(N)\)</span></span> vs. time relationship represents
+<span class="math inline"><span class="math inline">\(ln(\lambda)\)</span></span> and can be used to
+estimate population growth rate.
+</li>
+</ul>
+</div>
+</div>
+<div id="your-task-2" class="section level2 hasAnchor" number="5.2">
+<h2><span class="header-section-number">5.2</span> Your task<a href="estimating-population-growth-rate.html#your-task-2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="step-1-download-and-open-the-data" class="section level3 hasAnchor" number="5.2.1">
+<h3><span class="header-section-number">5.2.1</span> Step 1: Download and Open the Data<a href="estimating-population-growth-rate.html#step-1-download-and-open-the-data" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li>Download the provided Excel file: <a href="https://www.dropbox.com/scl/fi/k9z32wndllofihsyhj728/EstimatingGrowth.xlsx?rlkey=7gukyzvdm4pv1wsbnljfymvx1&amp;dl=1"><code>EstimatingGrowth.xlsx</code></a>.</li>
+<li>Open the file in Excel to view the population data for a species recorded annually over a 25-year period.</li>
+</ul>
+</div>
+<div id="step-2-plot-the-population-size-over-time" class="section level3 hasAnchor" number="5.2.2">
+<h3><span class="header-section-number">5.2.2</span> Step 2: Plot the Population Size Over Time<a href="estimating-population-growth-rate.html#step-2-plot-the-population-size-over-time" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li>In Excel, create an x-y scatter plot of the <strong>population size</strong> (<span class="math inline">\(N_t\)</span>) on the y-axis and <strong>time</strong> (Year) on the x-axis.</li>
+</ul>
+</div>
+<div id="step-3-log-transform-the-population-size" class="section level3 hasAnchor" number="5.2.3">
+<h3><span class="header-section-number">5.2.3</span> Step 3: Log-Transform the Population Size<a href="estimating-population-growth-rate.html#step-3-log-transform-the-population-size" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li>Add a new column in Excel for the natural logarithm of the population size using the formula <code>=LN(cell)</code>. This transformation helps linearise the exponential growth data.</li>
+<li>Create a new scatter plot with <strong>log-transformed population size</strong> (<span class="math inline">\(\log_e(N_t)\)</span>) on the y-axis and <strong>time</strong> (Year) on the x-axis.</li>
+</ul>
+</div>
+<div id="step-4-fit-a-linear-regression-model" class="section level3 hasAnchor" number="5.2.4">
+<h3><span class="header-section-number">5.2.4</span> Step 4: Fit a Linear Regression Model<a href="estimating-population-growth-rate.html#step-4-fit-a-linear-regression-model" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li>In the log-transformed scatter plot, add a trendline by right-clicking on the data points and selecting “Add Trendline.”</li>
+<li>Choose “Linear” and ensure you check the box to “Display Equation on Chart.”</li>
+<li>The slope of the trendline represents <span class="math inline">\(\log(\lambda)\)</span>.</li>
+</ul>
+</div>
+<div id="step-5-calculate-lambda" class="section level3 hasAnchor" number="5.2.5">
+<h3><span class="header-section-number">5.2.5</span> Step 5: Calculate <span class="math inline">\(\lambda\)</span><a href="estimating-population-growth-rate.html#step-5-calculate-lambda" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li>Use the slope from the regression equation to calculate <span class="math inline">\(\lambda\)</span> with the formula: <span class="math inline">\(\lambda = e^{\text{slope}}\)</span>. In Excel, you can do this with the equation <code>=EXP(cell)</code></li>
+</ul>
+</div>
+</div>
+<div id="questions-3" class="section level2 hasAnchor" number="5.3">
+<h2><span class="header-section-number">5.3</span> Questions<a href="estimating-population-growth-rate.html#questions-3" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ol style="list-style-type: decimal">
+<li><strong>Interpret the Plot</strong>: What does the log-transformed plot of population size over time tell you about the population’s growth trend? Does the population appear to grow exponentially?</li>
+<li><strong>Estimate Growth Rate</strong>: What is the estimated population growth rate (<span class="math inline">\(\lambda\)</span>) based on your linear regression analysis?</li>
+<li><strong>Model Assumptions</strong>: What assumptions does this model make about population growth? Discuss any potential real-world factors that might affect the accuracy of your estimate for <span class="math inline">\(\lambda\)</span>.</li>
+</ol>
+<div id="key-quantities" class="section level3 hasAnchor" number="5.3.1">
+<h3><span class="header-section-number">5.3.1</span> Key Quantities<a href="estimating-population-growth-rate.html#key-quantities" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li><strong><span class="math inline">\(N_t\)</span></strong>: population size at time <span class="math inline">\(t\)</span>.</li>
+<li><strong><span class="math inline">\(\lambda\)</span></strong>: population growth (multiplication) rate per time step.</li>
+<li><strong><span class="math inline">\(\log_e(N_t)\)</span></strong>: natural logarithm of the population size at time <span class="math inline">\(t\)</span>, used to linearise the data for regression analysis.</li>
+</ul>
+
+</div>
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-
-
+<a href="geometric-growth.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="stochastic-population-growth.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -441,7 +525,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/jonesor/BB512_Book/edit/master/%s",
+"link": "https://github.com/jonesor/BB512_Book/edit/master/2_03_EstimatingLambda.Rmd",
 "text": "Edit"
 },
 "history": {
