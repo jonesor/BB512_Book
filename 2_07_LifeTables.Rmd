@@ -87,5 +87,33 @@ Plot graphs of these.
 Make sure that you are (1) able to "diagnose" survivorship type from looking at a graph of $ln(l_x)$ vs $x$ (2) able to sketch a cartoon of mortality trajectory if shown one of these survivorship curve.
 
 
+## Questions
 
+1. What are the three main types of survivorship curves, and which organisms typically exhibit each type?
 
+<!-- 
+Type I curves indicate high survival in early life and high mortality at older ages (e.g., humans). Type II curves show constant mortality throughout life (e.g., birds). Type III curves represent high juvenile mortality with survivors living long lives (e.g., fish, plants).
+--> 
+
+2. What does a net reproductive rate (R0) of less than 1 signify for a population?
+
+ <!-- An R0 of less than 1 indicates that, on average, each individual in the population is replaced by fewer than one offspring, suggesting that the population is declining over time. -->
+ 
+3. How does the shape of a survivorship curve reflect trade-offs in life history strategies, typically? 
+
+<!-- Type I curves suggest investment in offspring with low juvenile mortality, typical in species with fewer offspring and greater parental care. Type III curves reflect species that produce many offspring but provide little care, leading to high early mortality. -->
+
+4. How is survivorship ($l_x$) different from survival probability ($g_x$)?
+
+<!-- Survivorship (\(l_x\)) and survival probability (\(g_x\)) are related concepts in life tables, but they measure different aspects of survival in a population.
+
+- **Survivorship (\(l_x\))**: This is the proportion of individuals that survive from birth (or the start of an age class) to a specific age class \(x\). It provides a cumulative measure of survival across multiple age classes. For example, if \(l_0 = 1\) (all individuals alive at birth), then \(l_1\) might be 0.8 (indicating that 80% of individuals survive to the first age class). \(l_x\) declines with increasing age as more individuals die.
+
+- **Survival Probability (\(g_x\))**: This is the probability that an individual who is alive at age class \(x\) will survive to age class \(x+1\). It measures survival over a single time step, unlike survivorship, which is cumulative. For example, if 80% of individuals survive from age 1 to age 2, then \(g_1 = 0.8\).
+
+In short, **survivorship** tracks the cumulative proportion of individuals surviving to a given age class, while **survival probability** reflects the likelihood of surviving just one more time step. \(l_x\) is cumulative across age classes, whereas \(g_x\) is specific to the transition from one age class to the next. -->
+
+5. How does altering reproduction or survival/mortality at different ages affect $R_0$ and population growth rate
+
+<!-- 
+   - Changes early in life have a larger impact on $R_0$ and population growth rate than changes later in life, due to the declining force of selection.-->

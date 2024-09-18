@@ -47,7 +47,7 @@ Advanced: What happens to the optimum as you change the relationship between clu
 
 ## Questions
 
-- What is Lack's clutch size trade-off, and why is it considered a fundamental concept in evolutionary ecology?
-- How does the trade-off between clutch size and offspring quality manifest in different bird species, and what factors influence their clutch size decisions?
-- What are the potential advantages and disadvantages of producing larger clutches with smaller-sized eggs compared to smaller clutches with larger-sized eggs?
+1. What is Lack's clutch size trade-off, and why is it considered a fundamental concept in evolutionary ecology?
+2. How does the trade-off between clutch size and offspring quality manifest in different bird species, and what factors influence their clutch size decisions?
+3. What are the potential advantages and disadvantages of producing larger clutches with smaller-sized eggs compared to smaller clutches with larger-sized eggs?
 
