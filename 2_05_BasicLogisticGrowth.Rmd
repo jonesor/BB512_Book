@@ -64,21 +64,29 @@ In this exercise, you will explore how changes in key parameters affect populati
 - **Step 1**: Examine the default settings in Graph 1, where `Initial N` = 10, `r_m` = 0.8, and `K` = 200.  
 
   - What is the maximum population size in relation to the carrying capacity?  
-    <!-- The maximum population size should be equal to the carrying capacity, so around 200. -->
+    
+    <!-- For low values of $r_m$ The maximum population size should be equal to the carrying capacity, so around 200. -->
+    
   - At what time does the population reach its maximum size?  
-    <!-- The population reaches its maximum size relatively quickly, around 20–25 time steps. -->
+    
+    <!-- The population reaches its maximum size relatively quickly, around 17 time steps. -->
 
 - **Step 2**: Increase the carrying capacity (`K`) to 300.  
   **Prediction**: What do you expect to happen to the population size over time?  
+  
   <!-- The maximum population size should increase to around 300. -->
+
   **Test**: How does increasing `K` affect the maximum population size and the time taken to reach it?  
+
   <!-- Increasing `K` results in a higher maximum population size, but the time to reach it remains roughly the same. -->
 
 - **Step 3**: Halve the growth rate (`r_m`) to 0.4.  
   **Prediction**: How will this change affect the population’s growth and the time it takes to reach the maximum population size?  
   <!-- The population will grow more slowly, so it will take longer to reach the carrying capacity. -->
+  
   **Test**: What do you observe in the graph?  
-  <!-- The population takes about twice as long to reach the carrying capacity (roughly 40–50 time steps). -->
+  
+  <!-- The population takes about twice as long to reach the carrying capacity (roughly 40 time steps). -->
 
 - **Step 4**: Increase `r_m` to 1.8.  
 
@@ -87,7 +95,7 @@ In this exercise, you will explore how changes in key parameters affect populati
     <!-- The population overshoots the carrying capacity, reaching a size larger than `K`, then starts fluctuating around `K`. -->
   - How does the maximum population size compare to the carrying capacity?  
     
-    <!-- The population temporarily exceeds the carrying capacity, showing oscillations above and below `K`. -->
+    <!-- The population temporarily exceeds the carrying capacity, showing oscillations above and below `K`. A common misconception is that `K` is the maximum population size, but this is not true.-->
   - How would you describe the dynamics of this population (e.g., overshoot, oscillations)?  
     
     <!-- The dynamics show damped oscillations, where the population overshoots and then oscillates before eventually settling close to `K`. -->
@@ -97,14 +105,12 @@ In this exercise, you will explore how changes in key parameters affect populati
   - How do the population dynamics change as `r_m` increases?  
     
     <!-- As `r_m` increases, the oscillations become larger and more pronounced, leading to chaotic behaviour at higher values. -->
-  - What happens when `r_m` is 2.8 or 3.0? Are the dynamics predictable or chaotic?  
+  - What happens when `r_m` is 2.8 or 3.0^[The behaviour where `r_m` values above 3 cause the population to become very negative, is a mathematical artefact caused by numerical instability in the discrete-time logistic growth model. When the growth rate is too high, the population can overshoot its carrying capacity, and the formula's negative feedback term can drive the population to unrealistic, negative values. This issue arises because the model doesn't impose biological constraints, such as preventing population sizes from falling below zero. In real biological systems, such negative values would not occur.]? Are the dynamics predictable or chaotic?  
     
     <!-- For `r_m` around 2.8, the population enters chaotic oscillations. The population fluctuates unpredictably around `K` with no clear pattern. -->
-  - Is there a limit to how high `r_m` can go before the population crashes or becomes unsustainable?  
-    
-    <!-- When `r_m` is too high, the population may oscillate chaotically and could potentially go extinct if the oscillations drop the population size below zero. -->
 
-- **Step 6**: Compare the population trajectory for populations with `r_m` = 2.8 and `r_m` = 2.81, and then fix `r_m` at 2.8 but vary the initial population size by a small amount (e.g., +1).  
+
+- **Step 6**: Compare the population trajectory for populations with `r_m` = 2.8 and `r_m` = 2.81, and then fix `r_m` at 2.8 but vary the initial population size by a small amount.  
 
   - How sensitive are these populations to small changes in `r_m` or the initial population size?
   
@@ -147,10 +153,6 @@ In this exercise, you will explore how changes in key parameters affect populati
   - How do changes in `K` and `r_m` together affect the graph?  
 
     <!-- Increasing `K` shifts the x-axis intercept further to the right, while increasing `r_m` makes the slope steeper and increases the y-intercept. -->
-  - Can you predict what the graph would look like if the growth rate were negative (`r_m < 0`)?  
-
-    <!-- If `r_m` is negative, the y-intercept will be below the x-axis, and the population will shrink over time. -->
-
 
 ### Reflection on Graph 2
 
@@ -202,4 +204,49 @@ Some useful keywords:
 * What are the key assumptions of the logistic growth model, and how might these assumptions limit its real-world application?
     
     <!-- The logistic model assumes that the carrying capacity ($K$) is constant, resources are evenly distributed, and environmental conditions do not change. In reality, carrying capacity can fluctuate due to factors like climate change, resource availability, or human impact, which may limit the model’s predictive accuracy in dynamic ecosystems. -->
+
+## Optional: Do this in R.
+
+You can implement this model in R as follows.
+In this code, I have added a line which ensures that population size cannot be negative.
+
+```{r eval = FALSE}
+# Parameters
+r_m <- 3.5  # intrinsic growth rate
+K <- 1000   # carrying capacity
+N0 <- 10    # initial population size
+timesteps <- 50  # number of time steps
+
+# Initialize population vector
+population <- numeric(timesteps)
+population[1] <- N0
+
+# Initialize per capita growth rate vector
+per_capita_growth <- numeric(timesteps - 1)  # One less than population as it's based on changes
+
+# Loop to calculate population at each time step
+for (t in 2:timesteps) {
+  # Logistic growth model equation
+  population[t] <- population[t-1] + (r_m * population[t-1]) * (1 - (population[t-1] / K))
+  
+  # Ensure population doesn't go negative
+  if (population[t] < 0) {
+    population[t] <- 0
+  }
+  
+  # Calculate per capita growth rate for the previous time step
+  per_capita_growth[t-1] <- (population[t] - population[t-1]) / population[t-1]
+}
+
+par(mfrow=c(1,2))
+# Plot 1: Population size through time
+plot(1:timesteps, population, type = "o", col = "blue", xlab = "Time", ylab = "Population size",
+     main = "Population Size through Time (Logistic Growth Model)")
+
+# Plot 2: Per capita growth rate vs population size
+plot(population[1:(timesteps-1)], per_capita_growth, type = "o", col = "red", 
+     xlab = "Population Size", ylab = "Per Capita Growth Rate",
+     main = "Per Capita Growth Rate vs Population Size")
+
+```
 

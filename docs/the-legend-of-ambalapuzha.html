@@ -237,6 +237,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="8.2.3" data-path="basic-logistic-population-growth.html"><a href="basic-logistic-population-growth.html#reflection-on-graph-2"><i class="fa fa-check"></i><b>8.2.3</b> Reflection on Graph 2</a></li>
 </ul></li>
 <li class="chapter" data-level="8.3" data-path="basic-logistic-population-growth.html"><a href="basic-logistic-population-growth.html#questions-5"><i class="fa fa-check"></i><b>8.3</b> Questions</a></li>
+<li class="chapter" data-level="8.4" data-path="basic-logistic-population-growth.html"><a href="basic-logistic-population-growth.html#optional-do-this-in-r."><i class="fa fa-check"></i><b>8.4</b> Optional: Do this in R.</a></li>
 </ul></li>
 <li class="chapter" data-level="9" data-path="deeper-into-logistic-growth.html"><a href="deeper-into-logistic-growth.html"><i class="fa fa-check"></i><b>9</b> Deeper into Logistic Growth</a>
 <ul>
@@ -522,14 +523,14 @@ after 5 years?</p>
 <div id="optional-try-these-calculations-in-r" class="section level2 hasAnchor" number="25.2">
 <h2><span class="header-section-number">25.2</span> Optional: Try these calculations in R<a href="the-legend-of-ambalapuzha.html#optional-try-these-calculations-in-r" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>You can do this kind of calculation easily in <em>R</em>. Try this.</p>
-<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb69-1"><a href="the-legend-of-ambalapuzha.html#cb69-1" tabindex="-1"></a>myData <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">Squares =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">64</span>,<span class="at">nRice =</span> <span class="cn">NA</span>)</span>
-<span id="cb69-2"><a href="the-legend-of-ambalapuzha.html#cb69-2" tabindex="-1"></a>myData<span class="sc">$</span>nRice[<span class="dv">1</span>] <span class="ot">&lt;-</span> <span class="dv">1</span> </span>
-<span id="cb69-3"><a href="the-legend-of-ambalapuzha.html#cb69-3" tabindex="-1"></a></span>
-<span id="cb69-4"><a href="the-legend-of-ambalapuzha.html#cb69-4" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">2</span><span class="sc">:</span><span class="dv">64</span>){</span>
-<span id="cb69-5"><a href="the-legend-of-ambalapuzha.html#cb69-5" tabindex="-1"></a>  myData<span class="sc">$</span>nRice[i] <span class="ot">&lt;-</span> myData<span class="sc">$</span>nRice[i<span class="dv">-1</span>]<span class="sc">*</span><span class="dv">2</span></span>
-<span id="cb69-6"><a href="the-legend-of-ambalapuzha.html#cb69-6" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb70-1"><a href="the-legend-of-ambalapuzha.html#cb70-1" tabindex="-1"></a>myData <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">Squares =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">64</span>,<span class="at">nRice =</span> <span class="cn">NA</span>)</span>
+<span id="cb70-2"><a href="the-legend-of-ambalapuzha.html#cb70-2" tabindex="-1"></a>myData<span class="sc">$</span>nRice[<span class="dv">1</span>] <span class="ot">&lt;-</span> <span class="dv">1</span> </span>
+<span id="cb70-3"><a href="the-legend-of-ambalapuzha.html#cb70-3" tabindex="-1"></a></span>
+<span id="cb70-4"><a href="the-legend-of-ambalapuzha.html#cb70-4" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">2</span><span class="sc">:</span><span class="dv">64</span>){</span>
+<span id="cb70-5"><a href="the-legend-of-ambalapuzha.html#cb70-5" tabindex="-1"></a>  myData<span class="sc">$</span>nRice[i] <span class="ot">&lt;-</span> myData<span class="sc">$</span>nRice[i<span class="dv">-1</span>]<span class="sc">*</span><span class="dv">2</span></span>
+<span id="cb70-6"><a href="the-legend-of-ambalapuzha.html#cb70-6" tabindex="-1"></a>}</span></code></pre></div>
 <p>Now we can look at the top and bottom of the 64 row data frame like this:</p>
-<div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb70-1"><a href="the-legend-of-ambalapuzha.html#cb70-1" tabindex="-1"></a><span class="fu">head</span>(myData)</span></code></pre></div>
+<div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb71-1"><a href="the-legend-of-ambalapuzha.html#cb71-1" tabindex="-1"></a><span class="fu">head</span>(myData)</span></code></pre></div>
 <pre><code>##   Squares nRice
 ## 1       1     1
 ## 2       2     2
@@ -537,7 +538,7 @@ after 5 years?</p>
 ## 4       4     8
 ## 5       5    16
 ## 6       6    32</code></pre>
-<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb72-1"><a href="the-legend-of-ambalapuzha.html#cb72-1" tabindex="-1"></a><span class="fu">tail</span>(myData)</span></code></pre></div>
+<div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb73-1"><a href="the-legend-of-ambalapuzha.html#cb73-1" tabindex="-1"></a><span class="fu">tail</span>(myData)</span></code></pre></div>
 <pre><code>##    Squares        nRice
 ## 59      59 2.882304e+17
 ## 60      60 5.764608e+17
@@ -546,7 +547,7 @@ after 5 years?</p>
 ## 63      63 4.611686e+18
 ## 64      64 9.223372e+18</code></pre>
 <p>And we can sum up the total number of grains of rice on the 64 squares of the board like this:</p>
-<div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb74-1"><a href="the-legend-of-ambalapuzha.html#cb74-1" tabindex="-1"></a><span class="fu">sum</span>(myData<span class="sc">$</span>nRice)</span></code></pre></div>
+<div class="sourceCode" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb75-1"><a href="the-legend-of-ambalapuzha.html#cb75-1" tabindex="-1"></a><span class="fu">sum</span>(myData<span class="sc">$</span>nRice)</span></code></pre></div>
 <pre><code>## [1] 1.844674e+19</code></pre>
 <p>To put that <em>HUGE</em> number in context, if a grain of rice ways 25mg (0.0000025kg), then we’d have 46,116,860,184,274 kg.</p>
 

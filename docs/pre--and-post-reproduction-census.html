@@ -237,6 +237,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="8.2.3" data-path="basic-logistic-population-growth.html"><a href="basic-logistic-population-growth.html#reflection-on-graph-2"><i class="fa fa-check"></i><b>8.2.3</b> Reflection on Graph 2</a></li>
 </ul></li>
 <li class="chapter" data-level="8.3" data-path="basic-logistic-population-growth.html"><a href="basic-logistic-population-growth.html#questions-5"><i class="fa fa-check"></i><b>8.3</b> Questions</a></li>
+<li class="chapter" data-level="8.4" data-path="basic-logistic-population-growth.html"><a href="basic-logistic-population-growth.html#optional-do-this-in-r."><i class="fa fa-check"></i><b>8.4</b> Optional: Do this in R.</a></li>
 </ul></li>
 <li class="chapter" data-level="9" data-path="deeper-into-logistic-growth.html"><a href="deeper-into-logistic-growth.html"><i class="fa fa-check"></i><b>9</b> Deeper into Logistic Growth</a>
 <ul>
@@ -469,23 +470,23 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="pre--and-post-reproduction-census" class="section level1 hasAnchor" number="12">
 <h1><span class="header-section-number">12</span> Pre- and Post-reproduction census<a href="pre--and-post-reproduction-census.html#pre--and-post-reproduction-census" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="pre--and-post-reproduction-census.html#cb23-1" tabindex="-1"></a>p0 <span class="ot">&lt;-</span> <span class="fl">0.2</span></span>
-<span id="cb23-2"><a href="pre--and-post-reproduction-census.html#cb23-2" tabindex="-1"></a>p1 <span class="ot">&lt;-</span> <span class="fl">0.9</span></span>
-<span id="cb23-3"><a href="pre--and-post-reproduction-census.html#cb23-3" tabindex="-1"></a>p2 <span class="ot">&lt;-</span> <span class="fl">0.6</span></span>
-<span id="cb23-4"><a href="pre--and-post-reproduction-census.html#cb23-4" tabindex="-1"></a>m2 <span class="ot">&lt;-</span> <span class="fl">3.0</span></span>
-<span id="cb23-5"><a href="pre--and-post-reproduction-census.html#cb23-5" tabindex="-1"></a>m3 <span class="ot">&lt;-</span> <span class="fl">6.0</span></span>
-<span id="cb23-6"><a href="pre--and-post-reproduction-census.html#cb23-6" tabindex="-1"></a></span>
-<span id="cb23-7"><a href="pre--and-post-reproduction-census.html#cb23-7" tabindex="-1"></a>A1 <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="fl">0.0</span>, m2 <span class="sc">*</span> p1, m3 <span class="sc">*</span> p2,</span>
-<span id="cb23-8"><a href="pre--and-post-reproduction-census.html#cb23-8" tabindex="-1"></a>               p0, <span class="fl">0.0</span>, <span class="fl">0.0</span>,</span>
-<span id="cb23-9"><a href="pre--and-post-reproduction-census.html#cb23-9" tabindex="-1"></a>               <span class="fl">0.0</span>,p1,<span class="dv">0</span>), <span class="at">byrow =</span> <span class="cn">TRUE</span>, <span class="at">nrow =</span> <span class="dv">3</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="pre--and-post-reproduction-census.html#cb24-1" tabindex="-1"></a>p0 <span class="ot">&lt;-</span> <span class="fl">0.2</span></span>
+<span id="cb24-2"><a href="pre--and-post-reproduction-census.html#cb24-2" tabindex="-1"></a>p1 <span class="ot">&lt;-</span> <span class="fl">0.9</span></span>
+<span id="cb24-3"><a href="pre--and-post-reproduction-census.html#cb24-3" tabindex="-1"></a>p2 <span class="ot">&lt;-</span> <span class="fl">0.6</span></span>
+<span id="cb24-4"><a href="pre--and-post-reproduction-census.html#cb24-4" tabindex="-1"></a>m2 <span class="ot">&lt;-</span> <span class="fl">3.0</span></span>
+<span id="cb24-5"><a href="pre--and-post-reproduction-census.html#cb24-5" tabindex="-1"></a>m3 <span class="ot">&lt;-</span> <span class="fl">6.0</span></span>
+<span id="cb24-6"><a href="pre--and-post-reproduction-census.html#cb24-6" tabindex="-1"></a></span>
+<span id="cb24-7"><a href="pre--and-post-reproduction-census.html#cb24-7" tabindex="-1"></a>A1 <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="fl">0.0</span>, m2 <span class="sc">*</span> p1, m3 <span class="sc">*</span> p2,</span>
+<span id="cb24-8"><a href="pre--and-post-reproduction-census.html#cb24-8" tabindex="-1"></a>               p0, <span class="fl">0.0</span>, <span class="fl">0.0</span>,</span>
+<span id="cb24-9"><a href="pre--and-post-reproduction-census.html#cb24-9" tabindex="-1"></a>               <span class="fl">0.0</span>,p1,<span class="dv">0</span>), <span class="at">byrow =</span> <span class="cn">TRUE</span>, <span class="at">nrow =</span> <span class="dv">3</span>)</span></code></pre></div>
 <p>Convert to pre-breeding</p>
-<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="pre--and-post-reproduction-census.html#cb24-1" tabindex="-1"></a>A2 <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="fl">0.0</span>, m2 <span class="sc">*</span> p0, m3 <span class="sc">*</span> p0,</span>
-<span id="cb24-2"><a href="pre--and-post-reproduction-census.html#cb24-2" tabindex="-1"></a>               p1, <span class="fl">0.0</span>, <span class="fl">0.0</span>,</span>
-<span id="cb24-3"><a href="pre--and-post-reproduction-census.html#cb24-3" tabindex="-1"></a>               <span class="fl">0.0</span>,p2,<span class="dv">0</span>), <span class="at">byrow =</span> <span class="cn">TRUE</span>, <span class="at">nrow =</span> <span class="dv">3</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="pre--and-post-reproduction-census.html#cb25-1" tabindex="-1"></a>A2 <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="fl">0.0</span>, m2 <span class="sc">*</span> p0, m3 <span class="sc">*</span> p0,</span>
+<span id="cb25-2"><a href="pre--and-post-reproduction-census.html#cb25-2" tabindex="-1"></a>               p1, <span class="fl">0.0</span>, <span class="fl">0.0</span>,</span>
+<span id="cb25-3"><a href="pre--and-post-reproduction-census.html#cb25-3" tabindex="-1"></a>               <span class="fl">0.0</span>,p2,<span class="dv">0</span>), <span class="at">byrow =</span> <span class="cn">TRUE</span>, <span class="at">nrow =</span> <span class="dv">3</span>)</span></code></pre></div>
 <p>Compare population growth rates</p>
-<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="pre--and-post-reproduction-census.html#cb25-1" tabindex="-1"></a>(popdemo<span class="sc">::</span><span class="fu">eigs</span>(A1, <span class="at">what =</span> <span class="st">&quot;lambda&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="pre--and-post-reproduction-census.html#cb26-1" tabindex="-1"></a>(popdemo<span class="sc">::</span><span class="fu">eigs</span>(A1, <span class="at">what =</span> <span class="st">&quot;lambda&quot;</span>))</span></code></pre></div>
 <pre><code>## [1] 1.070261</code></pre>
-<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="pre--and-post-reproduction-census.html#cb27-1" tabindex="-1"></a>(popdemo<span class="sc">::</span><span class="fu">eigs</span>(A2, <span class="at">what =</span> <span class="st">&quot;lambda&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="pre--and-post-reproduction-census.html#cb28-1" tabindex="-1"></a>(popdemo<span class="sc">::</span><span class="fu">eigs</span>(A2, <span class="at">what =</span> <span class="st">&quot;lambda&quot;</span>))</span></code></pre></div>
 <pre><code>## [1] 1.070261</code></pre>
 
 </div>

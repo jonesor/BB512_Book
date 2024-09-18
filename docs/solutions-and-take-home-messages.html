@@ -237,6 +237,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="8.2.3" data-path="basic-logistic-population-growth.html"><a href="basic-logistic-population-growth.html#reflection-on-graph-2"><i class="fa fa-check"></i><b>8.2.3</b> Reflection on Graph 2</a></li>
 </ul></li>
 <li class="chapter" data-level="8.3" data-path="basic-logistic-population-growth.html"><a href="basic-logistic-population-growth.html#questions-5"><i class="fa fa-check"></i><b>8.3</b> Questions</a></li>
+<li class="chapter" data-level="8.4" data-path="basic-logistic-population-growth.html"><a href="basic-logistic-population-growth.html#optional-do-this-in-r."><i class="fa fa-check"></i><b>8.4</b> Optional: Do this in R.</a></li>
 </ul></li>
 <li class="chapter" data-level="9" data-path="deeper-into-logistic-growth.html"><a href="deeper-into-logistic-growth.html"><i class="fa fa-check"></i><b>9</b> Deeper into Logistic Growth</a>
 <ul>
@@ -824,19 +825,19 @@ To determine <span class="math inline">\(q\)</span>, which is the frequency of t
 <div id="solutions-heritability" class="section level2 hasAnchor" number="23.15">
 <h2><span class="header-section-number">23.15</span> Solutions: Heritability<a href="solutions-and-take-home-messages.html#solutions-heritability" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>You can read in data like this:</p>
-<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="solutions-and-take-home-messages.html#cb57-1" tabindex="-1"></a>population_1 <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;heritability_pop1.csv&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="solutions-and-take-home-messages.html#cb58-1" tabindex="-1"></a>population_1 <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;heritability_pop1.csv&quot;</span>)</span></code></pre></div>
 <p>Though you can also use the “Wizard” in RStudio.</p>
 <p>Plot the data as follows.</p>
-<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="solutions-and-take-home-messages.html#cb58-1" tabindex="-1"></a><span class="co"># Plot the relationship</span></span>
-<span id="cb58-2"><a href="solutions-and-take-home-messages.html#cb58-2" tabindex="-1"></a><span class="fu">plot</span>(pop_1<span class="sc">$</span>Parent_value, pop_1<span class="sc">$</span>Offspring_value,</span>
-<span id="cb58-3"><a href="solutions-and-take-home-messages.html#cb58-3" tabindex="-1"></a>     <span class="at">xlab =</span><span class="st">&quot;Parent value&quot;</span>,</span>
-<span id="cb58-4"><a href="solutions-and-take-home-messages.html#cb58-4" tabindex="-1"></a>     <span class="at">ylab =</span><span class="st">&quot;Offsping value&quot;</span>)</span>
-<span id="cb58-5"><a href="solutions-and-take-home-messages.html#cb58-5" tabindex="-1"></a></span>
-<span id="cb58-6"><a href="solutions-and-take-home-messages.html#cb58-6" tabindex="-1"></a><span class="co"># fit the linear regression model</span></span>
-<span id="cb58-7"><a href="solutions-and-take-home-messages.html#cb58-7" tabindex="-1"></a>mod1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(Offspring_value<span class="sc">~</span> Parent_value, <span class="at">data =</span> pop_1)</span>
-<span id="cb58-8"><a href="solutions-and-take-home-messages.html#cb58-8" tabindex="-1"></a></span>
-<span id="cb58-9"><a href="solutions-and-take-home-messages.html#cb58-9" tabindex="-1"></a><span class="co"># summarise the model</span></span>
-<span id="cb58-10"><a href="solutions-and-take-home-messages.html#cb58-10" tabindex="-1"></a><span class="fu">summary</span>(mod1)</span></code></pre></div>
+<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb59-1"><a href="solutions-and-take-home-messages.html#cb59-1" tabindex="-1"></a><span class="co"># Plot the relationship</span></span>
+<span id="cb59-2"><a href="solutions-and-take-home-messages.html#cb59-2" tabindex="-1"></a><span class="fu">plot</span>(pop_1<span class="sc">$</span>Parent_value, pop_1<span class="sc">$</span>Offspring_value,</span>
+<span id="cb59-3"><a href="solutions-and-take-home-messages.html#cb59-3" tabindex="-1"></a>     <span class="at">xlab =</span><span class="st">&quot;Parent value&quot;</span>,</span>
+<span id="cb59-4"><a href="solutions-and-take-home-messages.html#cb59-4" tabindex="-1"></a>     <span class="at">ylab =</span><span class="st">&quot;Offsping value&quot;</span>)</span>
+<span id="cb59-5"><a href="solutions-and-take-home-messages.html#cb59-5" tabindex="-1"></a></span>
+<span id="cb59-6"><a href="solutions-and-take-home-messages.html#cb59-6" tabindex="-1"></a><span class="co"># fit the linear regression model</span></span>
+<span id="cb59-7"><a href="solutions-and-take-home-messages.html#cb59-7" tabindex="-1"></a>mod1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(Offspring_value<span class="sc">~</span> Parent_value, <span class="at">data =</span> pop_1)</span>
+<span id="cb59-8"><a href="solutions-and-take-home-messages.html#cb59-8" tabindex="-1"></a></span>
+<span id="cb59-9"><a href="solutions-and-take-home-messages.html#cb59-9" tabindex="-1"></a><span class="co"># summarise the model</span></span>
+<span id="cb59-10"><a href="solutions-and-take-home-messages.html#cb59-10" tabindex="-1"></a><span class="fu">summary</span>(mod1)</span></code></pre></div>
 <pre><code>## 
 ## Call:
 ## lm(formula = Offspring_value ~ Parent_value, data = pop_1)
@@ -855,8 +856,8 @@ To determine <span class="math inline">\(q\)</span>, which is the frequency of t
 ## Residual standard error: 5.506 on 31 degrees of freedom
 ## Multiple R-squared:  0.4559, Adjusted R-squared:  0.4384 
 ## F-statistic: 25.98 on 1 and 31 DF,  p-value: 1.628e-05</code></pre>
-<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb60-1"><a href="solutions-and-take-home-messages.html#cb60-1" tabindex="-1"></a><span class="co"># add the regression line to the model</span></span>
-<span id="cb60-2"><a href="solutions-and-take-home-messages.html#cb60-2" tabindex="-1"></a><span class="fu">abline</span>(mod1)</span></code></pre></div>
+<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb61-1"><a href="solutions-and-take-home-messages.html#cb61-1" tabindex="-1"></a><span class="co"># add the regression line to the model</span></span>
+<span id="cb61-2"><a href="solutions-and-take-home-messages.html#cb61-2" tabindex="-1"></a><span class="fu">abline</span>(mod1)</span></code></pre></div>
 <p><img src="BB512_files/figure-html/plotheritability-1.png" width="672" /></p>
 <p>The heritability is the slope of the relationship, so is 0.568 in this case. This is fairly high heritability.</p>
 <p><em>What does the heritability tell us about the amount of variation explained by genetic factors?</em></p>
@@ -869,15 +870,15 @@ To determine <span class="math inline">\(q\)</span>, which is the frequency of t
 <p>A higher heritability (like 0.568) suggests that the trait would respond more quickly to selection because a large proportion of the variation is genetic. Traits with lower heritability would be slower to respond to selection as they have a larger environmental component.</p>
 <p>The graph for the second population looks like this:</p>
 <p>Plot the data as follows.</p>
-<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb61-1"><a href="solutions-and-take-home-messages.html#cb61-1" tabindex="-1"></a><span class="fu">plot</span>(pop_2<span class="sc">$</span>Parent_value, pop_2<span class="sc">$</span>Offspring_value,</span>
-<span id="cb61-2"><a href="solutions-and-take-home-messages.html#cb61-2" tabindex="-1"></a>     <span class="at">xlab =</span><span class="st">&quot;Parent value&quot;</span>,</span>
-<span id="cb61-3"><a href="solutions-and-take-home-messages.html#cb61-3" tabindex="-1"></a>     <span class="at">ylab =</span><span class="st">&quot;Offsping value&quot;</span>)</span>
-<span id="cb61-4"><a href="solutions-and-take-home-messages.html#cb61-4" tabindex="-1"></a></span>
-<span id="cb61-5"><a href="solutions-and-take-home-messages.html#cb61-5" tabindex="-1"></a><span class="co"># fit the model.</span></span>
-<span id="cb61-6"><a href="solutions-and-take-home-messages.html#cb61-6" tabindex="-1"></a>mod2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(Offspring_value<span class="sc">~</span> Parent_value, <span class="at">data =</span> pop_1)</span>
-<span id="cb61-7"><a href="solutions-and-take-home-messages.html#cb61-7" tabindex="-1"></a><span class="fu">abline</span>(mod2)</span></code></pre></div>
+<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb62-1"><a href="solutions-and-take-home-messages.html#cb62-1" tabindex="-1"></a><span class="fu">plot</span>(pop_2<span class="sc">$</span>Parent_value, pop_2<span class="sc">$</span>Offspring_value,</span>
+<span id="cb62-2"><a href="solutions-and-take-home-messages.html#cb62-2" tabindex="-1"></a>     <span class="at">xlab =</span><span class="st">&quot;Parent value&quot;</span>,</span>
+<span id="cb62-3"><a href="solutions-and-take-home-messages.html#cb62-3" tabindex="-1"></a>     <span class="at">ylab =</span><span class="st">&quot;Offsping value&quot;</span>)</span>
+<span id="cb62-4"><a href="solutions-and-take-home-messages.html#cb62-4" tabindex="-1"></a></span>
+<span id="cb62-5"><a href="solutions-and-take-home-messages.html#cb62-5" tabindex="-1"></a><span class="co"># fit the model.</span></span>
+<span id="cb62-6"><a href="solutions-and-take-home-messages.html#cb62-6" tabindex="-1"></a>mod2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(Offspring_value<span class="sc">~</span> Parent_value, <span class="at">data =</span> pop_1)</span>
+<span id="cb62-7"><a href="solutions-and-take-home-messages.html#cb62-7" tabindex="-1"></a><span class="fu">abline</span>(mod2)</span></code></pre></div>
 <p><img src="BB512_files/figure-html/plotparentoffspring-1.png" width="672" /></p>
-<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb62-1"><a href="solutions-and-take-home-messages.html#cb62-1" tabindex="-1"></a><span class="fu">summary</span>(mod1)</span></code></pre></div>
+<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb63-1"><a href="solutions-and-take-home-messages.html#cb63-1" tabindex="-1"></a><span class="fu">summary</span>(mod1)</span></code></pre></div>
 <pre><code>## 
 ## Call:
 ## lm(formula = Offspring_value ~ Parent_value, data = pop_1)
