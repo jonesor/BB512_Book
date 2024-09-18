@@ -73,33 +73,34 @@ Learning outcomes:
 
 ## Your task
 
-### Step 1: Download and Open the Data
+**Step 1: Download and Open the Data**
+
 - Download the provided Excel file: [`EstimatingGrowth.xlsx`](https://www.dropbox.com/scl/fi/k9z32wndllofihsyhj728/EstimatingGrowth.xlsx?rlkey=7gukyzvdm4pv1wsbnljfymvx1&dl=1).
 - Open the file in Excel to view the population data for a species recorded annually over a 25-year period.
 
-### Step 2: Plot the Population Size Over Time
+**Step 2: Plot the Population Size Over Time**
+
 - In Excel, create an x-y scatter plot of the **population size** (\(N_t\)) on the y-axis and **time** (Year) on the x-axis.
 
-### Step 3: Log-Transform the Population Size
+**Step 3: Log-Transform the Population Size**
+
 - Add a new column in Excel for the natural logarithm of the population size using the formula `=LN(cell)`. This transformation helps linearise the exponential growth data.
 - Create a new scatter plot with **log-transformed population size** (\(\log_e(N_t)\)) on the y-axis and **time** (Year) on the x-axis.
 
-### Step 4: Fit a Linear Regression Model
+**Step 4: Fit a Linear Regression Model**
+
 - In the log-transformed scatter plot, add a trendline by right-clicking on the data points and selecting "Add Trendline."
 - Choose "Linear" and ensure you check the box to "Display Equation on Chart."
 - The slope of the trendline represents \(\log(\lambda)\).
 
-### Step 5: Calculate \(\lambda\)
+**Step 5: Calculate \(\lambda\)**
+
 - Use the slope from the regression equation to calculate \(\lambda\) with the formula: \(\lambda = e^{\text{slope}}\). In Excel, you can do this with the equation `=EXP(cell)`
 
 ## Questions
-1. **Interpret the Plot**: What does the log-transformed plot of population size over time tell you about the population's growth trend? Does the population appear to grow exponentially?
-2. **Estimate Growth Rate**: What is the estimated population growth rate (\(\lambda\)) based on your linear regression analysis?
-3. **Model Assumptions**: What assumptions does this model make about population growth? Discuss any potential real-world factors that might affect the accuracy of your estimate for \(\lambda\).
+
+* What does the log-transformed plot of population size over time tell you about the population's growth trend? Does the population appear to grow exponentially?
+* What is the estimated population growth rate (\(\lambda\)) based on your linear regression analysis?
+* What assumptions does this model make about population growth? Discuss any potential real-world factors that might affect the accuracy of your estimate for \(\lambda\).
 
 
-
-### Key Quantities
-- **\(N_t\)**: population size at time \(t\).
-- **\(\lambda\)**: population growth (multiplication) rate per time step. 
-- **\(\log_e(N_t)\)**: natural logarithm of the population size at time \(t\), used to linearise the data for regression analysis.

@@ -2,17 +2,27 @@
 
 ## Background
 
-Population sizes usually have upper limits - they can only get so large before leveling off due to environmental constraints. The logistic growth model is a powerful tool in population ecology that takes this limitation into account, providing a more realistic depiction of population dynamics. Unlike the simplistic geometric growth model, which assumes unlimited resources and unrestricted growth, the logistic model recognizes that natural populations face a finite carrying capacity (K). This carrying capacity represents the maximum population size an environment can sustain over the long term, considering factors such as available resources, competition for food and space, predation, and disease. As a population approaches its carrying capacity, its growth rate gradually slows down, eventually reaching a point of equilibrium where birth rates equal death rates, leading to a stable population size. This concept of limited growth and self-regulation enables the logistic growth model to offer deeper insights into the delicate balance between a population's reproductive potential and the constraints imposed by its habitat, making it an invaluable tool for understanding ecological dynamics and conservation efforts.
+In nature, populations can’t grow indefinitely. They eventually reach an upper limit, known as the *carrying capacity* ($K$), which represents the maximum number of individuals an environment can support. Factors like available resources, competition, predation, and disease set this limit.
 
-The logistic growth model can be expressed like this, which is derived from Eqn. 5.2 in Neal: 
+The **logistic growth model** accounts for this limitation and provides a more realistic picture of population growth. Unlike simpler models, such as exponential growth, that assume unlimited resources, the logistic model reflects how populations slow their growth as they approach the carrying capacity. When the population is small, it can grow quickly, but as it gets closer to the limit, the growth rate slows down. When the population is at carrying capacity the population will not grow (birth rates = death rates).
 
-$N_{t+1}=N_{t}+r_{m} N_{t}\left(1-\frac{N_{t}}{K}\right)$
+The model is described by the following equation:
 
-This equation models population at time $t+1$ ($N_{t+1}$) as a function of the population at time $t$ ($N_t$), the *intrinsic rate of increase* ($r_m$), and carrying capacity of the environment ($K$). 
+$N_{t+1} = N_{t} + r_{m} N_{t} \left(1 - \frac{N_{t}}{K}\right)$
 
-The idea is that the growth rate of the population (the difference between $N_{t+1}$ and $N_t$) decreases as the population increases in size. When the population size at $N_t$ is equal to the *carrying capacity* of the environment ($K$), the population growth rate is zero. For example, if the carrying capacity of the population is *200*, and there are already *200* individuals in the population, then the size of the population will remain unchanged through time ($N_{t+1} = N_t = 200$).
+Where:
 
-The aim of this Excel-based exercise is to explore this model and help you get an intuitive understanding of it by looking at it from different perspectives. Even though it is a fairly simple model, it leads us to some useful biological insights.
+- $N_{t+1}$ is the population size at the next time step.
+- $N_t$ is the current population size.
+- $r_m$ is the intrinsic growth rate, or the maximum possible per capita population growth rate.
+- $K$ is the carrying capacity.
+
+In this equation, the term $\left(1 - \frac{N_t}{K}\right)$ slows population growth as the population size $N_t$ approaches $K$. If $N_t = K$, the population stops growing.
+
+As growth rates increase beyond a certain point, the population can exhibit more complex behaviours. At higher growth rates, populations may overshoot the carrying capacity, leading to oscillations as they fluctuate around it. In some cases, the population may show what’s called deterministic chaos. This means that while the population fluctuates unpredictably, the system itself is not random — small changes in initial conditions or growth rates can lead to vastly different outcomes.
+
+This Excel-based exercise will help you explore how changes in the growth rate and carrying capacity affect population dynamics. Though simple, the logistic model provides valuable insights into how populations stabilize, fluctuate, and respond to environmental limits.
+
 
 ```{block, type="do-something"}
 Learning outcomes: 
@@ -25,91 +35,139 @@ Learning outcomes:
 
 ```
 
-## Your task
+## Your Task
+
+In this exercise, you will explore how changes in key parameters affect population dynamics using the logistic growth model. Follow the steps below to guide your analysis.
+
+1. **Download the Excel File**  
+   Download and open the Excel file: [`Basic Logistic Growth.xlsx`](https://www.dropbox.com/s/oxxyyn4zf4wsvkg/Basic%20Logistic%20Growth.xlsx?dl=1).
+
+2. **Familiarise Yourself with the Spreadsheet**  
+   In the file, you’ll see three sections:
+   - **Pink Block**: This is where you will input and adjust the model parameters.
+   - **Graphs**: These display how the population behaves over time and in relation to the parameters you adjust.
+
+3. **Understand the Parameters**  
+   In the *pink block*, you will find the key parameters of the logistic growth model:
+   - `Initial N`: The starting population size at time 1 (default = 10).
+   - `r_m`: The maximum per capita population growth rate (default = 0.8). 
+     - If $r_m > 0$, the population grows.
+     - If $r_m < 0$, the population shrinks.
+     - The population size cannot fall below zero.
+   - `K`: The carrying capacity of the population (default = 200).
+
+4. **Explore the Model**  
+   Use the following steps to guide your exploration of population dynamics:
+
+### Graph 1: Population Size Through Time
+
+- **Step 1**: Examine the default settings in Graph 1, where `Initial N` = 10, `r_m` = 0.8, and `K` = 200.  
+
+  - What is the maximum population size in relation to the carrying capacity?  
+    <!-- The maximum population size should be equal to the carrying capacity, so around 200. -->
+  - At what time does the population reach its maximum size?  
+    <!-- The population reaches its maximum size relatively quickly, around 20–25 time steps. -->
+
+- **Step 2**: Increase the carrying capacity (`K`) to 300.  
+  **Prediction**: What do you expect to happen to the population size over time?  
+  <!-- The maximum population size should increase to around 300. -->
+  **Test**: How does increasing `K` affect the maximum population size and the time taken to reach it?  
+  <!-- Increasing `K` results in a higher maximum population size, but the time to reach it remains roughly the same. -->
+
+- **Step 3**: Halve the growth rate (`r_m`) to 0.4.  
+  **Prediction**: How will this change affect the population’s growth and the time it takes to reach the maximum population size?  
+  <!-- The population will grow more slowly, so it will take longer to reach the carrying capacity. -->
+  **Test**: What do you observe in the graph?  
+  <!-- The population takes about twice as long to reach the carrying capacity (roughly 40–50 time steps). -->
+
+- **Step 4**: Increase `r_m` to 1.8.  
+
+  - How does the population size change over time?
+  
+    <!-- The population overshoots the carrying capacity, reaching a size larger than `K`, then starts fluctuating around `K`. -->
+  - How does the maximum population size compare to the carrying capacity?  
+    
+    <!-- The population temporarily exceeds the carrying capacity, showing oscillations above and below `K`. -->
+  - How would you describe the dynamics of this population (e.g., overshoot, oscillations)?  
+    
+    <!-- The dynamics show damped oscillations, where the population overshoots and then oscillates before eventually settling close to `K`. -->
+
+- **Step 5**: Experiment with higher values for `r_m` (e.g., 2.0, 2.8, 2.9, 3.0).  
+
+  - How do the population dynamics change as `r_m` increases?  
+    
+    <!-- As `r_m` increases, the oscillations become larger and more pronounced, leading to chaotic behaviour at higher values. -->
+  - What happens when `r_m` is 2.8 or 3.0? Are the dynamics predictable or chaotic?  
+    
+    <!-- For `r_m` around 2.8, the population enters chaotic oscillations. The population fluctuates unpredictably around `K` with no clear pattern. -->
+  - Is there a limit to how high `r_m` can go before the population crashes or becomes unsustainable?  
+    
+    <!-- When `r_m` is too high, the population may oscillate chaotically and could potentially go extinct if the oscillations drop the population size below zero. -->
+
+- **Step 6**: Compare the population trajectory for populations with `r_m` = 2.8 and `r_m` = 2.81, and then fix `r_m` at 2.8 but vary the initial population size by a small amount (e.g., +1).  
+
+  - How sensitive are these populations to small changes in `r_m` or the initial population size?
+  
+    <!-- Very sensitive. Small changes in `r_m` or the initial population size result in dramatically different trajectories due to the chaotic nature of the system at high `r_m`. -->
+  - Would these populations be easy or hard to predict?  
+   
+    <!-- They would be very difficult to predict because of the chaotic dynamics. Even tiny changes lead to unpredictable outcomes. -->
+  - What kinds of species have high population growth rates like this? How might this relate to managing pest species or diseases?  
+ 
+    <!-- Species with high growth rates, like locusts or certain pathogens, can display chaotic or rapid fluctuations, making them difficult to manage. This unpredictability is a challenge for population managers or those controlling pests and diseases. -->
 
 
-Download and open the Excel file: [`Basic Logistic Growth.xslx`](https://www.dropbox.com/s/oxxyyn4zf4wsvkg/Basic%20Logistic%20Growth.xlsx?dl=1).
+### Graph 2: Per Capita Growth Rate vs. Population Size
 
-You will see that there are three blocks of numbers, and three graphs.
-During the exercise you only need to edit the pink block.
+- **Step 1**: Examine Graph 2 with the default settings (`Initial N` = 10, `r_m` = 0.8, `K` = 200).
+  - How does the per capita growth rate change as the population size increases?  
+  
+    <!-- The per capita growth rate decreases linearly as the population size increases. -->
+  - Where does the per capita growth rate cross the x-axis (population size)?  
+  
+    <!-- The per capita growth rate crosses the x-axis when the population size reaches the carrying capacity (`K`), which in this case is 200. -->
 
-The pink block gives the important parameters of the logistic model:
+- **Step 2**: Modify the carrying capacity (`K`) to 300 and observe the changes in Graph 2.
+  - How does increasing the carrying capacity affect where the per capita growth rate crosses the x-axis?  
+  
+    <!-- Increasing the carrying capacity shifts the point where the per capita growth rate crosses the x-axis to 300. -->
+  - Does the slope of the per capita growth rate change when you alter `K`?  
+  
+    <!-- No, the slope remains the same, but the intercept on the x-axis moves to the new carrying capacity. -->
 
-*	`Initial N` = the starting population size at time 1.
-*	`r_m` =  the maximum per capita population growth rate ($r_m$). When $r_m$ is 0, the population does not grow. When $r_m$ is $>$ 0 the population grows, and when it is $<$ 0 it declines. The population cannot fall below 0.
-*	`K` = the carrying capacity of the population.
+- **Step 3**: Change `r_m` to 1.8 and observe how the graph is affected.
+  - How does increasing `r_m` affect the shape of the curve?
+  
+    <!-- The slope of the line becomes steeper, indicating that the per capita growth rate decreases more rapidly as the population increases. -->
+  - Does the intercept on the x-axis change when you increase `r_m`?  
+  
+    <!-- No, the intercept on the x-axis (carrying capacity) remains at `K`, which is still 200, but the y-intercept increases due to the higher growth rate. -->
 
-The initial values for these are *10*, *0.8* and *200* respectively.
+- **Step 4**: Experiment with different values for `K` and `r_m`.  
+  - How do changes in `K` and `r_m` together affect the graph?  
 
-In this exercises you will be altering these parameters and observing the outcome in the 3 graphs which show:
+    <!-- Increasing `K` shifts the x-axis intercept further to the right, while increasing `r_m` makes the slope steeper and increases the y-intercept. -->
+  - Can you predict what the graph would look like if the growth rate were negative (`r_m < 0`)?  
 
-1.	The population size through time.
-2.	The per capita growth rate of the population in relation to population size
-3.	The relationship between population size at time t and at time t+1
-
-## Graph 1: Population size through time
-
-First – take a look at **Graph 1**. 
-
-*	What is the maximum population size? 
-* How does this compare to carrying capacity (`K`)? 
-* What do you predict to happen if you increase `K` to *300*? (try it)
-
-<!--You should notice that when `r_m` is around 1 or lower, the maximum population size is the same as the carrying capacity (`K`). As you change `K`, this maximum population size will change accordingly. 
-If `r_m` is markedly greater than 1, then the population size can exceed the carrying capacity. This is because the population grows so fast that it “overshoots” carrying capacity and then fluctuates around `K`.-->
-
-* At what time do you reach the maximum population size? 
-* If you halved the growth rate (`r_m`) to *0.4*, what do you think will happen to the dynamics this time? (try it)
-
-<!-- You should notice that the time taken to reach the maximum population size is related to the growth rate (`r_m`). As you increase `r_m`, the time taken to hit the maximum population size decreases. If you halve the `r_m`, the time taken to reach maximum population size is doubled.
--->
-
-* What do you think will happen if you `r_m` to *1.8*? (try it)
-* What do you notice about the population size through time? 
-* How does the maximum population size compare with the carrying capacity? How would you describe the ‘*dynamics*’ of this population?
-
-<!--You should notice that the population overshoots carrying capacity (`K`), then oscillates around `K` with damped oscilllations that gradually move towards `K`. Therefore if a population has even a moderate population growth rate, and if it has density-dependence, then it can fluctuate in numbers without any extrinsic factor (like weather) acting. 
--->
-
-* What happens if you increase the `r_m` even more, to *2* or *2.1*? 
-* And even more to *2.8*, *2.9* or *3*? 
-* How would you describe these dynamics? 
-* Is there a limit to how high `r_m` can be? (hint: populations go extinct if N $<$ 0).
-
-<!--
-You should notice that as you increase `r_m` the nature of the oscillations changes. In fact, this is predictable:  If `r_m` $<$ 1.0, then population will approach `K` smoothly.
-
-If 1.0 $<$ `r_m` $<$ 2.0, then oscillations of decreasing amplitude around `K`.
-
-If 2.0 $<$ `r_m` $<$ 2.57, then stable, cyclic oscillations around `K` . They can be 1 or 2+ point stable limit cycles.
-
-If `r_m` $>$ 2.57, then population will fluctuate chaotically.
-
-If `r_m` is too high, the population will fluctuate and crash to extinction.
--->
-
-Finally, compare the population trajectory in **Graph 1** for populations with `r_m`= *2.8* and *2.81*. Then compare the trajectories where you fix `r_m` at *2.8* but vary initial population size by a small amount (e.g. *1*). Imagine you were a population manager – would these populations be easy or hard to predict? What kinds of species have high population growth rates like these?
-
-<!--
-When `r_m` is high ($>$ 2.57) the population dynamics become extremely hard (impossible) to predict because they are chaotic. This means that even a very small change in `r_m` (which could simply be measurement error) will mean that predicted population size next year is suddenly very different. This would cause big problems to a population manager.
-
-Many pest species and diseases have very high population growth rates. For example, locusts, or measles. This is one reason why it is hard to predict when the next pest/disease outbreak will happen
--->
+    <!-- If `r_m` is negative, the y-intercept will be below the x-axis, and the population will shrink over time. -->
 
 
-## Graph 2: Per capita growth rate vs. N
+### Reflection on Graph 2
 
-Now let’s turn to **Graphs 2**  which shows the relationship between per capita population growth rate ($r$) and $N$.
+- **Step 5**: Compare the per capita growth rate in **Graph 2** to the population size over time in **Graph 1**.
+  **Questions**:  
+  - How are the two graphs connected?  
+    
+    <!-- The decline in the per capita growth rate in Graph 2 reflects the slowing population growth shown in Graph 1. As the population size approaches `K` in Graph 1, the per capita growth rate approaches zero in Graph 2. -->
+  - What would the per capita growth rate look like for a population experiencing exponential growth instead of logistic growth?  
+    
+    <!-- In exponential growth, the per capita growth rate would remain constant, so the line would be horizontal, not declining with population size. -->
 
-In **Graph 2**, notice that the per capita growth rate ($r$) always declines linearly with population size (`N`). Where does it cross the x-axis line? Modify the carrying capacity (`K`) – what do you notice about the intercepts on the y and x axes?
-
-<!--
-The line describing per capita growth rate crosses the x-axis (population size) at $K$. i.e. if $K$ = 100, the line crosses at 100. If you change $K$, the intercept on the axis also changes accordingly. The line intercepts the axis at this point no matter what the population growth rate is.
--->
+These steps help you visualise how population size and per capita growth rate are interrelated, reinforcing the concepts behind logistic population growth.
 
 
 ```{block, type="do-something"}
-These two graphs are simply different ways to visualize the same model. 
+These two graphs are different ways to visualize the same model. 
 
 It is important that you can make the connections between these graphs.
 
@@ -126,10 +184,22 @@ Some useful keywords:
 * Unpredictable/predictable
 
 
-## Additional questions
+## Questions
 
-- In the logistic growth model, what happens to the population growth rate as the population size approaches the carrying capacity (K)? How does this lead to population stability?
-- In the logistic growth model, what factors can cause a population to overshoot its carrying capacity temporarily? How does the population respond to such overshooting?
-- How can a ballpark knowledge of maximum per capita population growth rate be useful to a population manager?
-- Consider the relevance of the logistic growth model in ecological conservation. How can an understanding of logistic growth help in managing and conserving endangered species?
+* In the logistic growth model, what happens to the population growth rate as the population size approaches the carrying capacity ($K$)? How does this lead to population stability?
+    
+    <!-- As the population approaches $K$, the growth rate decreases due to the term $\left(1 - \frac{N_t}{K}\right)$ in the model. This slowing of growth continues until the growth rate reaches zero at $K$. The rate at which the population approaches $K$ depends on the intrinsic growth rate ($r_m$). Higher $r_m$ values result in faster growth and potentially more oscillations or overshoots around $K$, while lower $r_m$ values lead to a smoother approach to stability. -->
+
+
+* In the logistic growth model, what factors can cause a population to overshoot its carrying capacity temporarily? How does the population respond to such overshooting?
+    
+    <!-- Factors such as a high intrinsic growth rate ($r_m$) or a delay in density-dependent effects can cause overshooting. After overshooting, the population may oscillate around the carrying capacity before stabilizing, or in extreme cases, exhibit chaotic behaviour. -->
+
+* How can a ballpark knowledge of maximum per capita population growth rate ($r_m$) be useful to a population manager?
+    
+    <!-- Knowing $r_m$ helps a manager anticipate the growth rate of the population under optimal conditions, which informs decisions about the timing of interventions (e.g., pest control, species reintroduction). It also helps predict whether the population will exhibit stable dynamics, oscillations, or chaotic behaviour, which is critical for planning and managing populations effectively. -->
+
+* What are the key assumptions of the logistic growth model, and how might these assumptions limit its real-world application?
+    
+    <!-- The logistic model assumes that the carrying capacity ($K$) is constant, resources are evenly distributed, and environmental conditions do not change. In reality, carrying capacity can fluctuate due to factors like climate change, resource availability, or human impact, which may limit the model’s predictive accuracy in dynamic ecosystems. -->
 

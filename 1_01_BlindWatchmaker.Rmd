@@ -1,36 +1,38 @@
 # The Blind Watchmaker
 
-*If a pocket watch is found on a heath, it is most reasonable to assume that someone dropped it and that it was made by at least one watchmaker, not by natural forces*
+## Background
 
+*If a pocket watch is found on a heath, it is most reasonable to assume that someone dropped it and that it was made by at least one watchmaker, not by natural forces.*
 
-In the early days of evolutionary theory, Charles Darwin's concept of natural selection faced criticism from those who struggled to reconcile the idea of unguided evolution with the apparent complexity of life. One prominent criticism was an analogy often referred to as the "watchmaker analogy," which argued that finding a pocket watch on a heath would naturally lead one to infer the existence of a skilled watchmaker, rather than attributing it to chance or natural forces. This analogy was frequently employed to challenge the notion that natural selection could account for the intricate structures and adaptations observed in living organisms.
+In the early days of evolutionary theory, Charles Darwin's concept of natural selection faced criticism from those who found it difficult to reconcile the idea of unguided evolution with the complexity of life. One famous criticism was the "watchmaker analogy." This analogy argues that, just as finding a pocket watch would naturally lead one to infer a skilled watchmaker, the intricate structures and adaptations of living organisms must also imply the existence of an intelligent designer.
 
-However, in response to the watchmaker analogy, the evolutionary biologist Richard Dawkins introduced the concept of "The Blind Watchmaker". In his 1986 book of the same name, Dawkins presented a compelling counterargument, highlighting that evolution by natural selection is a blind and unguided process, similar to a watchmaker who lacks foresight or intent. According to this idea, the remarkable complexity and diversity of life can emerge through the cumulative effects of small, incremental changes driven by natural selection over vast periods of time, without the need for an external intelligent designer.
+However, evolutionary biologist Richard Dawkins responded with a different perspective in his 1986 book *The Blind Watchmaker*. Dawkins argued that the complexity and diversity of life can arise through a "blind" process — natural selection — which is unguided and without foresight. Evolution, like a blind watchmaker, can achieve impressive complexity through small, incremental changes selected over long periods of time.
 
-In this exercise, we will use a program written in R to explore the interplay between random change and strong selection, inspired by the watchmaker analogy and the Blind Watchmaker concept. We will examine how seemingly improbable results, such as generating a specific sentence through random typing, can be achieved through the power of selection without the need for supernatural intervention. By simulating the process of randomly typing a particular sentence and applying selection mechanisms, we will witness firsthand how unguided processes, over time, can lead to meaningful and purposeful outcomes. 
+### Randomness and Selection
+In this exercise, we will explore how random variation, when paired with selection, can lead to specific outcomes that might otherwise seem impossible. We will use an R program to simulate the typing of a target sentence through random letter generation. You'll see firsthand how selection can guide random variation toward a meaningful result, just as natural selection drives biological complexity.
 
-Let's start...
+By simulating this process, you’ll discover how random changes alone lead to nonsense, but with selection, the "blind" process can quickly achieve a desired result.
 
-Imagine if you randomly typed letters into a type writer. How long would it take to come up with a sensible sentence?
+### Example
 
-Let's think about a particular sentence "`I LOVE SCIENCE`", which has 14 characters (including the spaces).
+Imagine you’re typing random letters into a typewriter. How long would it take to come up with a sensible sentence by pure chance? Let’s say the sentence is "`I LOVE SCIENCE`" (14 characters, including spaces).
 
-In English there are 26 letters in the alphabet, plus the space. So if we hit a random key, probability of getting the first letter correct is 1/27 (= 0.037).
-The chances of getting the first two letters correct is (1/27) * (1/27), or (1/27)^2, which is 0.0014. Our sentence has 14 characters, so the probability of getting it right with random key presses is (1/27)^14 = 9.139181e-21. This is a vanishingly small probability.
+In English, there are 26 letters in the alphabet, plus the space character. The chance of randomly typing the first letter correctly is 1 in 27. The probability of getting the first two letters right is \((1/27)^2\), and the chances of typing the entire 14-character sentence correctly by random typing alone is \((1/27)^{14} = 9.14 \times 10^{-21}\), an astronomically small number.
 
-You will explore how SELECTION, can turn the impossible into a possible.
+But what if selection was applied after each correct letter was typed? How might selection drastically change the outcome? Let’s find out.
 
 
 ```{block, type="do-something"}
-Learning outcomes: 
+Learning outcomes:
 
-- Greater understanding of adaptive evolution via natural selection.
-- Understanding that random change does NOT result in disorder, if paired with selection.
-- Use of R for exploring biological phenomenon.
+- Gain a deeper understanding of adaptive evolution via natural selection.
+- Recognize how random change can lead to order if paired with selection.
+- Learn to use R to explore biological phenomena.
+
 ```
 
 
-## Getting started
+## Your task
 
 0. Make sure you have both R and RStudio installed.
 1. Open RStudio.
@@ -40,7 +42,7 @@ Learning outcomes:
 
 Note, only edit the top part of the file (above the marked comment)
 
-## The code
+### The code
 
 ```
 phrase <- "With your feet on the air and your head on the ground"
@@ -70,25 +72,31 @@ output
 
 ## How the simulation works.
 
-An instructor will walk you through the code, and what it means. They will also demonstrate its use. 
+An instructor will explain the code and demonstrate its use.
 
-You provide the small program with a target phrase (`phrase`). This phrase can include Danish characters, spaces and an exclamation point! 
-The program then generates a random "phrase" with the same number of characters as your target phrase. This certainly be complete nonsense - literally random letters -- but some of the letters might match with your target phrase.
+The program generates a random sequence of characters of the same length as a target phrase (stored in `phrase`). If selection is turned on (`selection <- TRUE`), correct letters are "fixed" in place as the program iterates over generations. Incorrect letters continue to be replaced randomly.
 
-If selection is operating (`selection <- TRUE`), then these matching letters are held in place, and in the next iteration only the unmatched letters are randomised. This process continues for many generations (`nGenerations`).
+Over multiple generations, the process narrows down the random sequence until it matches the target phrase. Without selection, no meaningful sentence would be generated.
 
-The `output` of the code (at the bottom) will print out a sequence of the phrases. You should see that, when selection is turned on, the target phrase is reached after some generations.
+**Try it yourself **
 
-Try editing the code: 
-1) Change the phrase - make it shorter/longer (remember that not all characters are allowed).
-2) Change the number of generations.
+1) **Change the phrase** - make it shorter/longer.
+2) **Change the number of generations** - Experiment with different values for `nGenerations`.
 
 ## Questions
 
-Answer the following questions, then make sure you confirm your understanding and have the right answers with an instructor.
+* What happens if selection is turned OFF?
 
-*	What happens if selection is turned OFF? 
+<!-- Without selection, the random sequence does not evolve toward the target phrase and remains random. -->
+
 * Does the number of generations affect whether the target phrase is reached?
+
+<!-- Yes, more generations provide more opportunities for selection to act, allowing the phrase to be reached. -->
+
 * Does the speed of reaching the target phrase depend on the length of the phrase?
+
+<!-- Yes, longer phrases take more generations to reach because there are more characters to randomize and fix in place. -->
+
 * How does this simulation differ from real natural selection?
 
+<!-- This simulation uses an explicit target phrase, whereas natural selection does not have a predefined goal. Real evolution selects for traits that confer a reproductive advantage in the current environment. -->

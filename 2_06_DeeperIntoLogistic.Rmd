@@ -1,103 +1,121 @@
-# Deeper into logistic growth
+# Deeper into Logistic Growth
 
 ## Background
 
-The purpose of this exercise is (i) to look at the relationships between the exponential (or geometric) growth model and the logistic growth model and (ii) to emphasise different ways of looking at the models.
+The logistic and exponential growth models are closely related and serve as fundamental tools in understanding population dynamics.
 
-```{block, type="do-something"}
-Learning outcomes: 
+- The **exponential (geometric)** growth model assumes that populations grow without any environmental constraints, leading to unlimited growth. 
+- The **logistic** growth model, on the other hand, incorporates environmental limits, specifically the **carrying capacity** ($K$), which represents the maximum number of individuals the environment can support. 
 
-- Increased competence in using Excel formulae for mathematical modeling.
-- Understanding the relationship between exponential and logistic growth models.
-- Understanding how models can be modified to explore different phenomena.
-- Understanding how and why model outputs can be explored (visualised) from different perspectives.
-- Competence in using mathematical models in Excel to strengthen own understanding of biological processes.
+### Linking Logistic and Exponential Growth Models
 
-```
-
-## Your task
-
-### Relationship between Geometric and Logistic models
-
-Consider the logistic growth model (Eqn. 5.2 in Neal):
+The logistic growth model is represented by the following equation (Eqn. 5.2 in Neal):
 
 $\frac{\delta N}{\delta t}=r_m N\left(1-\frac{N}{K}\right)$
 
-This model includes carrying capacity (K) to account for the fact that, in most situations, the environment imposes a limit on the number of individuals that can be supported. What happens if we remove that limit? We can do that mathematically by setting K to be infinity.
+In this model, as the population size $N$ approaches the carrying capacity $K$, the term $\left(1 - \frac{N}{K}\right)$ decreases, slowing the population growth rate until it reaches zero when $N = K$.
+
+However, if we remove the constraint of a carrying capacity (i.e., set $K = \infty$), the model simplifies to the exponential growth equation:
 
 $\frac{\delta N}{\delta t}=r_m N\left(1-\frac{N}{\infty}\right)$
 
-What do we get if we divide a number by infinity? ... zero.
+which simplifies to 
 
-So we get: 
+$\frac{\delta N}{\delta t}=r_m N\left(1-0\right)$
 
-$\frac{\delta N}{\delta t}=r_m N\left(1-0\right)$, or, 
+which simplifies to 
 
-$\frac{\delta N}{\delta t}=r_m N$, which is the ordinary geometric growth equation (Eqn. 4.6 in Neal)!
+$\frac{\delta N}{\delta t}= r_m N$
 
+This is the familiar **geometric (exponential) growth equation** (Eqn. 4.6 in Neal), which assumes unlimited resources and continuous population growth.
 
-The take-home message here is that these key equations are closely related, and you can go from one to the other with some simple, logical steps.
+**Take-home Message: The logistic and exponential growth models are closely related. By setting $K = \infty$, we transition from the logistic model to the exponential model.**
 
+```{block, type="do-something"}
+Learning outcomes:
 
+- Increase competence in using Excel for mathematical modeling.
+- Understand the relationship between exponential and logistic growth models.
+- Learn how models can be adjusted to explore different biological phenomena.
+- Develop skills in visualising and interpreting model outputs from different perspectives.
+- Strengthen understanding of biological processes by applying mathematical models.
+```
 
-
-### Different views of the basic logistic growth model
+## Your Task
 
 Download the Excel file [`Deeper Into Logistic Growth.xlsx`](https://www.dropbox.com/s/4xq399z7skl1akv/Deeper%20into%20Logistic%20Growth.xlsx?dl=1).
 
-
-Take a look at the `BasicLogistic` Excel worksheet/ark, and answer the questions below.
-
-Focus first on **Figure 1**.
-
-Enter different values for $r_m$, e.g. 0.8, 1.2, 1.8, 2.4, 2.7…
-
-Can you describe the dynamics of the population time series in Figure 1 using some of the following vocabulary: Oscillation, damped oscillation, stable cycle, 2-point cycle, chaotic, unpredictable, predictable?
-
-Now focus on **Figure 2**.
-
-This figure shows the per capita population growth rate as a function of population size at time $t$. Note where the line intercepts the x- and y-axes. 
-
-What do you notice about these values? Hint: what are the values you have set for $r_m$ and $K$? Try varying those values.
-
-On paper, make a sketch of a graph for per capita population growth rate as a function of population size at time t for a logistic model with $r_m$ = 1.5 and $K$ = 250, indicating the values of the intercepts. Check your sketch by entering those values into the Excel model.
-
-This relates to Eqn. 5.1 in Neal: $r = r_m(1-N/K)$. 
-
-Based on what you know about what happens to the population dynamics for different values of $r_m$ and what you have just seen in Figure 2, you should now be able to sketch fairly accurate cartoon graphs if you are given values for $r_m$ and $K$! 
-
-*Without using Excel*, draw a population time series, and a graph of per capita growth rate vs. N for when initial population size is 10, $r_m$ is 1.9 and $K$ is 500. Check your graph using Excel.  
-
-Focus now on **Figure 3**.
-
-Population growth rate is $dN/dt$ - the rate of change in $N$ ($dN$, change in population size) per unit time ($dt$). You should now explore how *Figure 3* relates to the values used in the equation by changing the $r_m$ and $K$ values and looking at *Figure 3*. 
-
-Can you see how *Figures 1*, *2* and *3* are connected?
-
-At what population sizes is the population growth rate 0 ($dN/dt$)?
-What is the population size at which the population growth is rate maximized? 
-
-Now lets look back on **Exponential growth**.
-
-How do the relationships in Figures 1, 2 and 3, differ from the equivalent figures for logistic growth. Try to draw graphs of Figures 1, 2 and 3 for the exponential growth model.
-
-*	Fig 1. Population size ($N$) through time ($t$).
-*	Fig 2. Per capita growth rate ($\frac{1}{N} \frac{dN}{dt}$) vs. population size ($N$)
-*	Fig 3. Population growth rate ($\frac{dN}{dt}$) vs. population size ($N$) (see figure 2.4 in Gotelli)
+Look at the `BasicLogistic` worksheet and work through the following tasks:
 
 
-### Adding a time lag
+**Task 1: Population Dynamics (Figure 1)**
 
-This relates to *Equation 2.3* in Gotelli (and pages 32-35).
+1. Experiment with different values of $r_m$ (e.g., 0.8, 1.2, 1.8, 2.4, 2.7) and observe how the population dynamics change over time in **Figure 1**.
+   
+2. Use the following terms to describe the dynamics you see: 
 
-$\frac{d N}{d t}=r N\left(1-\frac{N_{t-\tau}}{K}\right)$
+   - **Oscillation**, **damped oscillation**, **stable cycle**, **2-point cycle**, **chaotic**, **unpredictable**, **predictable**.
 
-Look at the Excel Worksheet/Ark called `TimeLag`.
 
-Adding a time lag to logistic model can complicate the dynamics (by introducing cycling). The 3rd Excel tab has an exercise showing that if you add in a time lag to the logistic function it modifies the dynamics. The purpose of this Excel sheet is to allow you to prove this to yourself!
+**Task 2: Per Capita Growth Rate vs. Population Size (Figure 2)**
 
-You will need to carefully modify the Excel formula so that instead of referring back to the population size at $N_{t-1}$, it refers back to $N_{t-1}$ etc. Remember to drag the formula down to all the other years (or use the shortcut I will show you).
+1. Examine **Figure 2**, which shows the per capita growth rate as a function of population size at time $t$.
+   
+2. Notice where the line intercepts the x- and y-axes. 
 
-Start with a small $r_m$ that gives a smooth convergence to K with an ordinary logistic model. Add in a 1-year time lag and show that this generates cyclic dynamics. This shows that this simple “quirk of life history” (a time lag) can generate cycling, even if the population growth rate is low.
- 
+   - What are these intercepts? 
+   - How do these intercepts relate to the values of $r_m$ and $K$ that you have set?
+
+3. Try varying the values for $r_m$ and $K$, and note how the graph changes. 
+
+4. On paper, sketch a graph of the per capita growth rate vs. population size for a logistic model with $r_m = 1.5$ and $K = 250$. Then, verify your sketch by entering these values into the Excel model.
+
+
+**Task 3: Population Growth Rate vs. Population Size (Figure 3)**
+
+1. **Figure 3** shows the overall population growth rate ($dN/dt$) — the change in population size per unit time. Adjust the values for $r_m$ and $K$ and observe how **Figure 3** changes.
+
+2. Answer the following questions:
+
+   - At what population sizes is the population growth rate 0 ($dN/dt = 0$)?
+   - At what population size is the growth rate maximized?
+
+
+**Task 4: Comparison with Exponential Growth**
+
+1. Now, consider the differences between **logistic growth** and **exponential growth**. How would Figures 1, 2, and 3 change when considering exponential growth?
+
+Sketch equivalent graphs for the exponential (geometric) growth model, including:
+
+   - **Fig 1**: Population size ($N$) over time ($t$).
+   - **Fig 2**: Per capita growth rate ($\frac{1}{N} \frac{dN}{dt}$) vs. population size ($N$).
+   - **Fig 3**: Population growth rate ($\frac{dN}{dt}$) vs. population size ($N$) 
+
+2. Look at the **`Exponential` worksheet** to see how close you were.
+
+**Task 5: Adding a Time Lag**
+
+1. In the **`TimeLag` worksheet**, explore how adding a time lag to the logistic model affects population dynamics. This is the equation we are are using: $\frac{d N}{d t}=r N\left(1-\frac{N_{t-\tau}}{K}\right)$
+
+
+2. Adjust the formula in the Excel sheet to incorporate a time lag in the population size ($N_{t-\tau}$). Start with a small $r_m$ value that results in smooth convergence to $K$ in the ordinary logistic model. 
+
+3. Add a 1-year time lag and observe how this introduces cycling in the population dynamics. This exercise demonstrates how a simple life history trait (such as a time lag) can introduce complex dynamics, even when population growth rates are low.
+
+
+## Questions
+
+* How does increasing or decreasing $r_m$ affect the shape and behaviour of the population time series in Figure 1? How does it change the per capita growth rate curve in Figure 2 and the population growth rate in Figure 3?
+
+<!-- In Figure 1, as $r_m$ increases, the population grows more rapidly. For small values of $r_m$ (e.g., 0.8), the population slowly approaches the carrying capacity $K$. For higher values of $r_m$ (e.g., 1.8, 2.7), the population may overshoot $K$ and oscillate before stabilising, or it may exhibit chaotic behaviour if $r_m$ is large enough (e.g., above 2.5).
+In Figure 2, increasing $r_m$ makes the slope of the line steeper. Higher $r_m$ values result in a higher per capita growth rate when the population size is small. However, the line still intercepts the x-axis at $K$, meaning that the carrying capacity doesn't change, but the rate at which the population reaches $K$ does.
+In Figure 3, as $r_m$ increases, the overall population growth rate increases, with the peak growth rate shifting to a higher value. However, as the population approaches $K$, the growth rate still decreases to zero. -->
+
+* What happens to the population dynamics when a time lag is introduced?
+
+<!--     Introducing a time lag in the feedback system (i.e., where the population size at a given time depends on the population size at a previous time step) typically leads to more complex and sometimes oscillatory dynamics:
+     A time lag may cause the population to overshoot the carrying capacity and then oscillate around $K$. This happens because the time lag delays the response of the population to changes in resource availability, leading to a cycle of growth and decline.
+  
+-->
+
 
