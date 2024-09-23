@@ -46,13 +46,13 @@ I have provided some initial data collected from a cohort of animals. I know how
 
 Start by calculating survivorship ($l_x$). Survivorship is the **probability of survival to a particular age**. Therefore, at time 0, $l_0 = 1$, since everyone is alive at this point. The next value ($l_1$) must be calculated based on the number alive at that point. In this case it is $352/500 = 0.704$. You must generalize this calculation into a formula that can be dragged to fill column `D` in the worksheet. In algebraic form, the equation is $l_x = S_x/S_0$. 
 
+**Tip** You need to understand the use of the `$` symbol in Excel, and how to drag the selected area to place the formula in the column.
+
 Next, you can calculate age-specific **survival probability**. Note that this is different from $l_x$. Survival probability is simply the probability that an individual will survive its current age class. i.e., what is the probability that an individual currently aged 2 will survive to become age 3. In this case, the $254/298 = 0.852$. The calculation is $g_x = l_{x+1}/l_x$, or $S_{x+1}/S_x$.
 
 From there you can calculate the age-specific **probability of death**. This is simply $1 - g_x$: the probilities of survival and death **must** sum to 1.
 
 Now complete the remaining columns $l_x m_x$ and $l_x m_x x$, and use them to calculate (a) $R_0$; (b) **Generation time**; and an approximation of $r$.
-
-**Tip** You need to understand the use of the `$` symbol in Excel, and how to drag the selected area to place the formula in the column.
 
 Refer to the sheet “*Gotelli Table 3.1 example*” if you get stuck (click on the cells to see the formulae used there).
 
@@ -113,7 +113,7 @@ Type I curves indicate high survival in early life and high mortality at older a
 
 In short, **survivorship** tracks the cumulative proportion of individuals surviving to a given age class, while **survival probability** reflects the likelihood of surviving just one more time step. \(l_x\) is cumulative across age classes, whereas \(g_x\) is specific to the transition from one age class to the next. -->
 
-5. How does altering reproduction or survival/mortality at different ages affect $R_0$ and population growth rate
+5. How does altering reproduction or survival/mortality at different ages affect $R_0$ and population growth rate?
 
 <!-- 
    - Changes early in life have a larger impact on $R_0$ and population growth rate than changes later in life, due to the declining force of selection.-->
