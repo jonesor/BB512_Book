@@ -2,7 +2,13 @@
 
 ## Background
 
-Hardy-Weinberg equilibrium is a fundamental concept in population genetics that serves as a cornerstone for understanding the genetic dynamics of populations. Named after British mathematician G.H. Hardy and German physician Wilhelm Weinberg, this principle describes the stable genetic proportions in a population under specific conditions of no evolution. In an idealized population, where mating is random, genetic mutations are absent, natural selection is not acting, and there is no gene flow or genetic drift, the frequencies of alleles and genotypes remain constant across generations. The Hardy-Weinberg equilibrium provides a baseline against which real populations can be compared, allowing researchers to detect factors that may cause deviations from this equilibrium and, in turn, understand the forces driving evolution and genetic changes within populations. It is a valuable tool in studying genetic diversity, inheritance patterns, and the mechanisms that shape the genetic structure of populations. In this practical we will learn more about HWE and practice solving some HWE-related problems.
+Hardy-Weinberg equilibrium is a fundamental concept in population genetics for understanding the genetic dynamics of populations. Named after British mathematician G.H. Hardy and German physician Wilhelm Weinberg, this principle describes the stable genetic proportions in a population under specific conditions of no evolution. 
+
+In an idealized population, where mating is random, genetic mutations are absent, natural selection is not acting, and there is no gene flow or genetic drift, the frequencies of alleles and genotypes remain constant across generations. 
+
+The Hardy-Weinberg equilibrium provides a baseline against which real populations can be compared, allowing researchers to detect factors that may cause deviations from this equilibrium and, in turn, understand the forces driving evolution and genetic changes within populations. 
+
+In this practical we will learn more about HWE and practice solving some HWE-related problems.
 
 
 The key formulae of the Hardy-Weinberg Equilibrium are:

@@ -23,7 +23,7 @@
 <meta name="author" content="Owen R. Jones (Course Coordinator)" />
 
 
-<meta name="date" content="2024-09-18" />
+<meta name="date" content="2024-10-11" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -95,7 +95,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -520,10 +520,10 @@ Table 3.1 example</em>” (don’t worry if you don’t have the text book).</p>
 <p>The aim now is to use Excel as a modeling tool to produce a life table.</p>
 <p>I have provided some initial data collected from a cohort of animals. I know how many individuals start each year (i.e. how many “<strong>enter</strong> an interval”) and therefore I can see how many survive each year (i.e. how many “enter the <strong>next</strong> interval). I also know how many (female) babies (on average) are produced by each female.</p>
 <p>Start by calculating survivorship (<span class="math inline">\(l_x\)</span>). Survivorship is the <strong>probability of survival to a particular age</strong>. Therefore, at time 0, <span class="math inline">\(l_0 = 1\)</span>, since everyone is alive at this point. The next value (<span class="math inline">\(l_1\)</span>) must be calculated based on the number alive at that point. In this case it is <span class="math inline">\(352/500 = 0.704\)</span>. You must generalize this calculation into a formula that can be dragged to fill column <code>D</code> in the worksheet. In algebraic form, the equation is <span class="math inline">\(l_x = S_x/S_0\)</span>.</p>
+<p><strong>Tip</strong> You need to understand the use of the <code>$</code> symbol in Excel, and how to drag the selected area to place the formula in the column.</p>
 <p>Next, you can calculate age-specific <strong>survival probability</strong>. Note that this is different from <span class="math inline">\(l_x\)</span>. Survival probability is simply the probability that an individual will survive its current age class. i.e., what is the probability that an individual currently aged 2 will survive to become age 3. In this case, the <span class="math inline">\(254/298 = 0.852\)</span>. The calculation is <span class="math inline">\(g_x = l_{x+1}/l_x\)</span>, or <span class="math inline">\(S_{x+1}/S_x\)</span>.</p>
 <p>From there you can calculate the age-specific <strong>probability of death</strong>. This is simply <span class="math inline">\(1 - g_x\)</span>: the probilities of survival and death <strong>must</strong> sum to 1.</p>
 <p>Now complete the remaining columns <span class="math inline">\(l_x m_x\)</span> and <span class="math inline">\(l_x m_x x\)</span>, and use them to calculate (a) <span class="math inline">\(R_0\)</span>; (b) <strong>Generation time</strong>; and an approximation of <span class="math inline">\(r\)</span>.</p>
-<p><strong>Tip</strong> You need to understand the use of the <code>$</code> symbol in Excel, and how to drag the selected area to place the formula in the column.</p>
 <p>Refer to the sheet “<em>Gotelli Table 3.1 example</em>” if you get stuck (click on the cells to see the formulae used there).</p>
 <div id="declining-force-of-selection" class="section level4 hasAnchor" number="10.2.1.1">
 <h4><span class="header-section-number">10.2.1.1</span> Declining force of selection<a href="life-tables-and-survivorship-types.html#declining-force-of-selection" class="anchor-section" aria-label="Anchor link to header"></a></h4>
@@ -572,7 +572,7 @@ Type I curves indicate high survival in early life and high mortality at older a
 
 In short, **survivorship** tracks the cumulative proportion of individuals surviving to a given age class, while **survival probability** reflects the likelihood of surviving just one more time step. \(l_x\) is cumulative across age classes, whereas \(g_x\) is specific to the transition from one age class to the next. -->
 <ol start="5" style="list-style-type: decimal">
-<li>How does altering reproduction or survival/mortality at different ages affect <span class="math inline">\(R_0\)</span> and population growth rate</li>
+<li>How does altering reproduction or survival/mortality at different ages affect <span class="math inline">\(R_0\)</span> and population growth rate?</li>
 </ol>
 <!-- 
    - Changes early in life have a larger impact on $R_0$ and population growth rate than changes later in life, due to the declining force of selection.-->

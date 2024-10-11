@@ -23,7 +23,7 @@
 <meta name="author" content="Owen R. Jones (Course Coordinator)" />
 
 
-<meta name="date" content="2024-09-18" />
+<meta name="date" content="2024-10-11" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -95,7 +95,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -579,7 +579,7 @@ You can cut-paste this code, which is a complete gene-pool model.</p>
 <span id="cb55-20"><a href="the-gene-pool-model.html#cb55-20" tabindex="-1"></a>    pop_size <span class="sc">*</span> <span class="dv">2</span>,</span>
 <span id="cb55-21"><a href="the-gene-pool-model.html#cb55-21" tabindex="-1"></a>    <span class="at">replace =</span> <span class="cn">TRUE</span></span>
 <span id="cb55-22"><a href="the-gene-pool-model.html#cb55-22" tabindex="-1"></a>  )</span>
-<span id="cb55-23"><a href="the-gene-pool-model.html#cb55-23" tabindex="-1"></a>  gene_pool_table <span class="ot">&lt;-</span> <span class="fu">table</span>(gene_pool_time_n_plus_1)</span>
+<span id="cb55-23"><a href="the-gene-pool-model.html#cb55-23" tabindex="-1"></a>  gene_pool_table <span class="ot">&lt;-</span> <span class="fu">table</span>(<span class="fu">factor</span>(gene_pool_time_n_plus_1, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;a&quot;</span>)))</span>
 <span id="cb55-24"><a href="the-gene-pool-model.html#cb55-24" tabindex="-1"></a>  allele_freq_A[i] <span class="ot">&lt;-</span> gene_pool_table[<span class="dv">2</span>] <span class="sc">/</span> <span class="fu">sum</span>(gene_pool_table)</span>
 <span id="cb55-25"><a href="the-gene-pool-model.html#cb55-25" tabindex="-1"></a></span>
 <span id="cb55-26"><a href="the-gene-pool-model.html#cb55-26" tabindex="-1"></a>  <span class="co"># Replace the old gene pool with the new one.</span></span>

@@ -140,7 +140,7 @@ for (i in 2:n_gen) {
     pop_size * 2,
     replace = TRUE
   )
-  gene_pool_table <- table(gene_pool_time_n_plus_1)
+  gene_pool_table <- table(factor(gene_pool_time_n_plus_1, levels = c("A", "a")))
   allele_freq_A[i] <- gene_pool_table[2] / sum(gene_pool_table)
 
   # Replace the old gene pool with the new one.
