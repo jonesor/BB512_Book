@@ -89,6 +89,7 @@ You are provided with two datasets containing parent and offspring trait values 
 * What other factors might explain the remaining variation?
 * How would the heritability estimate change if you used a different trait (e.g., beak length instead of wing length)?
 * What does the heritability tell us about how fast a trait might change due to selection?
+* You can calculate $V_P$ from the phenotype values. Use this information to calculate $V_A$ based on the equation $V_A = h^2 \times V_P$.
 
 <!-- If the heritability is high, significant changes in the trait could occur in fewer generations through natural selection. The rate would also depend on other factors like generation time and strength of selection.
 Low heritability of a critical trait like disease resistance would be concerning for conservation efforts. It suggests that natural selection would have limited scope to act upon the trait, making rapid adaptation unlikely.
@@ -109,6 +110,7 @@ After you have completed the linear regression analysis for the first dataset, a
 * What does the heritability tell us this time?
 * Can you identify any environmental factors that might explain the difference?
 * Can you think of any real-world applications where understanding heritability would be important?
+
 
 
 

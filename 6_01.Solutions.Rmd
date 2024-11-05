@@ -459,7 +459,7 @@ plot(pop_2$Parent_value, pop_2$Offspring_value,
      ylab ="Offsping value")
 
 # fit the model.
-mod2 <- lm(Offspring_value~ Parent_value, data = pop_1)
+mod2 <- lm(Offspring_value~ Parent_value, data = pop_2)
 abline(mod2)
 summary(mod1)
 ```
