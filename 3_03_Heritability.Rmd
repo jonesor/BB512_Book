@@ -100,9 +100,9 @@ Low heritability of a critical trait like disease resistance would be concerning
 
 After you have completed the linear regression analysis for the first dataset, analyse the second data set. This dataset features the same trait, for the same species but from a different population with potentially different environmental factors. The analysis steps are the same:
 
-1) Import the second data set into R (RStudio).
+1) Import the second data set into R (RStudio) or Excel.
 2) Plot the data to make a graph of parent value on the x-axis and offspring value on the y-axis.
-3) Fit a linear regression model of the form `y ~ x`. 
+3) Fit a linear regression model of the form `y ~ x`. In R you do this with the `lm` function, while in Excel you can add a trendline.
 4) Summarise the model and take note of the slope of the relationship between the parent and offspring trait values.
 
 **Questions**
