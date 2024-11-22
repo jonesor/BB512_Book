@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Page not found | BB512 - Population Biology and Evolution</title>
+  <title>22 Discrete-time Lotka-Volterra Predator-Prey Model in R | BB512 - Population Biology and Evolution</title>
   <meta name="description" content="Course book for BB512 at the Biology Department, University of Southern Denmark" />
   <meta name="generator" content="bookdown 0.40 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Page not found | BB512 - Population Biology and Evolution" />
+  <meta property="og:title" content="22 Discrete-time Lotka-Volterra Predator-Prey Model in R | BB512 - Population Biology and Evolution" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="Course book for BB512 at the Biology Department, University of Southern Denmark" />
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Page not found | BB512 - Population Biology and Evolution" />
+  <meta name="twitter:title" content="22 Discrete-time Lotka-Volterra Predator-Prey Model in R | BB512 - Population Biology and Evolution" />
   
   <meta name="twitter:description" content="Course book for BB512 at the Biology Department, University of Southern Denmark" />
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-
-
+<link rel="prev" href="continuous-time-lotka-volterra-predator-prey-model-in-r.html"/>
+<link rel="next" href="game-theory-hawks-and-doves.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -494,19 +494,142 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="page-not-found" class="section level1">
-<h1>Page not found</h1>
-<p>The page you requested cannot be found (perhaps it was moved or renamed).</p>
-<p>You may want to try searching to find the page's new location, or use
-the table of contents to find the page you are looking for.</p>
+<div id="discrete-time-lotka-volterra-predator-prey-model-in-r" class="section level1 hasAnchor" number="22">
+<h1><span class="header-section-number">22</span> Discrete-time Lotka-Volterra Predator-Prey Model in R<a href="discrete-time-lotka-volterra-predator-prey-model-in-r.html#discrete-time-lotka-volterra-predator-prey-model-in-r" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="introduction-1" class="section level2 hasAnchor" number="22.1">
+<h2><span class="header-section-number">22.1</span> Introduction<a href="discrete-time-lotka-volterra-predator-prey-model-in-r.html#introduction-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The Lotka-Volterra model describes the interaction between predators and prey. This document demonstrates how to program the discrete-time version of the model in R, explore its features, and visualise the dynamics of predator and prey populations over time. The time step (<span class="math inline">\(\Delta t\)</span>) can be adjusted to explore the impact of a time delay in the system. In ecological systems, time delays can represent biological processes such as the time it takes for predators to respond to changes in prey density, for prey populations to recover after predation. If <span class="math inline">\(\Delta t\)</span> is set to 1, this model is equivalent to a year-by-year model (as we have fitted in Excel in class), where the impact of predators on prey has a 1 year lag. i.e. the growth of predators, depends on the availability of prey 1 year ago and the growth of prey depends on the amount of predators 1 year ago.</p>
+</div>
+<div id="step-1-define-the-model" class="section level2 hasAnchor" number="22.2">
+<h2><span class="header-section-number">22.2</span> Step 1: Define the Model<a href="discrete-time-lotka-volterra-predator-prey-model-in-r.html#step-1-define-the-model" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The discrete-time equations are as follows:</p>
+<ul>
+<li><p>Victim (prey) population growth:<br />
+<span class="math inline">\(V_{t+1} = V_t + \Delta t \cdot (R \cdot V_t - a \cdot C_t \cdot V_t)\)</span></p></li>
+<li><p>Consumer (predator) population growth:<br />
+<span class="math inline">\(C_{t+1} = C_t + \Delta t \cdot (a \cdot f \cdot V_t \cdot C_t - q \cdot C_t)\)</span></p></li>
+</ul>
+<p>Note that, when t = 1, the model is as follows:</p>
+<ul>
+<li><p>Victim (prey) population growth:<br />
+<span class="math inline">\(V_{t+1} = V_t + R \cdot V_t - a \cdot C_t \cdot V_t\)</span></p></li>
+<li><p>Consumer (predator) population growth:<br />
+<span class="math inline">\(C_{t+1} = C_t + a \cdot f \cdot V_t \cdot C_t - q \cdot C_t\)</span></p></li>
+</ul>
+<p>Compare these to Equations 1 and 2 in the Excel exercise PDF.</p>
+<p>The function below implements these equations in R.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="discrete-time-lotka-volterra-predator-prey-model-in-r.html#cb1-1" tabindex="-1"></a>discrete_predator_prey_model <span class="ot">&lt;-</span> <span class="cf">function</span>(time_steps, dt, initial_state, parameters) {</span>
+<span id="cb1-2"><a href="discrete-time-lotka-volterra-predator-prey-model-in-r.html#cb1-2" tabindex="-1"></a>  <span class="co"># Initialise vectors to store populations</span></span>
+<span id="cb1-3"><a href="discrete-time-lotka-volterra-predator-prey-model-in-r.html#cb1-3" tabindex="-1"></a>  V <span class="ot">&lt;-</span> <span class="fu">numeric</span>(time_steps <span class="sc">+</span> <span class="dv">1</span>)</span>
+<span id="cb1-4"><a href="discrete-time-lotka-volterra-predator-prey-model-in-r.html#cb1-4" tabindex="-1"></a>  C <span class="ot">&lt;-</span> <span class="fu">numeric</span>(time_steps <span class="sc">+</span> <span class="dv">1</span>)</span>
+<span id="cb1-5"><a href="discrete-time-lotka-volterra-predator-prey-model-in-r.html#cb1-5" tabindex="-1"></a>  time <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">0</span>, time_steps <span class="sc">*</span> dt, <span class="at">by =</span> dt)</span>
+<span id="cb1-6"><a href="discrete-time-lotka-volterra-predator-prey-model-in-r.html#cb1-6" tabindex="-1"></a>  </span>
+<span id="cb1-7"><a href="discrete-time-lotka-volterra-predator-prey-model-in-r.html#cb1-7" tabindex="-1"></a>  <span class="co"># Set initial populations</span></span>
+<span id="cb1-8"><a href="discrete-time-lotka-volterra-predator-prey-model-in-r.html#cb1-8" tabindex="-1"></a>  V[<span class="dv">1</span>] <span class="ot">&lt;-</span> initial_state[<span class="st">&quot;V&quot;</span>]</span>
+<span id="cb1-9"><a href="discrete-time-lotka-volterra-predator-prey-model-in-r.html#cb1-9" tabindex="-1"></a>  C[<span class="dv">1</span>] <span class="ot">&lt;-</span> initial_state[<span class="st">&quot;C&quot;</span>]</span>
+<span id="cb1-10"><a href="discrete-time-lotka-volterra-predator-prey-model-in-r.html#cb1-10" tabindex="-1"></a>  </span>
+<span id="cb1-11"><a href="discrete-time-lotka-volterra-predator-prey-model-in-r.html#cb1-11" tabindex="-1"></a>  <span class="co"># Extract parameters</span></span>
+<span id="cb1-12"><a href="discrete-time-lotka-volterra-predator-prey-model-in-r.html#cb1-12" tabindex="-1"></a>  R <span class="ot">&lt;-</span> parameters[<span class="st">&quot;R&quot;</span>]</span>
+<span id="cb1-13"><a href="discrete-time-lotka-volterra-predator-prey-model-in-r.html#cb1-13" tabindex="-1"></a>  a <span class="ot">&lt;-</span> parameters[<span class="st">&quot;a&quot;</span>]</span>
+<span id="cb1-14"><a href="discrete-time-lotka-volterra-predator-prey-model-in-r.html#cb1-14" tabindex="-1"></a>  f <span class="ot">&lt;-</span> parameters[<span class="st">&quot;f&quot;</span>]</span>
+<span id="cb1-15"><a href="discrete-time-lotka-volterra-predator-prey-model-in-r.html#cb1-15" tabindex="-1"></a>  q <span class="ot">&lt;-</span> parameters[<span class="st">&quot;q&quot;</span>]</span>
+<span id="cb1-16"><a href="discrete-time-lotka-volterra-predator-prey-model-in-r.html#cb1-16" tabindex="-1"></a>  </span>
+<span id="cb1-17"><a href="discrete-time-lotka-volterra-predator-prey-model-in-r.html#cb1-17" tabindex="-1"></a>  <span class="co"># Loop through time steps to calculate populations</span></span>
+<span id="cb1-18"><a href="discrete-time-lotka-volterra-predator-prey-model-in-r.html#cb1-18" tabindex="-1"></a>  <span class="cf">for</span> (t <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>time_steps) {</span>
+<span id="cb1-19"><a href="discrete-time-lotka-volterra-predator-prey-model-in-r.html#cb1-19" tabindex="-1"></a>    V[t <span class="sc">+</span> <span class="dv">1</span>] <span class="ot">&lt;-</span> V[t] <span class="sc">+</span> dt <span class="sc">*</span> (R <span class="sc">*</span> V[t] <span class="sc">-</span> a <span class="sc">*</span> V[t] <span class="sc">*</span> C[t])</span>
+<span id="cb1-20"><a href="discrete-time-lotka-volterra-predator-prey-model-in-r.html#cb1-20" tabindex="-1"></a>    C[t <span class="sc">+</span> <span class="dv">1</span>] <span class="ot">&lt;-</span> C[t] <span class="sc">+</span> dt <span class="sc">*</span> (a <span class="sc">*</span> f <span class="sc">*</span> V[t] <span class="sc">*</span> C[t] <span class="sc">-</span> q <span class="sc">*</span> C[t])</span>
+<span id="cb1-21"><a href="discrete-time-lotka-volterra-predator-prey-model-in-r.html#cb1-21" tabindex="-1"></a>  }</span>
+<span id="cb1-22"><a href="discrete-time-lotka-volterra-predator-prey-model-in-r.html#cb1-22" tabindex="-1"></a>  </span>
+<span id="cb1-23"><a href="discrete-time-lotka-volterra-predator-prey-model-in-r.html#cb1-23" tabindex="-1"></a>  <span class="co"># Combine results into a data frame</span></span>
+<span id="cb1-24"><a href="discrete-time-lotka-volterra-predator-prey-model-in-r.html#cb1-24" tabindex="-1"></a>  <span class="fu">data.frame</span>(<span class="at">time =</span> time, <span class="at">V =</span> V, <span class="at">C =</span> C)</span>
+<span id="cb1-25"><a href="discrete-time-lotka-volterra-predator-prey-model-in-r.html#cb1-25" tabindex="-1"></a>}</span></code></pre></div>
+</div>
+<div id="step-2-set-parameters-and-initial-conditions" class="section level2 hasAnchor" number="22.3">
+<h2><span class="header-section-number">22.3</span> Step 2: Set Parameters and Initial Conditions<a href="discrete-time-lotka-volterra-predator-prey-model-in-r.html#step-2-set-parameters-and-initial-conditions" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>We set the parameters, initial conditions, and time step (<span class="math inline">\(\Delta t\)</span>) for the model.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="discrete-time-lotka-volterra-predator-prey-model-in-r.html#cb2-1" tabindex="-1"></a>parameters <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="at">R =</span> <span class="fl">0.25</span>,  <span class="co"># Victim (prey) growth rate</span></span>
+<span id="cb2-2"><a href="discrete-time-lotka-volterra-predator-prey-model-in-r.html#cb2-2" tabindex="-1"></a>                <span class="at">a =</span> <span class="fl">0.01</span>,  <span class="co"># Attack rate</span></span>
+<span id="cb2-3"><a href="discrete-time-lotka-volterra-predator-prey-model-in-r.html#cb2-3" tabindex="-1"></a>                <span class="at">f =</span> <span class="fl">0.008</span>, <span class="co"># Conversion efficiency</span></span>
+<span id="cb2-4"><a href="discrete-time-lotka-volterra-predator-prey-model-in-r.html#cb2-4" tabindex="-1"></a>                <span class="at">q =</span> <span class="fl">0.1</span>)   <span class="co"># Consumer (predator) death rate</span></span>
+<span id="cb2-5"><a href="discrete-time-lotka-volterra-predator-prey-model-in-r.html#cb2-5" tabindex="-1"></a></span>
+<span id="cb2-6"><a href="discrete-time-lotka-volterra-predator-prey-model-in-r.html#cb2-6" tabindex="-1"></a>initial_state <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="at">V =</span> <span class="dv">1000</span>,  <span class="co"># Initial victim population</span></span>
+<span id="cb2-7"><a href="discrete-time-lotka-volterra-predator-prey-model-in-r.html#cb2-7" tabindex="-1"></a>                   <span class="at">C =</span> <span class="dv">20</span>)    <span class="co"># Initial consumer population</span></span>
+<span id="cb2-8"><a href="discrete-time-lotka-volterra-predator-prey-model-in-r.html#cb2-8" tabindex="-1"></a></span>
+<span id="cb2-9"><a href="discrete-time-lotka-volterra-predator-prey-model-in-r.html#cb2-9" tabindex="-1"></a>time_steps <span class="ot">&lt;-</span> <span class="dv">200</span>             <span class="co"># Number of time steps</span></span>
+<span id="cb2-10"><a href="discrete-time-lotka-volterra-predator-prey-model-in-r.html#cb2-10" tabindex="-1"></a>dt <span class="ot">&lt;-</span> <span class="dv">1</span>                       <span class="co"># Time step (dt), 1 = a standard discrete model</span></span></code></pre></div>
+</div>
+<div id="step-3-simulate-the-model" class="section level2 hasAnchor" number="22.4">
+<h2><span class="header-section-number">22.4</span> Step 3: Simulate the Model<a href="discrete-time-lotka-volterra-predator-prey-model-in-r.html#step-3-simulate-the-model" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>We simulate the model for the specified parameters and time steps.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="discrete-time-lotka-volterra-predator-prey-model-in-r.html#cb3-1" tabindex="-1"></a>output_df <span class="ot">&lt;-</span> <span class="fu">discrete_predator_prey_model</span>(<span class="at">time_steps =</span> time_steps, <span class="at">dt =</span> dt, </span>
+<span id="cb3-2"><a href="discrete-time-lotka-volterra-predator-prey-model-in-r.html#cb3-2" tabindex="-1"></a>                                          <span class="at">initial_state =</span> initial_state, </span>
+<span id="cb3-3"><a href="discrete-time-lotka-volterra-predator-prey-model-in-r.html#cb3-3" tabindex="-1"></a>                                          <span class="at">parameters =</span> parameters)</span></code></pre></div>
+</div>
+<div id="step-4-visualise-the-dynamics" class="section level2 hasAnchor" number="22.5">
+<h2><span class="header-section-number">22.5</span> Step 4: Visualise the Dynamics<a href="discrete-time-lotka-volterra-predator-prey-model-in-r.html#step-4-visualise-the-dynamics" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="population-dynamics-over-time-1" class="section level3 hasAnchor" number="22.5.1">
+<h3><span class="header-section-number">22.5.1</span> Population Dynamics Over Time<a href="discrete-time-lotka-volterra-predator-prey-model-in-r.html#population-dynamics-over-time-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The plot below shows the changes in consumer and victim populations over time.</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="discrete-time-lotka-volterra-predator-prey-model-in-r.html#cb4-1" tabindex="-1"></a><span class="co"># Plot victim population on the primary y-axis</span></span>
+<span id="cb4-2"><a href="discrete-time-lotka-volterra-predator-prey-model-in-r.html#cb4-2" tabindex="-1"></a><span class="fu">plot</span>(output_df<span class="sc">$</span>time, output_df<span class="sc">$</span>V, <span class="at">type =</span> <span class="st">&quot;l&quot;</span>, <span class="at">col =</span> <span class="st">&quot;blue&quot;</span>, <span class="at">lwd =</span> <span class="dv">2</span>, </span>
+<span id="cb4-3"><a href="discrete-time-lotka-volterra-predator-prey-model-in-r.html#cb4-3" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">&quot;Victim Population (V)&quot;</span>, <span class="at">xlab =</span> <span class="st">&quot;Time&quot;</span>, <span class="at">main =</span> <span class="st">&quot;Discrete Predator-Prey Dynamics&quot;</span>)</span>
+<span id="cb4-4"><a href="discrete-time-lotka-volterra-predator-prey-model-in-r.html#cb4-4" tabindex="-1"></a></span>
+<span id="cb4-5"><a href="discrete-time-lotka-volterra-predator-prey-model-in-r.html#cb4-5" tabindex="-1"></a><span class="co"># Add consumer population on a secondary y-axis</span></span>
+<span id="cb4-6"><a href="discrete-time-lotka-volterra-predator-prey-model-in-r.html#cb4-6" tabindex="-1"></a><span class="fu">par</span>(<span class="at">new =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb4-7"><a href="discrete-time-lotka-volterra-predator-prey-model-in-r.html#cb4-7" tabindex="-1"></a><span class="fu">plot</span>(output_df<span class="sc">$</span>time, output_df<span class="sc">$</span>C, <span class="at">type =</span> <span class="st">&quot;l&quot;</span>, <span class="at">col =</span> <span class="st">&quot;red&quot;</span>, <span class="at">lwd =</span> <span class="dv">2</span>, </span>
+<span id="cb4-8"><a href="discrete-time-lotka-volterra-predator-prey-model-in-r.html#cb4-8" tabindex="-1"></a>     <span class="at">axes =</span> <span class="cn">FALSE</span>, <span class="at">xlab =</span> <span class="st">&quot;&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;&quot;</span>)</span>
+<span id="cb4-9"><a href="discrete-time-lotka-volterra-predator-prey-model-in-r.html#cb4-9" tabindex="-1"></a><span class="fu">axis</span>(<span class="at">side =</span> <span class="dv">4</span>, <span class="at">col =</span> <span class="st">&quot;red&quot;</span>, <span class="at">col.axis =</span> <span class="st">&quot;red&quot;</span>)</span>
+<span id="cb4-10"><a href="discrete-time-lotka-volterra-predator-prey-model-in-r.html#cb4-10" tabindex="-1"></a><span class="fu">mtext</span>(<span class="st">&quot;Consumer Population (C)&quot;</span>, <span class="at">side =</span> <span class="dv">4</span>, <span class="at">line =</span> <span class="dv">3</span>, <span class="at">col =</span> <span class="st">&quot;red&quot;</span>)</span>
+<span id="cb4-11"><a href="discrete-time-lotka-volterra-predator-prey-model-in-r.html#cb4-11" tabindex="-1"></a></span>
+<span id="cb4-12"><a href="discrete-time-lotka-volterra-predator-prey-model-in-r.html#cb4-12" tabindex="-1"></a><span class="co"># Add legend</span></span>
+<span id="cb4-13"><a href="discrete-time-lotka-volterra-predator-prey-model-in-r.html#cb4-13" tabindex="-1"></a><span class="fu">legend</span>(<span class="st">&quot;topright&quot;</span>, <span class="at">legend =</span> <span class="fu">c</span>(<span class="st">&quot;Victim (V)&quot;</span>, <span class="st">&quot;Consumer (C)&quot;</span>), </span>
+<span id="cb4-14"><a href="discrete-time-lotka-volterra-predator-prey-model-in-r.html#cb4-14" tabindex="-1"></a>       <span class="at">col =</span> <span class="fu">c</span>(<span class="st">&quot;blue&quot;</span>, <span class="st">&quot;red&quot;</span>), <span class="at">lwd =</span> <span class="dv">2</span>)</span></code></pre></div>
+<p><img src="BB512_files/figure-html/population-dynamics-1.png" width="672" /></p>
+</div>
+<div id="phase-plot-with-zngis-1" class="section level3 hasAnchor" number="22.5.2">
+<h3><span class="header-section-number">22.5.2</span> Phase Plot with ZNGIs<a href="discrete-time-lotka-volterra-predator-prey-model-in-r.html#phase-plot-with-zngis-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The phase plot shows the relationship between victim and consumer populations.</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="discrete-time-lotka-volterra-predator-prey-model-in-r.html#cb5-1" tabindex="-1"></a><span class="do">### Phase Plot with ZNGIs, Initial Point, and Arrow</span></span>
+<span id="cb5-2"><a href="discrete-time-lotka-volterra-predator-prey-model-in-r.html#cb5-2" tabindex="-1"></a><span class="fu">plot</span>(output_df<span class="sc">$</span>V, output_df<span class="sc">$</span>C, <span class="at">type =</span> <span class="st">&quot;l&quot;</span>, <span class="at">col =</span> <span class="st">&quot;purple&quot;</span>, <span class="at">lwd =</span> <span class="dv">2</span>, </span>
+<span id="cb5-3"><a href="discrete-time-lotka-volterra-predator-prey-model-in-r.html#cb5-3" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">&quot;Victim (V)&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;Consumer (C)&quot;</span>, </span>
+<span id="cb5-4"><a href="discrete-time-lotka-volterra-predator-prey-model-in-r.html#cb5-4" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">&quot;Discrete Predator-Prey Dynamics with ZNGIs&quot;</span>)</span>
+<span id="cb5-5"><a href="discrete-time-lotka-volterra-predator-prey-model-in-r.html#cb5-5" tabindex="-1"></a></span>
+<span id="cb5-6"><a href="discrete-time-lotka-volterra-predator-prey-model-in-r.html#cb5-6" tabindex="-1"></a><span class="co"># Add Victim ZNGI (V = q / (a * f))</span></span>
+<span id="cb5-7"><a href="discrete-time-lotka-volterra-predator-prey-model-in-r.html#cb5-7" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v =</span> parameters[<span class="st">&quot;q&quot;</span>] <span class="sc">/</span> (parameters[<span class="st">&quot;a&quot;</span>] <span class="sc">*</span> parameters[<span class="st">&quot;f&quot;</span>]), </span>
+<span id="cb5-8"><a href="discrete-time-lotka-volterra-predator-prey-model-in-r.html#cb5-8" tabindex="-1"></a>       <span class="at">col =</span> <span class="st">&quot;blue&quot;</span>, <span class="at">lwd =</span> <span class="dv">2</span>, <span class="at">lty =</span> <span class="dv">2</span>)</span>
+<span id="cb5-9"><a href="discrete-time-lotka-volterra-predator-prey-model-in-r.html#cb5-9" tabindex="-1"></a></span>
+<span id="cb5-10"><a href="discrete-time-lotka-volterra-predator-prey-model-in-r.html#cb5-10" tabindex="-1"></a><span class="co"># Add Consumer ZNGI (C = R / a)</span></span>
+<span id="cb5-11"><a href="discrete-time-lotka-volterra-predator-prey-model-in-r.html#cb5-11" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">h =</span> parameters[<span class="st">&quot;R&quot;</span>] <span class="sc">/</span> parameters[<span class="st">&quot;a&quot;</span>], <span class="at">col =</span> <span class="st">&quot;red&quot;</span>, <span class="at">lwd =</span> <span class="dv">2</span>, <span class="at">lty =</span> <span class="dv">2</span>)</span>
+<span id="cb5-12"><a href="discrete-time-lotka-volterra-predator-prey-model-in-r.html#cb5-12" tabindex="-1"></a></span>
+<span id="cb5-13"><a href="discrete-time-lotka-volterra-predator-prey-model-in-r.html#cb5-13" tabindex="-1"></a><span class="co"># Add point for initial population sizes</span></span>
+<span id="cb5-14"><a href="discrete-time-lotka-volterra-predator-prey-model-in-r.html#cb5-14" tabindex="-1"></a><span class="fu">points</span>(output_df<span class="sc">$</span>V[<span class="dv">1</span>], output_df<span class="sc">$</span>C[<span class="dv">1</span>], <span class="at">pch =</span> <span class="dv">19</span>, <span class="at">col =</span> <span class="st">&quot;black&quot;</span>, <span class="at">cex =</span> <span class="fl">1.5</span>)</span>
+<span id="cb5-15"><a href="discrete-time-lotka-volterra-predator-prey-model-in-r.html#cb5-15" tabindex="-1"></a></span>
+<span id="cb5-16"><a href="discrete-time-lotka-volterra-predator-prey-model-in-r.html#cb5-16" tabindex="-1"></a><span class="co"># Add an arrow to the end of the line</span></span>
+<span id="cb5-17"><a href="discrete-time-lotka-volterra-predator-prey-model-in-r.html#cb5-17" tabindex="-1"></a><span class="fu">arrows</span>(<span class="at">x0 =</span> output_df<span class="sc">$</span>V[<span class="fu">nrow</span>(output_df) <span class="sc">-</span> <span class="dv">1</span>], </span>
+<span id="cb5-18"><a href="discrete-time-lotka-volterra-predator-prey-model-in-r.html#cb5-18" tabindex="-1"></a>       <span class="at">y0 =</span> output_df<span class="sc">$</span>C[<span class="fu">nrow</span>(output_df) <span class="sc">-</span> <span class="dv">1</span>], </span>
+<span id="cb5-19"><a href="discrete-time-lotka-volterra-predator-prey-model-in-r.html#cb5-19" tabindex="-1"></a>       <span class="at">x1 =</span> output_df<span class="sc">$</span>V[<span class="fu">nrow</span>(output_df)], </span>
+<span id="cb5-20"><a href="discrete-time-lotka-volterra-predator-prey-model-in-r.html#cb5-20" tabindex="-1"></a>       <span class="at">y1 =</span> output_df<span class="sc">$</span>C[<span class="fu">nrow</span>(output_df)], </span>
+<span id="cb5-21"><a href="discrete-time-lotka-volterra-predator-prey-model-in-r.html#cb5-21" tabindex="-1"></a>       <span class="at">col =</span> <span class="st">&quot;purple&quot;</span>, <span class="at">length =</span> <span class="fl">0.1</span>, <span class="at">lwd =</span> <span class="dv">2</span>)</span></code></pre></div>
+<p><img src="BB512_files/figure-html/phase-plot-1.png" width="672" /></p>
+</div>
+</div>
+<div id="conclusion-1" class="section level2 hasAnchor" number="22.6">
+<h2><span class="header-section-number">22.6</span> Conclusion<a href="discrete-time-lotka-volterra-predator-prey-model-in-r.html#conclusion-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>This document demonstrates how to implement and explore the discrete-time Lotka-Volterra predator-prey model. By adjusting the time step (<span class="math inline">\(\Delta t\)</span>) and other parameters, you can investigate how predator-prey dynamics are influenced by ecological factors. You will see that a time lag imposed by the <em>t</em> parameter results in expanding spirals in the phase plot and eventual extinction of predator and prey. Contrast this with the pertpetual oscillations you get with the continuous time model.</p>
+
+</div>
+</div>
+
+
+
 </div>
             </section>
 
           </div>
         </div>
       </div>
-
-
+<a href="continuous-time-lotka-volterra-predator-prey-model-in-r.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="game-theory-hawks-and-doves.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -537,7 +660,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/jonesor/BB512_Book/edit/master/%s",
+"link": "https://github.com/jonesor/BB512_Book/edit/master/4_04_LotkaVolterraPredatorPrey_discreteTime.Rmd",
 "text": "Edit"
 },
 "history": {
