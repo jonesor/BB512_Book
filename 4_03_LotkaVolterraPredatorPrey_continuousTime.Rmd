@@ -28,7 +28,7 @@ In R/RStudio, you will create an R script that programs the continuous time vers
 
 We use the `deSolve` package to solve the system of differential equations numerically. Note that you may need to install the package first using the command `install.packages("deSolve")`.
 
-```{r setup, include=TRUE}
+```{r loadlib, include=TRUE}
 library(deSolve)
 ```
 

@@ -26,7 +26,7 @@ Compare these to Equations 1 and 2 in the Excel exercise PDF.
 
 The function below implements these equations in R.
 
-```{r define-model}
+```{r define-DT-model}
 discrete_predator_prey_model <- function(time_steps, dt, initial_state, parameters) {
   # Initialise vectors to store populations
   V <- numeric(time_steps + 1)
@@ -58,7 +58,7 @@ discrete_predator_prey_model <- function(time_steps, dt, initial_state, paramete
 
 We set the parameters, initial conditions, and time step (\( \Delta t \)) for the model.
 
-```{r parameters}
+```{r DT-parameters}
 parameters <- c(R = 0.25,  # Victim (prey) growth rate
                 a = 0.01,  # Attack rate
                 f = 0.008, # Conversion efficiency
@@ -75,7 +75,7 @@ dt <- 1                       # Time step (dt), 1 = a standard discrete model
 
 We simulate the model for the specified parameters and time steps.
 
-```{r simulation}
+```{r DT-simulation}
 output_df <- discrete_predator_prey_model(time_steps = time_steps, dt = dt, 
                                           initial_state = initial_state, 
                                           parameters = parameters)
@@ -87,7 +87,7 @@ output_df <- discrete_predator_prey_model(time_steps = time_steps, dt = dt,
 
 The plot below shows the changes in consumer and victim populations over time.
 
-```{r population-dynamics}
+```{r DT-population-dynamics}
 # Plot victim population on the primary y-axis
 plot(output_df$time, output_df$V, type = "l", col = "blue", lwd = 2, 
      ylab = "Victim Population (V)", xlab = "Time", main = "Discrete Predator-Prey Dynamics")
@@ -108,7 +108,7 @@ legend("topright", legend = c("Victim (V)", "Consumer (C)"),
 
 The phase plot shows the relationship between victim and consumer populations.
 
-```{r phase-plot}
+```{r DT-phase-plot}
 ### Phase Plot with ZNGIs, Initial Point, and Arrow
 plot(output_df$V, output_df$C, type = "l", col = "purple", lwd = 2, 
      xlab = "Victim (V)", ylab = "Consumer (C)", 

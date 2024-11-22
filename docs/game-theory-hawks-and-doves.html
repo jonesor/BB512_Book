@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>22 Game theory: Hawks and doves | BB512 - Population Biology and Evolution</title>
+  <title>24 Game theory: Hawks and doves | BB512 - Population Biology and Evolution</title>
   <meta name="description" content="Course book for BB512 at the Biology Department, University of Southern Denmark" />
   <meta name="generator" content="bookdown 0.40 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="22 Game theory: Hawks and doves | BB512 - Population Biology and Evolution" />
+  <meta property="og:title" content="24 Game theory: Hawks and doves | BB512 - Population Biology and Evolution" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="Course book for BB512 at the Biology Department, University of Southern Denmark" />
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="22 Game theory: Hawks and doves | BB512 - Population Biology and Evolution" />
+  <meta name="twitter:title" content="24 Game theory: Hawks and doves | BB512 - Population Biology and Evolution" />
   
   <meta name="twitter:description" content="Course book for BB512 at the Biology Department, University of Southern Denmark" />
   
@@ -23,14 +23,14 @@
 <meta name="author" content="Owen R. Jones (Course Coordinator)" />
 
 
-<meta name="date" content="2024-11-10" />
+<meta name="date" content="2024-11-22" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="lotka-volterra-predator-prey-dynamics.html"/>
+<link rel="prev" href="discrete-time-lotka-volterra-predator-prey-model-in-r.html"/>
 <link rel="next" href="solutions-and-take-home-messages.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
@@ -354,99 +354,128 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="21.1" data-path="lotka-volterra-predator-prey-dynamics.html"><a href="lotka-volterra-predator-prey-dynamics.html#background-15"><i class="fa fa-check"></i><b>21.1</b> Background</a></li>
 <li class="chapter" data-level="21.2" data-path="lotka-volterra-predator-prey-dynamics.html"><a href="lotka-volterra-predator-prey-dynamics.html#your-task-15"><i class="fa fa-check"></i><b>21.2</b> Your task</a></li>
-<li class="chapter" data-level="21.3" data-path="lotka-volterra-predator-prey-dynamics.html"><a href="lotka-volterra-predator-prey-dynamics.html#optional-extras"><i class="fa fa-check"></i><b>21.3</b> Optional extras</a>
+<li class="chapter" data-level="21.3" data-path="lotka-volterra-predator-prey-dynamics.html"><a href="lotka-volterra-predator-prey-dynamics.html#optional-extras"><i class="fa fa-check"></i><b>21.3</b> Optional extras</a></li>
+<li class="chapter" data-level="21.4" data-path="lotka-volterra-predator-prey-dynamics.html"><a href="lotka-volterra-predator-prey-dynamics.html#r-version"><i class="fa fa-check"></i><b>21.4</b> R-version</a>
 <ul>
-<li class="chapter" data-level="21.3.1" data-path="lotka-volterra-predator-prey-dynamics.html"><a href="lotka-volterra-predator-prey-dynamics.html#reference"><i class="fa fa-check"></i><b>21.3.1</b> Reference</a></li>
+<li class="chapter" data-level="21.4.1" data-path="lotka-volterra-predator-prey-dynamics.html"><a href="lotka-volterra-predator-prey-dynamics.html#reference"><i class="fa fa-check"></i><b>21.4.1</b> Reference</a></li>
 </ul></li>
+</ul></li>
+<li class="chapter" data-level="22" data-path="continuous-time-lotka-volterra-predator-prey-model-in-r.html"><a href="continuous-time-lotka-volterra-predator-prey-model-in-r.html"><i class="fa fa-check"></i><b>22</b> Continuous-time Lotka-Volterra Predator-Prey Model in R</a>
+<ul>
+<li class="chapter" data-level="22.1" data-path="continuous-time-lotka-volterra-predator-prey-model-in-r.html"><a href="continuous-time-lotka-volterra-predator-prey-model-in-r.html#background-16"><i class="fa fa-check"></i><b>22.1</b> Background</a></li>
+<li class="chapter" data-level="22.2" data-path="continuous-time-lotka-volterra-predator-prey-model-in-r.html"><a href="continuous-time-lotka-volterra-predator-prey-model-in-r.html#your-task-16"><i class="fa fa-check"></i><b>22.2</b> Your task</a>
+<ul>
+<li class="chapter" data-level="22.2.1" data-path="continuous-time-lotka-volterra-predator-prey-model-in-r.html"><a href="continuous-time-lotka-volterra-predator-prey-model-in-r.html#step-0-create-a-new-script"><i class="fa fa-check"></i><b>22.2.1</b> Step 0: Create a new script</a></li>
+<li class="chapter" data-level="22.2.2" data-path="continuous-time-lotka-volterra-predator-prey-model-in-r.html"><a href="continuous-time-lotka-volterra-predator-prey-model-in-r.html#step-1-load-necessary-libraries"><i class="fa fa-check"></i><b>22.2.2</b> Step 1: Load Necessary Libraries</a></li>
+<li class="chapter" data-level="22.2.3" data-path="continuous-time-lotka-volterra-predator-prey-model-in-r.html"><a href="continuous-time-lotka-volterra-predator-prey-model-in-r.html#step-2-define-the-model"><i class="fa fa-check"></i><b>22.2.3</b> Step 2: Define the Model</a></li>
+<li class="chapter" data-level="22.2.4" data-path="continuous-time-lotka-volterra-predator-prey-model-in-r.html"><a href="continuous-time-lotka-volterra-predator-prey-model-in-r.html#step-3-set-parameters-and-initial-conditions"><i class="fa fa-check"></i><b>22.2.4</b> Step 3: Set Parameters and Initial Conditions</a></li>
+<li class="chapter" data-level="22.2.5" data-path="continuous-time-lotka-volterra-predator-prey-model-in-r.html"><a href="continuous-time-lotka-volterra-predator-prey-model-in-r.html#step-4-simulate-the-model"><i class="fa fa-check"></i><b>22.2.5</b> Step 4: Simulate the Model</a></li>
+<li class="chapter" data-level="22.2.6" data-path="continuous-time-lotka-volterra-predator-prey-model-in-r.html"><a href="continuous-time-lotka-volterra-predator-prey-model-in-r.html#step-5-visualise-the-dynamics"><i class="fa fa-check"></i><b>22.2.6</b> Step 5: Visualise the Dynamics</a></li>
+<li class="chapter" data-level="22.2.7" data-path="continuous-time-lotka-volterra-predator-prey-model-in-r.html"><a href="continuous-time-lotka-volterra-predator-prey-model-in-r.html#questions-11"><i class="fa fa-check"></i><b>22.2.7</b> Questions</a></li>
+<li class="chapter" data-level="22.2.8" data-path="continuous-time-lotka-volterra-predator-prey-model-in-r.html"><a href="continuous-time-lotka-volterra-predator-prey-model-in-r.html#conclusion"><i class="fa fa-check"></i><b>22.2.8</b> Conclusion</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="23" data-path="discrete-time-lotka-volterra-predator-prey-model-in-r.html"><a href="discrete-time-lotka-volterra-predator-prey-model-in-r.html"><i class="fa fa-check"></i><b>23</b> Discrete-time Lotka-Volterra Predator-Prey Model in R</a>
+<ul>
+<li class="chapter" data-level="23.1" data-path="discrete-time-lotka-volterra-predator-prey-model-in-r.html"><a href="discrete-time-lotka-volterra-predator-prey-model-in-r.html#introduction-1"><i class="fa fa-check"></i><b>23.1</b> Introduction</a></li>
+<li class="chapter" data-level="23.2" data-path="discrete-time-lotka-volterra-predator-prey-model-in-r.html"><a href="discrete-time-lotka-volterra-predator-prey-model-in-r.html#step-1-define-the-model"><i class="fa fa-check"></i><b>23.2</b> Step 1: Define the Model</a></li>
+<li class="chapter" data-level="23.3" data-path="discrete-time-lotka-volterra-predator-prey-model-in-r.html"><a href="discrete-time-lotka-volterra-predator-prey-model-in-r.html#step-2-set-parameters-and-initial-conditions"><i class="fa fa-check"></i><b>23.3</b> Step 2: Set Parameters and Initial Conditions</a></li>
+<li class="chapter" data-level="23.4" data-path="discrete-time-lotka-volterra-predator-prey-model-in-r.html"><a href="discrete-time-lotka-volterra-predator-prey-model-in-r.html#step-3-simulate-the-model"><i class="fa fa-check"></i><b>23.4</b> Step 3: Simulate the Model</a></li>
+<li class="chapter" data-level="23.5" data-path="discrete-time-lotka-volterra-predator-prey-model-in-r.html"><a href="discrete-time-lotka-volterra-predator-prey-model-in-r.html#step-4-visualise-the-dynamics"><i class="fa fa-check"></i><b>23.5</b> Step 4: Visualise the Dynamics</a>
+<ul>
+<li class="chapter" data-level="23.5.1" data-path="discrete-time-lotka-volterra-predator-prey-model-in-r.html"><a href="discrete-time-lotka-volterra-predator-prey-model-in-r.html#population-dynamics-over-time-1"><i class="fa fa-check"></i><b>23.5.1</b> Population Dynamics Over Time</a></li>
+<li class="chapter" data-level="23.5.2" data-path="discrete-time-lotka-volterra-predator-prey-model-in-r.html"><a href="discrete-time-lotka-volterra-predator-prey-model-in-r.html#phase-plot-with-zngis-1"><i class="fa fa-check"></i><b>23.5.2</b> Phase Plot with ZNGIs</a></li>
+</ul></li>
+<li class="chapter" data-level="23.6" data-path="discrete-time-lotka-volterra-predator-prey-model-in-r.html"><a href="discrete-time-lotka-volterra-predator-prey-model-in-r.html#conclusion-1"><i class="fa fa-check"></i><b>23.6</b> Conclusion</a></li>
 </ul></li>
 <li class="part"><span><b>V Animal behaviour, altruism and sexual selection</b></span></li>
-<li class="chapter" data-level="22" data-path="game-theory-hawks-and-doves.html"><a href="game-theory-hawks-and-doves.html"><i class="fa fa-check"></i><b>22</b> Game theory: Hawks and doves</a>
+<li class="chapter" data-level="24" data-path="game-theory-hawks-and-doves.html"><a href="game-theory-hawks-and-doves.html"><i class="fa fa-check"></i><b>24</b> Game theory: Hawks and doves</a>
 <ul>
-<li class="chapter" data-level="22.1" data-path="game-theory-hawks-and-doves.html"><a href="game-theory-hawks-and-doves.html#background-16"><i class="fa fa-check"></i><b>22.1</b> Background</a></li>
-<li class="chapter" data-level="22.2" data-path="game-theory-hawks-and-doves.html"><a href="game-theory-hawks-and-doves.html#your-task-16"><i class="fa fa-check"></i><b>22.2</b> Your task</a></li>
-<li class="chapter" data-level="22.3" data-path="game-theory-hawks-and-doves.html"><a href="game-theory-hawks-and-doves.html#the-payoff-table"><i class="fa fa-check"></i><b>22.3</b> The payoff table</a>
+<li class="chapter" data-level="24.1" data-path="game-theory-hawks-and-doves.html"><a href="game-theory-hawks-and-doves.html#background-17"><i class="fa fa-check"></i><b>24.1</b> Background</a></li>
+<li class="chapter" data-level="24.2" data-path="game-theory-hawks-and-doves.html"><a href="game-theory-hawks-and-doves.html#your-task-17"><i class="fa fa-check"></i><b>24.2</b> Your task</a></li>
+<li class="chapter" data-level="24.3" data-path="game-theory-hawks-and-doves.html"><a href="game-theory-hawks-and-doves.html#the-payoff-table"><i class="fa fa-check"></i><b>24.3</b> The payoff table</a>
 <ul>
-<li class="chapter" data-level="22.3.1" data-path="game-theory-hawks-and-doves.html"><a href="game-theory-hawks-and-doves.html#hypotheses"><i class="fa fa-check"></i><b>22.3.1</b> Hypotheses</a></li>
-<li class="chapter" data-level="22.3.2" data-path="game-theory-hawks-and-doves.html"><a href="game-theory-hawks-and-doves.html#game-one"><i class="fa fa-check"></i><b>22.3.2</b> GAME ONE</a></li>
-<li class="chapter" data-level="22.3.3" data-path="game-theory-hawks-and-doves.html"><a href="game-theory-hawks-and-doves.html#game-two"><i class="fa fa-check"></i><b>22.3.3</b> GAME TWO</a></li>
+<li class="chapter" data-level="24.3.1" data-path="game-theory-hawks-and-doves.html"><a href="game-theory-hawks-and-doves.html#hypotheses"><i class="fa fa-check"></i><b>24.3.1</b> Hypotheses</a></li>
+<li class="chapter" data-level="24.3.2" data-path="game-theory-hawks-and-doves.html"><a href="game-theory-hawks-and-doves.html#game-one"><i class="fa fa-check"></i><b>24.3.2</b> GAME ONE</a></li>
+<li class="chapter" data-level="24.3.3" data-path="game-theory-hawks-and-doves.html"><a href="game-theory-hawks-and-doves.html#game-two"><i class="fa fa-check"></i><b>24.3.3</b> GAME TWO</a></li>
 </ul></li>
-<li class="chapter" data-level="22.4" data-path="game-theory-hawks-and-doves.html"><a href="game-theory-hawks-and-doves.html#summarise-results"><i class="fa fa-check"></i><b>22.4</b> SUMMARISE RESULTS</a></li>
-<li class="chapter" data-level="22.5" data-path="game-theory-hawks-and-doves.html"><a href="game-theory-hawks-and-doves.html#acknowldgement"><i class="fa fa-check"></i><b>22.5</b> Acknowldgement</a></li>
+<li class="chapter" data-level="24.4" data-path="game-theory-hawks-and-doves.html"><a href="game-theory-hawks-and-doves.html#summarise-results"><i class="fa fa-check"></i><b>24.4</b> SUMMARISE RESULTS</a></li>
+<li class="chapter" data-level="24.5" data-path="game-theory-hawks-and-doves.html"><a href="game-theory-hawks-and-doves.html#acknowldgement"><i class="fa fa-check"></i><b>24.5</b> Acknowldgement</a></li>
 </ul></li>
 <li class="part"><span><b>VI Solutions/answers</b></span></li>
-<li class="chapter" data-level="23" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html"><i class="fa fa-check"></i><b>23</b> Solutions and “take-home” messages</a>
+<li class="chapter" data-level="25" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html"><i class="fa fa-check"></i><b>25</b> Solutions and “take-home” messages</a>
 <ul>
-<li class="chapter" data-level="23.1" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#solutions-the-blind-watchmaker"><i class="fa fa-check"></i><b>23.1</b> Solutions: The blind watchmaker</a></li>
-<li class="chapter" data-level="23.2" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#solutions-bug-hunt-camouflage"><i class="fa fa-check"></i><b>23.2</b> Solutions: Bug hunt camouflage</a></li>
-<li class="chapter" data-level="23.3" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#solutions-geometric-growth"><i class="fa fa-check"></i><b>23.3</b> Solutions: Geometric growth</a></li>
-<li class="chapter" data-level="23.4" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#solutions-estimating-population-growth-rate"><i class="fa fa-check"></i><b>23.4</b> Solutions: Estimating Population Growth Rate</a></li>
-<li class="chapter" data-level="23.5" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#solutions-stochastic-population-growth"><i class="fa fa-check"></i><b>23.5</b> Solutions: Stochastic population growth</a></li>
-<li class="chapter" data-level="23.6" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#solutions-basic-logistic-population-growth"><i class="fa fa-check"></i><b>23.6</b> Solutions: Basic logistic population growth</a></li>
-<li class="chapter" data-level="23.7" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#solutions-deeper-into-logistic-growth"><i class="fa fa-check"></i><b>23.7</b> Solutions: Deeper into logistic growth</a>
+<li class="chapter" data-level="25.1" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#solutions-the-blind-watchmaker"><i class="fa fa-check"></i><b>25.1</b> Solutions: The blind watchmaker</a></li>
+<li class="chapter" data-level="25.2" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#solutions-bug-hunt-camouflage"><i class="fa fa-check"></i><b>25.2</b> Solutions: Bug hunt camouflage</a></li>
+<li class="chapter" data-level="25.3" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#solutions-geometric-growth"><i class="fa fa-check"></i><b>25.3</b> Solutions: Geometric growth</a></li>
+<li class="chapter" data-level="25.4" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#solutions-estimating-population-growth-rate"><i class="fa fa-check"></i><b>25.4</b> Solutions: Estimating Population Growth Rate</a></li>
+<li class="chapter" data-level="25.5" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#solutions-stochastic-population-growth"><i class="fa fa-check"></i><b>25.5</b> Solutions: Stochastic population growth</a></li>
+<li class="chapter" data-level="25.6" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#solutions-basic-logistic-population-growth"><i class="fa fa-check"></i><b>25.6</b> Solutions: Basic logistic population growth</a></li>
+<li class="chapter" data-level="25.7" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#solutions-deeper-into-logistic-growth"><i class="fa fa-check"></i><b>25.7</b> Solutions: Deeper into logistic growth</a>
 <ul>
-<li class="chapter" data-level="23.7.1" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#relationship-between-logistic-and-exponential-growth-equations"><i class="fa fa-check"></i><b>23.7.1</b> Relationship between Logistic and Exponential growth equations</a></li>
-<li class="chapter" data-level="23.7.2" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#type-of-dynamics-depends-on-r_m."><i class="fa fa-check"></i><b>23.7.2</b> Type of dynamics depends on <span class="math inline">\(r_m\)</span>.</a></li>
-<li class="chapter" data-level="23.7.3" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#you-can-obtain-parameters-from-graphs"><i class="fa fa-check"></i><b>23.7.3</b> You can obtain parameters from graphs</a></li>
-<li class="chapter" data-level="23.7.4" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#time-lag"><i class="fa fa-check"></i><b>23.7.4</b> Time lag</a></li>
-<li class="chapter" data-level="23.7.5" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#chaotic-dynamics"><i class="fa fa-check"></i><b>23.7.5</b> Chaotic dynamics</a></li>
+<li class="chapter" data-level="25.7.1" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#relationship-between-logistic-and-exponential-growth-equations"><i class="fa fa-check"></i><b>25.7.1</b> Relationship between Logistic and Exponential growth equations</a></li>
+<li class="chapter" data-level="25.7.2" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#type-of-dynamics-depends-on-r_m."><i class="fa fa-check"></i><b>25.7.2</b> Type of dynamics depends on <span class="math inline">\(r_m\)</span>.</a></li>
+<li class="chapter" data-level="25.7.3" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#you-can-obtain-parameters-from-graphs"><i class="fa fa-check"></i><b>25.7.3</b> You can obtain parameters from graphs</a></li>
+<li class="chapter" data-level="25.7.4" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#time-lag"><i class="fa fa-check"></i><b>25.7.4</b> Time lag</a></li>
+<li class="chapter" data-level="25.7.5" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#chaotic-dynamics"><i class="fa fa-check"></i><b>25.7.5</b> Chaotic dynamics</a></li>
 </ul></li>
-<li class="chapter" data-level="23.8" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#solutions-life-tables-and-survivorship-types"><i class="fa fa-check"></i><b>23.8</b> Solutions: Life tables and survivorship types</a></li>
-<li class="chapter" data-level="23.9" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#solutions-matrix-population-modeling"><i class="fa fa-check"></i><b>23.9</b> Solutions: Matrix population modeling</a></li>
-<li class="chapter" data-level="23.10" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#solutions-how-many-eggs-should-a-bird-lay"><i class="fa fa-check"></i><b>23.10</b> Solutions: How many eggs should a bird lay?</a></li>
-<li class="chapter" data-level="23.11" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#solutions-trade-offs-and-the-force-of-selection"><i class="fa fa-check"></i><b>23.11</b> Solutions: Trade-offs and the force of selection</a></li>
-<li class="chapter" data-level="23.12" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#solutions-hardy-weinberg-equilibrium"><i class="fa fa-check"></i><b>23.12</b> Solutions: Hardy-Weinberg equilibrium</a>
+<li class="chapter" data-level="25.8" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#solutions-life-tables-and-survivorship-types"><i class="fa fa-check"></i><b>25.8</b> Solutions: Life tables and survivorship types</a></li>
+<li class="chapter" data-level="25.9" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#solutions-matrix-population-modeling"><i class="fa fa-check"></i><b>25.9</b> Solutions: Matrix population modeling</a></li>
+<li class="chapter" data-level="25.10" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#solutions-how-many-eggs-should-a-bird-lay"><i class="fa fa-check"></i><b>25.10</b> Solutions: How many eggs should a bird lay?</a></li>
+<li class="chapter" data-level="25.11" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#solutions-trade-offs-and-the-force-of-selection"><i class="fa fa-check"></i><b>25.11</b> Solutions: Trade-offs and the force of selection</a></li>
+<li class="chapter" data-level="25.12" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#solutions-hardy-weinberg-equilibrium"><i class="fa fa-check"></i><b>25.12</b> Solutions: Hardy-Weinberg equilibrium</a>
 <ul>
-<li class="chapter" data-level="23.12.1" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#problem-1"><i class="fa fa-check"></i><b>23.12.1</b> Problem 1</a></li>
-<li class="chapter" data-level="23.12.2" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#problem-2"><i class="fa fa-check"></i><b>23.12.2</b> Problem 2</a></li>
-<li class="chapter" data-level="23.12.3" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#problem-3"><i class="fa fa-check"></i><b>23.12.3</b> Problem 3</a></li>
-<li class="chapter" data-level="23.12.4" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#problem-4"><i class="fa fa-check"></i><b>23.12.4</b> Problem 4</a></li>
+<li class="chapter" data-level="25.12.1" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#problem-1"><i class="fa fa-check"></i><b>25.12.1</b> Problem 1</a></li>
+<li class="chapter" data-level="25.12.2" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#problem-2"><i class="fa fa-check"></i><b>25.12.2</b> Problem 2</a></li>
+<li class="chapter" data-level="25.12.3" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#problem-3"><i class="fa fa-check"></i><b>25.12.3</b> Problem 3</a></li>
+<li class="chapter" data-level="25.12.4" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#problem-4"><i class="fa fa-check"></i><b>25.12.4</b> Problem 4</a></li>
 </ul></li>
-<li class="chapter" data-level="23.13" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#solutions-gene-pool-model"><i class="fa fa-check"></i><b>23.13</b> Solutions: Gene pool model</a>
+<li class="chapter" data-level="25.13" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#solutions-gene-pool-model"><i class="fa fa-check"></i><b>25.13</b> Solutions: Gene pool model</a>
 <ul>
-<li class="chapter" data-level="23.13.1" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#discussion-questions"><i class="fa fa-check"></i><b>23.13.1</b> Discussion questions</a></li>
-<li class="chapter" data-level="23.13.2" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#bottlenecks-1"><i class="fa fa-check"></i><b>23.13.2</b> Bottlenecks</a></li>
-<li class="chapter" data-level="23.13.3" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#broader-questions"><i class="fa fa-check"></i><b>23.13.3</b> Broader questions</a></li>
+<li class="chapter" data-level="25.13.1" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#discussion-questions"><i class="fa fa-check"></i><b>25.13.1</b> Discussion questions</a></li>
+<li class="chapter" data-level="25.13.2" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#bottlenecks-1"><i class="fa fa-check"></i><b>25.13.2</b> Bottlenecks</a></li>
+<li class="chapter" data-level="25.13.3" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#broader-questions"><i class="fa fa-check"></i><b>25.13.3</b> Broader questions</a></li>
 </ul></li>
-<li class="chapter" data-level="23.14" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#solutions-neutral-or-adaptive-evolution-in-humans"><i class="fa fa-check"></i><b>23.14</b> Solutions: Neutral or adaptive evolution in humans</a></li>
-<li class="chapter" data-level="23.15" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#solutions-heritability"><i class="fa fa-check"></i><b>23.15</b> Solutions: Heritability</a></li>
-<li class="chapter" data-level="23.16" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#solutions-lotka-volterra-competition"><i class="fa fa-check"></i><b>23.16</b> Solutions: Lotka-Volterra competition</a></li>
-<li class="chapter" data-level="23.17" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#solutions-lotka-volterra-predator-prey-dynamics"><i class="fa fa-check"></i><b>23.17</b> Solutions: Lotka-Volterra predator-prey dynamics</a></li>
-<li class="chapter" data-level="23.18" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#solutions-the-legend-of-ambalapuzha"><i class="fa fa-check"></i><b>23.18</b> Solutions: The legend of Ambalapuzha</a></li>
-<li class="chapter" data-level="23.19" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#solutions-from-population-biology-to-fitness"><i class="fa fa-check"></i><b>23.19</b> Solutions: From population biology to fitness</a></li>
-<li class="chapter" data-level="23.20" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#results-of-the-hawk-dove-games"><i class="fa fa-check"></i><b>23.20</b> Results of the hawk-dove games</a>
+<li class="chapter" data-level="25.14" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#solutions-neutral-or-adaptive-evolution-in-humans"><i class="fa fa-check"></i><b>25.14</b> Solutions: Neutral or adaptive evolution in humans</a></li>
+<li class="chapter" data-level="25.15" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#solutions-heritability"><i class="fa fa-check"></i><b>25.15</b> Solutions: Heritability</a></li>
+<li class="chapter" data-level="25.16" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#solutions-lotka-volterra-competition"><i class="fa fa-check"></i><b>25.16</b> Solutions: Lotka-Volterra competition</a></li>
+<li class="chapter" data-level="25.17" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#solutions-lotka-volterra-predator-prey-dynamics"><i class="fa fa-check"></i><b>25.17</b> Solutions: Lotka-Volterra predator-prey dynamics</a></li>
+<li class="chapter" data-level="25.18" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#solutions-the-legend-of-ambalapuzha"><i class="fa fa-check"></i><b>25.18</b> Solutions: The legend of Ambalapuzha</a></li>
+<li class="chapter" data-level="25.19" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#solutions-from-population-biology-to-fitness"><i class="fa fa-check"></i><b>25.19</b> Solutions: From population biology to fitness</a></li>
+<li class="chapter" data-level="25.20" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#results-of-the-hawk-dove-games"><i class="fa fa-check"></i><b>25.20</b> Results of the hawk-dove games</a>
 <ul>
-<li class="chapter" data-level="23.20.1" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#game-2---different-opponents"><i class="fa fa-check"></i><b>23.20.1</b> Game 2 - different opponents</a></li>
+<li class="chapter" data-level="25.20.1" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#game-2---different-opponents"><i class="fa fa-check"></i><b>25.20.1</b> Game 2 - different opponents</a></li>
 </ul></li>
 </ul></li>
 <li class="part"><span><b>VII Appendix - extras</b></span></li>
-<li class="chapter" data-level="24" data-path="exponential-growth-in-detail.html"><a href="exponential-growth-in-detail.html"><i class="fa fa-check"></i><b>24</b> Exponential growth in detail</a>
+<li class="chapter" data-level="26" data-path="exponential-growth-in-detail.html"><a href="exponential-growth-in-detail.html"><i class="fa fa-check"></i><b>26</b> Exponential growth in detail</a>
 <ul>
-<li class="chapter" data-level="24.0.1" data-path="exponential-growth-in-detail.html"><a href="exponential-growth-in-detail.html#nomenclature"><i class="fa fa-check"></i><b>24.0.1</b> Nomenclature</a></li>
-<li class="chapter" data-level="24.1" data-path="exponential-growth-in-detail.html"><a href="exponential-growth-in-detail.html#discrete-time-model"><i class="fa fa-check"></i><b>24.1</b> Discrete time model</a>
+<li class="chapter" data-level="26.0.1" data-path="exponential-growth-in-detail.html"><a href="exponential-growth-in-detail.html#nomenclature"><i class="fa fa-check"></i><b>26.0.1</b> Nomenclature</a></li>
+<li class="chapter" data-level="26.1" data-path="exponential-growth-in-detail.html"><a href="exponential-growth-in-detail.html#discrete-time-model"><i class="fa fa-check"></i><b>26.1</b> Discrete time model</a>
 <ul>
-<li class="chapter" data-level="24.1.1" data-path="exponential-growth-in-detail.html"><a href="exponential-growth-in-detail.html#calculating-n-for-any-future-time-point"><i class="fa fa-check"></i><b>24.1.1</b> Calculating N for any future time point</a></li>
-<li class="chapter" data-level="24.1.2" data-path="exponential-growth-in-detail.html"><a href="exponential-growth-in-detail.html#applying-the-model"><i class="fa fa-check"></i><b>24.1.2</b> Applying the model</a></li>
+<li class="chapter" data-level="26.1.1" data-path="exponential-growth-in-detail.html"><a href="exponential-growth-in-detail.html#calculating-n-for-any-future-time-point"><i class="fa fa-check"></i><b>26.1.1</b> Calculating N for any future time point</a></li>
+<li class="chapter" data-level="26.1.2" data-path="exponential-growth-in-detail.html"><a href="exponential-growth-in-detail.html#applying-the-model"><i class="fa fa-check"></i><b>26.1.2</b> Applying the model</a></li>
 </ul></li>
-<li class="chapter" data-level="24.2" data-path="exponential-growth-in-detail.html"><a href="exponential-growth-in-detail.html#real-world-application-breeding-pairs-of-merlin-falco-columbarius"><i class="fa fa-check"></i><b>24.2</b> Real-World Application: Breeding Pairs of Merlin (Falco columbarius)</a>
+<li class="chapter" data-level="26.2" data-path="exponential-growth-in-detail.html"><a href="exponential-growth-in-detail.html#real-world-application-breeding-pairs-of-merlin-falco-columbarius"><i class="fa fa-check"></i><b>26.2</b> Real-World Application: Breeding Pairs of Merlin (Falco columbarius)</a>
 <ul>
-<li class="chapter" data-level="24.2.1" data-path="exponential-growth-in-detail.html"><a href="exponential-growth-in-detail.html#observations-and-context"><i class="fa fa-check"></i><b>24.2.1</b> Observations and Context</a></li>
-<li class="chapter" data-level="24.2.2" data-path="exponential-growth-in-detail.html"><a href="exponential-growth-in-detail.html#applying-the-exponential-growth-model"><i class="fa fa-check"></i><b>24.2.2</b> Applying the Exponential Growth Model</a></li>
+<li class="chapter" data-level="26.2.1" data-path="exponential-growth-in-detail.html"><a href="exponential-growth-in-detail.html#observations-and-context"><i class="fa fa-check"></i><b>26.2.1</b> Observations and Context</a></li>
+<li class="chapter" data-level="26.2.2" data-path="exponential-growth-in-detail.html"><a href="exponential-growth-in-detail.html#applying-the-exponential-growth-model"><i class="fa fa-check"></i><b>26.2.2</b> Applying the Exponential Growth Model</a></li>
 </ul></li>
-<li class="chapter" data-level="24.3" data-path="exponential-growth-in-detail.html"><a href="exponential-growth-in-detail.html#continuous-time-model"><i class="fa fa-check"></i><b>24.3</b> Continuous time model</a>
+<li class="chapter" data-level="26.3" data-path="exponential-growth-in-detail.html"><a href="exponential-growth-in-detail.html#continuous-time-model"><i class="fa fa-check"></i><b>26.3</b> Continuous time model</a>
 <ul>
-<li class="chapter" data-level="24.3.1" data-path="exponential-growth-in-detail.html"><a href="exponential-growth-in-detail.html#zero-population-growth"><i class="fa fa-check"></i><b>24.3.1</b> Zero population growth</a></li>
+<li class="chapter" data-level="26.3.1" data-path="exponential-growth-in-detail.html"><a href="exponential-growth-in-detail.html#zero-population-growth"><i class="fa fa-check"></i><b>26.3.1</b> Zero population growth</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="25" data-path="the-legend-of-ambalapuzha.html"><a href="the-legend-of-ambalapuzha.html"><i class="fa fa-check"></i><b>25</b> The legend of Ambalapuzha</a>
+<li class="chapter" data-level="27" data-path="the-legend-of-ambalapuzha.html"><a href="the-legend-of-ambalapuzha.html"><i class="fa fa-check"></i><b>27</b> The legend of Ambalapuzha</a>
 <ul>
-<li class="chapter" data-level="25.1" data-path="the-legend-of-ambalapuzha.html"><a href="the-legend-of-ambalapuzha.html#animalsplants-not-grains-of-rice."><i class="fa fa-check"></i><b>25.1</b> Animals/plants, not grains of rice.</a></li>
-<li class="chapter" data-level="25.2" data-path="the-legend-of-ambalapuzha.html"><a href="the-legend-of-ambalapuzha.html#optional-try-these-calculations-in-r"><i class="fa fa-check"></i><b>25.2</b> Optional: Try these calculations in R</a></li>
+<li class="chapter" data-level="27.1" data-path="the-legend-of-ambalapuzha.html"><a href="the-legend-of-ambalapuzha.html#animalsplants-not-grains-of-rice."><i class="fa fa-check"></i><b>27.1</b> Animals/plants, not grains of rice.</a></li>
+<li class="chapter" data-level="27.2" data-path="the-legend-of-ambalapuzha.html"><a href="the-legend-of-ambalapuzha.html#optional-try-these-calculations-in-r"><i class="fa fa-check"></i><b>27.2</b> Optional: Try these calculations in R</a></li>
 </ul></li>
-<li class="chapter" data-level="26" data-path="from-population-biology-to-fitness.html"><a href="from-population-biology-to-fitness.html"><i class="fa fa-check"></i><b>26</b> From population biology to fitness</a>
+<li class="chapter" data-level="28" data-path="from-population-biology-to-fitness.html"><a href="from-population-biology-to-fitness.html"><i class="fa fa-check"></i><b>28</b> From population biology to fitness</a>
 <ul>
-<li class="chapter" data-level="26.1" data-path="from-population-biology-to-fitness.html"><a href="from-population-biology-to-fitness.html#an-in-silico-experiment"><i class="fa fa-check"></i><b>26.1</b> An <em>in silico</em> experiment</a></li>
-<li class="chapter" data-level="26.2" data-path="from-population-biology-to-fitness.html"><a href="from-population-biology-to-fitness.html#the-link-to-fitness"><i class="fa fa-check"></i><b>26.2</b> The link to fitness</a></li>
-<li class="chapter" data-level="26.3" data-path="from-population-biology-to-fitness.html"><a href="from-population-biology-to-fitness.html#introducing-a-trade-off"><i class="fa fa-check"></i><b>26.3</b> Introducing a trade-off</a></li>
+<li class="chapter" data-level="28.1" data-path="from-population-biology-to-fitness.html"><a href="from-population-biology-to-fitness.html#an-in-silico-experiment"><i class="fa fa-check"></i><b>28.1</b> An <em>in silico</em> experiment</a></li>
+<li class="chapter" data-level="28.2" data-path="from-population-biology-to-fitness.html"><a href="from-population-biology-to-fitness.html#the-link-to-fitness"><i class="fa fa-check"></i><b>28.2</b> The link to fitness</a></li>
+<li class="chapter" data-level="28.3" data-path="from-population-biology-to-fitness.html"><a href="from-population-biology-to-fitness.html#introducing-a-trade-off"><i class="fa fa-check"></i><b>28.3</b> Introducing a trade-off</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -468,10 +497,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="game-theory-hawks-and-doves" class="section level1 hasAnchor" number="22">
-<h1><span class="header-section-number">22</span> Game theory: Hawks and doves<a href="game-theory-hawks-and-doves.html#game-theory-hawks-and-doves" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<div id="background-16" class="section level2 hasAnchor" number="22.1">
-<h2><span class="header-section-number">22.1</span> Background<a href="game-theory-hawks-and-doves.html#background-16" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="game-theory-hawks-and-doves" class="section level1 hasAnchor" number="24">
+<h1><span class="header-section-number">24</span> Game theory: Hawks and doves<a href="game-theory-hawks-and-doves.html#game-theory-hawks-and-doves" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="background-17" class="section level2 hasAnchor" number="24.1">
+<h2><span class="header-section-number">24.1</span> Background<a href="game-theory-hawks-and-doves.html#background-17" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Game theory is a mathematical discipline that examines decision-making in competitive environments. It provides a framework to analyze strategic interactions between rational actors and understand their choices. One particularly fascinating concept in game theory is the Hawk and Dove idea. Representing two distinct strategies, the Hawk embodies aggression and assertiveness, always seeking to escalate conflicts and dominate opponents. On the other hand, the Dove adopts a more peaceful and conciliatory approach, aiming to avoid confrontations and achieve cooperative outcomes.</p>
 <p>By studying the Hawk and Dove strategies we can gain insights into understanding the delicate balance between competition and cooperation, shedding light on the dynamics of conflicts and the evolution of cooperative behavior in both the natural world and human societies.</p>
 <p>The simple model unravels the intricacies of strategic decision-making, with profound implications across various fields, from biology and social sciences to economics and politics.</p>
@@ -497,12 +526,12 @@ biological or political decision making.
 </ul>
 </div>
 </div>
-<div id="your-task-16" class="section level2 hasAnchor" number="22.2">
-<h2><span class="header-section-number">22.2</span> Your task<a href="game-theory-hawks-and-doves.html#your-task-16" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="your-task-17" class="section level2 hasAnchor" number="24.2">
+<h2><span class="header-section-number">24.2</span> Your task<a href="game-theory-hawks-and-doves.html#your-task-17" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Before the activity starts, review the cost-benefit payoff table below to understand how to score the game.</p>
 </div>
-<div id="the-payoff-table" class="section level2 hasAnchor" number="22.3">
-<h2><span class="header-section-number">22.3</span> The payoff table<a href="game-theory-hawks-and-doves.html#the-payoff-table" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="the-payoff-table" class="section level2 hasAnchor" number="24.3">
+<h2><span class="header-section-number">24.3</span> The payoff table<a href="game-theory-hawks-and-doves.html#the-payoff-table" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>The general payoff table looks like this:</p>
 <table>
 <thead>
@@ -565,12 +594,12 @@ biological or political decision making.
 </tr>
 </tbody>
 </table>
-<div id="hypotheses" class="section level3 hasAnchor" number="22.3.1">
-<h3><span class="header-section-number">22.3.1</span> Hypotheses<a href="game-theory-hawks-and-doves.html#hypotheses" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="hypotheses" class="section level3 hasAnchor" number="24.3.1">
+<h3><span class="header-section-number">24.3.1</span> Hypotheses<a href="game-theory-hawks-and-doves.html#hypotheses" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>The experimental hypothesis for this exercise could be that the dove strategy will become more frequent between repeated partners, and the hawk strategy will become more frequent when interacting with a variety of partners. Conversely, the null hypothesis could be that there will be no change in strategy over time with repeat or different partner combinations.</p>
 </div>
-<div id="game-one" class="section level3 hasAnchor" number="22.3.2">
-<h3><span class="header-section-number">22.3.2</span> GAME ONE<a href="game-theory-hawks-and-doves.html#game-one" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="game-one" class="section level3 hasAnchor" number="24.3.2">
+<h3><span class="header-section-number">24.3.2</span> GAME ONE<a href="game-theory-hawks-and-doves.html#game-one" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <ol start="0" style="list-style-type: decimal">
 <li>On a piece of paper, or in Excel (you could use this file <a href="https://www.dropbox.com/s/48lypfd6o0hi46e/Table_2_Group_behavior.xlsx?dl=1">here</a>), use a form to collect your results. It should have enough rows for 15 rounds of the game and look like this (where I include an example in the first row):</li>
 </ol>
@@ -625,8 +654,8 @@ biological or political decision making.
 <li><p>As a class, I will determine the percentages of hawks and doves played as well as the average benefit received for each round, using this formula: <em>Class average benefit = (sum total benefit)/(number of players)</em></p></li>
 </ol>
 </div>
-<div id="game-two" class="section level3 hasAnchor" number="22.3.3">
-<h3><span class="header-section-number">22.3.3</span> GAME TWO<a href="game-theory-hawks-and-doves.html#game-two" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="game-two" class="section level3 hasAnchor" number="24.3.3">
+<h3><span class="header-section-number">24.3.3</span> GAME TWO<a href="game-theory-hawks-and-doves.html#game-two" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <ol style="list-style-type: decimal">
 <li><p>For the second game, you should find a new partner for EACH of the 15 rounds (if possible).</p></li>
 <li><p>Continue playing for 15 rounds or until students end up back in their starting positions, recording the data as before in <a href="https://www.dropbox.com/s/3tjkck3kmpek6xc/Table_3_Group_behavior.xlsx?dl=1">Excel</a>) or on paper. Also record the results on a Google Form <a href="https://forms.gle/F9YhYcTWRvoF4djt7">here</a>.</p></li>
@@ -634,16 +663,16 @@ biological or political decision making.
 </ol>
 </div>
 </div>
-<div id="summarise-results" class="section level2 hasAnchor" number="22.4">
-<h2><span class="header-section-number">22.4</span> SUMMARISE RESULTS<a href="game-theory-hawks-and-doves.html#summarise-results" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="summarise-results" class="section level2 hasAnchor" number="24.4">
+<h2><span class="header-section-number">24.4</span> SUMMARISE RESULTS<a href="game-theory-hawks-and-doves.html#summarise-results" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>For both the single partner hawk-dove game and the multiple partners hawk-dove game, I will use the whole class data to plot the percentages as two separate lines - one for the percentage of hawks, and one for the percentage of doves, for each of the 15 rounds.</p>
 <p>We will take note of whether the cards played changed as more rounds were played.</p>
 <p>We will consider which type of strategy would most likely evolve in a setting where partners interact repeatedly.</p>
 <p>Think about which tactic might be beneficial for a species that relies on cooperation.</p>
 <p>Discuss as a class what would likely happen if you increased or decreased the relative value of the benefits you receive.</p>
 </div>
-<div id="acknowldgement" class="section level2 hasAnchor" number="22.5">
-<h2><span class="header-section-number">22.5</span> Acknowldgement<a href="game-theory-hawks-and-doves.html#acknowldgement" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="acknowldgement" class="section level2 hasAnchor" number="24.5">
+<h2><span class="header-section-number">24.5</span> Acknowldgement<a href="game-theory-hawks-and-doves.html#acknowldgement" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>This exercises is taken from <a href="https://www.jove.com/science-education/10611/group-behavior" class="uri">https://www.jove.com/science-education/10611/group-behavior</a></p>
 
 </div>
@@ -657,7 +686,7 @@ biological or political decision making.
           </div>
         </div>
       </div>
-<a href="lotka-volterra-predator-prey-dynamics.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="discrete-time-lotka-volterra-predator-prey-model-in-r.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 <a href="solutions-and-take-home-messages.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
