@@ -1,6 +1,6 @@
 # The legend of Ambalapuzha
 
-Exponential growth is a powerful concept. To help us grasp it better lets use an ancient Indian chess legend as an example.
+Exponential growth is a powerful concept. To help us grasp it better let's use an ancient Indian chess legend as an example.
 
 ```{block, type="do-something"}
 Learning outcomes: 

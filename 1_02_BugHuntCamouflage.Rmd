@@ -1,4 +1,4 @@
-# Bug hunt camouflage (Netlogo)
+# Bug hunt camouflage (NetLogo)
 
 ## Background
 
@@ -23,9 +23,9 @@ In this exercise, you will use an individual-based simulation to examine adaptiv
 
 The exercise is done using one of the built-in models in a computer program called NetLogo (https://ccl.northwestern.edu/netlogo/).
 
-There are two ways to use NetLogo: (1) You can log in to our SDU Ucloud computing system at https://cloud.sdu.dk/, and use it there; (2) You can download and install NetLogo from the site above.
+There are two ways to use NetLogo: (1) You can log in to our SDU UCloud computing system at https://cloud.sdu.dk/, and use it there; (2) You can download and install NetLogo from the site above.
 
-I recommend the UCloud option: Please follow these steps: (i) search for NetLogo in the search bar at the top of the screen; (ii) click on Applications and then on the NetLogo icon; (iii) click on "Run Application"; (iv) Give your job a name (e.g., "BB512") and under "Hours" enter 1 hour; (v) under Machine Type, select "u1-standard-1"; (vi) click on Submit. After a few moments while Ucloud is preparing your job, an new screen appears. Click on Open Interface to open a virtual desktop. There, you can open NetLogo and use it as if it was on your own computer by clicking on its icon.
+I recommend the UCloud option: Please follow these steps: (i) search for NetLogo in the search bar at the top of the screen; (ii) click on Applications and then on the NetLogo icon; (iii) click on "Run Application"; (iv) Give your job a name (e.g., "BB512") and under "Hours" enter 1 hour; (v) under Machine Type, select "u1-standard-1"; (vi) click on Submit. After a few moments while UCloud is preparing your job, an new screen appears. Click on Open Interface to open a virtual desktop. There, you can open NetLogo and use it as if it was on your own computer by clicking on its icon.
 
 Open NetLogo and click File > Models Library. You can then use the search box at the bottom of the screen to find the model called “Bug Hunt Camouflage”.
 
@@ -40,7 +40,7 @@ In the simulation you assume the role of a predatory bird that feeds on insects,
 
 1. When you open the model, you will see a screen with various purple and green “sliders”, buttons and menus that control parts of the model.
 2. Start with 30 bugs, by moving the “carrying-capacity” slider until it reads 30.
-3. Now click “setup”. You should see the environment appear on the right hand side, and you should see a few “bugs” on the environment. Start the simulaton by clicking “go”. 
+3. Now click “setup”. You should see the environment appear on the right hand side, and you should see a few “bugs” on the environment. Start the simulation by clicking “go”. 
 4. After you click go, you need to click on bugs as fast as you can using your mouse/track pad. You can also keep the mouse button depressed, and move the cursor around the world to catch the bugs. Try to consume bugs as fast as possible to remove any “deliberation” on your part as a predator. The camouflaging effect will emerge more clearly if you aren’t taking your time trying to find bugs that typically would be more difficult to find.
 
 You can track your progress by looking at the graphs on the left. The most important of these are the two at the top, which show (1) the number of bugs caught through time and (2) the average colour values of the bugs.
@@ -89,7 +89,7 @@ The primary colours red, green and blue (RGB) can be mixed to produce any colour
 
 **Hue** ranges from 0 to 255 with both ends of that spectrum being red, and as you move from 0 to 255 you pass through all the colours of the rainbow.
 
-The other two elements of colour are **brightness** and **saturation**. If a colour is bright it is very vibrant, if it is not bright, it is dark: a brightness value of 0, would be black, no matter what the hue was. Similarly, a low saturation values give “washed out” colours and a valeue of 0 would be  white. 
+The other two elements of colour are **brightness** and **saturation**. If a colour is bright it is very vibrant, if it is not bright, it is dark: a brightness value of 0, would be black, no matter what the hue was. Similarly, a low saturation values give “washed out” colours and a value of 0 would be  white. 
 
 
 ```{r colours, out.width="50%",fig.align='center',echo = FALSE, fig.cap="Hue, brightness and saturation"}

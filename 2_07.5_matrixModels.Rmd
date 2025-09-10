@@ -115,7 +115,7 @@ $$
 
 Working with matrices is very tedious in Excel. However, in R you can use this information to predict the future dynamics of the population, and estimate population growth rate, and generation time etc.
 
-Open up **RStudio**, and lets see if we can predict future dynamics. First you will need to install a package called `popdemo`.
+Open up **RStudio**, and let's see if we can predict future dynamics. First you will need to install a package called `popdemo`.
 
 ```{r install,eval=FALSE}
 install.packages("popdemo")

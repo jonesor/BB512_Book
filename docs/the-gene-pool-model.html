@@ -197,7 +197,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.3" data-path="the-blind-watchmaker.html"><a href="the-blind-watchmaker.html#how-the-simulation-works."><i class="fa fa-check"></i><b>3.3</b> How the simulation works.</a></li>
 <li class="chapter" data-level="3.4" data-path="the-blind-watchmaker.html"><a href="the-blind-watchmaker.html#questions"><i class="fa fa-check"></i><b>3.4</b> Questions</a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="bug-hunt-camouflage-netlogo.html"><a href="bug-hunt-camouflage-netlogo.html"><i class="fa fa-check"></i><b>4</b> Bug hunt camouflage (Netlogo)</a>
+<li class="chapter" data-level="4" data-path="bug-hunt-camouflage-netlogo.html"><a href="bug-hunt-camouflage-netlogo.html"><i class="fa fa-check"></i><b>4</b> Bug hunt camouflage (NetLogo)</a>
 <ul>
 <li class="chapter" data-level="4.1" data-path="bug-hunt-camouflage-netlogo.html"><a href="bug-hunt-camouflage-netlogo.html#background-1"><i class="fa fa-check"></i><b>4.1</b> Background</a></li>
 <li class="chapter" data-level="4.2" data-path="bug-hunt-camouflage-netlogo.html"><a href="bug-hunt-camouflage-netlogo.html#your-task-1"><i class="fa fa-check"></i><b>4.2</b> Your task</a>
@@ -400,7 +400,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="24.3.3" data-path="game-theory-hawks-and-doves.html"><a href="game-theory-hawks-and-doves.html#game-two"><i class="fa fa-check"></i><b>24.3.3</b> GAME TWO</a></li>
 </ul></li>
 <li class="chapter" data-level="24.4" data-path="game-theory-hawks-and-doves.html"><a href="game-theory-hawks-and-doves.html#summarise-results"><i class="fa fa-check"></i><b>24.4</b> SUMMARISE RESULTS</a></li>
-<li class="chapter" data-level="24.5" data-path="game-theory-hawks-and-doves.html"><a href="game-theory-hawks-and-doves.html#acknowldgement"><i class="fa fa-check"></i><b>24.5</b> Acknowldgement</a></li>
+<li class="chapter" data-level="24.5" data-path="game-theory-hawks-and-doves.html"><a href="game-theory-hawks-and-doves.html#acknowledgement"><i class="fa fa-check"></i><b>24.5</b> Acknowledgement</a></li>
 </ul></li>
 <li class="part"><span><b>VI Solutions/answers</b></span></li>
 <li class="chapter" data-level="25" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html"><i class="fa fa-check"></i><b>25</b> Solutions and “take-home” messages</a>
@@ -503,7 +503,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">17.1</span> Background<a href="the-gene-pool-model.html#background-12" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>A central goal in evolutionary biology is to understand variation – including genetic variation – and how it changes through time. One important idea is the “gene pool,” which contains all the different versions of genes within a group of organisms. These genes/alleles determine pheotypic traits and other characteristics. To grasp how populations evolve, we need to understand how allele frequencies change in a population. Over time, genetic diversity changes as the relative numbers of alleles changes. Some alleles may be lost from the population while others may become “fixed” – where the allele is present in every individual in the population.</p>
 <p>The primary factor that influences genetic drift in the gene pool model is population size. In small populations, “sampling error” means that, just by chance, large changes often occur in the allele frequencies. In large populations, dramatic changes are much less likely.</p>
-<p>Two related concepts are critical in understanding genetic drift: bottlenecks and founding effects. A genetic bottleneck occurrs when a population dramatically reduces in size due to events like environmental catastrophes. During a bottleneck, allele frequency (and genetic diversity) can change dramatically due to sampling effects during the bottleneck. The founding effect is a similar scenario where a small group (a sample from the population) establishes a new population. The fact that the new population is a small sample of the ancestral population means that the new population can have rather different a genetic composition to the ancestral population.</p>
+<p>Two related concepts are critical in understanding genetic drift: bottlenecks and founding effects. A genetic bottleneck occurs when a population dramatically reduces in size due to events like environmental catastrophes. During a bottleneck, allele frequency (and genetic diversity) can change dramatically due to sampling effects during the bottleneck. The founding effect is a similar scenario where a small group (a sample from the population) establishes a new population. The fact that the new population is a small sample of the ancestral population means that the new population can have rather different a genetic composition to the ancestral population.</p>
 <div class="do-something">
 <p>
 Learning outcomes:
@@ -566,7 +566,7 @@ What we are saying here is “repeat <code>A</code>, <code>number_A</code> times
 </div>
 <div id="projecting-allele-frequency-over-one-time-step." class="section level3 hasAnchor" number="17.3.2">
 <h3><span class="header-section-number">17.3.2</span> Projecting allele frequency over one time step.<a href="the-gene-pool-model.html#projecting-allele-frequency-over-one-time-step." class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Lets assume the population size remains constant at N = 500.</p>
+<p>Let’s assume the population size remains constant at N = 500.</p>
 <p>During the next time step (i.e. 1 generation), the individuals in the population mate with each other randomly. We can use the <code>sample</code> function to simulate this.</p>
 <p>This code is saying “<strong>sample, from the gene pool, 1000 alleles</strong>”. We need to sample <span class="math inline">\(2 \times\)</span> the population size because each individual contains two alleles.</p>
 <div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="the-gene-pool-model.html#cb52-1" tabindex="-1"></a>new_gene_pool <span class="ot">&lt;-</span> <span class="fu">sample</span>(gene_pool, <span class="dv">2</span> <span class="sc">*</span> pop_size, <span class="at">replace =</span> <span class="cn">TRUE</span>)</span></code></pre></div>

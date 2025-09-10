@@ -56,7 +56,7 @@ A_treat <- matrix(c(0.1,1.3,
 
 ### Comparing matrices
 
-Before we dig into the formal LTRE, it is useful to compare the two matrices, `A_ref` and `A_treat`, to see how they are different from eachother.
+Before we dig into the formal LTRE, it is useful to compare the two matrices, `A_ref` and `A_treat`, to see how they are different from each other.
 
 We can check what overall difference there is between the matrix in a couple of ways.
 

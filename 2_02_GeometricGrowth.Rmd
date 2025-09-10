@@ -10,7 +10,7 @@ The key quantities involved in this model are as follows, although it's importan
 
 
 - $N_t$ = population size at time $t$; and $N_0$, $N_1$ is population size at time 0, time 1 etc.
-- $\lambda$ = population growth (multiplication) rate over a single time step, $\Delta t$. THis is sometimes called the *finite rate of increase*.
+- $\lambda$ = population growth (multiplication) rate over a single time step, $\Delta t$. This is sometimes called the *finite rate of increase*.
 - $R_m$ = population rate of increase over a single time step, $\Delta t$. This is sometimes called the *discrete growth factor*. 
 - $r_m$ = individual rate of increase over an infinitesimally small time step. This is sometimes called the *instantaneous rate of increase* or *intrinsic rate of increase*
 
@@ -44,10 +44,10 @@ Download and open the Excel file [`GeometricGrowth.xlsx`](https://www.dropbox.co
 3.	Make another plot of the same data, but this time use a natural logarithmic axis for the population size. The formula in Excel for natural log is `LN()`.
 4.	What do you notice about the curves in these different versions of plotting the same data?
 5.	Try altering the population growth rate. Try values of 0.8, 1 and 1.2 for example. What happens to the curves? What is special about the value of 1?
-6. Add an trendline with an equation to the log transformed graph. Identify the slope. The slope is $ln(\lambda)$), so you can work out $\lambda$ by "reversing" the $ln$ by taking its exponential. e.g. `=EXP(0.0953)` in Excel.
+6. Add a trendline with an equation to the log transformed graph. Identify the slope. The slope is $ln(\lambda)$), so you can work out $\lambda$ by "reversing" the $ln$ by taking its exponential. e.g. `=EXP(0.0953)` in Excel.
 
 
-Now reset the population growth rate to 1.1. Now lets see if the mathematical rules of so-called “geometric series” work...
+Now reset the population growth rate to 1.1. Now let's see if the mathematical rules of so-called “geometric series” work...
 
 1.	If the population starts at t=0, $N_t = N_0 \lambda^t$ . In words, the population at time $t$ is the initial population size multiplied by the finite population growth rate raised to the power of $t$.
 2.	Your instructor will explain how this works on the blackboard.

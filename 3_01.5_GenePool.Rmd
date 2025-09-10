@@ -10,7 +10,7 @@ A central goal in evolutionary biology is to understand variation -- including g
 
 The primary factor that influences genetic drift in the gene pool model is population size. In small populations, "sampling error" means that, just by chance, large changes often occur in the allele frequencies. In large populations, dramatic changes are much less likely.
 
-Two related concepts are critical in understanding genetic drift: bottlenecks and founding effects. A genetic bottleneck occurrs when a population dramatically reduces in size due to events like environmental catastrophes. During a bottleneck, allele frequency (and genetic diversity) can change dramatically due to sampling effects during the bottleneck. The founding effect is a similar scenario where a small group (a sample from the population) establishes a new population. The fact that the new population is a small sample of the ancestral population means that the new population can have rather different a genetic composition to the ancestral population.
+Two related concepts are critical in understanding genetic drift: bottlenecks and founding effects. A genetic bottleneck occurs when a population dramatically reduces in size due to events like environmental catastrophes. During a bottleneck, allele frequency (and genetic diversity) can change dramatically due to sampling effects during the bottleneck. The founding effect is a similar scenario where a small group (a sample from the population) establishes a new population. The fact that the new population is a small sample of the ancestral population means that the new population can have rather different a genetic composition to the ancestral population.
 
 
 ```{block, type="do-something"}
@@ -86,7 +86,7 @@ prop.table(table(gene_pool))
 
 ### Projecting allele frequency over one time step.
 
-Lets assume the population size remains constant at N = `r pop_size`.
+Let's assume the population size remains constant at N = `r pop_size`.
 
 During the next time step (i.e. 1 generation), the individuals in the population mate with each other randomly. We can use the `sample` function to simulate this.
 

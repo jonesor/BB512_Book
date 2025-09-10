@@ -1,6 +1,6 @@
 \usepackage{booktabs}
-
 \usepackage{tcolorbox}
+\usepackage[a4paper,margin=2.5cm]{geometry}
 
 \setlength{\fboxsep}{.8em}
 
@@ -14,3 +14,15 @@
 % \lstset{
 %  breaklines=true
 % }
+
+
+% Don't load hyperref yourself; let Pandoc handle it.
+% Just override its setup *after* Pandoc has loaded it.
+\AtBeginDocument{%
+  \hypersetup{
+    colorlinks=true,
+    linkcolor=black,    % internal TOC & cross-refs
+    urlcolor=blue,      % external URLs
+    citecolor=darkgray  % citations
+  }%
+}

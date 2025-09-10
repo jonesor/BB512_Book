@@ -66,7 +66,7 @@ The experimental hypothesis for this exercise could be that the dove strategy wi
 
 3. When the instructor gives the signal, show either of the two cards to the student sitting across from you. Try to strategise how to receive the highest benefit from every interaction, but do not communicate with your partner.
 
-4. In each round, note the cards played and the benefit recieved by each player. Also do it here on [this Google Form](https://forms.gle/3fjBGF7xVAYRQ5hXA).
+4. In each round, note the cards played and the benefit received by each player. Also do it here on [this Google Form](https://forms.gle/3fjBGF7xVAYRQ5hXA).
 
 5. Repeat the interaction by showing cards to the same partner and determining the benefit,  on your instructor's signal, for a total of 15 rounds.
 
@@ -96,6 +96,6 @@ Think about which tactic might be beneficial for a species that relies on cooper
 Discuss as a class what would likely happen if you increased or decreased the relative value of the benefits you receive.
 
 
-## Acknowldgement
+## Acknowledgement
 
 This exercises is taken from https://www.jove.com/science-education/10611/group-behavior

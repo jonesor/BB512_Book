@@ -47,13 +47,14 @@ Learning outcomes:
 
 ## Your task
 
-Use the Excel worksheet,  `[StochasticPopulationGrowth.xslx](https://www.dropbox.com/s/1wpixbpgwlh54f0/StochasticPopulationGrowth.xlsx?dl=1)`,  to study how stochastic population growth works with this simple model.
+```{block, type="do-something"}
 
-
+Use the Excel worksheet, [StochasticPopulationGrowth.xlsx](https://www.dropbox.com/s/1wpixbpgwlh54f0/StochasticPopulationGrowth.xlsx?dl=1), to study how stochastic population growth works with this simple model.
+```
 
 1)	Use Excel formulae to calculate deterministic population size through time (20 generations, with starting population of 100), linking to the mean finite population growth rate.
 2)	Use charts to plot the results. (you already did this last time!)
-3)	Use a formula to generate a column of stochastic $r_m$ values, based on a particlar mean and variance. [English Excel: `=NORMINV(RAND(),$F$10,SQRT($F$11))`/ Danish Excel: `=NORMINV(SLUMP();$F$10;KVROD($F$11))`. If you get errors, check whether Excel is expecting commas or semi-colons]
+3)	Use a formula to generate a column of stochastic $r_m$ values, based on a chosen mean and variance. In English versions of Excel the function may be written either as `=NORM.INV(RAND(), $F$10, SQRT($F$11))` (newer versions) or `=NORMINV(RAND(), $F$10, SQRT($F$11))` (older versions), while in Danish Excel it appears as `=NORMINV(SLUMP(); $F$10; KVROD($F$11))`. If you encounter errors, check whether your copy of Excel expects commas or semi-colons as argument separators and adjust the formula accordingly.
 4)	Use the same procedure as before, to create a stochastic population size vector (stochastic N). Remember to convert $r_m$ to $\lambda$ by taking the exponential.
 5)	Compare the two trajectories using a chart.
 6)	Try altering initial population size, mean population growth, and the amount of stochasticity (Variance).
@@ -102,7 +103,7 @@ nTrials = 100 # number of repeated simulations
 
 pseudoExtinction = 1
 
-# First randomly generate some lambda values
+# First randomly generate some r values
 rValues <- matrix(rnorm(nTrials * nGen, 
                         mean = mean.r, 
                         sd = sqrt(var.r)),
@@ -111,7 +112,7 @@ rValues <- matrix(rnorm(nTrials * nGen,
 
 # Use a histogram to see what they look like 
 # (uncomment the line below)
-# hist(lambdas,col="grey",main="")
+# hist(rValues,col="grey",main="")
 
 # Now run the simulations to see what the resulting 
 #population growth looks like
@@ -138,7 +139,7 @@ plot(
   type = "n",
   axes = F,
   xlab = "Time",
-  ylab = "N",
+  ylab = "log(N)",
   ylim = log(c(0.1, 100000))
 )
 matlines(log(trials),
@@ -148,7 +149,7 @@ matlines(log(trials),
 axis(1)
 axis(2,
      at = log(c(0.1, 1, 10, 100, 1000, 10000, 100000)),
-     label = c(0.1, 1, 10, 100, 1000, 10000, 100000))
+     labels = c(0.1, 1, 10, 100, 1000, 10000, 100000))
 abline(h = log(pseudoExtinction), lty = 2)
 ```
 

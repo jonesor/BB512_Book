@@ -57,7 +57,7 @@ In addition to this, I will provide a reading list of journal articles that are 
 
 ## This website and other course materials
 
-This website holds most of the materials you need for the practical exercises you will do during the course. You will also find the [Schedule](https://jonesor.github.io/BB512_Book/schedule.html) here.
+This website holds most of the materials you need for the practical exercises you will do during the course. You will also find the [Schedule here](https://jonesor.github.io/BB512_Book/schedule.html) (on the web-version only).
 
 **We may not do ALL of these exercises, but you are welcome to do ones we miss in your own time.**
 
@@ -103,7 +103,10 @@ See [here](https://easy-excel.com/excel-in-other-languages/excel-formulas-in-dan
 
 R and RStudio are two separate pieces of software. RStudio is a user-friendly interface to talk to R, it cannot work if you have not got R installed. So, when you install these two programs, install R first, then RStudio.
 
-Already have them installed?  I strongly recommend to update to the latest versions of R, which you can download [here](https://cran.r-project.org) and RStudio Desktop, which you can find [here](https://www.rstudio.com/products/rstudio/). 
+Already have them installed?  I strongly recommend to update to the latest versions of R and RStudio, which you can download at the following sites:
+
+* R: [https://cran.r-project.org](https://cran.r-project.org)
+* RStudio: [https://www.rstudio.com/products/rstudio/](https://www.rstudio.com/products/rstudio/). 
 
 
 If you are unsure whether you should update your R or RStudio try the following code. If it produces a nice graph, then your R is sufficiently up-to-date. If there are error messages, then you probably need to update R.
@@ -120,7 +123,7 @@ plot(pr)
 
 
 ```{block, type="do-something"}
-**This website includes equations. **
+**This book includes equations. **
 
 Equations sometimes do not render correctly on some web browsers. 
 

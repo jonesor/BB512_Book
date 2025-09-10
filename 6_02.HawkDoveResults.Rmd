@@ -164,7 +164,7 @@ Finally we can look at what the best strategy is in Game 2.
 
 
 ```{r hawkdoveresults10, echo = FALSE}
-# How does the hawkishness of individuals relate to the benefits recieved?
+# How does the hawkishness of individuals relate to the benefits received?
 perIndiv <- hdg2 %>%
   mutate(hawkNumeric_player1 = ifelse(player_1 == "H", 1, 0)) %>%
   group_by(individual) %>%

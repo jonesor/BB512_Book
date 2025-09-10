@@ -72,7 +72,7 @@ You can find the completed Excel file [here](https://www.dropbox.com/scl/fi/sxvt
 1. What does the log-transformed plot of population size over time tell you about the population's growth trend? Does the population grow exponentially?
 
 
-- The log-transformed plot should show a straight line if the population is growing exponentially, because the natural logarithm of an exponentially growing population will linearize the exponential curve. The slope of this line represents the natural log of the population growth rate $log(\lambda)$. If the line has a positive slope, it indicates the population is growing; if it's flat, the population is stable; and if it's negative, the population is shrinking.
+- The log-transformed plot should show a straight line if the population is growing exponentially, because the natural logarithm of an exponentially growing population will linearise the exponential curve. The slope of this line represents the natural log of the population growth rate $log(\lambda)$. If the line has a positive slope, it indicates the population is growing; if it's flat, the population is stable; and if it's negative, the population is shrinking.
 - In this exercise, assuming $\lambda > 1$, the population is indeed growing exponentially, which will be reflected by a positively sloped line in the log-transformed plot.
 
 2. What is the estimated population growth rate ($\lambda$) based on your regression analysis?
