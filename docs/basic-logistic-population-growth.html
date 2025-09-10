@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>8 Basic logistic population growth | BB512 - Population Biology and Evolution</title>
   <meta name="description" content="Course book for BB512 at the Biology Department, University of Southern Denmark" />
-  <meta name="generator" content="bookdown 0.40 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.44 and GitBook 2.6.7" />
 
   <meta property="og:title" content="8 Basic logistic population growth | BB512 - Population Biology and Evolution" />
   <meta property="og:type" content="book" />
@@ -23,7 +23,7 @@
 <meta name="author" content="Owen R. Jones (Course Coordinator)" />
 
 
-<meta name="date" content="2024-11-22" />
+<meta name="date" content="2025-09-10" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -713,31 +713,37 @@ In this code, I have added a line which ensures that population size cannot be n
 <span id="cb6-9"><a href="basic-logistic-population-growth.html#cb6-9" tabindex="-1"></a>population[<span class="dv">1</span>] <span class="ot">&lt;-</span> N0</span>
 <span id="cb6-10"><a href="basic-logistic-population-growth.html#cb6-10" tabindex="-1"></a></span>
 <span id="cb6-11"><a href="basic-logistic-population-growth.html#cb6-11" tabindex="-1"></a><span class="co"># Initialize per capita growth rate vector</span></span>
-<span id="cb6-12"><a href="basic-logistic-population-growth.html#cb6-12" tabindex="-1"></a>per_capita_growth <span class="ot">&lt;-</span> <span class="fu">numeric</span>(timesteps <span class="sc">-</span> <span class="dv">1</span>)  <span class="co"># One less than population as it&#39;s based on changes</span></span>
-<span id="cb6-13"><a href="basic-logistic-population-growth.html#cb6-13" tabindex="-1"></a></span>
-<span id="cb6-14"><a href="basic-logistic-population-growth.html#cb6-14" tabindex="-1"></a><span class="co"># Loop to calculate population at each time step</span></span>
-<span id="cb6-15"><a href="basic-logistic-population-growth.html#cb6-15" tabindex="-1"></a><span class="cf">for</span> (t <span class="cf">in</span> <span class="dv">2</span><span class="sc">:</span>timesteps) {</span>
-<span id="cb6-16"><a href="basic-logistic-population-growth.html#cb6-16" tabindex="-1"></a>  <span class="co"># Logistic growth model equation</span></span>
-<span id="cb6-17"><a href="basic-logistic-population-growth.html#cb6-17" tabindex="-1"></a>  population[t] <span class="ot">&lt;-</span> population[t<span class="dv">-1</span>] <span class="sc">+</span> (r_m <span class="sc">*</span> population[t<span class="dv">-1</span>]) <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">-</span> (population[t<span class="dv">-1</span>] <span class="sc">/</span> K))</span>
-<span id="cb6-18"><a href="basic-logistic-population-growth.html#cb6-18" tabindex="-1"></a>  </span>
-<span id="cb6-19"><a href="basic-logistic-population-growth.html#cb6-19" tabindex="-1"></a>  <span class="co"># Ensure population doesn&#39;t go negative</span></span>
-<span id="cb6-20"><a href="basic-logistic-population-growth.html#cb6-20" tabindex="-1"></a>  <span class="cf">if</span> (population[t] <span class="sc">&lt;</span> <span class="dv">0</span>) {</span>
-<span id="cb6-21"><a href="basic-logistic-population-growth.html#cb6-21" tabindex="-1"></a>    population[t] <span class="ot">&lt;-</span> <span class="dv">0</span></span>
-<span id="cb6-22"><a href="basic-logistic-population-growth.html#cb6-22" tabindex="-1"></a>  }</span>
-<span id="cb6-23"><a href="basic-logistic-population-growth.html#cb6-23" tabindex="-1"></a>  </span>
-<span id="cb6-24"><a href="basic-logistic-population-growth.html#cb6-24" tabindex="-1"></a>  <span class="co"># Calculate per capita growth rate for the previous time step</span></span>
-<span id="cb6-25"><a href="basic-logistic-population-growth.html#cb6-25" tabindex="-1"></a>  per_capita_growth[t<span class="dv">-1</span>] <span class="ot">&lt;-</span> (population[t] <span class="sc">-</span> population[t<span class="dv">-1</span>]) <span class="sc">/</span> population[t<span class="dv">-1</span>]</span>
-<span id="cb6-26"><a href="basic-logistic-population-growth.html#cb6-26" tabindex="-1"></a>}</span>
-<span id="cb6-27"><a href="basic-logistic-population-growth.html#cb6-27" tabindex="-1"></a></span>
-<span id="cb6-28"><a href="basic-logistic-population-growth.html#cb6-28" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>))</span>
-<span id="cb6-29"><a href="basic-logistic-population-growth.html#cb6-29" tabindex="-1"></a><span class="co"># Plot 1: Population size through time</span></span>
-<span id="cb6-30"><a href="basic-logistic-population-growth.html#cb6-30" tabindex="-1"></a><span class="fu">plot</span>(<span class="dv">1</span><span class="sc">:</span>timesteps, population, <span class="at">type =</span> <span class="st">&quot;o&quot;</span>, <span class="at">col =</span> <span class="st">&quot;blue&quot;</span>, <span class="at">xlab =</span> <span class="st">&quot;Time&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;Population size&quot;</span>,</span>
-<span id="cb6-31"><a href="basic-logistic-population-growth.html#cb6-31" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">&quot;Population Size through Time (Logistic Growth Model)&quot;</span>)</span>
-<span id="cb6-32"><a href="basic-logistic-population-growth.html#cb6-32" tabindex="-1"></a></span>
-<span id="cb6-33"><a href="basic-logistic-population-growth.html#cb6-33" tabindex="-1"></a><span class="co"># Plot 2: Per capita growth rate vs population size</span></span>
-<span id="cb6-34"><a href="basic-logistic-population-growth.html#cb6-34" tabindex="-1"></a><span class="fu">plot</span>(population[<span class="dv">1</span><span class="sc">:</span>(timesteps<span class="dv">-1</span>)], per_capita_growth, <span class="at">type =</span> <span class="st">&quot;o&quot;</span>, <span class="at">col =</span> <span class="st">&quot;red&quot;</span>, </span>
-<span id="cb6-35"><a href="basic-logistic-population-growth.html#cb6-35" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">&quot;Population Size&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;Per Capita Growth Rate&quot;</span>,</span>
-<span id="cb6-36"><a href="basic-logistic-population-growth.html#cb6-36" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">&quot;Per Capita Growth Rate vs Population Size&quot;</span>)</span></code></pre></div>
+<span id="cb6-12"><a href="basic-logistic-population-growth.html#cb6-12" tabindex="-1"></a><span class="co"># Length of one less than population, as it&#39;s based on changes</span></span>
+<span id="cb6-13"><a href="basic-logistic-population-growth.html#cb6-13" tabindex="-1"></a>per_capita_growth <span class="ot">&lt;-</span> <span class="fu">numeric</span>(timesteps <span class="sc">-</span> <span class="dv">1</span>)  </span>
+<span id="cb6-14"><a href="basic-logistic-population-growth.html#cb6-14" tabindex="-1"></a></span>
+<span id="cb6-15"><a href="basic-logistic-population-growth.html#cb6-15" tabindex="-1"></a><span class="co"># Loop to calculate population at each time step</span></span>
+<span id="cb6-16"><a href="basic-logistic-population-growth.html#cb6-16" tabindex="-1"></a><span class="cf">for</span> (t <span class="cf">in</span> <span class="dv">2</span><span class="sc">:</span>timesteps) {</span>
+<span id="cb6-17"><a href="basic-logistic-population-growth.html#cb6-17" tabindex="-1"></a>  <span class="co"># Logistic growth model equation</span></span>
+<span id="cb6-18"><a href="basic-logistic-population-growth.html#cb6-18" tabindex="-1"></a>  population[t] <span class="ot">&lt;-</span> population[t<span class="dv">-1</span>] <span class="sc">+</span> </span>
+<span id="cb6-19"><a href="basic-logistic-population-growth.html#cb6-19" tabindex="-1"></a>    (r_m <span class="sc">*</span> population[t<span class="dv">-1</span>]) <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">-</span> (population[t<span class="dv">-1</span>] <span class="sc">/</span> K))</span>
+<span id="cb6-20"><a href="basic-logistic-population-growth.html#cb6-20" tabindex="-1"></a>  </span>
+<span id="cb6-21"><a href="basic-logistic-population-growth.html#cb6-21" tabindex="-1"></a>  <span class="co"># Ensure population doesn&#39;t go negative</span></span>
+<span id="cb6-22"><a href="basic-logistic-population-growth.html#cb6-22" tabindex="-1"></a>  <span class="cf">if</span> (population[t] <span class="sc">&lt;</span> <span class="dv">0</span>) {</span>
+<span id="cb6-23"><a href="basic-logistic-population-growth.html#cb6-23" tabindex="-1"></a>    population[t] <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb6-24"><a href="basic-logistic-population-growth.html#cb6-24" tabindex="-1"></a>  }</span>
+<span id="cb6-25"><a href="basic-logistic-population-growth.html#cb6-25" tabindex="-1"></a>  </span>
+<span id="cb6-26"><a href="basic-logistic-population-growth.html#cb6-26" tabindex="-1"></a>  <span class="co"># Calculate per capita growth rate for the previous time step</span></span>
+<span id="cb6-27"><a href="basic-logistic-population-growth.html#cb6-27" tabindex="-1"></a>  per_capita_growth[t<span class="dv">-1</span>] <span class="ot">&lt;-</span> (population[t] <span class="sc">-</span> </span>
+<span id="cb6-28"><a href="basic-logistic-population-growth.html#cb6-28" tabindex="-1"></a>                               population[t<span class="dv">-1</span>]) <span class="sc">/</span> population[t<span class="dv">-1</span>]</span>
+<span id="cb6-29"><a href="basic-logistic-population-growth.html#cb6-29" tabindex="-1"></a>}</span>
+<span id="cb6-30"><a href="basic-logistic-population-growth.html#cb6-30" tabindex="-1"></a></span>
+<span id="cb6-31"><a href="basic-logistic-population-growth.html#cb6-31" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>))</span>
+<span id="cb6-32"><a href="basic-logistic-population-growth.html#cb6-32" tabindex="-1"></a><span class="co"># Plot 1: Population size through time</span></span>
+<span id="cb6-33"><a href="basic-logistic-population-growth.html#cb6-33" tabindex="-1"></a><span class="fu">plot</span>(<span class="dv">1</span><span class="sc">:</span>timesteps, population, <span class="at">type =</span> <span class="st">&quot;o&quot;</span>, <span class="at">col =</span> <span class="st">&quot;blue&quot;</span>, </span>
+<span id="cb6-34"><a href="basic-logistic-population-growth.html#cb6-34" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">&quot;Time&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;Population size&quot;</span>,</span>
+<span id="cb6-35"><a href="basic-logistic-population-growth.html#cb6-35" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">&quot;Population Size through Time (Logistic Growth Model)&quot;</span>)</span>
+<span id="cb6-36"><a href="basic-logistic-population-growth.html#cb6-36" tabindex="-1"></a></span>
+<span id="cb6-37"><a href="basic-logistic-population-growth.html#cb6-37" tabindex="-1"></a><span class="co"># Plot 2: Per capita growth rate vs population size</span></span>
+<span id="cb6-38"><a href="basic-logistic-population-growth.html#cb6-38" tabindex="-1"></a><span class="fu">plot</span>(population[<span class="dv">1</span><span class="sc">:</span>(timesteps<span class="dv">-1</span>)], per_capita_growth, </span>
+<span id="cb6-39"><a href="basic-logistic-population-growth.html#cb6-39" tabindex="-1"></a>     <span class="at">type =</span> <span class="st">&quot;o&quot;</span>, <span class="at">col =</span> <span class="st">&quot;red&quot;</span>, </span>
+<span id="cb6-40"><a href="basic-logistic-population-growth.html#cb6-40" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">&quot;Population Size&quot;</span>, </span>
+<span id="cb6-41"><a href="basic-logistic-population-growth.html#cb6-41" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">&quot;Per Capita Growth Rate&quot;</span>,</span>
+<span id="cb6-42"><a href="basic-logistic-population-growth.html#cb6-42" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">&quot;Per Capita Growth Rate vs Population Size&quot;</span>)</span></code></pre></div>
 
 </div>
 </div>
@@ -767,43 +773,43 @@ In this code, I have added a line which ensures that population size cannot be n
 <script>
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
-"sharing": {
-"github": false,
-"facebook": true,
-"twitter": true,
-"linkedin": false,
-"weibo": false,
-"instapaper": false,
-"vk": false,
-"whatsapp": false,
-"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
-},
-"fontsettings": {
-"theme": "white",
-"family": "sans",
-"size": 2
-},
-"edit": {
-"link": "https://github.com/jonesor/BB512_Book/edit/master/2_05_BasicLogisticGrowth.Rmd",
-"text": "Edit"
-},
-"history": {
-"link": null,
-"text": null
-},
-"view": {
-"link": null,
-"text": null
-},
-"download": ["BB512.pdf"],
-"search": {
-"engine": "fuse",
-"options": null
-},
-"toc": {
-"collapse": "section"
-},
-"split_by": "section"
+  "sharing": {
+    "github": false,
+    "facebook": true,
+    "twitter": true,
+    "linkedin": false,
+    "weibo": false,
+    "instapaper": false,
+    "vk": false,
+    "whatsapp": false,
+    "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+  },
+  "fontsettings": {
+    "theme": "white",
+    "family": "sans",
+    "size": 2
+  },
+  "edit": {
+    "link": "https://github.com/jonesor/BB512_Book/edit/master/2_05_BasicLogisticGrowth.Rmd",
+    "text": "Edit"
+  },
+  "history": {
+    "link": null,
+    "text": null
+  },
+  "view": {
+    "link": null,
+    "text": null
+  },
+  "download": null,
+  "search": {
+    "engine": "fuse",
+    "options": null
+  },
+  "toc": {
+    "collapse": "section"
+  },
+  "split_by": "section"
 });
 });
 </script>

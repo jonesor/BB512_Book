@@ -56,7 +56,8 @@ output <- data.frame(generation = 1:nGenerations,
                      phrase = rep(NA, nGenerations))
 fixed <- NULL
 for (i in 1:nGenerations){
-  randomPhrase <- sample(c(LETTERS," ","'","Å","Æ","Ø","!"), length(phraseSplit), replace = TRUE)
+  randomPhrase <- sample(c(LETTERS," ","'","Å","Æ","Ø","!"), 
+  length(phraseSplit), replace = TRUE)
   if(selection == TRUE) {
     randomPhrase[fixed] <- phraseSplit[fixed]
     fixed <- append(fixed,which(randomPhrase == phraseSplit))

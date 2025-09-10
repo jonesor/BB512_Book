@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>11 Matrix population modelling | BB512 - Population Biology and Evolution</title>
   <meta name="description" content="Course book for BB512 at the Biology Department, University of Southern Denmark" />
-  <meta name="generator" content="bookdown 0.40 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.44 and GitBook 2.6.7" />
 
   <meta property="og:title" content="11 Matrix population modelling | BB512 - Population Biology and Evolution" />
   <meta property="og:type" content="book" />
@@ -23,7 +23,7 @@
 <meta name="author" content="Owen R. Jones (Course Coordinator)" />
 
 
-<meta name="date" content="2024-11-22" />
+<meta name="date" content="2025-09-10" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -602,7 +602,8 @@ A = \begin{bmatrix}0.3&amp;8&amp;2 \\0.1&amp;0.5&amp;0 \\0&amp;0.4&amp;0.4 \\\en
 <p>Let’s plot this…</p>
 <div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="matrix-population-modelling.html#cb15-1" tabindex="-1"></a>pop <span class="ot">&lt;-</span> <span class="fu">vec</span>(pr)</span>
 <span id="cb15-2"><a href="matrix-population-modelling.html#cb15-2" tabindex="-1"></a><span class="fu">matplot</span>(pop, <span class="at">type =</span> <span class="st">&quot;l&quot;</span>, <span class="at">log =</span> <span class="st">&quot;y&quot;</span>)</span>
-<span id="cb15-3"><a href="matrix-population-modelling.html#cb15-3" tabindex="-1"></a><span class="fu">legend</span>(<span class="st">&quot;topleft&quot;</span>, <span class="at">legend =</span> <span class="fu">colnames</span>(pop), <span class="at">col =</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">ncol</span>(pop), <span class="at">lty =</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">ncol</span>(pop))</span></code></pre></div>
+<span id="cb15-3"><a href="matrix-population-modelling.html#cb15-3" tabindex="-1"></a><span class="fu">legend</span>(<span class="st">&quot;topleft&quot;</span>, <span class="at">legend =</span> <span class="fu">colnames</span>(pop), </span>
+<span id="cb15-4"><a href="matrix-population-modelling.html#cb15-4" tabindex="-1"></a>       <span class="at">col =</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">ncol</span>(pop), <span class="at">lty =</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">ncol</span>(pop))</span></code></pre></div>
 <p><img src="BB512_files/figure-html/plotprojectiongraph-1.png" width="672" /></p>
 <p>You should see that the population increases exponentially. The population growth rate is the so-called “<em>dominant eigenvalue</em>” of the matrix <strong>A</strong>.</p>
 <p>We can ask R for the <em>eigen values</em> and <em>eigen vectors</em>. These are the population growth rate (<span class="math inline">\(\lambda\)</span>) and the stable stage distribution (<em>SSD</em>) and the reproductive values (<em>RV</em>) of the different stages. <em>SSD</em> is the expected <em>proportion</em> of individuals in the different stage classes at equilibrium (i.e. the long-term timeframe) and <em>RV</em> is the expected number of future offspring by individuals in each stage.</p>
@@ -714,43 +715,43 @@ No density dependence: Matrix models generally assume that vital rates are not a
 <script>
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
-"sharing": {
-"github": false,
-"facebook": true,
-"twitter": true,
-"linkedin": false,
-"weibo": false,
-"instapaper": false,
-"vk": false,
-"whatsapp": false,
-"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
-},
-"fontsettings": {
-"theme": "white",
-"family": "sans",
-"size": 2
-},
-"edit": {
-"link": "https://github.com/jonesor/BB512_Book/edit/master/2_07.5_matrixModels.Rmd",
-"text": "Edit"
-},
-"history": {
-"link": null,
-"text": null
-},
-"view": {
-"link": null,
-"text": null
-},
-"download": ["BB512.pdf"],
-"search": {
-"engine": "fuse",
-"options": null
-},
-"toc": {
-"collapse": "section"
-},
-"split_by": "section"
+  "sharing": {
+    "github": false,
+    "facebook": true,
+    "twitter": true,
+    "linkedin": false,
+    "weibo": false,
+    "instapaper": false,
+    "vk": false,
+    "whatsapp": false,
+    "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+  },
+  "fontsettings": {
+    "theme": "white",
+    "family": "sans",
+    "size": 2
+  },
+  "edit": {
+    "link": "https://github.com/jonesor/BB512_Book/edit/master/2_07.5_matrixModels.Rmd",
+    "text": "Edit"
+  },
+  "history": {
+    "link": null,
+    "text": null
+  },
+  "view": {
+    "link": null,
+    "text": null
+  },
+  "download": null,
+  "search": {
+    "engine": "fuse",
+    "options": null
+  },
+  "toc": {
+    "collapse": "section"
+  },
+  "split_by": "section"
 });
 });
 </script>

@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>28 From population biology to fitness | BB512 - Population Biology and Evolution</title>
   <meta name="description" content="Course book for BB512 at the Biology Department, University of Southern Denmark" />
-  <meta name="generator" content="bookdown 0.40 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.44 and GitBook 2.6.7" />
 
   <meta property="og:title" content="28 From population biology to fitness | BB512 - Population Biology and Evolution" />
   <meta property="og:type" content="book" />
@@ -23,7 +23,7 @@
 <meta name="author" content="Owen R. Jones (Course Coordinator)" />
 
 
-<meta name="date" content="2024-11-22" />
+<meta name="date" content="2025-09-10" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -559,8 +559,9 @@ stuck!
 <p>Let’s plot this… Check out how, after a “transient” period, there is exponential growth in all stages of the population. The population is growing steadily with a fixed population growth rate (<span class="math inline">\(\lambda\)</span>).</p>
 <div class="sourceCode" id="cb95"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb95-1"><a href="from-population-biology-to-fitness.html#cb95-1" tabindex="-1"></a>pop <span class="ot">&lt;-</span> <span class="fu">vec</span>(pr)</span>
 <span id="cb95-2"><a href="from-population-biology-to-fitness.html#cb95-2" tabindex="-1"></a><span class="fu">matplot</span>(pop,<span class="at">type=</span><span class="st">&quot;l&quot;</span>,<span class="at">log=</span><span class="st">&quot;y&quot;</span>)</span>
-<span id="cb95-3"><a href="from-population-biology-to-fitness.html#cb95-3" tabindex="-1"></a><span class="fu">legend</span>(<span class="st">&quot;topleft&quot;</span>,<span class="at">legend =</span> <span class="fu">colnames</span>(pop),<span class="at">col=</span><span class="dv">1</span><span class="sc">:</span><span class="fu">ncol</span>(pop),<span class="at">lty=</span><span class="dv">1</span><span class="sc">:</span><span class="fu">ncol</span>(pop))</span></code></pre></div>
-<p><img src="BB512_files/figure-html/unnamed-chunk-91-1.png" width="672" /></p>
+<span id="cb95-3"><a href="from-population-biology-to-fitness.html#cb95-3" tabindex="-1"></a><span class="fu">legend</span>(<span class="st">&quot;topleft&quot;</span>,<span class="at">legend =</span> <span class="fu">colnames</span>(pop),</span>
+<span id="cb95-4"><a href="from-population-biology-to-fitness.html#cb95-4" tabindex="-1"></a>       <span class="at">col=</span><span class="dv">1</span><span class="sc">:</span><span class="fu">ncol</span>(pop),<span class="at">lty=</span><span class="dv">1</span><span class="sc">:</span><span class="fu">ncol</span>(pop))</span></code></pre></div>
+<p><img src="BB512_files/figure-html/unnamed-chunk-89-1.png" width="672" /></p>
 <p>You can see that the population is increasing and we can calculate the precise population growth rate (<span class="math inline">\(\lambda\)</span>) like this:</p>
 <div class="sourceCode" id="cb96"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb96-1"><a href="from-population-biology-to-fitness.html#cb96-1" tabindex="-1"></a><span class="fu">eigs</span>(A1,<span class="at">what =</span> <span class="st">&quot;lambda&quot;</span>)</span></code></pre></div>
 <pre><code>## [1] 1.165587</code></pre>
@@ -657,43 +658,43 @@ eigs(A1)$lambda
 <script>
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
-"sharing": {
-"github": false,
-"facebook": true,
-"twitter": true,
-"linkedin": false,
-"weibo": false,
-"instapaper": false,
-"vk": false,
-"whatsapp": false,
-"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
-},
-"fontsettings": {
-"theme": "white",
-"family": "sans",
-"size": 2
-},
-"edit": {
-"link": "https://github.com/jonesor/BB512_Book/edit/master/7_03_FromPopulationToEvolution.Rmd",
-"text": "Edit"
-},
-"history": {
-"link": null,
-"text": null
-},
-"view": {
-"link": null,
-"text": null
-},
-"download": ["BB512.pdf"],
-"search": {
-"engine": "fuse",
-"options": null
-},
-"toc": {
-"collapse": "section"
-},
-"split_by": "section"
+  "sharing": {
+    "github": false,
+    "facebook": true,
+    "twitter": true,
+    "linkedin": false,
+    "weibo": false,
+    "instapaper": false,
+    "vk": false,
+    "whatsapp": false,
+    "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+  },
+  "fontsettings": {
+    "theme": "white",
+    "family": "sans",
+    "size": 2
+  },
+  "edit": {
+    "link": "https://github.com/jonesor/BB512_Book/edit/master/7_03_FromPopulationToEvolution.Rmd",
+    "text": "Edit"
+  },
+  "history": {
+    "link": null,
+    "text": null
+  },
+  "view": {
+    "link": null,
+    "text": null
+  },
+  "download": null,
+  "search": {
+    "engine": "fuse",
+    "options": null
+  },
+  "toc": {
+    "collapse": "section"
+  },
+  "split_by": "section"
 });
 });
 </script>

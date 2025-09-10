@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>17 The Gene Pool Model | BB512 - Population Biology and Evolution</title>
   <meta name="description" content="Course book for BB512 at the Biology Department, University of Southern Denmark" />
-  <meta name="generator" content="bookdown 0.40 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.44 and GitBook 2.6.7" />
 
   <meta property="og:title" content="17 The Gene Pool Model | BB512 - Population Biology and Evolution" />
   <meta property="og:type" content="book" />
@@ -23,7 +23,7 @@
 <meta name="author" content="Owen R. Jones (Course Coordinator)" />
 
 
-<meta name="date" content="2024-11-22" />
+<meta name="date" content="2025-09-10" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -597,25 +597,29 @@ You can cut-paste this code, which is a complete gene-pool model.</p>
 <span id="cb55-9"><a href="the-gene-pool-model.html#cb55-9" tabindex="-1"></a>allele_freq_A[<span class="dv">1</span>] <span class="ot">&lt;-</span> <span class="fl">0.5</span></span>
 <span id="cb55-10"><a href="the-gene-pool-model.html#cb55-10" tabindex="-1"></a></span>
 <span id="cb55-11"><a href="the-gene-pool-model.html#cb55-11" tabindex="-1"></a><span class="co"># Establish the initial gene pool and name it gene_pool_time_n</span></span>
-<span id="cb55-12"><a href="the-gene-pool-model.html#cb55-12" tabindex="-1"></a><span class="co"># This part looks complicated, but I am just condensing the code from above into 1 line.</span></span>
-<span id="cb55-13"><a href="the-gene-pool-model.html#cb55-13" tabindex="-1"></a>gene_pool_time_n <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
-<span id="cb55-14"><a href="the-gene-pool-model.html#cb55-14" tabindex="-1"></a>  <span class="fu">rep</span>(<span class="st">&quot;A&quot;</span>, <span class="fu">round</span>(<span class="dv">2</span> <span class="sc">*</span> allele_freq_A[<span class="dv">1</span>] <span class="sc">*</span> pop_size)),</span>
-<span id="cb55-15"><a href="the-gene-pool-model.html#cb55-15" tabindex="-1"></a>  <span class="fu">rep</span>(<span class="st">&quot;a&quot;</span>, <span class="fu">round</span>(<span class="dv">2</span> <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">-</span> allele_freq_A[<span class="dv">1</span>]) <span class="sc">*</span> pop_size))</span>
-<span id="cb55-16"><a href="the-gene-pool-model.html#cb55-16" tabindex="-1"></a>)</span>
-<span id="cb55-17"><a href="the-gene-pool-model.html#cb55-17" tabindex="-1"></a></span>
-<span id="cb55-18"><a href="the-gene-pool-model.html#cb55-18" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">2</span><span class="sc">:</span>n_gen) {</span>
-<span id="cb55-19"><a href="the-gene-pool-model.html#cb55-19" tabindex="-1"></a>  gene_pool_time_n_plus_1 <span class="ot">&lt;-</span> <span class="fu">sample</span>(gene_pool_time_n,</span>
-<span id="cb55-20"><a href="the-gene-pool-model.html#cb55-20" tabindex="-1"></a>    pop_size <span class="sc">*</span> <span class="dv">2</span>,</span>
-<span id="cb55-21"><a href="the-gene-pool-model.html#cb55-21" tabindex="-1"></a>    <span class="at">replace =</span> <span class="cn">TRUE</span></span>
-<span id="cb55-22"><a href="the-gene-pool-model.html#cb55-22" tabindex="-1"></a>  )</span>
-<span id="cb55-23"><a href="the-gene-pool-model.html#cb55-23" tabindex="-1"></a>  gene_pool_table <span class="ot">&lt;-</span> <span class="fu">table</span>(<span class="fu">factor</span>(gene_pool_time_n_plus_1, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;a&quot;</span>)))</span>
-<span id="cb55-24"><a href="the-gene-pool-model.html#cb55-24" tabindex="-1"></a>  allele_freq_A[i] <span class="ot">&lt;-</span> gene_pool_table[<span class="dv">2</span>] <span class="sc">/</span> <span class="fu">sum</span>(gene_pool_table)</span>
-<span id="cb55-25"><a href="the-gene-pool-model.html#cb55-25" tabindex="-1"></a></span>
-<span id="cb55-26"><a href="the-gene-pool-model.html#cb55-26" tabindex="-1"></a>  <span class="co"># Replace the old gene pool with the new one.</span></span>
-<span id="cb55-27"><a href="the-gene-pool-model.html#cb55-27" tabindex="-1"></a>  gene_pool_time_n <span class="ot">&lt;-</span> gene_pool_time_n_plus_1</span>
-<span id="cb55-28"><a href="the-gene-pool-model.html#cb55-28" tabindex="-1"></a>}</span></code></pre></div>
+<span id="cb55-12"><a href="the-gene-pool-model.html#cb55-12" tabindex="-1"></a><span class="co"># This part looks complicated, but I am just condensing the code </span></span>
+<span id="cb55-13"><a href="the-gene-pool-model.html#cb55-13" tabindex="-1"></a><span class="co"># from above into 1 line.</span></span>
+<span id="cb55-14"><a href="the-gene-pool-model.html#cb55-14" tabindex="-1"></a>gene_pool_time_n <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
+<span id="cb55-15"><a href="the-gene-pool-model.html#cb55-15" tabindex="-1"></a>  <span class="fu">rep</span>(<span class="st">&quot;A&quot;</span>, <span class="fu">round</span>(<span class="dv">2</span> <span class="sc">*</span> allele_freq_A[<span class="dv">1</span>] <span class="sc">*</span> pop_size)),</span>
+<span id="cb55-16"><a href="the-gene-pool-model.html#cb55-16" tabindex="-1"></a>  <span class="fu">rep</span>(<span class="st">&quot;a&quot;</span>, <span class="fu">round</span>(<span class="dv">2</span> <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">-</span> allele_freq_A[<span class="dv">1</span>]) <span class="sc">*</span> pop_size))</span>
+<span id="cb55-17"><a href="the-gene-pool-model.html#cb55-17" tabindex="-1"></a>)</span>
+<span id="cb55-18"><a href="the-gene-pool-model.html#cb55-18" tabindex="-1"></a></span>
+<span id="cb55-19"><a href="the-gene-pool-model.html#cb55-19" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">2</span><span class="sc">:</span>n_gen) {</span>
+<span id="cb55-20"><a href="the-gene-pool-model.html#cb55-20" tabindex="-1"></a>  gene_pool_time_n_plus_1 <span class="ot">&lt;-</span> <span class="fu">sample</span>(gene_pool_time_n,</span>
+<span id="cb55-21"><a href="the-gene-pool-model.html#cb55-21" tabindex="-1"></a>    pop_size <span class="sc">*</span> <span class="dv">2</span>,</span>
+<span id="cb55-22"><a href="the-gene-pool-model.html#cb55-22" tabindex="-1"></a>    <span class="at">replace =</span> <span class="cn">TRUE</span></span>
+<span id="cb55-23"><a href="the-gene-pool-model.html#cb55-23" tabindex="-1"></a>  )</span>
+<span id="cb55-24"><a href="the-gene-pool-model.html#cb55-24" tabindex="-1"></a>  gene_pool_table <span class="ot">&lt;-</span> <span class="fu">table</span>(<span class="fu">factor</span>(gene_pool_time_n_plus_1, </span>
+<span id="cb55-25"><a href="the-gene-pool-model.html#cb55-25" tabindex="-1"></a>                                  <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;a&quot;</span>)))</span>
+<span id="cb55-26"><a href="the-gene-pool-model.html#cb55-26" tabindex="-1"></a>  allele_freq_A[i] <span class="ot">&lt;-</span> gene_pool_table[<span class="dv">2</span>] <span class="sc">/</span> <span class="fu">sum</span>(gene_pool_table)</span>
+<span id="cb55-27"><a href="the-gene-pool-model.html#cb55-27" tabindex="-1"></a></span>
+<span id="cb55-28"><a href="the-gene-pool-model.html#cb55-28" tabindex="-1"></a>  <span class="co"># Replace the old gene pool with the new one.</span></span>
+<span id="cb55-29"><a href="the-gene-pool-model.html#cb55-29" tabindex="-1"></a>  gene_pool_time_n <span class="ot">&lt;-</span> gene_pool_time_n_plus_1</span>
+<span id="cb55-30"><a href="the-gene-pool-model.html#cb55-30" tabindex="-1"></a>}</span></code></pre></div>
 <p>Now we can plot this result (Figure <a href="the-gene-pool-model.html#fig:simulationplot">17.1</a>)</p>
-<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="the-gene-pool-model.html#cb56-1" tabindex="-1"></a><span class="fu">plot</span>(<span class="dv">1</span><span class="sc">:</span>n_gen, allele_freq_A, <span class="at">type =</span> <span class="st">&quot;l&quot;</span>, <span class="at">xlab =</span> <span class="st">&quot;time&quot;</span>, <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="the-gene-pool-model.html#cb56-1" tabindex="-1"></a><span class="fu">plot</span>(<span class="dv">1</span><span class="sc">:</span>n_gen, allele_freq_A, <span class="at">type =</span> <span class="st">&quot;l&quot;</span>, </span>
+<span id="cb56-2"><a href="the-gene-pool-model.html#cb56-2" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">&quot;time&quot;</span>, </span>
+<span id="cb56-3"><a href="the-gene-pool-model.html#cb56-3" tabindex="-1"></a>     <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>))</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:simulationplot"></span>
 <img src="BB512_files/figure-html/simulationplot-1.png" alt="Simulation of allele frequency through time" width="672" />
 <p class="caption">
@@ -705,43 +709,43 @@ Genetic diversity allows populations to explore paramter space
 <script>
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
-"sharing": {
-"github": false,
-"facebook": true,
-"twitter": true,
-"linkedin": false,
-"weibo": false,
-"instapaper": false,
-"vk": false,
-"whatsapp": false,
-"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
-},
-"fontsettings": {
-"theme": "white",
-"family": "sans",
-"size": 2
-},
-"edit": {
-"link": "https://github.com/jonesor/BB512_Book/edit/master/3_01.5_GenePool.Rmd",
-"text": "Edit"
-},
-"history": {
-"link": null,
-"text": null
-},
-"view": {
-"link": null,
-"text": null
-},
-"download": ["BB512.pdf"],
-"search": {
-"engine": "fuse",
-"options": null
-},
-"toc": {
-"collapse": "section"
-},
-"split_by": "section"
+  "sharing": {
+    "github": false,
+    "facebook": true,
+    "twitter": true,
+    "linkedin": false,
+    "weibo": false,
+    "instapaper": false,
+    "vk": false,
+    "whatsapp": false,
+    "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+  },
+  "fontsettings": {
+    "theme": "white",
+    "family": "sans",
+    "size": 2
+  },
+  "edit": {
+    "link": "https://github.com/jonesor/BB512_Book/edit/master/3_01.5_GenePool.Rmd",
+    "text": "Edit"
+  },
+  "history": {
+    "link": null,
+    "text": null
+  },
+  "view": {
+    "link": null,
+    "text": null
+  },
+  "download": null,
+  "search": {
+    "engine": "fuse",
+    "options": null
+  },
+  "toc": {
+    "collapse": "section"
+  },
+  "split_by": "section"
 });
 });
 </script>

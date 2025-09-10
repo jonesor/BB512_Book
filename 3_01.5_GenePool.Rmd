@@ -129,7 +129,8 @@ allele_freq_A <- rep(NA, n_gen)
 allele_freq_A[1] <- 0.5
 
 # Establish the initial gene pool and name it gene_pool_time_n
-# This part looks complicated, but I am just condensing the code from above into 1 line.
+# This part looks complicated, but I am just condensing the code 
+# from above into 1 line.
 gene_pool_time_n <- c(
   rep("A", round(2 * allele_freq_A[1] * pop_size)),
   rep("a", round(2 * (1 - allele_freq_A[1]) * pop_size))
@@ -140,7 +141,8 @@ for (i in 2:n_gen) {
     pop_size * 2,
     replace = TRUE
   )
-  gene_pool_table <- table(factor(gene_pool_time_n_plus_1, levels = c("A", "a")))
+  gene_pool_table <- table(factor(gene_pool_time_n_plus_1, 
+                                  levels = c("A", "a")))
   allele_freq_A[i] <- gene_pool_table[2] / sum(gene_pool_table)
 
   # Replace the old gene pool with the new one.
@@ -152,7 +154,9 @@ for (i in 2:n_gen) {
 Now we can plot this result (Figure \@ref(fig:simulationplot))
 
 ```{r simulationplot,fig.cap = "Simulation of allele frequency through time"}
-plot(1:n_gen, allele_freq_A, type = "l", xlab = "time", ylim = c(0, 1))
+plot(1:n_gen, allele_freq_A, type = "l", 
+     xlab = "time", 
+     ylim = c(0, 1))
 ```
 
 Use the code to investigate the following questions:

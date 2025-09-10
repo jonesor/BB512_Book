@@ -222,12 +222,14 @@ population <- numeric(timesteps)
 population[1] <- N0
 
 # Initialize per capita growth rate vector
-per_capita_growth <- numeric(timesteps - 1)  # One less than population as it's based on changes
+# Length of one less than population, as it's based on changes
+per_capita_growth <- numeric(timesteps - 1)  
 
 # Loop to calculate population at each time step
 for (t in 2:timesteps) {
   # Logistic growth model equation
-  population[t] <- population[t-1] + (r_m * population[t-1]) * (1 - (population[t-1] / K))
+  population[t] <- population[t-1] + 
+    (r_m * population[t-1]) * (1 - (population[t-1] / K))
   
   # Ensure population doesn't go negative
   if (population[t] < 0) {
@@ -235,17 +237,21 @@ for (t in 2:timesteps) {
   }
   
   # Calculate per capita growth rate for the previous time step
-  per_capita_growth[t-1] <- (population[t] - population[t-1]) / population[t-1]
+  per_capita_growth[t-1] <- (population[t] - 
+                               population[t-1]) / population[t-1]
 }
 
 par(mfrow=c(1,2))
 # Plot 1: Population size through time
-plot(1:timesteps, population, type = "o", col = "blue", xlab = "Time", ylab = "Population size",
+plot(1:timesteps, population, type = "o", col = "blue", 
+     xlab = "Time", ylab = "Population size",
      main = "Population Size through Time (Logistic Growth Model)")
 
 # Plot 2: Per capita growth rate vs population size
-plot(population[1:(timesteps-1)], per_capita_growth, type = "o", col = "red", 
-     xlab = "Population Size", ylab = "Per Capita Growth Rate",
+plot(population[1:(timesteps-1)], per_capita_growth, 
+     type = "o", col = "red", 
+     xlab = "Population Size", 
+     ylab = "Per Capita Growth Rate",
      main = "Per Capita Growth Rate vs Population Size")
 
 ```
