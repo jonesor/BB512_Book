@@ -68,7 +68,8 @@ Let's plot this... Check out how, after a "transient" period, there is exponenti
 ```{r}
 pop <- vec(pr)
 matplot(pop,type="l",log="y")
-legend("topleft",legend = colnames(pop),col=1:ncol(pop),lty=1:ncol(pop))
+legend("topleft",legend = colnames(pop),
+       col=1:ncol(pop),lty=1:ncol(pop))
 ```
 
 You can see that the population is increasing and we can calculate the precise population growth rate ($\lambda$) like this:

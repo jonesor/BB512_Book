@@ -14,7 +14,7 @@ The discrete-time equations are as follows:
 - Consumer (predator) population growth:  
   \( C_{t+1} = C_t + \Delta t \cdot (a \cdot f \cdot V_t \cdot C_t - q \cdot C_t) \)
 
-Note that, when \Delta t = 1, the model is as follows:
+Note that, when $\Delta t = 1$, the model is as follows:
 
 - Victim (prey) population growth:  
   \( V_{t+1} = V_t + R \cdot V_t - a \cdot C_t \cdot V_t \)
@@ -110,7 +110,11 @@ The phase plot shows the relationship between victim and consumer populations.
 
 ```{r DT-phase-plot}
 ### Phase Plot with ZNGIs, Initial Point, and Arrow
-plot(output_df$V, output_df$C, type = "l", col = "purple", lwd = 2, 
+plot(output_df$V, 
+     output_df$C, 
+     type = "l", 
+     col = "purple", 
+     lwd = 2, 
      xlab = "Victim (V)", ylab = "Consumer (C)", 
      main = "Discrete Predator-Prey Dynamics with ZNGIs")
 

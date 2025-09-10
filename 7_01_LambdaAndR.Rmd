@@ -140,7 +140,8 @@ To bring these mathematical concepts to life, let's consider an example from the
 This is not much data, so we can simply put it into R manually, and plot it, like this:
 
 ```{r plotnewproj, message = FALSE}
-df1 <- data.frame(year = 1970:1982, N = c(1,1,2,4,2,3,5,6,7,10,12,14,16))
+df1 <- data.frame(year = 1970:1982, 
+                  N = c(1,1,2,4,2,3,5,6,7,10,12,14,16))
 plot(df1$year,df1$N, type = "b")
 ```
 

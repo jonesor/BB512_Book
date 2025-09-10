@@ -52,7 +52,8 @@ matA_elas <- matrix(c(4, 4))
 
 while (length(which(matA_elas == max(matA_elas))) != 1) {
   matA <- matrix(c(
-    sample(seq(0.05, .3, .05), 1), sample(seq(8, 10, .5), 1), sample(seq(0, 4, .5), 1),
+    sample(seq(0.05, .3, .05), 1), sample(seq(8, 10, .5), 1), 
+    sample(seq(0, 4, .5), 1),
     sample(seq(0, .7, .05), 1), sample(seq(0, .7, .05), 1), 0.0,
     0.0, sample(seq(0, .7, .05), 1), sample(seq(0, .9, .05), 1)
   ), nrow = 3, ncol = 3, byrow = TRUE)
@@ -165,7 +166,8 @@ Let's plot this...
 ```{r plotprojectiongraph}
 pop <- vec(pr)
 matplot(pop, type = "l", log = "y")
-legend("topleft", legend = colnames(pop), col = 1:ncol(pop), lty = 1:ncol(pop))
+legend("topleft", legend = colnames(pop), 
+       col = 1:ncol(pop), lty = 1:ncol(pop))
 ```
 
 You should see that the population increases exponentially. The population growth rate is the so-called "*dominant eigenvalue*" of the matrix **A**.

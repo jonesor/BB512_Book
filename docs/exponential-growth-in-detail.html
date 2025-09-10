@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>26 Exponential growth in detail | BB512 - Population Biology and Evolution</title>
   <meta name="description" content="Course book for BB512 at the Biology Department, University of Southern Denmark" />
-  <meta name="generator" content="bookdown 0.40 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.44 and GitBook 2.6.7" />
 
   <meta property="og:title" content="26 Exponential growth in detail | BB512 - Population Biology and Evolution" />
   <meta property="og:type" content="book" />
@@ -23,7 +23,7 @@
 <meta name="author" content="Owen R. Jones (Course Coordinator)" />
 
 
-<meta name="date" content="2024-11-22" />
+<meta name="date" content="2025-09-10" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -599,7 +599,7 @@ data.
 <div id="applying-the-model" class="section level3 hasAnchor" number="26.1.2">
 <h3><span class="header-section-number">26.1.2</span> Applying the model<a href="exponential-growth-in-detail.html#applying-the-model" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>If we plot exponential growth on a log scale we can see that it is straight line. For example, in the plot below I show the sequence for a population with a starting population of 1 and a <span class="math inline">\(\lambda\)</span> (population multiplication rate) of 1.2 (i.e., the population increases by 20% each year). In (A) the time series is plotted on the natural scale while in (B) it is plotted on the log scale.</p>
-<p><img src="BB512_files/figure-html/unnamed-chunk-74-1.png" width="672" /></p>
+<p><img src="BB512_files/figure-html/unnamed-chunk-73-1.png" width="672" /></p>
 <p>In fact, we can linearise the relationship by log transforming both sides of equation 9:</p>
 <p><span class="math inline">\(\ln{N_t} = \ln(\lambda ^tN_0)\)</span>,</p>
 <p>which can be re-written as:</p>
@@ -612,8 +612,9 @@ data.
 <h2><span class="header-section-number">26.2</span> Real-World Application: Breeding Pairs of Merlin (Falco columbarius)<a href="exponential-growth-in-detail.html#real-world-application-breeding-pairs-of-merlin-falco-columbarius" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>To bring these mathematical concepts to life, let’s consider an example from the Neal textbook that focuses on the population of breeding pairs of Merlin, a species of small falcon. The data spans from 1970 to 1982 and shows the following population sizes (breeding pairs): <code>1,1,2,4,2,3,5,6,7,10,12,14,16</code></p>
 <p>This is not much data, so we can simply put it into R manually, and plot it, like this:</p>
-<div class="sourceCode" id="cb77"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb77-1"><a href="exponential-growth-in-detail.html#cb77-1" tabindex="-1"></a>df1 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">year =</span> <span class="dv">1970</span><span class="sc">:</span><span class="dv">1982</span>, <span class="at">N =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">4</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">7</span>,<span class="dv">10</span>,<span class="dv">12</span>,<span class="dv">14</span>,<span class="dv">16</span>))</span>
-<span id="cb77-2"><a href="exponential-growth-in-detail.html#cb77-2" tabindex="-1"></a><span class="fu">plot</span>(df1<span class="sc">$</span>year,df1<span class="sc">$</span>N, <span class="at">type =</span> <span class="st">&quot;b&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb77"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb77-1"><a href="exponential-growth-in-detail.html#cb77-1" tabindex="-1"></a>df1 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">year =</span> <span class="dv">1970</span><span class="sc">:</span><span class="dv">1982</span>, </span>
+<span id="cb77-2"><a href="exponential-growth-in-detail.html#cb77-2" tabindex="-1"></a>                  <span class="at">N =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">4</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">7</span>,<span class="dv">10</span>,<span class="dv">12</span>,<span class="dv">14</span>,<span class="dv">16</span>))</span>
+<span id="cb77-3"><a href="exponential-growth-in-detail.html#cb77-3" tabindex="-1"></a><span class="fu">plot</span>(df1<span class="sc">$</span>year,df1<span class="sc">$</span>N, <span class="at">type =</span> <span class="st">&quot;b&quot;</span>)</span></code></pre></div>
 <p><img src="BB512_files/figure-html/plotnewproj-1.png" width="672" /></p>
 <div id="observations-and-context" class="section level3 hasAnchor" number="26.2.1">
 <h3><span class="header-section-number">26.2.1</span> Observations and Context<a href="exponential-growth-in-detail.html#observations-and-context" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -689,43 +690,43 @@ data.
 <script>
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
-"sharing": {
-"github": false,
-"facebook": true,
-"twitter": true,
-"linkedin": false,
-"weibo": false,
-"instapaper": false,
-"vk": false,
-"whatsapp": false,
-"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
-},
-"fontsettings": {
-"theme": "white",
-"family": "sans",
-"size": 2
-},
-"edit": {
-"link": "https://github.com/jonesor/BB512_Book/edit/master/7_01_LambdaAndR.Rmd",
-"text": "Edit"
-},
-"history": {
-"link": null,
-"text": null
-},
-"view": {
-"link": null,
-"text": null
-},
-"download": ["BB512.pdf"],
-"search": {
-"engine": "fuse",
-"options": null
-},
-"toc": {
-"collapse": "section"
-},
-"split_by": "section"
+  "sharing": {
+    "github": false,
+    "facebook": true,
+    "twitter": true,
+    "linkedin": false,
+    "weibo": false,
+    "instapaper": false,
+    "vk": false,
+    "whatsapp": false,
+    "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+  },
+  "fontsettings": {
+    "theme": "white",
+    "family": "sans",
+    "size": 2
+  },
+  "edit": {
+    "link": "https://github.com/jonesor/BB512_Book/edit/master/7_01_LambdaAndR.Rmd",
+    "text": "Edit"
+  },
+  "history": {
+    "link": null,
+    "text": null
+  },
+  "view": {
+    "link": null,
+    "text": null
+  },
+  "download": null,
+  "search": {
+    "engine": "fuse",
+    "options": null
+  },
+  "toc": {
+    "collapse": "section"
+  },
+  "split_by": "section"
 });
 });
 </script>

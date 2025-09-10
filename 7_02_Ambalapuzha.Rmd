@@ -30,11 +30,9 @@ So the game of chess started and, needless to say, the king lost the game so it 
 Seeing the king upset, the wise man appeared to the king in his true form, that of Lord Krishna. He told the king that he did not have to pay the debt immediately but could pay him over time. The king would serve rice in the temple freely to the pilgrims every day until the debt was paid off. And that is why the Ambalappuzha Temple in India still serves rice to pilgrims – the debt is still being paid off.
 
 
-```{block, type="do-something"}
 Use the Excel sheet (`[RiceOnAChessboard.xlsx](https://www.dropbox.com/s/nf81t0hzz34vyzk/RiceOnAChessboard.xlsx?dl=1)`) to calculate the quantity of rice that the king owed.
 
 A grain of rice weighs 25mg, what weight of rice did the king owe in total, in kg?
-```
 
 ## Animals/plants, not grains of rice.
 

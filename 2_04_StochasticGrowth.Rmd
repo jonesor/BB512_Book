@@ -47,9 +47,8 @@ Learning outcomes:
 
 ## Your task
 
-```{block, type="do-something"}
 Use the Excel worksheet,  `[StochasticPopulationGrowth.xslx](https://www.dropbox.com/s/1wpixbpgwlh54f0/StochasticPopulationGrowth.xlsx?dl=1)`,  to study how stochastic population growth works with this simple model.
-```
+
 
 
 1)	Use Excel formulae to calculate deterministic population size through time (20 generations, with starting population of 100), linking to the mean finite population growth rate.
@@ -97,43 +96,60 @@ startPop = 10 # pop size at start
 nGen = 50 # number of generations
 nTrials = 100 # number of repeated simulations
 
-####################################################################
-#If you are unfamiliar with R, do not edit anything below this line!
-####################################################################
+##########################################################
+#If you are unfamiliar with R, don't edit below this line!
+##########################################################
 
 pseudoExtinction = 1
 
 # First randomly generate some lambda values
-rValues <- matrix(rnorm(nTrials*nGen, mean = mean.r, sd = sqrt(var.r)),
-                  ncol=nTrials,nrow=nGen)
+rValues <- matrix(rnorm(nTrials * nGen, 
+                        mean = mean.r, 
+                        sd = sqrt(var.r)),
+                  ncol = nTrials,
+                  nrow = nGen)
 
-# Use a histogram to see what they look like (uncomment the line below)
+# Use a histogram to see what they look like 
+# (uncomment the line below)
 # hist(lambdas,col="grey",main="")
 
-# Now run the simulations to see what the resulting population growth looks like
+# Now run the simulations to see what the resulting 
+#population growth looks like
 trials = matrix(data = NA, nrow = nGen, ncol = nTrials)
-for (j in 1:nTrials){
-  popSize = startPop  
-  for (i in 2: nGen){
-  stoch.r = rValues[i,j]
-  popSize = append(popSize, popSize[i-1]*exp(stoch.r))
-}
-trials[,j] = popSize
-rm(popSize)
+for (j in 1:nTrials) {
+  popSize = startPop
+  for (i in 2:nGen) {
+    stoch.r = rValues[i, j]
+    popSize = append(popSize, popSize[i - 1] * exp(stoch.r))
+  }
+  trials[, j] = popSize
+  rm(popSize)
 }
 
 #Calculate probability of (pseudo)extinction
-minvals <- apply(trials,2,min)
-nExtinct <- length(minvals[minvals<=pseudoExtinction])
-nExtinct/nTrials
+minvals <- apply(trials, 2, min)
+nExtinct <- length(minvals[minvals <= pseudoExtinction])
+nExtinct / nTrials
 
 #Make a plot of the population trajectories
-plot(1:nGen,log(seq(0.1,max(trials),length.out=nGen)),type = "n",axes=F,xlab ="Time", ylab = "N",ylim=log(c(0.1,100000)))
-matlines(log(trials),col = "#FF234520",lty=1,lwd=3)
+plot(
+  1:nGen,
+  log(seq(0.1, max(trials), length.out = nGen)),
+  type = "n",
+  axes = F,
+  xlab = "Time",
+  ylab = "N",
+  ylim = log(c(0.1, 100000))
+)
+matlines(log(trials),
+         col = "#FF234520",
+         lty = 1,
+         lwd = 3)
 axis(1)
-axis(2,at = log(c(0.1,1,10,100,1000,10000,100000)),
-     label = c(0.1,1,10,100,1000,10000,100000))
-abline(h=log(pseudoExtinction),lty=2)
+axis(2,
+     at = log(c(0.1, 1, 10, 100, 1000, 10000, 100000)),
+     label = c(0.1, 1, 10, 100, 1000, 10000, 100000))
+abline(h = log(pseudoExtinction), lty = 2)
 ```
 
 ## Questions
