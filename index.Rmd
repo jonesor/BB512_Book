@@ -148,9 +148,10 @@ current_year <- format(Sys.Date(), "%Y")
 link_to_schedule <- paste0("https://mitsdu.sdu.dk/skema/activity/N100007101/e",substr(current_year,3,4))
 ```
 
+```{r schedule-intro, results='asis', echo=FALSE, eval=knitr::is_html_output()}
+cat("This is the schedule for the course. You can check itsLearning for the dates, times and locations. Also check itsLearning for details of other tasks/assignments/reading etc.")
 
-This is the schedule for the course. You can check itsLearning for the dates, times and locations.
-Also check itsLearning for details of other tasks/assignments/reading etc.
+
 
 ```{r, echo = FALSE, message=FALSE, warning=FALSE}
 schedule <- readxl::read_excel("BB512_Schedule.xlsx")
@@ -158,7 +159,7 @@ schedule <- readxl::read_excel("BB512_Schedule.xlsx")
 
 
 
-```{r, echo = FALSE, message=FALSE,eval=knitr::is_html_output(), warning=FALSE}
+```{r scheduletable, echo = FALSE, message=FALSE,eval=knitr::is_html_output(), warning=FALSE}
 schedule2 <- schedule %>%
   select(Part, Session, Type, Topic, Instructor)
 
@@ -166,7 +167,7 @@ big_b <- fp_border(color = "gray70", width = 3)
 std_b <- fp_border(color = "gray70", style = "dashed")
 big_b_end <- fp_border(color = "white", width = 3)
 
-ft <- flextable(schedule2, cwidth = c(2, .5, 1, 4, .75, .75)) %>%
+ft <- flextable(schedule2, cwidth = c(2, .5, 1, 4, .75)) %>%
   bold(part = "header") %>%
   bold(j = 1) %>%
   color(
@@ -182,6 +183,19 @@ ft <- flextable(schedule2, cwidth = c(2, .5, 1, 4, .75, .75)) %>%
 
 ft
 ```
+
+```{r schedule-pdf-note, results='asis', echo=FALSE, message=FALSE, warning=FALSE, eval=knitr::is_latex_output()}
+# Build the official timetable link (same logic you used earlier)
+current_year <- format(Sys.Date(), "%Y")
+link_to_schedule <- paste0("https://mitsdu.sdu.dk/skema/activity/N100007101/e", substr(current_year, 3, 4))
+
+cat("The formatted schedule table appears only in the online version of this book.
+
+- View the live schedule page: <https://jonesor.github.io/BB512_Book/schedule.html>
+- Official SDU timetable (always up to date): <", link_to_schedule, ">
+- For dates, times and rooms, also check itsLearning.
+
+")
 
 
 ```{r, echo =FALSE,message=FALSE,warning=FALSE}
