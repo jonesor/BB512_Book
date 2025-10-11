@@ -23,7 +23,7 @@
 <meta name="author" content="Owen R. Jones (Course Coordinator)" />
 
 
-<meta name="date" content="2025-09-10" />
+<meta name="date" content="2025-10-11" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -84,8 +84,9 @@
 
 
 <style type="text/css">
+html { -webkit-text-size-adjust: 100%; }
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -95,7 +96,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -420,7 +421,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="25.7.5" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#chaotic-dynamics"><i class="fa fa-check"></i><b>25.7.5</b> Chaotic dynamics</a></li>
 </ul></li>
 <li class="chapter" data-level="25.8" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#solutions-life-tables-and-survivorship-types"><i class="fa fa-check"></i><b>25.8</b> Solutions: Life tables and survivorship types</a></li>
-<li class="chapter" data-level="25.9" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#solutions-matrix-population-modeling"><i class="fa fa-check"></i><b>25.9</b> Solutions: Matrix population modeling</a></li>
+<li class="chapter" data-level="25.9" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#solutions-matrix-population-modelling"><i class="fa fa-check"></i><b>25.9</b> Solutions: Matrix population modelling</a></li>
 <li class="chapter" data-level="25.10" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#solutions-how-many-eggs-should-a-bird-lay"><i class="fa fa-check"></i><b>25.10</b> Solutions: How many eggs should a bird lay?</a></li>
 <li class="chapter" data-level="25.11" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#solutions-trade-offs-and-the-force-of-selection"><i class="fa fa-check"></i><b>25.11</b> Solutions: Trade-offs and the force of selection</a></li>
 <li class="chapter" data-level="25.12" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#solutions-hardy-weinberg-equilibrium"><i class="fa fa-check"></i><b>25.12</b> Solutions: Hardy-Weinberg equilibrium</a>
@@ -440,7 +441,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="25.15" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#solutions-heritability"><i class="fa fa-check"></i><b>25.15</b> Solutions: Heritability</a></li>
 <li class="chapter" data-level="25.16" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#solutions-lotka-volterra-competition"><i class="fa fa-check"></i><b>25.16</b> Solutions: Lotka-Volterra competition</a></li>
 <li class="chapter" data-level="25.17" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#solutions-lotka-volterra-predator-prey-dynamics"><i class="fa fa-check"></i><b>25.17</b> Solutions: Lotka-Volterra predator-prey dynamics</a></li>
-<li class="chapter" data-level="25.18" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#solutions-the-legend-of-ambalapuzha"><i class="fa fa-check"></i><b>25.18</b> Solutions: The legend of Ambalapuzha</a></li>
+<li class="chapter" data-level="25.18" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#solutions-the-legend-of-ambalappuzha"><i class="fa fa-check"></i><b>25.18</b> Solutions: The legend of Ambalappuzha</a></li>
 <li class="chapter" data-level="25.19" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#solutions-from-population-biology-to-fitness"><i class="fa fa-check"></i><b>25.19</b> Solutions: From population biology to fitness</a></li>
 <li class="chapter" data-level="25.20" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#results-of-the-hawk-dove-games"><i class="fa fa-check"></i><b>25.20</b> Results of the hawk-dove games</a>
 <ul>
@@ -466,10 +467,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="26.3.1" data-path="exponential-growth-in-detail.html"><a href="exponential-growth-in-detail.html#zero-population-growth"><i class="fa fa-check"></i><b>26.3.1</b> Zero population growth</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="27" data-path="the-legend-of-ambalapuzha.html"><a href="the-legend-of-ambalapuzha.html"><i class="fa fa-check"></i><b>27</b> The legend of Ambalapuzha</a>
+<li class="chapter" data-level="27" data-path="the-legend-of-ambalappuzha.html"><a href="the-legend-of-ambalappuzha.html"><i class="fa fa-check"></i><b>27</b> The legend of Ambalappuzha</a>
 <ul>
-<li class="chapter" data-level="27.1" data-path="the-legend-of-ambalapuzha.html"><a href="the-legend-of-ambalapuzha.html#animalsplants-not-grains-of-rice."><i class="fa fa-check"></i><b>27.1</b> Animals/plants, not grains of rice.</a></li>
-<li class="chapter" data-level="27.2" data-path="the-legend-of-ambalapuzha.html"><a href="the-legend-of-ambalapuzha.html#optional-try-these-calculations-in-r"><i class="fa fa-check"></i><b>27.2</b> Optional: Try these calculations in R</a></li>
+<li class="chapter" data-level="27.1" data-path="the-legend-of-ambalappuzha.html"><a href="the-legend-of-ambalappuzha.html#animalsplants-not-grains-of-rice"><i class="fa fa-check"></i><b>27.1</b> Animals/plants, not grains of rice</a>
+<ul>
+<li class="chapter" data-level="27.1.1" data-path="the-legend-of-ambalappuzha.html"><a href="the-legend-of-ambalappuzha.html#quick-exercise-optional"><i class="fa fa-check"></i><b>27.1.1</b> Quick exercise (optional)</a></li>
+<li class="chapter" data-level="27.1.2" data-path="the-legend-of-ambalappuzha.html"><a href="the-legend-of-ambalappuzha.html#discussion-prompts"><i class="fa fa-check"></i><b>27.1.2</b> Discussion prompts</a></li>
+</ul></li>
+<li class="chapter" data-level="27.2" data-path="the-legend-of-ambalappuzha.html"><a href="the-legend-of-ambalappuzha.html#optional-try-these-calculations-in-r"><i class="fa fa-check"></i><b>27.2</b> Optional: Try these calculations in R</a></li>
 </ul></li>
 <li class="chapter" data-level="28" data-path="from-population-biology-to-fitness.html"><a href="from-population-biology-to-fitness.html"><i class="fa fa-check"></i><b>28</b> From population biology to fitness</a>
 <ul>
@@ -505,10 +510,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>In statistical terms, heritability is a ratio of variances, specifically, the variance due to additive genetic factors divided by the total phenotypic variance:</p>
 <p><span class="math inline">\(h^2 = \frac{V_A}{V_P}\)</span></p>
 <p>A heritability value close to 1 suggests that genetic factors strongly influence the trait, making it likely that offspring will inherit similar trait values from their parents. On the other hand, a heritability value close to 0 indicates that environmental factors or random events play a larger role in determining the trait’s expression.</p>
-<p>Across different traits and species heritablity will vary. For example, due to differences in <strong>genetic architecture</strong> where different species may have different numbers of genes affecting the trait, or the same genes may have different effects. In some places <strong>environmental variation</strong> might be greater causing a bigger influence on the trait than genetic factors, reducing heritability. Across populations and traits there may also be variation in <strong>developmental plasticity</strong> whereby a trait might be more plastic and thus less heritable. Furthermore, past <strong>selection pressure</strong> could have altered the amount of genetic variation in traits making them highly heritable in some species, while still being more plastic in others.</p>
-<p>Focusing on the impact of selection is particularly revealing. A trait with a lot of genetic variance contributing to its expression may initially have high heritability. However, the influence of strong selection on heritability can be complex. Over time, strong selection can reduce genetic variance as the population becomes more homogenous for the selected trait. Consequently, heritability can decrease due to the reduction in total genetic variance. When the total genetic variation approaches zero, calculating heritability can lead to estimates that are statistically unstable. Because heritability is the ratio of genetic variance to total variance, a near-zero denominator can make this ratio extremely sensitive to minor variations in either the numerator or the denominator. As a result, even tiny fluctuations in measured variances could dramatically alter the estimate, reducing its reliability and interpretability.</p>
+<p>Across different traits and species heritability will vary. For example, due to differences in <strong>genetic architecture</strong> where different species may have different numbers of genes affecting the trait, or the same genes may have different effects. In some places <strong>environmental variation</strong> might be greater causing a bigger influence on the trait than genetic factors, reducing heritability. Across populations and traits there may also be variation in <strong>developmental plasticity</strong> whereby a trait might be more plastic and thus less heritable. Furthermore, past <strong>selection pressure</strong> could have altered the amount of genetic variation in traits making them highly heritable in some species, while still being more plastic in others.</p>
+<p>Focusing on the impact of selection is particularly revealing. A trait with a lot of genetic variance contributing to its expression may initially have high heritability. However, the influence of strong selection on heritability can be complex. Over time, strong selection can reduce genetic variance as the population becomes more homogeneous for the selected trait. Consequently, heritability can decrease due to the reduction in total genetic variance. When the total genetic variation approaches zero, calculating heritability can lead to estimates that are statistically unstable. Because heritability is the ratio of genetic variance to total variance, a near-zero denominator can make this ratio extremely sensitive to minor variations in either the numerator or the denominator. As a result, even tiny fluctuations in measured variances could dramatically alter the estimate, reducing its reliability and interpretability.</p>
 <p>So, the relationship between the strength of selection and heritability isn’t straightforward and can be influenced by various factors such as environmental conditions, mutation rates, and genetic architecture.</p>
-<p>Nevertheless, heritablity can be useful, and it is possible to estimate heritability by examining the relationship between parent and offspring trait values using linear regression. The slope of the regression line gives an estimate of heritability.</p>
+<p>Nevertheless, heritability can be useful, and it is possible to estimate heritability by examining the relationship between parent and offspring trait values using linear regression. The slope of the regression line gives an estimate of heritability.</p>
 <p><strong>Reference</strong></p>
 <p><a href="https://www.nature.com/scitable/topicpage/estimating-trait-heritability-46889/">Wray, N. &amp; Visscher, P. (2008) Estimating trait heritability. Nature Education 1(1):29</a></p>
 <div class="do-something">

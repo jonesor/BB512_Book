@@ -136,7 +136,7 @@ You should notice that the time taken to reach the maximum population size is re
 *	*Try that… were you correct?*
 *	*What do you notice about the population size through time?* 
 *	*How does the maximum population size compare with the carrying capacity?* 
-* *How would you describe the ‘dynamics’ of this population?*
+* *How would you describe the dynamics of this population?*
 
 You should notice that the population overshoots carrying capacity ($K$), then oscillates around $K$ with damped oscillations that gradually move towards $K$. Therefore if a population has even a moderate population growth rate, and if it has density-dependence, then it can fluctuate in numbers without any extrinsic factor (like weather) acting.
 
@@ -221,7 +221,7 @@ The completed Excel spreadsheet is [here](https://www.dropbox.com/s/j8uv2wf7nz0y
 
 
 
-## Solutions: Matrix population modeling
+## Solutions: Matrix population modelling
 
 The main take home messages for this class are that you should: 
 (1) understand, and be able to draw or interpret life cycle diagram;
@@ -330,7 +330,7 @@ Now then, to answer our questions. First, what is the percentage of butterflies 
    - Population size plays a crucial role in determining the variation in allele frequencies over time. In small populations, random genetic drift has a more pronounced effect, leading to larger fluctuations in allele frequencies. This is because in smaller populations, the random sampling of alleles during reproduction can result in significant changes in allele frequencies. In contrast, in larger populations, these random fluctuations are dampened due to the "averaging" effect of having more individuals. Hence, allele frequencies in larger populations tend to be more stable over time.
 
 2. **How does the probability of *fixation* change with population size?**
-   - The probability of fixation of a new mutation is equal to its initial frequency. For a new mutation appearing in a population, its initial frequency is 1/2N, where N is the population size. Thus, in smaller populations, a new allele has a slightly higher chance of becoming fixed compared to in larger populations. However, it's essential to note that while the probability of fixation is higher in smaller populations, the overall genetic drift's effect is also more pronounced, which means alleles might be lost or fixed more rapidly.
+   - The probability of fixation of a new mutation is equal to its initial frequency. For a new mutation appearing in a population, its initial frequency is 1/2N, where N is the population size. Thus, in smaller populations, a new allele has a slightly higher chance of becoming fixed compared to in larger populations. However, it's essential to note that while the probability of fixation is higher in smaller populations, the overall genetic drift effect is also more pronounced, which means alleles might be lost or fixed more rapidly.
 
 3. **When the population size is large (say 1000), is it still possible for alleles to become fixed?**
    - Yes, it is still possible for alleles to become fixed in a large population, but it typically takes a longer time compared to smaller populations. The larger the population, the more generations it usually takes for an allele to become fixed purely by chance (genetic drift). However, other factors like selection can expedite this process.
@@ -535,7 +535,7 @@ The answers to the questions are [here](https://www.dropbox.com/s/mt43nvqu7cjif6
 
 
 
-## Solutions: The legend of Ambalapuzha
+## Solutions: The legend of Ambalappuzha
 
 You can find the completed Excel file [here](https://www.dropbox.com/s/ybe5qhmfltuhoyv/RiceOnAChessboard_completed.xlsx?dl=1).
 

@@ -2,21 +2,20 @@
 
 ## Background
 
-Game theory is a mathematical discipline that examines decision-making in competitive environments. It provides a framework to analyze strategic interactions between rational actors and understand their choices. One particularly fascinating concept in game theory is the Hawk and Dove idea. Representing two distinct strategies, the Hawk embodies aggression and assertiveness, always seeking to escalate conflicts and dominate opponents. On the other hand, the Dove adopts a more peaceful and conciliatory approach, aiming to avoid confrontations and achieve cooperative outcomes. 
+Game theory is a mathematical discipline that examines decision-making in competitive environments. It provides a framework to analyse strategic interactions between rational actors and understand their choices. One particularly fascinating concept in game theory is the Hawk and Dove idea. Representing two distinct strategies, the Hawk embodies aggression and assertiveness, always seeking to escalate conflicts and dominate opponents. On the other hand, the Dove adopts a more peaceful and conciliatory approach, aiming to avoid confrontations and achieve cooperative outcomes. 
 
-By studying the Hawk and Dove strategies we can gain insights into understanding the delicate balance between competition and cooperation, shedding light on the dynamics of conflicts and the evolution of cooperative behavior in both the natural world and human societies. 
+By studying the Hawk and Dove strategies we can gain insights into understanding the delicate balance between competition and cooperation, shedding light on the dynamics of conflicts and the evolution of cooperative behaviour in both the natural world and human societies. 
 
 The simple model unravels the intricacies of strategic decision-making, with profound implications across various fields, from biology and social sciences to economics and politics.
 
-In this activity, you will play the hawk and dove game with a single partner and then with multiple partners to observe the hypothetical costs and benefits of the antagonist or cooperative behavior, respectively.
+In this activity, you will play the hawk and dove game with a single partner and then with multiple partners to observe the hypothetical costs and benefits of the antagonist or cooperative behaviour, respectively.
 
 ```{block, type="do-something"}
 Learning outcomes: 
 
-- Understanding of the fundamental concepts of game theory and its application in analyzing strategic interactions in competitive environments.
+- Understanding of the fundamental concepts of game theory and its application in analysing strategic interactions in competitive environments.
 - Ability to apply game theory concepts to real-world contexts in biology, or politics.
 - Appreciation of how simple models can be used to address complex biological or political decision making.
-
 ```
 
 
@@ -51,7 +50,7 @@ The experimental hypothesis for this exercise could be that the dove strategy wi
 
 ### GAME ONE
 
-0. On a piece of paper, or in Excel (you could use this file [here](https://www.dropbox.com/s/48lypfd6o0hi46e/Table_2_Group_behavior.xlsx?dl=1)), use a form to collect your results. It should have enough rows for 15 rounds of the game and look like this (where I include an example in the first row):
+0. On a piece of paper, or in Excel (you could use this file [here](https://www.dropbox.com/s/48lypfd6o0hi46e/Table_2_Group_behaviour.xlsx?dl=1)), use a form to collect your results. It should have enough rows for 15 rounds of the game and look like this (where I include an example in the first row):
 
 | Round  |player 1 card   | player 2 card  | P1 benefit  | P2 benefit |
 |---|---|---|---|---|
@@ -62,7 +61,7 @@ The experimental hypothesis for this exercise could be that the dove strategy wi
 
 1. Collect a set of two game cards.
 
-2. Take out the cards labeled hawk and dove and place them face down on the table or conceal them in your hands.
+2. Take out the cards labelled hawk and dove and place them face down on the table or conceal them in your hands.
 
 3. When the instructor gives the signal, show either of the two cards to the student sitting across from you. Try to strategise how to receive the highest benefit from every interaction, but do not communicate with your partner.
 
@@ -78,7 +77,7 @@ The experimental hypothesis for this exercise could be that the dove strategy wi
 
 1. For the second game, you should find a new partner for EACH of the 15 rounds (if possible).
 
-2. Continue playing for 15 rounds or until students end up back in their starting positions, recording the data as before in  [Excel](https://www.dropbox.com/s/3tjkck3kmpek6xc/Table_3_Group_behavior.xlsx?dl=1)) or on paper. Also record the results on a Google Form [here](https://forms.gle/F9YhYcTWRvoF4djt7).
+2. Continue playing for 15 rounds or until students end up back in their starting positions, recording the data as before in  [Excel](https://www.dropbox.com/s/3tjkck3kmpek6xc/Table_3_Group_behaviour.xlsx?dl=1)) or on paper. Also record the results on a Google Form [here](https://forms.gle/F9YhYcTWRvoF4djt7).
 
 3. For each round, I will determine the percentages of hawks and doves played that round and the average benefit received, again using the formula: *Class average benefit = (sum total benefit)/(number of players)*
 
@@ -98,4 +97,4 @@ Discuss as a class what would likely happen if you increased or decreased the re
 
 ## Acknowledgement
 
-This exercises is taken from https://www.jove.com/science-education/10611/group-behavior
+This exercises is taken from https://www.jove.com/science-education/10611/group-behaviour

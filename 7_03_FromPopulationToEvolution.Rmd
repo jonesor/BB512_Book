@@ -13,7 +13,7 @@ Learning outcomes:
 
 We will focus on the concept of **fitness**.
 
-Fitness is a slippery concept, but it is widely accepted that it is closely related to population growth rate. In this class you will explore this concept using some mathematical modelling (aagh!).
+Fitness is a slippery concept, but it is widely accepted that it is closely related to population growth rate. In this class you will explore this concept using some mathematical modelling.
 
 ```{block, type="do-something"}
 This practical uses RStudio (R). It is similar to the previous exercise on matrix population models, but ask for help if you get stuck!

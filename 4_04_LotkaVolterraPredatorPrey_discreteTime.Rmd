@@ -138,4 +138,4 @@ arrows(x0 = output_df$V[nrow(output_df) - 1],
 
 ## Conclusion
 
-This document demonstrates how to implement and explore the discrete-time Lotka-Volterra predator-prey model. By adjusting the time step (\( \Delta t \)) and other parameters, you can investigate how predator-prey dynamics are influenced by ecological factors. You will see that a time lag imposed by the *t* parameter results in expanding spirals in the phase plot and eventual extinction of predator and prey. Contrast this with the pertpetual oscillations you get with the continuous time model.
+This document demonstrates how to implement and explore the discrete-time Lotka-Volterra predator-prey model. By adjusting the time step (\( \Delta t \)) and other parameters, you can investigate how predator-prey dynamics are influenced by ecological factors. You will see that a time lag imposed by the *t* parameter results in expanding spirals in the phase plot and eventual extinction of predator and prey. Contrast this with the perpetual oscillations you get with the continuous time model.

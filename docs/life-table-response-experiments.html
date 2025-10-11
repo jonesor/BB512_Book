@@ -23,7 +23,7 @@
 <meta name="author" content="Owen R. Jones (Course Coordinator)" />
 
 
-<meta name="date" content="2025-09-10" />
+<meta name="date" content="2025-10-11" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -84,8 +84,9 @@
 
 
 <style type="text/css">
+html { -webkit-text-size-adjust: 100%; }
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -95,7 +96,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -420,7 +421,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="25.7.5" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#chaotic-dynamics"><i class="fa fa-check"></i><b>25.7.5</b> Chaotic dynamics</a></li>
 </ul></li>
 <li class="chapter" data-level="25.8" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#solutions-life-tables-and-survivorship-types"><i class="fa fa-check"></i><b>25.8</b> Solutions: Life tables and survivorship types</a></li>
-<li class="chapter" data-level="25.9" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#solutions-matrix-population-modeling"><i class="fa fa-check"></i><b>25.9</b> Solutions: Matrix population modeling</a></li>
+<li class="chapter" data-level="25.9" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#solutions-matrix-population-modelling"><i class="fa fa-check"></i><b>25.9</b> Solutions: Matrix population modelling</a></li>
 <li class="chapter" data-level="25.10" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#solutions-how-many-eggs-should-a-bird-lay"><i class="fa fa-check"></i><b>25.10</b> Solutions: How many eggs should a bird lay?</a></li>
 <li class="chapter" data-level="25.11" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#solutions-trade-offs-and-the-force-of-selection"><i class="fa fa-check"></i><b>25.11</b> Solutions: Trade-offs and the force of selection</a></li>
 <li class="chapter" data-level="25.12" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#solutions-hardy-weinberg-equilibrium"><i class="fa fa-check"></i><b>25.12</b> Solutions: Hardy-Weinberg equilibrium</a>
@@ -440,7 +441,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="25.15" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#solutions-heritability"><i class="fa fa-check"></i><b>25.15</b> Solutions: Heritability</a></li>
 <li class="chapter" data-level="25.16" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#solutions-lotka-volterra-competition"><i class="fa fa-check"></i><b>25.16</b> Solutions: Lotka-Volterra competition</a></li>
 <li class="chapter" data-level="25.17" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#solutions-lotka-volterra-predator-prey-dynamics"><i class="fa fa-check"></i><b>25.17</b> Solutions: Lotka-Volterra predator-prey dynamics</a></li>
-<li class="chapter" data-level="25.18" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#solutions-the-legend-of-ambalapuzha"><i class="fa fa-check"></i><b>25.18</b> Solutions: The legend of Ambalapuzha</a></li>
+<li class="chapter" data-level="25.18" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#solutions-the-legend-of-ambalappuzha"><i class="fa fa-check"></i><b>25.18</b> Solutions: The legend of Ambalappuzha</a></li>
 <li class="chapter" data-level="25.19" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#solutions-from-population-biology-to-fitness"><i class="fa fa-check"></i><b>25.19</b> Solutions: From population biology to fitness</a></li>
 <li class="chapter" data-level="25.20" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#results-of-the-hawk-dove-games"><i class="fa fa-check"></i><b>25.20</b> Results of the hawk-dove games</a>
 <ul>
@@ -466,10 +467,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="26.3.1" data-path="exponential-growth-in-detail.html"><a href="exponential-growth-in-detail.html#zero-population-growth"><i class="fa fa-check"></i><b>26.3.1</b> Zero population growth</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="27" data-path="the-legend-of-ambalapuzha.html"><a href="the-legend-of-ambalapuzha.html"><i class="fa fa-check"></i><b>27</b> The legend of Ambalapuzha</a>
+<li class="chapter" data-level="27" data-path="the-legend-of-ambalappuzha.html"><a href="the-legend-of-ambalappuzha.html"><i class="fa fa-check"></i><b>27</b> The legend of Ambalappuzha</a>
 <ul>
-<li class="chapter" data-level="27.1" data-path="the-legend-of-ambalapuzha.html"><a href="the-legend-of-ambalapuzha.html#animalsplants-not-grains-of-rice."><i class="fa fa-check"></i><b>27.1</b> Animals/plants, not grains of rice.</a></li>
-<li class="chapter" data-level="27.2" data-path="the-legend-of-ambalapuzha.html"><a href="the-legend-of-ambalapuzha.html#optional-try-these-calculations-in-r"><i class="fa fa-check"></i><b>27.2</b> Optional: Try these calculations in R</a></li>
+<li class="chapter" data-level="27.1" data-path="the-legend-of-ambalappuzha.html"><a href="the-legend-of-ambalappuzha.html#animalsplants-not-grains-of-rice"><i class="fa fa-check"></i><b>27.1</b> Animals/plants, not grains of rice</a>
+<ul>
+<li class="chapter" data-level="27.1.1" data-path="the-legend-of-ambalappuzha.html"><a href="the-legend-of-ambalappuzha.html#quick-exercise-optional"><i class="fa fa-check"></i><b>27.1.1</b> Quick exercise (optional)</a></li>
+<li class="chapter" data-level="27.1.2" data-path="the-legend-of-ambalappuzha.html"><a href="the-legend-of-ambalappuzha.html#discussion-prompts"><i class="fa fa-check"></i><b>27.1.2</b> Discussion prompts</a></li>
+</ul></li>
+<li class="chapter" data-level="27.2" data-path="the-legend-of-ambalappuzha.html"><a href="the-legend-of-ambalappuzha.html#optional-try-these-calculations-in-r"><i class="fa fa-check"></i><b>27.2</b> Optional: Try these calculations in R</a></li>
 </ul></li>
 <li class="chapter" data-level="28" data-path="from-population-biology-to-fitness.html"><a href="from-population-biology-to-fitness.html"><i class="fa fa-check"></i><b>28</b> From population biology to fitness</a>
 <ul>
@@ -513,7 +518,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="a-worked-example" class="section level2 hasAnchor" number="13.3">
 <h2><span class="header-section-number">13.3</span> A worked example<a href="life-table-response-experiments.html#a-worked-example" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>In this example, we consider a two-stage matrix model to analyze, say, squirrel populations in two different geographic locations. The first, a reference population from Location A, represents an area with favorable environmental conditions. The matrix model for this population distinguishes between juveniles (J) and adults (A), incorporating probabilities for juveniles maturing into adults (0.5) and adults surviving and staying adult (0.6), as well as the fecundity rate (2.3), which is the number of juveniles produced by an adult.</p>
+<p>In this example, we consider a two-stage matrix model to analyse, say, squirrel populations in two different geographic locations. The first, a reference population from Location A, represents an area with favourable environmental conditions. The matrix model for this population distinguishes between juveniles (J) and adults (A), incorporating probabilities for juveniles maturing into adults (0.5) and adults surviving and staying adult (0.6), as well as the fecundity rate (2.3), which is the number of juveniles produced by an adult.</p>
 <p><img src="tempLifeCycleDiagramLTRE.png" /></p>
 <p>The treatment population, from Location B, experiences generally worse environmental conditions during the spring which particularly impacts the juvenile stages, and includes an effect on fecundity (e.g. via neonatal maternal energy allocation). The two matrices can be created in R as follows. Compare the values in the matrix, to the values in the life cycle diagram.</p>
 <div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="life-table-response-experiments.html#cb31-1" tabindex="-1"></a>A_ref <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="fl">0.1</span>,<span class="fl">2.3</span>,</span>
@@ -549,7 +554,7 @@ Note that putting the command in parentheses tells R to both create the new obje
 <h3><span class="header-section-number">13.3.2</span> Contributions from individual matrix elements<a href="life-table-response-experiments.html#contributions-from-individual-matrix-elements" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>The objective of the LTRE (Life Table Response Experiment) analysis in this context is to understand the impact of these environmental differences on the difference in population growth rate between the two populations. This is important because identifying the specific life history traits (i.e. the individual transitions, represented by individual elements of the matrix, such as survival or fecundity) that are most sensitive to environmental changes allows us to pinpoint the key drivers of population dynamics.</p>
 <p>By understanding where differences in growth rate originate, we can make more informed decisions about conservation and management strategies. For instance, if the analysis shows that adult survival has a larger impact on growth rate than fecundity, conservation efforts can be more effectively focused on improving adult survival rates rather than fecundity. Conversely, if juvenile survival or fecundity is more influential, efforts might be better directed towards enhancing these aspects. This targeted approach ensures that resources are allocated efficiently, and interventions are tailored to address the most critical factors affecting the population’s viability under varying environmental conditions.</p>
-<p>By comparing the two models, we can decompose the differences in the overall growth rate (<span class="math inline">\(\lambda\)</span>) between the baseline (Location A) and the modified model (Location B). This analysis will specifically highlight how changes in adult survival and fecundity in the less favorable environment of Location B contribute to any differences in population growth rates compared to the more favorable conditions in Location A. Such insights are crucial for developing effective management and conservation strategies, particularly in understanding the relative importance of different life stages and demographic parameters under varying environmental conditions.</p>
+<p>By comparing the two models, we can decompose the differences in the overall growth rate (<span class="math inline">\(\lambda\)</span>) between the baseline (Location A) and the modified model (Location B). This analysis will specifically highlight how changes in adult survival and fecundity in the less favourable environment of Location B contribute to any differences in population growth rates compared to the more favourable conditions in Location A. Such insights are crucial for developing effective management and conservation strategies, particularly in understanding the relative importance of different life stages and demographic parameters under varying environmental conditions.</p>
 <div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="life-table-response-experiments.html#cb42-1" tabindex="-1"></a>popbio<span class="sc">::</span><span class="fu">LTRE</span>(A_treat,A_ref)</span></code></pre></div>
 <pre><code>##            [,1]        [,2]
 ## [1,]  0.0000000 -0.20832964
@@ -563,7 +568,7 @@ One of the changes actually has a positive impact on growth rate, but this is op
 <p>There are similarities between LTRE analysis and elasticity analysis. Comparing LTRE with elasticity analysis reveals some distinct advantages of LTRE in certain contexts.</p>
 <p>LTRE can handle comparisons where changes occur in multiple life history parameters simultaneously, providing a more comprehensive view of the potential impacts of various factors on population dynamics. This is in contrast to elasticity analysis, which examines the sensitivity of the population growth rate to small changes in individual demographic rates and assumes other parameters remain constant.</p>
 <p>Therefore, LTRE is more directly applicable for evaluating and comparing the impacts of different management strategies or environmental changes that simultaneously affect several demographic traits. It allows for a more nuanced understanding of how specific interventions (like changes in fecundity or survival rates) will influence the population. This is crucial for making informed decisions in conservation and wildlife management.</p>
-<p>In summary, while elasticity analysis is valuable for understanding the inherent sensitivity of a population’s growth rate to changes in its life cycle processes, LTRE can be a more useful tool for analyzing the more complex effects of environmental variations or different management strategies on population dynamics.</p>
+<p>In summary, while elasticity analysis is valuable for understanding the inherent sensitivity of a population’s growth rate to changes in its life cycle processes, LTRE can be a more useful tool for analysing the more complex effects of environmental variations or different management strategies on population dynamics.</p>
 
 </div>
 </div>

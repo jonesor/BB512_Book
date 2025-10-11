@@ -23,7 +23,7 @@
 <meta name="author" content="Owen R. Jones (Course Coordinator)" />
 
 
-<meta name="date" content="2025-09-10" />
+<meta name="date" content="2025-10-11" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -84,8 +84,9 @@
 
 
 <style type="text/css">
+html { -webkit-text-size-adjust: 100%; }
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -95,7 +96,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -420,7 +421,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="25.7.5" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#chaotic-dynamics"><i class="fa fa-check"></i><b>25.7.5</b> Chaotic dynamics</a></li>
 </ul></li>
 <li class="chapter" data-level="25.8" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#solutions-life-tables-and-survivorship-types"><i class="fa fa-check"></i><b>25.8</b> Solutions: Life tables and survivorship types</a></li>
-<li class="chapter" data-level="25.9" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#solutions-matrix-population-modeling"><i class="fa fa-check"></i><b>25.9</b> Solutions: Matrix population modeling</a></li>
+<li class="chapter" data-level="25.9" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#solutions-matrix-population-modelling"><i class="fa fa-check"></i><b>25.9</b> Solutions: Matrix population modelling</a></li>
 <li class="chapter" data-level="25.10" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#solutions-how-many-eggs-should-a-bird-lay"><i class="fa fa-check"></i><b>25.10</b> Solutions: How many eggs should a bird lay?</a></li>
 <li class="chapter" data-level="25.11" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#solutions-trade-offs-and-the-force-of-selection"><i class="fa fa-check"></i><b>25.11</b> Solutions: Trade-offs and the force of selection</a></li>
 <li class="chapter" data-level="25.12" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#solutions-hardy-weinberg-equilibrium"><i class="fa fa-check"></i><b>25.12</b> Solutions: Hardy-Weinberg equilibrium</a>
@@ -440,7 +441,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="25.15" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#solutions-heritability"><i class="fa fa-check"></i><b>25.15</b> Solutions: Heritability</a></li>
 <li class="chapter" data-level="25.16" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#solutions-lotka-volterra-competition"><i class="fa fa-check"></i><b>25.16</b> Solutions: Lotka-Volterra competition</a></li>
 <li class="chapter" data-level="25.17" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#solutions-lotka-volterra-predator-prey-dynamics"><i class="fa fa-check"></i><b>25.17</b> Solutions: Lotka-Volterra predator-prey dynamics</a></li>
-<li class="chapter" data-level="25.18" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#solutions-the-legend-of-ambalapuzha"><i class="fa fa-check"></i><b>25.18</b> Solutions: The legend of Ambalapuzha</a></li>
+<li class="chapter" data-level="25.18" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#solutions-the-legend-of-ambalappuzha"><i class="fa fa-check"></i><b>25.18</b> Solutions: The legend of Ambalappuzha</a></li>
 <li class="chapter" data-level="25.19" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#solutions-from-population-biology-to-fitness"><i class="fa fa-check"></i><b>25.19</b> Solutions: From population biology to fitness</a></li>
 <li class="chapter" data-level="25.20" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#results-of-the-hawk-dove-games"><i class="fa fa-check"></i><b>25.20</b> Results of the hawk-dove games</a>
 <ul>
@@ -466,10 +467,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="26.3.1" data-path="exponential-growth-in-detail.html"><a href="exponential-growth-in-detail.html#zero-population-growth"><i class="fa fa-check"></i><b>26.3.1</b> Zero population growth</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="27" data-path="the-legend-of-ambalapuzha.html"><a href="the-legend-of-ambalapuzha.html"><i class="fa fa-check"></i><b>27</b> The legend of Ambalapuzha</a>
+<li class="chapter" data-level="27" data-path="the-legend-of-ambalappuzha.html"><a href="the-legend-of-ambalappuzha.html"><i class="fa fa-check"></i><b>27</b> The legend of Ambalappuzha</a>
 <ul>
-<li class="chapter" data-level="27.1" data-path="the-legend-of-ambalapuzha.html"><a href="the-legend-of-ambalapuzha.html#animalsplants-not-grains-of-rice."><i class="fa fa-check"></i><b>27.1</b> Animals/plants, not grains of rice.</a></li>
-<li class="chapter" data-level="27.2" data-path="the-legend-of-ambalapuzha.html"><a href="the-legend-of-ambalapuzha.html#optional-try-these-calculations-in-r"><i class="fa fa-check"></i><b>27.2</b> Optional: Try these calculations in R</a></li>
+<li class="chapter" data-level="27.1" data-path="the-legend-of-ambalappuzha.html"><a href="the-legend-of-ambalappuzha.html#animalsplants-not-grains-of-rice"><i class="fa fa-check"></i><b>27.1</b> Animals/plants, not grains of rice</a>
+<ul>
+<li class="chapter" data-level="27.1.1" data-path="the-legend-of-ambalappuzha.html"><a href="the-legend-of-ambalappuzha.html#quick-exercise-optional"><i class="fa fa-check"></i><b>27.1.1</b> Quick exercise (optional)</a></li>
+<li class="chapter" data-level="27.1.2" data-path="the-legend-of-ambalappuzha.html"><a href="the-legend-of-ambalappuzha.html#discussion-prompts"><i class="fa fa-check"></i><b>27.1.2</b> Discussion prompts</a></li>
+</ul></li>
+<li class="chapter" data-level="27.2" data-path="the-legend-of-ambalappuzha.html"><a href="the-legend-of-ambalappuzha.html#optional-try-these-calculations-in-r"><i class="fa fa-check"></i><b>27.2</b> Optional: Try these calculations in R</a></li>
 </ul></li>
 <li class="chapter" data-level="28" data-path="from-population-biology-to-fitness.html"><a href="from-population-biology-to-fitness.html"><i class="fa fa-check"></i><b>28</b> From population biology to fitness</a>
 <ul>
@@ -628,7 +633,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><em>Try that… were you correct?</em></li>
 <li><em>What do you notice about the population size through time?</em></li>
 <li><em>How does the maximum population size compare with the carrying capacity?</em></li>
-<li><em>How would you describe the ‘dynamics’ of this population?</em></li>
+<li><em>How would you describe the dynamics of this population?</em></li>
 </ul>
 <p>You should notice that the population overshoots carrying capacity (<span class="math inline">\(K\)</span>), then oscillates around <span class="math inline">\(K\)</span> with damped oscillations that gradually move towards <span class="math inline">\(K\)</span>. Therefore if a population has even a moderate population growth rate, and if it has density-dependence, then it can fluctuate in numbers without any extrinsic factor (like weather) acting.</p>
 <ul>
@@ -691,8 +696,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>You should understand the relationship between mortality risk and survivorship curve. In other words, you should be able to describe, or do a rough sketch of mortality risk with age, if you have a survivorship curve (or vice versa).</p>
 <p>The completed Excel spreadsheet is <a href="https://www.dropbox.com/s/j8uv2wf7nz0ygmp/Life%20tables%20exercise%20-%20complete.xlsx?dl=1">here</a>.</p>
 </div>
-<div id="solutions-matrix-population-modeling" class="section level2 hasAnchor" number="25.9">
-<h2><span class="header-section-number">25.9</span> Solutions: Matrix population modeling<a href="solutions-and-take-home-messages.html#solutions-matrix-population-modeling" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="solutions-matrix-population-modelling" class="section level2 hasAnchor" number="25.9">
+<h2><span class="header-section-number">25.9</span> Solutions: Matrix population modelling<a href="solutions-and-take-home-messages.html#solutions-matrix-population-modelling" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>The main take home messages for this class are that you should:
 (1) understand, and be able to draw or interpret life cycle diagram;
 (2) be able to (roughly) parameterise a model shown in the life cycle diagram;
@@ -772,7 +777,7 @@ To determine <span class="math inline">\(q\)</span>, which is the frequency of t
 </ul></li>
 <li><strong>How does the probability of <em>fixation</em> change with population size?</strong>
 <ul>
-<li>The probability of fixation of a new mutation is equal to its initial frequency. For a new mutation appearing in a population, its initial frequency is 1/2N, where N is the population size. Thus, in smaller populations, a new allele has a slightly higher chance of becoming fixed compared to in larger populations. However, it’s essential to note that while the probability of fixation is higher in smaller populations, the overall genetic drift’s effect is also more pronounced, which means alleles might be lost or fixed more rapidly.</li>
+<li>The probability of fixation of a new mutation is equal to its initial frequency. For a new mutation appearing in a population, its initial frequency is 1/2N, where N is the population size. Thus, in smaller populations, a new allele has a slightly higher chance of becoming fixed compared to in larger populations. However, it’s essential to note that while the probability of fixation is higher in smaller populations, the overall genetic drift effect is also more pronounced, which means alleles might be lost or fixed more rapidly.</li>
 </ul></li>
 <li><strong>When the population size is large (say 1000), is it still possible for alleles to become fixed?</strong>
 <ul>
@@ -976,8 +981,8 @@ e.</p>
 <p>You can find a completed Excel spreadsheet <a href="https://www.dropbox.com/s/wet7brtgxywdqi5/10.%20Pred-PreyDynamics.xlsx?dl=1">here</a>.</p>
 <p>The answers to the questions are <a href="https://www.dropbox.com/s/mt43nvqu7cjif69/10.%20Answers%20to%20Pred-Prey%20exercise.pdf?dl=1">here</a>.</p>
 </div>
-<div id="solutions-the-legend-of-ambalapuzha" class="section level2 hasAnchor" number="25.18">
-<h2><span class="header-section-number">25.18</span> Solutions: The legend of Ambalapuzha<a href="solutions-and-take-home-messages.html#solutions-the-legend-of-ambalapuzha" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="solutions-the-legend-of-ambalappuzha" class="section level2 hasAnchor" number="25.18">
+<h2><span class="header-section-number">25.18</span> Solutions: The legend of Ambalappuzha<a href="solutions-and-take-home-messages.html#solutions-the-legend-of-ambalappuzha" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>You can find the completed Excel file <a href="https://www.dropbox.com/s/ybe5qhmfltuhoyv/RiceOnAChessboard_completed.xlsx?dl=1">here</a>.</p>
 <p>Take home messages:</p>
 <ul>

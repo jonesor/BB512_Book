@@ -29,7 +29,7 @@ I recommend the UCloud option: Please follow these steps: (i) search for NetLogo
 
 Open NetLogo and click File > Models Library. You can then use the search box at the bottom of the screen to find the model called “Bug Hunt Camouflage”.
 
-This is a model of natural/artificial selection that shows how a population hunted by a predator can develop camouflaging. For example, in a forest with green leaves, green bugs may emerge as the predominant bug color.
+This is a model of natural/artificial selection that shows how a population hunted by a predator can develop camouflaging. For example, in a forest with green leaves, green bugs may emerge as the predominant bug colour.
 
 In the simulation you assume the role of a predatory bird that feeds on insects, which can be different colours.  You will see what effect your hunting has on the colour traits/genetics of these simulated insects, and also how this evolution affects your hunting efficiency.
 
@@ -85,7 +85,7 @@ Some useful keywords:
 
 ## Details about colours (optional) 
 
-The primary colours red, green and blue (RGB) can be mixed to produce any colour (this is how the pixels of TVs and computer monitors work if you look closely). Mixtures of these colours are also used to control the colour of the bugs. Each bug has three pigment “genes”  (R, G and B) that determine their colour phenotype. The more frequently the gene for a pigment is coded for, the stronger that presence of color is in the overall blend of pigments that results in a single phenotype for coloration. For example, a bug that had lots of R, but little G or B would appear as red. In this simulation RGB can vary from 0 to 100.  The mixture of these primary colours results in a colour which has a particular **hue**, **brightness** and **saturation** (Fig  \@ref(fig:colours)).
+The primary colours red, green and blue (RGB) can be mixed to produce any colour (this is how the pixels of TVs and computer monitors work if you look closely). Mixtures of these colours are also used to control the colour of the bugs. Each bug has three pigment “genes”  (R, G and B) that determine their colour phenotype. The more frequently the gene for a pigment is coded for, the stronger that presence of colour is in the overall blend of pigments that results in a single phenotype for colouration. For example, a bug that had lots of R, but little G or B would appear as red. In this simulation RGB can vary from 0 to 100.  The mixture of these primary colours results in a colour which has a particular **hue**, **brightness** and **saturation** (Fig  \@ref(fig:colours)).
 
 **Hue** ranges from 0 to 255 with both ends of that spectrum being red, and as you move from 0 to 255 you pass through all the colours of the rainbow.
 

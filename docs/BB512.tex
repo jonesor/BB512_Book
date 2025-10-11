@@ -1,10 +1,11 @@
 % Options for packages loaded elsewhere
 \PassOptionsToPackage{unicode}{hyperref}
 \PassOptionsToPackage{hyphens}{url}
-%
 \documentclass[
   a4paper]{book}
+\usepackage{xcolor}
 \usepackage{amsmath,amssymb}
+\setcounter{secnumdepth}{5}
 \usepackage{iftex}
 \ifPDFTeX
   \usepackage[T1]{fontenc}
@@ -35,7 +36,6 @@
 }{% if KOMA class
   \KOMAoptions{parskip=half}}
 \makeatother
-\usepackage{xcolor}
 \usepackage{color}
 \usepackage{fancyvrb}
 \newcommand{\VerbBar}{|}
@@ -104,7 +104,8 @@
 \setlength{\emergencystretch}{3em} % prevent overfull lines
 \providecommand{\tightlist}{%
   \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
-\setcounter{secnumdepth}{5}
+\usepackage[]{natbib}
+\bibliographystyle{apalike}
 \usepackage{booktabs}
 \usepackage{tcolorbox}
 \usepackage[a4paper,margin=2.5cm]{geometry}
@@ -133,8 +134,6 @@
     citecolor=darkgray  % citations
   }%
 }
-\usepackage[]{natbib}
-\bibliographystyle{apalike}
 \usepackage{bookmark}
 \IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
 \urlstyle{same}
@@ -146,7 +145,7 @@
 
 \title{BB512 - Population Biology and Evolution}
 \author{Owen R. Jones (Course Coordinator)}
-\date{2025-09-10}
+\date{2025-10-11}
 
 \begin{document}
 \maketitle
@@ -180,7 +179,7 @@ The recommended textbook is Neal (2018). Other useful textbooks, that are NOT ma
 \begin{itemize}
 \tightlist
 \item
-  Neal, D. (2018). \emph{Introduction to Population Biology} (2nd ed.). Cambridge: Cambridge University Press. \url{doi:10.1017/9781139107976}
+  Neal, D. (2018). \emph{Introduction to Population Biology} (2nd edition). Cambridge: Cambridge University Press. \url{doi:10.1017/9781139107976}
 \item
   Gotelli, NJ (2008) \emph{A Primer of Ecology}. Fourth Edition, Sinauer Associates. ISBN: 978-0878933181
 \item
@@ -312,7 +311,7 @@ However, evolutionary biologist Richard Dawkins responded with a different persp
 
 \subsection{Randomness and Selection}\label{randomness-and-selection}
 
-In this exercise, we will explore how random variation, when paired with selection, can lead to specific outcomes that might otherwise seem impossible. We will use an R program to simulate the typing of a target sentence through random letter generation. You'll see firsthand how selection can guide random variation toward a meaningful result, just as natural selection drives biological complexity.
+In this exercise, we will explore how random variation, when paired with selection, can lead to specific outcomes that might otherwise seem impossible. We will use an R program to simulate the typing of a target sentence through random letter generation. You'll see first hand how selection can guide random variation toward a meaningful result, just as natural selection drives biological complexity.
 
 By simulating this process, you'll discover how random changes alone lead to nonsense, but with selection, the ``blind'' process can quickly achieve a desired result.
 
@@ -396,7 +395,7 @@ The program generates a random sequence of characters of the same length as a ta
 
 Over multiple generations, the process narrows down the random sequence until it matches the target phrase. Without selection, no meaningful sentence would be generated.
 
-\textbf{Try it yourself }
+\textbf{Try it yourself}
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi})}
@@ -470,7 +469,7 @@ I recommend the UCloud option: Please follow these steps: (i) search for NetLogo
 
 Open NetLogo and click File \textgreater{} Models Library. You can then use the search box at the bottom of the screen to find the model called ``Bug Hunt Camouflage''.
 
-This is a model of natural/artificial selection that shows how a population hunted by a predator can develop camouflaging. For example, in a forest with green leaves, green bugs may emerge as the predominant bug color.
+This is a model of natural/artificial selection that shows how a population hunted by a predator can develop camouflaging. For example, in a forest with green leaves, green bugs may emerge as the predominant bug colour.
 
 In the simulation you assume the role of a predatory bird that feeds on insects, which can be different colours. You will see what effect your hunting has on the colour traits/genetics of these simulated insects, and also how this evolution affects your hunting efficiency.
 
@@ -546,7 +545,7 @@ Some useful keywords:
 
 \section{Details about colours (optional)}\label{details-about-colours-optional}
 
-The primary colours red, green and blue (RGB) can be mixed to produce any colour (this is how the pixels of TVs and computer monitors work if you look closely). Mixtures of these colours are also used to control the colour of the bugs. Each bug has three pigment ``genes'' (R, G and B) that determine their colour phenotype. The more frequently the gene for a pigment is coded for, the stronger that presence of color is in the overall blend of pigments that results in a single phenotype for coloration. For example, a bug that had lots of R, but little G or B would appear as red. In this simulation RGB can vary from 0 to 100. The mixture of these primary colours results in a colour which has a particular \textbf{hue}, \textbf{brightness} and \textbf{saturation} (Fig \ref{fig:colours}).
+The primary colours red, green and blue (RGB) can be mixed to produce any colour (this is how the pixels of TVs and computer monitors work if you look closely). Mixtures of these colours are also used to control the colour of the bugs. Each bug has three pigment ``genes'' (R, G and B) that determine their colour phenotype. The more frequently the gene for a pigment is coded for, the stronger that presence of colour is in the overall blend of pigments that results in a single phenotype for colouration. For example, a bug that had lots of R, but little G or B would appear as red. In this simulation RGB can vary from 0 to 100. The mixture of these primary colours results in a colour which has a particular \textbf{hue}, \textbf{brightness} and \textbf{saturation} (Fig \ref{fig:colours}).
 
 \textbf{Hue} ranges from 0 to 255 with both ends of that spectrum being red, and as you move from 0 to 255 you pass through all the colours of the rainbow.
 
@@ -672,7 +671,11 @@ Now reset the population growth rate to 1.1. Now let's see if the mathematical r
 
 \section{Background}\label{background-3}
 
-In population biology, one important measure of population dynamics is the population growth rate (\(\lambda\)). This rate tells us how fast a population is growing or shrinking over time. When \(\lambda > 1\), the population grows exponentially; when \(\lambda = 1\), it stays constant, and when \(\lambda < 1\), the population declines.
+In population biology, one important measure of population dynamics is the population growth rate (\(\lambda\)), also known as the finite rate of increase.
+
+The finite rate of increase (\(\lambda\)) is defined as the ratio of population size at time t + 1 to that at time t (\(N_{t+1}/N_t\))), and it is related to the intrinsic rate of increase r by the expression (\(r = \ln \lambda\)).
+
+This rate tells us how fast a population is growing or shrinking over time. When \(\lambda > 1\), the population grows exponentially; when \(\lambda = 1\), it stays constant, and when \(\lambda < 1\), the population declines.
 
 In this exercise, you will estimate the population growth rate (\(\lambda\)) from real population data. The method involves plotting the population size over time, applying a log transformation to linearise the data, and fitting a linear regression model to estimate \(\lambda\). This method is widely used in ecology to analyse growth trends and make predictions.
 
@@ -1456,14 +1459,14 @@ Sketch equivalent graphs for the exponential (geometric) growth model, including
 \begin{itemize}
 \tightlist
 \item
-  What happens to the population dynamics when a time lag is introduced?
+  What happens to the population dynamics when a time lag is introduced? A time lag could be caused by a long gestation period, or by the need to take a year out before breeding again.
 \end{itemize}
 
 \chapter{Life tables and survivorship types}\label{life-tables-and-survivorship-types}
 
 \section{Background}\label{background-7}
 
-Life tables are powerful analytical tools used in various fields to understand and quantify mortality patterns and life expectancy within populations. Originating in population biology and demography, life tables have found extensive applications in epidemiology, human mortality studies, and even product life-cycle management. By systematically tracking and analyzing the survival and mortality rates of individuals within specific cohorts, life tables reveal essential information about population dynamics, age-specific risks, and the factors that influence longevity. As a result, life tables play a vital role in shaping policies, making informed decisions, and gaining a deeper understanding of the complex interplay between age, health, and mortality.
+Life tables are powerful analytical tools used in various fields to understand and quantify mortality patterns and life expectancy within populations. Originating in population biology and demography, life tables have found extensive applications in epidemiology, human mortality studies, and even product life-cycle management. By systematically tracking and analysing the survival and mortality rates of individuals within specific cohorts, life tables reveal essential information about population dynamics, age-specific risks, and the factors that influence longevity. As a result, life tables play a vital role in shaping policies, making informed decisions, and gaining a deeper understanding of the complex interplay between age, health, and mortality.
 
 The basic algebra used in life tables is explained in Neal Chapter 6 and in Gotelli Chapter 3.
 
@@ -1490,7 +1493,7 @@ Learning outcomes:
 \tightlist
 \item
   Increased competence in using Excel formulae for mathematical
-  modeling.
+  modelling.
 \item
   Competence in using mathematical models in Excel to strengthen own
   understanding of biological processes.
@@ -1516,7 +1519,7 @@ Table 3.1 example}'' (don't worry if you don't have the text book).
 
 Let's start with ``\textbf{Life table}''.
 
-The aim now is to use Excel as a modeling tool to produce a life table.
+The aim now is to use Excel as a modelling tool to produce a life table.
 
 I have provided some initial data collected from a cohort of animals. I know how many individuals start each year (i.e.~how many ``\textbf{enter} an interval'') and therefore I can see how many survive each year (i.e.~how many ``enter the \textbf{next} interval). I also know how many (female) babies (on average) are produced by each female.
 
@@ -1783,7 +1786,7 @@ Let's plot this\ldots{}
 
 You should see that the population increases exponentially. The population growth rate is the so-called ``\emph{dominant eigenvalue}'' of the matrix \textbf{A}.
 
-We can ask R for the \emph{eigen values} and \emph{eigen vectors}. These are the population growth rate (\(\lambda\)) and the stable stage distribution (\emph{SSD}) and the reproductive values (\emph{RV}) of the different stages. \emph{SSD} is the expected \emph{proportion} of individuals in the different stage classes at equilibrium (i.e.~the long-term timeframe) and \emph{RV} is the expected number of future offspring by individuals in each stage.
+We can ask R for the \emph{eigen values} and \emph{eigen vectors}. These are the population growth rate (\(\lambda\)) and the stable stage distribution (\emph{SSD}) and the reproductive values (\emph{RV}) of the different stages. \emph{SSD} is the expected \emph{proportion} of individuals in the different stage classes at equilibrium (i.e.~the long-term time frame) and \emph{RV} is the expected number of future offspring by individuals in each stage.
 
 You can see that in this case, using my example values the population is growing 34.58\% per year.
 
@@ -1825,7 +1828,7 @@ What transition is most important to population growth, according to the above?
 
 \section{Life table response experiment (LTRE)}\label{life-table-response-experiment-ltre}
 
-These don't have much to do with life tables (sorry, thats confusing!). The idea is very simple: you run ``experiments'' on your matrix model by asking ``what if'' questions. For example, what would happen if we could increase survival of the juveniles by 20\%? what would happen if adults are hunted more, and thus have a decreased survival by 60\%? what would happen if we provided supplemental food to reproducing females, and increase fecundity by 50\%? etc. Use your imagination!
+These don't have much to do with life tables (sorry, that's confusing!). The idea is very simple: you run ``experiments'' on your matrix model by asking ``what if'' questions. For example, what would happen if we could increase survival of the juveniles by 20\%? what would happen if adults are hunted more, and thus have a decreased survival by 60\%? what would happen if we provided supplemental food to reproducing females, and increase fecundity by 50\%? etc. Use your imagination!
 
 In practice, we do that simply by modifying the matrix model. In the following, I am looking at the effect of increasing fertility in adult and senescent individuals by 50\%:
 
@@ -1930,7 +1933,7 @@ Convert to pre-breeding
 \end{Highlighting}
 \end{Shaded}
 
-Compare population growth rates
+Compare population growth rates. This uses the \texttt{eigs} function from the \texttt{popdemo} R package.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1974,7 +1977,7 @@ First we need to ensure that we have the R packages we need loaded. If you get a
 
 \section{A worked example}\label{a-worked-example}
 
-In this example, we consider a two-stage matrix model to analyze, say, squirrel populations in two different geographic locations. The first, a reference population from Location A, represents an area with favorable environmental conditions. The matrix model for this population distinguishes between juveniles (J) and adults (A), incorporating probabilities for juveniles maturing into adults (0.5) and adults surviving and staying adult (0.6), as well as the fecundity rate (2.3), which is the number of juveniles produced by an adult.
+In this example, we consider a two-stage matrix model to analyse, say, squirrel populations in two different geographic locations. The first, a reference population from Location A, represents an area with favourable environmental conditions. The matrix model for this population distinguishes between juveniles (J) and adults (A), incorporating probabilities for juveniles maturing into adults (0.5) and adults surviving and staying adult (0.6), as well as the fecundity rate (2.3), which is the number of juveniles produced by an adult.
 
 \pandocbounded{\includegraphics[keepaspectratio]{tempLifeCycleDiagramLTRE.png}}
 
@@ -2067,7 +2070,7 @@ The objective of the LTRE (Life Table Response Experiment) analysis in this cont
 
 By understanding where differences in growth rate originate, we can make more informed decisions about conservation and management strategies. For instance, if the analysis shows that adult survival has a larger impact on growth rate than fecundity, conservation efforts can be more effectively focused on improving adult survival rates rather than fecundity. Conversely, if juvenile survival or fecundity is more influential, efforts might be better directed towards enhancing these aspects. This targeted approach ensures that resources are allocated efficiently, and interventions are tailored to address the most critical factors affecting the population's viability under varying environmental conditions.
 
-By comparing the two models, we can decompose the differences in the overall growth rate (\(\lambda\)) between the baseline (Location A) and the modified model (Location B). This analysis will specifically highlight how changes in adult survival and fecundity in the less favorable environment of Location B contribute to any differences in population growth rates compared to the more favorable conditions in Location A. Such insights are crucial for developing effective management and conservation strategies, particularly in understanding the relative importance of different life stages and demographic parameters under varying environmental conditions.
+By comparing the two models, we can decompose the differences in the overall growth rate (\(\lambda\)) between the baseline (Location A) and the modified model (Location B). This analysis will specifically highlight how changes in adult survival and fecundity in the less favourable environment of Location B contribute to any differences in population growth rates compared to the more favourable conditions in Location A. Such insights are crucial for developing effective management and conservation strategies, particularly in understanding the relative importance of different life stages and demographic parameters under varying environmental conditions.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -2092,13 +2095,13 @@ LTRE can handle comparisons where changes occur in multiple life history paramet
 
 Therefore, LTRE is more directly applicable for evaluating and comparing the impacts of different management strategies or environmental changes that simultaneously affect several demographic traits. It allows for a more nuanced understanding of how specific interventions (like changes in fecundity or survival rates) will influence the population. This is crucial for making informed decisions in conservation and wildlife management.
 
-In summary, while elasticity analysis is valuable for understanding the inherent sensitivity of a population's growth rate to changes in its life cycle processes, LTRE can be a more useful tool for analyzing the more complex effects of environmental variations or different management strategies on population dynamics.
+In summary, while elasticity analysis is valuable for understanding the inherent sensitivity of a population's growth rate to changes in its life cycle processes, LTRE can be a more useful tool for analysing the more complex effects of environmental variations or different management strategies on population dynamics.
 
 \chapter{How many eggs should a bird lay?}\label{how-many-eggs-should-a-bird-lay}
 
 \section{Background}\label{background-9}
 
-Trade-offs are inherent compromises in biology, where allocating limited resources to one trait may come at the expense of another. Organisms face these trade-offs when making crucial life-history decisions. One classic example is the British ornithologist David Lack's clutch size trade-off, where bird species must balance between producing more eggs with reduced individual investment or fewer eggs with higher individual investment. In other words, although may be beneficial to have many offspring, the survival of those offspring will decline if they cannot be cared for.
+Trade-offs are inherent compromises in biology, where allocating limited resources to one trait may come at the expense of another. Organisms face these trade-offs when making crucial life-history decisions. One classic example is the British ornithologist David Lack's clutch size trade-off, where bird species must balance between producing more eggs with reduced individual investment or fewer eggs with higher individual investment. In other words, although it may be beneficial to have many offspring, the survival of those offspring will decline if they cannot be cared for.
 
 Understanding such trade-offs sheds light on the fascinating strategies that organisms employ to optimize their fitness and evolutionary success.
 
@@ -2155,7 +2158,7 @@ Advanced: What happens to the optimum as you change the relationship between clu
 
 \chapter{Trade-offs and the declining force of selection}\label{trade-offs-and-the-declining-force-of-selection}
 
-\emph{Why does evolution `care' less and less about you as you age? Because there are trade-offs between early and late life events. }
+\emph{Why does evolution care less and less about you as you age? Because there are trade-offs between early and late life events. }
 
 \section{Background}\label{background-10}
 
@@ -2351,12 +2354,12 @@ You have sampled a population in which you know that the percentage of the homoz
 
 \subsection{Problem \#2.}\label{problem-2.}
 
-Sickle-cell anemia is an interesting genetic disease. Normal homozygous individials (SS) have normal blood cells that are easily infected with the malarial parasite. Thus, many of these individuals become very ill from the parasite and many die. Individuals homozygous for the sickle-cell trait (ss) have red blood cells that readily collapse when deoxygenated. Although malaria cannot grow in these red blood cells, individuals often die because of the genetic defect. However, individuals with the heterozygous condition (Ss) have some ``sickling'' of red blood cells (where the cells become C-shaped), but generally not enough to cause mortality. In addition, malaria cannot survive well within these ``partially defective'' red blood cells. Thus, heterozygotes tend to survive better than either of the homozygous conditions.
+Sickle-cell anaemia is an interesting genetic disease. Normal homozygous individuals (SS) have normal blood cells that are easily infected with the malarial parasite. Thus, many of these individuals become very ill from the parasite and many die. Individuals homozygous for the sickle-cell trait (ss) have red blood cells that readily collapse when deoxygenated. Although malaria cannot grow in these red blood cells, individuals often die because of the genetic defect. However, individuals with the heterozygous condition (Ss) have some ``sickling'' of red blood cells (where the cells become C-shaped), but generally not enough to cause mortality. In addition, malaria cannot survive well within these ``partially defective'' red blood cells. Thus, heterozygotes tend to survive better than either of the homozygous conditions.
 
 \begin{itemize}
 \tightlist
 \item
-  If 9\% of an African population is born with a severe form of sickle-cell anemia (ss), what percentage of the population will be more resistant to malaria because they are heterozygous for the sickle-cell gene?
+  If 9\% of an African population is born with a severe form of sickle-cell anaemia (ss), what percentage of the population will be more resistant to malaria because they are heterozygous for the sickle-cell gene?
 \end{itemize}
 
 \subsection{Problem \#3.}\label{problem-3.}
@@ -2377,7 +2380,7 @@ There are 100 students in a class. Ninety-six did well in the course whereas fou
 
 \subsection{Problem \#4.}\label{problem-4.}
 
-Within a population of butterflies, the color brown (B) is dominant over the color white (b). And, 40\% of all butterflies are white. Given this simple information calculate the following:
+Within a population of butterflies, the colour brown (B) is dominant over the colour white (b). And, 40\% of all butterflies are white. Given this simple information calculate the following:
 
 \begin{itemize}
 \tightlist
@@ -2391,11 +2394,11 @@ Within a population of butterflies, the color brown (B) is dominant over the col
 
 \section{Background}\label{background-12}
 
-A central goal in evolutionary biology is to understand variation -- including genetic variation -- and how it changes through time. One important idea is the ``gene pool,'' which contains all the different versions of genes within a group of organisms. These genes/alleles determine pheotypic traits and other characteristics. To grasp how populations evolve, we need to understand how allele frequencies change in a population. Over time, genetic diversity changes as the relative numbers of alleles changes. Some alleles may be lost from the population while others may become ``fixed'' -- where the allele is present in every individual in the population.
+A central goal in evolutionary biology is to understand variation -- including genetic variation -- and how it changes through time. One important idea is the ``gene pool,'' which contains all the different versions of genes within a group of organisms. These genes/alleles determine phenotype traits and other characteristics. To grasp how populations evolve, we need to understand how allele frequencies change in a population. Over time, genetic diversity changes as the relative numbers of alleles changes. Some alleles may be lost from the population while others may become ``fixed'' -- where the allele is present in every individual in the population.
 
 The primary factor that influences genetic drift in the gene pool model is population size. In small populations, ``sampling error'' means that, just by chance, large changes often occur in the allele frequencies. In large populations, dramatic changes are much less likely.
 
-Two related concepts are critical in understanding genetic drift: bottlenecks and founding effects. A genetic bottleneck occurs when a population dramatically reduces in size due to events like environmental catastrophes. During a bottleneck, allele frequency (and genetic diversity) can change dramatically due to sampling effects during the bottleneck. The founding effect is a similar scenario where a small group (a sample from the population) establishes a new population. The fact that the new population is a small sample of the ancestral population means that the new population can have rather different a genetic composition to the ancestral population.
+Two related concepts are critical in understanding genetic drift: bottlenecks and founding effects. A genetic bottleneck occurs when a population dramatically reduces in size due to events like environmental catastrophes. During a bottleneck, allele frequency (and genetic diversity) can change dramatically due to sampling effects during the bottleneck. The founding effect is a similar scenario where a small group (a sample from the population) establishes a new population. The fact that the new population is a small sample of the ancestral population means that the new population can have rather different genetic composition to the ancestral population.
 
 \begin{do-something}
 Learning outcomes:
@@ -2618,7 +2621,7 @@ command so that you can run both together easily.
 
 \section{Bottlenecks}\label{bottlenecks}
 
-Well done for making it this far. R programming is not for the fainthearted.
+Well done for making it this far. R programming is not for the faint hearted.
 
 Next up, I want you to take the code, and modify the code within the loop to simulate a genetic bottleneck. A genetic bottleneck occurs when the population goes through a period of small population size.
 
@@ -2788,13 +2791,13 @@ In statistical terms, heritability is a ratio of variances, specifically, the va
 
 A heritability value close to 1 suggests that genetic factors strongly influence the trait, making it likely that offspring will inherit similar trait values from their parents. On the other hand, a heritability value close to 0 indicates that environmental factors or random events play a larger role in determining the trait's expression.
 
-Across different traits and species heritablity will vary. For example, due to differences in \textbf{genetic architecture} where different species may have different numbers of genes affecting the trait, or the same genes may have different effects. In some places \textbf{environmental variation} might be greater causing a bigger influence on the trait than genetic factors, reducing heritability. Across populations and traits there may also be variation in \textbf{developmental plasticity} whereby a trait might be more plastic and thus less heritable. Furthermore, past \textbf{selection pressure} could have altered the amount of genetic variation in traits making them highly heritable in some species, while still being more plastic in others.
+Across different traits and species heritability will vary. For example, due to differences in \textbf{genetic architecture} where different species may have different numbers of genes affecting the trait, or the same genes may have different effects. In some places \textbf{environmental variation} might be greater causing a bigger influence on the trait than genetic factors, reducing heritability. Across populations and traits there may also be variation in \textbf{developmental plasticity} whereby a trait might be more plastic and thus less heritable. Furthermore, past \textbf{selection pressure} could have altered the amount of genetic variation in traits making them highly heritable in some species, while still being more plastic in others.
 
-Focusing on the impact of selection is particularly revealing. A trait with a lot of genetic variance contributing to its expression may initially have high heritability. However, the influence of strong selection on heritability can be complex. Over time, strong selection can reduce genetic variance as the population becomes more homogenous for the selected trait. Consequently, heritability can decrease due to the reduction in total genetic variance. When the total genetic variation approaches zero, calculating heritability can lead to estimates that are statistically unstable. Because heritability is the ratio of genetic variance to total variance, a near-zero denominator can make this ratio extremely sensitive to minor variations in either the numerator or the denominator. As a result, even tiny fluctuations in measured variances could dramatically alter the estimate, reducing its reliability and interpretability.
+Focusing on the impact of selection is particularly revealing. A trait with a lot of genetic variance contributing to its expression may initially have high heritability. However, the influence of strong selection on heritability can be complex. Over time, strong selection can reduce genetic variance as the population becomes more homogeneous for the selected trait. Consequently, heritability can decrease due to the reduction in total genetic variance. When the total genetic variation approaches zero, calculating heritability can lead to estimates that are statistically unstable. Because heritability is the ratio of genetic variance to total variance, a near-zero denominator can make this ratio extremely sensitive to minor variations in either the numerator or the denominator. As a result, even tiny fluctuations in measured variances could dramatically alter the estimate, reducing its reliability and interpretability.
 
 So, the relationship between the strength of selection and heritability isn't straightforward and can be influenced by various factors such as environmental conditions, mutation rates, and genetic architecture.
 
-Nevertheless, heritablity can be useful, and it is possible to estimate heritability by examining the relationship between parent and offspring trait values using linear regression. The slope of the regression line gives an estimate of heritability.
+Nevertheless, heritability can be useful, and it is possible to estimate heritability by examining the relationship between parent and offspring trait values using linear regression. The slope of the regression line gives an estimate of heritability.
 
 \textbf{Reference}
 
@@ -3031,7 +3034,7 @@ After completing the Excel sheet, try to answer the following questions:
 \item
   What happens if the predator is better at finding prey? Worse?
 \item
-  Is the behavior of the model sensitive to starting populations? Begin with populations near the point where the isoclines cross, and move slowly farther out.
+  Is the behaviour of the model sensitive to starting populations? Begin with populations near the point where the isoclines cross, and move slowly farther out.
 \item
   What is the ultimate outcome of the predator-prey interaction, regardless of parameter values? How does this compare to real predator and prey populations? What factors not included in the model may explain the differences between model predictions and reality?
 \end{enumerate}
@@ -3220,7 +3223,7 @@ The phase plot shows the relationship between victim and consumer populations. Z
 \subsection{Questions}\label{questions-11}
 
 \textbf{1. Oscillatory Dynamics}
-- Run the simulation with the default parameters. Describe the oscillatory behavior of predator and prey populations over time. How do the populations interact?
+- Run the simulation with the default parameters. Describe the oscillatory behaviour of predator and prey populations over time. How do the populations interact?
 - What happens to the \emph{amplitude} and \emph{period} of the oscillations if you double the initial prey population (\(V\))? What about doubling the initial predator population (\(C\))?
 
 \textbf{2. Neutral Stability}
@@ -3278,7 +3281,7 @@ The main findings of the continuous time model are as follows:
 \item
   \textbf{Parameter Dependence}: The amplitude and period of the oscillations depend on the parameters \(R\), \(a\), \(f\), and \(q\).
 \item
-  \textbf{Phase Plane Behavior}: Predator and prey populations follow closed orbits in the phase plane around the coexistence equilibrium, under the assumption that the system remains undisturbed.
+  \textbf{Phase Plane Behaviour}: Predator and prey populations follow closed orbits in the phase plane around the coexistence equilibrium, under the assumption that the system remains undisturbed.
 \end{enumerate}
 
 \chapter{Discrete-time Lotka-Volterra Predator-Prey Model in R}\label{discrete-time-lotka-volterra-predator-prey-model-in-r}
@@ -3441,7 +3444,7 @@ The phase plot shows the relationship between victim and consumer populations.
 
 \section{Conclusion}\label{conclusion-1}
 
-This document demonstrates how to implement and explore the discrete-time Lotka-Volterra predator-prey model. By adjusting the time step (\(\Delta t\)) and other parameters, you can investigate how predator-prey dynamics are influenced by ecological factors. You will see that a time lag imposed by the \emph{t} parameter results in expanding spirals in the phase plot and eventual extinction of predator and prey. Contrast this with the pertpetual oscillations you get with the continuous time model.
+This document demonstrates how to implement and explore the discrete-time Lotka-Volterra predator-prey model. By adjusting the time step (\(\Delta t\)) and other parameters, you can investigate how predator-prey dynamics are influenced by ecological factors. You will see that a time lag imposed by the \emph{t} parameter results in expanding spirals in the phase plot and eventual extinction of predator and prey. Contrast this with the perpetual oscillations you get with the continuous time model.
 
 \part{Animal behaviour, altruism and sexual selection}\label{part-animal-behaviour-altruism-and-sexual-selection}
 
@@ -3449,13 +3452,13 @@ This document demonstrates how to implement and explore the discrete-time Lotka-
 
 \section{Background}\label{background-17}
 
-Game theory is a mathematical discipline that examines decision-making in competitive environments. It provides a framework to analyze strategic interactions between rational actors and understand their choices. One particularly fascinating concept in game theory is the Hawk and Dove idea. Representing two distinct strategies, the Hawk embodies aggression and assertiveness, always seeking to escalate conflicts and dominate opponents. On the other hand, the Dove adopts a more peaceful and conciliatory approach, aiming to avoid confrontations and achieve cooperative outcomes.
+Game theory is a mathematical discipline that examines decision-making in competitive environments. It provides a framework to analyse strategic interactions between rational actors and understand their choices. One particularly fascinating concept in game theory is the Hawk and Dove idea. Representing two distinct strategies, the Hawk embodies aggression and assertiveness, always seeking to escalate conflicts and dominate opponents. On the other hand, the Dove adopts a more peaceful and conciliatory approach, aiming to avoid confrontations and achieve cooperative outcomes.
 
-By studying the Hawk and Dove strategies we can gain insights into understanding the delicate balance between competition and cooperation, shedding light on the dynamics of conflicts and the evolution of cooperative behavior in both the natural world and human societies.
+By studying the Hawk and Dove strategies we can gain insights into understanding the delicate balance between competition and cooperation, shedding light on the dynamics of conflicts and the evolution of cooperative behaviour in both the natural world and human societies.
 
 The simple model unravels the intricacies of strategic decision-making, with profound implications across various fields, from biology and social sciences to economics and politics.
 
-In this activity, you will play the hawk and dove game with a single partner and then with multiple partners to observe the hypothetical costs and benefits of the antagonist or cooperative behavior, respectively.
+In this activity, you will play the hawk and dove game with a single partner and then with multiple partners to observe the hypothetical costs and benefits of the antagonist or cooperative behaviour, respectively.
 
 \begin{do-something}
 Learning outcomes:
@@ -3464,7 +3467,7 @@ Learning outcomes:
 \tightlist
 \item
   Understanding of the fundamental concepts of game theory and its
-  application in analyzing strategic interactions in competitive
+  application in analysing strategic interactions in competitive
   environments.
 \item
   Ability to apply game theory concepts to real-world contexts in
@@ -3520,7 +3523,7 @@ The experimental hypothesis for this exercise could be that the dove strategy wi
 \setcounter{enumi}{-1}
 \tightlist
 \item
-  On a piece of paper, or in Excel (you could use this file \href{https://www.dropbox.com/s/48lypfd6o0hi46e/Table_2_Group_behavior.xlsx?dl=1}{here}), use a form to collect your results. It should have enough rows for 15 rounds of the game and look like this (where I include an example in the first row):
+  On a piece of paper, or in Excel (you could use this file \href{https://www.dropbox.com/s/48lypfd6o0hi46e/Table_2_Group_behaviour.xlsx?dl=1}{here}), use a form to collect your results. It should have enough rows for 15 rounds of the game and look like this (where I include an example in the first row):
 \end{enumerate}
 
 \begin{longtable}[]{@{}lllll@{}}
@@ -3541,7 +3544,7 @@ Round & player 1 card & player 2 card & P1 benefit & P2 benefit \\
 \item
   Collect a set of two game cards.
 \item
-  Take out the cards labeled hawk and dove and place them face down on the table or conceal them in your hands.
+  Take out the cards labelled hawk and dove and place them face down on the table or conceal them in your hands.
 \item
   When the instructor gives the signal, show either of the two cards to the student sitting across from you. Try to strategise how to receive the highest benefit from every interaction, but do not communicate with your partner.
 \item
@@ -3561,7 +3564,7 @@ Round & player 1 card & player 2 card & P1 benefit & P2 benefit \\
 \item
   For the second game, you should find a new partner for EACH of the 15 rounds (if possible).
 \item
-  Continue playing for 15 rounds or until students end up back in their starting positions, recording the data as before in \href{https://www.dropbox.com/s/3tjkck3kmpek6xc/Table_3_Group_behavior.xlsx?dl=1}{Excel}) or on paper. Also record the results on a Google Form \href{https://forms.gle/F9YhYcTWRvoF4djt7}{here}.
+  Continue playing for 15 rounds or until students end up back in their starting positions, recording the data as before in \href{https://www.dropbox.com/s/3tjkck3kmpek6xc/Table_3_Group_behaviour.xlsx?dl=1}{Excel}) or on paper. Also record the results on a Google Form \href{https://forms.gle/F9YhYcTWRvoF4djt7}{here}.
 \item
   For each round, I will determine the percentages of hawks and doves played that round and the average benefit received, again using the formula: \emph{Class average benefit = (sum total benefit)/(number of players)}
 \end{enumerate}
@@ -3580,7 +3583,7 @@ Discuss as a class what would likely happen if you increased or decreased the re
 
 \section{Acknowledgement}\label{acknowledgement}
 
-This exercises is taken from \url{https://www.jove.com/science-education/10611/group-behavior}
+This exercises is taken from \url{https://www.jove.com/science-education/10611/group-behaviour}
 
 \part{Solutions/answers}\label{part-solutionsanswers}
 
@@ -3827,7 +3830,7 @@ You should notice that the time taken to reach the maximum population size is re
 \item
   \emph{How does the maximum population size compare with the carrying capacity?}
 \item
-  \emph{How would you describe the `dynamics' of this population?}
+  \emph{How would you describe the dynamics of this population?}
 \end{itemize}
 
 You should notice that the population overshoots carrying capacity (\(K\)), then oscillates around \(K\) with damped oscillations that gradually move towards \(K\). Therefore if a population has even a moderate population growth rate, and if it has density-dependence, then it can fluctuate in numbers without any extrinsic factor (like weather) acting.
@@ -3923,7 +3926,7 @@ You should understand the relationship between mortality risk and survivorship c
 
 The completed Excel spreadsheet is \href{https://www.dropbox.com/s/j8uv2wf7nz0ygmp/Life\%20tables\%20exercise\%20-\%20complete.xlsx?dl=1}{here}.
 
-\section{Solutions: Matrix population modeling}\label{solutions-matrix-population-modeling}
+\section{Solutions: Matrix population modelling}\label{solutions-matrix-population-modelling}
 
 The main take home messages for this class are that you should:
 (1) understand, and be able to draw or interpret life cycle diagram;
@@ -4040,7 +4043,7 @@ Now then, to answer our questions. First, what is the percentage of butterflies 
   \begin{itemize}
   \tightlist
   \item
-    The probability of fixation of a new mutation is equal to its initial frequency. For a new mutation appearing in a population, its initial frequency is 1/2N, where N is the population size. Thus, in smaller populations, a new allele has a slightly higher chance of becoming fixed compared to in larger populations. However, it's essential to note that while the probability of fixation is higher in smaller populations, the overall genetic drift's effect is also more pronounced, which means alleles might be lost or fixed more rapidly.
+    The probability of fixation of a new mutation is equal to its initial frequency. For a new mutation appearing in a population, its initial frequency is 1/2N, where N is the population size. Thus, in smaller populations, a new allele has a slightly higher chance of becoming fixed compared to in larger populations. However, it's essential to note that while the probability of fixation is higher in smaller populations, the overall genetic drift effect is also more pronounced, which means alleles might be lost or fixed more rapidly.
   \end{itemize}
 \item
   \textbf{When the population size is large (say 1000), is it still possible for alleles to become fixed?}
@@ -4390,7 +4393,7 @@ You can find a completed Excel spreadsheet \href{https://www.dropbox.com/s/wet7b
 
 The answers to the questions are \href{https://www.dropbox.com/s/mt43nvqu7cjif69/10.\%20Answers\%20to\%20Pred-Prey\%20exercise.pdf?dl=1}{here}.
 
-\section{Solutions: The legend of Ambalapuzha}\label{solutions-the-legend-of-ambalapuzha}
+\section{Solutions: The legend of Ambalappuzha}\label{solutions-the-legend-of-ambalappuzha}
 
 You can find the completed Excel file \href{https://www.dropbox.com/s/ybe5qhmfltuhoyv/RiceOnAChessboard_completed.xlsx?dl=1}{here}.
 
@@ -4696,17 +4699,17 @@ This allows us to relate \(\lambda\) and \(r\) directly. From the discrete model
 
 When the population is steady with zero growth, \(r = 0\) and \(\lambda  = 1\). It's important to note that the relationship \(\lambda = r + 1\) only holds true when the population is not growing or shrinking. This is a special case and should not be generalised. Do not make the common mistake to think that \(\lambda\) is simply \(r + 1\)!
 
-\chapter{The legend of Ambalapuzha}\label{the-legend-of-ambalapuzha}
+\chapter{The legend of Ambalappuzha}\label{the-legend-of-ambalappuzha}
 
 Exponential growth is a powerful concept. To help us grasp it better let's use an ancient Indian chess legend as an example.
 
 \begin{do-something}
-Learning outcomes:
+\textbf{Learning outcomes}
 
 \begin{itemize}
 \tightlist
 \item
-  Use of Excel formulae for mathematical modeling.
+  Use of Excel formulae for mathematical modelling.
 \item
   Understanding the multiplicative process of exponential/geometric
   growth.
@@ -4719,30 +4722,78 @@ According to legend, Lord Krishna once appeared in the form of a wise man in the
 
 The king asked the wise man to choose a prize in case he won. The old man told the king that he had few material needs and that all he wished was a few grains of rice.
 
-He added that the amount of rice itself should be determined using the chess- board in the following manner: one grain of rice would be placed in the first square, two grains in the second square, four in the third square, and so on. Every square would have double the number of grains of its predecessor.
+He added that the amount of rice itself should be determined using the chessboard in the following manner: one grain of rice would be placed in the first square, two grains in the second square, four in the third square, and so on. Every square would have double the number of grains of its predecessor.
 
 Upon hearing this, the king was unhappy, since the man requested only a few grains of rice instead of any of the other riches of the kingdom, which the king would have been happy to donate (he was a generous guy). He requested the old man to add other items to his prize, but the man declined.
 
-So the game of chess started and, needless to say, the king lost the game so it was soon time to pay the old man his prize. As he started adding grains of rice to the chessboard, the king soon realised the true nature of the wise man's demand. The royal granary soon ran out of rice and the king realised that even if he provided all the rice in his kingdom and even the whole of India, he would never be able to fulfill the promised reward. He was distraught that he could not fulfill his promise!
+So the game of chess started and, needless to say, the king lost the game so it was soon time to pay the old man his prize. As he started adding grains of rice to the chessboard, the king soon realised the true nature of the wise man's demand. The royal granary soon ran out of rice and the king realised that even if he provided all the rice in his kingdom and even the whole of India, he would never be able to fulfil the promised reward. He was distraught that he could not fulfil his promise!
 
-Seeing the king upset, the wise man appeared to the king in his true form, that of Lord Krishna. He told the king that he did not have to pay the debt immediately but could pay him over time. The king would serve rice in the temple freely to the pilgrims every day until the debt was paid off. And that is why the Ambalappuzha Temple in India still serves rice to pilgrims -- the debt is still being paid off.
+Seeing the king upset, the wise man appeared to the king in his true form, that of Lord Krishna. He told the king that he did not have to pay the debt immediately but could pay him over time. The king would serve rice in the temple freely to the pilgrims every day until the debt was paid off. And that is why the Ambalappuzha Temple in India still serves rice pudding (palpayasam) to pilgrims -- the debt is still being paid off.
 
-Use the Excel sheet (\texttt{{[}RiceOnAChessboard.xlsx{]}(https://www.dropbox.com/s/nf81t0hzz34vyzk/RiceOnAChessboard.xlsx?dl=1)}) to calculate the quantity of rice that the king owed.
+Use the Excel sheet \href{https://www.dropbox.com/s/nf81t0hzz34vyzk/RiceOnAChessboard.xlsx?dl=1}{RiceOnAChessboard.xlsx} to calculate the quantity of rice that the king owed.
 
 A grain of rice weighs 25mg, what weight of rice did the king owe in total, in kg?
 
-\section{Animals/plants, not grains of rice.}\label{animalsplants-not-grains-of-rice.}
+\section{Animals/plants, not grains of rice}\label{animalsplants-not-grains-of-rice}
 
-Imagine that instead of rice, we were talking about the population growth of bacteria, or rabbits, reproducing every time step.
+Imagine that instead of rice, we were talking about population growth---e.g.~bacteria or rabbits---reproducing every time-step.
+
+\subsection{Quick exercise (optional)}\label{quick-exercise-optional}
+
+We have \textasciitilde100 breeding pairs of great tits (musvit) in woodland around SDU. Each female lays \textasciitilde6 eggs per year with an assumed 50:50 sex ratio.
 
 \begin{itemize}
 \tightlist
 \item
-  Would the model be realistic?
+  \textbf{If survival were 100\%}, how many females would there be after 5 years?
 \item
-  Why/why not?
+  \textbf{Now relax that assumption:} allow realistic survival and recruitment. How do your answers change?
+\end{itemize}
+
+\subsection{Discussion prompts}\label{discussion-prompts}
+
+\begin{itemize}
+\tightlist
 \item
-  What other factors should be taken into account?
+  \textbf{Is the simple doubling model realistic?}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Why / why not?
+  \end{itemize}
+\item
+  \textbf{Key processes to consider:}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Survival \textless{} 100\%; age/stage-specific survival and fecundity
+  \item
+    Density dependence (resources, territories, disease, predation)
+  \item
+    Carrying capacity and feedbacks on reproduction/survival
+  \end{itemize}
+\item
+  \textbf{Variation over time and space:}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Stochasticity (good/bad years), seasonality, environmental drivers
+  \item
+    Dispersal, immigration/emigration
+  \end{itemize}
+\item
+  \textbf{Model structure:}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Age/stage structure (e.g.~juvenile vs adult), sex ratio, mating system
+  \item
+    Time-step choice (daily/weekly/annual) and what processes occur within a step
+  \end{itemize}
 \end{itemize}
 
 \section{Optional: Try these calculations in R}\label{optional-try-these-calculations-in-r}
@@ -4806,7 +4857,7 @@ And we can sum up the total number of grains of rice on the 64 squares of the bo
 ## [1] 1.844674e+19
 \end{verbatim}
 
-To put that \emph{HUGE} number in context, if a grain of rice ways 25mg (0.0000025kg), then we'd have 46,116,860,184,274 kg.
+To put that \emph{HUGE} number in context, if a grain of rice weighs 25mg (0.0000025kg), then we'd have 461,168,601,842,739 kg. That's 461 Gigatonnes, or roughly 8-900 times the yearly global rice production!
 
 \chapter{From population biology to fitness}\label{from-population-biology-to-fitness}
 
@@ -4827,7 +4878,7 @@ Learning outcomes:
 
 We will focus on the concept of \textbf{fitness}.
 
-Fitness is a slippery concept, but it is widely accepted that it is closely related to population growth rate. In this class you will explore this concept using some mathematical modelling (aagh!).
+Fitness is a slippery concept, but it is widely accepted that it is closely related to population growth rate. In this class you will explore this concept using some mathematical modelling.
 
 \begin{do-something}
 This practical uses RStudio (R). It is similar to the previous exercise
@@ -4917,7 +4968,7 @@ Let's plot this\ldots{} Check out how, after a ``transient'' period, there is ex
 \end{Highlighting}
 \end{Shaded}
 
-\pandocbounded{\includegraphics[keepaspectratio]{BB512_files/figure-latex/unnamed-chunk-89-1.pdf}}
+\pandocbounded{\includegraphics[keepaspectratio]{BB512_files/figure-latex/unnamed-chunk-88-1.pdf}}
 
 You can see that the population is increasing and we can calculate the precise population growth rate (\(\lambda\)) like this:
 
@@ -4992,6 +5043,6 @@ Try doing the same thing for the prime-age adults. How much can you
 reduce survival before the cost is not worth bearing?
 \end{do-something}
 
-  \bibliography{book.bib,packages.bib}
+\bibliography{book.bib,packages.bib}
 
 \end{document}

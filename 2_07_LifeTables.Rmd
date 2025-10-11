@@ -2,7 +2,7 @@
 
 ## Background 
 
-Life tables are powerful analytical tools used in various fields to understand and quantify mortality patterns and life expectancy within populations. Originating in population biology and demography, life tables have found extensive applications in epidemiology, human mortality studies, and even product life-cycle management. By systematically tracking and analyzing the survival and mortality rates of individuals within specific cohorts, life tables reveal essential information about population dynamics, age-specific risks, and the factors that influence longevity. As a result, life tables play a vital role in shaping policies, making informed decisions, and gaining a deeper understanding of the complex interplay between age, health, and mortality.
+Life tables are powerful analytical tools used in various fields to understand and quantify mortality patterns and life expectancy within populations. Originating in population biology and demography, life tables have found extensive applications in epidemiology, human mortality studies, and even product life-cycle management. By systematically tracking and analysing the survival and mortality rates of individuals within specific cohorts, life tables reveal essential information about population dynamics, age-specific risks, and the factors that influence longevity. As a result, life tables play a vital role in shaping policies, making informed decisions, and gaining a deeper understanding of the complex interplay between age, health, and mortality.
 
 The basic algebra used in life tables is explained in Neal Chapter 6 and in Gotelli Chapter 3.
 
@@ -20,7 +20,7 @@ By identifying and understanding these survivorship types, researchers gain crit
 ```{block, type="do-something"}
 Learning outcomes: 
 
-- Increased competence in using Excel formulae for mathematical modeling.
+- Increased competence in using Excel formulae for mathematical modelling.
 - Competence in using mathematical models in Excel to strengthen own understanding of biological processes.
 - Understanding how life tables are calculated.
 - Understanding the three types of survivorship curve and how they relate to mortality and survival probabilities (and their trajectories with age).
@@ -40,7 +40,7 @@ Table 3.1 example*” (don't worry if you don't have the text book).
 
 Let’s start with “**Life table**”.
 
-The aim now is to use Excel as a modeling tool to produce a life table. 
+The aim now is to use Excel as a modelling tool to produce a life table. 
 
 I have provided some initial data collected from a cohort of animals. I know how many individuals start each year (i.e. how many “**enter** an interval”) and therefore I can see how many survive each year (i.e. how many “enter the **next** interval). I also know how many (female) babies (on average) are produced by each female.
 

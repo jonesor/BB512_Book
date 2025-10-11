@@ -111,7 +111,7 @@ Sketch equivalent graphs for the exponential (geometric) growth model, including
 In Figure 2, increasing $r_m$ makes the slope of the line steeper. Higher $r_m$ values result in a higher per capita growth rate when the population size is small. However, the line still intercepts the x-axis at $K$, meaning that the carrying capacity doesn't change, but the rate at which the population reaches $K$ does.
 In Figure 3, as $r_m$ increases, the overall population growth rate increases, with the peak growth rate shifting to a higher value. However, as the population approaches $K$, the growth rate still decreases to zero. -->
 
-* What happens to the population dynamics when a time lag is introduced?
+* What happens to the population dynamics when a time lag is introduced? A time lag could be caused by a long gestation period, or by the need to take a year out before breeding again.
 
 <!--     Introducing a time lag in the feedback system (i.e., where the population size at a given time depends on the population size at a previous time step) typically leads to more complex and sometimes oscillatory dynamics:
      A time lag may cause the population to overshoot the carrying capacity and then oscillate around $K$. This happens because the time lag delays the response of the population to changes in resource availability, leading to a cycle of growth and decline.

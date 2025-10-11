@@ -23,7 +23,7 @@
 <meta name="author" content="Owen R. Jones (Course Coordinator)" />
 
 
-<meta name="date" content="2025-09-10" />
+<meta name="date" content="2025-10-11" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -84,8 +84,9 @@
 
 
 <style type="text/css">
+html { -webkit-text-size-adjust: 100%; }
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -95,7 +96,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -420,7 +421,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="25.7.5" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#chaotic-dynamics"><i class="fa fa-check"></i><b>25.7.5</b> Chaotic dynamics</a></li>
 </ul></li>
 <li class="chapter" data-level="25.8" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#solutions-life-tables-and-survivorship-types"><i class="fa fa-check"></i><b>25.8</b> Solutions: Life tables and survivorship types</a></li>
-<li class="chapter" data-level="25.9" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#solutions-matrix-population-modeling"><i class="fa fa-check"></i><b>25.9</b> Solutions: Matrix population modeling</a></li>
+<li class="chapter" data-level="25.9" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#solutions-matrix-population-modelling"><i class="fa fa-check"></i><b>25.9</b> Solutions: Matrix population modelling</a></li>
 <li class="chapter" data-level="25.10" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#solutions-how-many-eggs-should-a-bird-lay"><i class="fa fa-check"></i><b>25.10</b> Solutions: How many eggs should a bird lay?</a></li>
 <li class="chapter" data-level="25.11" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#solutions-trade-offs-and-the-force-of-selection"><i class="fa fa-check"></i><b>25.11</b> Solutions: Trade-offs and the force of selection</a></li>
 <li class="chapter" data-level="25.12" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#solutions-hardy-weinberg-equilibrium"><i class="fa fa-check"></i><b>25.12</b> Solutions: Hardy-Weinberg equilibrium</a>
@@ -440,7 +441,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="25.15" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#solutions-heritability"><i class="fa fa-check"></i><b>25.15</b> Solutions: Heritability</a></li>
 <li class="chapter" data-level="25.16" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#solutions-lotka-volterra-competition"><i class="fa fa-check"></i><b>25.16</b> Solutions: Lotka-Volterra competition</a></li>
 <li class="chapter" data-level="25.17" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#solutions-lotka-volterra-predator-prey-dynamics"><i class="fa fa-check"></i><b>25.17</b> Solutions: Lotka-Volterra predator-prey dynamics</a></li>
-<li class="chapter" data-level="25.18" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#solutions-the-legend-of-ambalapuzha"><i class="fa fa-check"></i><b>25.18</b> Solutions: The legend of Ambalapuzha</a></li>
+<li class="chapter" data-level="25.18" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#solutions-the-legend-of-ambalappuzha"><i class="fa fa-check"></i><b>25.18</b> Solutions: The legend of Ambalappuzha</a></li>
 <li class="chapter" data-level="25.19" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#solutions-from-population-biology-to-fitness"><i class="fa fa-check"></i><b>25.19</b> Solutions: From population biology to fitness</a></li>
 <li class="chapter" data-level="25.20" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#results-of-the-hawk-dove-games"><i class="fa fa-check"></i><b>25.20</b> Results of the hawk-dove games</a>
 <ul>
@@ -466,10 +467,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="26.3.1" data-path="exponential-growth-in-detail.html"><a href="exponential-growth-in-detail.html#zero-population-growth"><i class="fa fa-check"></i><b>26.3.1</b> Zero population growth</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="27" data-path="the-legend-of-ambalapuzha.html"><a href="the-legend-of-ambalapuzha.html"><i class="fa fa-check"></i><b>27</b> The legend of Ambalapuzha</a>
+<li class="chapter" data-level="27" data-path="the-legend-of-ambalappuzha.html"><a href="the-legend-of-ambalappuzha.html"><i class="fa fa-check"></i><b>27</b> The legend of Ambalappuzha</a>
 <ul>
-<li class="chapter" data-level="27.1" data-path="the-legend-of-ambalapuzha.html"><a href="the-legend-of-ambalapuzha.html#animalsplants-not-grains-of-rice."><i class="fa fa-check"></i><b>27.1</b> Animals/plants, not grains of rice.</a></li>
-<li class="chapter" data-level="27.2" data-path="the-legend-of-ambalapuzha.html"><a href="the-legend-of-ambalapuzha.html#optional-try-these-calculations-in-r"><i class="fa fa-check"></i><b>27.2</b> Optional: Try these calculations in R</a></li>
+<li class="chapter" data-level="27.1" data-path="the-legend-of-ambalappuzha.html"><a href="the-legend-of-ambalappuzha.html#animalsplants-not-grains-of-rice"><i class="fa fa-check"></i><b>27.1</b> Animals/plants, not grains of rice</a>
+<ul>
+<li class="chapter" data-level="27.1.1" data-path="the-legend-of-ambalappuzha.html"><a href="the-legend-of-ambalappuzha.html#quick-exercise-optional"><i class="fa fa-check"></i><b>27.1.1</b> Quick exercise (optional)</a></li>
+<li class="chapter" data-level="27.1.2" data-path="the-legend-of-ambalappuzha.html"><a href="the-legend-of-ambalappuzha.html#discussion-prompts"><i class="fa fa-check"></i><b>27.1.2</b> Discussion prompts</a></li>
+</ul></li>
+<li class="chapter" data-level="27.2" data-path="the-legend-of-ambalappuzha.html"><a href="the-legend-of-ambalappuzha.html#optional-try-these-calculations-in-r"><i class="fa fa-check"></i><b>27.2</b> Optional: Try these calculations in R</a></li>
 </ul></li>
 <li class="chapter" data-level="28" data-path="from-population-biology-to-fitness.html"><a href="from-population-biology-to-fitness.html"><i class="fa fa-check"></i><b>28</b> From population biology to fitness</a>
 <ul>
@@ -529,7 +534,7 @@ how it is visualised.
 <li>What happens if the predators starve more quickly? Less quickly?</li>
 <li>What happens if the predator is more efficient at converting prey into offspring? Less efficient?</li>
 <li>What happens if the predator is better at finding prey? Worse?</li>
-<li>Is the behavior of the model sensitive to starting populations? Begin with populations near the point where the isoclines cross, and move slowly farther out.</li>
+<li>Is the behaviour of the model sensitive to starting populations? Begin with populations near the point where the isoclines cross, and move slowly farther out.</li>
 <li>What is the ultimate outcome of the predator-prey interaction, regardless of parameter values? How does this compare to real predator and prey populations? What factors not included in the model may explain the differences between model predictions and reality?</li>
 </ol>
 </div>

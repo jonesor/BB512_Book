@@ -6,11 +6,11 @@ set.seed(123)
 
 ## Background
 
-A central goal in evolutionary biology is to understand variation -- including genetic variation -- and how it changes through time. One important idea is the "gene pool," which contains all the different versions of genes within a group of organisms. These genes/alleles determine pheotypic traits and other characteristics. To grasp how populations evolve, we need to understand how allele frequencies change in a population. Over time, genetic diversity changes as the relative numbers of alleles changes. Some alleles may be lost from the population while others may become "fixed" -- where the allele is present in every individual in the population. 
+A central goal in evolutionary biology is to understand variation -- including genetic variation -- and how it changes through time. One important idea is the "gene pool," which contains all the different versions of genes within a group of organisms. These genes/alleles determine phenotype traits and other characteristics. To grasp how populations evolve, we need to understand how allele frequencies change in a population. Over time, genetic diversity changes as the relative numbers of alleles changes. Some alleles may be lost from the population while others may become "fixed" -- where the allele is present in every individual in the population. 
 
 The primary factor that influences genetic drift in the gene pool model is population size. In small populations, "sampling error" means that, just by chance, large changes often occur in the allele frequencies. In large populations, dramatic changes are much less likely.
 
-Two related concepts are critical in understanding genetic drift: bottlenecks and founding effects. A genetic bottleneck occurs when a population dramatically reduces in size due to events like environmental catastrophes. During a bottleneck, allele frequency (and genetic diversity) can change dramatically due to sampling effects during the bottleneck. The founding effect is a similar scenario where a small group (a sample from the population) establishes a new population. The fact that the new population is a small sample of the ancestral population means that the new population can have rather different a genetic composition to the ancestral population.
+Two related concepts are critical in understanding genetic drift: bottlenecks and founding effects. A genetic bottleneck occurs when a population dramatically reduces in size due to events like environmental catastrophes. During a bottleneck, allele frequency (and genetic diversity) can change dramatically due to sampling effects during the bottleneck. The founding effect is a similar scenario where a small group (a sample from the population) establishes a new population. The fact that the new population is a small sample of the ancestral population means that the new population can have rather different genetic composition to the ancestral population.
 
 
 ```{block, type="do-something"}
@@ -173,7 +173,7 @@ Tip: make a new script and paste the code loop along with with the plot command 
 
 ## Bottlenecks
 
-Well done for making it this far. R programming is not for the fainthearted.
+Well done for making it this far. R programming is not for the faint hearted.
 
 Next up, I want you to take the code, and modify the code within the loop to simulate a genetic bottleneck. A genetic bottleneck occurs when the population goes through a period of small population size. 
 
@@ -253,7 +253,7 @@ There is no mutation
 * Why is genetic diversity important to a population, for example in a conservation context?
 
 <!---
-Genetic diversity allows populations to explore paramter space
+Genetic diversity allows populations to explore parameter space
 --->
 
 * Can you think of real-life scenarios where understanding gene pool dynamics would be valuable, such as in conservation biology or medical genetics?

@@ -133,7 +133,7 @@ arrows(x0 = output_df$V[nrow(output_df) - 1],
 ### Questions
 
 **1. Oscillatory Dynamics**
-- Run the simulation with the default parameters. Describe the oscillatory behavior of predator and prey populations over time. How do the populations interact?
+- Run the simulation with the default parameters. Describe the oscillatory behaviour of predator and prey populations over time. How do the populations interact?
 - What happens to the *amplitude* and *period* of the oscillations if you double the initial prey population (\( V \))? What about doubling the initial predator population (\( C \))?
 
 **2. Neutral Stability**
@@ -185,4 +185,4 @@ The main findings of the continuous time model are as follows:
 
 4. **Parameter Dependence**: The amplitude and period of the oscillations depend on the parameters \( R \), \( a \), \( f \), and \( q \).
 
-5. **Phase Plane Behavior**: Predator and prey populations follow closed orbits in the phase plane around the coexistence equilibrium, under the assumption that the system remains undisturbed.
+5. **Phase Plane Behaviour**: Predator and prey populations follow closed orbits in the phase plane around the coexistence equilibrium, under the assumption that the system remains undisturbed.

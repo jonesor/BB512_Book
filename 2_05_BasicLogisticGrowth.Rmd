@@ -32,7 +32,6 @@ Learning outcomes:
 - Understanding how strikingly different types of population dynamics can result from the same (logistic) model simply by varying the population growth rate parameter.
 - Understanding the concept of *deterministic chaos* and how it is different from randomness.
 - Competence in using mathematical models in Excel to strengthen own understanding of biological processes.
-
 ```
 
 ## Your Task

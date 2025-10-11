@@ -23,7 +23,7 @@ A2 <- matrix(c(0.0, m2 * p0, m3 * p0,
                0.0,p2,0), byrow = TRUE, nrow = 3)
 ```
 
-Compare population growth rates
+Compare population growth rates. This uses the `eigs` function from the `popdemo` R package.
 
 ```{r comparepgr}
 (popdemo::eigs(A1, what = "lambda"))
