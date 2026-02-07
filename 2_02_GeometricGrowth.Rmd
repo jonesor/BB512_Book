@@ -29,7 +29,7 @@ $N_{t+1} = N_t (1 + R_m)$ and, equivalently, $N_{t+1} = N_t \lambda$.
 Learning outcomes: 
 
 - Competence in using Excel formulae for mathematical modeling.
-- Understanding the the parameters of exponential/geometric growth.
+- Understanding the parameters of exponential/geometric growth.
 - Competence in using mathematical models in Excel to strengthen own understanding of biological processes.
 - Awareness of rearranging of mathematical formulae to produce different forms of models.
 - Knowing that the slope of the $ln(N_t)$ vs. $t$ relationship can tell you about population growth rate (it is $ln(\lambda)$).
@@ -60,5 +60,4 @@ Now reset the population growth rate to 1.1. Now let's see if the mathematical r
 - What makes the geometric growth model "unrealistic" for real-world scenarios? Explain your reasoning.
 - Give an example of real-world populations where geometric growth might be a suitable model. Explain your reasoning.
 - Suppose a population's size decreases by 25% every year due to environmental factors. If there are initially 800 individuals, determine the population size after 4 years.
-
 

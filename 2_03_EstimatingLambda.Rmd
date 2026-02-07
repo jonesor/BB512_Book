@@ -4,7 +4,7 @@
 
 In population biology, one important measure of population dynamics is the population growth rate (\(\lambda\)), also known as the finite rate of increase. 
 
-The finite rate of increase (\(\lambda\)) is defined as the ratio of population size at time t + 1 to that at time t (\(N_{t+1}/N_t\))), and it is related to the intrinsic rate of increase r by the expression (\(r = \ln \lambda\)).
+The finite rate of increase (\(\lambda\)) is defined as the ratio of population size at time t + 1 to that at time t (\(N_{t+1}/N_t\)), and it is related to the intrinsic rate of increase r by the expression (\(r = \ln \lambda\)).
 
 This rate tells us how fast a population is growing or shrinking over time. When \(\lambda > 1\), the population grows exponentially; when \(\lambda = 1\), it stays constant, and when \(\lambda < 1\), the population declines.
 
@@ -107,5 +107,4 @@ Learning outcomes:
 * What does the log-transformed plot of population size over time tell you about the population's growth trend? Does the population appear to grow exponentially?
 * What is the estimated population growth rate (\(\lambda\)) based on your linear regression analysis?
 * What assumptions does this model make about population growth? Discuss any potential real-world factors that might affect the accuracy of your estimate for \(\lambda\).
-
 

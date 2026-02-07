@@ -1,8 +1,10 @@
 library(tidyverse)
 library(readxl)
 library(janitor)
-require(googledrive)
 
+if (!requireNamespace("googledrive", quietly = TRUE)) {
+  stop("Package 'googledrive' is required to download data.")
+}
 # Download from Google Drive
 file <- googledrive::drive_find(pattern = "Game theory part 1", type = "spreadsheet")
 file
@@ -62,11 +64,10 @@ perIndiv_bothPlayers <- bind_rows(perIndiv_player2,perIndiv_player1)
 ggplot(perIndiv_bothPlayers,aes(x = mean_Hawkishness)) + 
   geom_histogram(bins = 13) + 
   xlim(0,1) + 
-  ggtitle("There is variation strategy among individuals")
+  ggtitle("There is variation in strategy among individuals")
 
 ggplot(perIndiv_bothPlayers,aes(x = mean_Hawkishness,y = mean_benefit)) + 
   geom_point() + 
   stat_smooth(method="lm",formula=y~poly(x, 2),fullrange=TRUE)+
   ggtitle("The best strategy in Game 1\nis an intermediate level of hawkishness") + 
   xlim(0,1)
-

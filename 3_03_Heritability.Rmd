@@ -25,15 +25,15 @@ set.seed(123)
 population_1 <- simulate_data(n = 33, m = 0.7, r_squared = 0.5, min_x = 80, max_x = 110, precision = 1)
 population_2 <- simulate_data(n = 37, m = 0.1, r_squared = 0.5, min_x = 80, max_x = 110, precision = 1)
 
-#Rename columns of data
+# Rename columns of data
 names(population_1) <- c("Parent_value", "Offspring_value")
 names(population_2) <- c("Parent_value", "Offspring_value")
 
-pathToDirectory <- "/Users/jones/Dropbox/_SDU_Teaching/BB512/Practicals/Heritability"
+pathToDirectory <- "data"
 
 
-write.csv(x = population_1,file = file.path(pathToDirectory,"heritability_pop1.csv"), row.names = FALSE)
-write.csv(x = population_2,file = file.path(pathToDirectory,"heritability_pop2.csv"), row.names = FALSE)
+write.csv(x = population_1, file = file.path(pathToDirectory, "heritability_pop1.csv"), row.names = FALSE)
+write.csv(x = population_2, file = file.path(pathToDirectory, "heritability_pop2.csv"), row.names = FALSE)
 ```
 
 
@@ -119,7 +119,7 @@ After you have completed the linear regression analysis for the first dataset, a
 These methods assume the following.
 
 * Additive Genetic Effects: Assumes that the trait is influenced by additive effects of multiple genes and does not account for gene-gene or gene-environment interactions.
-No Shared Environment: Assumes that the shared environment between parent and offspring does not significantly contribute to the trait similarity. Otherwise, the heritability may be overestimated.
+* No Shared Environment: Assumes that the shared environment between parent and offspring does not significantly contribute to the trait similarity. Otherwise, the heritability may be overestimated.
 * Linearity: Assumes that the relationship between the parent and offspring trait values can be adequately captured by a linear model. A non-linear relationship would make the linear model inappropriate, skewing the heritability estimate.
 * Measurement Accuracy: Assumes that trait values are measured without error. Measurement errors can introduce noise and affect the regression slope, thus affecting the heritability estimate.
 * Random Mating: Assumes that mating occurs randomly with respect to the trait being measured. Non-random mating can skew the estimates.

@@ -171,13 +171,13 @@ arrows(x0 = output_df$V[nrow(output_df) - 1],
 
 ### Conclusion
 
-This document demonstrates how to implement and explore the Lotka-Volterra predator-prey model in continuous time using R. By varying parameters and initial conditions, you can investigate how predator-prey dynamics are influenced by ecological factors. Notice that, unlike the discrete time model, which has an implicit time lag of 1, the continuous-time model results in dynamically stable cycles rather than cycles with increasing amplitude (and certain extinction). To fit a discrete-time version of the model, take a look at the Excel exercise ([here](https://jonesor.github.io/BB512_Book/lotka-volterra-predator-prey-dynamics.html)) or the R exercise (here).
+This document demonstrates how to implement and explore the Lotka-Volterra predator-prey model in continuous time using R. By varying parameters and initial conditions, you can investigate how predator-prey dynamics are influenced by ecological factors. Notice that, unlike the discrete time model, which has an implicit time lag of 1, the continuous-time model results in dynamically stable cycles rather than cycles with increasing amplitude (and certain extinction). To fit a discrete-time version of the model, take a look at the Excel exercise ([here](https://jonesor.github.io/BB512_Book/lotka-volterra-predator-prey-dynamics.html)) or the R exercise [here](discrete-time-lotka-volterra-predator-prey-model-in-r.html).
 
 The main findings of the continuous time model are as follows: 
 
 1. **Oscillatory Dynamics**: Predator and prey populations exhibit cyclical oscillations. The prey population increases when predator numbers are low, while the predator population grows when prey is abundant.
    
-2. **Neutral Stability**: The oscillations are neutrally stable under idealized conditions; they persist indefinitely without damping or amplification unless external factors or parameter changes are introduced. Unless the parameters set to truly extreme values, extinction is not possible.
+2. **Neutral Stability**: The oscillations are neutrally stable under idealized conditions; they persist indefinitely without damping or amplification unless external factors or parameter changes are introduced. Unless the parameters are set to truly extreme values, extinction is not possible.
 
 3. **Equilibrium Points**: There are two equilibria:
    - The trivial equilibrium, where both predator and prey populations are zero.

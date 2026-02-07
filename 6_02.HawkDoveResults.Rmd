@@ -10,19 +10,21 @@ In the game, you were asked to compete with the same person 15 times in a row.
 library(tidyverse)
 library(readxl)
 library(janitor)
-require(googledrive)
 
 downloadNewData <- FALSE
 
-if(downloadNewData == TRUE){
-# Download from Google Drive
-file <- googledrive::drive_find(pattern = "Game theory part 1", type = "spreadsheet")
-file
-googledrive::drive_download(
-  file = googledrive::as_id(file$id),
-  path = paste("data/", file$name, ".xlsx", sep = ""),
-  type = "xlsx", overwrite = TRUE
-)
+if (downloadNewData == TRUE) {
+  if (!requireNamespace("googledrive", quietly = TRUE)) {
+    stop("Package 'googledrive' is required when downloadNewData is TRUE.")
+  }
+  # Download from Google Drive
+  file <- googledrive::drive_find(pattern = "Game theory part 1", type = "spreadsheet")
+  file
+  googledrive::drive_download(
+    file = googledrive::as_id(file$id),
+    path = paste("data/", file$name, ".xlsx", sep = ""),
+    type = "xlsx", overwrite = TRUE
+  )
 }
 
 hdg <- readxl::read_xlsx("data/Game theory part 1 (Responses).xlsx", sheet = 1) %>%
@@ -80,7 +82,7 @@ The average hawkishness overall is `r round(mean(hawkishness$meanHawk),3)`, but 
 ggplot(perIndiv_bothPlayers,aes(x = mean_Hawkishness)) + 
   geom_histogram(bins = 13) + 
   xlim(0,1) + 
-  ggtitle("There is variation strategy among individuals") +
+  ggtitle("There is variation in strategy among individuals") +
   xlab("Mean hawkishness")
 ```
 
@@ -91,7 +93,7 @@ We can now ask whether the level of hawkishness changed during the game on avera
 
 We can see from this graph that as the game proceeds round-by-round, there is no significant change in the level of hawkishness (p=`r round(summary(mod1)$coefficients[2,4],3)`). 
 
-In other cases, it has been found the the average level of hawkishness tends to decline with the amount time playing together, as opponents build trust and begin to see the value in cooperation.
+In other cases, it has been found that the average level of hawkishness tends to decline with the amount of time playing together, as opponents build trust and begin to see the value in cooperation.
 
 ```{r hawkdoveresults5, echo = FALSE, message = FALSE}
 ggplot(hawkishness,aes(x = round,y = meanHawk)) + 
@@ -101,9 +103,9 @@ ggplot(hawkishness,aes(x = round,y = meanHawk)) +
   ylab("Mean hawkishness") + 
   xlab("Round")
 ```
-Next, we can ask whether the amount of benefits received (fitness) is associated with the degree of hawkishness. This, in evolutionary terms, is a way of seeing what the Evolutionary Stable Strategy (ESS) is. Is it 
+Next, we can ask whether the amount of benefits received (fitness) is associated with the degree of hawkishness. This, in evolutionary terms, is a way of seeing what the Evolutionary Stable Strategy (ESS) is. Is it an intermediate strategy, or more hawkish or dovish?
 
-What we see is that the maximum benefits I received when hawkishness is it an intermediate level of around 0.5-0.6, though we clearly suffered from a lack of dove-like individuals in the study group!
+What we see is that the maximum benefits are received when hawkishness is at an intermediate level of around 0.5-0.6, though we clearly suffered from a lack of dove-like individuals in the study group!
 
 
 ```{r hawkdoveresults6, echo = FALSE, message = FALSE}
@@ -112,8 +114,8 @@ ggplot(perIndiv_bothPlayers,aes(x = mean_Hawkishness,y = mean_benefit)) +
   stat_smooth(method="lm",formula=y~poly(x, 2),fullrange=TRUE)+
   ggtitle("The best strategy in Game 1\nis an intermediate level of hawkishness") + 
   xlim(0,1) +
-    ylab("Mean hawkishness") + 
-  xlab("Mean benefit")
+  ylab("Mean benefit") + 
+  xlab("Mean hawkishness")
 ```
 
 ### Game 2 - different opponents
@@ -183,8 +185,6 @@ In this setting we might expect  natural selection to drive towards the evolutio
 Think about what this means in terms of human cooperation and conflict avoidance. 
 
 Can you see the value of understanding your opponent/competitor?
-
-
 
 
 

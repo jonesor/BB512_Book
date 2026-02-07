@@ -12,7 +12,7 @@ Remember – this model still allows for unbounded population growth – the pop
 
 
 
-We'll focus on the discrete (Geometric) growth) model:  $N_{t+1}=\lambda N_t$.
+We'll focus on the discrete (Geometric) growth model:  $N_{t+1}=\lambda N_t$.
 
 Because $\lambda = \mathrm{e}^{r_m}$ (and $r_m = ln(\lambda)$), we can rearrange the equation to express it as $N_{t+1}=\mathrm{e}^{r_m} N_t$.
 

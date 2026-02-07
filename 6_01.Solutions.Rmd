@@ -385,7 +385,7 @@ The take home message here is that whether traits are adaptive or neutral depend
 
 Consider genes that confer antibiotic resistance on bacteria. In the absence of antibiotics, these genes are not important and are not selected for. They still evolve (if they vary among individuals and are inherited), but this evolution is neutral with no selection. On the other hand, when antibiotics are introduced to the system, those same genes are strongly selected for and evolution of the genes for antibiotic resistance is now strongly adaptive. Context matters.
 
-The same is the case for traits in humans. Assuming the the traits vary among individuals and are inherited, their neutrality or adaptiveness depends on their effect on fitness. If the traits have strong effects on fitness then they will be under strong selection but if they have weak or no effects on fitness they will evolve via neutral evolution.
+The same is the case for traits in humans. Assuming that the traits vary among individuals and are inherited, their neutrality or adaptiveness depends on their effect on fitness. If the traits have strong effects on fitness then they will be under strong selection but if they have weak or no effects on fitness they will evolve via neutral evolution.
 
 Example traits that evolve via neutral evolution include fingerprint structure and iris structure. The detailed structures are not important to fitness, but are still genetically determined, and inherited.
 
@@ -397,14 +397,14 @@ Traits like muscle strength, running speed may have been important for fitness w
 You can read in data like this:
 
 ```{r, eval = FALSE}
-population_1 <- read.csv("heritability_pop1.csv")
+population_1 <- read.csv("data/heritability_pop1.csv")
 ```
 
 Though you can also use the "Wizard" in RStudio.
 
 ```{r echo = FALSE, eval = TRUE}
-pathToDirectory <- "/Users/jones/Dropbox/_SDU_Teaching/BB512/Practicals/Heritability"
-pop_1 <- read.csv(file.path(pathToDirectory,"heritability_pop1.csv"))
+pathToDirectory <- "data"
+pop_1 <- read.csv(file.path(pathToDirectory, "heritability_pop1.csv"))
 ```
 
 Plot the data as follows.
@@ -413,7 +413,7 @@ Plot the data as follows.
 # Plot the relationship
 plot(pop_1$Parent_value, pop_1$Offspring_value,
      xlab ="Parent value",
-     ylab ="Offsping value")
+     ylab ="Offspring value")
 
 # fit the linear regression model
 mod1 <- lm(Offspring_value~ Parent_value, data = pop_1)
@@ -448,20 +448,20 @@ The graph for the second population looks like this:
 
 
 ```{r echo = FALSE, eval = TRUE}
-pathToDirectory <- "/Users/jones/Dropbox/_SDU_Teaching/BB512/Practicals/Heritability"
-pop_2 <- read.csv(file.path(pathToDirectory,"heritability_pop2.csv"))
+pathToDirectory <- "data"
+pop_2 <- read.csv(file.path(pathToDirectory, "heritability_pop2.csv"))
 ```
 Plot the data as follows.
 
 ```{r plotparentoffspring}
 plot(pop_2$Parent_value, pop_2$Offspring_value,
      xlab ="Parent value",
-     ylab ="Offsping value")
+     ylab ="Offspring value")
 
 # fit the model.
 mod2 <- lm(Offspring_value~ Parent_value, data = pop_2)
 abline(mod2)
-summary(mod1)
+summary(mod2)
 ```
 
 For this population, the heritability (slope of the relationship) is `r round(as.vector(coef(mod2)[2]),3)` in this case. This is fairly low heritability.
@@ -566,4 +566,3 @@ Thus, old-age costs are "worth it" while prime age costs are much more important
 
 
 Cobweb diagrams and bifurcation plots offer another way of visualising dynamics of populations (see the article about Chaos, by Mathiopoulos).
-

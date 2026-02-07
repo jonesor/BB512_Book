@@ -41,7 +41,7 @@ Part 2 modifies the basic model to include a refuge, and part 3 modifies the mod
 
 ## R-version
 
-An R version of this exercise is available here.
+An R version of this exercise is available [here](continuous-time-lotka-volterra-predator-prey-model-in-r.html).
 
 ### Reference 
 

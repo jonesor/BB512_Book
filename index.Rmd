@@ -31,6 +31,8 @@ description: "Course book for BB512 at the Biology Department, University of Sou
 knitr::opts_chunk$set(
   warning = FALSE, message = FALSE
 )
+library(dplyr)
+library(flextable)
 library(officer)
 ```
 
@@ -67,13 +69,13 @@ For most classes you will need your personal laptops: Please bring them to class
 
 ## Expectations
 
-There are lectures and practical exercise sessions on the course. The practical sessions are designed to help you understand the subject better and I expect students to attend and actively participate in both. There will also be some multiple choice quizzes (e-tests) during the semester. These are intended to help you figure out whether you know the material, and whether there are areas you need to revisit. They do not contribute to your final grade, but I hope you will attempt them. They will definitely increase your understanding of the material. Note that the final assessment will be a similar format!
+There are lectures and practical exercise sessions on the course. The practical sessions are designed to help you understand the subject better and I expect students to attend and actively participate in both. There will also be some multiple-choice quizzes (e-tests) during the semester. These are intended to help you figure out whether you know the material, and whether there are areas you need to revisit. They do not contribute to your final grade, but I hope you will attempt them. They will definitely increase your understanding of the material. Note that the final assessment will be a similar format!
 
 I expect students to make every effort to keep up with the core reading (mainly the textbook chapters), and to ask questions where they don’t understand.
 
 ## Assessment
 
-The assessment for the course will be an electronic exam held in January with multiple choice and short answer questions. It is worth noting that exam format will be similar to the quizzes mentioned above. The date for the exam will be finalised in December.
+The assessment for the course will be an electronic exam held in January with multiple-choice and short answer questions. It is worth noting that exam format will be similar to the quizzes mentioned above. The date for the exam will be finalised in December.
 
 ## Instructors
 
@@ -96,14 +98,14 @@ We will use Excel and R/RStudio during this course.
 
 I expect you will already have Excel installed, so there is not much to say here.
 
-Be aware that Excel differs depending on the language it is localised in. For example, Danish vs. English. This means that some of the commands might differ between version. 
+Be aware that Excel differs depending on the language it is localised in. For example, Danish vs. English. This means that some of the commands might differ between versions. 
 See [here](https://easy-excel.com/excel-in-other-languages/excel-formulas-in-danish/) for examples.
 
 ### R and RStudio
 
 R and RStudio are two separate pieces of software. RStudio is a user-friendly interface to talk to R, it cannot work if you have not got R installed. So, when you install these two programs, install R first, then RStudio.
 
-Already have them installed?  I strongly recommend to update to the latest versions of R and RStudio, which you can download at the following sites:
+Already have them installed?  I strongly recommend updating to the latest versions of R and RStudio, which you can download at the following sites:
 
 * R: [https://cran.r-project.org](https://cran.r-project.org)
 * RStudio: [https://www.rstudio.com/products/rstudio/](https://www.rstudio.com/products/rstudio/). 
@@ -123,7 +125,7 @@ plot(pr)
 
 
 ```{block, type="do-something"}
-**This book includes equations. **
+**This book includes equations.**
 
 Equations sometimes do not render correctly on some web browsers. 
 
@@ -133,7 +135,7 @@ Can you see the following equation?
 
 $N_{t+1}=N_{t}+r_{m} N_{t}\left(1-\frac{N_{t}}{K}\right)$
 
-It should like this:
+It should look like this:
 
 ![](testEquation.png)
 
@@ -199,5 +201,5 @@ cat("The formatted schedule table appears only in the online version of this boo
 
 
 ```{r, echo =FALSE,message=FALSE,warning=FALSE}
-#source("personalCalendar.R")
+#source("scripts/personalCalendar.R")
 ```

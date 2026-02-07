@@ -11,7 +11,7 @@ instructorList <- na.omit(unique(icalSchedule$Instructor))
 
 for (inst in 1:length(instructorList)) {
   if (dir.exists(paste0("personalCalendar_", instructorList[inst]))) {
-    system(paste0("rm -r personalCalendar_", instructorList[inst]))
+    unlink(paste0("personalCalendar_", instructorList[inst]), recursive = TRUE, force = TRUE)
   }
   dir.create(paste0("personalCalendar_", instructorList[inst]))
 
@@ -41,7 +41,7 @@ for (inst in 1:length(instructorList)) {
   }
 
   # Remove the Begin/End Calendar lines.
-  combinedFiles[grep(pattern = "*:VCALENDAR", combinedFiles)] <- ""
+  combinedFiles[grep("VCALENDAR", combinedFiles, fixed = TRUE)] <- ""
 
   # Add begin/end calendar lines to the text.
   combinedFiles[1] <- "BEGIN:VCALENDAR"
@@ -55,7 +55,7 @@ for (inst in 1:length(instructorList)) {
 
 
 if (dir.exists("studentCalendar")) {
-  system("rm -r studentCalendar")
+  unlink("studentCalendar", recursive = TRUE, force = TRUE)
 }
 dir.create("studentCalendar")
 
@@ -85,7 +85,7 @@ for (i in 1:length(files)) {
 }
 
 # Remove the Begin/End Calendar lines.
-combinedFiles[grep(pattern = "*:VCALENDAR", combinedFiles)] <- ""
+combinedFiles[grep("VCALENDAR", combinedFiles, fixed = TRUE)] <- ""
 
 # Add begin/end calendar lines to the text.
 combinedFiles[1] <- "BEGIN:VCALENDAR"
@@ -97,7 +97,7 @@ writeLines(combinedFiles, con = "BB512_student.ics")
 
 for (inst in 1:length(instructorList)) {
   if (dir.exists(paste0("personalCalendar_", instructorList[inst]))) {
-    system(paste0("rm -r personalCalendar_", instructorList[inst]))
+    unlink(paste0("personalCalendar_", instructorList[inst]), recursive = TRUE, force = TRUE)
   }
 }
-system("rm -r studentCalendar")
+unlink("studentCalendar", recursive = TRUE, force = TRUE)

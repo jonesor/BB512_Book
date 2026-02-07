@@ -21,9 +21,9 @@ This practical uses RStudio (R). It is similar to the previous exercise on matri
 
 ## An *in silico* experiment
 
-As you learned in the classes on age and stage structured population dynamics differences in survival and reproduction can be modelled using matrix population models (MPMs). These models can be simple or complex, and can be thought of as mathematical descriptions of the life history of the species (or population) in a particular environment.  
+As you learned in the classes on age- and stage-structured population dynamics, differences in survival and reproduction can be modelled using matrix population models (MPMs). These models can be simple or complex, and can be thought of as mathematical descriptions of the life history of the species (or population) in a particular environment.  
 
-In an earlier you will have played with construction and analyses of these models by creating MPMs for species with different life histories such as high juvenile survival, or low juvenile survival etc.
+Earlier in the course you will have played with construction and analyses of these models by creating MPMs for species with different life histories such as high juvenile survival, or low juvenile survival etc.
 
 We will first need to load the `popdemo` package like this. Note that if you have not installed this package you should first install it with the command `install.packages("popdemo")`.
 
