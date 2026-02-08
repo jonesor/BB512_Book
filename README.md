@@ -4,7 +4,9 @@
 
 - Build the book: run `_build.sh` (renders the gitbook).
 - Build from RStudio: open `BB512_Book.Rproj`, then use the `Build Book` button in the Build pane.
-- Build from the RStudio Console: run `bookdown::render_book("index.Rmd")`.
+- Build from the RStudio Console (HTML + PDF): run
+  `bookdown::render_book("index.Rmd", "bookdown::gitbook")` and
+  `bookdown::render_book("index.Rmd", "bookdown::pdf_book")`.
 - Use `_clean.sh` to remove caches and generated artifacts before a clean rebuild.
 
 ### Build/release notes

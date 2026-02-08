@@ -145,7 +145,7 @@
 
 \title{BB512 - Population Biology and Evolution}
 \author{Owen R. Jones (Course Coordinator)}
-\date{2025-10-11}
+\date{2026-02-08}
 
 \begin{document}
 \maketitle
@@ -200,13 +200,13 @@ For most classes you will need your personal laptops: Please bring them to class
 
 \section{Expectations}\label{expectations}
 
-There are lectures and practical exercise sessions on the course. The practical sessions are designed to help you understand the subject better and I expect students to attend and actively participate in both. There will also be some multiple choice quizzes (e-tests) during the semester. These are intended to help you figure out whether you know the material, and whether there are areas you need to revisit. They do not contribute to your final grade, but I hope you will attempt them. They will definitely increase your understanding of the material. Note that the final assessment will be a similar format!
+There are lectures and practical exercise sessions on the course. The practical sessions are designed to help you understand the subject better and I expect students to attend and actively participate in both. There will also be some multiple-choice quizzes (e-tests) during the semester. These are intended to help you figure out whether you know the material, and whether there are areas you need to revisit. They do not contribute to your final grade, but I hope you will attempt them. They will definitely increase your understanding of the material. Note that the final assessment will be a similar format!
 
 I expect students to make every effort to keep up with the core reading (mainly the textbook chapters), and to ask questions where they don't understand.
 
 \section{Assessment}\label{assessment}
 
-The assessment for the course will be an electronic exam held in January with multiple choice and short answer questions. It is worth noting that exam format will be similar to the quizzes mentioned above. The date for the exam will be finalised in December.
+The assessment for the course will be an electronic exam held in January with multiple-choice and short answer questions. It is worth noting that exam format will be similar to the quizzes mentioned above. The date for the exam will be finalised in December.
 
 \section{Instructors}\label{instructors}
 
@@ -218,6 +218,7 @@ The instructors of the course are:
   \href{https://portal.findresearcher.sdu.dk/en/persons/jones}{Owen Jones}, Associate Professor, \href{mailto:jones@biology.sdu.dk}{\nolinkurl{jones@biology.sdu.dk}}
 \item
   \href{https://portal.findresearcher.sdu.dk/en/persons/thomasbb}{Thomas Bjørneboe Berg}, Associate Prof./Senior Scientist at Naturama, \href{mailto:thomas@naturama.dk}{\nolinkurl{thomas@naturama.dk}}
+  NULL
 \end{itemize}
 
 If you have any problems accessing materials, or have any questions regarding the course feel free to send me (Owen) an email, or make a comment in the form I mentioned above. You can also make an appointment to see me via Zoom or in my office if necessary*. PLEASE REMEMBER to tell me which course you are referring to if you send an email!
@@ -234,14 +235,14 @@ We will use Excel and R/RStudio during this course.
 
 I expect you will already have Excel installed, so there is not much to say here.
 
-Be aware that Excel differs depending on the language it is localised in. For example, Danish vs.~English. This means that some of the commands might differ between version.
+Be aware that Excel differs depending on the language it is localised in. For example, Danish vs.~English. This means that some of the commands might differ between versions.
 See \href{https://easy-excel.com/excel-in-other-languages/excel-formulas-in-danish/}{here} for examples.
 
 \subsection{R and RStudio}\label{r-and-rstudio}
 
 R and RStudio are two separate pieces of software. RStudio is a user-friendly interface to talk to R, it cannot work if you have not got R installed. So, when you install these two programs, install R first, then RStudio.
 
-Already have them installed? I strongly recommend to update to the latest versions of R and RStudio, which you can download at the following sites:
+Already have them installed? I strongly recommend updating to the latest versions of R and RStudio, which you can download at the following sites:
 
 \begin{itemize}
 \tightlist
@@ -264,7 +265,7 @@ plot(pr)
 \end{verbatim}
 
 \begin{do-something}
-\textbf{This book includes equations. }
+\textbf{This book includes equations.}
 
 Equations sometimes do not render correctly on some web browsers.
 
@@ -275,7 +276,7 @@ Can you see the following equation?
 
 \(N_{t+1}=N_{t}+r_{m} N_{t}\left(1-\frac{N_{t}}{K}\right)\)
 
-It should like this:
+It should look like this:
 
 \pandocbounded{\includegraphics[keepaspectratio]{testEquation.png}}
 
@@ -292,7 +293,7 @@ The formatted schedule table appears only in the online version of this book.
 \item
   View the live schedule page: \url{https://jonesor.github.io/BB512_Book/schedule.html}
 \item
-  Official SDU timetable (always up to date): \textless{} \url{https://mitsdu.sdu.dk/skema/activity/N100007101/e25} \textgreater{}
+  Official SDU timetable (always up to date): \textless{} \url{https://mitsdu.sdu.dk/skema/activity/N100007101/e26} \textgreater{}
 \item
   For dates, times and rooms, also check itsLearning.
 \end{itemize}
@@ -365,6 +366,7 @@ Note, only edit the top part of the file (above the marked comment)
 phrase <- "With your feet on the air and your head on the ground"
 nGenerations <- 100
 selection <- TRUE
+set.seed(123)
 
 ###################################################
 #Do not edit between the ##
@@ -604,7 +606,7 @@ Learning outcomes:
 \item
   Competence in using Excel formulae for mathematical modeling.
 \item
-  Understanding the the parameters of exponential/geometric growth.
+  Understanding the parameters of exponential/geometric growth.
 \item
   Competence in using mathematical models in Excel to strengthen own
   understanding of biological processes.
@@ -673,7 +675,7 @@ Now reset the population growth rate to 1.1. Now let's see if the mathematical r
 
 In population biology, one important measure of population dynamics is the population growth rate (\(\lambda\)), also known as the finite rate of increase.
 
-The finite rate of increase (\(\lambda\)) is defined as the ratio of population size at time t + 1 to that at time t (\(N_{t+1}/N_t\))), and it is related to the intrinsic rate of increase r by the expression (\(r = \ln \lambda\)).
+The finite rate of increase (\(\lambda\)) is defined as the ratio of population size at time t + 1 to that at time t (\(N_{t+1}/N_t\)), and it is related to the intrinsic rate of increase r by the expression (\(r = \ln \lambda\)).
 
 This rate tells us how fast a population is growing or shrinking over time. When \(\lambda > 1\), the population grows exponentially; when \(\lambda = 1\), it stays constant, and when \(\lambda < 1\), the population declines.
 
@@ -773,7 +775,7 @@ In contrast to the deterministic nature of the geometric growth model, a stochas
 
 Remember -- this model still allows for unbounded population growth -- the populations are not influenced by population density.
 
-We'll focus on the discrete (Geometric) growth) model: \(N_{t+1}=\lambda N_t\).
+We'll focus on the discrete (Geometric) growth model: \(N_{t+1}=\lambda N_t\).
 
 Because \(\lambda = \mathrm{e}^{r_m}\) (and \(r_m = ln(\lambda)\)), we can rearrange the equation to express it as \(N_{t+1}=\mathrm{e}^{r_m} N_t\).
 
@@ -1744,8 +1746,7 @@ Take a look at \texttt{pr}, the projected population. This gives you the total p
 \begin{verbatim}
 ## 1 deterministic population projection over 10 time intervals.
 ## 
-##  [1]  18.0000  55.7000  58.4300  85.2570 111.5643 151.4946 203.2634 273.8278
-##  [9] 368.4012 495.8572 667.3121
+##  [1]  18.0000  55.7000  58.4300  85.2570 111.5643 151.4946 203.2634 273.8278 368.4012 495.8572 667.3121
 \end{verbatim}
 
 You can access the population sizes of the different stages using \texttt{vec(pr)}.
@@ -2896,6 +2897,7 @@ These methods assume the following.
 \tightlist
 \item
   Additive Genetic Effects: Assumes that the trait is influenced by additive effects of multiple genes and does not account for gene-gene or gene-environment interactions.
+\item
   No Shared Environment: Assumes that the shared environment between parent and offspring does not significantly contribute to the trait similarity. Otherwise, the heritability may be overestimated.
 \item
   Linearity: Assumes that the relationship between the parent and offspring trait values can be adequately captured by a linear model. A non-linear relationship would make the linear model inappropriate, skewing the heritability estimate.
@@ -3045,7 +3047,7 @@ Part 2 modifies the basic model to include a refuge, and part 3 modifies the mod
 
 \section{R-version}\label{r-version}
 
-An R version of this exercise is available here.
+An R version of this exercise is available \href{continuous-time-lotka-volterra-predator-prey-model-in-r.html}{here}.
 
 \subsection{Reference}\label{reference}
 
@@ -3258,7 +3260,7 @@ Do the simulated populations approach these values?
 
 \subsection{Conclusion}\label{conclusion}
 
-This document demonstrates how to implement and explore the Lotka-Volterra predator-prey model in continuous time using R. By varying parameters and initial conditions, you can investigate how predator-prey dynamics are influenced by ecological factors. Notice that, unlike the discrete time model, which has an implicit time lag of 1, the continuous-time model results in dynamically stable cycles rather than cycles with increasing amplitude (and certain extinction). To fit a discrete-time version of the model, take a look at the Excel exercise (\href{https://jonesor.github.io/BB512_Book/lotka-volterra-predator-prey-dynamics.html}{here}) or the R exercise (here).
+This document demonstrates how to implement and explore the Lotka-Volterra predator-prey model in continuous time using R. By varying parameters and initial conditions, you can investigate how predator-prey dynamics are influenced by ecological factors. Notice that, unlike the discrete time model, which has an implicit time lag of 1, the continuous-time model results in dynamically stable cycles rather than cycles with increasing amplitude (and certain extinction). To fit a discrete-time version of the model, take a look at the Excel exercise (\href{https://jonesor.github.io/BB512_Book/lotka-volterra-predator-prey-dynamics.html}{here}) or the R exercise \href{discrete-time-lotka-volterra-predator-prey-model-in-r.html}{here}.
 
 The main findings of the continuous time model are as follows:
 
@@ -3267,7 +3269,7 @@ The main findings of the continuous time model are as follows:
 \item
   \textbf{Oscillatory Dynamics}: Predator and prey populations exhibit cyclical oscillations. The prey population increases when predator numbers are low, while the predator population grows when prey is abundant.
 \item
-  \textbf{Neutral Stability}: The oscillations are neutrally stable under idealized conditions; they persist indefinitely without damping or amplification unless external factors or parameter changes are introduced. Unless the parameters set to truly extreme values, extinction is not possible.
+  \textbf{Neutral Stability}: The oscillations are neutrally stable under idealized conditions; they persist indefinitely without damping or amplification unless external factors or parameter changes are introduced. Unless the parameters are set to truly extreme values, extinction is not possible.
 \item
   \textbf{Equilibrium Points}: There are two equilibria:
 
@@ -4179,7 +4181,7 @@ The take home message here is that whether traits are adaptive or neutral depend
 
 Consider genes that confer antibiotic resistance on bacteria. In the absence of antibiotics, these genes are not important and are not selected for. They still evolve (if they vary among individuals and are inherited), but this evolution is neutral with no selection. On the other hand, when antibiotics are introduced to the system, those same genes are strongly selected for and evolution of the genes for antibiotic resistance is now strongly adaptive. Context matters.
 
-The same is the case for traits in humans. Assuming the the traits vary among individuals and are inherited, their neutrality or adaptiveness depends on their effect on fitness. If the traits have strong effects on fitness then they will be under strong selection but if they have weak or no effects on fitness they will evolve via neutral evolution.
+The same is the case for traits in humans. Assuming that the traits vary among individuals and are inherited, their neutrality or adaptiveness depends on their effect on fitness. If the traits have strong effects on fitness then they will be under strong selection but if they have weak or no effects on fitness they will evolve via neutral evolution.
 
 Example traits that evolve via neutral evolution include fingerprint structure and iris structure. The detailed structures are not important to fitness, but are still genetically determined, and inherited.
 
@@ -4191,7 +4193,7 @@ You can read in data like this:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{population\_1 }\OtherTok{\textless{}{-}} \FunctionTok{read.csv}\NormalTok{(}\StringTok{"heritability\_pop1.csv"}\NormalTok{)}
+\NormalTok{population\_1 }\OtherTok{\textless{}{-}} \FunctionTok{read.csv}\NormalTok{(}\StringTok{"data/heritability\_pop1.csv"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -4204,7 +4206,7 @@ Plot the data as follows.
 \CommentTok{\# Plot the relationship}
 \FunctionTok{plot}\NormalTok{(pop\_1}\SpecialCharTok{$}\NormalTok{Parent\_value, pop\_1}\SpecialCharTok{$}\NormalTok{Offspring\_value,}
      \AttributeTok{xlab =}\StringTok{"Parent value"}\NormalTok{,}
-     \AttributeTok{ylab =}\StringTok{"Offsping value"}\NormalTok{)}
+     \AttributeTok{ylab =}\StringTok{"Offspring value"}\NormalTok{)}
 
 \CommentTok{\# fit the linear regression model}
 \NormalTok{mod1 }\OtherTok{\textless{}{-}} \FunctionTok{lm}\NormalTok{(Offspring\_value}\SpecialCharTok{\textasciitilde{}}\NormalTok{ Parent\_value, }\AttributeTok{data =}\NormalTok{ pop\_1)}
@@ -4270,7 +4272,7 @@ Plot the data as follows.
 \begin{Highlighting}[]
 \FunctionTok{plot}\NormalTok{(pop\_2}\SpecialCharTok{$}\NormalTok{Parent\_value, pop\_2}\SpecialCharTok{$}\NormalTok{Offspring\_value,}
      \AttributeTok{xlab =}\StringTok{"Parent value"}\NormalTok{,}
-     \AttributeTok{ylab =}\StringTok{"Offsping value"}\NormalTok{)}
+     \AttributeTok{ylab =}\StringTok{"Offspring value"}\NormalTok{)}
 
 \CommentTok{\# fit the model.}
 \NormalTok{mod2 }\OtherTok{\textless{}{-}} \FunctionTok{lm}\NormalTok{(Offspring\_value}\SpecialCharTok{\textasciitilde{}}\NormalTok{ Parent\_value, }\AttributeTok{data =}\NormalTok{ pop\_2)}
@@ -4282,29 +4284,29 @@ Plot the data as follows.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\FunctionTok{summary}\NormalTok{(mod1)}
+\FunctionTok{summary}\NormalTok{(mod2)}
 \end{Highlighting}
 \end{Shaded}
 
 \begin{verbatim}
 ## 
 ## Call:
-## lm(formula = Offspring_value ~ Parent_value, data = pop_1)
+## lm(formula = Offspring_value ~ Parent_value, data = pop_2)
 ## 
 ## Residuals:
-##      Min       1Q   Median       3Q      Max 
-## -16.9417  -3.8648  -0.2452   4.5332   9.3121 
+##     Min      1Q  Median      3Q     Max 
+## -2.0829 -0.5187 -0.1199  0.6578  1.7023 
 ## 
 ## Coefficients:
 ##              Estimate Std. Error t value Pr(>|t|)    
-## (Intercept)   11.2533    10.9533   1.027    0.312    
-## Parent_value   0.5678     0.1114   5.097 1.63e-05 ***
+## (Intercept)   0.22970    1.53505   0.150    0.882    
+## Parent_value  0.09877    0.01590   6.212 4.07e-07 ***
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ## 
-## Residual standard error: 5.506 on 31 degrees of freedom
-## Multiple R-squared:  0.4559, Adjusted R-squared:  0.4384 
-## F-statistic: 25.98 on 1 and 31 DF,  p-value: 1.628e-05
+## Residual standard error: 0.8022 on 35 degrees of freedom
+## Multiple R-squared:  0.5244, Adjusted R-squared:  0.5108 
+## F-statistic: 38.59 on 1 and 35 DF,  p-value: 4.066e-07
 \end{verbatim}
 
 For this population, the heritability (slope of the relationship) is 0.099 in this case. This is fairly low heritability.
@@ -4442,12 +4444,12 @@ We can now ask whether the level of hawkishness changed during the game on avera
 
 We can see from this graph that as the game proceeds round-by-round, there is no significant change in the level of hawkishness (p=0.642).
 
-In other cases, it has been found the the average level of hawkishness tends to decline with the amount time playing together, as opponents build trust and begin to see the value in cooperation.
+In other cases, it has been found that the average level of hawkishness tends to decline with the amount of time playing together, as opponents build trust and begin to see the value in cooperation.
 
 \pandocbounded{\includegraphics[keepaspectratio]{BB512_files/figure-latex/hawkdoveresults5-1.pdf}}
-Next, we can ask whether the amount of benefits received (fitness) is associated with the degree of hawkishness. This, in evolutionary terms, is a way of seeing what the Evolutionary Stable Strategy (ESS) is. Is it
+Next, we can ask whether the amount of benefits received (fitness) is associated with the degree of hawkishness. This, in evolutionary terms, is a way of seeing what the Evolutionary Stable Strategy (ESS) is. Is it an intermediate strategy, or more hawkish or dovish?
 
-What we see is that the maximum benefits I received when hawkishness is it an intermediate level of around 0.5-0.6, though we clearly suffered from a lack of dove-like individuals in the study group!
+What we see is that the maximum benefits are received when hawkishness is at an intermediate level of around 0.5-0.6, though we clearly suffered from a lack of dove-like individuals in the study group!
 
 \pandocbounded{\includegraphics[keepaspectratio]{BB512_files/figure-latex/hawkdoveresults6-1.pdf}}
 
@@ -4887,9 +4889,9 @@ on matrix population models, but ask for help if you get stuck!
 
 \section{\texorpdfstring{An \emph{in silico} experiment}{An in silico experiment}}\label{an-in-silico-experiment}
 
-As you learned in the classes on age and stage structured population dynamics differences in survival and reproduction can be modelled using matrix population models (MPMs). These models can be simple or complex, and can be thought of as mathematical descriptions of the life history of the species (or population) in a particular environment.
+As you learned in the classes on age- and stage-structured population dynamics, differences in survival and reproduction can be modelled using matrix population models (MPMs). These models can be simple or complex, and can be thought of as mathematical descriptions of the life history of the species (or population) in a particular environment.
 
-In an earlier you will have played with construction and analyses of these models by creating MPMs for species with different life histories such as high juvenile survival, or low juvenile survival etc.
+Earlier in the course you will have played with construction and analyses of these models by creating MPMs for species with different life histories such as high juvenile survival, or low juvenile survival etc.
 
 We will first need to load the \texttt{popdemo} package like this. Note that if you have not installed this package you should first install it with the command \texttt{install.packages("popdemo")}.
 
@@ -4932,8 +4934,7 @@ Take a look at \texttt{pr}, the projected population. This gives you the total p
 \begin{verbatim}
 ## 1 deterministic population projection over 8 time intervals.
 ## 
-## [1] 18.00000 32.70000 31.18000 37.51200 42.93080 50.15272 58.36605 68.04116
-## [9] 79.29730
+## [1] 18.00000 32.70000 31.18000 37.51200 42.93080 50.15272 58.36605 68.04116 79.29730
 \end{verbatim}
 
 You can access the population sizes of the different stages using \texttt{vec(pr)}.
