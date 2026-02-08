@@ -41,11 +41,15 @@ jobs:
             libxslt1-dev \
             libfontconfig1-dev \
             libfreetype6-dev \
+            libharfbuzz-dev \
+            libfribidi-dev \
+            libcairo2-dev \
+            libpango1.0-dev \
+            librsvg2-dev \
+            libglib2.0-dev \
             libpng-dev \
             libjpeg-dev \
             libtiff5-dev \
-            libharfbuzz-dev \
-            libfribidi-dev \
             libgit2-dev \
             libglpk-dev
 
