@@ -2,7 +2,6 @@
 
 ### Build workflow
 
-- Restore packages: `renv::restore()`
 - Build the book: run `_build.sh` (renders the gitbook).
 - Use `_clean.sh` to remove caches and generated artifacts before a clean rebuild.
 
