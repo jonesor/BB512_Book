@@ -23,6 +23,13 @@ jobs:
 
       - name: Setup Pandoc
         uses: r-lib/actions/setup-pandoc@v2
+        with:
+          pandoc-version: "latest"
+
+      - name: Ensure Pandoc On PATH For R
+        run: |
+          echo "Pandoc path: $(which pandoc)"
+          echo "RSTUDIO_PANDOC=$(dirname $(which pandoc))" >> "$GITHUB_ENV"
 
       - name: Install R packages
         run: Rscript -e "install.packages(c('bookdown','tinytex'), repos='https://cloud.r-project.org')"
