@@ -5,8 +5,9 @@ on:
     branches: ["main", "master"]
   pull_request:
   schedule:
-    # Every Monday at 06:00 UTC
+    # Weekly build (Monday 06:00 UTC)
     - cron: "0 6 * * 1"
+  workflow_dispatch:
 
 jobs:
   build:
@@ -20,5 +21,14 @@ jobs:
         with:
           use-public-rspm: true
 
+      - name: Install R packages
+        run: Rscript -e "install.packages(c('bookdown','tinytex'), repos='https://cloud.r-project.org')"
+
+      - name: Setup TinyTeX
+        uses: r-lib/actions/setup-tinytex@v2
+
       - name: Build book (gitbook)
         run: ./_build.sh
+
+      - name: Build book (pdf)
+        run: Rscript -e "bookdown::render_book('index.Rmd', 'bookdown::pdf_book')"
