@@ -32,7 +32,8 @@ jobs:
           echo "RSTUDIO_PANDOC=$(dirname $(which pandoc))" >> "$GITHUB_ENV"
 
       - name: Install R packages
-        run: Rscript -e "install.packages(c('bookdown','tinytex'), repos='https://cloud.r-project.org')"
+        run: |
+          Rscript -e "pkgs <- readLines('packages_used.txt'); pkgs <- unique(c(pkgs, 'bookdown', 'tinytex')); pkgs <- pkgs[nzchar(pkgs)]; install.packages(pkgs, repos='https://cloud.r-project.org')"
 
       - name: Setup TinyTeX
         uses: r-lib/actions/setup-tinytex@v2
