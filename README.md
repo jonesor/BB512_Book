@@ -3,6 +3,8 @@
 ### Build workflow
 
 - Build the book: run `_build.sh` (renders the gitbook).
+- Build from RStudio: open `BB512_Book.Rproj`, then use the `Build Book` button in the Build pane.
+- Build from the RStudio Console: run `bookdown::render_book("index.Rmd")`.
 - Use `_clean.sh` to remove caches and generated artifacts before a clean rebuild.
 
 ### Build/release notes
