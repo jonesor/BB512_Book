@@ -48,6 +48,7 @@ Note, only edit the top part of the file (above the marked comment)
 phrase <- "With your feet on the air and your head on the ground"
 nGenerations <- 100
 selection <- TRUE
+set.seed(123)
 
 ###################################################
 #Do not edit between the ##
