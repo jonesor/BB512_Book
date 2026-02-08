@@ -36,6 +36,23 @@ library(flextable)
 library(officer)
 ```
 
+```{r course-config, include=FALSE}
+course_year <- format(Sys.Date(), "%Y")
+exam_month <- "January"
+exam_note <- "finalised in December"
+
+instructors <- data.frame(
+  name = c("Owen Jones", "Thomas Bjørneboe Berg"),
+  url = c(
+    "https://portal.findresearcher.sdu.dk/en/persons/jones",
+    "https://portal.findresearcher.sdu.dk/en/persons/thomasbb"
+  ),
+  title = c("Associate Professor", "Associate Prof./Senior Scientist at Naturama"),
+  email = c("jones@biology.sdu.dk", "thomas@naturama.dk"),
+  stringsAsFactors = FALSE
+)
+```
+
 # Welcome to BB512
 
 
@@ -75,14 +92,17 @@ I expect students to make every effort to keep up with the core reading (mainly 
 
 ## Assessment
 
-The assessment for the course will be an electronic exam held in January with multiple-choice and short answer questions. It is worth noting that exam format will be similar to the quizzes mentioned above. The date for the exam will be finalised in December.
+The assessment for the course will be an electronic exam held in `r exam_month` with multiple-choice and short answer questions. It is worth noting that exam format will be similar to the quizzes mentioned above. The date for the exam will be `r exam_note`.
 
 ## Instructors
 
 The instructors of the course are:
 
-*	[Owen Jones](https://portal.findresearcher.sdu.dk/en/persons/jones), Associate Professor, jones@biology.sdu.dk 
-*	[Thomas Bjørneboe Berg](https://portal.findresearcher.sdu.dk/en/persons/thomasbb), Associate Prof./Senior Scientist at Naturama, thomas@naturama.dk  
+```{r instructors-list, results='asis', echo=FALSE}
+apply(instructors, 1, function(x) {
+  cat(sprintf("* [%s](%s), %s, %s\n", x[["name"]], x[["url"]], x[["title"]], x[["email"]]))
+})
+```
 
 If you have any problems accessing materials, or have any questions regarding the course feel free to send me (Owen) an email, or make a comment in the form I mentioned above. You can also make an appointment to see me via Zoom or in my office if necessary*. PLEASE REMEMBER to tell me which course you are referring to if you send an email!
 
