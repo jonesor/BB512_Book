@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>25 Solutions and “take-home” messages | BB512 - Population Biology and Evolution</title>
   <meta name="description" content="Course book for BB512 at the Biology Department, University of Southern Denmark" />
-  <meta name="generator" content="bookdown 0.44 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.46 and GitBook 2.6.7" />
 
   <meta property="og:title" content="25 Solutions and “take-home” messages | BB512 - Population Biology and Evolution" />
   <meta property="og:type" content="book" />
@@ -23,7 +23,7 @@
 <meta name="author" content="Owen R. Jones (Course Coordinator)" />
 
 
-<meta name="date" content="2025-10-11" />
+<meta name="date" content="2026-02-08" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -852,20 +852,20 @@ To determine <span class="math inline">\(q\)</span>, which is the frequency of t
 <h2><span class="header-section-number">25.14</span> Solutions: Neutral or adaptive evolution in humans<a href="solutions-and-take-home-messages.html#solutions-neutral-or-adaptive-evolution-in-humans" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>The take home message here is that whether traits are adaptive or neutral depends on the environment.</p>
 <p>Consider genes that confer antibiotic resistance on bacteria. In the absence of antibiotics, these genes are not important and are not selected for. They still evolve (if they vary among individuals and are inherited), but this evolution is neutral with no selection. On the other hand, when antibiotics are introduced to the system, those same genes are strongly selected for and evolution of the genes for antibiotic resistance is now strongly adaptive. Context matters.</p>
-<p>The same is the case for traits in humans. Assuming the the traits vary among individuals and are inherited, their neutrality or adaptiveness depends on their effect on fitness. If the traits have strong effects on fitness then they will be under strong selection but if they have weak or no effects on fitness they will evolve via neutral evolution.</p>
+<p>The same is the case for traits in humans. Assuming that the traits vary among individuals and are inherited, their neutrality or adaptiveness depends on their effect on fitness. If the traits have strong effects on fitness then they will be under strong selection but if they have weak or no effects on fitness they will evolve via neutral evolution.</p>
 <p>Example traits that evolve via neutral evolution include fingerprint structure and iris structure. The detailed structures are not important to fitness, but are still genetically determined, and inherited.</p>
 <p>Traits like muscle strength, running speed may have been important for fitness when they helped our ancestors obtain food. In those environments, they would have been under selection and therefore evolve via adaptive evolution. In more modern times, these selection pressures are weaker.</p>
 </div>
 <div id="solutions-heritability" class="section level2 hasAnchor" number="25.15">
 <h2><span class="header-section-number">25.15</span> Solutions: Heritability<a href="solutions-and-take-home-messages.html#solutions-heritability" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>You can read in data like this:</p>
-<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb69-1"><a href="solutions-and-take-home-messages.html#cb69-1" tabindex="-1"></a>population_1 <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;heritability_pop1.csv&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb69-1"><a href="solutions-and-take-home-messages.html#cb69-1" tabindex="-1"></a>population_1 <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/heritability_pop1.csv&quot;</span>)</span></code></pre></div>
 <p>Though you can also use the “Wizard” in RStudio.</p>
 <p>Plot the data as follows.</p>
 <div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb70-1"><a href="solutions-and-take-home-messages.html#cb70-1" tabindex="-1"></a><span class="co"># Plot the relationship</span></span>
 <span id="cb70-2"><a href="solutions-and-take-home-messages.html#cb70-2" tabindex="-1"></a><span class="fu">plot</span>(pop_1<span class="sc">$</span>Parent_value, pop_1<span class="sc">$</span>Offspring_value,</span>
 <span id="cb70-3"><a href="solutions-and-take-home-messages.html#cb70-3" tabindex="-1"></a>     <span class="at">xlab =</span><span class="st">&quot;Parent value&quot;</span>,</span>
-<span id="cb70-4"><a href="solutions-and-take-home-messages.html#cb70-4" tabindex="-1"></a>     <span class="at">ylab =</span><span class="st">&quot;Offsping value&quot;</span>)</span>
+<span id="cb70-4"><a href="solutions-and-take-home-messages.html#cb70-4" tabindex="-1"></a>     <span class="at">ylab =</span><span class="st">&quot;Offspring value&quot;</span>)</span>
 <span id="cb70-5"><a href="solutions-and-take-home-messages.html#cb70-5" tabindex="-1"></a></span>
 <span id="cb70-6"><a href="solutions-and-take-home-messages.html#cb70-6" tabindex="-1"></a><span class="co"># fit the linear regression model</span></span>
 <span id="cb70-7"><a href="solutions-and-take-home-messages.html#cb70-7" tabindex="-1"></a>mod1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(Offspring_value<span class="sc">~</span> Parent_value, <span class="at">data =</span> pop_1)</span>
@@ -892,7 +892,7 @@ To determine <span class="math inline">\(q\)</span>, which is the frequency of t
 ## F-statistic: 25.98 on 1 and 31 DF,  p-value: 1.628e-05</code></pre>
 <div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb72-1"><a href="solutions-and-take-home-messages.html#cb72-1" tabindex="-1"></a><span class="co"># add the regression line to the model</span></span>
 <span id="cb72-2"><a href="solutions-and-take-home-messages.html#cb72-2" tabindex="-1"></a><span class="fu">abline</span>(mod1)</span></code></pre></div>
-<p><img src="BB512_files/figure-html/plotheritability-1.png" width="672" /></p>
+<p><img src="BB512_files/figure-html/plotheritability-1.png" alt="" width="672" /></p>
 <p>The heritability is the slope of the relationship, so is 0.568 in this case. This is fairly high heritability.</p>
 <p><em>What does the heritability tell us about the amount of variation explained by genetic factors?</em></p>
 <p>A heritability of 0.568 for wing length indicates that 56.8% of the observed variation in this trait within the population can be attributed to genetic factors. In other words, a significant portion of the variation in wing length is genetically determined.</p>
@@ -906,31 +906,31 @@ To determine <span class="math inline">\(q\)</span>, which is the frequency of t
 <p>Plot the data as follows.</p>
 <div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb73-1"><a href="solutions-and-take-home-messages.html#cb73-1" tabindex="-1"></a><span class="fu">plot</span>(pop_2<span class="sc">$</span>Parent_value, pop_2<span class="sc">$</span>Offspring_value,</span>
 <span id="cb73-2"><a href="solutions-and-take-home-messages.html#cb73-2" tabindex="-1"></a>     <span class="at">xlab =</span><span class="st">&quot;Parent value&quot;</span>,</span>
-<span id="cb73-3"><a href="solutions-and-take-home-messages.html#cb73-3" tabindex="-1"></a>     <span class="at">ylab =</span><span class="st">&quot;Offsping value&quot;</span>)</span>
+<span id="cb73-3"><a href="solutions-and-take-home-messages.html#cb73-3" tabindex="-1"></a>     <span class="at">ylab =</span><span class="st">&quot;Offspring value&quot;</span>)</span>
 <span id="cb73-4"><a href="solutions-and-take-home-messages.html#cb73-4" tabindex="-1"></a></span>
 <span id="cb73-5"><a href="solutions-and-take-home-messages.html#cb73-5" tabindex="-1"></a><span class="co"># fit the model.</span></span>
 <span id="cb73-6"><a href="solutions-and-take-home-messages.html#cb73-6" tabindex="-1"></a>mod2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(Offspring_value<span class="sc">~</span> Parent_value, <span class="at">data =</span> pop_2)</span>
 <span id="cb73-7"><a href="solutions-and-take-home-messages.html#cb73-7" tabindex="-1"></a><span class="fu">abline</span>(mod2)</span></code></pre></div>
-<p><img src="BB512_files/figure-html/plotparentoffspring-1.png" width="672" /></p>
-<div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb74-1"><a href="solutions-and-take-home-messages.html#cb74-1" tabindex="-1"></a><span class="fu">summary</span>(mod1)</span></code></pre></div>
+<p><img src="BB512_files/figure-html/plotparentoffspring-1.png" alt="" width="672" /></p>
+<div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb74-1"><a href="solutions-and-take-home-messages.html#cb74-1" tabindex="-1"></a><span class="fu">summary</span>(mod2)</span></code></pre></div>
 <pre><code>## 
 ## Call:
-## lm(formula = Offspring_value ~ Parent_value, data = pop_1)
+## lm(formula = Offspring_value ~ Parent_value, data = pop_2)
 ## 
 ## Residuals:
-##      Min       1Q   Median       3Q      Max 
-## -16.9417  -3.8648  -0.2452   4.5332   9.3121 
+##     Min      1Q  Median      3Q     Max 
+## -2.0829 -0.5187 -0.1199  0.6578  1.7023 
 ## 
 ## Coefficients:
 ##              Estimate Std. Error t value Pr(&gt;|t|)    
-## (Intercept)   11.2533    10.9533   1.027    0.312    
-## Parent_value   0.5678     0.1114   5.097 1.63e-05 ***
+## (Intercept)   0.22970    1.53505   0.150    0.882    
+## Parent_value  0.09877    0.01590   6.212 4.07e-07 ***
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 ## 
-## Residual standard error: 5.506 on 31 degrees of freedom
-## Multiple R-squared:  0.4559, Adjusted R-squared:  0.4384 
-## F-statistic: 25.98 on 1 and 31 DF,  p-value: 1.628e-05</code></pre>
+## Residual standard error: 0.8022 on 35 degrees of freedom
+## Multiple R-squared:  0.5244, Adjusted R-squared:  0.5108 
+## F-statistic: 38.59 on 1 and 35 DF,  p-value: 4.066e-07</code></pre>
 <p>For this population, the heritability (slope of the relationship) is 0.099 in this case. This is fairly low heritability.</p>
 <p><em>What does the heritability tell us this time?</em></p>
 <p>A heritability of 0.099 in the second population indicates that only 9.9% of the variation in wing length is attributable to genetic factors. This is substantially lower compared to the first population, suggesting that environmental factors have a greater influence on the trait in this particular population.</p>
@@ -1010,14 +1010,14 @@ eigs(A3)$lambda</code></pre>
 <p>I have crunched the numbers for 2023 and will summarise the results of the hawk-dove game.</p>
 <p>In the game, you were asked to compete with the same person 15 times in a row.</p>
 <p>The average hawkishness overall is 0.566, but there is some variation among individuals.</p>
-<p><img src="BB512_files/figure-html/hawkdoveresults3-1.png" width="672" /></p>
+<p><img src="BB512_files/figure-html/hawkdoveresults3-1.png" alt="" width="672" /></p>
 <p>We can now ask whether the level of hawkishness changed during the game on average across all the participants.</p>
 <p>We can see from this graph that as the game proceeds round-by-round, there is no significant change in the level of hawkishness (p=0.642).</p>
-<p>In other cases, it has been found the the average level of hawkishness tends to decline with the amount time playing together, as opponents build trust and begin to see the value in cooperation.</p>
-<p><img src="BB512_files/figure-html/hawkdoveresults5-1.png" width="672" />
-Next, we can ask whether the amount of benefits received (fitness) is associated with the degree of hawkishness. This, in evolutionary terms, is a way of seeing what the Evolutionary Stable Strategy (ESS) is. Is it</p>
-<p>What we see is that the maximum benefits I received when hawkishness is it an intermediate level of around 0.5-0.6, though we clearly suffered from a lack of dove-like individuals in the study group!</p>
-<p><img src="BB512_files/figure-html/hawkdoveresults6-1.png" width="672" /></p>
+<p>In other cases, it has been found that the average level of hawkishness tends to decline with the amount of time playing together, as opponents build trust and begin to see the value in cooperation.</p>
+<p><img src="BB512_files/figure-html/hawkdoveresults5-1.png" alt="" width="672" />
+Next, we can ask whether the amount of benefits received (fitness) is associated with the degree of hawkishness. This, in evolutionary terms, is a way of seeing what the Evolutionary Stable Strategy (ESS) is. Is it an intermediate strategy, or more hawkish or dovish?</p>
+<p>What we see is that the maximum benefits are received when hawkishness is at an intermediate level of around 0.5-0.6, though we clearly suffered from a lack of dove-like individuals in the study group!</p>
+<p><img src="BB512_files/figure-html/hawkdoveresults6-1.png" alt="" width="672" /></p>
 <div id="game-2---different-opponents" class="section level3 hasAnchor" number="25.20.1">
 <h3><span class="header-section-number">25.20.1</span> Game 2 - different opponents<a href="solutions-and-take-home-messages.html#game-2---different-opponents" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>We didn’t do this one in class this year, so here is what we found last year.</p>
@@ -1025,9 +1025,9 @@ Next, we can ask whether the amount of benefits received (fitness) is associated
 <p>Firstly I have calculated the average hawkishness as 0.681, which is not so different from the previous game.</p>
 <p>Again, we can ask whether hawkishness changed during the game.</p>
 <p>In this case, it DOES look like hawkishness declines more during the game. However, this trend is not significantly different from horizontal (p = 0.184).</p>
-<p><img src="BB512_files/figure-html/hawkdoveresults9-1.png" width="672" /></p>
+<p><img src="BB512_files/figure-html/hawkdoveresults9-1.png" alt="" width="672" /></p>
 <p>Finally we can look at what the best strategy is in Game 2.</p>
-<p><img src="BB512_files/figure-html/hawkdoveresults10-1.png" width="672" /></p>
+<p><img src="BB512_files/figure-html/hawkdoveresults10-1.png" alt="" width="672" /></p>
 <p>It looks like the best strategy has changed a lot! Now the best strategy is to be a hawk.</p>
 <p>In this setting we might expect natural selection to drive towards the evolution of more aggressive individuals.</p>
 <p>Think about what this means in terms of human cooperation and conflict avoidance.</p>

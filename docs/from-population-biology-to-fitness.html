@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>28 From population biology to fitness | BB512 - Population Biology and Evolution</title>
   <meta name="description" content="Course book for BB512 at the Biology Department, University of Southern Denmark" />
-  <meta name="generator" content="bookdown 0.44 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.46 and GitBook 2.6.7" />
 
   <meta property="og:title" content="28 From population biology to fitness | BB512 - Population Biology and Evolution" />
   <meta property="og:type" content="book" />
@@ -23,7 +23,7 @@
 <meta name="author" content="Owen R. Jones (Course Coordinator)" />
 
 
-<meta name="date" content="2025-10-11" />
+<meta name="date" content="2026-02-08" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -530,8 +530,8 @@ stuck!
 </div>
 <div id="an-in-silico-experiment" class="section level2 hasAnchor" number="28.1">
 <h2><span class="header-section-number">28.1</span> An <em>in silico</em> experiment<a href="from-population-biology-to-fitness.html#an-in-silico-experiment" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>As you learned in the classes on age and stage structured population dynamics differences in survival and reproduction can be modelled using matrix population models (MPMs). These models can be simple or complex, and can be thought of as mathematical descriptions of the life history of the species (or population) in a particular environment.</p>
-<p>In an earlier you will have played with construction and analyses of these models by creating MPMs for species with different life histories such as high juvenile survival, or low juvenile survival etc.</p>
+<p>As you learned in the classes on age- and stage-structured population dynamics, differences in survival and reproduction can be modelled using matrix population models (MPMs). These models can be simple or complex, and can be thought of as mathematical descriptions of the life history of the species (or population) in a particular environment.</p>
+<p>Earlier in the course you will have played with construction and analyses of these models by creating MPMs for species with different life histories such as high juvenile survival, or low juvenile survival etc.</p>
 <p>We will first need to load the <code>popdemo</code> package like this. Note that if you have not installed this package you should first install it with the command <code>install.packages("popdemo")</code>.</p>
 <div class="sourceCode" id="cb88"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb88-1"><a href="from-population-biology-to-fitness.html#cb88-1" tabindex="-1"></a><span class="fu">library</span>(popdemo)</span></code></pre></div>
 <p>Let’s set up our baseline model. This model describes a population of some mammal species which we have divided into 3 stages: juvenile, adult and senescent (old).</p>
@@ -566,7 +566,7 @@ stuck!
 <span id="cb95-2"><a href="from-population-biology-to-fitness.html#cb95-2" tabindex="-1"></a><span class="fu">matplot</span>(pop,<span class="at">type=</span><span class="st">&quot;l&quot;</span>,<span class="at">log=</span><span class="st">&quot;y&quot;</span>)</span>
 <span id="cb95-3"><a href="from-population-biology-to-fitness.html#cb95-3" tabindex="-1"></a><span class="fu">legend</span>(<span class="st">&quot;topleft&quot;</span>,<span class="at">legend =</span> <span class="fu">colnames</span>(pop),</span>
 <span id="cb95-4"><a href="from-population-biology-to-fitness.html#cb95-4" tabindex="-1"></a>       <span class="at">col=</span><span class="dv">1</span><span class="sc">:</span><span class="fu">ncol</span>(pop),<span class="at">lty=</span><span class="dv">1</span><span class="sc">:</span><span class="fu">ncol</span>(pop))</span></code></pre></div>
-<p><img src="BB512_files/figure-html/unnamed-chunk-88-1.png" width="672" /></p>
+<p><img src="BB512_files/figure-html/unnamed-chunk-88-1.png" alt="" width="672" /></p>
 <p>You can see that the population is increasing and we can calculate the precise population growth rate (<span class="math inline">\(\lambda\)</span>) like this:</p>
 <div class="sourceCode" id="cb96"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb96-1"><a href="from-population-biology-to-fitness.html#cb96-1" tabindex="-1"></a><span class="fu">eigs</span>(A1,<span class="at">what =</span> <span class="st">&quot;lambda&quot;</span>)</span></code></pre></div>
 <pre><code>## [1] 1.165587</code></pre>

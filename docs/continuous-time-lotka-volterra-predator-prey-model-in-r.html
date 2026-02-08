@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>22 Continuous-time Lotka-Volterra Predator-Prey Model in R | BB512 - Population Biology and Evolution</title>
   <meta name="description" content="Course book for BB512 at the Biology Department, University of Southern Denmark" />
-  <meta name="generator" content="bookdown 0.44 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.46 and GitBook 2.6.7" />
 
   <meta property="og:title" content="22 Continuous-time Lotka-Volterra Predator-Prey Model in R | BB512 - Population Biology and Evolution" />
   <meta property="og:type" content="book" />
@@ -23,7 +23,7 @@
 <meta name="author" content="Owen R. Jones (Course Coordinator)" />
 
 
-<meta name="date" content="2025-10-11" />
+<meta name="date" content="2026-02-08" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -598,7 +598,7 @@ how it is visualised.
 <span id="cb62-12"><a href="continuous-time-lotka-volterra-predator-prey-model-in-r.html#cb62-12" tabindex="-1"></a><span class="co"># Add legend</span></span>
 <span id="cb62-13"><a href="continuous-time-lotka-volterra-predator-prey-model-in-r.html#cb62-13" tabindex="-1"></a><span class="fu">legend</span>(<span class="st">&quot;topright&quot;</span>, <span class="at">legend =</span> <span class="fu">c</span>(<span class="st">&quot;Victim (V)&quot;</span>, <span class="st">&quot;Consumer (C)&quot;</span>), </span>
 <span id="cb62-14"><a href="continuous-time-lotka-volterra-predator-prey-model-in-r.html#cb62-14" tabindex="-1"></a>       <span class="at">col =</span> <span class="fu">c</span>(<span class="st">&quot;blue&quot;</span>, <span class="st">&quot;red&quot;</span>), <span class="at">lwd =</span> <span class="dv">2</span>)</span></code></pre></div>
-<p><img src="BB512_files/figure-html/population-dynamics-1.png" width="672" /></p>
+<p><img src="BB512_files/figure-html/population-dynamics-1.png" alt="" width="672" /></p>
 </div>
 <div id="phase-plot-with-zngis" class="section level4 hasAnchor" number="22.2.6.2">
 <h4><span class="header-section-number">22.2.6.2</span> Phase Plot with ZNGIs<a href="continuous-time-lotka-volterra-predator-prey-model-in-r.html#phase-plot-with-zngis" class="anchor-section" aria-label="Anchor link to header"></a></h4>
@@ -622,7 +622,7 @@ how it is visualised.
 <span id="cb63-17"><a href="continuous-time-lotka-volterra-predator-prey-model-in-r.html#cb63-17" tabindex="-1"></a>       <span class="at">x1 =</span> output_df<span class="sc">$</span>V[<span class="fu">nrow</span>(output_df)], </span>
 <span id="cb63-18"><a href="continuous-time-lotka-volterra-predator-prey-model-in-r.html#cb63-18" tabindex="-1"></a>       <span class="at">y1 =</span> output_df<span class="sc">$</span>C[<span class="fu">nrow</span>(output_df)], </span>
 <span id="cb63-19"><a href="continuous-time-lotka-volterra-predator-prey-model-in-r.html#cb63-19" tabindex="-1"></a>       <span class="at">col =</span> <span class="st">&quot;purple&quot;</span>, <span class="at">length =</span> <span class="fl">0.1</span>, <span class="at">lwd =</span> <span class="dv">2</span>)</span></code></pre></div>
-<p><img src="BB512_files/figure-html/phase-plot-1.png" width="672" /></p>
+<p><img src="BB512_files/figure-html/phase-plot-1.png" alt="" width="672" /></p>
 </div>
 </div>
 <div id="questions-11" class="section level3 hasAnchor" number="22.2.7">
@@ -657,11 +657,11 @@ Do the simulated populations approach these values?
 </div>
 <div id="conclusion" class="section level3 hasAnchor" number="22.2.8">
 <h3><span class="header-section-number">22.2.8</span> Conclusion<a href="continuous-time-lotka-volterra-predator-prey-model-in-r.html#conclusion" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>This document demonstrates how to implement and explore the Lotka-Volterra predator-prey model in continuous time using R. By varying parameters and initial conditions, you can investigate how predator-prey dynamics are influenced by ecological factors. Notice that, unlike the discrete time model, which has an implicit time lag of 1, the continuous-time model results in dynamically stable cycles rather than cycles with increasing amplitude (and certain extinction). To fit a discrete-time version of the model, take a look at the Excel exercise (<a href="https://jonesor.github.io/BB512_Book/lotka-volterra-predator-prey-dynamics.html">here</a>) or the R exercise (here).</p>
+<p>This document demonstrates how to implement and explore the Lotka-Volterra predator-prey model in continuous time using R. By varying parameters and initial conditions, you can investigate how predator-prey dynamics are influenced by ecological factors. Notice that, unlike the discrete time model, which has an implicit time lag of 1, the continuous-time model results in dynamically stable cycles rather than cycles with increasing amplitude (and certain extinction). To fit a discrete-time version of the model, take a look at the Excel exercise (<a href="https://jonesor.github.io/BB512_Book/lotka-volterra-predator-prey-dynamics.html">here</a>) or the R exercise <a href="discrete-time-lotka-volterra-predator-prey-model-in-r.html">here</a>.</p>
 <p>The main findings of the continuous time model are as follows:</p>
 <ol style="list-style-type: decimal">
 <li><p><strong>Oscillatory Dynamics</strong>: Predator and prey populations exhibit cyclical oscillations. The prey population increases when predator numbers are low, while the predator population grows when prey is abundant.</p></li>
-<li><p><strong>Neutral Stability</strong>: The oscillations are neutrally stable under idealized conditions; they persist indefinitely without damping or amplification unless external factors or parameter changes are introduced. Unless the parameters set to truly extreme values, extinction is not possible.</p></li>
+<li><p><strong>Neutral Stability</strong>: The oscillations are neutrally stable under idealized conditions; they persist indefinitely without damping or amplification unless external factors or parameter changes are introduced. Unless the parameters are set to truly extreme values, extinction is not possible.</p></li>
 <li><p><strong>Equilibrium Points</strong>: There are two equilibria:</p>
 <ul>
 <li>The trivial equilibrium, where both predator and prey populations are zero.</li>
