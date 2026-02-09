@@ -56,7 +56,7 @@ jobs:
       - name: Install R packages
         run: |
           Rscript -e "install.packages(c('renv','bookdown','tinytex'), repos='https://cloud.r-project.org')"
-          Rscript -e "deps <- renv::dependencies(); pkgs <- unique(c(deps$Package, readLines('packages_used.txt'), 'bookdown','rmarkdown','tinytex')); pkgs <- pkgs[nzchar(pkgs)]; install.packages(pkgs, repos='https://cloud.r-project.org', Ncpus=2); missing <- pkgs[!sapply(pkgs, requireNamespace, quietly=TRUE)]; if (length(missing)) { message('Missing packages: ', paste(missing, collapse=', ')); quit(status=1) }"
+          Rscript -e "deps <- renv::dependencies(); dep_pkgs <- as.character(deps$Package); dep_pkgs <- dep_pkgs[!is.na(dep_pkgs)]; file_pkgs <- readLines('packages_used.txt'); pkgs <- unique(c(dep_pkgs, file_pkgs, 'bookdown','rmarkdown','tinytex')); pkgs <- pkgs[nzchar(pkgs)]; install.packages(pkgs, repos='https://cloud.r-project.org', Ncpus=2); missing <- pkgs[!sapply(pkgs, requireNamespace, quietly=TRUE)]; if (length(missing)) { message('Missing packages: ', paste(missing, collapse=', ')); quit(status=1) }"
 
       - name: Setup TinyTeX
         uses: r-lib/actions/setup-tinytex@v2
