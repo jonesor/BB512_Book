@@ -13,6 +13,8 @@ Some exercises reference external files that are not stored here:
 
 - Hawk-dove results:
   - Source: Google Sheets named "Game theory part 1" (downloaded when `downloadNewData == TRUE` in `6_02_HawkDoveResults.Rmd` or `scripts/hawkDoveAnalysis.R`).
+- Hawk-dove Game 2:
+  - `gametheoryResults2022.xlsx` (stored in `data/`).
 
 - Excel exercises (Dropbox):
   - Estimating growth: `EstimatingGrowth.xlsx`
