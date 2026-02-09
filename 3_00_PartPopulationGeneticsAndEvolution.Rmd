@@ -1,1 +1,9 @@
 # (PART) Population Genetics and Evolution {-}
+
+This part introduces the genetic mechanisms that shape evolutionary change. You will connect allele frequencies to forces like selection, drift, and heritability.
+
+By the end of Part 3, you should be able to:
+
+- Use Hardy-Weinberg logic to interpret allele and genotype frequencies.
+- Simulate allele frequency change under different evolutionary forces.
+- Estimate heritability and interpret its evolutionary implications.

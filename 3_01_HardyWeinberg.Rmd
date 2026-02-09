@@ -109,6 +109,10 @@ Learning outcomes:
 
 ```
 
+## Worked example
+
+If the recessive genotype frequency is 0.36, then $q^2 = 0.36$ so $q = 0.6$ and $p = 0.4$. The heterozygote frequency is $2pq = 2(0.4)(0.6) = 0.48$.
+
 ## Your task
 
 Tackle the following problems, using the HWE theory outlined above ...
@@ -147,3 +151,8 @@ Within a population of butterflies, the colour brown (B) is dominant over the co
 *	The percentage of butterflies in the population that are heterozygous. 
 *	The frequency of homozygous dominant individuals. 
 
+## Takeaways
+
+- Hardy-Weinberg equilibrium provides a baseline for detecting evolutionary forces.
+- Allele frequencies ($p$, $q$) determine genotype frequencies ($p^2$, $2pq$, $q^2$).
+- Deviations from HWE indicate that at least one assumption is violated.

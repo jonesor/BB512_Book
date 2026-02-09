@@ -22,6 +22,10 @@ Learning outcomes:
 - Use of R for exploring biological phenomenon.
 ```
 
+## Worked example
+
+With an initial allele frequency of 0.5 and a population size of 20, repeated sampling will often shift frequencies noticeably in just a few generations. In contrast, a population of 1000 will show much smaller random fluctuations.
+
 
 ## Your task
 
@@ -257,5 +261,11 @@ Genetic diversity allows populations to explore parameter space
 --->
 
 * Can you think of real-life scenarios where understanding gene pool dynamics would be valuable, such as in conservation biology or medical genetics?
+
+## Takeaways
+
+- Genetic drift is stronger in small populations because sampling error is larger.
+- Bottlenecks and founder effects can rapidly reshape allele frequencies.
+- Even neutral processes can lead to fixation or loss over time.
 
 * Can you think of a way to simulate the genetics of a population that is steadily shrinking through time?

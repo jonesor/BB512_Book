@@ -71,6 +71,10 @@ Learning Outcomes:
 - Gain practical skills in performing linear regression analysis to estimate heritability.
 ```
 
+## Worked example
+
+If the regression slope of offspring on parent values is 0.4, then the narrow-sense heritability estimate is $h^2 = 0.4$. This means about 40% of the trait variance is attributable to additive genetic effects.
+
 ## Your Task
 
 ### Estimating heritability (15 minutes)
@@ -133,3 +137,9 @@ These methods assume the following.
 **Question**
 
 * How might some of these assumptions be violated?
+
+## Takeaways
+
+- Heritability estimates depend on context and assumptions, not just data.
+- The regression slope provides a simple estimate of additive genetic contribution.
+- High heritability does not imply immutability or inevitability of a trait.
