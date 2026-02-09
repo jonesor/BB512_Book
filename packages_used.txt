@@ -1,4 +1,13 @@
 tidyverse
+bookdown
+deSolve
+googledrive
+knitr
+lintr
+primer
+rmarkdown
+spelling
+styler
 Rage
 Rcompadre
 rsvg
