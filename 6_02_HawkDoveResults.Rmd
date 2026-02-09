@@ -126,15 +126,31 @@ The students were asked to compete against a new opponent every round. The idea 
 
 
 ```{r hawkdoveresults7, echo = FALSE,warning=FALSE}
-hdg2 <- readxl::read_xlsx("/Users/jones/Dropbox/_SDU_Teaching/BB512/Practicals/HawkAndDoveGame/gametheoryResults2022.xlsx", sheet = 4) %>%
-  clean_names() %>%
-  select(individual, round, player_1, player_2, benefit)
+hdg2_candidates <- c(
+  "data/Game theory part 1 (Responses).xlsx",
+  "data/gametheoryResults2022.xlsx",
+  "/Users/jones/Dropbox/_SDU_Teaching/BB512/Practicals/HawkAndDoveGame/gametheoryResults2022.xlsx"
+)
+hdg2_path <- hdg2_candidates[file.exists(hdg2_candidates)][1]
+has_hdg2 <- !is.na(hdg2_path)
+
+if (has_hdg2) {
+  hdg2 <- readxl::read_xlsx(hdg2_path, sheet = 4) %>%
+    clean_names() %>%
+    select(individual, round, player_1, player_2, benefit)
+} else {
+  warning("Hawk-dove Game 2 data not found; skipping Game 2 analysis.")
+  hdg2 <- NULL
+}
 ```
 
 
 
 
 ```{r hawkdoveresults8, echo = FALSE, results='hide'}
+if (!has_hdg2) {
+  return(invisible(NULL))
+}
 # Does hawkishness change during the game?
 hawkishness <- hdg2 %>%
   mutate(hawkNumeric_player1 = ifelse(player_1 == "H", 1, 0)) %>%
@@ -155,6 +171,9 @@ Again, we can ask whether hawkishness changed during the game.
 In this case, it DOES look like hawkishness declines more during the game. However, this trend is not significantly different from horizontal (p = `r round(summary(mod1)$coefficients[2,4],3)`).
 
 ```{r hawkdoveresults9, echo = FALSE}
+if (!has_hdg2) {
+  return(invisible(NULL))
+}
 ggplot(hawkishness,aes(x = round,y = meanHawk)) + 
   geom_point() + 
   geom_smooth(method = "lm")
@@ -166,6 +185,9 @@ Finally we can look at what the best strategy is in Game 2.
 
 
 ```{r hawkdoveresults10, echo = FALSE}
+if (!has_hdg2) {
+  return(invisible(NULL))
+}
 # How does the hawkishness of individuals relate to the benefits received?
 perIndiv <- hdg2 %>%
   mutate(hawkNumeric_player1 = ifelse(player_1 == "H", 1, 0)) %>%
@@ -185,6 +207,5 @@ In this setting we might expect  natural selection to drive towards the evolutio
 Think about what this means in terms of human cooperation and conflict avoidance. 
 
 Can you see the value of understanding your opponent/competitor?
-
 
 
