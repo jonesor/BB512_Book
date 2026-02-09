@@ -8,12 +8,14 @@ In an environment where predators rely on visual cues to locate their prey, indi
 
 On the other hand, predators with better detection skills, like keen eyesight, are more successful at capturing prey, leading to increased survival and reproduction of these individuals. Consequently, traits associated with effective predation also become more prevalent in the predator population. This dynamic interplay between camouflage in prey and predator detection abilities exemplifies the power of natural selection in driving the adaptation and evolution of species to their ecological niches.
 
-```{block, type="do-something"}
-Learning outcomes: 
+## Learning outcomes
 
-- Understanding adaptive evolution via natural selection.
-- Understanding how fitness depends on the environment.
-- Understanding the terms adaptation, selection, selection pressure, heritability.
+```{block, type="do-something"}
+Learning outcomes:
+
+- Understand adaptive evolution via natural selection.
+- Explain how fitness depends on the environment.
+- Use the terms adaptation, selection, selection pressure, and heritability correctly.
 
 ```
 
@@ -52,7 +54,7 @@ You should notice that bugs with contrasting colours (e.g. black on white) are e
 To understand what’s going on, you need to understand how the simulation works.
 
  
-#### How the simulation works.
+#### How the simulation works
 
 *Simple version:* 
 The simulation starts with bugs with random colours.
@@ -82,6 +84,15 @@ Some useful keywords:
 *	Selection pressure
 *	Heritability
 
+## Worked example
+
+Run the model for 2 minutes in one environment (e.g. poppy field) while actively hunting. You should see:
+
+- The average bug colour shift toward the background colour.
+- Your hunting efficiency drop over time as bugs become better camouflaged.
+
+Now switch environments and keep hunting. You should see a temporary jump in hunting efficiency, followed by a new shift in bug colour toward the new background.
+
 
 ## Details about colours (optional) 
 
@@ -97,3 +108,9 @@ knitr::include_graphics('images/colours.png')
 ```
 
 Read more about the model here: http://ccl.northwestern.edu/netlogo/models/BugHuntCamouflage
+
+## Takeaways
+
+- Selection changes trait distributions when survival depends on the environment.
+- Adaptation is context-dependent: a well-adapted population can become poorly adapted when conditions change.
+- Heritability and mutation govern how quickly populations can respond to selection pressure.

@@ -77,6 +77,32 @@ The recommended textbook is Neal (2018). Other useful textbooks, that are NOT ma
 
 In addition to this, I will provide a reading list of journal articles that are relevant to the material. These are optional, but highly recommended because they give extra context and background to the course and show you how the theory is used in recent research.
 
+## How to use this book
+
+Each chapter follows a consistent template so you can move quickly between concepts and tasks.
+
+- Learning outcomes: what you should be able to do by the end.
+- Background: the core concepts and equations.
+- Worked example: a short walk-through that shows the method.
+- Your task: the practical exercise or analysis.
+- Takeaways: a short summary of the main ideas.
+
+If you are short on time, read the Learning outcomes and Takeaways first, then do the Your task section. Use the worked example only if you need a refresher.
+
+## Parts overview
+
+The table below shows how each part maps onto the major skills you will build through the course.
+
+| Part | Focus | Skills you build |
+| --- | --- | --- |
+| 1. Evolution by Natural Selection | Selection, adaptation, variation | Explain selection in natural contexts; identify selective pressures and outcomes |
+| 2. Population Growth Models | Exponential and logistic growth, stochasticity | Build and interpret population growth models; reason about parameter effects |
+| 3. Population Genetics and Evolution | Allele frequencies, drift, heritability | Analyze genetic change over time; estimate heritability from data |
+| 4. Interactions Between Species and Community Structure | Competition and predator-prey models | Evaluate stability and dynamics of interacting species |
+| 5. Animal Behaviour, Altruism and Sexual Selection | Game theory and behavior | Interpret behavior through evolutionary payoffs and strategies |
+| 6. Solutions/answers | Answer keys and model results | Check work and compare interpretations |
+| 7. Appendix - extras | Extensions and advanced examples | Apply methods to additional contexts |
+
 ## This website and other course materials
 
 This website holds most of the materials you need for the practical exercises you will do during the course. You will also find the [Schedule here](https://jonesor.github.io/BB512_Book/schedule.html) (on the web-version only).

@@ -1,1 +1,9 @@
 # (PART) Evolution by Natural Selection {-}
+
+This part introduces the core logic of natural selection using simple, concrete activities. You will move from a conceptual model of selection to an interactive simulation of adaptation.
+
+By the end of Part 1, you should be able to:
+
+- Explain how selection can generate order from random variation.
+- Identify the roles of variation, heritability, and environment in adaptation.
+- Describe how selection pressures shape trait distributions over time.

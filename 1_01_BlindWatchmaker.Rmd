@@ -13,14 +13,7 @@ In this exercise, we will explore how random variation, when paired with selecti
 
 By simulating this process, you’ll discover how random changes alone lead to nonsense, but with selection, the "blind" process can quickly achieve a desired result.
 
-### Example
-
-Imagine you’re typing random letters into a typewriter. How long would it take to come up with a sensible sentence by pure chance? Let’s say the sentence is "`I LOVE SCIENCE`" (14 characters, including spaces).
-
-In English, there are 26 letters in the alphabet, plus the space character. The chance of randomly typing the first letter correctly is 1 in 27. The probability of getting the first two letters right is \((1/27)^2\), and the chances of typing the entire 14-character sentence correctly by random typing alone is \((1/27)^{14} = 9.14 \times 10^{-21}\), an astronomically small number.
-
-But what if selection was applied after each correct letter was typed? How might selection drastically change the outcome? Let’s find out.
-
+## Learning outcomes
 
 ```{block, type="do-something"}
 Learning outcomes:
@@ -31,6 +24,13 @@ Learning outcomes:
 
 ```
 
+## Worked example
+
+Imagine you’re typing random letters into a typewriter. How long would it take to come up with a sensible sentence by pure chance? Let’s say the sentence is "`I LOVE SCIENCE`" (14 characters, including spaces).
+
+In English, there are 26 letters in the alphabet, plus the space character. The chance of randomly typing the first letter correctly is 1 in 27. The probability of getting the first two letters right is \((1/27)^2\), and the chances of typing the entire 14-character sentence correctly by random typing alone is \((1/27)^{14} = 9.14 \times 10^{-21}\), an astronomically small number.
+
+But what if selection was applied after each correct letter was typed? How might selection drastically change the outcome? Let’s find out.
 
 ## Your task
 
@@ -102,3 +102,9 @@ Over multiple generations, the process narrows down the random sequence until it
 * How does this simulation differ from real natural selection?
 
 <!-- This simulation uses an explicit target phrase, whereas natural selection does not have a predefined goal. Real evolution selects for traits that confer a reproductive advantage in the current environment. -->
+
+## Takeaways
+
+- Selection can rapidly amplify small, random improvements when there is a consistent criterion for success.
+- Random variation alone is extremely unlikely to generate complex outcomes, but selection changes the odds.
+- Real natural selection has no target; it favors traits that improve fitness in the current environment.
