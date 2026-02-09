@@ -15,7 +15,7 @@ Finally, the strength of selection will largely depend on the environment. Trait
 The objective of this exercise is to develop an intuitive understanding of the effect of selection and genetic drift on traits. 
 
 
-```{r huntergatherer, out.width="50%",fig.align='center',echo = FALSE, fig.cap="How will selection differ between these environments?"}
+```{r huntergatherer, out.width = "50%", fig.align = 'center', echo = FALSE, fig.cap = "How will selection differ between these environments?"}
 knitr::include_graphics("images/huntergathererDK.png")
 ```
 
@@ -45,7 +45,7 @@ Order the traits from those likely influenced by **GENETIC DRIFT** to those evol
 
 ### The traits
 
-```{r echo = FALSE, message=FALSE, eval=knitr::is_html_output()}
+```{r echo = FALSE, message = FALSE, eval = knitr::is_html_output()}
 # Traits and their descriptions
 traits <- c(
   "Metabolic efficiency: How effectively your body converts food into energy.",

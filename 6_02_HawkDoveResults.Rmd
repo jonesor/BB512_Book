@@ -1,12 +1,12 @@
 ## Results of the hawk-dove games
 
-I have crunched the numbers for 2023 and will summarise the results of the hawk-dove game.
+I have crunched the numbers for `r format(Sys.Date(), "%Y")` and will summarise the results of the hawk-dove game.
 
 
 In the game, you were asked to compete with the same person 15 times in a row.
 
 
-```{r hawkdoveresults1, echo=FALSE, message=FALSE}
+```{r hawkdoveresults1, echo = FALSE, message = FALSE}
 library(tidyverse)
 library(readxl)
 library(janitor)
@@ -70,7 +70,7 @@ perIndiv_bothPlayers <- bind_rows(perIndiv_player2,perIndiv_player1)
 
 
 
-```{r hawkdoveresults2, echo=FALSE,results='hide'}
+```{r hawkdoveresults2, echo = FALSE, results = 'hide'}
 mod1 <- lm(meanHawk ~ round, data = hawkishness)
 summary(mod1)
 round(summary(mod1)$coefficients[2,4],3)
@@ -125,8 +125,16 @@ We didn't do this one in class this year, so here is what we found last year.
 The students were asked to compete against a new opponent every round. The idea was that this would make it much harder to learn your opponents strategy and may be harder to come to a agreement that reduces aggression.
 
 
-```{r hawkdoveresults7, echo = FALSE,warning=FALSE}
-hdg2 <- readxl::read_xlsx("data/gametheoryResults2022.xlsx", sheet = 4) %>%
+```{r hawkdoveresults7, echo = FALSE, warning = FALSE}
+hdg2_candidates <- list.files(
+  "data",
+  pattern = "^gametheoryResults.*\\.xlsx$",
+  full.names = TRUE
+)
+
+hdg2_path <- hdg2_candidates[which.max(file.info(hdg2_candidates)$mtime)]
+
+hdg2 <- readxl::read_xlsx(hdg2_path, sheet = 4) %>%
   clean_names() %>%
   select(individual, round, player_1, player_2, benefit)
 ```
@@ -134,7 +142,7 @@ hdg2 <- readxl::read_xlsx("data/gametheoryResults2022.xlsx", sheet = 4) %>%
 
 
 
-```{r hawkdoveresults8, echo = FALSE, results='hide'}
+```{r hawkdoveresults8, echo = FALSE, results = 'hide'}
 # Does hawkishness change during the game?
 hawkishness <- hdg2 %>%
   mutate(hawkNumeric_player1 = ifelse(player_1 == "H", 1, 0)) %>%

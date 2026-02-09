@@ -23,7 +23,7 @@
 <meta name="author" content="Owen R. Jones (Course Coordinator)" />
 
 
-<meta name="date" content="2026-02-08" />
+<meta name="date" content="2026-02-09" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -522,41 +522,9 @@ Figure 7.1: A normal distribution of potential r values
 </p>
 </div>
 <p>When using the equation above to calculate population at time <span class="math inline">\(t+1\)</span> (<span class="math inline">\(N_{t+1}\)</span>) from the population at time <span class="math inline">\(t\)</span> (<span class="math inline">\(N_t\)</span>), one would draw a random <span class="math inline">\(r_m\)</span> value from this distribution. Sometimes <span class="math inline">\(r_m\)</span> will be high, other times it will be low, most of the time it will be from around the middle of the distribution.</p>
-<div class="do-something">
-<p>
-Learning outcomes:
-</p>
-<ul>
-<li>
-Increased competence in using Excel formulae for mathematical
-modeling.
-</li>
-<li>
-Understanding the concept of stochasticity in simple population
-models.
-</li>
-<li>
-Competence in using mathematical models in Excel to strengthen own
-understanding of biological processes.
-</li>
-<li>
-Understanding how stochasticity relates to (i) uncertainty in the
-prediction of population trajectories and (ii) probability of (local)
-extinction.
-</li>
-</ul>
-</div>
 </div>
 <div id="your-task-4" class="section level2 hasAnchor" number="7.2">
 <h2><span class="header-section-number">7.2</span> Your task<a href="stochastic-population-growth.html#your-task-4" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div class="do-something">
-<p>
-Use the Excel worksheet, <a
-href="https://www.dropbox.com/s/1wpixbpgwlh54f0/StochasticPopulationGrowth.xlsx?dl=1">StochasticPopulationGrowth.xlsx</a>,
-to study how stochastic population growth works with this simple
-model.
-</p>
-</div>
 <ol style="list-style-type: decimal">
 <li>Use Excel formulae to calculate deterministic population size through time (20 generations, with starting population of 100), linking to the mean finite population growth rate.</li>
 <li>Use charts to plot the results. (you already did this last time!)</li>
@@ -566,13 +534,6 @@ model.
 <li>Try altering initial population size, mean population growth, and the amount of stochasticity (Variance).</li>
 <li>Extinction occurs when N <span class="math inline">\(\leq\)</span> 0. What happens to extinction risk as stochasticity (variance) increases? What happens when initial N is small? Does the population ALWAYS survive if the population growth rate, <span class="math inline">\(r_m\)</span> is <span class="math inline">\(&gt;\)</span> 0?</li>
 </ol>
-<div class="do-something">
-<p>
-Note: Excel re-randomises the random numbers every time you change
-any cell in the sheet. This is OK, and allows you to explore a
-stochastic simulation many times.
-</p>
-</div>
 </div>
 <div id="simulations-in-r" class="section level2 hasAnchor" number="7.3">
 <h2><span class="header-section-number">7.3</span> Simulations in R<a href="stochastic-population-growth.html#simulations-in-r" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -580,24 +541,6 @@ stochastic simulation many times.
 <p>If you already have R on your computers you can play along, otherwise take a look at my demonstration in class. I will show how you can use this simulation approach to estimate extinction risk and how this is related to starting population size, mean lambda, and the amount of stochasticity.</p>
 <p>You can copy/paste the code below into <em>R</em>.</p>
 <p>The output of the modelling is shown in Fig. <a href="stochastic-population-growth.html#fig:stochProjection">7.2</a></p>
-<div class="do-something">
-<p>
-Copy-and-paste the code below into a text file (or directly into
-<em>R</em>).
-</p>
-<p>
-The final line of the code (<code>nExtinct/nTrials</code>) gives you
-an estimate of extinction probability - the proportion of trials that
-lead to a population size of 1 (or less).
-</p>
-<p>
-Modify the simulation settings to explore what happens to (i) the
-plot of population growth and (ii) extinction risk, when you vary
-<code>mean.r</code> (<span class="math inline"><span class="math inline">\(\bar{r_m}\)</span></span>),
-the amount of stochasticity (<span class="math inline"><span class="math inline">\(\sigma_{r_m}^2\)</span></span>) (<code>var.r</code>), and
-the number of generations (<code>nGen</code>).
-</p>
-</div>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="stochastic-population-growth.html#cb3-1" tabindex="-1"></a><span class="co">#Simulating stochastic geometric population growth rate</span></span>
 <span id="cb3-2"><a href="stochastic-population-growth.html#cb3-2" tabindex="-1"></a></span>
 <span id="cb3-3"><a href="stochastic-population-growth.html#cb3-3" tabindex="-1"></a><span class="co">#Simulation settings (try changing these)</span></span>

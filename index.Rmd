@@ -27,7 +27,7 @@ description: "Course book for BB512 at the Biology Department, University of Sou
 
 ---
 
-```{r setOptions, include=FALSE}
+```{r setOptions, include = FALSE}
 knitr::opts_chunk$set(
   warning = FALSE, message = FALSE
 )
@@ -39,7 +39,7 @@ library(officer)
 set.seed(123)
 ```
 
-```{r course-config, include=FALSE}
+```{r course-config, include = FALSE}
 course_year <- format(Sys.Date(), "%Y")
 exam_month <- "January"
 exam_note <- "finalised in December"
@@ -101,7 +101,7 @@ The assessment for the course will be an electronic exam held in `r exam_month` 
 
 The instructors of the course are:
 
-```{r instructors-list, results='asis', echo=FALSE}
+```{r instructors-list, results = 'asis', echo = FALSE}
 apply(instructors, 1, function(x) {
   cat(sprintf("* [%s](%s), %s, %s\n", x[["name"]], x[["url"]], x[["title"]], x[["email"]]))
 })
@@ -173,18 +173,18 @@ current_year <- format(Sys.Date(), "%Y")
 link_to_schedule <- paste0("https://mitsdu.sdu.dk/skema/activity/N100007101/e",substr(current_year,3,4))
 ```
 
-```{r schedule-intro, results='asis', echo=FALSE, eval=knitr::is_html_output()}
+```{r schedule-intro, results = 'asis', echo = FALSE, eval = knitr::is_html_output()}
 cat("This is the schedule for the course. You can check itsLearning for the dates, times and locations. Also check itsLearning for details of other tasks/assignments/reading etc.")
 
 
 
-```{r, echo = FALSE, message=FALSE, warning=FALSE}
+```{r echo = FALSE, message = FALSE, warning = FALSE}
 schedule <- readxl::read_excel("BB512_Schedule.xlsx")
 ```
 
 
 
-```{r scheduletable, echo = FALSE, message=FALSE,eval=knitr::is_html_output(), warning=FALSE}
+```{r scheduletable, echo = FALSE, message = FALSE, eval = knitr::is_html_output(), warning = FALSE}
 schedule2 <- schedule %>%
   select(Part, Session, Type, Topic, Instructor)
 
@@ -209,7 +209,7 @@ ft <- flextable(schedule2, cwidth = c(2, .5, 1, 4, .75)) %>%
 ft
 ```
 
-```{r schedule-pdf-note, results='asis', echo=FALSE, message=FALSE, warning=FALSE, eval=knitr::is_latex_output()}
+```{r schedule-pdf-note, results = 'asis', echo = FALSE, message = FALSE, warning = FALSE, eval = knitr::is_latex_output()}
 # Build the official timetable link (same logic you used earlier)
 current_year <- format(Sys.Date(), "%Y")
 link_to_schedule <- paste0("https://mitsdu.sdu.dk/skema/activity/N100007101/e", substr(current_year, 3, 4))
@@ -223,6 +223,6 @@ cat("The formatted schedule table appears only in the online version of this boo
 ")
 
 
-```{r, echo =FALSE,message=FALSE,warning=FALSE}
+```{r echo = FALSE, message = FALSE, warning = FALSE}
 #source("scripts/personalCalendar.R")
 ```

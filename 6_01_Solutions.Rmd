@@ -396,7 +396,7 @@ Traits like muscle strength, running speed may have been important for fitness w
 
 You can read in data like this:
 
-```{r, eval = FALSE}
+```{r eval = FALSE}
 population_1 <- read.csv("data/heritability_pop1.csv")
 ```
 

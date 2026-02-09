@@ -12,7 +12,7 @@ Exponential growth is a powerful concept. To help us grasp it better let's use a
 
 
 
-```{r,out.width="50%",fig.align='center',echo = FALSE}
+```{r out.width = "50%", fig.align = 'center', echo = FALSE}
 knitr::include_graphics('images/Radha-Krishna_chess.jpg')
 ```
 

@@ -27,7 +27,7 @@ Earlier in the course you will have played with construction and analyses of the
 
 We will first need to load the `popdemo` package like this. Note that if you have not installed this package you should first install it with the command `install.packages("popdemo")`.
 
-```{r,message=FALSE}
+```{r message = FALSE}
 library(popdemo)
 ```
 

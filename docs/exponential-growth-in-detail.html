@@ -23,7 +23,7 @@
 <meta name="author" content="Owen R. Jones (Course Coordinator)" />
 
 
-<meta name="date" content="2026-02-08" />
+<meta name="date" content="2026-02-09" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -506,28 +506,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h1><span class="header-section-number">26</span> Exponential growth in detail<a href="exponential-growth-in-detail.html#exponential-growth-in-detail" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p>One of the foundational concepts in population dynamics is the exponential growth model. This model is a simplified representation of how populations grow when resources are not limiting. While it’s rare for populations to experience uninhibited growth for extended periods, understanding this basic model is crucial for understanding more complex dynamics that include factors like resource limitations, predation, and disease.</p>
 <p>In this chapter, we will explore the mathematical framework that describes exponential growth in both discrete and continuous time settings. We will introduce key parameters such as the per-capita birth rate, death rate, and intrinsic rate of increase. We will also demonstrate how to apply these models using R programming, offering a practical dimension to these theoretical concepts.</p>
-<div class="do-something">
-<p>
-Learning outcomes:
-</p>
-<ul>
-<li>
-Understand the fundamental equations that underpin exponential
-growth in populations.
-</li>
-<li>
-Differentiate between discrete and continuous time models.
-</li>
-<li>
-Interpret the role and significance of various parameters in
-exponential growth models.
-</li>
-<li>
-Use R programming to analyse exponential growth scenarios with real
-data.
-</li>
-</ul>
-</div>
 <div id="nomenclature" class="section level3 hasAnchor" number="26.0.1">
 <h3><span class="header-section-number">26.0.1</span> Nomenclature<a href="exponential-growth-in-detail.html#nomenclature" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <table>
@@ -617,9 +595,6 @@ data.
 <h2><span class="header-section-number">26.2</span> Real-World Application: Breeding Pairs of Merlin (Falco columbarius)<a href="exponential-growth-in-detail.html#real-world-application-breeding-pairs-of-merlin-falco-columbarius" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>To bring these mathematical concepts to life, let’s consider an example from the Neal textbook that focuses on the population of breeding pairs of Merlin, a species of small falcon. The data spans from 1970 to 1982 and shows the following population sizes (breeding pairs): <code>1,1,2,4,2,3,5,6,7,10,12,14,16</code></p>
 <p>This is not much data, so we can simply put it into R manually, and plot it, like this:</p>
-<div class="sourceCode" id="cb77"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb77-1"><a href="exponential-growth-in-detail.html#cb77-1" tabindex="-1"></a>df1 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">year =</span> <span class="dv">1970</span><span class="sc">:</span><span class="dv">1982</span>, </span>
-<span id="cb77-2"><a href="exponential-growth-in-detail.html#cb77-2" tabindex="-1"></a>                  <span class="at">N =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">4</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">7</span>,<span class="dv">10</span>,<span class="dv">12</span>,<span class="dv">14</span>,<span class="dv">16</span>))</span>
-<span id="cb77-3"><a href="exponential-growth-in-detail.html#cb77-3" tabindex="-1"></a><span class="fu">plot</span>(df1<span class="sc">$</span>year,df1<span class="sc">$</span>N, <span class="at">type =</span> <span class="st">&quot;b&quot;</span>)</span></code></pre></div>
 <p><img src="BB512_files/figure-html/plotnewproj-1.png" alt="" width="672" /></p>
 <div id="observations-and-context" class="section level3 hasAnchor" number="26.2.1">
 <h3><span class="header-section-number">26.2.1</span> Observations and Context<a href="exponential-growth-in-detail.html#observations-and-context" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -628,11 +603,6 @@ data.
 <div id="applying-the-exponential-growth-model" class="section level3 hasAnchor" number="26.2.2">
 <h3><span class="header-section-number">26.2.2</span> Applying the Exponential Growth Model<a href="exponential-growth-in-detail.html#applying-the-exponential-growth-model" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>To analyse this data, we’ll use the exponential growth model. We’ll plot the data on a log scale and fit a regression model:</p>
-<div class="sourceCode" id="cb78"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb78-1"><a href="exponential-growth-in-detail.html#cb78-1" tabindex="-1"></a>df1<span class="sc">$</span>logN <span class="ot">&lt;-</span> <span class="fu">log</span>(df1<span class="sc">$</span>N)</span>
-<span id="cb78-2"><a href="exponential-growth-in-detail.html#cb78-2" tabindex="-1"></a><span class="fu">plot</span>(df1<span class="sc">$</span>year,df1<span class="sc">$</span>logN)</span>
-<span id="cb78-3"><a href="exponential-growth-in-detail.html#cb78-3" tabindex="-1"></a></span>
-<span id="cb78-4"><a href="exponential-growth-in-detail.html#cb78-4" tabindex="-1"></a>mod1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(logN<span class="sc">~</span>year,<span class="at">data =</span> df1)</span>
-<span id="cb78-5"><a href="exponential-growth-in-detail.html#cb78-5" tabindex="-1"></a><span class="fu">summary</span>(mod1)</span></code></pre></div>
 <pre><code>## 
 ## Call:
 ## lm(formula = logN ~ year, data = df1)
@@ -651,7 +621,6 @@ data.
 ## Residual standard error: 0.2466 on 11 degrees of freedom
 ## Multiple R-squared:  0.9381, Adjusted R-squared:  0.9324 
 ## F-statistic: 166.6 on 1 and 11 DF,  p-value: 5.478e-08</code></pre>
-<div class="sourceCode" id="cb80"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb80-1"><a href="exponential-growth-in-detail.html#cb80-1" tabindex="-1"></a><span class="fu">abline</span>(mod1)</span></code></pre></div>
 <p><img src="BB512_files/figure-html/plotproj2-1.png" alt="" width="672" /></p>
 <p>Interpretation</p>
 <p>The summary of the model indicates that the slope of the relationship between year and logN is 0.2359637. Therefore, the per capita growth rate (<span class="math inline">\(R\)</span>) is 0.236 and the population multiplication rate (<span class="math inline">\(\lambda\)</span>) is 1.236.</p>

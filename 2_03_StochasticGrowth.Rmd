@@ -27,7 +27,7 @@ In the figure you can see that the peak of the $r_m$ distribution is $>0$ (appro
 Remember that we can convert $r_m$ to $\lambda$ by taking the exponential, because $r_m = ln(\lambda)$.
 
 
-```{r stochGrowthRate, echo=FALSE,fig.width=6,fig.height=4,fig.align='center',fig.cap="A normal distribution of potential r values"}
+```{r stochGrowthRate, echo = FALSE, fig.width = 6, fig.height = 4, fig.align = 'center', fig.cap = "A normal distribution of potential r values"}
 set.seed(123)
 pgr <- data.frame(r = rnorm(1000,0,0.25))
 ggplot(pgr,aes(x=r))+geom_histogram(bins =30) +
@@ -87,7 +87,7 @@ set.seed(1234)
 ```
 
 
-```{r stochProjection, echo=TRUE,fig.width=6,fig.height=4,fig.align='center',fig.cap="An example of stochastic population projection (100 simulations for 50 generations)"}
+```{r stochProjection, echo = TRUE, fig.width = 6, fig.height = 4, fig.align = 'center', fig.cap = "An example of stochastic population projection (100 simulations for 50 generations)"}
 #Simulating stochastic geometric population growth rate
 
 #Simulation settings (try changing these)

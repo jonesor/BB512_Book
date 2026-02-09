@@ -13,6 +13,13 @@ library(mime)
 library(officer)
 library(flextable)
 
+# Default chunk behavior for consistent rendering
+knitr::opts_chunk$set(
+  echo = FALSE,
+  message = FALSE,
+  warning = FALSE
+)
+
 # Packages used in specific chapters (loaded here to keep per-chapter dependencies explicit)
 library(popdemo)
 library(popbio)

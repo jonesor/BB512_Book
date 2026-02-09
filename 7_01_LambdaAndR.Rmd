@@ -95,7 +95,7 @@ This should be familiar to those of you that did (or remember!) the concept of g
 
 If we plot exponential growth on a log scale we can see that it is straight line. For example, in the plot below I show the sequence for a population with a starting population of 1 and a $\lambda$  (population multiplication rate) of 1.2 (i.e., the population increases by 20% each year). In (A) the time series is plotted on the natural scale while in (B) it is plotted on the log scale.
 
-```{r plotprojections, echo = FALSE, message=FALSE}
+```{r plotprojections, echo = FALSE, message = FALSE}
 # Load required libraries
 require(tidyverse)
 

@@ -30,10 +30,13 @@ names(population_1) <- c("Parent_value", "Offspring_value")
 names(population_2) <- c("Parent_value", "Offspring_value")
 
 pathToDirectory <- "data"
+writeHeritabilityData <- isTRUE(getOption("bb512_write_data", FALSE)) ||
+  tolower(Sys.getenv("BB512_WRITE_DATA")) == "true"
 
-
-write.csv(x = population_1, file = file.path(pathToDirectory, "heritability_pop1.csv"), row.names = FALSE)
-write.csv(x = population_2, file = file.path(pathToDirectory, "heritability_pop2.csv"), row.names = FALSE)
+if (writeHeritabilityData) {
+  write.csv(x = population_1, file = file.path(pathToDirectory, "heritability_pop1.csv"), row.names = FALSE)
+  write.csv(x = population_2, file = file.path(pathToDirectory, "heritability_pop2.csv"), row.names = FALSE)
+}
 ```
 
 

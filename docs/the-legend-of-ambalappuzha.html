@@ -23,7 +23,7 @@
 <meta name="author" content="Owen R. Jones (Course Coordinator)" />
 
 
-<meta name="date" content="2026-02-08" />
+<meta name="date" content="2026-02-09" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -505,20 +505,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="the-legend-of-ambalappuzha" class="section level1 hasAnchor" number="27">
 <h1><span class="header-section-number">27</span> The legend of Ambalappuzha<a href="the-legend-of-ambalappuzha.html#the-legend-of-ambalappuzha" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p>Exponential growth is a powerful concept. To help us grasp it better let’s use an ancient Indian chess legend as an example.</p>
-<div class="do-something">
-<p>
-<strong>Learning outcomes</strong>
-</p>
-<ul>
-<li>
-Use of Excel formulae for mathematical modelling.
-</li>
-<li>
-Understanding the multiplicative process of exponential/geometric
-growth.
-</li>
-</ul>
-</div>
 <p><img src="images/Radha-Krishna_chess.jpg" alt="" width="50%" style="display: block; margin: auto;" /></p>
 <p>According to legend, Lord Krishna once appeared in the form of a wise man in the court of the king and challenged him to a game of chess. The king was a chess enthusiast and naturally accepted the invitation.</p>
 <p>The king asked the wise man to choose a prize in case he won. The old man told the king that he had few material needs and that all he wished was a few grains of rice.</p>
@@ -568,14 +554,7 @@ growth.
 <div id="optional-try-these-calculations-in-r" class="section level2 hasAnchor" number="27.2">
 <h2><span class="header-section-number">27.2</span> Optional: Try these calculations in R<a href="the-legend-of-ambalappuzha.html#optional-try-these-calculations-in-r" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>You can do this kind of calculation easily in <em>R</em>. Try this.</p>
-<div class="sourceCode" id="cb81"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb81-1"><a href="the-legend-of-ambalappuzha.html#cb81-1" tabindex="-1"></a>myData <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">Squares =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">64</span>,<span class="at">nRice =</span> <span class="cn">NA</span>)</span>
-<span id="cb81-2"><a href="the-legend-of-ambalappuzha.html#cb81-2" tabindex="-1"></a>myData<span class="sc">$</span>nRice[<span class="dv">1</span>] <span class="ot">&lt;-</span> <span class="dv">1</span> </span>
-<span id="cb81-3"><a href="the-legend-of-ambalappuzha.html#cb81-3" tabindex="-1"></a></span>
-<span id="cb81-4"><a href="the-legend-of-ambalappuzha.html#cb81-4" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">2</span><span class="sc">:</span><span class="dv">64</span>){</span>
-<span id="cb81-5"><a href="the-legend-of-ambalappuzha.html#cb81-5" tabindex="-1"></a>  myData<span class="sc">$</span>nRice[i] <span class="ot">&lt;-</span> myData<span class="sc">$</span>nRice[i<span class="dv">-1</span>]<span class="sc">*</span><span class="dv">2</span></span>
-<span id="cb81-6"><a href="the-legend-of-ambalappuzha.html#cb81-6" tabindex="-1"></a>}</span></code></pre></div>
 <p>Now we can look at the top and bottom of the 64 row data frame like this:</p>
-<div class="sourceCode" id="cb82"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb82-1"><a href="the-legend-of-ambalappuzha.html#cb82-1" tabindex="-1"></a><span class="fu">head</span>(myData)</span></code></pre></div>
 <pre><code>##   Squares nRice
 ## 1       1     1
 ## 2       2     2
@@ -583,7 +562,6 @@ growth.
 ## 4       4     8
 ## 5       5    16
 ## 6       6    32</code></pre>
-<div class="sourceCode" id="cb84"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb84-1"><a href="the-legend-of-ambalappuzha.html#cb84-1" tabindex="-1"></a><span class="fu">tail</span>(myData)</span></code></pre></div>
 <pre><code>##    Squares        nRice
 ## 59      59 2.882304e+17
 ## 60      60 5.764608e+17
@@ -592,7 +570,6 @@ growth.
 ## 63      63 4.611686e+18
 ## 64      64 9.223372e+18</code></pre>
 <p>And we can sum up the total number of grains of rice on the 64 squares of the board like this:</p>
-<div class="sourceCode" id="cb86"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb86-1"><a href="the-legend-of-ambalappuzha.html#cb86-1" tabindex="-1"></a><span class="fu">sum</span>(myData<span class="sc">$</span>nRice)</span></code></pre></div>
 <pre><code>## [1] 1.844674e+19</code></pre>
 <p>To put that <em>HUGE</em> number in context, if a grain of rice weighs 25mg (0.0000025kg), then we’d have 461,168,601,842,739 kg. That’s 461 Gigatonnes, or roughly 8-900 times the yearly global rice production!</p>
 

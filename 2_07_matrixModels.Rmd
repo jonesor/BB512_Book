@@ -1,6 +1,6 @@
 # Matrix population modelling
 
-```{r,echo=FALSE,warning=FALSE,message=FALSE}
+```{r echo = FALSE, warning = FALSE, message = FALSE}
 library(tidyverse)
 library(Rage)
 library(Rcompadre)
@@ -65,7 +65,7 @@ matA
 ```
 
 
-```{r showmatrix, echo=FALSE}
+```{r showmatrix, echo = FALSE}
 matA <- matrix(c(
   0.3, 8.00, 2.00,
   0.1, 0.50, 0.00,
@@ -73,7 +73,7 @@ matA <- matrix(c(
 ), nrow = 3, byrow = TRUE)
 matA <- round(matA, 2)
 ```
-```{r plotmatrix, echo = FALSE, fig.cap="."}
+```{r plotmatrix, echo = FALSE, fig.cap = "."}
 matA_plot <- Rage::plot_life_cycle(matA, stages = c("A", "B", "C"))
 
 # 1. Make a play graph
@@ -117,13 +117,13 @@ Working with matrices is very tedious in Excel. However, in R you can use this i
 
 Open up **RStudio**, and let's see if we can predict future dynamics. First you will need to install a package called `popdemo`.
 
-```{r install,eval=FALSE}
+```{r install, eval = FALSE}
 install.packages("popdemo")
 ```
  
 You only need to install packages once. After that you can load the package for use by using the `library` function.
 
-```{r library, message=FALSE}
+```{r library, message = FALSE}
 library(popdemo)
 ```
 

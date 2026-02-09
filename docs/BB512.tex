@@ -145,7 +145,7 @@
 
 \title{BB512 - Population Biology and Evolution}
 \author{Owen R. Jones (Course Coordinator)}
-\date{2026-02-08}
+\date{2026-02-09}
 
 \begin{document}
 \maketitle
@@ -264,26 +264,6 @@ pr <- project(A, vector="n", time=10)
 plot(pr)
 \end{verbatim}
 
-\begin{do-something}
-\textbf{This book includes equations.}
-
-Equations sometimes do not render correctly on some web browsers.
-
-From experience, Chrome tends to be the most reliable, Safari (Mac only)
-also works well.
-
-Can you see the following equation?
-
-\(N_{t+1}=N_{t}+r_{m} N_{t}\left(1-\frac{N_{t}}{K}\right)\)
-
-It should look like this:
-
-\pandocbounded{\includegraphics[keepaspectratio]{testEquation.png}}
-
-If it doesn't look right, then you should try another browser (maybe
-even your phone browser) or investigate a solution.
-\end{do-something}
-
 \chapter{Schedule}\label{schedule}
 
 The formatted schedule table appears only in the online version of this book.
@@ -323,22 +303,6 @@ Imagine you're typing random letters into a typewriter. How long would it take t
 In English, there are 26 letters in the alphabet, plus the space character. The chance of randomly typing the first letter correctly is 1 in 27. The probability of getting the first two letters right is \((1/27)^2\), and the chances of typing the entire 14-character sentence correctly by random typing alone is \((1/27)^{14} = 9.14 \times 10^{-21}\), an astronomically small number.
 
 But what if selection was applied after each correct letter was typed? How might selection drastically change the outcome? Let's find out.
-
-\begin{do-something}
-Learning outcomes:
-
-\begin{itemize}
-\tightlist
-\item
-  Gain a deeper understanding of adaptive evolution via natural
-  selection.
-\item
-  Recognize how random change can lead to order if paired with
-  selection.
-\item
-  Learn to use R to explore biological phenomena.
-\end{itemize}
-\end{do-something}
 
 \section{Your task}\label{your-task}
 
@@ -443,21 +407,6 @@ Adaptive evolution via natural selection is a fundamental concept in evolutionar
 In an environment where predators rely on visual cues to locate their prey, individuals with better camouflage that matches their surroundings are more likely to avoid detection and capture, leading to higher survival rates. Over generations, the frequency of camouflage traits increases in the prey population due to higher survival and increased reproduction of well-camouflaged individuals.
 
 On the other hand, predators with better detection skills, like keen eyesight, are more successful at capturing prey, leading to increased survival and reproduction of these individuals. Consequently, traits associated with effective predation also become more prevalent in the predator population. This dynamic interplay between camouflage in prey and predator detection abilities exemplifies the power of natural selection in driving the adaptation and evolution of species to their ecological niches.
-
-\begin{do-something}
-Learning outcomes:
-
-\begin{itemize}
-\tightlist
-\item
-  Understanding adaptive evolution via natural selection.
-\item
-  Understanding how fitness depends on the environment.
-\item
-  Understanding the terms adaptation, selection, selection pressure,
-  heritability.
-\end{itemize}
-\end{do-something}
 
 \section{Your task}\label{your-task-1}
 
@@ -598,27 +547,6 @@ which leads to,
 
 \(N_{t+1} = N_t (1 + R_m)\) and, equivalently, \(N_{t+1} = N_t \lambda\).
 
-\begin{do-something}
-Learning outcomes:
-
-\begin{itemize}
-\tightlist
-\item
-  Competence in using Excel formulae for mathematical modeling.
-\item
-  Understanding the parameters of exponential/geometric growth.
-\item
-  Competence in using mathematical models in Excel to strengthen own
-  understanding of biological processes.
-\item
-  Awareness of rearranging of mathematical formulae to produce different
-  forms of models.
-\item
-  Knowing that the slope of the \(ln(N_t)\) vs.~\(t\) relationship can
-  tell you about population growth rate (it is \(ln(\lambda)\)).
-\end{itemize}
-\end{do-something}
-
 \section{Your task}\label{your-task-2}
 
 Download and open the Excel file \href{https://www.dropbox.com/s/xxx05sckvop5i52/GeometricGrowth.xlsx?dl=1}{\texttt{GeometricGrowth.xlsx}}.
@@ -680,30 +608,6 @@ The finite rate of increase (\(\lambda\)) is defined as the ratio of population 
 This rate tells us how fast a population is growing or shrinking over time. When \(\lambda > 1\), the population grows exponentially; when \(\lambda = 1\), it stays constant, and when \(\lambda < 1\), the population declines.
 
 In this exercise, you will estimate the population growth rate (\(\lambda\)) from real population data. The method involves plotting the population size over time, applying a log transformation to linearise the data, and fitting a linear regression model to estimate \(\lambda\). This method is widely used in ecology to analyse growth trends and make predictions.
-
-\begin{do-something}
-Learning outcomes:
-
-\begin{itemize}
-\tightlist
-\item
-  Competence in using Excel formulae for data transformation and
-  regression analysis.
-\item
-  Understanding the role of \(\lambda\) in population growth and its
-  estimation through log-transformed data.
-\item
-  Competence in applying mathematical models in Excel to analyse real
-  biological data.
-\item
-  Awareness of how log transformations can linearise exponential growth
-  data for easier interpretation.
-\item
-  Knowing that the slope of the \(ln(N)\) vs.~time relationship
-  represents \(ln(\lambda)\) and can be used to estimate population
-  growth rate.
-\end{itemize}
-\end{do-something}
 
 \section{Your task}\label{your-task-3}
 
@@ -800,34 +704,7 @@ Remember that we can convert \(r_m\) to \(\lambda\) by taking the exponential, b
 
 When using the equation above to calculate population at time \(t+1\) (\(N_{t+1}\)) from the population at time \(t\) (\(N_t\)), one would draw a random \(r_m\) value from this distribution. Sometimes \(r_m\) will be high, other times it will be low, most of the time it will be from around the middle of the distribution.
 
-\begin{do-something}
-Learning outcomes:
-
-\begin{itemize}
-\tightlist
-\item
-  Increased competence in using Excel formulae for mathematical
-  modeling.
-\item
-  Understanding the concept of stochasticity in simple population
-  models.
-\item
-  Competence in using mathematical models in Excel to strengthen own
-  understanding of biological processes.
-\item
-  Understanding how stochasticity relates to (i) uncertainty in the
-  prediction of population trajectories and (ii) probability of (local)
-  extinction.
-\end{itemize}
-\end{do-something}
-
 \section{Your task}\label{your-task-4}
-
-\begin{do-something}
-Use the Excel worksheet,
-\href{https://www.dropbox.com/s/1wpixbpgwlh54f0/StochasticPopulationGrowth.xlsx?dl=1}{StochasticPopulationGrowth.xlsx},
-to study how stochastic population growth works with this simple model.
-\end{do-something}
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi})}
@@ -848,12 +725,6 @@ to study how stochastic population growth works with this simple model.
   Extinction occurs when N \(\leq\) 0. What happens to extinction risk as stochasticity (variance) increases? What happens when initial N is small? Does the population ALWAYS survive if the population growth rate, \(r_m\) is \(>\) 0?
 \end{enumerate}
 
-\begin{do-something}
-Note: Excel re-randomises the random numbers every time you change any
-cell in the sheet. This is OK, and allows you to explore a stochastic
-simulation many times.
-\end{do-something}
-
 \section{Simulations in R}\label{simulations-in-r}
 
 Excel is of limited use to really get a feel for this. For the next part we'll use \emph{R}.
@@ -863,21 +734,6 @@ If you already have R on your computers you can play along, otherwise take a loo
 You can copy/paste the code below into \emph{R}.
 
 The output of the modelling is shown in Fig. \ref{fig:stochProjection}
-
-\begin{do-something}
-Copy-and-paste the code below into a text file (or directly into
-\emph{R}).
-
-The final line of the code (\texttt{nExtinct/nTrials}) gives you an
-estimate of extinction probability - the proportion of trials that lead
-to a population size of 1 (or less).
-
-Modify the simulation settings to explore what happens to (i) the plot
-of population growth and (ii) extinction risk, when you vary
-\texttt{mean.r} (\(\bar{r_m}\)), the amount of stochasticity
-(\(\sigma_{r_m}^2\)) (\texttt{var.r}), and the number of generations
-(\texttt{nGen}).
-\end{do-something}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1011,29 +867,6 @@ In this equation, the term \(\left(1 - \frac{N_t}{K}\right)\) slows population g
 As growth rates increase beyond a certain point, the population can exhibit more complex behaviours. At higher growth rates, populations may overshoot the carrying capacity, leading to oscillations as they fluctuate around it. In some cases, the population may show what's called deterministic chaos. This means that while the population fluctuates unpredictably, the system itself is not random --- small changes in initial conditions or growth rates can lead to vastly different outcomes.
 
 This Excel-based exercise will help you explore how changes in the growth rate and carrying capacity affect population dynamics. Though simple, the logistic model provides valuable insights into how populations stabilize, fluctuate, and respond to environmental limits.
-
-\begin{do-something}
-Learning outcomes:
-
-\begin{itemize}
-\tightlist
-\item
-  Increased competence in using Excel formulae for mathematical
-  modeling.
-\item
-  Understanding the parameters of the logistic population growth model.
-\item
-  Understanding how strikingly different types of population dynamics
-  can result from the same (logistic) model simply by varying the
-  population growth rate parameter.
-\item
-  Understanding the concept of \emph{deterministic chaos} and how it is
-  different from randomness.
-\item
-  Competence in using mathematical models in Excel to strengthen own
-  understanding of biological processes.
-\end{itemize}
-\end{do-something}
 
 \section{Your Task}\label{your-task-5}
 
@@ -1196,14 +1029,6 @@ In this exercise, you will explore how changes in key parameters affect populati
 
 These steps help you visualise how population size and per capita growth rate are interrelated, reinforcing the concepts behind logistic population growth.
 
-\begin{do-something}
-These two graphs are different ways to visualize the same model.
-
-It is important that you can make the connections between these graphs.
-
-How would the same plots look for regular exponential growth?
-\end{do-something}
-
 Some useful keywords:
 
 \begin{itemize}
@@ -1239,53 +1064,6 @@ Some useful keywords:
 
 You can implement this model in R as follows.
 In this code, I have added a line which ensures that population size cannot be negative.
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\CommentTok{\# Parameters}
-\NormalTok{r\_m }\OtherTok{\textless{}{-}} \FloatTok{3.5}  \CommentTok{\# intrinsic growth rate}
-\NormalTok{K }\OtherTok{\textless{}{-}} \DecValTok{1000}   \CommentTok{\# carrying capacity}
-\NormalTok{N0 }\OtherTok{\textless{}{-}} \DecValTok{10}    \CommentTok{\# initial population size}
-\NormalTok{timesteps }\OtherTok{\textless{}{-}} \DecValTok{50}  \CommentTok{\# number of time steps}
-
-\CommentTok{\# Initialize population vector}
-\NormalTok{population }\OtherTok{\textless{}{-}} \FunctionTok{numeric}\NormalTok{(timesteps)}
-\NormalTok{population[}\DecValTok{1}\NormalTok{] }\OtherTok{\textless{}{-}}\NormalTok{ N0}
-
-\CommentTok{\# Initialize per capita growth rate vector}
-\CommentTok{\# Length of one less than population, as it\textquotesingle{}s based on changes}
-\NormalTok{per\_capita\_growth }\OtherTok{\textless{}{-}} \FunctionTok{numeric}\NormalTok{(timesteps }\SpecialCharTok{{-}} \DecValTok{1}\NormalTok{)  }
-
-\CommentTok{\# Loop to calculate population at each time step}
-\ControlFlowTok{for}\NormalTok{ (t }\ControlFlowTok{in} \DecValTok{2}\SpecialCharTok{:}\NormalTok{timesteps) \{}
-  \CommentTok{\# Logistic growth model equation}
-\NormalTok{  population[t] }\OtherTok{\textless{}{-}}\NormalTok{ population[t}\DecValTok{{-}1}\NormalTok{] }\SpecialCharTok{+} 
-\NormalTok{    (r\_m }\SpecialCharTok{*}\NormalTok{ population[t}\DecValTok{{-}1}\NormalTok{]) }\SpecialCharTok{*}\NormalTok{ (}\DecValTok{1} \SpecialCharTok{{-}}\NormalTok{ (population[t}\DecValTok{{-}1}\NormalTok{] }\SpecialCharTok{/}\NormalTok{ K))}
-  
-  \CommentTok{\# Ensure population doesn\textquotesingle{}t go negative}
-  \ControlFlowTok{if}\NormalTok{ (population[t] }\SpecialCharTok{\textless{}} \DecValTok{0}\NormalTok{) \{}
-\NormalTok{    population[t] }\OtherTok{\textless{}{-}} \DecValTok{0}
-\NormalTok{  \}}
-  
-  \CommentTok{\# Calculate per capita growth rate for the previous time step}
-\NormalTok{  per\_capita\_growth[t}\DecValTok{{-}1}\NormalTok{] }\OtherTok{\textless{}{-}}\NormalTok{ (population[t] }\SpecialCharTok{{-}} 
-\NormalTok{                               population[t}\DecValTok{{-}1}\NormalTok{]) }\SpecialCharTok{/}\NormalTok{ population[t}\DecValTok{{-}1}\NormalTok{]}
-\NormalTok{\}}
-
-\FunctionTok{par}\NormalTok{(}\AttributeTok{mfrow=}\FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{,}\DecValTok{2}\NormalTok{))}
-\CommentTok{\# Plot 1: Population size through time}
-\FunctionTok{plot}\NormalTok{(}\DecValTok{1}\SpecialCharTok{:}\NormalTok{timesteps, population, }\AttributeTok{type =} \StringTok{"o"}\NormalTok{, }\AttributeTok{col =} \StringTok{"blue"}\NormalTok{, }
-     \AttributeTok{xlab =} \StringTok{"Time"}\NormalTok{, }\AttributeTok{ylab =} \StringTok{"Population size"}\NormalTok{,}
-     \AttributeTok{main =} \StringTok{"Population Size through Time (Logistic Growth Model)"}\NormalTok{)}
-
-\CommentTok{\# Plot 2: Per capita growth rate vs population size}
-\FunctionTok{plot}\NormalTok{(population[}\DecValTok{1}\SpecialCharTok{:}\NormalTok{(timesteps}\DecValTok{{-}1}\NormalTok{)], per\_capita\_growth, }
-     \AttributeTok{type =} \StringTok{"o"}\NormalTok{, }\AttributeTok{col =} \StringTok{"red"}\NormalTok{, }
-     \AttributeTok{xlab =} \StringTok{"Population Size"}\NormalTok{, }
-     \AttributeTok{ylab =} \StringTok{"Per Capita Growth Rate"}\NormalTok{,}
-     \AttributeTok{main =} \StringTok{"Per Capita Growth Rate vs Population Size"}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
 
 \chapter{Deeper into Logistic Growth}\label{deeper-into-logistic-growth}
 
@@ -1324,28 +1102,6 @@ which simplifies to
 This is the familiar \textbf{geometric (exponential) growth equation} (Eqn. 4.6 in Neal), which assumes unlimited resources and continuous population growth.
 
 \textbf{Take-home Message: The logistic and exponential growth models are closely related. By setting \(K = \infty\), we transition from the logistic model to the exponential model.}
-
-\begin{do-something}
-Learning outcomes:
-
-\begin{itemize}
-\tightlist
-\item
-  Increase competence in using Excel for mathematical modeling.
-\item
-  Understand the relationship between exponential and logistic growth
-  models.
-\item
-  Learn how models can be adjusted to explore different biological
-  phenomena.
-\item
-  Develop skills in visualising and interpreting model outputs from
-  different perspectives.
-\item
-  Strengthen understanding of biological processes by applying
-  mathematical models.
-\end{itemize}
-\end{do-something}
 
 \section{Your Task}\label{your-task-6}
 
@@ -1488,28 +1244,6 @@ Three primary survivorship types are commonly identified, based on survivorship 
 
 By identifying and understanding these survivorship types, researchers gain critical insights into the demographic structure of populations and the selective pressures that influence survival and longevity. Survivorship patterns play a significant role in shaping the dynamics of populations and help scientists make informed decisions regarding conservation efforts, healthcare planning, and population management strategies.
 
-\begin{do-something}
-Learning outcomes:
-
-\begin{itemize}
-\tightlist
-\item
-  Increased competence in using Excel formulae for mathematical
-  modelling.
-\item
-  Competence in using mathematical models in Excel to strengthen own
-  understanding of biological processes.
-\item
-  Understanding how life tables are calculated.
-\item
-  Understanding the three types of survivorship curve and how they
-  relate to mortality and survival probabilities (and their trajectories
-  with age).
-\item
-  Understanding the decline in the ``force of selection''.
-\end{itemize}
-\end{do-something}
-
 \section{Your task}\label{your-task-7}
 
 Download and open the Excel file \href{https://www.dropbox.com/s/ox0rk05zdwzrmwy/Life\%20tables\%20exercises.xlsx?dl=1}{\texttt{Life\ tables\ exercises.xlsx}}.
@@ -1614,28 +1348,6 @@ Matrix population models are powerful and widely used tools in population ecolog
 
 This practical aims to give you a good understanding of the basics of their construction and use.
 
-\begin{do-something}
-Learning outcomes:
-
-\begin{itemize}
-\tightlist
-\item
-  Competence in constructing life cycle diagrams to represent the life
-  history of real (or theoretical) organisms.
-\item
-  Understanding how to parameterise life-cycle diagrams and use them to
-  produce a matrix population model.
-\item
-  Competence in using R to calculate a population growth rate and
-  project a population.
-\item
-  Understanding how to connect these results to a management question.
-\item
-  Understanding the logic of ``\emph{in silico} experiments'' to
-  investigate a biological question (mathematical modelling).
-\end{itemize}
-\end{do-something}
-
 \section{Your task}\label{your-task-8}
 
 \begin{enumerate}
@@ -1696,31 +1408,9 @@ Working with matrices is very tedious in Excel. However, in R you can use this i
 
 Open up \textbf{RStudio}, and let's see if we can predict future dynamics. First you will need to install a package called \texttt{popdemo}.
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\FunctionTok{install.packages}\NormalTok{(}\StringTok{"popdemo"}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
-
 You only need to install packages once. After that you can load the package for use by using the \texttt{library} function.
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\FunctionTok{library}\NormalTok{(popdemo)}
-\end{Highlighting}
-\end{Shaded}
-
 You can put your matrix into R like in the example below (change the numbers to match YOUR model). If your model has fewer, or more, stages then you will need to modify the code a bit. Ask for help if you get stuck.
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{A }\OtherTok{\textless{}{-}} \FunctionTok{matrix}\NormalTok{(}\FunctionTok{c}\NormalTok{(}
-  \FloatTok{0.3}\NormalTok{, }\FloatTok{8.00}\NormalTok{, }\FloatTok{2.00}\NormalTok{,}
-  \FloatTok{0.1}\NormalTok{, }\FloatTok{0.50}\NormalTok{, }\FloatTok{0.00}\NormalTok{,}
-  \FloatTok{0.0}\NormalTok{, }\FloatTok{0.40}\NormalTok{, }\FloatTok{0.40}
-\NormalTok{), }\AttributeTok{ncol =} \DecValTok{3}\NormalTok{, }\AttributeTok{byrow =} \ConstantTok{TRUE}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
 
 \section{Projecting the population}\label{projecting-the-population}
 
@@ -1728,34 +1418,16 @@ And now you can use the project function to project what happens to the populati
 
 In my example, I have 3 stages, so I have 3 values for the initial population sizes. Then I use the \texttt{popdemo} function \texttt{project} to do a population projection for 10 time steps.
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{initial }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\DecValTok{10}\NormalTok{, }\DecValTok{5}\NormalTok{, }\DecValTok{3}\NormalTok{)}
-\NormalTok{pr }\OtherTok{\textless{}{-}}\NormalTok{ popdemo}\SpecialCharTok{::}\FunctionTok{project}\NormalTok{(A, }\AttributeTok{vector =}\NormalTok{ initial, }\AttributeTok{time =} \DecValTok{10}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
-
 Take a look at \texttt{pr}, the projected population. This gives you the total population size, and below that the population sizes in each stage.
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{pr}
-\end{Highlighting}
-\end{Shaded}
 
 \begin{verbatim}
 ## 1 deterministic population projection over 10 time intervals.
 ## 
-##  [1]  18.0000  55.7000  58.4300  85.2570 111.5643 151.4946 203.2634 273.8278 368.4012 495.8572 667.3121
+##  [1]  18.0000  55.7000  58.4300  85.2570 111.5643 151.4946 203.2634 273.8278
+##  [9] 368.4012 495.8572 667.3121
 \end{verbatim}
 
 You can access the population sizes of the different stages using \texttt{vec(pr)}.
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\FunctionTok{vec}\NormalTok{(pr)}
-\end{Highlighting}
-\end{Shaded}
 
 \begin{verbatim}
 ##             S1       S2        S3
@@ -1774,15 +1446,6 @@ You can access the population sizes of the different stages using \texttt{vec(pr
 
 Let's plot this\ldots{}
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{pop }\OtherTok{\textless{}{-}} \FunctionTok{vec}\NormalTok{(pr)}
-\FunctionTok{matplot}\NormalTok{(pop, }\AttributeTok{type =} \StringTok{"l"}\NormalTok{, }\AttributeTok{log =} \StringTok{"y"}\NormalTok{)}
-\FunctionTok{legend}\NormalTok{(}\StringTok{"topleft"}\NormalTok{, }\AttributeTok{legend =} \FunctionTok{colnames}\NormalTok{(pop), }
-       \AttributeTok{col =} \DecValTok{1}\SpecialCharTok{:}\FunctionTok{ncol}\NormalTok{(pop), }\AttributeTok{lty =} \DecValTok{1}\SpecialCharTok{:}\FunctionTok{ncol}\NormalTok{(pop))}
-\end{Highlighting}
-\end{Shaded}
-
 \pandocbounded{\includegraphics[keepaspectratio]{BB512_files/figure-latex/plotprojectiongraph-1.pdf}}
 
 You should see that the population increases exponentially. The population growth rate is the so-called ``\emph{dominant eigenvalue}'' of the matrix \textbf{A}.
@@ -1790,12 +1453,6 @@ You should see that the population increases exponentially. The population growt
 We can ask R for the \emph{eigen values} and \emph{eigen vectors}. These are the population growth rate (\(\lambda\)) and the stable stage distribution (\emph{SSD}) and the reproductive values (\emph{RV}) of the different stages. \emph{SSD} is the expected \emph{proportion} of individuals in the different stage classes at equilibrium (i.e.~the long-term time frame) and \emph{RV} is the expected number of future offspring by individuals in each stage.
 
 You can see that in this case, using my example values the population is growing 34.58\% per year.
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\FunctionTok{eigs}\NormalTok{(A)}
-\end{Highlighting}
-\end{Shaded}
 
 \begin{verbatim}
 ## $lambda
@@ -1812,12 +1469,6 @@ You can see that in this case, using my example values the population is growing
 
 Elasticity analysis is a way of analysing a matrix model to identify the most important transitions to population growth. This is very important in management and conservation when we ask questions like, ``which parts of the lifecycle should we focus on to preserve the population?''. The mathematics of this are beyond this course, but in a nutshell, we are adding a small value to the elements of the matrix one-at-a-time and asking what difference this makes to population growth rate (lambda). We then express that as a \emph{proportion}, so that the elasticities sum up to one and are easier to interpret. They can be calculated easily in R.
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{popdemo}\SpecialCharTok{::}\FunctionTok{elas}\NormalTok{(A)}
-\end{Highlighting}
-\end{Shaded}
-
 \begin{verbatim}
 ##            [,1]       [,2]       [,3]
 ## [1,] 0.09517264 0.30005511 0.03172421
@@ -1833,29 +1484,9 @@ These don't have much to do with life tables (sorry, that's confusing!). The ide
 
 In practice, we do that simply by modifying the matrix model. In the following, I am looking at the effect of increasing fertility in adult and senescent individuals by 50\%:
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{A }\OtherTok{\textless{}{-}} \FunctionTok{matrix}\NormalTok{(}\FunctionTok{c}\NormalTok{(}
-  \FloatTok{0.3}\NormalTok{, }\FloatTok{8.00}\SpecialCharTok{*}\FloatTok{1.5}\NormalTok{, }\FloatTok{2.00}\SpecialCharTok{*}\FloatTok{1.5}\NormalTok{,}
-  \FloatTok{0.1}\NormalTok{, }\FloatTok{0.50}\NormalTok{, }\FloatTok{0.00}\NormalTok{,}
-  \FloatTok{0.0}\NormalTok{, }\FloatTok{0.40}\NormalTok{, }\FloatTok{0.40}
-\NormalTok{),}
-\AttributeTok{byrow =} \ConstantTok{TRUE}\NormalTok{, }\AttributeTok{nrow =} \DecValTok{3}
-\NormalTok{)}
-
-\NormalTok{popdemo}\SpecialCharTok{::}\FunctionTok{eigs}\NormalTok{(A, }\AttributeTok{what =} \StringTok{"lambda"}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
-
 \begin{verbatim}
 ## [1] 1.546586
 \end{verbatim}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\FunctionTok{elas}\NormalTok{(A)}
-\end{Highlighting}
-\end{Shaded}
 
 \begin{verbatim}
 ##            [,1]       [,2]        [,3]
@@ -1910,47 +1541,13 @@ You can think of lambda (population growth rate) as being a measure of fitness. 
 
 \chapter{Pre- and Post-reproduction census}\label{pre--and-post-reproduction-census}
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{p0 }\OtherTok{\textless{}{-}} \FloatTok{0.2}
-\NormalTok{p1 }\OtherTok{\textless{}{-}} \FloatTok{0.9}
-\NormalTok{p2 }\OtherTok{\textless{}{-}} \FloatTok{0.6}
-\NormalTok{m2 }\OtherTok{\textless{}{-}} \FloatTok{3.0}
-\NormalTok{m3 }\OtherTok{\textless{}{-}} \FloatTok{6.0}
-
-\NormalTok{A1 }\OtherTok{\textless{}{-}} \FunctionTok{matrix}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\FloatTok{0.0}\NormalTok{, m2 }\SpecialCharTok{*}\NormalTok{ p1, m3 }\SpecialCharTok{*}\NormalTok{ p2,}
-\NormalTok{               p0, }\FloatTok{0.0}\NormalTok{, }\FloatTok{0.0}\NormalTok{,}
-               \FloatTok{0.0}\NormalTok{,p1,}\DecValTok{0}\NormalTok{), }\AttributeTok{byrow =} \ConstantTok{TRUE}\NormalTok{, }\AttributeTok{nrow =} \DecValTok{3}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
-
 Convert to pre-breeding
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{A2 }\OtherTok{\textless{}{-}} \FunctionTok{matrix}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\FloatTok{0.0}\NormalTok{, m2 }\SpecialCharTok{*}\NormalTok{ p0, m3 }\SpecialCharTok{*}\NormalTok{ p0,}
-\NormalTok{               p1, }\FloatTok{0.0}\NormalTok{, }\FloatTok{0.0}\NormalTok{,}
-               \FloatTok{0.0}\NormalTok{,p2,}\DecValTok{0}\NormalTok{), }\AttributeTok{byrow =} \ConstantTok{TRUE}\NormalTok{, }\AttributeTok{nrow =} \DecValTok{3}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
-
 Compare population growth rates. This uses the \texttt{eigs} function from the \texttt{popdemo} R package.
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{(popdemo}\SpecialCharTok{::}\FunctionTok{eigs}\NormalTok{(A1, }\AttributeTok{what =} \StringTok{"lambda"}\NormalTok{))}
-\end{Highlighting}
-\end{Shaded}
 
 \begin{verbatim}
 ## [1] 1.070261
 \end{verbatim}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{(popdemo}\SpecialCharTok{::}\FunctionTok{eigs}\NormalTok{(A2, }\AttributeTok{what =} \StringTok{"lambda"}\NormalTok{))}
-\end{Highlighting}
-\end{Shaded}
 
 \begin{verbatim}
 ## [1] 1.070261
@@ -1968,14 +1565,6 @@ The method involves comparing matrix models of the populations in question and d
 
 First we need to ensure that we have the R packages we need loaded. If you get an error doing this, remember to install them first (\texttt{install.packages("PACKAGE\_NAME")})
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\FunctionTok{library}\NormalTok{(popbio)}
-\FunctionTok{library}\NormalTok{(popdemo)}
-\FunctionTok{library}\NormalTok{(Rcompadre)}
-\end{Highlighting}
-\end{Shaded}
-
 \section{A worked example}\label{a-worked-example}
 
 In this example, we consider a two-stage matrix model to analyse, say, squirrel populations in two different geographic locations. The first, a reference population from Location A, represents an area with favourable environmental conditions. The matrix model for this population distinguishes between juveniles (J) and adults (A), incorporating probabilities for juveniles maturing into adults (0.5) and adults surviving and staying adult (0.6), as well as the fecundity rate (2.3), which is the number of juveniles produced by an adult.
@@ -1984,16 +1573,6 @@ In this example, we consider a two-stage matrix model to analyse, say, squirrel 
 
 The treatment population, from Location B, experiences generally worse environmental conditions during the spring which particularly impacts the juvenile stages, and includes an effect on fecundity (e.g.~via neonatal maternal energy allocation). The two matrices can be created in R as follows. Compare the values in the matrix, to the values in the life cycle diagram.
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{A\_ref }\OtherTok{\textless{}{-}} \FunctionTok{matrix}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\FloatTok{0.1}\NormalTok{,}\FloatTok{2.3}\NormalTok{,}
-                  \FloatTok{0.5}\NormalTok{,}\FloatTok{0.6}\NormalTok{), }\AttributeTok{nrow =} \DecValTok{2}\NormalTok{, }\AttributeTok{ncol =} \DecValTok{2}\NormalTok{, }\AttributeTok{byrow =} \ConstantTok{TRUE}\NormalTok{)}
-
-\NormalTok{A\_treat }\OtherTok{\textless{}{-}} \FunctionTok{matrix}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\FloatTok{0.1}\NormalTok{,}\FloatTok{1.3}\NormalTok{,}
-                    \FloatTok{0.2}\NormalTok{,}\FloatTok{0.7}\NormalTok{), }\AttributeTok{nrow =} \DecValTok{2}\NormalTok{, }\AttributeTok{ncol =} \DecValTok{2}\NormalTok{, }\AttributeTok{byrow =} \ConstantTok{TRUE}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
-
 \subsection{Comparing matrices}\label{comparing-matrices}
 
 Before we dig into the formal LTRE, it is useful to compare the two matrices, \texttt{A\_ref} and \texttt{A\_treat}, to see how they are different from each other.
@@ -2001,12 +1580,6 @@ Before we dig into the formal LTRE, it is useful to compare the two matrices, \t
 We can check what overall difference there is between the matrix in a couple of ways.
 
 Firstly, we can examine the differences in the individual transition rates between the matrices by subtracting one from the other.
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{A\_ref }\SpecialCharTok{{-}}\NormalTok{ A\_treat}
-\end{Highlighting}
-\end{Shaded}
 
 \begin{verbatim}
 ##      [,1] [,2]
@@ -2017,21 +1590,9 @@ Firstly, we can examine the differences in the individual transition rates betwe
 Next, we can ask what impact these differences have on the population growth rate (lambda).
 Note that putting the command in parentheses tells R to both create the new object (e.g.~\texttt{lambdaA1}) \textbf{and} print the result to the screen.
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{(lambda\_A\_ref }\OtherTok{\textless{}{-}} \FunctionTok{eigs}\NormalTok{(A\_ref, }\AttributeTok{what =} \StringTok{"lambda"}\NormalTok{))}
-\end{Highlighting}
-\end{Shaded}
-
 \begin{verbatim}
 ## [1] 1.451136
 \end{verbatim}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{(lambda\_A\_treat }\OtherTok{\textless{}{-}}\FunctionTok{eigs}\NormalTok{(A\_treat, }\AttributeTok{what =} \StringTok{"lambda"}\NormalTok{))}
-\end{Highlighting}
-\end{Shaded}
 
 \begin{verbatim}
 ## [1] 0.991608
@@ -2041,23 +1602,11 @@ We could express this as a difference, or as a proportional difference.
 
 The difference in growth rates between the matrices is 0.46.
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{(lambdaDiff }\OtherTok{\textless{}{-}}\NormalTok{ lambda\_A\_ref }\SpecialCharTok{{-}}\NormalTok{ lambda\_A\_treat)}
-\end{Highlighting}
-\end{Shaded}
-
 \begin{verbatim}
 ## [1] 0.4595278
 \end{verbatim}
 
 This is a 32\% reduction, compared to the reference matrix.
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{(lambdaDiff}\SpecialCharTok{/}\NormalTok{lambda\_A\_ref) }\SpecialCharTok{*} \DecValTok{100}
-\end{Highlighting}
-\end{Shaded}
 
 \begin{verbatim}
 ## [1] 31.66677
@@ -2072,12 +1621,6 @@ The objective of the LTRE (Life Table Response Experiment) analysis in this cont
 By understanding where differences in growth rate originate, we can make more informed decisions about conservation and management strategies. For instance, if the analysis shows that adult survival has a larger impact on growth rate than fecundity, conservation efforts can be more effectively focused on improving adult survival rates rather than fecundity. Conversely, if juvenile survival or fecundity is more influential, efforts might be better directed towards enhancing these aspects. This targeted approach ensures that resources are allocated efficiently, and interventions are tailored to address the most critical factors affecting the population's viability under varying environmental conditions.
 
 By comparing the two models, we can decompose the differences in the overall growth rate (\(\lambda\)) between the baseline (Location A) and the modified model (Location B). This analysis will specifically highlight how changes in adult survival and fecundity in the less favourable environment of Location B contribute to any differences in population growth rates compared to the more favourable conditions in Location A. Such insights are crucial for developing effective management and conservation strategies, particularly in understanding the relative importance of different life stages and demographic parameters under varying environmental conditions.
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{popbio}\SpecialCharTok{::}\FunctionTok{LTRE}\NormalTok{(A\_treat,A\_ref)}
-\end{Highlighting}
-\end{Shaded}
 
 \begin{verbatim}
 ##            [,1]        [,2]
@@ -2105,19 +1648,6 @@ In summary, while elasticity analysis is valuable for understanding the inherent
 Trade-offs are inherent compromises in biology, where allocating limited resources to one trait may come at the expense of another. Organisms face these trade-offs when making crucial life-history decisions. One classic example is the British ornithologist David Lack's clutch size trade-off, where bird species must balance between producing more eggs with reduced individual investment or fewer eggs with higher individual investment. In other words, although it may be beneficial to have many offspring, the survival of those offspring will decline if they cannot be cared for.
 
 Understanding such trade-offs sheds light on the fascinating strategies that organisms employ to optimize their fitness and evolutionary success.
-
-\begin{do-something}
-Learning outcomes:
-
-\begin{itemize}
-\tightlist
-\item
-  Understanding the concept of a life history trade off.
-\item
-  Understanding how balancing the benefits and drawbacks of trade offs
-  tends to lead to intermediate trait values.
-\end{itemize}
-\end{do-something}
 
 \section{Your task}\label{your-task-9}
 
@@ -2170,19 +1700,6 @@ The balance of the trade off between these early and late life processes is shap
 This highlights the significance of early-late life trade-offs and their role in shaping aging patterns in various organisms. Understanding this concept is essential for comprehending life history evolution, aging, and longevity across species.
 
 The aim of this exercise is to gain an understanding of early-life late-life trade offs and to understand why events early in life tend to be much more important to evolution than those that happen later in life.
-
-\begin{do-something}
-Learning outcomes:
-
-\begin{itemize}
-\tightlist
-\item
-  Understanding the concept of a life history trade off.
-\item
-  Understanding what the force of selection is, why it declines with
-  age, and the consequences for late-life deleterious genes.
-\end{itemize}
-\end{do-something}
 
 \section{Your task}\label{your-task-10}
 
@@ -2312,25 +1829,6 @@ For a population to be in Hardy-Weinberg Equilibrium, certain assumptions must b
 
 Any deviation from these assumptions could result in a population that is not in Hardy-Weinberg Equilibrium.
 
-\begin{do-something}
-Learning outcomes:
-
-\begin{itemize}
-\tightlist
-\item
-  Understanding the difference between alleles and genotypes.
-\item
-  The ability to solve Hardy-Weinberg problems by understanding and
-  applying the two key formulae of HW.
-\item
-  Knowing the assumptions of HWE.
-\item
-  Understanding what ``being at Hardy-Weinberg Equilibrium'' means in
-  terms of evolutionary processes (which is related to the assumptions
-  of HWE).
-\end{itemize}
-\end{do-something}
-
 \section{Your task}\label{your-task-11}
 
 Tackle the following problems, using the HWE theory outlined above \ldots{}
@@ -2401,23 +1899,6 @@ The primary factor that influences genetic drift in the gene pool model is popul
 
 Two related concepts are critical in understanding genetic drift: bottlenecks and founding effects. A genetic bottleneck occurs when a population dramatically reduces in size due to events like environmental catastrophes. During a bottleneck, allele frequency (and genetic diversity) can change dramatically due to sampling effects during the bottleneck. The founding effect is a similar scenario where a small group (a sample from the population) establishes a new population. The fact that the new population is a small sample of the ancestral population means that the new population can have rather different genetic composition to the ancestral population.
 
-\begin{do-something}
-Learning outcomes:
-
-\begin{itemize}
-\tightlist
-\item
-  Greater understanding of evolution via genetic drift (neutral).
-\item
-  Understanding of genetic bottlenecks and founder effect.
-\item
-  Understanding the relationship between stochasticity and genetic
-  variation.
-\item
-  Use of R for exploring biological phenomenon.
-\end{itemize}
-\end{do-something}
-
 \section{Your task}\label{your-task-12}
 
 In this practical, we'll use the R programming language to simulate how allele frequencies change in a population over generations. By changing some factors, you'll see how allele frequencies change in different situations. This exercise will deepen your understanding of evolution and give you practical skills to explore real genetic questions.
@@ -2443,49 +1924,16 @@ We will first aim to get an understanding of what a gene pool is, using a simple
 
 To establish the gene pool we first set the initial population size. I set this to be reasonably large, at 500 individuals.
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{pop\_size }\OtherTok{\textless{}{-}} \DecValTok{500}
-\end{Highlighting}
-\end{Shaded}
-
 There are two alleles (gene variants) per individual: one allele came from the father, and one from the mother.
 
 Therefore, the gene pool contains 2 x N alleles (in this case, 1000 alleles).
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{pool\_size }\OtherTok{\textless{}{-}}\NormalTok{ pop\_size }\SpecialCharTok{*} \DecValTok{2}
-\end{Highlighting}
-\end{Shaded}
-
 I now set the initial allele frequency to be 0.5. You can use other values, but 0.5 is best to start with.
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{initial\_frequency\_A }\OtherTok{\textless{}{-}} \FloatTok{0.5}
-\NormalTok{initial\_frequency\_a }\OtherTok{\textless{}{-}} \DecValTok{1} \SpecialCharTok{{-}}\NormalTok{ initial\_frequency\_A}
-\end{Highlighting}
-\end{Shaded}
 
 We can now calculate the \textbf{number} of \emph{A} and \emph{a} alleles, by multiplying the frequency by the pool size and rounding the result to the closest whole number.
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{number\_A }\OtherTok{\textless{}{-}} \FunctionTok{round}\NormalTok{(initial\_frequency\_A }\SpecialCharTok{*}\NormalTok{ pool\_size)}
-\NormalTok{number\_a }\OtherTok{\textless{}{-}} \FunctionTok{round}\NormalTok{(initial\_frequency\_a }\SpecialCharTok{*}\NormalTok{ pool\_size)}
-\end{Highlighting}
-\end{Shaded}
-
 Following this, the gene pool can be filled like this.
 What we are saying here is ``repeat \texttt{A}, \texttt{number\_A} times, then repeat \texttt{a} \texttt{number\_a} times''
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{gene\_pool }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\FunctionTok{rep}\NormalTok{(}\StringTok{"A"}\NormalTok{, number\_A), }\FunctionTok{rep}\NormalTok{(}\StringTok{"a"}\NormalTok{, number\_a))}
-\FunctionTok{table}\NormalTok{(gene\_pool)}
-\end{Highlighting}
-\end{Shaded}
 
 \begin{verbatim}
 ## gene_pool
@@ -2494,12 +1942,6 @@ What we are saying here is ``repeat \texttt{A}, \texttt{number\_A} times, then r
 \end{verbatim}
 
 We can express these numbers as allele frequencies (i.e.~as proportions of the total) by wrapping the \texttt{table} command with \texttt{prop.table} like this:
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\FunctionTok{prop.table}\NormalTok{(}\FunctionTok{table}\NormalTok{(gene\_pool))}
-\end{Highlighting}
-\end{Shaded}
 
 \begin{verbatim}
 ## gene_pool
@@ -2515,19 +1957,7 @@ During the next time step (i.e.~1 generation), the individuals in the population
 
 This code is saying ``\textbf{sample, from the gene pool, 1000 alleles}''. We need to sample \(2 \times\) the population size because each individual contains two alleles.
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{new\_gene\_pool }\OtherTok{\textless{}{-}} \FunctionTok{sample}\NormalTok{(gene\_pool, }\DecValTok{2} \SpecialCharTok{*}\NormalTok{ pop\_size, }\AttributeTok{replace =} \ConstantTok{TRUE}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
-
 Let's look at the allele frequency in the new gene pool. It should be similar, but probably not exactly the same as the initial gene pool.
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\FunctionTok{prop.table}\NormalTok{(}\FunctionTok{table}\NormalTok{(new\_gene\_pool))}
-\end{Highlighting}
-\end{Shaded}
 
 \begin{verbatim}
 ## new_gene_pool
@@ -2550,50 +1980,7 @@ In our loop, we will repeat this gene pool sampling process many times (one time
 Let's set up a simulation that runs for 100 generations.
 You can cut-paste this code, which is a complete gene-pool model.
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\CommentTok{\# Set number of generations}
-\NormalTok{n\_gen }\OtherTok{\textless{}{-}} \DecValTok{100}
-\NormalTok{pop\_size }\OtherTok{\textless{}{-}} \DecValTok{100}
-
-\CommentTok{\# Set up an empty vector of length n\_gen to contain results}
-\NormalTok{allele\_freq\_A }\OtherTok{\textless{}{-}} \FunctionTok{rep}\NormalTok{(}\ConstantTok{NA}\NormalTok{, n\_gen)}
-
-\CommentTok{\# Put in an initial value for frequency of A}
-\NormalTok{allele\_freq\_A[}\DecValTok{1}\NormalTok{] }\OtherTok{\textless{}{-}} \FloatTok{0.5}
-
-\CommentTok{\# Establish the initial gene pool and name it gene\_pool\_time\_n}
-\CommentTok{\# This part looks complicated, but I am just condensing the code }
-\CommentTok{\# from above into 1 line.}
-\NormalTok{gene\_pool\_time\_n }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}
-  \FunctionTok{rep}\NormalTok{(}\StringTok{"A"}\NormalTok{, }\FunctionTok{round}\NormalTok{(}\DecValTok{2} \SpecialCharTok{*}\NormalTok{ allele\_freq\_A[}\DecValTok{1}\NormalTok{] }\SpecialCharTok{*}\NormalTok{ pop\_size)),}
-  \FunctionTok{rep}\NormalTok{(}\StringTok{"a"}\NormalTok{, }\FunctionTok{round}\NormalTok{(}\DecValTok{2} \SpecialCharTok{*}\NormalTok{ (}\DecValTok{1} \SpecialCharTok{{-}}\NormalTok{ allele\_freq\_A[}\DecValTok{1}\NormalTok{]) }\SpecialCharTok{*}\NormalTok{ pop\_size))}
-\NormalTok{)}
-
-\ControlFlowTok{for}\NormalTok{ (i }\ControlFlowTok{in} \DecValTok{2}\SpecialCharTok{:}\NormalTok{n\_gen) \{}
-\NormalTok{  gene\_pool\_time\_n\_plus\_1 }\OtherTok{\textless{}{-}} \FunctionTok{sample}\NormalTok{(gene\_pool\_time\_n,}
-\NormalTok{    pop\_size }\SpecialCharTok{*} \DecValTok{2}\NormalTok{,}
-    \AttributeTok{replace =} \ConstantTok{TRUE}
-\NormalTok{  )}
-\NormalTok{  gene\_pool\_table }\OtherTok{\textless{}{-}} \FunctionTok{table}\NormalTok{(}\FunctionTok{factor}\NormalTok{(gene\_pool\_time\_n\_plus\_1, }
-                                  \AttributeTok{levels =} \FunctionTok{c}\NormalTok{(}\StringTok{"A"}\NormalTok{, }\StringTok{"a"}\NormalTok{)))}
-\NormalTok{  allele\_freq\_A[i] }\OtherTok{\textless{}{-}}\NormalTok{ gene\_pool\_table[}\DecValTok{2}\NormalTok{] }\SpecialCharTok{/} \FunctionTok{sum}\NormalTok{(gene\_pool\_table)}
-
-  \CommentTok{\# Replace the old gene pool with the new one.}
-\NormalTok{  gene\_pool\_time\_n }\OtherTok{\textless{}{-}}\NormalTok{ gene\_pool\_time\_n\_plus\_1}
-\NormalTok{\}}
-\end{Highlighting}
-\end{Shaded}
-
 Now we can plot this result (Figure \ref{fig:simulationplot})
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\FunctionTok{plot}\NormalTok{(}\DecValTok{1}\SpecialCharTok{:}\NormalTok{n\_gen, allele\_freq\_A, }\AttributeTok{type =} \StringTok{"l"}\NormalTok{, }
-     \AttributeTok{xlab =} \StringTok{"time"}\NormalTok{, }
-     \AttributeTok{ylim =} \FunctionTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{, }\DecValTok{1}\NormalTok{))}
-\end{Highlighting}
-\end{Shaded}
 
 \begin{figure}
 \centering
@@ -2615,26 +2002,11 @@ Use the code to investigate the following questions:
   Are rare alleles (defined with allele frequency) more or less likely to be lost than common ones? What implications does this have for new alleles (mutations)?
 \end{itemize}
 
-\begin{do-something}
-Tip: make a new script and paste the code loop along with with the plot
-command so that you can run both together easily.
-\end{do-something}
-
 \section{Bottlenecks}\label{bottlenecks}
 
 Well done for making it this far. R programming is not for the faint hearted.
 
 Next up, I want you to take the code, and modify the code within the loop to simulate a genetic bottleneck. A genetic bottleneck occurs when the population goes through a period of small population size.
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\ControlFlowTok{if}\NormalTok{ (i }\SpecialCharTok{\%in\%} \DecValTok{30}\SpecialCharTok{:}\DecValTok{50}\NormalTok{) \{}
-\NormalTok{  pop\_size }\OtherTok{\textless{}{-}} \DecValTok{10}
-\NormalTok{\} }\ControlFlowTok{else}\NormalTok{ \{}
-\NormalTok{  pop\_size }\OtherTok{\textless{}{-}} \DecValTok{1000}
-\NormalTok{\}}
-\end{Highlighting}
-\end{Shaded}
 
 This code means, ``\emph{\ldots if the generation time is between \texttt{30} and \texttt{50}, make the population size 10, otherwise make the population size 1000}''. In other words, the population goes through a bottleneck period of 20 generations. You could modify this line of code to change the characteristics of the bottleneck.
 
@@ -2714,39 +2086,6 @@ The objective of this exercise is to develop an intuitive understanding of the e
 \caption{How will selection differ between these environments?}\label{fig:huntergatherer}
 \end{figure}
 
-\begin{do-something}
-Learning outcomes:
-
-\begin{itemize}
-\tightlist
-\item
-  Interpret the Influence of Selection Pressure: By the end of this
-  exercise, participants will be able to categorise traits based on the
-  level of natural selection acting upon them and articulate reasons for
-  their categorisation.
-\item
-  Distinguish between Adaptive and Neutral Evolution: Participants will
-  be equipped to differentiate traits evolving due to adaptive evolution
-  from those likely evolving through genetic drift.
-\item
-  Apply Terminology Accurately: Participants will utilise correct
-  scientific terminology to articulate viewpoints about trait evolution
-  in different populations.
-\item
-  Evaluate Environmental Factors: Participants will demonstrate the
-  ability to assess how different environments (hunter-gatherer-type
-  societies vs modern industrialised countries) impact the strength of
-  natural selection on various traits.
-\item
-  Engage in Collaborative Argumentation: Participants will
-  collaboratively argue and defend their categorisation of traits,
-  providing evidence or logical reasoning for their views.
-\item
-  Engage in Critical Thinking: Develop analytical skills in evaluating
-  the role of selection and drift in trait evolution.
-\end{itemize}
-\end{do-something}
-
 \section{Your task (30 minutes)}\label{your-task-30-minutes}
 
 You are given a list of traits for humans (below). In small groups:
@@ -2803,23 +2142,6 @@ Nevertheless, heritability can be useful, and it is possible to estimate heritab
 \textbf{Reference}
 
 \href{https://www.nature.com/scitable/topicpage/estimating-trait-heritability-46889/}{Wray, N. \& Visscher, P. (2008) Estimating trait heritability. Nature Education 1(1):29}
-
-\begin{do-something}
-Learning Outcomes:
-
-\begin{itemize}
-\tightlist
-\item
-  Learn to import and manipulate data in R or Excel for the purpose of
-  heritability estimation.
-\item
-  Develop a conceptual understanding of heritability and its importance
-  in trait evolution.
-\item
-  Gain practical skills in performing linear regression analysis to
-  estimate heritability.
-\end{itemize}
-\end{do-something}
 
 \section{Your Task}\label{your-task-13}
 
@@ -2948,22 +2270,6 @@ In a two-species system there are four possible outcomes:
 
 The model suggests that stable coexistence is possible if each species limits its own population growth more than it affects the other species. Overlapping niches could lead to competitive exclusion, influenced by their competition coefficients and carrying capacities.
 
-\begin{do-something}
-Learning outcomes:
-
-\begin{itemize}
-\tightlist
-\item
-  Competence in constructing an Excel-based population model.
-\item
-  Understanding how the Lotka-Volterra competition model works.
-\item
-  Understanding the competition coefficients. These are called
-  \(\alpha\) and \(\beta\) in the Neal textbook, and \(\alpha_{12}\) and
-  \(\alpha_{21}\) in the PDF here.
-\end{itemize}
-\end{do-something}
-
 \section{Your task}\label{your-task-14}
 
 In this class (over TWO sessions) you will be working from a PDF available \href{https://www.dropbox.com/s/oukr39oq0rsn8il/9.\%20Interspecific\%20Competition\%20and\%20Competitive\%20Exclusion.pdf?dl=1}{here} to make a model exploring this idea.
@@ -3002,19 +2308,6 @@ The Lotka-Volterra predator-prey model (Rosenzweig and MacArthur 1963) is a fund
 The Lotka-Volterra predator-prey model gives us a framework for understanding the dynamics of species interactions.
 
 In this class you will build and explore a Lotka-Volterra predator-prey model in Excel to gain insight into the ecology of interacting predators and prey.
-
-\begin{do-something}
-Learning outcomes:
-
-\begin{itemize}
-\tightlist
-\item
-  Competence in constructing an Excel-based population model.
-\item
-  Understanding how the Lotka-Volterra predator-prey model works, and
-  how it is visualised.
-\end{itemize}
-\end{do-something}
 
 \section{Your task}\label{your-task-15}
 
@@ -3059,19 +2352,6 @@ Rosenzweig, M. L. and R. H. MacArthur. 1963. Graphical representation and stabil
 
 The Lotka-Volterra model describes the interaction between predators and prey. This document demonstrates how to program the continuous-time version of the model in R. Then, by varying the parameters you can explore its features, and visualise the dynamics of predator and prey populations over time.
 
-\begin{do-something}
-Learning outcomes:
-
-\begin{itemize}
-\tightlist
-\item
-  Use of R to investigate an ecological model.
-\item
-  Understanding how the Lotka-Volterra predator-prey model works, and
-  how it is visualised.
-\end{itemize}
-\end{do-something}
-
 \section{Your task}\label{your-task-16}
 
 In R/RStudio, you will create an R script that programs the continuous time version of the Lotka-Volterra model. You will then use this model to investigate how the model works and how varying the parameters affects the system.
@@ -3094,12 +2374,6 @@ In R/RStudio, you will create an R script that programs the continuous time vers
 
 We use the \texttt{deSolve} package to solve the system of differential equations numerically. Note that you may need to install the package first using the command \texttt{install.packages("deSolve")}.
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\FunctionTok{library}\NormalTok{(deSolve)}
-\end{Highlighting}
-\end{Shaded}
-
 \subsection{Step 2: Define the Model}\label{step-2-define-the-model}
 
 The system of equations is defined as follows:
@@ -3114,46 +2388,13 @@ The system of equations is defined as follows:
 
 The function below implements these equations in R.
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{predator\_prey\_model }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(t, state, parameters) \{}
-  \FunctionTok{with}\NormalTok{(}\FunctionTok{as.list}\NormalTok{(}\FunctionTok{c}\NormalTok{(state, parameters)), \{}
-\NormalTok{    dV }\OtherTok{\textless{}{-}}\NormalTok{ R }\SpecialCharTok{*}\NormalTok{ V }\SpecialCharTok{{-}}\NormalTok{ a }\SpecialCharTok{*}\NormalTok{ V }\SpecialCharTok{*}\NormalTok{ C  }\CommentTok{\# Victim (prey) growth equation}
-\NormalTok{    dC }\OtherTok{\textless{}{-}}\NormalTok{ a }\SpecialCharTok{*}\NormalTok{ f }\SpecialCharTok{*}\NormalTok{ V }\SpecialCharTok{*}\NormalTok{ C }\SpecialCharTok{{-}}\NormalTok{ q }\SpecialCharTok{*}\NormalTok{ C  }\CommentTok{\# Consumer (predator) growth equation}
-    
-    \FunctionTok{list}\NormalTok{(}\FunctionTok{c}\NormalTok{(dV, dC))}
-\NormalTok{  \})}
-\NormalTok{\}}
-\end{Highlighting}
-\end{Shaded}
-
 \subsection{Step 3: Set Parameters and Initial Conditions}\label{step-3-set-parameters-and-initial-conditions}
 
 We set the parameters and initial conditions for the model. I use the same nomenclature as the PDF from the \href{https://jonesor.github.io/BB512_Book/lotka-volterra-predator-prey-dynamics.html}{Excel exercise}. The parameters are as follows: \emph{R} is the victim population growth rate, \emph{a} is the attack rate of the predator, \emph{f} is the conversion efficiency of the predator and \emph{q} is the predator starvation (death) rate. For more detail about these, read the relevant section in the Neal textbook.
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{parameters }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\AttributeTok{R =} \FloatTok{0.8}\NormalTok{,  }\CommentTok{\# Victim (prey) growth rate}
-                \AttributeTok{a =} \FloatTok{0.01}\NormalTok{, }\CommentTok{\# Attack rate}
-                \AttributeTok{f =} \FloatTok{0.008}\NormalTok{, }\CommentTok{\# Conversion efficiency}
-                \AttributeTok{q =} \FloatTok{0.1}\NormalTok{)  }\CommentTok{\# Predator death rate}
-
-\NormalTok{initial\_state }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\AttributeTok{V =} \DecValTok{1000}\NormalTok{,  }\CommentTok{\# Initial victim population}
-                   \AttributeTok{C =} \DecValTok{20}\NormalTok{)   }\CommentTok{\# Initial consumer population}
-\end{Highlighting}
-\end{Shaded}
-
 \subsection{Step 4: Simulate the Model}\label{step-4-simulate-the-model}
 
 We simulate the model over a specified time period and store the results.
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{time }\OtherTok{\textless{}{-}} \FunctionTok{seq}\NormalTok{(}\DecValTok{0}\NormalTok{, }\DecValTok{100}\NormalTok{, }\AttributeTok{by =} \FloatTok{0.1}\NormalTok{)  }\CommentTok{\# Time sequence}
-\NormalTok{output }\OtherTok{\textless{}{-}} \FunctionTok{ode}\NormalTok{(}\AttributeTok{y =}\NormalTok{ initial\_state, }\AttributeTok{times =}\NormalTok{ time, }\AttributeTok{func =}\NormalTok{ predator\_prey\_model, }\AttributeTok{parms =}\NormalTok{ parameters)}
-\NormalTok{output\_df }\OtherTok{\textless{}{-}} \FunctionTok{as.data.frame}\NormalTok{(output)}
-\end{Highlighting}
-\end{Shaded}
 
 \subsection{Step 5: Visualise the Dynamics}\label{step-5-visualise-the-dynamics}
 
@@ -3171,54 +2412,11 @@ How does the size of the two populations change through time? You should see tha
 
 The plot below shows the changes in consumer and victim populations over time.
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\CommentTok{\# Plot victim population on the primary y{-}axis}
-\FunctionTok{plot}\NormalTok{(output\_df}\SpecialCharTok{$}\NormalTok{time, output\_df}\SpecialCharTok{$}\NormalTok{V, }\AttributeTok{type =} \StringTok{"l"}\NormalTok{, }\AttributeTok{col =} \StringTok{"blue"}\NormalTok{, }\AttributeTok{lwd =} \DecValTok{2}\NormalTok{, }
-     \AttributeTok{ylab =} \StringTok{"Victim Population (V)"}\NormalTok{, }\AttributeTok{xlab =} \StringTok{"Time"}\NormalTok{, }\AttributeTok{main =} \StringTok{"Predator{-}Prey Dynamics"}\NormalTok{)}
-
-\CommentTok{\# Add consumer population on a secondary y{-}axis}
-\FunctionTok{par}\NormalTok{(}\AttributeTok{new =} \ConstantTok{TRUE}\NormalTok{)}
-\FunctionTok{plot}\NormalTok{(output\_df}\SpecialCharTok{$}\NormalTok{time, output\_df}\SpecialCharTok{$}\NormalTok{C, }\AttributeTok{type =} \StringTok{"l"}\NormalTok{, }\AttributeTok{col =} \StringTok{"red"}\NormalTok{, }\AttributeTok{lwd =} \DecValTok{2}\NormalTok{, }
-     \AttributeTok{axes =} \ConstantTok{FALSE}\NormalTok{, }\AttributeTok{xlab =} \StringTok{""}\NormalTok{, }\AttributeTok{ylab =} \StringTok{""}\NormalTok{)}
-\FunctionTok{axis}\NormalTok{(}\AttributeTok{side =} \DecValTok{4}\NormalTok{, }\AttributeTok{col =} \StringTok{"red"}\NormalTok{, }\AttributeTok{col.axis =} \StringTok{"red"}\NormalTok{)}
-\FunctionTok{mtext}\NormalTok{(}\StringTok{"Consumer Population (C)"}\NormalTok{, }\AttributeTok{side =} \DecValTok{4}\NormalTok{, }\AttributeTok{line =} \DecValTok{3}\NormalTok{, }\AttributeTok{col =} \StringTok{"red"}\NormalTok{)}
-
-\CommentTok{\# Add legend}
-\FunctionTok{legend}\NormalTok{(}\StringTok{"topright"}\NormalTok{, }\AttributeTok{legend =} \FunctionTok{c}\NormalTok{(}\StringTok{"Victim (V)"}\NormalTok{, }\StringTok{"Consumer (C)"}\NormalTok{), }
-       \AttributeTok{col =} \FunctionTok{c}\NormalTok{(}\StringTok{"blue"}\NormalTok{, }\StringTok{"red"}\NormalTok{), }\AttributeTok{lwd =} \DecValTok{2}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
-
 \pandocbounded{\includegraphics[keepaspectratio]{BB512_files/figure-latex/population-dynamics-1.pdf}}
 
 \subsubsection{Phase Plot with ZNGIs}\label{phase-plot-with-zngis}
 
 The phase plot shows the relationship between victim and consumer populations. Zero Net Growth Isoclines (ZNGIs) indicate where the growth rate of each population is zero.
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\FunctionTok{plot}\NormalTok{(output\_df}\SpecialCharTok{$}\NormalTok{V, output\_df}\SpecialCharTok{$}\NormalTok{C, }\AttributeTok{type =} \StringTok{"l"}\NormalTok{, }\AttributeTok{col =} \StringTok{"purple"}\NormalTok{, }\AttributeTok{lwd =} \DecValTok{2}\NormalTok{, }
-     \AttributeTok{xlab =} \StringTok{"Victim (V)"}\NormalTok{, }\AttributeTok{ylab =} \StringTok{"Consumer (C)"}\NormalTok{, }
-     \AttributeTok{main =} \StringTok{"Predator{-}Prey Dynamics with ZNGIs"}\NormalTok{)}
-
-\CommentTok{\# Victim ZNGI}
-\FunctionTok{abline}\NormalTok{(}\AttributeTok{v =}\NormalTok{ parameters[}\StringTok{"q"}\NormalTok{] }\SpecialCharTok{/}\NormalTok{ (parameters[}\StringTok{"a"}\NormalTok{] }\SpecialCharTok{*}\NormalTok{ parameters[}\StringTok{"f"}\NormalTok{]), }\AttributeTok{col =} \StringTok{"blue"}\NormalTok{, }
-       \AttributeTok{lwd =} \DecValTok{2}\NormalTok{, }\AttributeTok{lty =} \DecValTok{2}\NormalTok{)  }
-\CommentTok{\# Consumer ZNGI}
-\FunctionTok{abline}\NormalTok{(}\AttributeTok{h =}\NormalTok{ parameters[}\StringTok{"R"}\NormalTok{] }\SpecialCharTok{/}\NormalTok{ parameters[}\StringTok{"a"}\NormalTok{], }\AttributeTok{col =} \StringTok{"red"}\NormalTok{, }\AttributeTok{lwd =} \DecValTok{2}\NormalTok{, }\AttributeTok{lty =} \DecValTok{2}\NormalTok{)  }
-
-\CommentTok{\# Add point for initial population sizes}
-\FunctionTok{points}\NormalTok{(output\_df}\SpecialCharTok{$}\NormalTok{V[}\DecValTok{1}\NormalTok{], output\_df}\SpecialCharTok{$}\NormalTok{C[}\DecValTok{1}\NormalTok{], }\AttributeTok{pch =} \DecValTok{19}\NormalTok{, }\AttributeTok{col =} \StringTok{"black"}\NormalTok{, }\AttributeTok{cex =} \FloatTok{1.5}\NormalTok{)}
-
-\CommentTok{\# Add an arrow to the end of the line}
-\FunctionTok{arrows}\NormalTok{(}\AttributeTok{x0 =}\NormalTok{ output\_df}\SpecialCharTok{$}\NormalTok{V[}\FunctionTok{nrow}\NormalTok{(output\_df) }\SpecialCharTok{{-}} \DecValTok{1}\NormalTok{], }
-       \AttributeTok{y0 =}\NormalTok{ output\_df}\SpecialCharTok{$}\NormalTok{C[}\FunctionTok{nrow}\NormalTok{(output\_df) }\SpecialCharTok{{-}} \DecValTok{1}\NormalTok{], }
-       \AttributeTok{x1 =}\NormalTok{ output\_df}\SpecialCharTok{$}\NormalTok{V[}\FunctionTok{nrow}\NormalTok{(output\_df)], }
-       \AttributeTok{y1 =}\NormalTok{ output\_df}\SpecialCharTok{$}\NormalTok{C[}\FunctionTok{nrow}\NormalTok{(output\_df)], }
-       \AttributeTok{col =} \StringTok{"purple"}\NormalTok{, }\AttributeTok{length =} \FloatTok{0.1}\NormalTok{, }\AttributeTok{lwd =} \DecValTok{2}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
 
 \pandocbounded{\includegraphics[keepaspectratio]{BB512_files/figure-latex/phase-plot-1.pdf}}
 
@@ -3320,66 +2518,13 @@ Compare these to Equations 1 and 2 in the Excel exercise PDF.
 
 The function below implements these equations in R.
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{discrete\_predator\_prey\_model }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(time\_steps, dt, initial\_state, parameters) \{}
-  \CommentTok{\# Initialise vectors to store populations}
-\NormalTok{  V }\OtherTok{\textless{}{-}} \FunctionTok{numeric}\NormalTok{(time\_steps }\SpecialCharTok{+} \DecValTok{1}\NormalTok{)}
-\NormalTok{  C }\OtherTok{\textless{}{-}} \FunctionTok{numeric}\NormalTok{(time\_steps }\SpecialCharTok{+} \DecValTok{1}\NormalTok{)}
-\NormalTok{  time }\OtherTok{\textless{}{-}} \FunctionTok{seq}\NormalTok{(}\DecValTok{0}\NormalTok{, time\_steps }\SpecialCharTok{*}\NormalTok{ dt, }\AttributeTok{by =}\NormalTok{ dt)}
-  
-  \CommentTok{\# Set initial populations}
-\NormalTok{  V[}\DecValTok{1}\NormalTok{] }\OtherTok{\textless{}{-}}\NormalTok{ initial\_state[}\StringTok{"V"}\NormalTok{]}
-\NormalTok{  C[}\DecValTok{1}\NormalTok{] }\OtherTok{\textless{}{-}}\NormalTok{ initial\_state[}\StringTok{"C"}\NormalTok{]}
-  
-  \CommentTok{\# Extract parameters}
-\NormalTok{  R }\OtherTok{\textless{}{-}}\NormalTok{ parameters[}\StringTok{"R"}\NormalTok{]}
-\NormalTok{  a }\OtherTok{\textless{}{-}}\NormalTok{ parameters[}\StringTok{"a"}\NormalTok{]}
-\NormalTok{  f }\OtherTok{\textless{}{-}}\NormalTok{ parameters[}\StringTok{"f"}\NormalTok{]}
-\NormalTok{  q }\OtherTok{\textless{}{-}}\NormalTok{ parameters[}\StringTok{"q"}\NormalTok{]}
-  
-  \CommentTok{\# Loop through time steps to calculate populations}
-  \ControlFlowTok{for}\NormalTok{ (t }\ControlFlowTok{in} \DecValTok{1}\SpecialCharTok{:}\NormalTok{time\_steps) \{}
-\NormalTok{    V[t }\SpecialCharTok{+} \DecValTok{1}\NormalTok{] }\OtherTok{\textless{}{-}}\NormalTok{ V[t] }\SpecialCharTok{+}\NormalTok{ dt }\SpecialCharTok{*}\NormalTok{ (R }\SpecialCharTok{*}\NormalTok{ V[t] }\SpecialCharTok{{-}}\NormalTok{ a }\SpecialCharTok{*}\NormalTok{ V[t] }\SpecialCharTok{*}\NormalTok{ C[t])}
-\NormalTok{    C[t }\SpecialCharTok{+} \DecValTok{1}\NormalTok{] }\OtherTok{\textless{}{-}}\NormalTok{ C[t] }\SpecialCharTok{+}\NormalTok{ dt }\SpecialCharTok{*}\NormalTok{ (a }\SpecialCharTok{*}\NormalTok{ f }\SpecialCharTok{*}\NormalTok{ V[t] }\SpecialCharTok{*}\NormalTok{ C[t] }\SpecialCharTok{{-}}\NormalTok{ q }\SpecialCharTok{*}\NormalTok{ C[t])}
-\NormalTok{  \}}
-  
-  \CommentTok{\# Combine results into a data frame}
-  \FunctionTok{data.frame}\NormalTok{(}\AttributeTok{time =}\NormalTok{ time, }\AttributeTok{V =}\NormalTok{ V, }\AttributeTok{C =}\NormalTok{ C)}
-\NormalTok{\}}
-\end{Highlighting}
-\end{Shaded}
-
 \section{Step 2: Set Parameters and Initial Conditions}\label{step-2-set-parameters-and-initial-conditions}
 
 We set the parameters, initial conditions, and time step (\(\Delta t\)) for the model.
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{parameters }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\AttributeTok{R =} \FloatTok{0.25}\NormalTok{,  }\CommentTok{\# Victim (prey) growth rate}
-                \AttributeTok{a =} \FloatTok{0.01}\NormalTok{,  }\CommentTok{\# Attack rate}
-                \AttributeTok{f =} \FloatTok{0.008}\NormalTok{, }\CommentTok{\# Conversion efficiency}
-                \AttributeTok{q =} \FloatTok{0.1}\NormalTok{)   }\CommentTok{\# Consumer (predator) death rate}
-
-\NormalTok{initial\_state }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\AttributeTok{V =} \DecValTok{1000}\NormalTok{,  }\CommentTok{\# Initial victim population}
-                   \AttributeTok{C =} \DecValTok{20}\NormalTok{)    }\CommentTok{\# Initial consumer population}
-
-\NormalTok{time\_steps }\OtherTok{\textless{}{-}} \DecValTok{200}             \CommentTok{\# Number of time steps}
-\NormalTok{dt }\OtherTok{\textless{}{-}} \DecValTok{1}                       \CommentTok{\# Time step (dt), 1 = a standard discrete model}
-\end{Highlighting}
-\end{Shaded}
-
 \section{Step 3: Simulate the Model}\label{step-3-simulate-the-model}
 
 We simulate the model for the specified parameters and time steps.
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{output\_df }\OtherTok{\textless{}{-}} \FunctionTok{discrete\_predator\_prey\_model}\NormalTok{(}\AttributeTok{time\_steps =}\NormalTok{ time\_steps, }\AttributeTok{dt =}\NormalTok{ dt, }
-                                          \AttributeTok{initial\_state =}\NormalTok{ initial\_state, }
-                                          \AttributeTok{parameters =}\NormalTok{ parameters)}
-\end{Highlighting}
-\end{Shaded}
 
 \section{Step 4: Visualise the Dynamics}\label{step-4-visualise-the-dynamics}
 
@@ -3387,60 +2532,11 @@ We simulate the model for the specified parameters and time steps.
 
 The plot below shows the changes in consumer and victim populations over time.
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\CommentTok{\# Plot victim population on the primary y{-}axis}
-\FunctionTok{plot}\NormalTok{(output\_df}\SpecialCharTok{$}\NormalTok{time, output\_df}\SpecialCharTok{$}\NormalTok{V, }\AttributeTok{type =} \StringTok{"l"}\NormalTok{, }\AttributeTok{col =} \StringTok{"blue"}\NormalTok{, }\AttributeTok{lwd =} \DecValTok{2}\NormalTok{, }
-     \AttributeTok{ylab =} \StringTok{"Victim Population (V)"}\NormalTok{, }\AttributeTok{xlab =} \StringTok{"Time"}\NormalTok{, }\AttributeTok{main =} \StringTok{"Discrete Predator{-}Prey Dynamics"}\NormalTok{)}
-
-\CommentTok{\# Add consumer population on a secondary y{-}axis}
-\FunctionTok{par}\NormalTok{(}\AttributeTok{new =} \ConstantTok{TRUE}\NormalTok{)}
-\FunctionTok{plot}\NormalTok{(output\_df}\SpecialCharTok{$}\NormalTok{time, output\_df}\SpecialCharTok{$}\NormalTok{C, }\AttributeTok{type =} \StringTok{"l"}\NormalTok{, }\AttributeTok{col =} \StringTok{"red"}\NormalTok{, }\AttributeTok{lwd =} \DecValTok{2}\NormalTok{, }
-     \AttributeTok{axes =} \ConstantTok{FALSE}\NormalTok{, }\AttributeTok{xlab =} \StringTok{""}\NormalTok{, }\AttributeTok{ylab =} \StringTok{""}\NormalTok{)}
-\FunctionTok{axis}\NormalTok{(}\AttributeTok{side =} \DecValTok{4}\NormalTok{, }\AttributeTok{col =} \StringTok{"red"}\NormalTok{, }\AttributeTok{col.axis =} \StringTok{"red"}\NormalTok{)}
-\FunctionTok{mtext}\NormalTok{(}\StringTok{"Consumer Population (C)"}\NormalTok{, }\AttributeTok{side =} \DecValTok{4}\NormalTok{, }\AttributeTok{line =} \DecValTok{3}\NormalTok{, }\AttributeTok{col =} \StringTok{"red"}\NormalTok{)}
-
-\CommentTok{\# Add legend}
-\FunctionTok{legend}\NormalTok{(}\StringTok{"topright"}\NormalTok{, }\AttributeTok{legend =} \FunctionTok{c}\NormalTok{(}\StringTok{"Victim (V)"}\NormalTok{, }\StringTok{"Consumer (C)"}\NormalTok{), }
-       \AttributeTok{col =} \FunctionTok{c}\NormalTok{(}\StringTok{"blue"}\NormalTok{, }\StringTok{"red"}\NormalTok{), }\AttributeTok{lwd =} \DecValTok{2}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
-
 \pandocbounded{\includegraphics[keepaspectratio]{BB512_files/figure-latex/DT-population-dynamics-1.pdf}}
 
 \subsection{Phase Plot with ZNGIs}\label{phase-plot-with-zngis-1}
 
 The phase plot shows the relationship between victim and consumer populations.
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\DocumentationTok{\#\#\# Phase Plot with ZNGIs, Initial Point, and Arrow}
-\FunctionTok{plot}\NormalTok{(output\_df}\SpecialCharTok{$}\NormalTok{V, }
-\NormalTok{     output\_df}\SpecialCharTok{$}\NormalTok{C, }
-     \AttributeTok{type =} \StringTok{"l"}\NormalTok{, }
-     \AttributeTok{col =} \StringTok{"purple"}\NormalTok{, }
-     \AttributeTok{lwd =} \DecValTok{2}\NormalTok{, }
-     \AttributeTok{xlab =} \StringTok{"Victim (V)"}\NormalTok{, }\AttributeTok{ylab =} \StringTok{"Consumer (C)"}\NormalTok{, }
-     \AttributeTok{main =} \StringTok{"Discrete Predator{-}Prey Dynamics with ZNGIs"}\NormalTok{)}
-
-\CommentTok{\# Add Victim ZNGI (V = q / (a * f))}
-\FunctionTok{abline}\NormalTok{(}\AttributeTok{v =}\NormalTok{ parameters[}\StringTok{"q"}\NormalTok{] }\SpecialCharTok{/}\NormalTok{ (parameters[}\StringTok{"a"}\NormalTok{] }\SpecialCharTok{*}\NormalTok{ parameters[}\StringTok{"f"}\NormalTok{]), }
-       \AttributeTok{col =} \StringTok{"blue"}\NormalTok{, }\AttributeTok{lwd =} \DecValTok{2}\NormalTok{, }\AttributeTok{lty =} \DecValTok{2}\NormalTok{)}
-
-\CommentTok{\# Add Consumer ZNGI (C = R / a)}
-\FunctionTok{abline}\NormalTok{(}\AttributeTok{h =}\NormalTok{ parameters[}\StringTok{"R"}\NormalTok{] }\SpecialCharTok{/}\NormalTok{ parameters[}\StringTok{"a"}\NormalTok{], }\AttributeTok{col =} \StringTok{"red"}\NormalTok{, }\AttributeTok{lwd =} \DecValTok{2}\NormalTok{, }\AttributeTok{lty =} \DecValTok{2}\NormalTok{)}
-
-\CommentTok{\# Add point for initial population sizes}
-\FunctionTok{points}\NormalTok{(output\_df}\SpecialCharTok{$}\NormalTok{V[}\DecValTok{1}\NormalTok{], output\_df}\SpecialCharTok{$}\NormalTok{C[}\DecValTok{1}\NormalTok{], }\AttributeTok{pch =} \DecValTok{19}\NormalTok{, }\AttributeTok{col =} \StringTok{"black"}\NormalTok{, }\AttributeTok{cex =} \FloatTok{1.5}\NormalTok{)}
-
-\CommentTok{\# Add an arrow to the end of the line}
-\FunctionTok{arrows}\NormalTok{(}\AttributeTok{x0 =}\NormalTok{ output\_df}\SpecialCharTok{$}\NormalTok{V[}\FunctionTok{nrow}\NormalTok{(output\_df) }\SpecialCharTok{{-}} \DecValTok{1}\NormalTok{], }
-       \AttributeTok{y0 =}\NormalTok{ output\_df}\SpecialCharTok{$}\NormalTok{C[}\FunctionTok{nrow}\NormalTok{(output\_df) }\SpecialCharTok{{-}} \DecValTok{1}\NormalTok{], }
-       \AttributeTok{x1 =}\NormalTok{ output\_df}\SpecialCharTok{$}\NormalTok{V[}\FunctionTok{nrow}\NormalTok{(output\_df)], }
-       \AttributeTok{y1 =}\NormalTok{ output\_df}\SpecialCharTok{$}\NormalTok{C[}\FunctionTok{nrow}\NormalTok{(output\_df)], }
-       \AttributeTok{col =} \StringTok{"purple"}\NormalTok{, }\AttributeTok{length =} \FloatTok{0.1}\NormalTok{, }\AttributeTok{lwd =} \DecValTok{2}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
 
 \pandocbounded{\includegraphics[keepaspectratio]{BB512_files/figure-latex/DT-phase-plot-1.pdf}}
 
@@ -3461,24 +2557,6 @@ By studying the Hawk and Dove strategies we can gain insights into understanding
 The simple model unravels the intricacies of strategic decision-making, with profound implications across various fields, from biology and social sciences to economics and politics.
 
 In this activity, you will play the hawk and dove game with a single partner and then with multiple partners to observe the hypothetical costs and benefits of the antagonist or cooperative behaviour, respectively.
-
-\begin{do-something}
-Learning outcomes:
-
-\begin{itemize}
-\tightlist
-\item
-  Understanding of the fundamental concepts of game theory and its
-  application in analysing strategic interactions in competitive
-  environments.
-\item
-  Ability to apply game theory concepts to real-world contexts in
-  biology, or politics.
-\item
-  Appreciation of how simple models can be used to address complex
-  biological or political decision making.
-\end{itemize}
-\end{do-something}
 
 \section{Your task}\label{your-task-17}
 
@@ -4191,30 +3269,9 @@ Traits like muscle strength, running speed may have been important for fitness w
 
 You can read in data like this:
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{population\_1 }\OtherTok{\textless{}{-}} \FunctionTok{read.csv}\NormalTok{(}\StringTok{"data/heritability\_pop1.csv"}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
-
 Though you can also use the ``Wizard'' in RStudio.
 
 Plot the data as follows.
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\CommentTok{\# Plot the relationship}
-\FunctionTok{plot}\NormalTok{(pop\_1}\SpecialCharTok{$}\NormalTok{Parent\_value, pop\_1}\SpecialCharTok{$}\NormalTok{Offspring\_value,}
-     \AttributeTok{xlab =}\StringTok{"Parent value"}\NormalTok{,}
-     \AttributeTok{ylab =}\StringTok{"Offspring value"}\NormalTok{)}
-
-\CommentTok{\# fit the linear regression model}
-\NormalTok{mod1 }\OtherTok{\textless{}{-}} \FunctionTok{lm}\NormalTok{(Offspring\_value}\SpecialCharTok{\textasciitilde{}}\NormalTok{ Parent\_value, }\AttributeTok{data =}\NormalTok{ pop\_1)}
-
-\CommentTok{\# summarise the model}
-\FunctionTok{summary}\NormalTok{(mod1)}
-\end{Highlighting}
-\end{Shaded}
 
 \begin{verbatim}
 ## 
@@ -4236,13 +3293,6 @@ Plot the data as follows.
 ## Multiple R-squared:  0.4559, Adjusted R-squared:  0.4384 
 ## F-statistic: 25.98 on 1 and 31 DF,  p-value: 1.628e-05
 \end{verbatim}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\CommentTok{\# add the regression line to the model}
-\FunctionTok{abline}\NormalTok{(mod1)}
-\end{Highlighting}
-\end{Shaded}
 
 \pandocbounded{\includegraphics[keepaspectratio]{BB512_files/figure-latex/plotheritability-1.pdf}}
 
@@ -4268,25 +3318,7 @@ The graph for the second population looks like this:
 
 Plot the data as follows.
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\FunctionTok{plot}\NormalTok{(pop\_2}\SpecialCharTok{$}\NormalTok{Parent\_value, pop\_2}\SpecialCharTok{$}\NormalTok{Offspring\_value,}
-     \AttributeTok{xlab =}\StringTok{"Parent value"}\NormalTok{,}
-     \AttributeTok{ylab =}\StringTok{"Offspring value"}\NormalTok{)}
-
-\CommentTok{\# fit the model.}
-\NormalTok{mod2 }\OtherTok{\textless{}{-}} \FunctionTok{lm}\NormalTok{(Offspring\_value}\SpecialCharTok{\textasciitilde{}}\NormalTok{ Parent\_value, }\AttributeTok{data =}\NormalTok{ pop\_2)}
-\FunctionTok{abline}\NormalTok{(mod2)}
-\end{Highlighting}
-\end{Shaded}
-
 \pandocbounded{\includegraphics[keepaspectratio]{BB512_files/figure-latex/plotparentoffspring-1.pdf}}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\FunctionTok{summary}\NormalTok{(mod2)}
-\end{Highlighting}
-\end{Shaded}
 
 \begin{verbatim}
 ## 
@@ -4432,7 +3464,7 @@ Cobweb diagrams and bifurcation plots offer another way of visualising dynamics 
 
 \section{Results of the hawk-dove games}\label{results-of-the-hawk-dove-games}
 
-I have crunched the numbers for 2023 and will summarise the results of the hawk-dove game.
+I have crunched the numbers for 2026 and will summarise the results of the hawk-dove game.
 
 In the game, you were asked to compete with the same person 15 times in a row.
 
@@ -4486,25 +3518,6 @@ Can you see the value of understanding your opponent/competitor?
 One of the foundational concepts in population dynamics is the exponential growth model. This model is a simplified representation of how populations grow when resources are not limiting. While it's rare for populations to experience uninhibited growth for extended periods, understanding this basic model is crucial for understanding more complex dynamics that include factors like resource limitations, predation, and disease.
 
 In this chapter, we will explore the mathematical framework that describes exponential growth in both discrete and continuous time settings. We will introduce key parameters such as the per-capita birth rate, death rate, and intrinsic rate of increase. We will also demonstrate how to apply these models using R programming, offering a practical dimension to these theoretical concepts.
-
-\begin{do-something}
-Learning outcomes:
-
-\begin{itemize}
-\tightlist
-\item
-  Understand the fundamental equations that underpin exponential growth
-  in populations.
-\item
-  Differentiate between discrete and continuous time models.
-\item
-  Interpret the role and significance of various parameters in
-  exponential growth models.
-\item
-  Use R programming to analyse exponential growth scenarios with real
-  data.
-\end{itemize}
-\end{do-something}
 
 \subsection{Nomenclature}\label{nomenclature}
 
@@ -4616,14 +3629,6 @@ To bring these mathematical concepts to life, let's consider an example from the
 
 This is not much data, so we can simply put it into R manually, and plot it, like this:
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{df1 }\OtherTok{\textless{}{-}} \FunctionTok{data.frame}\NormalTok{(}\AttributeTok{year =} \DecValTok{1970}\SpecialCharTok{:}\DecValTok{1982}\NormalTok{, }
-                  \AttributeTok{N =} \FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{2}\NormalTok{,}\DecValTok{4}\NormalTok{,}\DecValTok{2}\NormalTok{,}\DecValTok{3}\NormalTok{,}\DecValTok{5}\NormalTok{,}\DecValTok{6}\NormalTok{,}\DecValTok{7}\NormalTok{,}\DecValTok{10}\NormalTok{,}\DecValTok{12}\NormalTok{,}\DecValTok{14}\NormalTok{,}\DecValTok{16}\NormalTok{))}
-\FunctionTok{plot}\NormalTok{(df1}\SpecialCharTok{$}\NormalTok{year,df1}\SpecialCharTok{$}\NormalTok{N, }\AttributeTok{type =} \StringTok{"b"}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
-
 \pandocbounded{\includegraphics[keepaspectratio]{BB512_files/figure-latex/plotnewproj-1.pdf}}
 
 \subsection{Observations and Context}\label{observations-and-context}
@@ -4633,16 +3638,6 @@ It is clear from the graph that the number of breeding pairs is increasing over 
 \subsection{Applying the Exponential Growth Model}\label{applying-the-exponential-growth-model}
 
 To analyse this data, we'll use the exponential growth model. We'll plot the data on a log scale and fit a regression model:
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{df1}\SpecialCharTok{$}\NormalTok{logN }\OtherTok{\textless{}{-}} \FunctionTok{log}\NormalTok{(df1}\SpecialCharTok{$}\NormalTok{N)}
-\FunctionTok{plot}\NormalTok{(df1}\SpecialCharTok{$}\NormalTok{year,df1}\SpecialCharTok{$}\NormalTok{logN)}
-
-\NormalTok{mod1 }\OtherTok{\textless{}{-}} \FunctionTok{lm}\NormalTok{(logN}\SpecialCharTok{\textasciitilde{}}\NormalTok{year,}\AttributeTok{data =}\NormalTok{ df1)}
-\FunctionTok{summary}\NormalTok{(mod1)}
-\end{Highlighting}
-\end{Shaded}
 
 \begin{verbatim}
 ## 
@@ -4664,12 +3659,6 @@ To analyse this data, we'll use the exponential growth model. We'll plot the dat
 ## Multiple R-squared:  0.9381, Adjusted R-squared:  0.9324 
 ## F-statistic: 166.6 on 1 and 11 DF,  p-value: 5.478e-08
 \end{verbatim}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\FunctionTok{abline}\NormalTok{(mod1)}
-\end{Highlighting}
-\end{Shaded}
 
 \pandocbounded{\includegraphics[keepaspectratio]{BB512_files/figure-latex/plotproj2-1.pdf}}
 
@@ -4704,19 +3693,6 @@ When the population is steady with zero growth, \(r = 0\) and \(\lambda  = 1\). 
 \chapter{The legend of Ambalappuzha}\label{the-legend-of-ambalappuzha}
 
 Exponential growth is a powerful concept. To help us grasp it better let's use an ancient Indian chess legend as an example.
-
-\begin{do-something}
-\textbf{Learning outcomes}
-
-\begin{itemize}
-\tightlist
-\item
-  Use of Excel formulae for mathematical modelling.
-\item
-  Understanding the multiplicative process of exponential/geometric
-  growth.
-\end{itemize}
-\end{do-something}
 
 \begin{center}\includegraphics[width=0.5\linewidth]{images/Radha-Krishna_chess} \end{center}
 
@@ -4802,24 +3778,7 @@ We have \textasciitilde100 breeding pairs of great tits (musvit) in woodland aro
 
 You can do this kind of calculation easily in \emph{R}. Try this.
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{myData }\OtherTok{\textless{}{-}} \FunctionTok{data.frame}\NormalTok{(}\AttributeTok{Squares =} \DecValTok{1}\SpecialCharTok{:}\DecValTok{64}\NormalTok{,}\AttributeTok{nRice =} \ConstantTok{NA}\NormalTok{)}
-\NormalTok{myData}\SpecialCharTok{$}\NormalTok{nRice[}\DecValTok{1}\NormalTok{] }\OtherTok{\textless{}{-}} \DecValTok{1} 
-
-\ControlFlowTok{for}\NormalTok{ (i }\ControlFlowTok{in} \DecValTok{2}\SpecialCharTok{:}\DecValTok{64}\NormalTok{)\{}
-\NormalTok{  myData}\SpecialCharTok{$}\NormalTok{nRice[i] }\OtherTok{\textless{}{-}}\NormalTok{ myData}\SpecialCharTok{$}\NormalTok{nRice[i}\DecValTok{{-}1}\NormalTok{]}\SpecialCharTok{*}\DecValTok{2}
-\NormalTok{\}}
-\end{Highlighting}
-\end{Shaded}
-
 Now we can look at the top and bottom of the 64 row data frame like this:
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\FunctionTok{head}\NormalTok{(myData)}
-\end{Highlighting}
-\end{Shaded}
 
 \begin{verbatim}
 ##   Squares nRice
@@ -4830,12 +3789,6 @@ Now we can look at the top and bottom of the 64 row data frame like this:
 ## 5       5    16
 ## 6       6    32
 \end{verbatim}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\FunctionTok{tail}\NormalTok{(myData)}
-\end{Highlighting}
-\end{Shaded}
 
 \begin{verbatim}
 ##    Squares        nRice
@@ -4849,12 +3802,6 @@ Now we can look at the top and bottom of the 64 row data frame like this:
 
 And we can sum up the total number of grains of rice on the 64 squares of the board like this:
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\FunctionTok{sum}\NormalTok{(myData}\SpecialCharTok{$}\NormalTok{nRice)}
-\end{Highlighting}
-\end{Shaded}
-
 \begin{verbatim}
 ## [1] 1.844674e+19
 \end{verbatim}
@@ -4865,27 +3812,9 @@ To put that \emph{HUGE} number in context, if a grain of rice weighs 25mg (0.000
 
 The purpose of this practical is to draw clear links between the first part of the course (population biology) and the second part of the course (evolution).
 
-\begin{do-something}
-Learning outcomes:
-
-\begin{itemize}
-\tightlist
-\item
-  Understanding the relationship between population growth and the
-  concept of fitness.
-\item
-  Understanding the concept of an evolutionary trade-off.
-\end{itemize}
-\end{do-something}
-
 We will focus on the concept of \textbf{fitness}.
 
 Fitness is a slippery concept, but it is widely accepted that it is closely related to population growth rate. In this class you will explore this concept using some mathematical modelling.
-
-\begin{do-something}
-This practical uses RStudio (R). It is similar to the previous exercise
-on matrix population models, but ask for help if you get stuck!
-\end{do-something}
 
 \section{\texorpdfstring{An \emph{in silico} experiment}{An in silico experiment}}\label{an-in-silico-experiment}
 
@@ -4895,55 +3824,22 @@ Earlier in the course you will have played with construction and analyses of the
 
 We will first need to load the \texttt{popdemo} package like this. Note that if you have not installed this package you should first install it with the command \texttt{install.packages("popdemo")}.
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\FunctionTok{library}\NormalTok{(popdemo)}
-\end{Highlighting}
-\end{Shaded}
-
 Let's set up our baseline model. This model describes a population of some mammal species which we have divided into 3 stages: juvenile, adult and senescent (old).
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{A1 }\OtherTok{\textless{}{-}} \FunctionTok{matrix}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\FloatTok{0.00}\NormalTok{, }\FloatTok{4.00}\NormalTok{, }\FloatTok{2.00}\NormalTok{, }
-               \FloatTok{0.10}\NormalTok{, }\FloatTok{0.80}\NormalTok{, }\FloatTok{0.00}\NormalTok{, }
-               \FloatTok{0.00}\NormalTok{, }\FloatTok{0.10}\NormalTok{, }\FloatTok{0.40}\NormalTok{), }
-            \AttributeTok{byrow =} \ConstantTok{TRUE}\NormalTok{, }\AttributeTok{nrow =} \DecValTok{3}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
 
 You can ``read'' the matrix by looking at the columns and rows: a value in the column \textbf{3} and row \textbf{1} tells you the ``transition'' \textbf{from} stage 3 \textbf{to} stage 1. In this case, it is saying that an individual in the adult age class produces an average of 4 babies, and one from the senescent age class produces 2 babies. Juveniles have a probability of 0.1 (10\% chance) to survive to adulthood (and they reach maturity in 1 year, so there is no ``stasis'' where they can remain being juveniles). Adults can survive in 2 ways, they can survive and remain as adults (probability = 0.8) or they can survive and transition to being in the senescent age class (probability = 0.1). Therefore, the total survival probability is 0.9. Senescent adults survive less well (probability = 0.4).
 
 We can project a population like this:
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{initial }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\DecValTok{10}\NormalTok{,}\DecValTok{5}\NormalTok{,}\DecValTok{3}\NormalTok{) }\CommentTok{\# just some random numbers}
-\NormalTok{pr }\OtherTok{\textless{}{-}}\NormalTok{ popdemo}\SpecialCharTok{::}\FunctionTok{project}\NormalTok{(A1, }\AttributeTok{vector =}\NormalTok{ initial, }\AttributeTok{time=}\DecValTok{8}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
-
 Take a look at \texttt{pr}, the projected population. This gives you the total population size, and below that the population sizes in each stage.
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{pr}
-\end{Highlighting}
-\end{Shaded}
 
 \begin{verbatim}
 ## 1 deterministic population projection over 8 time intervals.
 ## 
-## [1] 18.00000 32.70000 31.18000 37.51200 42.93080 50.15272 58.36605 68.04116 79.29730
+## [1] 18.00000 32.70000 31.18000 37.51200 42.93080 50.15272 58.36605 68.04116
+## [9] 79.29730
 \end{verbatim}
 
 You can access the population sizes of the different stages using \texttt{vec(pr)}.
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\FunctionTok{vec}\NormalTok{(pr)}
-\end{Highlighting}
-\end{Shaded}
 
 \begin{verbatim}
 ##             S1       S2       S3
@@ -4960,24 +3856,9 @@ You can access the population sizes of the different stages using \texttt{vec(pr
 
 Let's plot this\ldots{} Check out how, after a ``transient'' period, there is exponential growth in all stages of the population. The population is growing steadily with a fixed population growth rate (\(\lambda\)).
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{pop }\OtherTok{\textless{}{-}} \FunctionTok{vec}\NormalTok{(pr)}
-\FunctionTok{matplot}\NormalTok{(pop,}\AttributeTok{type=}\StringTok{"l"}\NormalTok{,}\AttributeTok{log=}\StringTok{"y"}\NormalTok{)}
-\FunctionTok{legend}\NormalTok{(}\StringTok{"topleft"}\NormalTok{,}\AttributeTok{legend =} \FunctionTok{colnames}\NormalTok{(pop),}
-       \AttributeTok{col=}\DecValTok{1}\SpecialCharTok{:}\FunctionTok{ncol}\NormalTok{(pop),}\AttributeTok{lty=}\DecValTok{1}\SpecialCharTok{:}\FunctionTok{ncol}\NormalTok{(pop))}
-\end{Highlighting}
-\end{Shaded}
-
 \pandocbounded{\includegraphics[keepaspectratio]{BB512_files/figure-latex/unnamed-chunk-88-1.pdf}}
 
 You can see that the population is increasing and we can calculate the precise population growth rate (\(\lambda\)) like this:
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\FunctionTok{eigs}\NormalTok{(A1,}\AttributeTok{what =} \StringTok{"lambda"}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
 
 \begin{verbatim}
 ## [1] 1.165587
@@ -4993,22 +3874,7 @@ In this population consider that suddenly a mutation arises in an individual par
 
 We can simulate this by increasing the juvenile survival in the matrix model from 0.10 to 0.11.
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{A2 }\OtherTok{\textless{}{-}} \FunctionTok{matrix}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\FloatTok{0.00}\NormalTok{, }\FloatTok{4.00}\NormalTok{, }\FloatTok{2.00}\NormalTok{, }
-               \FloatTok{0.11}\NormalTok{, }\FloatTok{0.80}\NormalTok{, }\FloatTok{0.00}\NormalTok{, }
-               \FloatTok{0.00}\NormalTok{, }\FloatTok{0.10}\NormalTok{, }\FloatTok{0.40}\NormalTok{), }
-            \AttributeTok{byrow =} \ConstantTok{TRUE}\NormalTok{, }\AttributeTok{nrow =} \DecValTok{3}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
-
 What effect does that have on population growth rate?
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\FunctionTok{eigs}\NormalTok{(A2,}\AttributeTok{what =} \StringTok{"lambda"}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
 
 \begin{verbatim}
 ## [1] 1.192317
@@ -5032,17 +3898,6 @@ The benefit is clear: a change in adult behaviour or physiology increases juveni
 But such changes often come with a cost: The new genotype allocates extra resources to babies but this exhausts the adults causing older adults to have very small survival probability.
 
 Is this new genotype viable? In other words, is the fitness of the genotype greater than that of the original genotype? If so, the new genotype will come to dominate the population.
-
-\begin{do-something}
-Modify the matrix to reduce old adult survival to, say 0.05 (5\%
-survival) and re-calculate the population growth rate.
-
-Is this ``trade-off genotype'' fitter than the original one? i.e.~is the
-small benefit worth the large cost?
-
-Try doing the same thing for the prime-age adults. How much can you
-reduce survival before the cost is not worth bearing?
-\end{do-something}
 
 \bibliography{book.bib,packages.bib}
 
