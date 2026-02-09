@@ -1,5 +1,19 @@
 # Discrete-time Lotka-Volterra Predator-Prey Model in R
 
+## Learning outcomes
+
+```{block, type="do-something"}
+Learning outcomes:
+
+- Implement and explore a discrete-time predator-prey model in R.
+- Understand how time steps introduce delays and affect stability.
+- Compare discrete-time dynamics to continuous-time dynamics.
+```
+
+## Worked example
+
+With $\Delta t = 1$, the phase plane typically shows expanding spirals, reflecting instability introduced by discrete time steps.
+
 ## Introduction
 
 The Lotka-Volterra model describes the interaction between predators and prey. This document demonstrates how to program the discrete-time version of the model in R, explore its features, and visualise the dynamics of predator and prey populations over time. The time step (\( \Delta t \)) can be adjusted to explore the impact of a time delay in the system. In ecological systems, time delays can represent biological processes such as the time it takes for predators to respond to changes in prey density, for prey populations to recover after predation. If \( \Delta t \) is set to 1, this model is equivalent to a year-by-year model (as we have fitted in Excel in class), where the impact of predators on prey has a 1 year lag. i.e. the growth of predators, depends on the availability of prey 1 year ago and the growth of prey depends on the amount of predators 1 year ago.
@@ -139,3 +153,13 @@ arrows(x0 = output_df$V[nrow(output_df) - 1],
 ## Conclusion
 
 This document demonstrates how to implement and explore the discrete-time Lotka-Volterra predator-prey model. By adjusting the time step (\( \Delta t \)) and other parameters, you can investigate how predator-prey dynamics are influenced by ecological factors. You will see that a time lag imposed by the *t* parameter results in expanding spirals in the phase plot and eventual extinction of predator and prey. Contrast this with the perpetual oscillations you get with the continuous time model.
+
+## Your task
+
+- Decrease $\Delta t$ to 0.1 and compare the phase plane behavior to $\Delta t = 1$.
+- Increase $\Delta t$ to 2 and observe whether extinction happens faster.
+
+## Takeaways
+
+- Discrete time steps can destabilize otherwise stable predator-prey cycles.
+- Smaller $\Delta t$ values bring the discrete model closer to the continuous-time behavior.

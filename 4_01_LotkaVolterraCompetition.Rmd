@@ -24,6 +24,10 @@ Learning outcomes:
 
 ```
 
+## Worked example
+
+If $\alpha_{12} > 1$ and $\alpha_{21} < 1$, species 2 strongly suppresses species 1 while species 1 weakly affects species 2, so exclusion of species 1 is likely.
+
 ## Your task
 
 In this class (over TWO sessions) you will be working from a PDF available [here](https://www.dropbox.com/s/oukr39oq0rsn8il/9.%20Interspecific%20Competition%20and%20Competitive%20Exclusion.pdf?dl=1) to make a model exploring this idea.
@@ -43,3 +47,8 @@ This PDF walks you through the creation of an Excel spreadsheet exploring inters
 3. What parameter values will allow the two species to coexist indefinitely and stably? What do these values mean in ecological terms?
 4. Are there parameter values under which the outcome depends on initial population sizes or rates of population growth? What do these values mean in ecological terms?
 
+## Takeaways
+
+- Competition outcomes depend on relative self-limitation vs. interspecific effects.
+- The competition coefficients $\alpha_{12}$ and $\alpha_{21}$ encode how much one species suppresses the other.
+- Coexistence occurs when each species limits itself more than it limits the other.

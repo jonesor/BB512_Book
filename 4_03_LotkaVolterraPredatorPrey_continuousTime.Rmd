@@ -13,6 +13,10 @@ Learning outcomes:
 - Understanding how the Lotka-Volterra predator-prey model works, and how it is visualised.
 
 ```
+## Worked example
+
+With the default parameters, the time-series plot shows repeating oscillations and the phase plane shows a closed orbit around the coexistence equilibrium.
+
 ## Your task
 
 In R/RStudio, you will create an R script that programs the continuous time version of the Lotka-Volterra model. You will then use this model to investigate how the model works and how varying the parameters affects the system.
@@ -186,3 +190,9 @@ The main findings of the continuous time model are as follows:
 4. **Parameter Dependence**: The amplitude and period of the oscillations depend on the parameters \( R \), \( a \), \( f \), and \( q \).
 
 5. **Phase Plane Behaviour**: Predator and prey populations follow closed orbits in the phase plane around the coexistence equilibrium, under the assumption that the system remains undisturbed.
+
+## Takeaways
+
+- Continuous-time predator-prey models generate sustained cycles under ideal conditions.
+- Equilibria and isoclines help explain why cycles form and how parameters shift them.
+- Real ecosystems add damping, delays, and noise that change these dynamics.

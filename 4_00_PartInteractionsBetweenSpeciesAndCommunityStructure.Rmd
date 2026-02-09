@@ -1,1 +1,9 @@
 # (PART) Interactions Between Species and Community Structure {-}
+
+This part explores how species interactions shape population and community dynamics, using competition and predator-prey models.
+
+By the end of Part 4, you should be able to:
+
+- Interpret competition and predator-prey dynamics from model outputs.
+- Compare continuous- and discrete-time interaction models.
+- Reason about stability and equilibrium in multi-species systems.

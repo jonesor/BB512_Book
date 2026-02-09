@@ -17,6 +17,10 @@ Learning outcomes:
 
 ```
 
+## Worked example
+
+If predator efficiency increases (higher conversion of prey to predator births), predator peaks rise and prey troughs deepen, often increasing oscillation amplitude.
+
 
 ## Your task 
 
@@ -46,3 +50,9 @@ An R version of this exercise is available [here](continuous-time-lotka-volterra
 ### Reference 
 
 Rosenzweig, M. L. and R. H. MacArthur. 1963. Graphical representation and stability conditions of predator-prey interactions. *American Naturalist* 97: 209–223.
+
+## Takeaways
+
+- Predator-prey feedbacks can generate oscillations without external forcing.
+- Parameter changes alter stability and oscillation amplitude.
+- Simple models highlight mechanisms but omit real-world constraints.
