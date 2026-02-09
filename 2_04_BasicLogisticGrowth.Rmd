@@ -34,6 +34,10 @@ Learning outcomes:
 - Competence in using mathematical models in Excel to strengthen own understanding of biological processes.
 ```
 
+## Worked example
+
+With `Initial N = 10`, `r_m = 0.8`, and `K = 200`, the population grows quickly at first, then slows as it approaches `K`. This produces a sigmoidal curve and a per-capita growth rate that declines linearly with `N`.
+
 ## Your Task
 
 In this exercise, you will explore how changes in key parameters affect population dynamics using the logistic growth model. Follow the steps below to guide your analysis.
@@ -158,6 +162,12 @@ In this exercise, you will explore how changes in key parameters affect populati
 - **Step 5**: Compare the per capita growth rate in **Graph 2** to the population size over time in **Graph 1**.
   **Questions**:  
   - How are the two graphs connected?  
+
+## Takeaways
+
+- Logistic growth captures density dependence through the carrying capacity $K$.
+- High growth rates can cause overshoot, oscillations, or chaos in discrete-time models.
+- Per-capita growth declines linearly with population size in the logistic model.
     
     <!-- The decline in the per capita growth rate in Graph 2 reflects the slowing population growth shown in Graph 1. As the population size approaches `K` in Graph 1, the per capita growth rate approaches zero in Graph 2. -->
   - What would the per capita growth rate look like for a population experiencing exponential growth instead of logistic growth?  
@@ -254,4 +264,3 @@ plot(population[1:(timesteps-1)], per_capita_growth,
      main = "Per Capita Growth Rate vs Population Size")
 
 ```
-

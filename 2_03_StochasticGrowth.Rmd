@@ -45,6 +45,10 @@ Learning outcomes:
 - Understanding how stochasticity relates to (i) uncertainty in the prediction of population trajectories and (ii) probability of (local) extinction.
 ```
 
+## Worked example
+
+If $r_m$ is drawn from a distribution with mean 0.05 and variance 0.1, then most years are positive but some are negative. This means a population can grow on average yet still crash by chance, especially when starting size is small.
+
 ## Your task
 
 ```{block, type="do-something"}
@@ -160,3 +164,9 @@ abline(h = log(pseudoExtinction), lty = 2)
 - Simulate a scenario where two populations with identical growth rates experience different outcomes due to stochastic factors. Explain the implications of these findings.
 - What can this stochastic model tell us about extinction risk and population size?
 - What can this stochastic model tell us about extinction risk and environmental variation?
+
+## Takeaways
+
+- Stochasticity introduces variability in trajectories even when average growth is positive.
+- Small populations are more vulnerable to random declines and extinction.
+- The variance of $r_m$ can be as important as its mean for long-term persistence.

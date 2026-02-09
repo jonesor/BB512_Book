@@ -1,1 +1,9 @@
 # (PART) Population Growth Models {-}
+
+This part builds the core toolkit for describing and predicting population change. You will move from basic growth models to stochasticity, life tables, and structured population models.
+
+By the end of Part 2, you should be able to:
+
+- Distinguish exponential, geometric, and logistic growth models.
+- Interpret how parameters like growth rate and carrying capacity shape dynamics.
+- Use life tables and matrix models to analyze structured populations.

@@ -15,6 +15,10 @@ Learning outcomes:
 
 ```
 
+## Worked example
+
+If survival with 2 eggs is 0.85, the expected surviving chicks are $2 \times 0.85 = 1.7$. Doing this for all clutch sizes reveals a peak at an intermediate number of eggs.
+
 
 ## Your task
 
@@ -51,3 +55,7 @@ Advanced: What happens to the optimum as you change the relationship between clu
 2. How does the trade-off between clutch size and offspring quality manifest in different bird species, and what factors influence their clutch size decisions?
 3. What are the potential advantages and disadvantages of producing larger clutches with smaller-sized eggs compared to smaller clutches with larger-sized eggs?
 
+## Takeaways
+
+- Trade-offs often produce intermediate optimal strategies.
+- Expected reproductive success depends on both offspring number and survival probability.

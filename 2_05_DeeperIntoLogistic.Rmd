@@ -41,6 +41,10 @@ Learning outcomes:
 - Strengthen understanding of biological processes by applying mathematical models.
 ```
 
+## Worked example
+
+Set $r_m = 1.2$ and $K = 200$ in the `BasicLogistic` sheet. You should see a smooth approach to $K$ in Figure 1, a straight decreasing line in Figure 2 that crosses zero at $K$, and a single peaked curve in Figure 3 with a maximum near $N = K/2$.
+
 ## Your Task
 
 Download the Excel file [`Deeper Into Logistic Growth.xlsx`](https://www.dropbox.com/s/4xq399z7skl1akv/Deeper%20into%20Logistic%20Growth.xlsx?dl=1).
@@ -118,4 +122,8 @@ In Figure 3, as $r_m$ increases, the overall population growth rate increases, w
   
 -->
 
+## Takeaways
 
+- Logistic and exponential growth are linked by the carrying capacity term.
+- The shape of $dN/dt$ and per-capita growth curves explains why oscillations occur.
+- Time lags can destabilize otherwise stable dynamics.

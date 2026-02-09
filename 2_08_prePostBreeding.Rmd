@@ -1,5 +1,21 @@
 # Pre- and Post-reproduction census
 
+## Background
+
+Population growth estimates depend on when the census is taken relative to reproduction. A pre-breeding census counts individuals before reproduction; a post-breeding census counts them after reproduction. This changes how survival and fecundity are represented in the projection matrix, even if the underlying biology is the same.
+
+## Learning outcomes
+
+```{block, type="do-something"}
+Learning outcomes:
+
+- Explain the difference between pre-breeding and post-breeding census models.
+- Convert a post-breeding matrix to a pre-breeding matrix.
+- Compare growth rates from alternative census timings.
+```
+
+## Worked example
+
 ```{r prepostbreeding}
 p0 <- 0.2
 p1 <- 0.9
@@ -30,5 +46,13 @@ Compare population growth rates. This uses the `eigs` function from the `popdemo
 (popdemo::eigs(A2, what = "lambda"))
 ```
 
+## Your task
 
+- Interpret the two values of $\lambda$. Are they identical? If not, why might the census timing change the estimate?
+- Modify one survival probability (e.g., `p1`) and compare how the two census approaches respond.
+
+## Takeaways
+
+- Census timing changes how fecundity and survival are encoded in the matrix.
+- Pre- and post-breeding models can yield different $\lambda$ estimates from the same biology.
 

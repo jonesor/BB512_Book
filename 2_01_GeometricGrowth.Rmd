@@ -35,6 +35,14 @@ Learning outcomes:
 - Knowing that the slope of the $ln(N_t)$ vs. $t$ relationship can tell you about population growth rate (it is $ln(\lambda)$).
 ```
 
+## Worked example
+
+With $N_0 = 10$ and $\lambda = 1.1$, the population after 5 time steps is:
+
+$N_5 = 10 \times 1.1^5 = 16.1051$
+
+Plotting $N_t$ against $t$ gives a curve, while plotting $ln(N_t)$ against $t$ gives a straight line with slope $ln(\lambda)$.
+
 ## Your task
 
 Download and open the Excel file [`GeometricGrowth.xlsx`](https://www.dropbox.com/s/xxx05sckvop5i52/GeometricGrowth.xlsx?dl=1).
@@ -61,3 +69,8 @@ Now reset the population growth rate to 1.1. Now let's see if the mathematical r
 - Give an example of real-world populations where geometric growth might be a suitable model. Explain your reasoning.
 - Suppose a population's size decreases by 25% every year due to environmental factors. If there are initially 800 individuals, determine the population size after 4 years.
 
+## Takeaways
+
+- Geometric growth assumes discrete time steps and a constant growth multiplier $\lambda$.
+- Log-transforming $N_t$ linearizes the growth pattern and reveals $ln(\lambda)$ as the slope.
+- The model is useful for short-term or early-phase growth but ignores density dependence.

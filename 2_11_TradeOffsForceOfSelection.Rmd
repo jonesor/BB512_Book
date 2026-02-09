@@ -22,6 +22,10 @@ Learning outcomes:
 
 ```
 
+## Worked example
+
+If adding 1 offspring at age 1 raises $R_0$ by about 1, then a much larger increase in offspring would be required at age 20 or 25 to achieve the same fitness gain. This demonstrates why selection is stronger on early-life traits.
+
 
 
 
@@ -62,4 +66,9 @@ Plot the increase required vs. age (make a new worksheet/ark in Excel) What do y
 - Use concepts of life history evolution, including the force of selection, to explain why age-related diseases are common in humans.
 - How would predation risk influence the early-late life trade off in resource allocation to reproduction vs. body maintenance?
 
+## Takeaways
+
+- The force of selection declines with age, making early-life traits more influential.
+- Small early-life advantages can outweigh large late-life costs.
+- Trade-offs between reproduction and survival shape aging and life history strategies.
 

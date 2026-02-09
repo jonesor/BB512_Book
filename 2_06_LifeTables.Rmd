@@ -28,6 +28,14 @@ Learning outcomes:
 
 ```
 
+## Worked example
+
+If 500 individuals start at age 0 and 352 survive to age 1, then:
+
+- Survivorship at age 1: $l_1 = 352/500 = 0.704$
+- Survival probability from age 0 to 1: $g_0 = 352/500 = 0.704$
+- Death probability for that interval: $q_0 = 1 - g_0 = 0.296$
+
 ## Your task
 
 Download and open the Excel file [`Life tables exercises.xlsx`](https://www.dropbox.com/s/ox0rk05zdwzrmwy/Life%20tables%20exercises.xlsx?dl=1).
@@ -117,3 +125,9 @@ In short, **survivorship** tracks the cumulative proportion of individuals survi
 
 <!-- 
    - Changes early in life have a larger impact on $R_0$ and population growth rate than changes later in life, due to the declining force of selection.-->
+
+## Takeaways
+
+- Life tables summarize age-specific survival and reproduction in a compact, comparable way.
+- Survivorship type reflects different life history strategies and mortality schedules.
+- Early-life changes usually have the greatest impact on $R_0$ and population growth.

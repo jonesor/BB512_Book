@@ -24,6 +24,10 @@ Learning outcomes:
 - Understanding the logic of "*in silico* experiments" to investigate a biological question (mathematical modelling).
 ```
 
+## Worked example
+
+Using the example 3-stage matrix shown, the projection produces exponential growth with a dominant eigenvalue $\lambda > 1$. The corresponding stable stage distribution shows the long-term proportions of each stage.
+
 
 ## Your task
 
@@ -254,3 +258,9 @@ Matrix population models share some assumptions with simpler models like exponen
 No density dependence: Matrix models generally assume that vital rates are not affected by population size. This is akin to the assumption in exponential models where growth occurs without limits.
 
 -->
+
+## Takeaways
+
+- Matrix models link life history to population growth through structured vital rates.
+- The dominant eigenvalue $\lambda$ summarizes long-term growth, while eigenvectors capture stable structure and reproductive value.
+- Elasticity and LTREs turn models into management and evolutionary experiments.

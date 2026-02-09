@@ -76,6 +76,14 @@ Learning outcomes:
 - Knowing that the slope of the $ln(N)$ vs. time relationship represents $ln(\lambda)$ and can be used to estimate population growth rate.
 ```
 
+## Worked example
+
+If the regression of $ln(N_t)$ on time gives a slope of 0.08, then:
+
+$\lambda = e^{0.08} = 1.083$
+
+This indicates a population growing by about 8.3% per time step.
+
 ## Your task
 
 **Step 1: Download and Open the Data**
@@ -108,3 +116,8 @@ Learning outcomes:
 * What is the estimated population growth rate (\(\lambda\)) based on your linear regression analysis?
 * What assumptions does this model make about population growth? Discuss any potential real-world factors that might affect the accuracy of your estimate for \(\lambda\).
 
+## Takeaways
+
+- Estimating $\lambda$ from data relies on a log-transform and a linear trend over time.
+- The slope of $ln(N_t)$ vs. time is $ln(\lambda)$, so $\lambda$ is the exponential of the slope.
+- Measurement error and changing environments can bias simple growth estimates.
