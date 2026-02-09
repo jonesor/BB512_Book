@@ -135,9 +135,16 @@ hdg2_path <- hdg2_candidates[file.exists(hdg2_candidates)][1]
 has_hdg2 <- !is.na(hdg2_path)
 
 if (has_hdg2) {
-  hdg2 <- readxl::read_xlsx(hdg2_path, sheet = 4) %>%
-    clean_names() %>%
-    select(individual, round, player_1, player_2, benefit)
+  hdg2_sheets <- readxl::excel_sheets(hdg2_path)
+  if (length(hdg2_sheets) >= 4) {
+    hdg2 <- readxl::read_xlsx(hdg2_path, sheet = 4) %>%
+      clean_names() %>%
+      select(individual, round, player_1, player_2, benefit)
+  } else {
+    warning("Hawk-dove Game 2 data not found (sheet 4 missing); skipping Game 2 analysis.")
+    hdg2 <- NULL
+    has_hdg2 <- FALSE
+  }
 } else {
   warning("Hawk-dove Game 2 data not found; skipping Game 2 analysis.")
   hdg2 <- NULL
@@ -207,5 +214,4 @@ In this setting we might expect  natural selection to drive towards the evolutio
 Think about what this means in terms of human cooperation and conflict avoidance. 
 
 Can you see the value of understanding your opponent/competitor?
-
 
