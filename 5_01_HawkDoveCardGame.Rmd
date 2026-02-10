@@ -8,7 +8,7 @@ By studying the Hawk and Dove strategies we can gain insights into understanding
 
 The simple model unravels the intricacies of strategic decision-making, with profound implications across various fields, from biology and social sciences to economics and politics.
 
-In this activity, you will play the hawk and dove game with a single partner and then with multiple partners to observe the hypothetical costs and benefits of the antagonist or cooperative behaviour, respectively.
+In this activity, you will play the hawk and dove game with a single partner and then with multiple partners to observe the hypothetical costs and benefits of antagonistic or cooperative behaviour, respectively.
 
 ```{block, type="do-something"}
 Learning outcomes: 
@@ -81,7 +81,7 @@ The experimental hypothesis for this exercise could be that the dove strategy wi
 
 1. For the second game, you should find a new partner for EACH of the 15 rounds (if possible).
 
-2. Continue playing for 15 rounds or until students end up back in their starting positions, recording the data as before in  [Excel](https://www.dropbox.com/s/3tjkck3kmpek6xc/Table_3_Group_behaviour.xlsx?dl=1)) or on paper. Also record the results on a Google Form [here](https://forms.gle/F9YhYcTWRvoF4djt7).
+2. Continue playing for 15 rounds or until students end up back in their starting positions, recording the data as before in [Excel](https://www.dropbox.com/s/3tjkck3kmpek6xc/Table_3_Group_behaviour.xlsx?dl=1) or on paper. Also record the results on a Google Form [here](https://forms.gle/F9YhYcTWRvoF4djt7).
 
 3. For each round, I will determine the percentages of hawks and doves played that round and the average benefit received, again using the formula: *Class average benefit = (sum total benefit)/(number of players)*
 
@@ -101,7 +101,7 @@ Discuss as a class what would likely happen if you increased or decreased the re
 
 ## Acknowledgement
 
-This exercises is taken from https://www.jove.com/science-education/10611/group-behaviour
+This exercise is taken from https://www.jove.com/science-education/10611/group-behaviour
 
 ## Takeaways
 

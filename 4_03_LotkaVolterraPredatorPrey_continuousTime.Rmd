@@ -23,7 +23,7 @@ In R/RStudio, you will create an R script that programs the continuous time vers
 
 ### Step 0: Create a new script
 
-* Open R Studio and create a new script (File > New File > R Script). 
+* Open RStudio and create a new script (File > New File > R Script). 
 * Save it with a useful name (File > Save).
 * Type or copy/paste the following code, step-by-step, into the Script.
 * Run the code, or parts of it, selecting the parts you want to run and clicking "Run".

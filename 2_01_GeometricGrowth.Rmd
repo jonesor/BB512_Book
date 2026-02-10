@@ -14,7 +14,7 @@ The key quantities involved in this model are as follows, although it's importan
 - $R_m$ = population rate of increase over a single time step, $\Delta t$. This is sometimes called the *discrete growth factor*. 
 - $r_m$ = individual rate of increase over an infinitesimally small time step. This is sometimes called the *instantaneous rate of increase* or *intrinsic rate of increase*
 
-$R_m$ is  is related to $\lambda$ such that $R_m = \lambda - 1$ (and $\lambda = R_m + 1$).
+$R_m$ is related to $\lambda$ such that $R_m = \lambda - 1$ (and $\lambda = R_m + 1$).
 
 The relevant equations can be seen in Box 4.1 of the Neal textbook but here we will use the following:
 

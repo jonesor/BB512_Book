@@ -172,7 +172,7 @@ Use the code to investigate the following questions:
 * Are rare alleles (defined with allele frequency) more or less likely to be lost than common ones? What implications does this have for new alleles (mutations)?
 
 ```{block, type="do-something"}
-Tip: make a new script and paste the code loop along with with the plot command so that you can run both together easily.
+Tip: make a new script and paste the code loop along with the plot command so that you can run both together easily.
 ```
 
 ## Bottlenecks

@@ -124,7 +124,7 @@ ggplot(perIndiv_bothPlayers,aes(x = mean_Hawkishness,y = mean_benefit)) +
 
 We didn't do this one in class this year, so here is what we found last year.
 
-The students were asked to compete against a new opponent every round. The idea was that this would make it much harder to learn your opponents strategy and may be harder to come to a agreement that reduces aggression.
+The students were asked to compete against a new opponent every round. The idea was that this would make it much harder to learn your opponents strategy and may be harder to come to an agreement that reduces aggression.
 
 
 ```{r hawkdoveresults7, echo = FALSE, warning = FALSE}

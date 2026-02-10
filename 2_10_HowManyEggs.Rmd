@@ -38,7 +38,7 @@ bbeggs_ft
 
 ```
 
-Use these data to plot a graph in Excel with number of eggs on the x-axis and survival probability on the y-axis axis.
+Use these data to plot a graph in Excel with number of eggs on the x-axis and survival probability on the y-axis.
 
 Now, in another column in Excel, calculate, given the chick survival probability, what the expected number of surviving chicks will be for a big bird laying between 1 and 10 eggs^[This may require some thought!].
 

@@ -53,7 +53,7 @@ Consider a trade-off between early reproduction and late life survival (i.e. via
 * By setting survival to 0 at other ages, determine how many years of life could be lost before this cost is no longer worth bearing. Is this surprising?
 * Now reset everything ($m_x$ =10; survival = 0.8). Recall what fitness was when you added 1 to $m_x$ at age 1 (50.811). 
 
-* If, instead of adding to $m_x$ at age 1 you were to increase $m_x$ at age 25, how much would you need to increase $m_x$ to to reach this figure?
+* If, instead of adding to $m_x$ at age 1 you were to increase $m_x$ at age 25, how much would you need to increase $m_x$ to reach this figure?
 
 * What about at age 20?   Age 15?  Age 10?  Age 5? 
 Plot the increase required vs. age (make a new worksheet/ark in Excel) What do you notice?
@@ -71,4 +71,3 @@ Plot the increase required vs. age (make a new worksheet/ark in Excel) What do y
 - The force of selection declines with age, making early-life traits more influential.
 - Small early-life advantages can outweigh large late-life costs.
 - Trade-offs between reproduction and survival shape aging and life history strategies.
-

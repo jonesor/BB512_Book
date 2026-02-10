@@ -9,7 +9,7 @@ In the early days of evolutionary theory, Charles Darwin's concept of natural se
 However, evolutionary biologist Richard Dawkins responded with a different perspective in his 1986 book *The Blind Watchmaker*. Dawkins argued that the complexity and diversity of life can arise through a "blind" process — natural selection — which is unguided and without foresight. Evolution, like a blind watchmaker, can achieve impressive complexity through small, incremental changes selected over long periods of time.
 
 ### Randomness and Selection
-In this exercise, we will explore how random variation, when paired with selection, can lead to specific outcomes that might otherwise seem impossible. We will use an R program to simulate the typing of a target sentence through random letter generation. You'll see first hand how selection can guide random variation toward a meaningful result, just as natural selection drives biological complexity.
+In this exercise, we will explore how random variation, when paired with selection, can lead to specific outcomes that might otherwise seem impossible. We will use an R program to simulate the typing of a target sentence through random letter generation. You'll see firsthand how selection can guide random variation toward a meaningful result, just as natural selection drives biological complexity.
 
 By simulating this process, you’ll discover how random changes alone lead to nonsense, but with selection, the "blind" process can quickly achieve a desired result.
 

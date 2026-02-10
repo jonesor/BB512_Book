@@ -99,7 +99,7 @@ Sketch equivalent graphs for the exponential (geometric) growth model, including
 
 **Task 5: Adding a Time Lag**
 
-1. In the **`TimeLag` worksheet**, explore how adding a time lag to the logistic model affects population dynamics. This is the equation we are are using: $\frac{d N}{d t}=r N\left(1-\frac{N_{t-\tau}}{K}\right)$
+1. In the **`TimeLag` worksheet**, explore how adding a time lag to the logistic model affects population dynamics. This is the equation we are using: $\frac{d N}{d t}=r N\left(1-\frac{N_{t-\tau}}{K}\right)$
 
 
 2. Adjust the formula in the Excel sheet to incorporate a time lag in the population size ($N_{t-\tau}$). Start with a small $r_m$ value that results in smooth convergence to $K$ in the ordinary logistic model. 

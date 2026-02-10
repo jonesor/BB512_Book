@@ -27,7 +27,7 @@ The exercise is done using one of the built-in models in a computer program call
 
 There are two ways to use NetLogo: (1) You can log in to our SDU UCloud computing system at https://cloud.sdu.dk/, and use it there; (2) You can download and install NetLogo from the site above.
 
-I recommend the UCloud option: Please follow these steps: (i) search for NetLogo in the search bar at the top of the screen; (ii) click on Applications and then on the NetLogo icon; (iii) click on "Run Application"; (iv) Give your job a name (e.g., "BB512") and under "Hours" enter 1 hour; (v) under Machine Type, select "u1-standard-1"; (vi) click on Submit. After a few moments while UCloud is preparing your job, an new screen appears. Click on Open Interface to open a virtual desktop. There, you can open NetLogo and use it as if it was on your own computer by clicking on its icon.
+I recommend the UCloud option: Please follow these steps: (i) search for NetLogo in the search bar at the top of the screen; (ii) click on Applications and then on the NetLogo icon; (iii) click on "Run Application"; (iv) Give your job a name (e.g., "BB512") and under "Hours" enter 1 hour; (v) under Machine Type, select "u1-standard-1"; (vi) click on Submit. After a few moments while UCloud is preparing your job, a new screen appears. Click on Open Interface to open a virtual desktop. There, you can open NetLogo and use it as if it was on your own computer by clicking on its icon.
 
 Open NetLogo and click File > Models Library. You can then use the search box at the bottom of the screen to find the model called “Bug Hunt Camouflage”.
 
@@ -59,7 +59,7 @@ To understand what’s going on, you need to understand how the simulation works
 *Simple version:* 
 The simulation starts with bugs with random colours.
 
-Each time you kill a bug, one of the remaining bugs produces an offspring so that the population size stays constant. The colour of the offspring is inherited from its parent, though it can change slightly due to mutation (determined by the “max-mutation-step” slider). Therefore, the offspring of a red parent will be reddish, the offspring of a blue parent will be blueish and so on. Therefore, if you consistently kill off (e.g.) non-reddish bugs, the reddish bugs that remain will have offspring that are also red and the average colour of the population will then shift towards being redder. 
+Each time you kill a bug, one of the remaining bugs produces an offspring so that the population size stays constant. The colour of the offspring is inherited from its parent, though it can change slightly due to mutation (determined by the “max-mutation-step” slider). Therefore, the offspring of a red parent will be reddish, the offspring of a blue parent will be bluish and so on. Therefore, if you consistently kill off (e.g.) non-reddish bugs, the reddish bugs that remain will have offspring that are also red and the average colour of the population will then shift towards being redder. 
 
 Colour here is indicated by “hue”, “saturation” and “brightness” which range from 0 to 255. Basically, hue describes colour value (red/green/blue), saturation describes how “washed out” or vivid the colour is (a low value for saturation would look white), and brightness describes how bright the colour is (a low value for brightness would look black). See below for more details.
 
