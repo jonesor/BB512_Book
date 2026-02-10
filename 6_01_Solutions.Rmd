@@ -2,6 +2,10 @@
 
 In this section you will find the solutions and/or main take home messages of the practical exercises used in this course.
 
+## How to use this section
+
+Use these solutions to check your reasoning after you attempt the tasks. If your answer differs, focus on the logic rather than the final number.
+
 ## Solutions: The blind watchmaker
 
 *	_What happens if selection is turned OFF?_

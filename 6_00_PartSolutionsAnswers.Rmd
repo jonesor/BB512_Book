@@ -1,1 +1,9 @@
 # (PART) Solutions/answers {-}
+
+This part provides model answers and worked solutions. Use it to check your reasoning after attempting the tasks.
+
+By the end of Part 6, you should be able to:
+
+- Compare your work to model solutions.
+- Diagnose mistakes in reasoning or calculation.
+- Reflect on alternative interpretations when results differ.
