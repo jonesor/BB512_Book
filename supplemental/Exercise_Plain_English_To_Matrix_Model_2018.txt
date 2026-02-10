@@ -1,0 +1,3 @@
+Exercise - from plain english to matrix model.txt 
+
+We assumed that the Red-tailed hawk life history could be described in terms of three major life stages: hatchling, juvenile, and adult (generally the third year of life and beyond). Adults are the primary reproductive stage, and produce an average of 3 new hatchlings each year. Juveniles tend to produce only 1 new hatchling per year on average. We assumed that adults experienced an average of 18% mortality each year. Juvenile mortality was set at 30% per year. Approximately 5% of juveniles fail to transition to adults, remaining in the juvenile phase. Finally, hatchlings had a 20% chance of surviving and transitioning to become juveniles. We initialized the population with 1000 hatchlings, 150 juveniles, and 5 adults.
