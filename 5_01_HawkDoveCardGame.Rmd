@@ -18,6 +18,10 @@ Learning outcomes:
 - Appreciation of how simple models can be used to address complex biological or political decision making.
 ```
 
+## Worked example
+
+With benefits $B = 4$ and costs $C = 3$, the Hawk–Hawk payoff is $(B-C)/2 = 0.5$, Hawk–Dove yields 4 for Hawk and 0 for Dove, and Dove–Dove yields 2 each.
+
 
 ## Your task
 
@@ -98,3 +102,9 @@ Discuss as a class what would likely happen if you increased or decreased the re
 ## Acknowledgement
 
 This exercises is taken from https://www.jove.com/science-education/10611/group-behaviour
+
+## Takeaways
+
+- Payoffs determine which strategies are favored and whether mixtures are stable.
+- Repeated interactions can shift behavior toward cooperation.
+- Game outcomes depend on the structure of interactions, not just the strategies.

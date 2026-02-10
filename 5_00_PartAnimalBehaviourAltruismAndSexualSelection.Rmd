@@ -1,1 +1,9 @@
 # (PART) Animal behaviour, altruism and sexual selection {-}
+
+This part uses game theory and behavioral models to explore how selection shapes strategies like aggression, cooperation, and mating behavior.
+
+By the end of Part 5, you should be able to:
+
+- Explain how payoffs influence behavioral strategies.
+- Use game-theoretic reasoning to interpret conflicts and cooperation.
+- Connect behavioral models to evolutionary outcomes.
