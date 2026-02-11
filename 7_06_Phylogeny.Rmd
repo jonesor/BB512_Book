@@ -1,0 +1,46 @@
+# Building a phylogenetic tree
+
+## Background
+
+This activity builds intuition for phylogenetic trees by using discrete morphological characters. It aligns with the macroevolution exercise guide in `supplemental/Macroevolution_Building_A_Tree/FylTree_ENG_2015.pdf`.
+
+```{block, type="do-something"}
+Learning outcomes: 
+
+- Build a simple character table for a set of organisms.
+- Compute pairwise differences and translate them into a tree.
+- Relate morphology-based trees to the idea of evolutionary relatedness.
+```
+
+## Worked example
+
+With six organisms and seven characters, you can compute a pairwise difference table, then group the closest relatives first. The internal nodes represent the most recent common ancestors inferred from shared characters.
+
+## Your task
+
+Use `supplemental/Macroevolution_Building_A_Tree/FylTree_ENG_2015.pdf` as a guide for the classroom activity.
+
+1. Pick six organisms (use the cards if you have them, or invent six organisms with clear traits).
+2. Identify seven discrete characters that differ among the organisms (presence/absence, color class, tail length category, etc.).
+3. Fill in a character table and then compute a pairwise difference table.
+4. Draw a phylogenetic tree by grouping the closest relatives first, then adding deeper splits.
+5. Optional: compare your hand-drawn tree with an R clustering result.
+
+```{r tree-from-characters, echo = TRUE, eval = FALSE}
+# Replace this with your own character table
+characters <- data.frame(
+  row.names = c("A", "B", "C", "D", "E", "F"),
+  trait1 = c(1, 1, 0, 0, 0, 1),
+  trait2 = c(0, 1, 1, 0, 0, 1),
+  trait3 = c(1, 1, 1, 0, 0, 0)
+)
+
+dist_mat <- dist(characters, method = "manhattan")
+tree <- hclust(dist_mat, method = "average")
+plot(tree, main = "Tree from morphological characters")
+```
+
+## Takeaways
+
+- Morphological characters can be converted into a simple distance matrix.
+- The closest pairs in the distance matrix define the earliest groupings in a tree.

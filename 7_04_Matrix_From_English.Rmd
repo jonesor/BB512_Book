@@ -1,0 +1,43 @@
+# From plain English to a matrix model
+
+## Background
+
+This activity is designed for quick in-class practice translating a verbal life-history description into a matrix population model. It connects directly to the workflow in `2_07_matrixModels.Rmd`.
+
+```{block, type="do-something"}
+Learning outcomes: 
+
+- Convert a verbal life-history description into a matrix population model.
+- Build and interpret a simple projection from initial stage abundances.
+```
+
+## Worked example
+
+Here is a minimal two-stage example to show the translation from words to a matrix.
+
+Suppose juveniles do not reproduce, adults produce 2 offspring per year, juvenile survival is 0.4, and adult survival is 0.7. A simple stage matrix would be:
+
+$$
+A =
+\begin{bmatrix}
+0 & 2 \\
+0.4 & 0.7
+\end{bmatrix}
+$$
+
+The key idea is to map each biological statement to a matrix entry: fecundity goes in the top row, survival and stage transitions go on the sub-diagonal or main diagonal.
+
+## Your task
+
+Use the red-tailed hawk life history description in `supplemental/Exercise_Plain_English_To_Matrix_Model_2018.txt`.
+
+1. Draw a 3-stage life cycle diagram (hatchling, juvenile, adult). 
+2. Translate the verbal description into a 3x3 projection matrix. State any assumptions you make about the juvenile stasis and transition rates.
+3. Use the initial population sizes given (1000 hatchlings, 150 juveniles, 5 adults) and project the population for 20 time steps.
+4. Calculate the dominant eigenvalue and interpret whether the population grows or declines.
+5. Compare your approach with the workflow in `2_07_matrixModels.Rmd`.
+
+## Takeaways
+
+- Verbal life-history descriptions can be translated directly into matrix entries with clear assumptions.
+- Simple projections reveal whether the implied population is growing or declining.
