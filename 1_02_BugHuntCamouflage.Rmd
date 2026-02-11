@@ -10,14 +10,14 @@ On the other hand, predators with better detection skills, like keen eyesight, a
 
 ## Learning outcomes
 
-```{block, type="do-something"}
+::: {.do-something}
 Learning outcomes:
 
 - Understand adaptive evolution via natural selection.
 - Explain how fitness depends on the environment.
 - Use the terms adaptation, selection, selection pressure, and heritability correctly.
 
-```
+:::
 
 ## Your task
 

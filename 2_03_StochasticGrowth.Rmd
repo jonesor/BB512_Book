@@ -36,14 +36,14 @@ ggplot(pgr,aes(x=r))+geom_histogram(bins =30) +
 
 When using the equation above to calculate population at time $t+1$ ($N_{t+1}$) from the population at time $t$ ($N_t$), one would draw a random $r_m$ value from this distribution. Sometimes $r_m$ will be high, other times it will be low, most of the time it will be from around the middle of the distribution.
 
-```{block, type="do-something"}
+::: {.do-something}
 Learning outcomes: 
 
 - Increased competence in using Excel formulae for mathematical modeling.
 - Understanding the concept of stochasticity in simple population models.
 - Competence in using mathematical models in Excel to strengthen own understanding of biological processes.
 - Understanding how stochasticity relates to (i) uncertainty in the prediction of population trajectories and (ii) probability of (local) extinction.
-```
+:::
 
 ## Worked example
 
@@ -51,10 +51,10 @@ If $r_m$ is drawn from a distribution with mean 0.05 and variance 0.1, then most
 
 ## Your task
 
-```{block, type="do-something"}
+::: {.do-something}
 
 Use the Excel worksheet, [StochasticPopulationGrowth.xlsx](https://www.dropbox.com/s/1wpixbpgwlh54f0/StochasticPopulationGrowth.xlsx?dl=1), to study how stochastic population growth works with this simple model.
-```
+:::
 
 1)	Use Excel formulae to calculate deterministic population size through time (20 generations, with starting population of 100), linking to the mean finite population growth rate.
 2)	Use charts to plot the results. (you already did this last time!)
@@ -64,9 +64,9 @@ Use the Excel worksheet, [StochasticPopulationGrowth.xlsx](https://www.dropbox.c
 6)	Try altering initial population size, mean population growth, and the amount of stochasticity (Variance).
 7)	Extinction occurs when N $\leq$ 0. What happens to extinction risk as stochasticity (variance) increases? What happens when initial N is small? Does the population ALWAYS survive if the population growth rate, $r_m$ is $>$ 0?
 
-```{block, type="do-something"}
+::: {.do-something}
 Note: Excel re-randomises the random numbers every time you change any cell in the sheet. This is OK, and allows you to explore a stochastic simulation many times.
-```
+:::
 
 ## Simulations in R
 
@@ -78,13 +78,13 @@ You can copy/paste the code below into *R*.
 
 The output of the modelling is shown in  Fig. \@ref(fig:stochProjection)
 
-```{block, type="do-something"}
+::: {.do-something}
 Copy-and-paste the code below into a text file (or directly into *R*).
 
 The final line of the code (`nExtinct/nTrials`) gives you an estimate of extinction probability - the proportion of trials that lead to a population size of 1 (or less).
 
 Modify the simulation settings to explore what happens to (i) the plot of population growth and (ii) extinction risk, when you vary  `mean.r` ($\bar{r_m}$), the amount of stochasticity ($\sigma_{r_m}^2$) (`var.r`), and the number of generations (`nGen`).
-```
+:::
 
 ```{r eval = TRUE, echo = FALSE}
 set.seed(1234)

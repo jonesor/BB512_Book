@@ -15,14 +15,14 @@ In a two-species system there are four possible outcomes:
 
 The model suggests that stable coexistence is possible if each species limits its own population growth more than it affects the other species. Overlapping niches could lead to competitive exclusion, influenced by their competition coefficients and carrying capacities.
 
-```{block, type="do-something"}
+::: {.do-something}
 Learning outcomes: 
 
 - Competence in constructing an Excel-based population model.
 - Understanding how the Lotka-Volterra competition model works.
 - Understanding the competition coefficients. These are called $\alpha$ and $\beta$ in the Neal textbook, and $\alpha_{12}$ and $\alpha_{21}$ in the PDF here.
 
-```
+:::
 
 ## Worked example
 

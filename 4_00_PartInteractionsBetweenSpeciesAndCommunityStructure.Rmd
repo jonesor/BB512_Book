@@ -1,4 +1,4 @@
-# (PART) Interactions Between Species and Community Structure {-}
+# Part 4: Interactions Between Species and Community Structure {#part-4 .unnumbered}
 
 This part explores how species interactions shape population and community dynamics, using competition and predator-prey models.
 

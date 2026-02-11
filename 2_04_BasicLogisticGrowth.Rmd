@@ -24,7 +24,7 @@ As growth rates increase beyond a certain point, the population can exhibit more
 This Excel-based exercise will help you explore how changes in the growth rate and carrying capacity affect population dynamics. Though simple, the logistic model provides valuable insights into how populations stabilize, fluctuate, and respond to environmental limits.
 
 
-```{block, type="do-something"}
+::: {.do-something}
 Learning outcomes: 
 
 - Increased competence in using Excel formulae for mathematical modeling.
@@ -32,7 +32,7 @@ Learning outcomes:
 - Understanding how strikingly different types of population dynamics can result from the same (logistic) model simply by varying the population growth rate parameter.
 - Understanding the concept of *deterministic chaos* and how it is different from randomness.
 - Competence in using mathematical models in Excel to strengthen own understanding of biological processes.
-```
+:::
 
 ## Worked example
 
@@ -177,13 +177,13 @@ In this exercise, you will explore how changes in key parameters affect populati
 These steps help you visualise how population size and per capita growth rate are interrelated, reinforcing the concepts behind logistic population growth.
 
 
-```{block, type="do-something"}
+::: {.do-something}
 These two graphs are different ways to visualize the same model. 
 
 It is important that you can make the connections between these graphs.
 
 How would the same plots look for regular exponential growth?
-```
+:::
 
 Some useful keywords:
 

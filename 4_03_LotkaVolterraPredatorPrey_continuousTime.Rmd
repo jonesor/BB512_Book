@@ -6,13 +6,13 @@
 The Lotka-Volterra model describes the interaction between predators and prey. This document demonstrates how to program the continuous-time version of the model in R. Then, by varying the parameters you can explore its features, and visualise the dynamics of predator and prey populations over time.
 
 
-```{block, type="do-something"}
+::: {.do-something}
 Learning outcomes: 
 
 - Use of R to investigate an ecological model.
 - Understanding how the Lotka-Volterra predator-prey model works, and how it is visualised.
 
-```
+:::
 ## Worked example
 
 With the default parameters, the time-series plot shows repeating oscillations and the phase plane shows a closed orbit around the coexistence equilibrium.
@@ -32,7 +32,7 @@ In R/RStudio, you will create an R script that programs the continuous time vers
 
 We use the `deSolve` package to solve the system of differential equations numerically. Note that you may need to install the package first using the command `install.packages("deSolve")`.
 
-```{r loadlib, include = TRUE}
+```{r loadlib, include = TRUE, echo = TRUE}
 library(deSolve)
 ```
 
@@ -45,7 +45,7 @@ The system of equations is defined as follows:
 
 The function below implements these equations in R.
 
-```{r define-model}
+```{r define-model, echo = TRUE}
 predator_prey_model <- function(t, state, parameters) {
   with(as.list(c(state, parameters)), {
     dV <- R * V - a * V * C  # Victim (prey) growth equation
@@ -60,7 +60,7 @@ predator_prey_model <- function(t, state, parameters) {
 
 We set the parameters and initial conditions for the model. I use the same nomenclature as the PDF from the [Excel exercise](https://jonesor.github.io/BB512_Book/lotka-volterra-predator-prey-dynamics.html). The parameters are as follows: *R* is the victim population growth rate, *a* is the attack rate of the predator, *f* is the conversion efficiency of the predator and *q* is the predator starvation (death) rate. For more detail about these, read the relevant section in the Neal textbook.
 
-```{r parameters}
+```{r parameters, echo = TRUE}
 parameters <- c(R = 0.8,  # Victim (prey) growth rate
                 a = 0.01, # Attack rate
                 f = 0.008, # Conversion efficiency
@@ -74,7 +74,7 @@ initial_state <- c(V = 1000,  # Initial victim population
 
 We simulate the model over a specified time period and store the results.
 
-```{r simulation}
+```{r simulation, echo = TRUE}
 time <- seq(0, 100, by = 0.1)  # Time sequence
 output <- ode(y = initial_state, times = time, func = predator_prey_model, parms = parameters)
 output_df <- as.data.frame(output)
@@ -91,7 +91,7 @@ How does the size of the two populations change through time? You should see tha
 
 The plot below shows the changes in consumer and victim populations over time.
 
-```{r population-dynamics}
+```{r population-dynamics, echo = TRUE}
 # Plot victim population on the primary y-axis
 plot(output_df$time, output_df$V, type = "l", col = "blue", lwd = 2, 
      ylab = "Victim Population (V)", xlab = "Time", main = "Predator-Prey Dynamics")
@@ -112,7 +112,7 @@ legend("topright", legend = c("Victim (V)", "Consumer (C)"),
 
 The phase plot shows the relationship between victim and consumer populations. Zero Net Growth Isoclines (ZNGIs) indicate where the growth rate of each population is zero.
 
-```{r phase-plot}
+```{r phase-plot, echo = TRUE}
 plot(output_df$V, output_df$C, type = "l", col = "purple", lwd = 2, 
      xlab = "Victim (V)", ylab = "Consumer (C)", 
      main = "Predator-Prey Dynamics with ZNGIs")

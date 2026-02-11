@@ -4,13 +4,13 @@
 
 This activity builds intuition for phylogenetic trees by using discrete morphological characters. It aligns with the macroevolution exercise guide in `supplemental/Macroevolution_Building_A_Tree/FylTree_ENG_2015.pdf`.
 
-```{block, type="do-something"}
+::: {.do-something}
 Learning outcomes: 
 
 - Build a simple character table for a set of organisms.
 - Compute pairwise differences and translate them into a tree.
 - Relate morphology-based trees to the idea of evolutionary relatedness.
-```
+:::
 
 ## Worked example
 

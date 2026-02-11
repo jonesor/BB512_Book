@@ -1,4 +1,4 @@
-# (PART) Population Genetics and Evolution {-}
+# Part 3: Population Genetics and Evolution {#part-3 .unnumbered}
 
 This part introduces the genetic mechanisms that shape evolutionary change. You will connect allele frequencies to forces like selection, drift, and heritability.
 

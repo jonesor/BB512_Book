@@ -10,13 +10,13 @@ The simple model unravels the intricacies of strategic decision-making, with pro
 
 In this activity, you will play the hawk and dove game with a single partner and then with multiple partners to observe the hypothetical costs and benefits of antagonistic or cooperative behaviour, respectively.
 
-```{block, type="do-something"}
+::: {.do-something}
 Learning outcomes: 
 
 - Understanding of the fundamental concepts of game theory and its application in analysing strategic interactions in competitive environments.
 - Ability to apply game theory concepts to real-world contexts in biology, or politics.
 - Appreciation of how simple models can be used to address complex biological or political decision making.
-```
+:::
 
 ## Worked example
 

@@ -63,13 +63,13 @@ Nevertheless, heritability can be useful, and it is possible to estimate heritab
 
 [Wray, N. & Visscher, P. (2008) Estimating trait heritability. Nature Education 1(1):29](https://www.nature.com/scitable/topicpage/estimating-trait-heritability-46889/)
 
-```{block, type="do-something"}
+::: {.do-something}
 Learning Outcomes:
 
 - Learn to import and manipulate data in R or Excel for the purpose of heritability estimation.
 - Develop a conceptual understanding of heritability and its importance in trait evolution.
 - Gain practical skills in performing linear regression analysis to estimate heritability.
-```
+:::
 
 ## Worked example
 

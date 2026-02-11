@@ -2,13 +2,13 @@
 
 ## Learning outcomes
 
-```{block, type="do-something"}
+::: {.do-something}
 Learning outcomes:
 
 - Implement and explore a discrete-time predator-prey model in R.
 - Understand how time steps introduce delays and affect stability.
 - Compare discrete-time dynamics to continuous-time dynamics.
-```
+:::
 
 ## Worked example
 
@@ -40,7 +40,7 @@ Compare these to Equations 1 and 2 in the Excel exercise PDF.
 
 The function below implements these equations in R.
 
-```{r define-DT-model}
+```{r define-DT-model, echo = TRUE}
 discrete_predator_prey_model <- function(time_steps, dt, initial_state, parameters) {
   # Initialise vectors to store populations
   V <- numeric(time_steps + 1)
@@ -72,7 +72,7 @@ discrete_predator_prey_model <- function(time_steps, dt, initial_state, paramete
 
 We set the parameters, initial conditions, and time step (\( \Delta t \)) for the model.
 
-```{r DT-parameters}
+```{r DT-parameters, echo = TRUE}
 parameters <- c(R = 0.25,  # Victim (prey) growth rate
                 a = 0.01,  # Attack rate
                 f = 0.008, # Conversion efficiency
@@ -89,7 +89,7 @@ dt <- 1                       # Time step (dt), 1 = a standard discrete model
 
 We simulate the model for the specified parameters and time steps.
 
-```{r DT-simulation}
+```{r DT-simulation, echo = TRUE}
 output_df <- discrete_predator_prey_model(time_steps = time_steps, dt = dt, 
                                           initial_state = initial_state, 
                                           parameters = parameters)
@@ -101,7 +101,7 @@ output_df <- discrete_predator_prey_model(time_steps = time_steps, dt = dt,
 
 The plot below shows the changes in consumer and victim populations over time.
 
-```{r DT-population-dynamics}
+```{r DT-population-dynamics, echo = TRUE}
 # Plot victim population on the primary y-axis
 plot(output_df$time, output_df$V, type = "l", col = "blue", lwd = 2, 
      ylab = "Victim Population (V)", xlab = "Time", main = "Discrete Predator-Prey Dynamics")
@@ -122,7 +122,7 @@ legend("topright", legend = c("Victim (V)", "Consumer (C)"),
 
 The phase plot shows the relationship between victim and consumer populations.
 
-```{r DT-phase-plot}
+```{r DT-phase-plot, echo = TRUE}
 ### Phase Plot with ZNGIs, Initial Point, and Arrow
 plot(output_df$V, 
      output_df$C, 

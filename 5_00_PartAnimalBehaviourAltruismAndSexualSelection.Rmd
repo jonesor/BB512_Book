@@ -1,4 +1,4 @@
-# (PART) Animal behaviour, altruism and sexual selection {-}
+# Part 5: Animal behaviour, altruism and sexual selection {#part-5 .unnumbered}
 
 This part uses game theory and behavioral models to explore how selection shapes strategies like aggression, cooperation, and mating behavior.
 

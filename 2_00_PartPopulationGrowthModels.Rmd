@@ -1,4 +1,4 @@
-# (PART) Population Growth Models {-}
+# Part 2: Population Growth Models {#part-2 .unnumbered}
 
 This part builds the core toolkit for describing and predicting population change. You will move from basic growth models to stochasticity, life tables, and structured population models.
 

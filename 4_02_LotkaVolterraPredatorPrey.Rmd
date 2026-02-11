@@ -9,13 +9,13 @@ The Lotka-Volterra predator-prey model gives us a framework for understanding th
 In this class you will build and explore a Lotka-Volterra predator-prey model in Excel to gain insight into the ecology of interacting predators and prey.
 
 
-```{block, type="do-something"}
+::: {.do-something}
 Learning outcomes: 
 
 - Competence in constructing an Excel-based population model.
 - Understanding how the Lotka-Volterra predator-prey model works, and how it is visualised.
 
-```
+:::
 
 ## Worked example
 

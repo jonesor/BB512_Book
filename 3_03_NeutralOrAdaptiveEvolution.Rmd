@@ -20,7 +20,7 @@ knitr::include_graphics("images/huntergathererDK.png")
 ```
 
 
-```{block, type="do-something"}
+::: {.do-something}
 Learning outcomes: 
 
 - Interpret the Influence of Selection Pressure: By the end of this exercise, participants will be able to categorise traits based on the level of natural selection acting upon them and articulate reasons for their categorisation.
@@ -30,7 +30,7 @@ Learning outcomes:
 - Engage in Collaborative Argumentation: Participants will collaboratively argue and defend their categorisation of traits, providing evidence or logical reasoning for their views.
 - Engage in Critical Thinking: Develop analytical skills in evaluating the role of selection and drift in trait evolution.
 
-```
+:::
 
 ## Worked example
 

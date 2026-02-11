@@ -1,4 +1,4 @@
-# (PART) Evolution by Natural Selection {-}
+# Part 1: Evolution by Natural Selection {#part-1 .unnumbered}
 
 This part introduces the core logic of natural selection using simple, concrete activities. You will move from a conceptual model of selection to an interactive simulation of adaptation.
 

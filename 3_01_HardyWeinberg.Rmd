@@ -99,7 +99,7 @@ For a population to be in Hardy-Weinberg Equilibrium, certain assumptions must b
 Any deviation from these assumptions could result in a population that is not in Hardy-Weinberg Equilibrium.
 
 
-```{block, type="do-something"}
+::: {.do-something}
 Learning outcomes: 
 
 - Understanding the difference between alleles and genotypes.
@@ -107,7 +107,7 @@ Learning outcomes:
 - Knowing the assumptions of HWE.
 - Understanding what "being at Hardy-Weinberg Equilibrium" means in terms of evolutionary processes (which is related to the assumptions of HWE).
 
-```
+:::
 
 ## Worked example
 

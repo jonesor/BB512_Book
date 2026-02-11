@@ -15,14 +15,14 @@ By simulating this process, you’ll discover how random changes alone lead to n
 
 ## Learning outcomes
 
-```{block, type="do-something"}
+::: {.do-something}
 Learning outcomes:
 
 - Gain a deeper understanding of adaptive evolution via natural selection.
 - Recognize how random change can lead to order if paired with selection.
 - Learn to use R to explore biological phenomena.
 
-```
+:::
 
 ## Worked example
 

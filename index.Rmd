@@ -173,7 +173,7 @@ plot(pr)
 ```
 
 
-```{block, type="do-something"}
+::: {.do-something}
 **This book includes equations.**
 
 Equations sometimes do not render correctly on some web browsers. 
@@ -189,9 +189,9 @@ It should look like this:
 ![](testEquation.png)
 
 If it doesn't look right, then you should try another browser (maybe even your phone browser) or investigate a solution.
-```
+:::
 
-# Schedule
+## Schedule
 
 ```{r echo = FALSE}
 # Get current year and use it to build the link to the official time table.

@@ -17,7 +17,7 @@ Three primary survivorship types are commonly identified, based on survivorship 
 By identifying and understanding these survivorship types, researchers gain critical insights into the demographic structure of populations and the selective pressures that influence survival and longevity. Survivorship patterns play a significant role in shaping the dynamics of populations and help scientists make informed decisions regarding conservation efforts, healthcare planning, and population management strategies.
 
 
-```{block, type="do-something"}
+::: {.do-something}
 Learning outcomes: 
 
 - Increased competence in using Excel formulae for mathematical modelling.
@@ -26,7 +26,7 @@ Learning outcomes:
 - Understanding the three types of survivorship curve and how they relate to mortality and survival probabilities (and their trajectories with age).
 - Understanding the decline in the "force of selection".
 
-```
+:::
 
 ## Worked example
 

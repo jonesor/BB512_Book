@@ -4,12 +4,12 @@
 
 This activity uses a fast classroom simulation to show how many small genetic effects can generate a continuous, approximately normal trait distribution. It connects to the heritability workflow in `3_04_Heritability.Rmd`.
 
-```{block, type="do-something"}
+::: {.do-something}
 Learning outcomes: 
 
 - Explain how additive genetic effects create continuous trait variation.
 - Compare a classroom simulation with a simple R simulation.
-```
+:::
 
 ## Worked example
 

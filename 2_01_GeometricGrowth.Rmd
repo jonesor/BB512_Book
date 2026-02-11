@@ -25,7 +25,7 @@ which leads to,
 $N_{t+1} = N_t (1 + R_m)$ and, equivalently, $N_{t+1} = N_t \lambda$. 
 
 
-```{block, type="do-something"}
+::: {.do-something}
 Learning outcomes: 
 
 - Competence in using Excel formulae for mathematical modeling.
@@ -33,7 +33,7 @@ Learning outcomes:
 - Competence in using mathematical models in Excel to strengthen own understanding of biological processes.
 - Awareness of rearranging of mathematical formulae to produce different forms of models.
 - Knowing that the slope of the $ln(N_t)$ vs. $t$ relationship can tell you about population growth rate (it is $ln(\lambda)$).
-```
+:::
 
 ## Worked example
 

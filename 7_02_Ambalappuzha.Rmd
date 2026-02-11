@@ -2,13 +2,13 @@
 
 Exponential growth is a powerful concept. To help us grasp it better let's use an ancient Indian chess legend as an example.
 
-```{block, type="do-something"}
+::: {.do-something}
 **Learning outcomes**
 
 - Use of Excel formulae for mathematical modelling.
 - Understanding the multiplicative process of exponential/geometric growth.
 
-```
+:::
 
 
 
@@ -64,7 +64,7 @@ We have ~100 breeding pairs of great tits (musvit) in woodland around SDU. Each 
 
 You can do this kind of calculation easily in *R*. Try this.
 
-```{r}
+```{r echo = TRUE}
 myData <- data.frame(Squares = 1:64,nRice = NA)
 myData$nRice[1] <- 1 
 
@@ -75,16 +75,15 @@ for (i in 2:64){
 
 Now we can look at the top and bottom of the 64 row data frame like this:
 
-```{r}
+```{r echo = TRUE}
 head(myData)
 tail(myData)
 ```
 
 And we can sum up the total number of grains of rice on the 64 squares of the board like this:
 
-```{r}
+```{r echo = TRUE}
 sum(myData$nRice)
 ```
 
 To put that *HUGE* number in context, if a grain of rice weighs 25mg (0.0000025kg), then we'd have `r format((2^64 - 1) * 0.000025, big.mark = ",", scientific = FALSE)` kg. That's 461 Gigatonnes, or roughly 8-900 times the yearly global rice production!
-

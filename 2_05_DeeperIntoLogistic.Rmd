@@ -31,7 +31,7 @@ This is the familiar **geometric (exponential) growth equation** (Eqn. 4.6 in Ne
 
 **Take-home Message: The logistic and exponential growth models are closely related. By setting $K = \infty$, we transition from the logistic model to the exponential model.**
 
-```{block, type="do-something"}
+::: {.do-something}
 Learning outcomes:
 
 - Increase competence in using Excel for mathematical modeling.
@@ -39,7 +39,7 @@ Learning outcomes:
 - Learn how models can be adjusted to explore different biological phenomena.
 - Develop skills in visualising and interpreting model outputs from different perspectives.
 - Strengthen understanding of biological processes by applying mathematical models.
-```
+:::
 
 ## Worked example
 

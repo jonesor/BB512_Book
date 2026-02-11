@@ -6,17 +6,17 @@ Population growth estimates depend on when the census is taken relative to repro
 
 ## Learning outcomes
 
-```{block, type="do-something"}
+::: {.do-something}
 Learning outcomes:
 
 - Explain the difference between pre-breeding and post-breeding census models.
 - Convert a post-breeding matrix to a pre-breeding matrix.
 - Compare growth rates from alternative census timings.
-```
+:::
 
 ## Worked example
 
-```{r prepostbreeding}
+```{r prepostbreeding, echo = TRUE}
 p0 <- 0.2
 p1 <- 0.9
 p2 <- 0.6
@@ -33,7 +33,7 @@ A1 <- matrix(c(0.0, m2 * p1, m3 * p2,
 
 Convert to pre-breeding
 
-```{r postpreconversion}
+```{r postpreconversion, echo = TRUE}
 A2 <- matrix(c(0.0, m2 * p0, m3 * p0,
                p1, 0.0, 0.0,
                0.0,p2,0), byrow = TRUE, nrow = 3)
@@ -41,7 +41,7 @@ A2 <- matrix(c(0.0, m2 * p0, m3 * p0,
 
 Compare population growth rates. This uses the `eigs` function from the `popdemo` R package.
 
-```{r comparepgr}
+```{r comparepgr, echo = TRUE}
 (popdemo::eigs(A1, what = "lambda"))
 (popdemo::eigs(A2, what = "lambda"))
 ```

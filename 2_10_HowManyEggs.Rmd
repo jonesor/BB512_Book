@@ -7,13 +7,13 @@ Trade-offs are inherent compromises in biology, where allocating limited resourc
 Understanding such trade-offs sheds light on the fascinating strategies that organisms employ to optimize their fitness and evolutionary success.
 
 
-```{block, type="do-something"}
+::: {.do-something}
 Learning outcomes: 
 
 - Understanding the concept of a life history trade off.
 - Understanding how balancing the benefits and drawbacks of trade offs tends to lead to intermediate trait values.
 
-```
+:::
 
 ## Worked example
 

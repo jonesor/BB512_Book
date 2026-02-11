@@ -8,19 +8,19 @@ The method involves comparing matrix models of the populations in question and d
 
 ## Learning outcomes
 
-```{block, type="do-something"}
+::: {.do-something}
 Learning outcomes:
 
 - Explain the purpose of an LTRE and when it is useful.
 - Quantify how matrix element changes contribute to $\lambda$ differences.
 - Interpret LTRE output in a biological or management context.
-```
+:::
 
 ## Set up
 
 First we need to ensure that we have the R packages we need loaded. If you get an error doing this, remember to install them first (`install.packages("PACKAGE_NAME")`)
 
-```{r LTRE1}
+```{r LTRE1, echo = TRUE}
 library(popbio)
 library(popdemo)
 library(Rcompadre)
@@ -32,14 +32,14 @@ library(Rcompadre)
 In this example, we consider a two-stage matrix model to analyse, say, squirrel populations in two different geographic locations. The first, a reference population from Location A, represents an area with favourable environmental conditions. The matrix model for this population distinguishes between juveniles (J) and adults (A), incorporating probabilities for juveniles maturing into adults (0.5) and adults surviving and staying adult (0.6), as well as the fecundity rate (2.3), which is the number of juveniles produced by an adult. 
 
 
-```{r LTRE2, echo = FALSE}
+```{r LTRE2, echo = TRUE}
 matA <- matrix(c(0.1,2.3,
                  0.5,0.6), nrow = 2, ncol = 2, byrow = TRUE)
 
 matA <- round(matA, 2)
 ```
 
-```{r LTRE3, echo = FALSE, fig.cap = "."}
+```{r LTRE3, echo = TRUE, fig.cap = "."}
 matA_plot <- Rage::plot_life_cycle(matA, stages = c("J", "A"))
 
 # 1. Make a play graph
@@ -54,7 +54,7 @@ rsvg::rsvg_png(tmp, "tempLifeCycleDiagramLTRE.png") # saved graph as png in curr
 
 The treatment population, from Location B, experiences generally worse environmental conditions during the spring which particularly impacts the juvenile stages, and includes an effect on fecundity (e.g. via neonatal maternal energy allocation). The two matrices can be created in R as follows. Compare the values in the matrix, to the values in the life cycle diagram.
 
-```{r LTRE4}
+```{r LTRE4, echo = TRUE}
 A_ref <- matrix(c(0.1,2.3,
                   0.5,0.6), nrow = 2, ncol = 2, byrow = TRUE)
 
@@ -72,14 +72,14 @@ We can check what overall difference there is between the matrix in a couple of 
 
 Firstly, we can examine the differences in the individual transition rates between the matrices by subtracting one from the other. 
 
-```{r LTRE5}
+```{r LTRE5, echo = TRUE}
 A_ref - A_treat
 ```
 
 Next, we can ask what impact these differences have on the population growth rate (lambda).
 Note that putting the command in parentheses tells R to both create the new object (e.g. `lambdaA1`) **and** print the result to the screen.
 
-```{r LTRE6}
+```{r LTRE6, echo = TRUE}
 (lambda_A_ref <- eigs(A_ref, what = "lambda"))
 (lambda_A_treat <-eigs(A_treat, what = "lambda"))
 ```
@@ -88,13 +88,13 @@ We could express this as a difference, or as a proportional difference.
 
 The difference in growth rates between the matrices is `r round(lambda_A_ref - lambda_A_treat,3)`.
 
-```{r LTRE7}
+```{r LTRE7, echo = TRUE}
 (lambdaDiff <- lambda_A_ref - lambda_A_treat)
 ```
 
 This is a `r round((lambdaDiff/lambda_A_ref) * 100)`% reduction, compared to the reference matrix.
 
-```{r LTRE8}
+```{r LTRE8, echo = TRUE}
 (lambdaDiff/lambda_A_ref) * 100
 ```
 
@@ -113,7 +113,7 @@ By comparing the two models, we can decompose the differences in the overall gro
 
 
 
-```{r LTRE9}
+```{r LTRE9, echo = TRUE}
 popbio::LTRE(A_treat,A_ref)
 ```
 

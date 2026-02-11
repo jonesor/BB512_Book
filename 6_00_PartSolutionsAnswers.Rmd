@@ -1,4 +1,4 @@
-# (PART) Solutions/answers {-}
+# Part 6: Solutions/answers {#part-6 .unnumbered}
 
 This part provides model answers and worked solutions. Use it to check your reasoning after attempting the tasks.
 

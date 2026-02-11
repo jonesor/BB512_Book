@@ -4,12 +4,12 @@
 
 This activity is designed for quick in-class practice translating a verbal life-history description into a matrix population model. It connects directly to the workflow in `2_07_matrixModels.Rmd`.
 
-```{block, type="do-something"}
+::: {.do-something}
 Learning outcomes: 
 
 - Convert a verbal life-history description into a matrix population model.
 - Build and interpret a simple projection from initial stage abundances.
-```
+:::
 
 ## Worked example
 
