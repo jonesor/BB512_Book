@@ -4,13 +4,17 @@
 library(tidyverse)
 library(Rage)
 library(Rcompadre)
+```
+
+
+```{r echo = FALSE, warning = FALSE, message = FALSE}
 library(rsvg)
 library(DiagrammeRsvg)
 ```
 
 ## Background 
 
-Matrix population models are powerful and widely used tools in population ecology that offer a comprehensive framework for studying the dynamics of structured populations. Unlike simple growth models that assume homogeneous populations, matrix population models take into account the variation in vital rates, such as birth, death, and growth rates, across different life stages or age classes. These models are particularly well-suited for species with distinct life stages, such as plants with seedlings, juveniles, and adults, or animals with different age classes. Matrix population models use transition matrices to represent the relationships between different age classes and how individuals move from one stage to another over time. By incorporating demographic data and life-history traits, matrix population models provide a more realistic and detailed understanding of population dynamics, making them invaluable for predicting the future trends of populations and assessing their vulnerability to environmental changes and management actions.
+Matrix population models are powerful and widely used tools in population ecology that offer a comprehensive framework for studying the dynamics of structured populations. Unlike simple growth models that assume homogeneous populations, matrix population models take into account the variation in vital rates, such as birth, death, and growth rates, across different life stages or age classes. These models are particularly well-suited for species with distinct life stages, such as plants with seedlings, juveniles, and adults, or animals with different age classes. Matrix population models use transition matrices to represent the relationships between different age classes and how individuals move from one stage to another over time. By incorporating demographic data and life-history traits, matrix population models provide a more realistic and detailed understanding of population dynamics, making them invaluable for predicting the future trends of populations and assessing their vulnerability to environmental changes and management actions. In this practical, we will assume that one matrix projection corresponds to one year. Each matrix element therefore represents survival, growth, or reproduction over a one-year interval.
 
 This practical aims to give you a good understanding of the basics of their construction and use.
 
@@ -24,9 +28,6 @@ Learning outcomes:
 - Understanding the logic of "*in silico* experiments" to investigate a biological question (mathematical modelling).
 :::
 
-## Worked example
-
-Using the example 3-stage matrix shown, the projection produces exponential growth with a dominant eigenvalue $\lambda > 1$. The corresponding stable stage distribution shows the long-term proportions of each stage.
 
 
 ## Your task
@@ -94,7 +95,7 @@ rsvg::rsvg_png(tmp, "tempLifeCycleDiagram.png") # saved graph as png in current 
 
 4) Now you can turn this diagram into a matrix population model by filling in a square of survival/fecundity values. 
 
-The life cycle shown above looks like this:
+The life cycle shown above looks like this (below). The matrix describes transitions from time $t$ to time $t + 1$, where one time step corresponds to one year.
 
 ```{r showmatrix2, echo = FALSE}
 # Function to write matrix as LaTeX
@@ -142,11 +143,26 @@ A <- matrix(c(
 ), ncol = 3, byrow = TRUE)
 ```
 
+
+
+::: {.do-something}
+**Important: interpret matrix elements over the chosen time step**
+
+In matrix population models, all transitions occur over a fixed time interval. In this practical, we use a 1-year time step, so:
+
+* survival probabilities are annual
+* fecundity is offspring per individual per year
+* λ is growth per year
+
+:::
+
+
+
 ## Projecting the population
 
 And now you can use the project function to project what happens to the population, then plot it. Look at what happens if you log or don’t log the y-axis. First you need to define an initial starting population structure. 
 
-In my example, I have 3 stages, so I have 3 values for the initial population sizes. Then I use the `popdemo` function `project` to do a population projection for 10 time steps.
+In my example, I have 3 stages, so I have 3 values for the initial population sizes. Then I use the `popdemo` function `project` to do a population projection for 10 years (10 time steps). Each step represents one annual cycle of survival, growth, and reproduction.
 
 ```{r projectpopulation, echo = TRUE}
 initial <- c(10, 5, 3)
@@ -178,11 +194,12 @@ You should see that the population increases exponentially. The population growt
 
 We can ask R for the  *eigen values* and *eigen vectors*. These are the population growth rate ($\lambda$) and the stable stage distribution (*SSD*) and the reproductive values (*RV*) of the different stages. *SSD* is the expected *proportion* of individuals in the different stage classes at equilibrium (i.e. the long-term time frame) and *RV* is the expected number of future offspring by individuals in each stage.
 
-You can see that in this case, using my example values the population is growing `r format(100*(eigs(A)$lambda-1),2,4)`% per year.
+Because our projection interval is one year, λ represents the annual population growth rate. You can see that in this case, using my example values the population is growing `r format(100*(eigs(A)$lambda-1),2,4)`% per year.
 
 ```{r eigenproperties, echo = TRUE}
 eigs(A)
 ```
+
 
 ## Elasticity
 
