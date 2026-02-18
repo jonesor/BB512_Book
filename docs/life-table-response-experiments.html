@@ -23,7 +23,7 @@
 <meta name="author" content="Owen R. Jones (Course Coordinator)" />
 
 
-<meta name="date" content="2026-02-11" />
+<meta name="date" content="2026-02-18" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -52,8 +52,6 @@
 <link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
 <link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
-<link href="libs/tabwid-1.1.3/tabwid.css" rel="stylesheet" />
-<script src="libs/tabwid-1.1.3/tabwid.js"></script>
 <style type="text/css">
 
 .warning-box {
@@ -600,54 +598,45 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="set-up" class="section level2 hasAnchor" number="12.3">
 <h2><span class="header-section-number">12.3</span> Set up<a href="life-table-response-experiments.html#set-up" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>First we need to ensure that we have the R packages we need loaded. If you get an error doing this, remember to install them first (<code>install.packages("PACKAGE_NAME")</code>)</p>
-<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="life-table-response-experiments.html#cb33-1" tabindex="-1"></a><span class="fu">library</span>(popbio)</span>
-<span id="cb33-2"><a href="life-table-response-experiments.html#cb33-2" tabindex="-1"></a><span class="fu">library</span>(popdemo)</span>
-<span id="cb33-3"><a href="life-table-response-experiments.html#cb33-3" tabindex="-1"></a><span class="fu">library</span>(Rcompadre)</span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="life-table-response-experiments.html#cb1-1" tabindex="-1"></a><span class="fu">library</span>(popbio)</span>
+<span id="cb1-2"><a href="life-table-response-experiments.html#cb1-2" tabindex="-1"></a><span class="fu">library</span>(popdemo)</span>
+<span id="cb1-3"><a href="life-table-response-experiments.html#cb1-3" tabindex="-1"></a><span class="fu">library</span>(Rcompadre)</span></code></pre></div>
 </div>
 <div id="a-worked-example" class="section level2 hasAnchor" number="12.4">
 <h2><span class="header-section-number">12.4</span> A worked example<a href="life-table-response-experiments.html#a-worked-example" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>In this example, we consider a two-stage matrix model to analyse, say, squirrel populations in two different geographic locations. The first, a reference population from Location A, represents an area with favourable environmental conditions. The matrix model for this population distinguishes between juveniles (J) and adults (A), incorporating probabilities for juveniles maturing into adults (0.5) and adults surviving and staying adult (0.6), as well as the fecundity rate (2.3), which is the number of juveniles produced by an adult.</p>
-<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="life-table-response-experiments.html#cb34-1" tabindex="-1"></a>matA <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="fl">0.1</span>,<span class="fl">2.3</span>,</span>
-<span id="cb34-2"><a href="life-table-response-experiments.html#cb34-2" tabindex="-1"></a>                 <span class="fl">0.5</span>,<span class="fl">0.6</span>), <span class="at">nrow =</span> <span class="dv">2</span>, <span class="at">ncol =</span> <span class="dv">2</span>, <span class="at">byrow =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb34-3"><a href="life-table-response-experiments.html#cb34-3" tabindex="-1"></a></span>
-<span id="cb34-4"><a href="life-table-response-experiments.html#cb34-4" tabindex="-1"></a>matA <span class="ot">&lt;-</span> <span class="fu">round</span>(matA, <span class="dv">2</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="life-table-response-experiments.html#cb35-1" tabindex="-1"></a>matA_plot <span class="ot">&lt;-</span> Rage<span class="sc">::</span><span class="fu">plot_life_cycle</span>(matA, <span class="at">stages =</span> <span class="fu">c</span>(<span class="st">&quot;J&quot;</span>, <span class="st">&quot;A&quot;</span>))</span>
-<span id="cb35-2"><a href="life-table-response-experiments.html#cb35-2" tabindex="-1"></a></span>
-<span id="cb35-3"><a href="life-table-response-experiments.html#cb35-3" tabindex="-1"></a><span class="co"># 1. Make a play graph</span></span>
-<span id="cb35-4"><a href="life-table-response-experiments.html#cb35-4" tabindex="-1"></a>tmp <span class="ot">&lt;-</span> matA_plot</span>
-<span id="cb35-5"><a href="life-table-response-experiments.html#cb35-5" tabindex="-1"></a></span>
-<span id="cb35-6"><a href="life-table-response-experiments.html#cb35-6" tabindex="-1"></a><span class="co"># 2. Convert to SVG, then save as png</span></span>
-<span id="cb35-7"><a href="life-table-response-experiments.html#cb35-7" tabindex="-1"></a>tmp <span class="ot">&lt;-</span> DiagrammeRsvg<span class="sc">::</span><span class="fu">export_svg</span>(tmp)</span>
-<span id="cb35-8"><a href="life-table-response-experiments.html#cb35-8" tabindex="-1"></a>tmp <span class="ot">&lt;-</span> <span class="fu">charToRaw</span>(tmp) <span class="co"># flatten</span></span>
-<span id="cb35-9"><a href="life-table-response-experiments.html#cb35-9" tabindex="-1"></a>rsvg<span class="sc">::</span><span class="fu">rsvg_png</span>(tmp, <span class="st">&quot;tempLifeCycleDiagramLTRE.png&quot;</span>) <span class="co"># saved graph as png in current working directory</span></span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="life-table-response-experiments.html#cb2-1" tabindex="-1"></a>matA <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="fl">0.1</span>,<span class="fl">2.3</span>,</span>
+<span id="cb2-2"><a href="life-table-response-experiments.html#cb2-2" tabindex="-1"></a>                 <span class="fl">0.5</span>,<span class="fl">0.6</span>), <span class="at">nrow =</span> <span class="dv">2</span>, <span class="at">ncol =</span> <span class="dv">2</span>, <span class="at">byrow =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb2-3"><a href="life-table-response-experiments.html#cb2-3" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="life-table-response-experiments.html#cb2-4" tabindex="-1"></a>matA <span class="ot">&lt;-</span> <span class="fu">round</span>(matA, <span class="dv">2</span>)</span></code></pre></div>
 <p><img src="tempLifeCycleDiagramLTRE.png" /></p>
 <p>The treatment population, from Location B, experiences generally worse environmental conditions during the spring which particularly impacts the juvenile stages, and includes an effect on fecundity (e.g. via neonatal maternal energy allocation). The two matrices can be created in R as follows. Compare the values in the matrix, to the values in the life cycle diagram.</p>
-<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="life-table-response-experiments.html#cb36-1" tabindex="-1"></a>A_ref <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="fl">0.1</span>,<span class="fl">2.3</span>,</span>
-<span id="cb36-2"><a href="life-table-response-experiments.html#cb36-2" tabindex="-1"></a>                  <span class="fl">0.5</span>,<span class="fl">0.6</span>), <span class="at">nrow =</span> <span class="dv">2</span>, <span class="at">ncol =</span> <span class="dv">2</span>, <span class="at">byrow =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb36-3"><a href="life-table-response-experiments.html#cb36-3" tabindex="-1"></a></span>
-<span id="cb36-4"><a href="life-table-response-experiments.html#cb36-4" tabindex="-1"></a>A_treat <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="fl">0.1</span>,<span class="fl">1.3</span>,</span>
-<span id="cb36-5"><a href="life-table-response-experiments.html#cb36-5" tabindex="-1"></a>                    <span class="fl">0.2</span>,<span class="fl">0.7</span>), <span class="at">nrow =</span> <span class="dv">2</span>, <span class="at">ncol =</span> <span class="dv">2</span>, <span class="at">byrow =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="life-table-response-experiments.html#cb3-1" tabindex="-1"></a>A_ref <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="fl">0.1</span>,<span class="fl">2.3</span>,</span>
+<span id="cb3-2"><a href="life-table-response-experiments.html#cb3-2" tabindex="-1"></a>                  <span class="fl">0.5</span>,<span class="fl">0.6</span>), <span class="at">nrow =</span> <span class="dv">2</span>, <span class="at">ncol =</span> <span class="dv">2</span>, <span class="at">byrow =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb3-3"><a href="life-table-response-experiments.html#cb3-3" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="life-table-response-experiments.html#cb3-4" tabindex="-1"></a>A_treat <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="fl">0.1</span>,<span class="fl">1.3</span>,</span>
+<span id="cb3-5"><a href="life-table-response-experiments.html#cb3-5" tabindex="-1"></a>                    <span class="fl">0.2</span>,<span class="fl">0.7</span>), <span class="at">nrow =</span> <span class="dv">2</span>, <span class="at">ncol =</span> <span class="dv">2</span>, <span class="at">byrow =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
 <div id="comparing-matrices" class="section level3 hasAnchor" number="12.4.1">
 <h3><span class="header-section-number">12.4.1</span> Comparing matrices<a href="life-table-response-experiments.html#comparing-matrices" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Before we dig into the formal LTRE, it is useful to compare the two matrices, <code>A_ref</code> and <code>A_treat</code>, to see how they are different from each other.</p>
 <p>We can check what overall difference there is between the matrix in a couple of ways.</p>
 <p>Firstly, we can examine the differences in the individual transition rates between the matrices by subtracting one from the other.</p>
-<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="life-table-response-experiments.html#cb37-1" tabindex="-1"></a>A_ref <span class="sc">-</span> A_treat</span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="life-table-response-experiments.html#cb4-1" tabindex="-1"></a>A_ref <span class="sc">-</span> A_treat</span></code></pre></div>
 <pre><code>##      [,1] [,2]
 ## [1,]  0.0  1.0
 ## [2,]  0.3 -0.1</code></pre>
 <p>Next, we can ask what impact these differences have on the population growth rate (lambda).
 Note that putting the command in parentheses tells R to both create the new object (e.g. <code>lambdaA1</code>) <strong>and</strong> print the result to the screen.</p>
-<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="life-table-response-experiments.html#cb39-1" tabindex="-1"></a>(lambda_A_ref <span class="ot">&lt;-</span> <span class="fu">eigs</span>(A_ref, <span class="at">what =</span> <span class="st">&quot;lambda&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="life-table-response-experiments.html#cb6-1" tabindex="-1"></a>(lambda_A_ref <span class="ot">&lt;-</span> <span class="fu">eigs</span>(A_ref, <span class="at">what =</span> <span class="st">&quot;lambda&quot;</span>))</span></code></pre></div>
 <pre><code>## [1] 1.451136</code></pre>
-<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="life-table-response-experiments.html#cb41-1" tabindex="-1"></a>(lambda_A_treat <span class="ot">&lt;-</span><span class="fu">eigs</span>(A_treat, <span class="at">what =</span> <span class="st">&quot;lambda&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="life-table-response-experiments.html#cb8-1" tabindex="-1"></a>(lambda_A_treat <span class="ot">&lt;-</span><span class="fu">eigs</span>(A_treat, <span class="at">what =</span> <span class="st">&quot;lambda&quot;</span>))</span></code></pre></div>
 <pre><code>## [1] 0.991608</code></pre>
 <p>We could express this as a difference, or as a proportional difference.</p>
 <p>The difference in growth rates between the matrices is 0.46.</p>
-<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="life-table-response-experiments.html#cb43-1" tabindex="-1"></a>(lambdaDiff <span class="ot">&lt;-</span> lambda_A_ref <span class="sc">-</span> lambda_A_treat)</span></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="life-table-response-experiments.html#cb10-1" tabindex="-1"></a>(lambdaDiff <span class="ot">&lt;-</span> lambda_A_ref <span class="sc">-</span> lambda_A_treat)</span></code></pre></div>
 <pre><code>## [1] 0.4595278</code></pre>
 <p>This is a 32% reduction, compared to the reference matrix.</p>
-<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="life-table-response-experiments.html#cb45-1" tabindex="-1"></a>(lambdaDiff<span class="sc">/</span>lambda_A_ref) <span class="sc">*</span> <span class="dv">100</span></span></code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="life-table-response-experiments.html#cb12-1" tabindex="-1"></a>(lambdaDiff<span class="sc">/</span>lambda_A_ref) <span class="sc">*</span> <span class="dv">100</span></span></code></pre></div>
 <pre><code>## [1] 31.66677</code></pre>
 <p>So far, so good. We can see that treatment reduces the population growth rate, but we don’t know exactly how. There are 3 changes in the matrix. Which of these changes is most instrumental in driving change in the population growth rate?</p>
 </div>
@@ -656,7 +645,7 @@ Note that putting the command in parentheses tells R to both create the new obje
 <p>The objective of the LTRE (Life Table Response Experiment) analysis in this context is to understand the impact of these environmental differences on the difference in population growth rate between the two populations. This is important because identifying the specific life history traits (i.e. the individual transitions, represented by individual elements of the matrix, such as survival or fecundity) that are most sensitive to environmental changes allows us to pinpoint the key drivers of population dynamics.</p>
 <p>By understanding where differences in growth rate originate, we can make more informed decisions about conservation and management strategies. For instance, if the analysis shows that adult survival has a larger impact on growth rate than fecundity, conservation efforts can be more effectively focused on improving adult survival rates rather than fecundity. Conversely, if juvenile survival or fecundity is more influential, efforts might be better directed towards enhancing these aspects. This targeted approach ensures that resources are allocated efficiently, and interventions are tailored to address the most critical factors affecting the population’s viability under varying environmental conditions.</p>
 <p>By comparing the two models, we can decompose the differences in the overall growth rate (<span class="math inline">\(\lambda\)</span>) between the baseline (Location A) and the modified model (Location B). This analysis will specifically highlight how changes in adult survival and fecundity in the less favourable environment of Location B contribute to any differences in population growth rates compared to the more favourable conditions in Location A. Such insights are crucial for developing effective management and conservation strategies, particularly in understanding the relative importance of different life stages and demographic parameters under varying environmental conditions.</p>
-<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="life-table-response-experiments.html#cb47-1" tabindex="-1"></a>popbio<span class="sc">::</span><span class="fu">LTRE</span>(A_treat,A_ref)</span></code></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="life-table-response-experiments.html#cb14-1" tabindex="-1"></a>popbio<span class="sc">::</span><span class="fu">LTRE</span>(A_treat,A_ref)</span></code></pre></div>
 <pre><code>##            [,1]        [,2]
 ## [1,]  0.0000000 -0.20832964
 ## [2,] -0.3214229  0.06636876</code></pre>

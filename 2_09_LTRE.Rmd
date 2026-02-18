@@ -39,7 +39,7 @@ matA <- matrix(c(0.1,2.3,
 matA <- round(matA, 2)
 ```
 
-```{r LTRE3, echo = TRUE, fig.cap = "."}
+```{r LTRE3, echo = FALSE, fig.cap = "."}
 matA_plot <- Rage::plot_life_cycle(matA, stages = c("J", "A"))
 
 # 1. Make a play graph
