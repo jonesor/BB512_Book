@@ -50,7 +50,7 @@ Things to think about:
 
 Here's an example for a fictional organism.
 
-```{r setup, include = FALSE}
+```{r setup, include = FALSE, echo = FALSE}
 set.seed(123)
 matA_elas <- matrix(c(4, 4))
 
@@ -77,7 +77,7 @@ matA <- matrix(c(
 ), nrow = 3, byrow = TRUE)
 matA <- round(matA, 2)
 ```
-```{r plotmatrix, echo = TRUE, fig.cap = "."}
+```{r plotmatrix, echo = FALSE, fig.cap = "."}
 matA_plot <- Rage::plot_life_cycle(matA, stages = c("A", "B", "C"))
 
 # 1. Make a play graph
@@ -96,7 +96,7 @@ rsvg::rsvg_png(tmp, "tempLifeCycleDiagram.png") # saved graph as png in current 
 
 The life cycle shown above looks like this:
 
-```{r showmatrix2, echo = TRUE}
+```{r showmatrix2, echo = FALSE}
 # Function to write matrix as LaTeX
 write_matex2 <- function(x) {
   begin <- "\\begin{bmatrix}"
