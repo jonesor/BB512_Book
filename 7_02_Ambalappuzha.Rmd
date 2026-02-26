@@ -80,9 +80,22 @@ head(myData)
 tail(myData)
 ```
 
+Output preview:
+
+```{r ambalappuzha_headtail_output, echo = FALSE}
+head(myData)
+tail(myData)
+```
+
 And we can sum up the total number of grains of rice on the 64 squares of the board like this:
 
 ```{r echo = TRUE}
+sum(myData$nRice)
+```
+
+Output:
+
+```{r ambalappuzha_sum_output, echo = FALSE}
 sum(myData$nRice)
 ```
 

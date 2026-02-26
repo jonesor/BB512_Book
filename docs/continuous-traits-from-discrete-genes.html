@@ -237,7 +237,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="6.1" data-path="stochastic-population-growth.html"><a href="stochastic-population-growth.html#background-4"><i class="fa fa-check"></i><b>6.1</b> Background</a></li>
 <li class="chapter" data-level="6.2" data-path="stochastic-population-growth.html"><a href="stochastic-population-growth.html#worked-example-4"><i class="fa fa-check"></i><b>6.2</b> Worked example</a></li>
 <li class="chapter" data-level="6.3" data-path="stochastic-population-growth.html"><a href="stochastic-population-growth.html#your-task-4"><i class="fa fa-check"></i><b>6.3</b> Your task</a></li>
-<li class="chapter" data-level="6.4" data-path="stochastic-population-growth.html"><a href="stochastic-population-growth.html#simulations-in-r"><i class="fa fa-check"></i><b>6.4</b> Simulations in R</a></li>
+<li class="chapter" data-level="6.4" data-path="stochastic-population-growth.html"><a href="stochastic-population-growth.html#simulations-in-r"><i class="fa fa-check"></i><b>6.4</b> Simulations in R</a>
+<ul>
+<li class="chapter" data-level="6.4.1" data-path="stochastic-population-growth.html"><a href="stochastic-population-growth.html#example-stochastic-trajectories"><i class="fa fa-check"></i><b>6.4.1</b> Example stochastic trajectories</a></li>
+</ul></li>
 <li class="chapter" data-level="6.5" data-path="stochastic-population-growth.html"><a href="stochastic-population-growth.html#questions-4"><i class="fa fa-check"></i><b>6.5</b> Questions</a></li>
 <li class="chapter" data-level="6.6" data-path="stochastic-population-growth.html"><a href="stochastic-population-growth.html#takeaways-4"><i class="fa fa-check"></i><b>6.6</b> Takeaways</a></li>
 </ul></li>
@@ -282,7 +285,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="10.1" data-path="matrix-population-modelling.html"><a href="matrix-population-modelling.html#background-8"><i class="fa fa-check"></i><b>10.1</b> Background</a></li>
 <li class="chapter" data-level="10.2" data-path="matrix-population-modelling.html"><a href="matrix-population-modelling.html#your-task-8"><i class="fa fa-check"></i><b>10.2</b> Your task</a></li>
-<li class="chapter" data-level="10.3" data-path="matrix-population-modelling.html"><a href="matrix-population-modelling.html#using-r-for-matrix-modelling"><i class="fa fa-check"></i><b>10.3</b> Using R for matrix modelling</a></li>
+<li class="chapter" data-level="10.3" data-path="matrix-population-modelling.html"><a href="matrix-population-modelling.html#using-r-for-matrix-modelling"><i class="fa fa-check"></i><b>10.3</b> Using R for matrix modelling</a>
+<ul>
+<li class="chapter" data-level="10.3.1" data-path="matrix-population-modelling.html"><a href="matrix-population-modelling.html#package-setup-if-needed"><i class="fa fa-check"></i><b>10.3.1</b> Package setup (if needed)</a></li>
+</ul></li>
 <li class="chapter" data-level="10.4" data-path="matrix-population-modelling.html"><a href="matrix-population-modelling.html#projecting-the-population"><i class="fa fa-check"></i><b>10.4</b> Projecting the population</a></li>
 <li class="chapter" data-level="10.5" data-path="matrix-population-modelling.html"><a href="matrix-population-modelling.html#elasticity"><i class="fa fa-check"></i><b>10.5</b> Elasticity</a></li>
 <li class="chapter" data-level="10.6" data-path="matrix-population-modelling.html"><a href="matrix-population-modelling.html#life-table-response-experiment-ltre"><i class="fa fa-check"></i><b>10.6</b> Life table response experiment (LTRE)</a></li>
@@ -635,15 +641,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>Now simulate the same process in R for 100 individuals and 25 genes. Compare your histogram to the classroom version.</li>
 <li>Relate the outcome to the concept of additive genetic variance in <code>3_04_Heritability.Rmd</code>.</li>
 </ol>
-<div class="sourceCode" id="cb112"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb112-1"><a href="continuous-traits-from-discrete-genes.html#cb112-1" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
-<span id="cb112-2"><a href="continuous-traits-from-discrete-genes.html#cb112-2" tabindex="-1"></a>baseline <span class="ot">&lt;-</span> <span class="dv">35</span></span>
-<span id="cb112-3"><a href="continuous-traits-from-discrete-genes.html#cb112-3" tabindex="-1"></a>n_genes <span class="ot">&lt;-</span> <span class="dv">25</span></span>
-<span id="cb112-4"><a href="continuous-traits-from-discrete-genes.html#cb112-4" tabindex="-1"></a>n_individuals <span class="ot">&lt;-</span> <span class="dv">100</span></span>
-<span id="cb112-5"><a href="continuous-traits-from-discrete-genes.html#cb112-5" tabindex="-1"></a></span>
-<span id="cb112-6"><a href="continuous-traits-from-discrete-genes.html#cb112-6" tabindex="-1"></a>gene_on <span class="ot">&lt;-</span> <span class="fu">rbinom</span>(n_individuals, <span class="at">size =</span> n_genes, <span class="at">prob =</span> <span class="fl">0.5</span>)</span>
-<span id="cb112-7"><a href="continuous-traits-from-discrete-genes.html#cb112-7" tabindex="-1"></a>trait_value <span class="ot">&lt;-</span> baseline <span class="sc">+</span> gene_on</span>
-<span id="cb112-8"><a href="continuous-traits-from-discrete-genes.html#cb112-8" tabindex="-1"></a></span>
-<span id="cb112-9"><a href="continuous-traits-from-discrete-genes.html#cb112-9" tabindex="-1"></a><span class="fu">hist</span>(trait_value, <span class="at">breaks =</span> <span class="dv">12</span>, <span class="at">col =</span> <span class="st">&quot;gray80&quot;</span>, <span class="at">main =</span> <span class="st">&quot;Trait values&quot;</span>, <span class="at">xlab =</span> <span class="st">&quot;Trait&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb115"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb115-1"><a href="continuous-traits-from-discrete-genes.html#cb115-1" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
+<span id="cb115-2"><a href="continuous-traits-from-discrete-genes.html#cb115-2" tabindex="-1"></a>baseline <span class="ot">&lt;-</span> <span class="dv">35</span></span>
+<span id="cb115-3"><a href="continuous-traits-from-discrete-genes.html#cb115-3" tabindex="-1"></a>n_genes <span class="ot">&lt;-</span> <span class="dv">25</span></span>
+<span id="cb115-4"><a href="continuous-traits-from-discrete-genes.html#cb115-4" tabindex="-1"></a>n_individuals <span class="ot">&lt;-</span> <span class="dv">100</span></span>
+<span id="cb115-5"><a href="continuous-traits-from-discrete-genes.html#cb115-5" tabindex="-1"></a></span>
+<span id="cb115-6"><a href="continuous-traits-from-discrete-genes.html#cb115-6" tabindex="-1"></a>gene_on <span class="ot">&lt;-</span> <span class="fu">rbinom</span>(n_individuals, <span class="at">size =</span> n_genes, <span class="at">prob =</span> <span class="fl">0.5</span>)</span>
+<span id="cb115-7"><a href="continuous-traits-from-discrete-genes.html#cb115-7" tabindex="-1"></a>trait_value <span class="ot">&lt;-</span> baseline <span class="sc">+</span> gene_on</span>
+<span id="cb115-8"><a href="continuous-traits-from-discrete-genes.html#cb115-8" tabindex="-1"></a></span>
+<span id="cb115-9"><a href="continuous-traits-from-discrete-genes.html#cb115-9" tabindex="-1"></a><span class="fu">hist</span>(trait_value, <span class="at">breaks =</span> <span class="dv">12</span>, <span class="at">col =</span> <span class="st">&quot;gray80&quot;</span>, <span class="at">main =</span> <span class="st">&quot;Trait values&quot;</span>, <span class="at">xlab =</span> <span class="st">&quot;Trait&quot;</span>)</span></code></pre></div>
 <p><img src="BB512_files/figure-html/discrete-genes-sim-1.png" alt="" width="672" /></p>
 </div>
 <div id="takeaways-23" class="section level2 hasAnchor" number="31.4">

@@ -103,9 +103,11 @@ The primary colours red, green and blue (RGB) can be mixed to produce any colour
 The other two elements of colour are **brightness** and **saturation**. If a colour is bright it is very vibrant, if it is not bright, it is dark: a brightness value of 0, would be black, no matter what the hue was. Similarly, a low saturation values give “washed out” colours and a value of 0 would be  white. 
 
 
-```{r colours, out.width = "50%", fig.align = 'center', echo = FALSE, fig.cap = "Hue, brightness and saturation"}
+```{r colours, out.width = "65%", fig.align = 'center', echo = FALSE, fig.cap = "Hue, brightness and saturation"}
 knitr::include_graphics('images/colours.png')
 ```
+
+If this figure does not display in your browser, open it directly here: [Hue, brightness and saturation diagram](images/colours.png).
 
 Read more about the model here: http://ccl.northwestern.edu/netlogo/models/BugHuntCamouflage
 

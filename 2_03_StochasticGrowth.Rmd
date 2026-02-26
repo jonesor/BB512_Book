@@ -91,7 +91,7 @@ set.seed(1234)
 ```
 
 
-```{r stochProjection, echo = TRUE, fig.width = 6, fig.height = 4, fig.align = 'center', fig.cap = "An example of stochastic population projection (100 simulations for 50 generations)"}
+```{r stochProjectionCalc, echo = TRUE}
 #Simulating stochastic geometric population growth rate
 
 #Simulation settings (try changing these)
@@ -134,7 +134,13 @@ for (j in 1:nTrials) {
 #Calculate probability of (pseudo)extinction
 minvals <- apply(trials, 2, min)
 nExtinct <- length(minvals[minvals <= pseudoExtinction])
-nExtinct / nTrials
+probExtinct <- nExtinct / nTrials
+cat("Pseudo-extinction probability:", round(probExtinct, 3), "\n")
+```
+
+### Example stochastic trajectories
+
+```{r stochProjection, echo = TRUE, fig.width = 6, fig.height = 4, fig.align = 'center', fig.cap = "An example of stochastic population projection (100 simulations for 50 generations)"}
 
 #Make a plot of the population trajectories
 plot(

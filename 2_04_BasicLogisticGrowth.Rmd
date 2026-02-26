@@ -219,7 +219,7 @@ Some useful keywords:
 You can implement this model in R as follows.
 In this code, I have added a line which ensures that population size cannot be negative.
 
-```{r eval = FALSE}
+```{r logistic_optional_r_code, eval = FALSE, echo = TRUE}
 # Parameters
 r_m <- 3.5  # intrinsic growth rate
 K <- 1000   # carrying capacity

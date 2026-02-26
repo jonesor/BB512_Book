@@ -237,7 +237,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="6.1" data-path="stochastic-population-growth.html"><a href="stochastic-population-growth.html#background-4"><i class="fa fa-check"></i><b>6.1</b> Background</a></li>
 <li class="chapter" data-level="6.2" data-path="stochastic-population-growth.html"><a href="stochastic-population-growth.html#worked-example-4"><i class="fa fa-check"></i><b>6.2</b> Worked example</a></li>
 <li class="chapter" data-level="6.3" data-path="stochastic-population-growth.html"><a href="stochastic-population-growth.html#your-task-4"><i class="fa fa-check"></i><b>6.3</b> Your task</a></li>
-<li class="chapter" data-level="6.4" data-path="stochastic-population-growth.html"><a href="stochastic-population-growth.html#simulations-in-r"><i class="fa fa-check"></i><b>6.4</b> Simulations in R</a></li>
+<li class="chapter" data-level="6.4" data-path="stochastic-population-growth.html"><a href="stochastic-population-growth.html#simulations-in-r"><i class="fa fa-check"></i><b>6.4</b> Simulations in R</a>
+<ul>
+<li class="chapter" data-level="6.4.1" data-path="stochastic-population-growth.html"><a href="stochastic-population-growth.html#example-stochastic-trajectories"><i class="fa fa-check"></i><b>6.4.1</b> Example stochastic trajectories</a></li>
+</ul></li>
 <li class="chapter" data-level="6.5" data-path="stochastic-population-growth.html"><a href="stochastic-population-growth.html#questions-4"><i class="fa fa-check"></i><b>6.5</b> Questions</a></li>
 <li class="chapter" data-level="6.6" data-path="stochastic-population-growth.html"><a href="stochastic-population-growth.html#takeaways-4"><i class="fa fa-check"></i><b>6.6</b> Takeaways</a></li>
 </ul></li>
@@ -282,7 +285,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="10.1" data-path="matrix-population-modelling.html"><a href="matrix-population-modelling.html#background-8"><i class="fa fa-check"></i><b>10.1</b> Background</a></li>
 <li class="chapter" data-level="10.2" data-path="matrix-population-modelling.html"><a href="matrix-population-modelling.html#your-task-8"><i class="fa fa-check"></i><b>10.2</b> Your task</a></li>
-<li class="chapter" data-level="10.3" data-path="matrix-population-modelling.html"><a href="matrix-population-modelling.html#using-r-for-matrix-modelling"><i class="fa fa-check"></i><b>10.3</b> Using R for matrix modelling</a></li>
+<li class="chapter" data-level="10.3" data-path="matrix-population-modelling.html"><a href="matrix-population-modelling.html#using-r-for-matrix-modelling"><i class="fa fa-check"></i><b>10.3</b> Using R for matrix modelling</a>
+<ul>
+<li class="chapter" data-level="10.3.1" data-path="matrix-population-modelling.html"><a href="matrix-population-modelling.html#package-setup-if-needed"><i class="fa fa-check"></i><b>10.3.1</b> Package setup (if needed)</a></li>
+</ul></li>
 <li class="chapter" data-level="10.4" data-path="matrix-population-modelling.html"><a href="matrix-population-modelling.html#projecting-the-population"><i class="fa fa-check"></i><b>10.4</b> Projecting the population</a></li>
 <li class="chapter" data-level="10.5" data-path="matrix-population-modelling.html"><a href="matrix-population-modelling.html#elasticity"><i class="fa fa-check"></i><b>10.5</b> Elasticity</a></li>
 <li class="chapter" data-level="10.6" data-path="matrix-population-modelling.html"><a href="matrix-population-modelling.html#life-table-response-experiment-ltre"><i class="fa fa-check"></i><b>10.6</b> Life table response experiment (LTRE)</a></li>
@@ -637,17 +643,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>Draw a phylogenetic tree by grouping the closest relatives first, then adding deeper splits.</li>
 <li>Optional: compare your hand-drawn tree with an R clustering result.</li>
 </ol>
-<div class="sourceCode" id="cb113"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb113-1"><a href="building-a-phylogenetic-tree.html#cb113-1" tabindex="-1"></a><span class="co"># Replace this with your own character table</span></span>
-<span id="cb113-2"><a href="building-a-phylogenetic-tree.html#cb113-2" tabindex="-1"></a>characters <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
-<span id="cb113-3"><a href="building-a-phylogenetic-tree.html#cb113-3" tabindex="-1"></a>  <span class="at">row.names =</span> <span class="fu">c</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>, <span class="st">&quot;C&quot;</span>, <span class="st">&quot;D&quot;</span>, <span class="st">&quot;E&quot;</span>, <span class="st">&quot;F&quot;</span>),</span>
-<span id="cb113-4"><a href="building-a-phylogenetic-tree.html#cb113-4" tabindex="-1"></a>  <span class="at">trait1 =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>),</span>
-<span id="cb113-5"><a href="building-a-phylogenetic-tree.html#cb113-5" tabindex="-1"></a>  <span class="at">trait2 =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>),</span>
-<span id="cb113-6"><a href="building-a-phylogenetic-tree.html#cb113-6" tabindex="-1"></a>  <span class="at">trait3 =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>)</span>
-<span id="cb113-7"><a href="building-a-phylogenetic-tree.html#cb113-7" tabindex="-1"></a>)</span>
-<span id="cb113-8"><a href="building-a-phylogenetic-tree.html#cb113-8" tabindex="-1"></a></span>
-<span id="cb113-9"><a href="building-a-phylogenetic-tree.html#cb113-9" tabindex="-1"></a>dist_mat <span class="ot">&lt;-</span> <span class="fu">dist</span>(characters, <span class="at">method =</span> <span class="st">&quot;manhattan&quot;</span>)</span>
-<span id="cb113-10"><a href="building-a-phylogenetic-tree.html#cb113-10" tabindex="-1"></a>tree <span class="ot">&lt;-</span> <span class="fu">hclust</span>(dist_mat, <span class="at">method =</span> <span class="st">&quot;average&quot;</span>)</span>
-<span id="cb113-11"><a href="building-a-phylogenetic-tree.html#cb113-11" tabindex="-1"></a><span class="fu">plot</span>(tree, <span class="at">main =</span> <span class="st">&quot;Tree from morphological characters&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb116"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb116-1"><a href="building-a-phylogenetic-tree.html#cb116-1" tabindex="-1"></a><span class="co"># Replace this with your own character table</span></span>
+<span id="cb116-2"><a href="building-a-phylogenetic-tree.html#cb116-2" tabindex="-1"></a>characters <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb116-3"><a href="building-a-phylogenetic-tree.html#cb116-3" tabindex="-1"></a>  <span class="at">row.names =</span> <span class="fu">c</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>, <span class="st">&quot;C&quot;</span>, <span class="st">&quot;D&quot;</span>, <span class="st">&quot;E&quot;</span>, <span class="st">&quot;F&quot;</span>),</span>
+<span id="cb116-4"><a href="building-a-phylogenetic-tree.html#cb116-4" tabindex="-1"></a>  <span class="at">trait1 =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>),</span>
+<span id="cb116-5"><a href="building-a-phylogenetic-tree.html#cb116-5" tabindex="-1"></a>  <span class="at">trait2 =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>),</span>
+<span id="cb116-6"><a href="building-a-phylogenetic-tree.html#cb116-6" tabindex="-1"></a>  <span class="at">trait3 =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>)</span>
+<span id="cb116-7"><a href="building-a-phylogenetic-tree.html#cb116-7" tabindex="-1"></a>)</span>
+<span id="cb116-8"><a href="building-a-phylogenetic-tree.html#cb116-8" tabindex="-1"></a></span>
+<span id="cb116-9"><a href="building-a-phylogenetic-tree.html#cb116-9" tabindex="-1"></a>dist_mat <span class="ot">&lt;-</span> <span class="fu">dist</span>(characters, <span class="at">method =</span> <span class="st">&quot;manhattan&quot;</span>)</span>
+<span id="cb116-10"><a href="building-a-phylogenetic-tree.html#cb116-10" tabindex="-1"></a>tree <span class="ot">&lt;-</span> <span class="fu">hclust</span>(dist_mat, <span class="at">method =</span> <span class="st">&quot;average&quot;</span>)</span>
+<span id="cb116-11"><a href="building-a-phylogenetic-tree.html#cb116-11" tabindex="-1"></a><span class="fu">plot</span>(tree, <span class="at">main =</span> <span class="st">&quot;Tree from morphological characters&quot;</span>)</span></code></pre></div>
 </div>
 <div id="takeaways-24" class="section level2 hasAnchor" number="32.4">
 <h2><span class="header-section-number">32.4</span> Takeaways<a href="building-a-phylogenetic-tree.html#takeaways-24" class="anchor-section" aria-label="Anchor link to header"></a></h2>

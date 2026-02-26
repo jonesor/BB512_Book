@@ -237,7 +237,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="6.1" data-path="stochastic-population-growth.html"><a href="stochastic-population-growth.html#background-4"><i class="fa fa-check"></i><b>6.1</b> Background</a></li>
 <li class="chapter" data-level="6.2" data-path="stochastic-population-growth.html"><a href="stochastic-population-growth.html#worked-example-4"><i class="fa fa-check"></i><b>6.2</b> Worked example</a></li>
 <li class="chapter" data-level="6.3" data-path="stochastic-population-growth.html"><a href="stochastic-population-growth.html#your-task-4"><i class="fa fa-check"></i><b>6.3</b> Your task</a></li>
-<li class="chapter" data-level="6.4" data-path="stochastic-population-growth.html"><a href="stochastic-population-growth.html#simulations-in-r"><i class="fa fa-check"></i><b>6.4</b> Simulations in R</a></li>
+<li class="chapter" data-level="6.4" data-path="stochastic-population-growth.html"><a href="stochastic-population-growth.html#simulations-in-r"><i class="fa fa-check"></i><b>6.4</b> Simulations in R</a>
+<ul>
+<li class="chapter" data-level="6.4.1" data-path="stochastic-population-growth.html"><a href="stochastic-population-growth.html#example-stochastic-trajectories"><i class="fa fa-check"></i><b>6.4.1</b> Example stochastic trajectories</a></li>
+</ul></li>
 <li class="chapter" data-level="6.5" data-path="stochastic-population-growth.html"><a href="stochastic-population-growth.html#questions-4"><i class="fa fa-check"></i><b>6.5</b> Questions</a></li>
 <li class="chapter" data-level="6.6" data-path="stochastic-population-growth.html"><a href="stochastic-population-growth.html#takeaways-4"><i class="fa fa-check"></i><b>6.6</b> Takeaways</a></li>
 </ul></li>
@@ -282,7 +285,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="10.1" data-path="matrix-population-modelling.html"><a href="matrix-population-modelling.html#background-8"><i class="fa fa-check"></i><b>10.1</b> Background</a></li>
 <li class="chapter" data-level="10.2" data-path="matrix-population-modelling.html"><a href="matrix-population-modelling.html#your-task-8"><i class="fa fa-check"></i><b>10.2</b> Your task</a></li>
-<li class="chapter" data-level="10.3" data-path="matrix-population-modelling.html"><a href="matrix-population-modelling.html#using-r-for-matrix-modelling"><i class="fa fa-check"></i><b>10.3</b> Using R for matrix modelling</a></li>
+<li class="chapter" data-level="10.3" data-path="matrix-population-modelling.html"><a href="matrix-population-modelling.html#using-r-for-matrix-modelling"><i class="fa fa-check"></i><b>10.3</b> Using R for matrix modelling</a>
+<ul>
+<li class="chapter" data-level="10.3.1" data-path="matrix-population-modelling.html"><a href="matrix-population-modelling.html#package-setup-if-needed"><i class="fa fa-check"></i><b>10.3.1</b> Package setup (if needed)</a></li>
+</ul></li>
 <li class="chapter" data-level="10.4" data-path="matrix-population-modelling.html"><a href="matrix-population-modelling.html#projecting-the-population"><i class="fa fa-check"></i><b>10.4</b> Projecting the population</a></li>
 <li class="chapter" data-level="10.5" data-path="matrix-population-modelling.html"><a href="matrix-population-modelling.html#elasticity"><i class="fa fa-check"></i><b>10.5</b> Elasticity</a></li>
 <li class="chapter" data-level="10.6" data-path="matrix-population-modelling.html"><a href="matrix-population-modelling.html#life-table-response-experiment-ltre"><i class="fa fa-check"></i><b>10.6</b> Life table response experiment (LTRE)</a></li>
@@ -698,27 +704,27 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="applying-the-model" class="section level3 hasAnchor" number="27.1.2">
 <h3><span class="header-section-number">27.1.2</span> Applying the model<a href="exponential-growth-in-detail.html#applying-the-model" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>If we plot exponential growth on a log scale we can see that it is straight line. For example, in the plot below I show the sequence for a population with a starting population of 1 and a <span class="math inline">\(\lambda\)</span> (population multiplication rate) of 1.2 (i.e., the population increases by 20% each year). In (A) the time series is plotted on the natural scale while in (B) it is plotted on the log scale.</p>
-<div class="sourceCode" id="cb95"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb95-1"><a href="exponential-growth-in-detail.html#cb95-1" tabindex="-1"></a><span class="co"># Load required libraries</span></span>
-<span id="cb95-2"><a href="exponential-growth-in-detail.html#cb95-2" tabindex="-1"></a><span class="fu">require</span>(tidyverse)</span>
-<span id="cb95-3"><a href="exponential-growth-in-detail.html#cb95-3" tabindex="-1"></a></span>
-<span id="cb95-4"><a href="exponential-growth-in-detail.html#cb95-4" tabindex="-1"></a><span class="co"># Set initial population and lambda</span></span>
-<span id="cb95-5"><a href="exponential-growth-in-detail.html#cb95-5" tabindex="-1"></a>startPop <span class="ot">&lt;-</span> <span class="dv">1</span></span>
-<span id="cb95-6"><a href="exponential-growth-in-detail.html#cb95-6" tabindex="-1"></a>lambda <span class="ot">&lt;-</span> <span class="fl">1.2</span></span>
-<span id="cb95-7"><a href="exponential-growth-in-detail.html#cb95-7" tabindex="-1"></a></span>
-<span id="cb95-8"><a href="exponential-growth-in-detail.html#cb95-8" tabindex="-1"></a><span class="co"># Create a data frame with time and corresponding population</span></span>
-<span id="cb95-9"><a href="exponential-growth-in-detail.html#cb95-9" tabindex="-1"></a>df1 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">time =</span> <span class="dv">0</span><span class="sc">:</span><span class="dv">20</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb95-10"><a href="exponential-growth-in-detail.html#cb95-10" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">N =</span> lambda<span class="sc">^</span>time <span class="sc">*</span> startPop)</span></code></pre></div>
-<div class="sourceCode" id="cb96"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb96-1"><a href="exponential-growth-in-detail.html#cb96-1" tabindex="-1"></a><span class="co"># Plotting the data</span></span>
-<span id="cb96-2"><a href="exponential-growth-in-detail.html#cb96-2" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>))</span>
+<div class="sourceCode" id="cb96"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb96-1"><a href="exponential-growth-in-detail.html#cb96-1" tabindex="-1"></a><span class="co"># Load required libraries</span></span>
+<span id="cb96-2"><a href="exponential-growth-in-detail.html#cb96-2" tabindex="-1"></a><span class="fu">require</span>(tidyverse)</span>
 <span id="cb96-3"><a href="exponential-growth-in-detail.html#cb96-3" tabindex="-1"></a></span>
-<span id="cb96-4"><a href="exponential-growth-in-detail.html#cb96-4" tabindex="-1"></a><span class="co"># Plot on natural scale</span></span>
-<span id="cb96-5"><a href="exponential-growth-in-detail.html#cb96-5" tabindex="-1"></a><span class="fu">plot</span>(df1<span class="sc">$</span>time, df1<span class="sc">$</span>N, <span class="at">type =</span> <span class="st">&quot;b&quot;</span>, <span class="at">xlab =</span> <span class="st">&quot;time&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;N&quot;</span>)</span>
-<span id="cb96-6"><a href="exponential-growth-in-detail.html#cb96-6" tabindex="-1"></a><span class="fu">title</span>(<span class="st">&quot;A&quot;</span>)</span>
+<span id="cb96-4"><a href="exponential-growth-in-detail.html#cb96-4" tabindex="-1"></a><span class="co"># Set initial population and lambda</span></span>
+<span id="cb96-5"><a href="exponential-growth-in-detail.html#cb96-5" tabindex="-1"></a>startPop <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb96-6"><a href="exponential-growth-in-detail.html#cb96-6" tabindex="-1"></a>lambda <span class="ot">&lt;-</span> <span class="fl">1.2</span></span>
 <span id="cb96-7"><a href="exponential-growth-in-detail.html#cb96-7" tabindex="-1"></a></span>
-<span id="cb96-8"><a href="exponential-growth-in-detail.html#cb96-8" tabindex="-1"></a><span class="co"># Plot on log scale</span></span>
-<span id="cb96-9"><a href="exponential-growth-in-detail.html#cb96-9" tabindex="-1"></a><span class="fu">plot</span>(df1<span class="sc">$</span>time, <span class="fu">log</span>(df1<span class="sc">$</span>N), <span class="at">type =</span> <span class="st">&quot;b&quot;</span>, <span class="at">xlab =</span> <span class="st">&quot;time&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;log(N)&quot;</span>)</span>
-<span id="cb96-10"><a href="exponential-growth-in-detail.html#cb96-10" tabindex="-1"></a><span class="fu">title</span>(<span class="st">&quot;B&quot;</span>)</span></code></pre></div>
-<p><img src="BB512_files/figure-html/unnamed-chunk-52-1.png" alt="" width="672" /></p>
+<span id="cb96-8"><a href="exponential-growth-in-detail.html#cb96-8" tabindex="-1"></a><span class="co"># Create a data frame with time and corresponding population</span></span>
+<span id="cb96-9"><a href="exponential-growth-in-detail.html#cb96-9" tabindex="-1"></a>df1 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">time =</span> <span class="dv">0</span><span class="sc">:</span><span class="dv">20</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb96-10"><a href="exponential-growth-in-detail.html#cb96-10" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">N =</span> lambda<span class="sc">^</span>time <span class="sc">*</span> startPop)</span></code></pre></div>
+<div class="sourceCode" id="cb97"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb97-1"><a href="exponential-growth-in-detail.html#cb97-1" tabindex="-1"></a><span class="co"># Plotting the data</span></span>
+<span id="cb97-2"><a href="exponential-growth-in-detail.html#cb97-2" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>))</span>
+<span id="cb97-3"><a href="exponential-growth-in-detail.html#cb97-3" tabindex="-1"></a></span>
+<span id="cb97-4"><a href="exponential-growth-in-detail.html#cb97-4" tabindex="-1"></a><span class="co"># Plot on natural scale</span></span>
+<span id="cb97-5"><a href="exponential-growth-in-detail.html#cb97-5" tabindex="-1"></a><span class="fu">plot</span>(df1<span class="sc">$</span>time, df1<span class="sc">$</span>N, <span class="at">type =</span> <span class="st">&quot;b&quot;</span>, <span class="at">xlab =</span> <span class="st">&quot;time&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;N&quot;</span>)</span>
+<span id="cb97-6"><a href="exponential-growth-in-detail.html#cb97-6" tabindex="-1"></a><span class="fu">title</span>(<span class="st">&quot;A&quot;</span>)</span>
+<span id="cb97-7"><a href="exponential-growth-in-detail.html#cb97-7" tabindex="-1"></a></span>
+<span id="cb97-8"><a href="exponential-growth-in-detail.html#cb97-8" tabindex="-1"></a><span class="co"># Plot on log scale</span></span>
+<span id="cb97-9"><a href="exponential-growth-in-detail.html#cb97-9" tabindex="-1"></a><span class="fu">plot</span>(df1<span class="sc">$</span>time, <span class="fu">log</span>(df1<span class="sc">$</span>N), <span class="at">type =</span> <span class="st">&quot;b&quot;</span>, <span class="at">xlab =</span> <span class="st">&quot;time&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;log(N)&quot;</span>)</span>
+<span id="cb97-10"><a href="exponential-growth-in-detail.html#cb97-10" tabindex="-1"></a><span class="fu">title</span>(<span class="st">&quot;B&quot;</span>)</span></code></pre></div>
+<p><img src="BB512_files/figure-html/unnamed-chunk-48-1.png" alt="" width="672" /></p>
 <p>In fact, we can linearise the relationship by log transforming both sides of equation 9:</p>
 <p><span class="math inline">\(\ln{N_t} = \ln(\lambda ^tN_0)\)</span>,</p>
 <p>which can be re-written as:</p>
@@ -731,9 +737,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">27.2</span> Real-World Application: Breeding Pairs of Merlin (Falco columbarius)<a href="exponential-growth-in-detail.html#real-world-application-breeding-pairs-of-merlin-falco-columbarius" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>To bring these mathematical concepts to life, let’s consider an example from the Neal textbook that focuses on the population of breeding pairs of Merlin, a species of small falcon. The data spans from 1970 to 1982 and shows the following population sizes (breeding pairs): <code>1,1,2,4,2,3,5,6,7,10,12,14,16</code></p>
 <p>This is not much data, so we can simply put it into R manually, and plot it, like this:</p>
-<div class="sourceCode" id="cb97"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb97-1"><a href="exponential-growth-in-detail.html#cb97-1" tabindex="-1"></a>df1 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">year =</span> <span class="dv">1970</span><span class="sc">:</span><span class="dv">1982</span>, </span>
-<span id="cb97-2"><a href="exponential-growth-in-detail.html#cb97-2" tabindex="-1"></a>                  <span class="at">N =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">4</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">7</span>,<span class="dv">10</span>,<span class="dv">12</span>,<span class="dv">14</span>,<span class="dv">16</span>))</span>
-<span id="cb97-3"><a href="exponential-growth-in-detail.html#cb97-3" tabindex="-1"></a><span class="fu">plot</span>(df1<span class="sc">$</span>year,df1<span class="sc">$</span>N, <span class="at">type =</span> <span class="st">&quot;b&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb98"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb98-1"><a href="exponential-growth-in-detail.html#cb98-1" tabindex="-1"></a>df1 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">year =</span> <span class="dv">1970</span><span class="sc">:</span><span class="dv">1982</span>, </span>
+<span id="cb98-2"><a href="exponential-growth-in-detail.html#cb98-2" tabindex="-1"></a>                  <span class="at">N =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">4</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">7</span>,<span class="dv">10</span>,<span class="dv">12</span>,<span class="dv">14</span>,<span class="dv">16</span>))</span>
+<span id="cb98-3"><a href="exponential-growth-in-detail.html#cb98-3" tabindex="-1"></a><span class="fu">plot</span>(df1<span class="sc">$</span>year,df1<span class="sc">$</span>N, <span class="at">type =</span> <span class="st">&quot;b&quot;</span>)</span></code></pre></div>
 <p><img src="BB512_files/figure-html/plotnewproj-1.png" alt="" width="672" /></p>
 <div id="observations-and-context" class="section level3 hasAnchor" number="27.2.1">
 <h3><span class="header-section-number">27.2.1</span> Observations and Context<a href="exponential-growth-in-detail.html#observations-and-context" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -742,11 +748,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="applying-the-exponential-growth-model" class="section level3 hasAnchor" number="27.2.2">
 <h3><span class="header-section-number">27.2.2</span> Applying the Exponential Growth Model<a href="exponential-growth-in-detail.html#applying-the-exponential-growth-model" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>To analyse this data, we’ll use the exponential growth model. We’ll plot the data on a log scale and fit a regression model:</p>
-<div class="sourceCode" id="cb98"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb98-1"><a href="exponential-growth-in-detail.html#cb98-1" tabindex="-1"></a>df1<span class="sc">$</span>logN <span class="ot">&lt;-</span> <span class="fu">log</span>(df1<span class="sc">$</span>N)</span>
-<span id="cb98-2"><a href="exponential-growth-in-detail.html#cb98-2" tabindex="-1"></a><span class="fu">plot</span>(df1<span class="sc">$</span>year,df1<span class="sc">$</span>logN)</span>
-<span id="cb98-3"><a href="exponential-growth-in-detail.html#cb98-3" tabindex="-1"></a></span>
-<span id="cb98-4"><a href="exponential-growth-in-detail.html#cb98-4" tabindex="-1"></a>mod1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(logN<span class="sc">~</span>year,<span class="at">data =</span> df1)</span>
-<span id="cb98-5"><a href="exponential-growth-in-detail.html#cb98-5" tabindex="-1"></a><span class="fu">summary</span>(mod1)</span></code></pre></div>
+<div class="sourceCode" id="cb99"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb99-1"><a href="exponential-growth-in-detail.html#cb99-1" tabindex="-1"></a>df1<span class="sc">$</span>logN <span class="ot">&lt;-</span> <span class="fu">log</span>(df1<span class="sc">$</span>N)</span>
+<span id="cb99-2"><a href="exponential-growth-in-detail.html#cb99-2" tabindex="-1"></a><span class="fu">plot</span>(df1<span class="sc">$</span>year,df1<span class="sc">$</span>logN)</span>
+<span id="cb99-3"><a href="exponential-growth-in-detail.html#cb99-3" tabindex="-1"></a></span>
+<span id="cb99-4"><a href="exponential-growth-in-detail.html#cb99-4" tabindex="-1"></a>mod1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(logN<span class="sc">~</span>year,<span class="at">data =</span> df1)</span>
+<span id="cb99-5"><a href="exponential-growth-in-detail.html#cb99-5" tabindex="-1"></a><span class="fu">abline</span>(mod1)</span></code></pre></div>
+<p><img src="BB512_files/figure-html/plotproj2-1.png" alt="" width="672" /></p>
+<p>Model summary output:</p>
 <pre><code>## 
 ## Call:
 ## lm(formula = logN ~ year, data = df1)
@@ -765,8 +773,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## Residual standard error: 0.2466 on 11 degrees of freedom
 ## Multiple R-squared:  0.9381, Adjusted R-squared:  0.9324 
 ## F-statistic: 166.6 on 1 and 11 DF,  p-value: 5.478e-08</code></pre>
-<div class="sourceCode" id="cb100"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb100-1"><a href="exponential-growth-in-detail.html#cb100-1" tabindex="-1"></a><span class="fu">abline</span>(mod1)</span></code></pre></div>
-<p><img src="BB512_files/figure-html/plotproj2-1.png" alt="" width="672" /></p>
 <p>Interpretation</p>
 <p>The summary of the model indicates that the slope of the relationship between year and logN is 0.2359637. Therefore, the per capita growth rate (<span class="math inline">\(R\)</span>) is 0.236 and the population multiplication rate (<span class="math inline">\(\lambda\)</span>) is 1.236.</p>
 <p>This suggests that the number of breeding pairs is indeed growing exponentially over the time period studied, with a specific rate of increase. Understanding this rate is crucial for conservation efforts, because it provides insights into the population’s resilience, its demands on the ecosystem, and how it might respond to future changes in environmental conditions or conservation policies.</p>

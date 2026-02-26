@@ -54,6 +54,7 @@ background-4
 worked-example-4
 your-task-4
 simulations-in-r
+example-stochastic-trajectories
 questions-4
 takeaways-4
 basic-logistic-population-growth
@@ -86,6 +87,7 @@ matrix-population-modelling
 background-8
 your-task-8
 using-r-for-matrix-modelling
+package-setup-if-needed
 projecting-the-population
 elasticity
 life-table-response-experiment-ltre

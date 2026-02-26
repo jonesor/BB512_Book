@@ -29,22 +29,20 @@ Before the activity starts, review the cost-benefit payoff table below to unders
 
 ## The payoff table
 
-The general payoff table looks like this:
+The general payoff table looks like this (payoff to **Player 1**):
 
-|   |   |  Player 2 |   |
-|---|---|---|---|
-|   |   | Hawk  | Dove  |
-| **Player1**  | Hawk | (B-C)/2  | B  |
-|   | Dove  | 0  | B/2  |
+| Player 1 \ Player 2 | Hawk | Dove |
+|---|---:|---:|
+| Hawk | $(B-C)/2$ | $B$ |
+| Dove | $0$ | $B/2$ |
 
 
 You can determine the benefit by looking at the left column and choosing the row corresponding to the card you played. The box that corresponds to your partner's choice is in the top row. For this game, B equals four (4), and C equals three (3). So depending on the cards played, player one (i.e., you) would gain a score of two (2), four (4), zero (0), or one-half (0.5). Like this:
 
-|   |   |  Player 2 |   |
-|---|---|---|---|
-|   |   | Hawk  | Dove  |
-| **Player1**  | Hawk | 0.5  | 4  |
-|   | Dove  | 0  | 2  |
+| Player 1 \ Player 2 | Hawk | Dove |
+|---|---:|---:|
+| Hawk | 0.5 | 4 |
+| Dove | 0 | 2 |
 
 
 
@@ -54,7 +52,7 @@ The experimental hypothesis for this exercise could be that the dove strategy wi
 
 ### GAME ONE
 
-0. On a piece of paper, or in Excel (you could use this file [here](https://www.dropbox.com/s/48lypfd6o0hi46e/Table_2_Group_behaviour.xlsx?dl=1)), use a form to collect your results. It should have enough rows for 15 rounds of the game and look like this (where I include an example in the first row):
+1. On a piece of paper, or in Excel (you could use this file [here](https://www.dropbox.com/s/48lypfd6o0hi46e/Table_2_Group_behaviour.xlsx?dl=1)), use a form to collect your results. It should have enough rows for 15 rounds of the game and look like this (where I include an example in the first row):
 
 | Round  |player 1 card   | player 2 card  | P1 benefit  | P2 benefit |
 |---|---|---|---|---|
@@ -63,19 +61,19 @@ The experimental hypothesis for this exercise could be that the dove strategy wi
 | ...  |...   |  ... |...   |...   |
 | 15  |...   |...   | ...  |...   |
 
-1. Collect a set of two game cards.
+2. Collect a set of two game cards.
 
-2. Take out the cards labelled hawk and dove and place them face down on the table or conceal them in your hands.
+3. Take out the cards labelled hawk and dove and place them face down on the table or conceal them in your hands.
 
-3. When the instructor gives the signal, show either of the two cards to the student sitting across from you. Try to strategise how to receive the highest benefit from every interaction, but do not communicate with your partner.
+4. When the instructor gives the signal, show either of the two cards to the student sitting across from you. Try to strategise how to receive the highest benefit from every interaction, but do not communicate with your partner.
 
-4. In each round, note the cards played and the benefit received by each player. Also do it here on [this Google Form](https://forms.gle/3fjBGF7xVAYRQ5hXA).
+5. In each round, note the cards played and the benefit received by each player. Also do it here on [this Google Form](https://forms.gle/3fjBGF7xVAYRQ5hXA).
 
-5. Repeat the interaction by showing cards to the same partner and determining the benefit,  on your instructor's signal, for a total of 15 rounds.
+6. Repeat the interaction by showing cards to the same partner and determining the benefit,  on your instructor's signal, for a total of 15 rounds.
 
-6. At the end of those 15 rounds, the student with the highest total benefit value is determined to be the "winner", or the most fit.
+7. At the end of those 15 rounds, the student with the highest total benefit value is determined to be the "winner", or the most fit.
 
-7. As a class, I will determine the percentages of hawks and doves played as well as the average benefit received for each round, using this formula: *Class average benefit = (sum total benefit)/(number of players)*
+8. As a class, I will determine the percentages of hawks and doves played as well as the average benefit received for each round, using this formula: *Class average benefit = (sum total benefit)/(number of players)*
 
 ### GAME TWO
 

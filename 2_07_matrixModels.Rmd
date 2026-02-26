@@ -1,13 +1,13 @@
 # Matrix population modelling
 
-```{r echo = TRUE, warning = FALSE, message = FALSE}
+```{r matrix_chapter_packages_hidden, include = FALSE, warning = FALSE, message = FALSE}
 library(tidyverse)
 library(Rage)
 library(Rcompadre)
 ```
 
 
-```{r echo = FALSE, warning = FALSE, message = FALSE}
+```{r matrix_chapter_diagram_packages_hidden, include = FALSE, warning = FALSE, message = FALSE}
 library(rsvg)
 library(DiagrammeRsvg)
 ```
@@ -121,6 +121,23 @@ $$
 Working with matrices is very tedious in Excel. However, in R you can use this information to predict the future dynamics of the population, and estimate population growth rate, and generation time etc.
 
 Open up **RStudio**, and let's see if we can predict future dynamics. First you will need to install a package called `popdemo`.
+
+### Package setup (if needed)
+
+If you are running this chapter in a fresh R session, install and load required packages first.
+
+```{r matrix_package_setup, eval = FALSE, echo = TRUE}
+# Install once (only if not already installed)
+install.packages(c("popdemo", "Rage", "Rcompadre", "tidyverse", "rsvg", "DiagrammeRsvg"))
+
+# Load each new session
+library(popdemo)
+library(Rage)
+library(Rcompadre)
+library(tidyverse)
+library(rsvg)
+library(DiagrammeRsvg)
+```
 
 ```{r install, eval = FALSE, echo = TRUE}
 install.packages("popdemo")

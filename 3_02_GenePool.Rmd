@@ -1,6 +1,6 @@
 # The Gene Pool Model
 
-```{r echo = TRUE}
+```{r genepool_seed, include = FALSE}
 set.seed(123)
 ```
 
@@ -77,6 +77,11 @@ What we are saying here is "repeat `A`, `number_A` times, then repeat `a` `numbe
 
 ```{r creategenepool, echo = TRUE}
 gene_pool <- c(rep("A", number_A), rep("a", number_a))
+```
+
+Output (counts in the initial gene pool):
+
+```{r creategenepool_output, echo = FALSE}
 table(gene_pool)
 ```
 

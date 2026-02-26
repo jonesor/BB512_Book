@@ -237,7 +237,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="6.1" data-path="stochastic-population-growth.html"><a href="stochastic-population-growth.html#background-4"><i class="fa fa-check"></i><b>6.1</b> Background</a></li>
 <li class="chapter" data-level="6.2" data-path="stochastic-population-growth.html"><a href="stochastic-population-growth.html#worked-example-4"><i class="fa fa-check"></i><b>6.2</b> Worked example</a></li>
 <li class="chapter" data-level="6.3" data-path="stochastic-population-growth.html"><a href="stochastic-population-growth.html#your-task-4"><i class="fa fa-check"></i><b>6.3</b> Your task</a></li>
-<li class="chapter" data-level="6.4" data-path="stochastic-population-growth.html"><a href="stochastic-population-growth.html#simulations-in-r"><i class="fa fa-check"></i><b>6.4</b> Simulations in R</a></li>
+<li class="chapter" data-level="6.4" data-path="stochastic-population-growth.html"><a href="stochastic-population-growth.html#simulations-in-r"><i class="fa fa-check"></i><b>6.4</b> Simulations in R</a>
+<ul>
+<li class="chapter" data-level="6.4.1" data-path="stochastic-population-growth.html"><a href="stochastic-population-growth.html#example-stochastic-trajectories"><i class="fa fa-check"></i><b>6.4.1</b> Example stochastic trajectories</a></li>
+</ul></li>
 <li class="chapter" data-level="6.5" data-path="stochastic-population-growth.html"><a href="stochastic-population-growth.html#questions-4"><i class="fa fa-check"></i><b>6.5</b> Questions</a></li>
 <li class="chapter" data-level="6.6" data-path="stochastic-population-growth.html"><a href="stochastic-population-growth.html#takeaways-4"><i class="fa fa-check"></i><b>6.6</b> Takeaways</a></li>
 </ul></li>
@@ -282,7 +285,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="10.1" data-path="matrix-population-modelling.html"><a href="matrix-population-modelling.html#background-8"><i class="fa fa-check"></i><b>10.1</b> Background</a></li>
 <li class="chapter" data-level="10.2" data-path="matrix-population-modelling.html"><a href="matrix-population-modelling.html#your-task-8"><i class="fa fa-check"></i><b>10.2</b> Your task</a></li>
-<li class="chapter" data-level="10.3" data-path="matrix-population-modelling.html"><a href="matrix-population-modelling.html#using-r-for-matrix-modelling"><i class="fa fa-check"></i><b>10.3</b> Using R for matrix modelling</a></li>
+<li class="chapter" data-level="10.3" data-path="matrix-population-modelling.html"><a href="matrix-population-modelling.html#using-r-for-matrix-modelling"><i class="fa fa-check"></i><b>10.3</b> Using R for matrix modelling</a>
+<ul>
+<li class="chapter" data-level="10.3.1" data-path="matrix-population-modelling.html"><a href="matrix-population-modelling.html#package-setup-if-needed"><i class="fa fa-check"></i><b>10.3.1</b> Package setup (if needed)</a></li>
+</ul></li>
 <li class="chapter" data-level="10.4" data-path="matrix-population-modelling.html"><a href="matrix-population-modelling.html#projecting-the-population"><i class="fa fa-check"></i><b>10.4</b> Projecting the population</a></li>
 <li class="chapter" data-level="10.5" data-path="matrix-population-modelling.html"><a href="matrix-population-modelling.html#elasticity"><i class="fa fa-check"></i><b>10.5</b> Elasticity</a></li>
 <li class="chapter" data-level="10.6" data-path="matrix-population-modelling.html"><a href="matrix-population-modelling.html#life-table-response-experiment-ltre"><i class="fa fa-check"></i><b>10.6</b> Life table response experiment (LTRE)</a></li>
@@ -628,23 +634,23 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="worked-example-8" class="section level2 hasAnchor" number="11.3">
 <h2><span class="header-section-number">11.3</span> Worked example<a href="pre--and-post-reproduction-census.html#worked-example-8" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="pre--and-post-reproduction-census.html#cb25-1" tabindex="-1"></a>p0 <span class="ot">&lt;-</span> <span class="fl">0.2</span></span>
-<span id="cb25-2"><a href="pre--and-post-reproduction-census.html#cb25-2" tabindex="-1"></a>p1 <span class="ot">&lt;-</span> <span class="fl">0.9</span></span>
-<span id="cb25-3"><a href="pre--and-post-reproduction-census.html#cb25-3" tabindex="-1"></a>p2 <span class="ot">&lt;-</span> <span class="fl">0.6</span></span>
-<span id="cb25-4"><a href="pre--and-post-reproduction-census.html#cb25-4" tabindex="-1"></a>m2 <span class="ot">&lt;-</span> <span class="fl">3.0</span></span>
-<span id="cb25-5"><a href="pre--and-post-reproduction-census.html#cb25-5" tabindex="-1"></a>m3 <span class="ot">&lt;-</span> <span class="fl">6.0</span></span>
-<span id="cb25-6"><a href="pre--and-post-reproduction-census.html#cb25-6" tabindex="-1"></a></span>
-<span id="cb25-7"><a href="pre--and-post-reproduction-census.html#cb25-7" tabindex="-1"></a>A1 <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="fl">0.0</span>, m2 <span class="sc">*</span> p1, m3 <span class="sc">*</span> p2,</span>
-<span id="cb25-8"><a href="pre--and-post-reproduction-census.html#cb25-8" tabindex="-1"></a>               p0, <span class="fl">0.0</span>, <span class="fl">0.0</span>,</span>
-<span id="cb25-9"><a href="pre--and-post-reproduction-census.html#cb25-9" tabindex="-1"></a>               <span class="fl">0.0</span>,p1,<span class="dv">0</span>), <span class="at">byrow =</span> <span class="cn">TRUE</span>, <span class="at">nrow =</span> <span class="dv">3</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="pre--and-post-reproduction-census.html#cb26-1" tabindex="-1"></a>p0 <span class="ot">&lt;-</span> <span class="fl">0.2</span></span>
+<span id="cb26-2"><a href="pre--and-post-reproduction-census.html#cb26-2" tabindex="-1"></a>p1 <span class="ot">&lt;-</span> <span class="fl">0.9</span></span>
+<span id="cb26-3"><a href="pre--and-post-reproduction-census.html#cb26-3" tabindex="-1"></a>p2 <span class="ot">&lt;-</span> <span class="fl">0.6</span></span>
+<span id="cb26-4"><a href="pre--and-post-reproduction-census.html#cb26-4" tabindex="-1"></a>m2 <span class="ot">&lt;-</span> <span class="fl">3.0</span></span>
+<span id="cb26-5"><a href="pre--and-post-reproduction-census.html#cb26-5" tabindex="-1"></a>m3 <span class="ot">&lt;-</span> <span class="fl">6.0</span></span>
+<span id="cb26-6"><a href="pre--and-post-reproduction-census.html#cb26-6" tabindex="-1"></a></span>
+<span id="cb26-7"><a href="pre--and-post-reproduction-census.html#cb26-7" tabindex="-1"></a>A1 <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="fl">0.0</span>, m2 <span class="sc">*</span> p1, m3 <span class="sc">*</span> p2,</span>
+<span id="cb26-8"><a href="pre--and-post-reproduction-census.html#cb26-8" tabindex="-1"></a>               p0, <span class="fl">0.0</span>, <span class="fl">0.0</span>,</span>
+<span id="cb26-9"><a href="pre--and-post-reproduction-census.html#cb26-9" tabindex="-1"></a>               <span class="fl">0.0</span>,p1,<span class="dv">0</span>), <span class="at">byrow =</span> <span class="cn">TRUE</span>, <span class="at">nrow =</span> <span class="dv">3</span>)</span></code></pre></div>
 <p>Convert to pre-breeding</p>
-<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="pre--and-post-reproduction-census.html#cb26-1" tabindex="-1"></a>A2 <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="fl">0.0</span>, m2 <span class="sc">*</span> p0, m3 <span class="sc">*</span> p0,</span>
-<span id="cb26-2"><a href="pre--and-post-reproduction-census.html#cb26-2" tabindex="-1"></a>               p1, <span class="fl">0.0</span>, <span class="fl">0.0</span>,</span>
-<span id="cb26-3"><a href="pre--and-post-reproduction-census.html#cb26-3" tabindex="-1"></a>               <span class="fl">0.0</span>,p2,<span class="dv">0</span>), <span class="at">byrow =</span> <span class="cn">TRUE</span>, <span class="at">nrow =</span> <span class="dv">3</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="pre--and-post-reproduction-census.html#cb27-1" tabindex="-1"></a>A2 <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="fl">0.0</span>, m2 <span class="sc">*</span> p0, m3 <span class="sc">*</span> p0,</span>
+<span id="cb27-2"><a href="pre--and-post-reproduction-census.html#cb27-2" tabindex="-1"></a>               p1, <span class="fl">0.0</span>, <span class="fl">0.0</span>,</span>
+<span id="cb27-3"><a href="pre--and-post-reproduction-census.html#cb27-3" tabindex="-1"></a>               <span class="fl">0.0</span>,p2,<span class="dv">0</span>), <span class="at">byrow =</span> <span class="cn">TRUE</span>, <span class="at">nrow =</span> <span class="dv">3</span>)</span></code></pre></div>
 <p>Compare population growth rates. This uses the <code>eigs</code> function from the <code>popdemo</code> R package.</p>
-<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="pre--and-post-reproduction-census.html#cb27-1" tabindex="-1"></a>(popdemo<span class="sc">::</span><span class="fu">eigs</span>(A1, <span class="at">what =</span> <span class="st">&quot;lambda&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="pre--and-post-reproduction-census.html#cb28-1" tabindex="-1"></a>(popdemo<span class="sc">::</span><span class="fu">eigs</span>(A1, <span class="at">what =</span> <span class="st">&quot;lambda&quot;</span>))</span></code></pre></div>
 <pre><code>## [1] 1.070261</code></pre>
-<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="pre--and-post-reproduction-census.html#cb29-1" tabindex="-1"></a>(popdemo<span class="sc">::</span><span class="fu">eigs</span>(A2, <span class="at">what =</span> <span class="st">&quot;lambda&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="pre--and-post-reproduction-census.html#cb30-1" tabindex="-1"></a>(popdemo<span class="sc">::</span><span class="fu">eigs</span>(A2, <span class="at">what =</span> <span class="st">&quot;lambda&quot;</span>))</span></code></pre></div>
 <pre><code>## [1] 1.070261</code></pre>
 </div>
 <div id="your-task-9" class="section level2 hasAnchor" number="11.4">

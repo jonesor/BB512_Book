@@ -237,7 +237,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="6.1" data-path="stochastic-population-growth.html"><a href="stochastic-population-growth.html#background-4"><i class="fa fa-check"></i><b>6.1</b> Background</a></li>
 <li class="chapter" data-level="6.2" data-path="stochastic-population-growth.html"><a href="stochastic-population-growth.html#worked-example-4"><i class="fa fa-check"></i><b>6.2</b> Worked example</a></li>
 <li class="chapter" data-level="6.3" data-path="stochastic-population-growth.html"><a href="stochastic-population-growth.html#your-task-4"><i class="fa fa-check"></i><b>6.3</b> Your task</a></li>
-<li class="chapter" data-level="6.4" data-path="stochastic-population-growth.html"><a href="stochastic-population-growth.html#simulations-in-r"><i class="fa fa-check"></i><b>6.4</b> Simulations in R</a></li>
+<li class="chapter" data-level="6.4" data-path="stochastic-population-growth.html"><a href="stochastic-population-growth.html#simulations-in-r"><i class="fa fa-check"></i><b>6.4</b> Simulations in R</a>
+<ul>
+<li class="chapter" data-level="6.4.1" data-path="stochastic-population-growth.html"><a href="stochastic-population-growth.html#example-stochastic-trajectories"><i class="fa fa-check"></i><b>6.4.1</b> Example stochastic trajectories</a></li>
+</ul></li>
 <li class="chapter" data-level="6.5" data-path="stochastic-population-growth.html"><a href="stochastic-population-growth.html#questions-4"><i class="fa fa-check"></i><b>6.5</b> Questions</a></li>
 <li class="chapter" data-level="6.6" data-path="stochastic-population-growth.html"><a href="stochastic-population-growth.html#takeaways-4"><i class="fa fa-check"></i><b>6.6</b> Takeaways</a></li>
 </ul></li>
@@ -282,7 +285,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="10.1" data-path="matrix-population-modelling.html"><a href="matrix-population-modelling.html#background-8"><i class="fa fa-check"></i><b>10.1</b> Background</a></li>
 <li class="chapter" data-level="10.2" data-path="matrix-population-modelling.html"><a href="matrix-population-modelling.html#your-task-8"><i class="fa fa-check"></i><b>10.2</b> Your task</a></li>
-<li class="chapter" data-level="10.3" data-path="matrix-population-modelling.html"><a href="matrix-population-modelling.html#using-r-for-matrix-modelling"><i class="fa fa-check"></i><b>10.3</b> Using R for matrix modelling</a></li>
+<li class="chapter" data-level="10.3" data-path="matrix-population-modelling.html"><a href="matrix-population-modelling.html#using-r-for-matrix-modelling"><i class="fa fa-check"></i><b>10.3</b> Using R for matrix modelling</a>
+<ul>
+<li class="chapter" data-level="10.3.1" data-path="matrix-population-modelling.html"><a href="matrix-population-modelling.html#package-setup-if-needed"><i class="fa fa-check"></i><b>10.3.1</b> Package setup (if needed)</a></li>
+</ul></li>
 <li class="chapter" data-level="10.4" data-path="matrix-population-modelling.html"><a href="matrix-population-modelling.html#projecting-the-population"><i class="fa fa-check"></i><b>10.4</b> Projecting the population</a></li>
 <li class="chapter" data-level="10.5" data-path="matrix-population-modelling.html"><a href="matrix-population-modelling.html#elasticity"><i class="fa fa-check"></i><b>10.5</b> Elasticity</a></li>
 <li class="chapter" data-level="10.6" data-path="matrix-population-modelling.html"><a href="matrix-population-modelling.html#life-table-response-experiment-ltre"><i class="fa fa-check"></i><b>10.6</b> Life table response experiment (LTRE)</a></li>
@@ -611,7 +617,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="the-gene-pool-model" class="section level1 hasAnchor" number="17">
 <h1><span class="header-section-number">17</span> The Gene Pool Model<a href="the-gene-pool-model.html#the-gene-pool-model" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb65-1"><a href="the-gene-pool-model.html#cb65-1" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span></code></pre></div>
 <div id="background-13" class="section level2 hasAnchor" number="17.1">
 <h2><span class="header-section-number">17.1</span> Background<a href="the-gene-pool-model.html#background-13" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>A central goal in evolutionary biology is to understand variation – including genetic variation – and how it changes through time. One important idea is the “gene pool,” which contains all the different versions of genes within a group of organisms. These genes/alleles determine phenotype traits and other characteristics. To grasp how populations evolve, we need to understand how allele frequencies change in a population. Over time, genetic diversity changes as the relative numbers of alleles changes. Some alleles may be lost from the population while others may become “fixed” – where the allele is present in every individual in the population.</p>
@@ -659,8 +664,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb69-2"><a href="the-gene-pool-model.html#cb69-2" tabindex="-1"></a>number_a <span class="ot">&lt;-</span> <span class="fu">round</span>(initial_frequency_a <span class="sc">*</span> pool_size)</span></code></pre></div>
 <p>Following this, the gene pool can be filled like this.
 What we are saying here is “repeat <code>A</code>, <code>number_A</code> times, then repeat <code>a</code> <code>number_a</code> times”</p>
-<div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb70-1"><a href="the-gene-pool-model.html#cb70-1" tabindex="-1"></a>gene_pool <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fu">rep</span>(<span class="st">&quot;A&quot;</span>, number_A), <span class="fu">rep</span>(<span class="st">&quot;a&quot;</span>, number_a))</span>
-<span id="cb70-2"><a href="the-gene-pool-model.html#cb70-2" tabindex="-1"></a><span class="fu">table</span>(gene_pool)</span></code></pre></div>
+<div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb70-1"><a href="the-gene-pool-model.html#cb70-1" tabindex="-1"></a>gene_pool <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fu">rep</span>(<span class="st">&quot;A&quot;</span>, number_A), <span class="fu">rep</span>(<span class="st">&quot;a&quot;</span>, number_a))</span></code></pre></div>
+<p>Output (counts in the initial gene pool):</p>
 <pre><code>## gene_pool
 ##   a   A 
 ## 500 500</code></pre>

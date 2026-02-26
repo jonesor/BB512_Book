@@ -237,7 +237,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="6.1" data-path="stochastic-population-growth.html"><a href="stochastic-population-growth.html#background-4"><i class="fa fa-check"></i><b>6.1</b> Background</a></li>
 <li class="chapter" data-level="6.2" data-path="stochastic-population-growth.html"><a href="stochastic-population-growth.html#worked-example-4"><i class="fa fa-check"></i><b>6.2</b> Worked example</a></li>
 <li class="chapter" data-level="6.3" data-path="stochastic-population-growth.html"><a href="stochastic-population-growth.html#your-task-4"><i class="fa fa-check"></i><b>6.3</b> Your task</a></li>
-<li class="chapter" data-level="6.4" data-path="stochastic-population-growth.html"><a href="stochastic-population-growth.html#simulations-in-r"><i class="fa fa-check"></i><b>6.4</b> Simulations in R</a></li>
+<li class="chapter" data-level="6.4" data-path="stochastic-population-growth.html"><a href="stochastic-population-growth.html#simulations-in-r"><i class="fa fa-check"></i><b>6.4</b> Simulations in R</a>
+<ul>
+<li class="chapter" data-level="6.4.1" data-path="stochastic-population-growth.html"><a href="stochastic-population-growth.html#example-stochastic-trajectories"><i class="fa fa-check"></i><b>6.4.1</b> Example stochastic trajectories</a></li>
+</ul></li>
 <li class="chapter" data-level="6.5" data-path="stochastic-population-growth.html"><a href="stochastic-population-growth.html#questions-4"><i class="fa fa-check"></i><b>6.5</b> Questions</a></li>
 <li class="chapter" data-level="6.6" data-path="stochastic-population-growth.html"><a href="stochastic-population-growth.html#takeaways-4"><i class="fa fa-check"></i><b>6.6</b> Takeaways</a></li>
 </ul></li>
@@ -282,7 +285,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="10.1" data-path="matrix-population-modelling.html"><a href="matrix-population-modelling.html#background-8"><i class="fa fa-check"></i><b>10.1</b> Background</a></li>
 <li class="chapter" data-level="10.2" data-path="matrix-population-modelling.html"><a href="matrix-population-modelling.html#your-task-8"><i class="fa fa-check"></i><b>10.2</b> Your task</a></li>
-<li class="chapter" data-level="10.3" data-path="matrix-population-modelling.html"><a href="matrix-population-modelling.html#using-r-for-matrix-modelling"><i class="fa fa-check"></i><b>10.3</b> Using R for matrix modelling</a></li>
+<li class="chapter" data-level="10.3" data-path="matrix-population-modelling.html"><a href="matrix-population-modelling.html#using-r-for-matrix-modelling"><i class="fa fa-check"></i><b>10.3</b> Using R for matrix modelling</a>
+<ul>
+<li class="chapter" data-level="10.3.1" data-path="matrix-population-modelling.html"><a href="matrix-population-modelling.html#package-setup-if-needed"><i class="fa fa-check"></i><b>10.3.1</b> Package setup (if needed)</a></li>
+</ul></li>
 <li class="chapter" data-level="10.4" data-path="matrix-population-modelling.html"><a href="matrix-population-modelling.html#projecting-the-population"><i class="fa fa-check"></i><b>10.4</b> Projecting the population</a></li>
 <li class="chapter" data-level="10.5" data-path="matrix-population-modelling.html"><a href="matrix-population-modelling.html#elasticity"><i class="fa fa-check"></i><b>10.5</b> Elasticity</a></li>
 <li class="chapter" data-level="10.6" data-path="matrix-population-modelling.html"><a href="matrix-population-modelling.html#life-table-response-experiment-ltre"><i class="fa fa-check"></i><b>10.6</b> Life table response experiment (LTRE)</a></li>
@@ -636,34 +642,25 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="the-payoff-table" class="section level2 hasAnchor" number="24.4">
 <h2><span class="header-section-number">24.4</span> The payoff table<a href="game-theory-hawks-and-doves.html#the-payoff-table" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>The general payoff table looks like this:</p>
+<p>The general payoff table looks like this (payoff to <strong>Player 1</strong>):</p>
 <table>
 <thead>
 <tr class="header">
-<th></th>
-<th></th>
-<th>Player 2</th>
-<th></th>
+<th>Player 1  Player 2</th>
+<th align="right">Hawk</th>
+<th align="right">Dove</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td></td>
-<td></td>
 <td>Hawk</td>
-<td>Dove</td>
+<td align="right"><span class="math inline">\((B-C)/2\)</span></td>
+<td align="right"><span class="math inline">\(B\)</span></td>
 </tr>
 <tr class="even">
-<td><strong>Player1</strong></td>
-<td>Hawk</td>
-<td>(B-C)/2</td>
-<td>B</td>
-</tr>
-<tr class="odd">
-<td></td>
 <td>Dove</td>
-<td>0</td>
-<td>B/2</td>
+<td align="right"><span class="math inline">\(0\)</span></td>
+<td align="right"><span class="math inline">\(B/2\)</span></td>
 </tr>
 </tbody>
 </table>
@@ -671,30 +668,21 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <table>
 <thead>
 <tr class="header">
-<th></th>
-<th></th>
-<th>Player 2</th>
-<th></th>
+<th>Player 1  Player 2</th>
+<th align="right">Hawk</th>
+<th align="right">Dove</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td></td>
-<td></td>
 <td>Hawk</td>
-<td>Dove</td>
+<td align="right">0.5</td>
+<td align="right">4</td>
 </tr>
 <tr class="even">
-<td><strong>Player1</strong></td>
-<td>Hawk</td>
-<td>0.5</td>
-<td>4</td>
-</tr>
-<tr class="odd">
-<td></td>
 <td>Dove</td>
-<td>0</td>
-<td>2</td>
+<td align="right">0</td>
+<td align="right">2</td>
 </tr>
 </tbody>
 </table>
@@ -704,7 +692,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="game-one" class="section level3 hasAnchor" number="24.4.2">
 <h3><span class="header-section-number">24.4.2</span> GAME ONE<a href="game-theory-hawks-and-doves.html#game-one" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<ol start="0" style="list-style-type: decimal">
+<ol style="list-style-type: decimal">
 <li>On a piece of paper, or in Excel (you could use this file <a href="https://www.dropbox.com/s/48lypfd6o0hi46e/Table_2_Group_behaviour.xlsx?dl=1">here</a>), use a form to collect your results. It should have enough rows for 15 rounds of the game and look like this (where I include an example in the first row):</li>
 </ol>
 <table>
@@ -748,7 +736,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </tr>
 </tbody>
 </table>
-<ol style="list-style-type: decimal">
+<ol start="2" style="list-style-type: decimal">
 <li><p>Collect a set of two game cards.</p></li>
 <li><p>Take out the cards labelled hawk and dove and place them face down on the table or conceal them in your hands.</p></li>
 <li><p>When the instructor gives the signal, show either of the two cards to the student sitting across from you. Try to strategise how to receive the highest benefit from every interaction, but do not communicate with your partner.</p></li>

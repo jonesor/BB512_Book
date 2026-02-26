@@ -90,6 +90,18 @@ You are provided with two datasets containing parent and offspring trait values 
 3) Fit a linear regression model of the form `y ~ x`. 
 4) Summarise the model and take note of the slope of the relationship between the parent and offspring trait values: this is the heritability.
 
+Optional starter code in R:
+
+```{r heritability_starter_code, eval = FALSE, echo = TRUE}
+pop_1 <- read.csv("data/heritability_pop1.csv")
+plot(pop_1$Parent_value, pop_1$Offspring_value,
+     xlab = "Parent value", ylab = "Offspring value")
+mod1 <- lm(Offspring_value ~ Parent_value, data = pop_1)
+summary(mod1)
+coef(mod1)[2]  # slope = heritability estimate
+abline(mod1, col = "red")
+```
+
 **Questions**
 
 * What does the heritability tell us about the amount of variation explained by genetic factors?
