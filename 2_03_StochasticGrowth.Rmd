@@ -45,9 +45,6 @@ Learning outcomes:
 - Understanding how stochasticity relates to (i) uncertainty in the prediction of population trajectories and (ii) probability of (local) extinction.
 :::
 
-## Worked example
-
-If $r_m$ is drawn from a distribution with mean 0.05 and variance 0.1, then most years are positive but some are negative. This means a population can grow on average yet still crash by chance, especially when starting size is small.
 
 ## Your task
 
@@ -55,6 +52,10 @@ If $r_m$ is drawn from a distribution with mean 0.05 and variance 0.1, then most
 
 Use the Excel worksheet, [StochasticPopulationGrowth.xlsx](https://www.dropbox.com/s/1wpixbpgwlh54f0/StochasticPopulationGrowth.xlsx?dl=1), to study how stochastic population growth works with this simple model.
 :::
+
+
+If $r_m$ is drawn from a distribution with mean 0.05 and variance 0.1, then most years are positive but some are negative. This means a population can grow on average yet still crash by chance, especially when starting size is small.
+
 
 1)	Use Excel formulae to calculate deterministic population size through time (20 generations, with starting population of 100), linking to the mean finite population growth rate.
 2)	Use charts to plot the results. (you already did this last time!)

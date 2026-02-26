@@ -1,17 +1,5 @@
 # Matrix population modelling
 
-```{r matrix_chapter_packages_hidden, include = FALSE, warning = FALSE, message = FALSE}
-library(tidyverse)
-library(Rage)
-library(Rcompadre)
-```
-
-
-```{r matrix_chapter_diagram_packages_hidden, include = FALSE, warning = FALSE, message = FALSE}
-library(rsvg)
-library(DiagrammeRsvg)
-```
-
 ## Background 
 
 Matrix population models are powerful and widely used tools in population ecology that offer a comprehensive framework for studying the dynamics of structured populations. Unlike simple growth models that assume homogeneous populations, matrix population models take into account the variation in vital rates, such as birth, death, and growth rates, across different life stages or age classes. These models are particularly well-suited for species with distinct life stages, such as plants with seedlings, juveniles, and adults, or animals with different age classes. Matrix population models use transition matrices to represent the relationships between different age classes and how individuals move from one stage to another over time. By incorporating demographic data and life-history traits, matrix population models provide a more realistic and detailed understanding of population dynamics, making them invaluable for predicting the future trends of populations and assessing their vulnerability to environmental changes and management actions. In this practical, we will assume that one matrix projection corresponds to one year. Each matrix element therefore represents survival, growth, or reproduction over a one-year interval.
@@ -51,34 +39,20 @@ Things to think about:
 
 Here's an example for a fictional organism.
 
-```{r setup, include = FALSE, echo = FALSE}
-set.seed(123)
-matA_elas <- matrix(c(4, 4))
-
-while (length(which(matA_elas == max(matA_elas))) != 1) {
-  matA <- matrix(c(
-    sample(seq(0.05, .3, .05), 1), sample(seq(8, 10, .5), 1), 
-    sample(seq(0, 4, .5), 1),
-    sample(seq(0, .7, .05), 1), sample(seq(0, .7, .05), 1), 0.0,
-    0.0, sample(seq(0, .7, .05), 1), sample(seq(0, .9, .05), 1)
-  ), nrow = 3, ncol = 3, byrow = TRUE)
-  matA <- round(matA, 2)
-  (matA_elas <- round(popdemo::elas(matA), 2))
-}
-
-matA
-```
 
 
-```{r showmatrix, echo = TRUE}
+```{r showmatrix, echo = FALSE}
 matA <- matrix(c(
   0.3, 8.00, 2.00,
   0.1, 0.50, 0.00,
   0.0, 0.40, 0.40
 ), nrow = 3, byrow = TRUE)
 matA <- round(matA, 2)
+colnames(matA) <- c("A", "B", "C")
+rownames(matA) <- c("A", "B", "C")
 ```
-```{r plotmatrix, echo = FALSE, fig.cap = "."}
+
+```{r plotmatrix, eval = TRUE, echo = FALSE, fig.cap = "."}
 matA_plot <- Rage::plot_life_cycle(matA, stages = c("A", "B", "C"))
 
 # 1. Make a play graph
@@ -97,6 +71,8 @@ rsvg::rsvg_png(tmp, "tempLifeCycleDiagram.png") # saved graph as png in current 
 
 The life cycle shown above looks like this (below). The matrix describes transitions from time $t$ to time $t + 1$, where one time step corresponds to one year.
 
+Interpretation note: **columns are stages at time $t$ (from)** and **rows are stages at time $t+1$ (to)**.
+
 ```{r showmatrix2, echo = FALSE}
 # Function to write matrix as LaTeX
 write_matex2 <- function(x) {
@@ -112,6 +88,8 @@ write_matex2 <- function(x) {
   paste(c(begin, X, end), collapse = "")
 }
 ```
+
+
 $$
 A = `r write_matex2(matA)`
 $$
@@ -122,27 +100,15 @@ Working with matrices is very tedious in Excel. However, in R you can use this i
 
 Open up **RStudio**, and let's see if we can predict future dynamics. First you will need to install a package called `popdemo`.
 
-### Package setup (if needed)
+### Package setup
 
-If you are running this chapter in a fresh R session, install and load required packages first.
+If you are running this chapter in a fresh R session, you might need to install and/or load the `popdemo` package.
+
 
 ```{r matrix_package_setup, eval = FALSE, echo = TRUE}
-# Install once (only if not already installed)
-install.packages(c("popdemo", "Rage", "Rcompadre", "tidyverse", "rsvg", "DiagrammeRsvg"))
-
-# Load each new session
-library(popdemo)
-library(Rage)
-library(Rcompadre)
-library(tidyverse)
-library(rsvg)
-library(DiagrammeRsvg)
-```
-
-```{r install, eval = FALSE, echo = TRUE}
 install.packages("popdemo")
 ```
- 
+
 You only need to install packages once. After that you can load the package for use by using the `library` function.
 
 ```{r library, message = FALSE, echo = TRUE}
