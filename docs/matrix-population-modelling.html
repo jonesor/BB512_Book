@@ -23,7 +23,7 @@
 <meta name="author" content="Owen R. Jones (Course Coordinator)" />
 
 
-<meta name="date" content="2026-02-18" />
+<meta name="date" content="2026-02-26" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -52,6 +52,8 @@
 <link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
 <link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<link href="libs/tabwid-1.1.3/tabwid.css" rel="stylesheet" />
+<script src="libs/tabwid-1.1.3/tabwid.js"></script>
 <style type="text/css">
 
 .warning-box {
@@ -330,231 +332,262 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="14.5" data-path="trade-offs-and-the-declining-force-of-selection.html"><a href="trade-offs-and-the-declining-force-of-selection.html#questions-10"><i class="fa fa-check"></i><b>14.5</b> Questions</a></li>
 <li class="chapter" data-level="14.6" data-path="trade-offs-and-the-declining-force-of-selection.html"><a href="trade-offs-and-the-declining-force-of-selection.html#takeaways-12"><i class="fa fa-check"></i><b>14.6</b> Takeaways</a></li>
 </ul></li>
+<li class="chapter" data-level="15" data-path="matrix-population-models-mpms-projection-and-simulation.html"><a href="matrix-population-models-mpms-projection-and-simulation.html"><i class="fa fa-check"></i><b>15</b> Matrix Population Models (MPMs): Projection and Simulation</a>
+<ul>
+<li class="chapter" data-level="15.1" data-path="matrix-population-models-mpms-projection-and-simulation.html"><a href="matrix-population-models-mpms-projection-and-simulation.html#what-is-a-matrix-population-model"><i class="fa fa-check"></i><b>15.1</b> What is a matrix population model?</a></li>
+<li class="chapter" data-level="15.2" data-path="matrix-population-models-mpms-projection-and-simulation.html"><a href="matrix-population-models-mpms-projection-and-simulation.html#the-projection-interval-delta-t"><i class="fa fa-check"></i><b>15.2</b> The projection interval (\(\Delta t\))</a></li>
+<li class="chapter" data-level="15.3" data-path="matrix-population-models-mpms-projection-and-simulation.html"><a href="matrix-population-models-mpms-projection-and-simulation.html#the-population-vector"><i class="fa fa-check"></i><b>15.3</b> The population vector</a></li>
+<li class="chapter" data-level="15.4" data-path="matrix-population-models-mpms-projection-and-simulation.html"><a href="matrix-population-models-mpms-projection-and-simulation.html#the-projection-matrix"><i class="fa fa-check"></i><b>15.4</b> The projection matrix</a></li>
+<li class="chapter" data-level="15.5" data-path="matrix-population-models-mpms-projection-and-simulation.html"><a href="matrix-population-models-mpms-projection-and-simulation.html#a-simple-3-stage-model"><i class="fa fa-check"></i><b>15.5</b> A simple 3-stage model</a></li>
+<li class="chapter" data-level="15.6" data-path="matrix-population-models-mpms-projection-and-simulation.html"><a href="matrix-population-models-mpms-projection-and-simulation.html#projection-projecting-mathbfn_t-forward"><i class="fa fa-check"></i><b>15.6</b> Projection: projecting \(\mathbf{n}_t\) forward</a></li>
+<li class="chapter" data-level="15.7" data-path="matrix-population-models-mpms-projection-and-simulation.html"><a href="matrix-population-models-mpms-projection-and-simulation.html#define-vital-rates-and-build-mathbfa"><i class="fa fa-check"></i><b>15.7</b> Define vital rates and build \(\mathbf{A}\)</a></li>
+<li class="chapter" data-level="15.8" data-path="matrix-population-models-mpms-projection-and-simulation.html"><a href="matrix-population-models-mpms-projection-and-simulation.html#define-an-initial-population-vector-mathbfn_0"><i class="fa fa-check"></i><b>15.8</b> Define an initial population vector \(\mathbf{n}_0\)</a></li>
+<li class="chapter" data-level="15.9" data-path="matrix-population-models-mpms-projection-and-simulation.html"><a href="matrix-population-models-mpms-projection-and-simulation.html#one-step-projection"><i class="fa fa-check"></i><b>15.9</b> One-step projection</a></li>
+<li class="chapter" data-level="15.10" data-path="matrix-population-models-mpms-projection-and-simulation.html"><a href="matrix-population-models-mpms-projection-and-simulation.html#project-for-many-years-deterministic"><i class="fa fa-check"></i><b>15.10</b> Project for many years (deterministic)</a>
+<ul>
+<li class="chapter" data-level="15.10.1" data-path="matrix-population-models-mpms-projection-and-simulation.html"><a href="matrix-population-models-mpms-projection-and-simulation.html#plot-totals-and-stage-trajectories"><i class="fa fa-check"></i><b>15.10.1</b> Plot totals and stage trajectories</a></li>
+</ul></li>
+<li class="chapter" data-level="15.11" data-path="matrix-population-models-mpms-projection-and-simulation.html"><a href="matrix-population-models-mpms-projection-and-simulation.html#long-term-growth-rate-lambda"><i class="fa fa-check"></i><b>15.11</b> Long-term growth rate (\(\lambda\))</a></li>
+<li class="chapter" data-level="15.12" data-path="matrix-population-models-mpms-projection-and-simulation.html"><a href="matrix-population-models-mpms-projection-and-simulation.html#simulation-adding-stochasticity-and-management-actions"><i class="fa fa-check"></i><b>15.12</b> Simulation: adding stochasticity and management actions</a>
+<ul>
+<li class="chapter" data-level="15.12.1" data-path="matrix-population-models-mpms-projection-and-simulation.html"><a href="matrix-population-models-mpms-projection-and-simulation.html#one-simulated-trajectory-no-culling"><i class="fa fa-check"></i><b>15.12.1</b> One simulated trajectory (no culling)</a></li>
+<li class="chapter" data-level="15.12.2" data-path="matrix-population-models-mpms-projection-and-simulation.html"><a href="matrix-population-models-mpms-projection-and-simulation.html#add-a-culling-intervention"><i class="fa fa-check"></i><b>15.12.2</b> Add a culling intervention</a></li>
+<li class="chapter" data-level="15.12.3" data-path="matrix-population-models-mpms-projection-and-simulation.html"><a href="matrix-population-models-mpms-projection-and-simulation.html#many-replicates-uncertainty-bands"><i class="fa fa-check"></i><b>15.12.3</b> Many replicates (uncertainty bands)</a></li>
+</ul></li>
+<li class="chapter" data-level="15.13" data-path="matrix-population-models-mpms-projection-and-simulation.html"><a href="matrix-population-models-mpms-projection-and-simulation.html#student-exercises-for-a-class-handout"><i class="fa fa-check"></i><b>15.13</b> Student exercises (for a class handout)</a>
+<ul>
+<li class="chapter" data-level="15.13.1" data-path="matrix-population-models-mpms-projection-and-simulation.html"><a href="matrix-population-models-mpms-projection-and-simulation.html#exercise-projection-interval-sanity-check"><i class="fa fa-check"></i><b>15.13.1</b> Exercise: Projection interval sanity check</a></li>
+<li class="chapter" data-level="15.13.2" data-path="matrix-population-models-mpms-projection-and-simulation.html"><a href="matrix-population-models-mpms-projection-and-simulation.html#exercise-change-one-vital-rate-and-re-run-projections"><i class="fa fa-check"></i><b>15.13.2</b> Exercise: Change one vital rate and re-run projections</a></li>
+<li class="chapter" data-level="15.13.3" data-path="matrix-population-models-mpms-projection-and-simulation.html"><a href="matrix-population-models-mpms-projection-and-simulation.html#exercise-culling-as-management"><i class="fa fa-check"></i><b>15.13.3</b> Exercise: Culling as management</a></li>
+<li class="chapter" data-level="15.13.4" data-path="matrix-population-models-mpms-projection-and-simulation.html"><a href="matrix-population-models-mpms-projection-and-simulation.html#exercise-contraception-treatment-reduced-fecundity"><i class="fa fa-check"></i><b>15.13.4</b> Exercise: Contraception treatment (reduced fecundity)</a></li>
+</ul></li>
+<li class="chapter" data-level="15.14" data-path="matrix-population-models-mpms-projection-and-simulation.html"><a href="matrix-population-models-mpms-projection-and-simulation.html#notes-and-extensions"><i class="fa fa-check"></i><b>15.14</b> Notes and extensions</a></li>
+</ul></li>
 <li class="chapter" data-level="" data-path="part-3.html"><a href="part-3.html"><i class="fa fa-check"></i>Part 3: Population Genetics and Evolution</a></li>
-<li class="chapter" data-level="15" data-path="hardy-weinberg-equilibrium.html"><a href="hardy-weinberg-equilibrium.html"><i class="fa fa-check"></i><b>15</b> Hardy-Weinberg equilibrium</a>
+<li class="chapter" data-level="16" data-path="hardy-weinberg-equilibrium.html"><a href="hardy-weinberg-equilibrium.html"><i class="fa fa-check"></i><b>16</b> Hardy-Weinberg equilibrium</a>
 <ul>
-<li class="chapter" data-level="15.1" data-path="hardy-weinberg-equilibrium.html"><a href="hardy-weinberg-equilibrium.html#background-12"><i class="fa fa-check"></i><b>15.1</b> Background</a></li>
-<li class="chapter" data-level="15.2" data-path="hardy-weinberg-equilibrium.html"><a href="hardy-weinberg-equilibrium.html#assumptions-of-hardy-weinberg-equilibrium"><i class="fa fa-check"></i><b>15.2</b> Assumptions of Hardy-Weinberg Equilibrium</a></li>
-<li class="chapter" data-level="15.3" data-path="hardy-weinberg-equilibrium.html"><a href="hardy-weinberg-equilibrium.html#worked-example-11"><i class="fa fa-check"></i><b>15.3</b> Worked example</a></li>
-<li class="chapter" data-level="15.4" data-path="hardy-weinberg-equilibrium.html"><a href="hardy-weinberg-equilibrium.html#your-task-13"><i class="fa fa-check"></i><b>15.4</b> Your task</a>
+<li class="chapter" data-level="16.1" data-path="hardy-weinberg-equilibrium.html"><a href="hardy-weinberg-equilibrium.html#background-12"><i class="fa fa-check"></i><b>16.1</b> Background</a></li>
+<li class="chapter" data-level="16.2" data-path="hardy-weinberg-equilibrium.html"><a href="hardy-weinberg-equilibrium.html#assumptions-of-hardy-weinberg-equilibrium"><i class="fa fa-check"></i><b>16.2</b> Assumptions of Hardy-Weinberg Equilibrium</a></li>
+<li class="chapter" data-level="16.3" data-path="hardy-weinberg-equilibrium.html"><a href="hardy-weinberg-equilibrium.html#worked-example-11"><i class="fa fa-check"></i><b>16.3</b> Worked example</a></li>
+<li class="chapter" data-level="16.4" data-path="hardy-weinberg-equilibrium.html"><a href="hardy-weinberg-equilibrium.html#your-task-13"><i class="fa fa-check"></i><b>16.4</b> Your task</a>
 <ul>
-<li class="chapter" data-level="15.4.1" data-path="hardy-weinberg-equilibrium.html"><a href="hardy-weinberg-equilibrium.html#problem-1."><i class="fa fa-check"></i><b>15.4.1</b> Problem #1.</a></li>
-<li class="chapter" data-level="15.4.2" data-path="hardy-weinberg-equilibrium.html"><a href="hardy-weinberg-equilibrium.html#problem-2."><i class="fa fa-check"></i><b>15.4.2</b> Problem #2.</a></li>
-<li class="chapter" data-level="15.4.3" data-path="hardy-weinberg-equilibrium.html"><a href="hardy-weinberg-equilibrium.html#problem-3."><i class="fa fa-check"></i><b>15.4.3</b> Problem #3.</a></li>
-<li class="chapter" data-level="15.4.4" data-path="hardy-weinberg-equilibrium.html"><a href="hardy-weinberg-equilibrium.html#problem-4."><i class="fa fa-check"></i><b>15.4.4</b> Problem #4.</a></li>
+<li class="chapter" data-level="16.4.1" data-path="hardy-weinberg-equilibrium.html"><a href="hardy-weinberg-equilibrium.html#problem-1."><i class="fa fa-check"></i><b>16.4.1</b> Problem #1.</a></li>
+<li class="chapter" data-level="16.4.2" data-path="hardy-weinberg-equilibrium.html"><a href="hardy-weinberg-equilibrium.html#problem-2."><i class="fa fa-check"></i><b>16.4.2</b> Problem #2.</a></li>
+<li class="chapter" data-level="16.4.3" data-path="hardy-weinberg-equilibrium.html"><a href="hardy-weinberg-equilibrium.html#problem-3."><i class="fa fa-check"></i><b>16.4.3</b> Problem #3.</a></li>
+<li class="chapter" data-level="16.4.4" data-path="hardy-weinberg-equilibrium.html"><a href="hardy-weinberg-equilibrium.html#problem-4."><i class="fa fa-check"></i><b>16.4.4</b> Problem #4.</a></li>
 </ul></li>
-<li class="chapter" data-level="15.5" data-path="hardy-weinberg-equilibrium.html"><a href="hardy-weinberg-equilibrium.html#takeaways-13"><i class="fa fa-check"></i><b>15.5</b> Takeaways</a></li>
+<li class="chapter" data-level="16.5" data-path="hardy-weinberg-equilibrium.html"><a href="hardy-weinberg-equilibrium.html#takeaways-13"><i class="fa fa-check"></i><b>16.5</b> Takeaways</a></li>
 </ul></li>
-<li class="chapter" data-level="16" data-path="the-gene-pool-model.html"><a href="the-gene-pool-model.html"><i class="fa fa-check"></i><b>16</b> The Gene Pool Model</a>
+<li class="chapter" data-level="17" data-path="the-gene-pool-model.html"><a href="the-gene-pool-model.html"><i class="fa fa-check"></i><b>17</b> The Gene Pool Model</a>
 <ul>
-<li class="chapter" data-level="16.1" data-path="the-gene-pool-model.html"><a href="the-gene-pool-model.html#background-13"><i class="fa fa-check"></i><b>16.1</b> Background</a></li>
-<li class="chapter" data-level="16.2" data-path="the-gene-pool-model.html"><a href="the-gene-pool-model.html#worked-example-12"><i class="fa fa-check"></i><b>16.2</b> Worked example</a></li>
-<li class="chapter" data-level="16.3" data-path="the-gene-pool-model.html"><a href="the-gene-pool-model.html#your-task-14"><i class="fa fa-check"></i><b>16.3</b> Your task</a></li>
-<li class="chapter" data-level="16.4" data-path="the-gene-pool-model.html"><a href="the-gene-pool-model.html#a-simple-model"><i class="fa fa-check"></i><b>16.4</b> A simple model</a>
+<li class="chapter" data-level="17.1" data-path="the-gene-pool-model.html"><a href="the-gene-pool-model.html#background-13"><i class="fa fa-check"></i><b>17.1</b> Background</a></li>
+<li class="chapter" data-level="17.2" data-path="the-gene-pool-model.html"><a href="the-gene-pool-model.html#worked-example-12"><i class="fa fa-check"></i><b>17.2</b> Worked example</a></li>
+<li class="chapter" data-level="17.3" data-path="the-gene-pool-model.html"><a href="the-gene-pool-model.html#your-task-14"><i class="fa fa-check"></i><b>17.3</b> Your task</a></li>
+<li class="chapter" data-level="17.4" data-path="the-gene-pool-model.html"><a href="the-gene-pool-model.html#a-simple-model"><i class="fa fa-check"></i><b>17.4</b> A simple model</a>
 <ul>
-<li class="chapter" data-level="16.4.1" data-path="the-gene-pool-model.html"><a href="the-gene-pool-model.html#the-gene-pool"><i class="fa fa-check"></i><b>16.4.1</b> The gene pool</a></li>
-<li class="chapter" data-level="16.4.2" data-path="the-gene-pool-model.html"><a href="the-gene-pool-model.html#projecting-allele-frequency-over-one-time-step."><i class="fa fa-check"></i><b>16.4.2</b> Projecting allele frequency over one time step.</a></li>
+<li class="chapter" data-level="17.4.1" data-path="the-gene-pool-model.html"><a href="the-gene-pool-model.html#the-gene-pool"><i class="fa fa-check"></i><b>17.4.1</b> The gene pool</a></li>
+<li class="chapter" data-level="17.4.2" data-path="the-gene-pool-model.html"><a href="the-gene-pool-model.html#projecting-allele-frequency-over-one-time-step."><i class="fa fa-check"></i><b>17.4.2</b> Projecting allele frequency over one time step.</a></li>
 </ul></li>
-<li class="chapter" data-level="16.5" data-path="the-gene-pool-model.html"><a href="the-gene-pool-model.html#simulation-of-allele-frequency-through-time"><i class="fa fa-check"></i><b>16.5</b> Simulation of allele frequency through time</a></li>
-<li class="chapter" data-level="16.6" data-path="the-gene-pool-model.html"><a href="the-gene-pool-model.html#bottlenecks"><i class="fa fa-check"></i><b>16.6</b> Bottlenecks</a></li>
-<li class="chapter" data-level="16.7" data-path="the-gene-pool-model.html"><a href="the-gene-pool-model.html#conclusions"><i class="fa fa-check"></i><b>16.7</b> Conclusions</a></li>
-<li class="chapter" data-level="16.8" data-path="the-gene-pool-model.html"><a href="the-gene-pool-model.html#takeaways-14"><i class="fa fa-check"></i><b>16.8</b> Takeaways</a></li>
+<li class="chapter" data-level="17.5" data-path="the-gene-pool-model.html"><a href="the-gene-pool-model.html#simulation-of-allele-frequency-through-time"><i class="fa fa-check"></i><b>17.5</b> Simulation of allele frequency through time</a></li>
+<li class="chapter" data-level="17.6" data-path="the-gene-pool-model.html"><a href="the-gene-pool-model.html#bottlenecks"><i class="fa fa-check"></i><b>17.6</b> Bottlenecks</a></li>
+<li class="chapter" data-level="17.7" data-path="the-gene-pool-model.html"><a href="the-gene-pool-model.html#conclusions"><i class="fa fa-check"></i><b>17.7</b> Conclusions</a></li>
+<li class="chapter" data-level="17.8" data-path="the-gene-pool-model.html"><a href="the-gene-pool-model.html#takeaways-14"><i class="fa fa-check"></i><b>17.8</b> Takeaways</a></li>
 </ul></li>
-<li class="chapter" data-level="17" data-path="neutral-or-adaptive-evolution-in-humans-what-drives-evolution-of-our-traits.html"><a href="neutral-or-adaptive-evolution-in-humans-what-drives-evolution-of-our-traits.html"><i class="fa fa-check"></i><b>17</b> Neutral or Adaptive Evolution in Humans: What Drives Evolution of Our Traits?</a>
+<li class="chapter" data-level="18" data-path="neutral-or-adaptive-evolution-in-humans-what-drives-evolution-of-our-traits.html"><a href="neutral-or-adaptive-evolution-in-humans-what-drives-evolution-of-our-traits.html"><i class="fa fa-check"></i><b>18</b> Neutral or Adaptive Evolution in Humans: What Drives Evolution of Our Traits?</a>
 <ul>
-<li class="chapter" data-level="17.1" data-path="neutral-or-adaptive-evolution-in-humans-what-drives-evolution-of-our-traits.html"><a href="neutral-or-adaptive-evolution-in-humans-what-drives-evolution-of-our-traits.html#background-14"><i class="fa fa-check"></i><b>17.1</b> Background</a></li>
-<li class="chapter" data-level="17.2" data-path="neutral-or-adaptive-evolution-in-humans-what-drives-evolution-of-our-traits.html"><a href="neutral-or-adaptive-evolution-in-humans-what-drives-evolution-of-our-traits.html#worked-example-13"><i class="fa fa-check"></i><b>17.2</b> Worked example</a></li>
-<li class="chapter" data-level="17.3" data-path="neutral-or-adaptive-evolution-in-humans-what-drives-evolution-of-our-traits.html"><a href="neutral-or-adaptive-evolution-in-humans-what-drives-evolution-of-our-traits.html#your-task-30-minutes"><i class="fa fa-check"></i><b>17.3</b> Your task (30 minutes)</a>
+<li class="chapter" data-level="18.1" data-path="neutral-or-adaptive-evolution-in-humans-what-drives-evolution-of-our-traits.html"><a href="neutral-or-adaptive-evolution-in-humans-what-drives-evolution-of-our-traits.html#background-14"><i class="fa fa-check"></i><b>18.1</b> Background</a></li>
+<li class="chapter" data-level="18.2" data-path="neutral-or-adaptive-evolution-in-humans-what-drives-evolution-of-our-traits.html"><a href="neutral-or-adaptive-evolution-in-humans-what-drives-evolution-of-our-traits.html#worked-example-13"><i class="fa fa-check"></i><b>18.2</b> Worked example</a></li>
+<li class="chapter" data-level="18.3" data-path="neutral-or-adaptive-evolution-in-humans-what-drives-evolution-of-our-traits.html"><a href="neutral-or-adaptive-evolution-in-humans-what-drives-evolution-of-our-traits.html#your-task-30-minutes"><i class="fa fa-check"></i><b>18.3</b> Your task (30 minutes)</a>
 <ul>
-<li class="chapter" data-level="17.3.1" data-path="neutral-or-adaptive-evolution-in-humans-what-drives-evolution-of-our-traits.html"><a href="neutral-or-adaptive-evolution-in-humans-what-drives-evolution-of-our-traits.html#the-traits"><i class="fa fa-check"></i><b>17.3.1</b> The traits</a></li>
+<li class="chapter" data-level="18.3.1" data-path="neutral-or-adaptive-evolution-in-humans-what-drives-evolution-of-our-traits.html"><a href="neutral-or-adaptive-evolution-in-humans-what-drives-evolution-of-our-traits.html#the-traits"><i class="fa fa-check"></i><b>18.3.1</b> The traits</a></li>
 </ul></li>
-<li class="chapter" data-level="17.4" data-path="neutral-or-adaptive-evolution-in-humans-what-drives-evolution-of-our-traits.html"><a href="neutral-or-adaptive-evolution-in-humans-what-drives-evolution-of-our-traits.html#discussion-timing-15-minutes"><i class="fa fa-check"></i><b>17.4</b> Discussion (Timing: 15 minutes)</a></li>
-<li class="chapter" data-level="17.5" data-path="neutral-or-adaptive-evolution-in-humans-what-drives-evolution-of-our-traits.html"><a href="neutral-or-adaptive-evolution-in-humans-what-drives-evolution-of-our-traits.html#takeaways-15"><i class="fa fa-check"></i><b>17.5</b> Takeaways</a></li>
+<li class="chapter" data-level="18.4" data-path="neutral-or-adaptive-evolution-in-humans-what-drives-evolution-of-our-traits.html"><a href="neutral-or-adaptive-evolution-in-humans-what-drives-evolution-of-our-traits.html#discussion-timing-15-minutes"><i class="fa fa-check"></i><b>18.4</b> Discussion (Timing: 15 minutes)</a></li>
+<li class="chapter" data-level="18.5" data-path="neutral-or-adaptive-evolution-in-humans-what-drives-evolution-of-our-traits.html"><a href="neutral-or-adaptive-evolution-in-humans-what-drives-evolution-of-our-traits.html#takeaways-15"><i class="fa fa-check"></i><b>18.5</b> Takeaways</a></li>
 </ul></li>
-<li class="chapter" data-level="18" data-path="heritability-from-a-linear-regression.html"><a href="heritability-from-a-linear-regression.html"><i class="fa fa-check"></i><b>18</b> Heritability from a linear regression</a>
+<li class="chapter" data-level="19" data-path="heritability-from-a-linear-regression.html"><a href="heritability-from-a-linear-regression.html"><i class="fa fa-check"></i><b>19</b> Heritability from a linear regression</a>
 <ul>
-<li class="chapter" data-level="18.1" data-path="heritability-from-a-linear-regression.html"><a href="heritability-from-a-linear-regression.html#background-15"><i class="fa fa-check"></i><b>18.1</b> Background</a></li>
-<li class="chapter" data-level="18.2" data-path="heritability-from-a-linear-regression.html"><a href="heritability-from-a-linear-regression.html#worked-example-14"><i class="fa fa-check"></i><b>18.2</b> Worked example</a></li>
-<li class="chapter" data-level="18.3" data-path="heritability-from-a-linear-regression.html"><a href="heritability-from-a-linear-regression.html#your-task-15"><i class="fa fa-check"></i><b>18.3</b> Your Task</a>
+<li class="chapter" data-level="19.1" data-path="heritability-from-a-linear-regression.html"><a href="heritability-from-a-linear-regression.html#background-15"><i class="fa fa-check"></i><b>19.1</b> Background</a></li>
+<li class="chapter" data-level="19.2" data-path="heritability-from-a-linear-regression.html"><a href="heritability-from-a-linear-regression.html#worked-example-14"><i class="fa fa-check"></i><b>19.2</b> Worked example</a></li>
+<li class="chapter" data-level="19.3" data-path="heritability-from-a-linear-regression.html"><a href="heritability-from-a-linear-regression.html#your-task-15"><i class="fa fa-check"></i><b>19.3</b> Your Task</a>
 <ul>
-<li class="chapter" data-level="18.3.1" data-path="heritability-from-a-linear-regression.html"><a href="heritability-from-a-linear-regression.html#estimating-heritability-15-minutes"><i class="fa fa-check"></i><b>18.3.1</b> Estimating heritability (15 minutes)</a></li>
-<li class="chapter" data-level="18.3.2" data-path="heritability-from-a-linear-regression.html"><a href="heritability-from-a-linear-regression.html#comparative-analysis-10-minutes"><i class="fa fa-check"></i><b>18.3.2</b> Comparative Analysis (10 minutes)</a></li>
-<li class="chapter" data-level="18.3.3" data-path="heritability-from-a-linear-regression.html"><a href="heritability-from-a-linear-regression.html#assumptions-10-mins"><i class="fa fa-check"></i><b>18.3.3</b> Assumptions (10 mins)</a></li>
+<li class="chapter" data-level="19.3.1" data-path="heritability-from-a-linear-regression.html"><a href="heritability-from-a-linear-regression.html#estimating-heritability-15-minutes"><i class="fa fa-check"></i><b>19.3.1</b> Estimating heritability (15 minutes)</a></li>
+<li class="chapter" data-level="19.3.2" data-path="heritability-from-a-linear-regression.html"><a href="heritability-from-a-linear-regression.html#comparative-analysis-10-minutes"><i class="fa fa-check"></i><b>19.3.2</b> Comparative Analysis (10 minutes)</a></li>
+<li class="chapter" data-level="19.3.3" data-path="heritability-from-a-linear-regression.html"><a href="heritability-from-a-linear-regression.html#assumptions-10-mins"><i class="fa fa-check"></i><b>19.3.3</b> Assumptions (10 mins)</a></li>
 </ul></li>
-<li class="chapter" data-level="18.4" data-path="heritability-from-a-linear-regression.html"><a href="heritability-from-a-linear-regression.html#takeaways-16"><i class="fa fa-check"></i><b>18.4</b> Takeaways</a></li>
+<li class="chapter" data-level="19.4" data-path="heritability-from-a-linear-regression.html"><a href="heritability-from-a-linear-regression.html#takeaways-16"><i class="fa fa-check"></i><b>19.4</b> Takeaways</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="part-4.html"><a href="part-4.html"><i class="fa fa-check"></i>Part 4: Interactions Between Species and Community Structure</a></li>
-<li class="chapter" data-level="19" data-path="lotka-volterra-competition.html"><a href="lotka-volterra-competition.html"><i class="fa fa-check"></i><b>19</b> Lotka-Volterra competition</a>
+<li class="chapter" data-level="20" data-path="lotka-volterra-competition.html"><a href="lotka-volterra-competition.html"><i class="fa fa-check"></i><b>20</b> Lotka-Volterra competition</a>
 <ul>
-<li class="chapter" data-level="19.1" data-path="lotka-volterra-competition.html"><a href="lotka-volterra-competition.html#worked-example-15"><i class="fa fa-check"></i><b>19.1</b> Worked example</a></li>
-<li class="chapter" data-level="19.2" data-path="lotka-volterra-competition.html"><a href="lotka-volterra-competition.html#your-task-16"><i class="fa fa-check"></i><b>19.2</b> Your task</a>
+<li class="chapter" data-level="20.1" data-path="lotka-volterra-competition.html"><a href="lotka-volterra-competition.html#worked-example-15"><i class="fa fa-check"></i><b>20.1</b> Worked example</a></li>
+<li class="chapter" data-level="20.2" data-path="lotka-volterra-competition.html"><a href="lotka-volterra-competition.html#your-task-16"><i class="fa fa-check"></i><b>20.2</b> Your task</a>
 <ul>
-<li class="chapter" data-level="19.2.1" data-path="lotka-volterra-competition.html"><a href="lotka-volterra-competition.html#the-questions"><i class="fa fa-check"></i><b>19.2.1</b> The questions</a></li>
+<li class="chapter" data-level="20.2.1" data-path="lotka-volterra-competition.html"><a href="lotka-volterra-competition.html#the-questions"><i class="fa fa-check"></i><b>20.2.1</b> The questions</a></li>
 </ul></li>
-<li class="chapter" data-level="19.3" data-path="lotka-volterra-competition.html"><a href="lotka-volterra-competition.html#takeaways-17"><i class="fa fa-check"></i><b>19.3</b> Takeaways</a></li>
+<li class="chapter" data-level="20.3" data-path="lotka-volterra-competition.html"><a href="lotka-volterra-competition.html#takeaways-17"><i class="fa fa-check"></i><b>20.3</b> Takeaways</a></li>
 </ul></li>
-<li class="chapter" data-level="20" data-path="lotka-volterra-predator-prey-dynamics.html"><a href="lotka-volterra-predator-prey-dynamics.html"><i class="fa fa-check"></i><b>20</b> Lotka-Volterra predator-prey dynamics</a>
+<li class="chapter" data-level="21" data-path="lotka-volterra-predator-prey-dynamics.html"><a href="lotka-volterra-predator-prey-dynamics.html"><i class="fa fa-check"></i><b>21</b> Lotka-Volterra predator-prey dynamics</a>
 <ul>
-<li class="chapter" data-level="20.1" data-path="lotka-volterra-predator-prey-dynamics.html"><a href="lotka-volterra-predator-prey-dynamics.html#background-16"><i class="fa fa-check"></i><b>20.1</b> Background</a></li>
-<li class="chapter" data-level="20.2" data-path="lotka-volterra-predator-prey-dynamics.html"><a href="lotka-volterra-predator-prey-dynamics.html#worked-example-16"><i class="fa fa-check"></i><b>20.2</b> Worked example</a></li>
-<li class="chapter" data-level="20.3" data-path="lotka-volterra-predator-prey-dynamics.html"><a href="lotka-volterra-predator-prey-dynamics.html#your-task-17"><i class="fa fa-check"></i><b>20.3</b> Your task</a></li>
-<li class="chapter" data-level="20.4" data-path="lotka-volterra-predator-prey-dynamics.html"><a href="lotka-volterra-predator-prey-dynamics.html#optional-extras"><i class="fa fa-check"></i><b>20.4</b> Optional extras</a></li>
-<li class="chapter" data-level="20.5" data-path="lotka-volterra-predator-prey-dynamics.html"><a href="lotka-volterra-predator-prey-dynamics.html#r-version"><i class="fa fa-check"></i><b>20.5</b> R-version</a>
+<li class="chapter" data-level="21.1" data-path="lotka-volterra-predator-prey-dynamics.html"><a href="lotka-volterra-predator-prey-dynamics.html#background-16"><i class="fa fa-check"></i><b>21.1</b> Background</a></li>
+<li class="chapter" data-level="21.2" data-path="lotka-volterra-predator-prey-dynamics.html"><a href="lotka-volterra-predator-prey-dynamics.html#worked-example-16"><i class="fa fa-check"></i><b>21.2</b> Worked example</a></li>
+<li class="chapter" data-level="21.3" data-path="lotka-volterra-predator-prey-dynamics.html"><a href="lotka-volterra-predator-prey-dynamics.html#your-task-17"><i class="fa fa-check"></i><b>21.3</b> Your task</a></li>
+<li class="chapter" data-level="21.4" data-path="lotka-volterra-predator-prey-dynamics.html"><a href="lotka-volterra-predator-prey-dynamics.html#optional-extras"><i class="fa fa-check"></i><b>21.4</b> Optional extras</a></li>
+<li class="chapter" data-level="21.5" data-path="lotka-volterra-predator-prey-dynamics.html"><a href="lotka-volterra-predator-prey-dynamics.html#r-version"><i class="fa fa-check"></i><b>21.5</b> R-version</a>
 <ul>
-<li class="chapter" data-level="20.5.1" data-path="lotka-volterra-predator-prey-dynamics.html"><a href="lotka-volterra-predator-prey-dynamics.html#reference"><i class="fa fa-check"></i><b>20.5.1</b> Reference</a></li>
+<li class="chapter" data-level="21.5.1" data-path="lotka-volterra-predator-prey-dynamics.html"><a href="lotka-volterra-predator-prey-dynamics.html#reference"><i class="fa fa-check"></i><b>21.5.1</b> Reference</a></li>
 </ul></li>
-<li class="chapter" data-level="20.6" data-path="lotka-volterra-predator-prey-dynamics.html"><a href="lotka-volterra-predator-prey-dynamics.html#takeaways-18"><i class="fa fa-check"></i><b>20.6</b> Takeaways</a></li>
+<li class="chapter" data-level="21.6" data-path="lotka-volterra-predator-prey-dynamics.html"><a href="lotka-volterra-predator-prey-dynamics.html#takeaways-18"><i class="fa fa-check"></i><b>21.6</b> Takeaways</a></li>
 </ul></li>
-<li class="chapter" data-level="21" data-path="continuous-time-lotka-volterra-predator-prey-model-in-r.html"><a href="continuous-time-lotka-volterra-predator-prey-model-in-r.html"><i class="fa fa-check"></i><b>21</b> Continuous-time Lotka-Volterra Predator-Prey Model in R</a>
+<li class="chapter" data-level="22" data-path="continuous-time-lotka-volterra-predator-prey-model-in-r.html"><a href="continuous-time-lotka-volterra-predator-prey-model-in-r.html"><i class="fa fa-check"></i><b>22</b> Continuous-time Lotka-Volterra Predator-Prey Model in R</a>
 <ul>
-<li class="chapter" data-level="21.1" data-path="continuous-time-lotka-volterra-predator-prey-model-in-r.html"><a href="continuous-time-lotka-volterra-predator-prey-model-in-r.html#background-17"><i class="fa fa-check"></i><b>21.1</b> Background</a></li>
-<li class="chapter" data-level="21.2" data-path="continuous-time-lotka-volterra-predator-prey-model-in-r.html"><a href="continuous-time-lotka-volterra-predator-prey-model-in-r.html#worked-example-17"><i class="fa fa-check"></i><b>21.2</b> Worked example</a></li>
-<li class="chapter" data-level="21.3" data-path="continuous-time-lotka-volterra-predator-prey-model-in-r.html"><a href="continuous-time-lotka-volterra-predator-prey-model-in-r.html#your-task-18"><i class="fa fa-check"></i><b>21.3</b> Your task</a>
+<li class="chapter" data-level="22.1" data-path="continuous-time-lotka-volterra-predator-prey-model-in-r.html"><a href="continuous-time-lotka-volterra-predator-prey-model-in-r.html#background-17"><i class="fa fa-check"></i><b>22.1</b> Background</a></li>
+<li class="chapter" data-level="22.2" data-path="continuous-time-lotka-volterra-predator-prey-model-in-r.html"><a href="continuous-time-lotka-volterra-predator-prey-model-in-r.html#worked-example-17"><i class="fa fa-check"></i><b>22.2</b> Worked example</a></li>
+<li class="chapter" data-level="22.3" data-path="continuous-time-lotka-volterra-predator-prey-model-in-r.html"><a href="continuous-time-lotka-volterra-predator-prey-model-in-r.html#your-task-18"><i class="fa fa-check"></i><b>22.3</b> Your task</a>
 <ul>
-<li class="chapter" data-level="21.3.1" data-path="continuous-time-lotka-volterra-predator-prey-model-in-r.html"><a href="continuous-time-lotka-volterra-predator-prey-model-in-r.html#step-0-create-a-new-script"><i class="fa fa-check"></i><b>21.3.1</b> Step 0: Create a new script</a></li>
-<li class="chapter" data-level="21.3.2" data-path="continuous-time-lotka-volterra-predator-prey-model-in-r.html"><a href="continuous-time-lotka-volterra-predator-prey-model-in-r.html#step-1-load-necessary-libraries"><i class="fa fa-check"></i><b>21.3.2</b> Step 1: Load Necessary Libraries</a></li>
-<li class="chapter" data-level="21.3.3" data-path="continuous-time-lotka-volterra-predator-prey-model-in-r.html"><a href="continuous-time-lotka-volterra-predator-prey-model-in-r.html#step-2-define-the-model"><i class="fa fa-check"></i><b>21.3.3</b> Step 2: Define the Model</a></li>
-<li class="chapter" data-level="21.3.4" data-path="continuous-time-lotka-volterra-predator-prey-model-in-r.html"><a href="continuous-time-lotka-volterra-predator-prey-model-in-r.html#step-3-set-parameters-and-initial-conditions"><i class="fa fa-check"></i><b>21.3.4</b> Step 3: Set Parameters and Initial Conditions</a></li>
-<li class="chapter" data-level="21.3.5" data-path="continuous-time-lotka-volterra-predator-prey-model-in-r.html"><a href="continuous-time-lotka-volterra-predator-prey-model-in-r.html#step-4-simulate-the-model"><i class="fa fa-check"></i><b>21.3.5</b> Step 4: Simulate the Model</a></li>
-<li class="chapter" data-level="21.3.6" data-path="continuous-time-lotka-volterra-predator-prey-model-in-r.html"><a href="continuous-time-lotka-volterra-predator-prey-model-in-r.html#step-5-visualise-the-dynamics"><i class="fa fa-check"></i><b>21.3.6</b> Step 5: Visualise the Dynamics</a></li>
-<li class="chapter" data-level="21.3.7" data-path="continuous-time-lotka-volterra-predator-prey-model-in-r.html"><a href="continuous-time-lotka-volterra-predator-prey-model-in-r.html#questions-11"><i class="fa fa-check"></i><b>21.3.7</b> Questions</a></li>
-<li class="chapter" data-level="21.3.8" data-path="continuous-time-lotka-volterra-predator-prey-model-in-r.html"><a href="continuous-time-lotka-volterra-predator-prey-model-in-r.html#conclusion"><i class="fa fa-check"></i><b>21.3.8</b> Conclusion</a></li>
+<li class="chapter" data-level="22.3.1" data-path="continuous-time-lotka-volterra-predator-prey-model-in-r.html"><a href="continuous-time-lotka-volterra-predator-prey-model-in-r.html#step-0-create-a-new-script"><i class="fa fa-check"></i><b>22.3.1</b> Step 0: Create a new script</a></li>
+<li class="chapter" data-level="22.3.2" data-path="continuous-time-lotka-volterra-predator-prey-model-in-r.html"><a href="continuous-time-lotka-volterra-predator-prey-model-in-r.html#step-1-load-necessary-libraries"><i class="fa fa-check"></i><b>22.3.2</b> Step 1: Load Necessary Libraries</a></li>
+<li class="chapter" data-level="22.3.3" data-path="continuous-time-lotka-volterra-predator-prey-model-in-r.html"><a href="continuous-time-lotka-volterra-predator-prey-model-in-r.html#step-2-define-the-model"><i class="fa fa-check"></i><b>22.3.3</b> Step 2: Define the Model</a></li>
+<li class="chapter" data-level="22.3.4" data-path="continuous-time-lotka-volterra-predator-prey-model-in-r.html"><a href="continuous-time-lotka-volterra-predator-prey-model-in-r.html#step-3-set-parameters-and-initial-conditions"><i class="fa fa-check"></i><b>22.3.4</b> Step 3: Set Parameters and Initial Conditions</a></li>
+<li class="chapter" data-level="22.3.5" data-path="continuous-time-lotka-volterra-predator-prey-model-in-r.html"><a href="continuous-time-lotka-volterra-predator-prey-model-in-r.html#step-4-simulate-the-model"><i class="fa fa-check"></i><b>22.3.5</b> Step 4: Simulate the Model</a></li>
+<li class="chapter" data-level="22.3.6" data-path="continuous-time-lotka-volterra-predator-prey-model-in-r.html"><a href="continuous-time-lotka-volterra-predator-prey-model-in-r.html#step-5-visualise-the-dynamics"><i class="fa fa-check"></i><b>22.3.6</b> Step 5: Visualise the Dynamics</a></li>
+<li class="chapter" data-level="22.3.7" data-path="continuous-time-lotka-volterra-predator-prey-model-in-r.html"><a href="continuous-time-lotka-volterra-predator-prey-model-in-r.html#questions-11"><i class="fa fa-check"></i><b>22.3.7</b> Questions</a></li>
+<li class="chapter" data-level="22.3.8" data-path="continuous-time-lotka-volterra-predator-prey-model-in-r.html"><a href="continuous-time-lotka-volterra-predator-prey-model-in-r.html#conclusion"><i class="fa fa-check"></i><b>22.3.8</b> Conclusion</a></li>
 </ul></li>
-<li class="chapter" data-level="21.4" data-path="continuous-time-lotka-volterra-predator-prey-model-in-r.html"><a href="continuous-time-lotka-volterra-predator-prey-model-in-r.html#takeaways-19"><i class="fa fa-check"></i><b>21.4</b> Takeaways</a></li>
+<li class="chapter" data-level="22.4" data-path="continuous-time-lotka-volterra-predator-prey-model-in-r.html"><a href="continuous-time-lotka-volterra-predator-prey-model-in-r.html#takeaways-19"><i class="fa fa-check"></i><b>22.4</b> Takeaways</a></li>
 </ul></li>
-<li class="chapter" data-level="22" data-path="discrete-time-lotka-volterra-predator-prey-model-in-r.html"><a href="discrete-time-lotka-volterra-predator-prey-model-in-r.html"><i class="fa fa-check"></i><b>22</b> Discrete-time Lotka-Volterra Predator-Prey Model in R</a>
+<li class="chapter" data-level="23" data-path="discrete-time-lotka-volterra-predator-prey-model-in-r.html"><a href="discrete-time-lotka-volterra-predator-prey-model-in-r.html"><i class="fa fa-check"></i><b>23</b> Discrete-time Lotka-Volterra Predator-Prey Model in R</a>
 <ul>
-<li class="chapter" data-level="22.1" data-path="discrete-time-lotka-volterra-predator-prey-model-in-r.html"><a href="discrete-time-lotka-volterra-predator-prey-model-in-r.html#learning-outcomes-4"><i class="fa fa-check"></i><b>22.1</b> Learning outcomes</a></li>
-<li class="chapter" data-level="22.2" data-path="discrete-time-lotka-volterra-predator-prey-model-in-r.html"><a href="discrete-time-lotka-volterra-predator-prey-model-in-r.html#worked-example-18"><i class="fa fa-check"></i><b>22.2</b> Worked example</a></li>
-<li class="chapter" data-level="22.3" data-path="discrete-time-lotka-volterra-predator-prey-model-in-r.html"><a href="discrete-time-lotka-volterra-predator-prey-model-in-r.html#introduction-1"><i class="fa fa-check"></i><b>22.3</b> Introduction</a></li>
-<li class="chapter" data-level="22.4" data-path="discrete-time-lotka-volterra-predator-prey-model-in-r.html"><a href="discrete-time-lotka-volterra-predator-prey-model-in-r.html#step-1-define-the-model"><i class="fa fa-check"></i><b>22.4</b> Step 1: Define the Model</a></li>
-<li class="chapter" data-level="22.5" data-path="discrete-time-lotka-volterra-predator-prey-model-in-r.html"><a href="discrete-time-lotka-volterra-predator-prey-model-in-r.html#step-2-set-parameters-and-initial-conditions"><i class="fa fa-check"></i><b>22.5</b> Step 2: Set Parameters and Initial Conditions</a></li>
-<li class="chapter" data-level="22.6" data-path="discrete-time-lotka-volterra-predator-prey-model-in-r.html"><a href="discrete-time-lotka-volterra-predator-prey-model-in-r.html#step-3-simulate-the-model"><i class="fa fa-check"></i><b>22.6</b> Step 3: Simulate the Model</a></li>
-<li class="chapter" data-level="22.7" data-path="discrete-time-lotka-volterra-predator-prey-model-in-r.html"><a href="discrete-time-lotka-volterra-predator-prey-model-in-r.html#step-4-visualise-the-dynamics"><i class="fa fa-check"></i><b>22.7</b> Step 4: Visualise the Dynamics</a>
+<li class="chapter" data-level="23.1" data-path="discrete-time-lotka-volterra-predator-prey-model-in-r.html"><a href="discrete-time-lotka-volterra-predator-prey-model-in-r.html#learning-outcomes-4"><i class="fa fa-check"></i><b>23.1</b> Learning outcomes</a></li>
+<li class="chapter" data-level="23.2" data-path="discrete-time-lotka-volterra-predator-prey-model-in-r.html"><a href="discrete-time-lotka-volterra-predator-prey-model-in-r.html#worked-example-18"><i class="fa fa-check"></i><b>23.2</b> Worked example</a></li>
+<li class="chapter" data-level="23.3" data-path="discrete-time-lotka-volterra-predator-prey-model-in-r.html"><a href="discrete-time-lotka-volterra-predator-prey-model-in-r.html#introduction-1"><i class="fa fa-check"></i><b>23.3</b> Introduction</a></li>
+<li class="chapter" data-level="23.4" data-path="discrete-time-lotka-volterra-predator-prey-model-in-r.html"><a href="discrete-time-lotka-volterra-predator-prey-model-in-r.html#step-1-define-the-model"><i class="fa fa-check"></i><b>23.4</b> Step 1: Define the Model</a></li>
+<li class="chapter" data-level="23.5" data-path="discrete-time-lotka-volterra-predator-prey-model-in-r.html"><a href="discrete-time-lotka-volterra-predator-prey-model-in-r.html#step-2-set-parameters-and-initial-conditions"><i class="fa fa-check"></i><b>23.5</b> Step 2: Set Parameters and Initial Conditions</a></li>
+<li class="chapter" data-level="23.6" data-path="discrete-time-lotka-volterra-predator-prey-model-in-r.html"><a href="discrete-time-lotka-volterra-predator-prey-model-in-r.html#step-3-simulate-the-model"><i class="fa fa-check"></i><b>23.6</b> Step 3: Simulate the Model</a></li>
+<li class="chapter" data-level="23.7" data-path="discrete-time-lotka-volterra-predator-prey-model-in-r.html"><a href="discrete-time-lotka-volterra-predator-prey-model-in-r.html#step-4-visualise-the-dynamics"><i class="fa fa-check"></i><b>23.7</b> Step 4: Visualise the Dynamics</a>
 <ul>
-<li class="chapter" data-level="22.7.1" data-path="discrete-time-lotka-volterra-predator-prey-model-in-r.html"><a href="discrete-time-lotka-volterra-predator-prey-model-in-r.html#population-dynamics-over-time-1"><i class="fa fa-check"></i><b>22.7.1</b> Population Dynamics Over Time</a></li>
-<li class="chapter" data-level="22.7.2" data-path="discrete-time-lotka-volterra-predator-prey-model-in-r.html"><a href="discrete-time-lotka-volterra-predator-prey-model-in-r.html#phase-plot-with-zngis-1"><i class="fa fa-check"></i><b>22.7.2</b> Phase Plot with ZNGIs</a></li>
+<li class="chapter" data-level="23.7.1" data-path="discrete-time-lotka-volterra-predator-prey-model-in-r.html"><a href="discrete-time-lotka-volterra-predator-prey-model-in-r.html#population-dynamics-over-time-1"><i class="fa fa-check"></i><b>23.7.1</b> Population Dynamics Over Time</a></li>
+<li class="chapter" data-level="23.7.2" data-path="discrete-time-lotka-volterra-predator-prey-model-in-r.html"><a href="discrete-time-lotka-volterra-predator-prey-model-in-r.html#phase-plot-with-zngis-1"><i class="fa fa-check"></i><b>23.7.2</b> Phase Plot with ZNGIs</a></li>
 </ul></li>
-<li class="chapter" data-level="22.8" data-path="discrete-time-lotka-volterra-predator-prey-model-in-r.html"><a href="discrete-time-lotka-volterra-predator-prey-model-in-r.html#conclusion-1"><i class="fa fa-check"></i><b>22.8</b> Conclusion</a></li>
-<li class="chapter" data-level="22.9" data-path="discrete-time-lotka-volterra-predator-prey-model-in-r.html"><a href="discrete-time-lotka-volterra-predator-prey-model-in-r.html#your-task-19"><i class="fa fa-check"></i><b>22.9</b> Your task</a></li>
-<li class="chapter" data-level="22.10" data-path="discrete-time-lotka-volterra-predator-prey-model-in-r.html"><a href="discrete-time-lotka-volterra-predator-prey-model-in-r.html#takeaways-20"><i class="fa fa-check"></i><b>22.10</b> Takeaways</a></li>
+<li class="chapter" data-level="23.8" data-path="discrete-time-lotka-volterra-predator-prey-model-in-r.html"><a href="discrete-time-lotka-volterra-predator-prey-model-in-r.html#conclusion-1"><i class="fa fa-check"></i><b>23.8</b> Conclusion</a></li>
+<li class="chapter" data-level="23.9" data-path="discrete-time-lotka-volterra-predator-prey-model-in-r.html"><a href="discrete-time-lotka-volterra-predator-prey-model-in-r.html#your-task-19"><i class="fa fa-check"></i><b>23.9</b> Your task</a></li>
+<li class="chapter" data-level="23.10" data-path="discrete-time-lotka-volterra-predator-prey-model-in-r.html"><a href="discrete-time-lotka-volterra-predator-prey-model-in-r.html#takeaways-20"><i class="fa fa-check"></i><b>23.10</b> Takeaways</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="part-5.html"><a href="part-5.html"><i class="fa fa-check"></i>Part 5: Animal behaviour, altruism and sexual selection</a></li>
-<li class="chapter" data-level="23" data-path="game-theory-hawks-and-doves.html"><a href="game-theory-hawks-and-doves.html"><i class="fa fa-check"></i><b>23</b> Game theory: Hawks and doves</a>
+<li class="chapter" data-level="24" data-path="game-theory-hawks-and-doves.html"><a href="game-theory-hawks-and-doves.html"><i class="fa fa-check"></i><b>24</b> Game theory: Hawks and doves</a>
 <ul>
-<li class="chapter" data-level="23.1" data-path="game-theory-hawks-and-doves.html"><a href="game-theory-hawks-and-doves.html#background-18"><i class="fa fa-check"></i><b>23.1</b> Background</a></li>
-<li class="chapter" data-level="23.2" data-path="game-theory-hawks-and-doves.html"><a href="game-theory-hawks-and-doves.html#worked-example-19"><i class="fa fa-check"></i><b>23.2</b> Worked example</a></li>
-<li class="chapter" data-level="23.3" data-path="game-theory-hawks-and-doves.html"><a href="game-theory-hawks-and-doves.html#your-task-20"><i class="fa fa-check"></i><b>23.3</b> Your task</a></li>
-<li class="chapter" data-level="23.4" data-path="game-theory-hawks-and-doves.html"><a href="game-theory-hawks-and-doves.html#the-payoff-table"><i class="fa fa-check"></i><b>23.4</b> The payoff table</a>
+<li class="chapter" data-level="24.1" data-path="game-theory-hawks-and-doves.html"><a href="game-theory-hawks-and-doves.html#background-18"><i class="fa fa-check"></i><b>24.1</b> Background</a></li>
+<li class="chapter" data-level="24.2" data-path="game-theory-hawks-and-doves.html"><a href="game-theory-hawks-and-doves.html#worked-example-19"><i class="fa fa-check"></i><b>24.2</b> Worked example</a></li>
+<li class="chapter" data-level="24.3" data-path="game-theory-hawks-and-doves.html"><a href="game-theory-hawks-and-doves.html#your-task-20"><i class="fa fa-check"></i><b>24.3</b> Your task</a></li>
+<li class="chapter" data-level="24.4" data-path="game-theory-hawks-and-doves.html"><a href="game-theory-hawks-and-doves.html#the-payoff-table"><i class="fa fa-check"></i><b>24.4</b> The payoff table</a>
 <ul>
-<li class="chapter" data-level="23.4.1" data-path="game-theory-hawks-and-doves.html"><a href="game-theory-hawks-and-doves.html#hypotheses"><i class="fa fa-check"></i><b>23.4.1</b> Hypotheses</a></li>
-<li class="chapter" data-level="23.4.2" data-path="game-theory-hawks-and-doves.html"><a href="game-theory-hawks-and-doves.html#game-one"><i class="fa fa-check"></i><b>23.4.2</b> GAME ONE</a></li>
-<li class="chapter" data-level="23.4.3" data-path="game-theory-hawks-and-doves.html"><a href="game-theory-hawks-and-doves.html#game-two"><i class="fa fa-check"></i><b>23.4.3</b> GAME TWO</a></li>
+<li class="chapter" data-level="24.4.1" data-path="game-theory-hawks-and-doves.html"><a href="game-theory-hawks-and-doves.html#hypotheses"><i class="fa fa-check"></i><b>24.4.1</b> Hypotheses</a></li>
+<li class="chapter" data-level="24.4.2" data-path="game-theory-hawks-and-doves.html"><a href="game-theory-hawks-and-doves.html#game-one"><i class="fa fa-check"></i><b>24.4.2</b> GAME ONE</a></li>
+<li class="chapter" data-level="24.4.3" data-path="game-theory-hawks-and-doves.html"><a href="game-theory-hawks-and-doves.html#game-two"><i class="fa fa-check"></i><b>24.4.3</b> GAME TWO</a></li>
 </ul></li>
-<li class="chapter" data-level="23.5" data-path="game-theory-hawks-and-doves.html"><a href="game-theory-hawks-and-doves.html#summarise-results"><i class="fa fa-check"></i><b>23.5</b> SUMMARISE RESULTS</a></li>
-<li class="chapter" data-level="23.6" data-path="game-theory-hawks-and-doves.html"><a href="game-theory-hawks-and-doves.html#acknowledgement"><i class="fa fa-check"></i><b>23.6</b> Acknowledgement</a></li>
-<li class="chapter" data-level="23.7" data-path="game-theory-hawks-and-doves.html"><a href="game-theory-hawks-and-doves.html#takeaways-21"><i class="fa fa-check"></i><b>23.7</b> Takeaways</a></li>
+<li class="chapter" data-level="24.5" data-path="game-theory-hawks-and-doves.html"><a href="game-theory-hawks-and-doves.html#summarise-results"><i class="fa fa-check"></i><b>24.5</b> SUMMARISE RESULTS</a></li>
+<li class="chapter" data-level="24.6" data-path="game-theory-hawks-and-doves.html"><a href="game-theory-hawks-and-doves.html#acknowledgement"><i class="fa fa-check"></i><b>24.6</b> Acknowledgement</a></li>
+<li class="chapter" data-level="24.7" data-path="game-theory-hawks-and-doves.html"><a href="game-theory-hawks-and-doves.html#takeaways-21"><i class="fa fa-check"></i><b>24.7</b> Takeaways</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="part-6.html"><a href="part-6.html"><i class="fa fa-check"></i>Part 6: Solutions/answers</a></li>
-<li class="chapter" data-level="24" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html"><i class="fa fa-check"></i><b>24</b> Solutions and “take-home” messages</a>
+<li class="chapter" data-level="25" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html"><i class="fa fa-check"></i><b>25</b> Solutions and “take-home” messages</a>
 <ul>
-<li class="chapter" data-level="24.1" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#how-to-use-this-section"><i class="fa fa-check"></i><b>24.1</b> How to use this section</a></li>
-<li class="chapter" data-level="24.2" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#solutions-the-blind-watchmaker"><i class="fa fa-check"></i><b>24.2</b> Solutions: The blind watchmaker</a></li>
-<li class="chapter" data-level="24.3" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#solutions-bug-hunt-camouflage"><i class="fa fa-check"></i><b>24.3</b> Solutions: Bug hunt camouflage</a></li>
-<li class="chapter" data-level="24.4" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#solutions-geometric-growth"><i class="fa fa-check"></i><b>24.4</b> Solutions: Geometric growth</a></li>
-<li class="chapter" data-level="24.5" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#solutions-estimating-population-growth-rate"><i class="fa fa-check"></i><b>24.5</b> Solutions: Estimating Population Growth Rate</a></li>
-<li class="chapter" data-level="24.6" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#solutions-stochastic-population-growth"><i class="fa fa-check"></i><b>24.6</b> Solutions: Stochastic population growth</a></li>
-<li class="chapter" data-level="24.7" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#solutions-basic-logistic-population-growth"><i class="fa fa-check"></i><b>24.7</b> Solutions: Basic logistic population growth</a></li>
-<li class="chapter" data-level="24.8" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#solutions-deeper-into-logistic-growth"><i class="fa fa-check"></i><b>24.8</b> Solutions: Deeper into logistic growth</a>
+<li class="chapter" data-level="25.1" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#how-to-use-this-section"><i class="fa fa-check"></i><b>25.1</b> How to use this section</a></li>
+<li class="chapter" data-level="25.2" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#solutions-the-blind-watchmaker"><i class="fa fa-check"></i><b>25.2</b> Solutions: The blind watchmaker</a></li>
+<li class="chapter" data-level="25.3" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#solutions-bug-hunt-camouflage"><i class="fa fa-check"></i><b>25.3</b> Solutions: Bug hunt camouflage</a></li>
+<li class="chapter" data-level="25.4" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#solutions-geometric-growth"><i class="fa fa-check"></i><b>25.4</b> Solutions: Geometric growth</a></li>
+<li class="chapter" data-level="25.5" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#solutions-estimating-population-growth-rate"><i class="fa fa-check"></i><b>25.5</b> Solutions: Estimating Population Growth Rate</a></li>
+<li class="chapter" data-level="25.6" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#solutions-stochastic-population-growth"><i class="fa fa-check"></i><b>25.6</b> Solutions: Stochastic population growth</a></li>
+<li class="chapter" data-level="25.7" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#solutions-basic-logistic-population-growth"><i class="fa fa-check"></i><b>25.7</b> Solutions: Basic logistic population growth</a></li>
+<li class="chapter" data-level="25.8" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#solutions-deeper-into-logistic-growth"><i class="fa fa-check"></i><b>25.8</b> Solutions: Deeper into logistic growth</a>
 <ul>
-<li class="chapter" data-level="24.8.1" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#relationship-between-logistic-and-exponential-growth-equations"><i class="fa fa-check"></i><b>24.8.1</b> Relationship between Logistic and Exponential growth equations</a></li>
-<li class="chapter" data-level="24.8.2" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#type-of-dynamics-depends-on-r_m."><i class="fa fa-check"></i><b>24.8.2</b> Type of dynamics depends on <span class="math inline">\(r_m\)</span>.</a></li>
-<li class="chapter" data-level="24.8.3" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#you-can-obtain-parameters-from-graphs"><i class="fa fa-check"></i><b>24.8.3</b> You can obtain parameters from graphs</a></li>
-<li class="chapter" data-level="24.8.4" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#time-lag"><i class="fa fa-check"></i><b>24.8.4</b> Time lag</a></li>
-<li class="chapter" data-level="24.8.5" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#chaotic-dynamics"><i class="fa fa-check"></i><b>24.8.5</b> Chaotic dynamics</a></li>
+<li class="chapter" data-level="25.8.1" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#relationship-between-logistic-and-exponential-growth-equations"><i class="fa fa-check"></i><b>25.8.1</b> Relationship between Logistic and Exponential growth equations</a></li>
+<li class="chapter" data-level="25.8.2" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#type-of-dynamics-depends-on-r_m."><i class="fa fa-check"></i><b>25.8.2</b> Type of dynamics depends on <span class="math inline">\(r_m\)</span>.</a></li>
+<li class="chapter" data-level="25.8.3" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#you-can-obtain-parameters-from-graphs"><i class="fa fa-check"></i><b>25.8.3</b> You can obtain parameters from graphs</a></li>
+<li class="chapter" data-level="25.8.4" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#time-lag"><i class="fa fa-check"></i><b>25.8.4</b> Time lag</a></li>
+<li class="chapter" data-level="25.8.5" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#chaotic-dynamics"><i class="fa fa-check"></i><b>25.8.5</b> Chaotic dynamics</a></li>
 </ul></li>
-<li class="chapter" data-level="24.9" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#solutions-life-tables-and-survivorship-types"><i class="fa fa-check"></i><b>24.9</b> Solutions: Life tables and survivorship types</a></li>
-<li class="chapter" data-level="24.10" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#solutions-matrix-population-modelling"><i class="fa fa-check"></i><b>24.10</b> Solutions: Matrix population modelling</a></li>
-<li class="chapter" data-level="24.11" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#solutions-how-many-eggs-should-a-bird-lay"><i class="fa fa-check"></i><b>24.11</b> Solutions: How many eggs should a bird lay?</a></li>
-<li class="chapter" data-level="24.12" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#solutions-trade-offs-and-the-force-of-selection"><i class="fa fa-check"></i><b>24.12</b> Solutions: Trade-offs and the force of selection</a></li>
-<li class="chapter" data-level="24.13" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#solutions-hardy-weinberg-equilibrium"><i class="fa fa-check"></i><b>24.13</b> Solutions: Hardy-Weinberg equilibrium</a>
+<li class="chapter" data-level="25.9" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#solutions-life-tables-and-survivorship-types"><i class="fa fa-check"></i><b>25.9</b> Solutions: Life tables and survivorship types</a></li>
+<li class="chapter" data-level="25.10" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#solutions-matrix-population-modelling"><i class="fa fa-check"></i><b>25.10</b> Solutions: Matrix population modelling</a></li>
+<li class="chapter" data-level="25.11" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#solutions-how-many-eggs-should-a-bird-lay"><i class="fa fa-check"></i><b>25.11</b> Solutions: How many eggs should a bird lay?</a></li>
+<li class="chapter" data-level="25.12" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#solutions-trade-offs-and-the-force-of-selection"><i class="fa fa-check"></i><b>25.12</b> Solutions: Trade-offs and the force of selection</a></li>
+<li class="chapter" data-level="25.13" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#solutions-hardy-weinberg-equilibrium"><i class="fa fa-check"></i><b>25.13</b> Solutions: Hardy-Weinberg equilibrium</a>
 <ul>
-<li class="chapter" data-level="24.13.1" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#problem-1"><i class="fa fa-check"></i><b>24.13.1</b> Problem 1</a></li>
-<li class="chapter" data-level="24.13.2" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#problem-2"><i class="fa fa-check"></i><b>24.13.2</b> Problem 2</a></li>
-<li class="chapter" data-level="24.13.3" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#problem-3"><i class="fa fa-check"></i><b>24.13.3</b> Problem 3</a></li>
-<li class="chapter" data-level="24.13.4" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#problem-4"><i class="fa fa-check"></i><b>24.13.4</b> Problem 4</a></li>
+<li class="chapter" data-level="25.13.1" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#problem-1"><i class="fa fa-check"></i><b>25.13.1</b> Problem 1</a></li>
+<li class="chapter" data-level="25.13.2" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#problem-2"><i class="fa fa-check"></i><b>25.13.2</b> Problem 2</a></li>
+<li class="chapter" data-level="25.13.3" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#problem-3"><i class="fa fa-check"></i><b>25.13.3</b> Problem 3</a></li>
+<li class="chapter" data-level="25.13.4" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#problem-4"><i class="fa fa-check"></i><b>25.13.4</b> Problem 4</a></li>
 </ul></li>
-<li class="chapter" data-level="24.14" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#solutions-gene-pool-model"><i class="fa fa-check"></i><b>24.14</b> Solutions: Gene pool model</a>
+<li class="chapter" data-level="25.14" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#solutions-gene-pool-model"><i class="fa fa-check"></i><b>25.14</b> Solutions: Gene pool model</a>
 <ul>
-<li class="chapter" data-level="24.14.1" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#discussion-questions"><i class="fa fa-check"></i><b>24.14.1</b> Discussion questions</a></li>
-<li class="chapter" data-level="24.14.2" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#bottlenecks-1"><i class="fa fa-check"></i><b>24.14.2</b> Bottlenecks</a></li>
-<li class="chapter" data-level="24.14.3" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#broader-questions"><i class="fa fa-check"></i><b>24.14.3</b> Broader questions</a></li>
+<li class="chapter" data-level="25.14.1" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#discussion-questions"><i class="fa fa-check"></i><b>25.14.1</b> Discussion questions</a></li>
+<li class="chapter" data-level="25.14.2" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#bottlenecks-1"><i class="fa fa-check"></i><b>25.14.2</b> Bottlenecks</a></li>
+<li class="chapter" data-level="25.14.3" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#broader-questions"><i class="fa fa-check"></i><b>25.14.3</b> Broader questions</a></li>
 </ul></li>
-<li class="chapter" data-level="24.15" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#solutions-neutral-or-adaptive-evolution-in-humans"><i class="fa fa-check"></i><b>24.15</b> Solutions: Neutral or adaptive evolution in humans</a></li>
-<li class="chapter" data-level="24.16" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#solutions-heritability"><i class="fa fa-check"></i><b>24.16</b> Solutions: Heritability</a></li>
-<li class="chapter" data-level="24.17" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#solutions-lotka-volterra-competition"><i class="fa fa-check"></i><b>24.17</b> Solutions: Lotka-Volterra competition</a></li>
-<li class="chapter" data-level="24.18" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#solutions-lotka-volterra-predator-prey-dynamics"><i class="fa fa-check"></i><b>24.18</b> Solutions: Lotka-Volterra predator-prey dynamics</a></li>
-<li class="chapter" data-level="24.19" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#solutions-the-legend-of-ambalappuzha"><i class="fa fa-check"></i><b>24.19</b> Solutions: The legend of Ambalappuzha</a></li>
-<li class="chapter" data-level="24.20" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#solutions-from-population-biology-to-fitness"><i class="fa fa-check"></i><b>24.20</b> Solutions: From population biology to fitness</a></li>
+<li class="chapter" data-level="25.15" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#solutions-neutral-or-adaptive-evolution-in-humans"><i class="fa fa-check"></i><b>25.15</b> Solutions: Neutral or adaptive evolution in humans</a></li>
+<li class="chapter" data-level="25.16" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#solutions-heritability"><i class="fa fa-check"></i><b>25.16</b> Solutions: Heritability</a></li>
+<li class="chapter" data-level="25.17" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#solutions-lotka-volterra-competition"><i class="fa fa-check"></i><b>25.17</b> Solutions: Lotka-Volterra competition</a></li>
+<li class="chapter" data-level="25.18" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#solutions-lotka-volterra-predator-prey-dynamics"><i class="fa fa-check"></i><b>25.18</b> Solutions: Lotka-Volterra predator-prey dynamics</a></li>
+<li class="chapter" data-level="25.19" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#solutions-the-legend-of-ambalappuzha"><i class="fa fa-check"></i><b>25.19</b> Solutions: The legend of Ambalappuzha</a></li>
+<li class="chapter" data-level="25.20" data-path="solutions-and-take-home-messages.html"><a href="solutions-and-take-home-messages.html#solutions-from-population-biology-to-fitness"><i class="fa fa-check"></i><b>25.20</b> Solutions: From population biology to fitness</a></li>
 </ul></li>
-<li class="chapter" data-level="25" data-path="results-of-the-hawk-dove-games.html"><a href="results-of-the-hawk-dove-games.html"><i class="fa fa-check"></i><b>25</b> Results of the hawk-dove games</a>
+<li class="chapter" data-level="26" data-path="results-of-the-hawk-dove-games.html"><a href="results-of-the-hawk-dove-games.html"><i class="fa fa-check"></i><b>26</b> Results of the hawk-dove games</a>
 <ul>
-<li class="chapter" data-level="25.0.1" data-path="results-of-the-hawk-dove-games.html"><a href="results-of-the-hawk-dove-games.html#game-2---different-opponents"><i class="fa fa-check"></i><b>25.0.1</b> Game 2 - different opponents</a></li>
+<li class="chapter" data-level="26.0.1" data-path="results-of-the-hawk-dove-games.html"><a href="results-of-the-hawk-dove-games.html#game-2---different-opponents"><i class="fa fa-check"></i><b>26.0.1</b> Game 2 - different opponents</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="part-7.html"><a href="part-7.html"><i class="fa fa-check"></i>Part 7: Appendix - extras</a></li>
-<li class="chapter" data-level="26" data-path="exponential-growth-in-detail.html"><a href="exponential-growth-in-detail.html"><i class="fa fa-check"></i><b>26</b> Exponential growth in detail</a>
+<li class="chapter" data-level="27" data-path="exponential-growth-in-detail.html"><a href="exponential-growth-in-detail.html"><i class="fa fa-check"></i><b>27</b> Exponential growth in detail</a>
 <ul>
-<li class="chapter" data-level="26.0.1" data-path="exponential-growth-in-detail.html"><a href="exponential-growth-in-detail.html#nomenclature"><i class="fa fa-check"></i><b>26.0.1</b> Nomenclature</a></li>
-<li class="chapter" data-level="26.1" data-path="exponential-growth-in-detail.html"><a href="exponential-growth-in-detail.html#discrete-time-model"><i class="fa fa-check"></i><b>26.1</b> Discrete time model</a>
+<li class="chapter" data-level="27.0.1" data-path="exponential-growth-in-detail.html"><a href="exponential-growth-in-detail.html#nomenclature"><i class="fa fa-check"></i><b>27.0.1</b> Nomenclature</a></li>
+<li class="chapter" data-level="27.1" data-path="exponential-growth-in-detail.html"><a href="exponential-growth-in-detail.html#discrete-time-model"><i class="fa fa-check"></i><b>27.1</b> Discrete time model</a>
 <ul>
-<li class="chapter" data-level="26.1.1" data-path="exponential-growth-in-detail.html"><a href="exponential-growth-in-detail.html#calculating-n-for-any-future-time-point"><i class="fa fa-check"></i><b>26.1.1</b> Calculating N for any future time point</a></li>
-<li class="chapter" data-level="26.1.2" data-path="exponential-growth-in-detail.html"><a href="exponential-growth-in-detail.html#applying-the-model"><i class="fa fa-check"></i><b>26.1.2</b> Applying the model</a></li>
+<li class="chapter" data-level="27.1.1" data-path="exponential-growth-in-detail.html"><a href="exponential-growth-in-detail.html#calculating-n-for-any-future-time-point"><i class="fa fa-check"></i><b>27.1.1</b> Calculating N for any future time point</a></li>
+<li class="chapter" data-level="27.1.2" data-path="exponential-growth-in-detail.html"><a href="exponential-growth-in-detail.html#applying-the-model"><i class="fa fa-check"></i><b>27.1.2</b> Applying the model</a></li>
 </ul></li>
-<li class="chapter" data-level="26.2" data-path="exponential-growth-in-detail.html"><a href="exponential-growth-in-detail.html#real-world-application-breeding-pairs-of-merlin-falco-columbarius"><i class="fa fa-check"></i><b>26.2</b> Real-World Application: Breeding Pairs of Merlin (Falco columbarius)</a>
+<li class="chapter" data-level="27.2" data-path="exponential-growth-in-detail.html"><a href="exponential-growth-in-detail.html#real-world-application-breeding-pairs-of-merlin-falco-columbarius"><i class="fa fa-check"></i><b>27.2</b> Real-World Application: Breeding Pairs of Merlin (Falco columbarius)</a>
 <ul>
-<li class="chapter" data-level="26.2.1" data-path="exponential-growth-in-detail.html"><a href="exponential-growth-in-detail.html#observations-and-context"><i class="fa fa-check"></i><b>26.2.1</b> Observations and Context</a></li>
-<li class="chapter" data-level="26.2.2" data-path="exponential-growth-in-detail.html"><a href="exponential-growth-in-detail.html#applying-the-exponential-growth-model"><i class="fa fa-check"></i><b>26.2.2</b> Applying the Exponential Growth Model</a></li>
+<li class="chapter" data-level="27.2.1" data-path="exponential-growth-in-detail.html"><a href="exponential-growth-in-detail.html#observations-and-context"><i class="fa fa-check"></i><b>27.2.1</b> Observations and Context</a></li>
+<li class="chapter" data-level="27.2.2" data-path="exponential-growth-in-detail.html"><a href="exponential-growth-in-detail.html#applying-the-exponential-growth-model"><i class="fa fa-check"></i><b>27.2.2</b> Applying the Exponential Growth Model</a></li>
 </ul></li>
-<li class="chapter" data-level="26.3" data-path="exponential-growth-in-detail.html"><a href="exponential-growth-in-detail.html#continuous-time-model"><i class="fa fa-check"></i><b>26.3</b> Continuous time model</a>
+<li class="chapter" data-level="27.3" data-path="exponential-growth-in-detail.html"><a href="exponential-growth-in-detail.html#continuous-time-model"><i class="fa fa-check"></i><b>27.3</b> Continuous time model</a>
 <ul>
-<li class="chapter" data-level="26.3.1" data-path="exponential-growth-in-detail.html"><a href="exponential-growth-in-detail.html#zero-population-growth"><i class="fa fa-check"></i><b>26.3.1</b> Zero population growth</a></li>
+<li class="chapter" data-level="27.3.1" data-path="exponential-growth-in-detail.html"><a href="exponential-growth-in-detail.html#zero-population-growth"><i class="fa fa-check"></i><b>27.3.1</b> Zero population growth</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="27" data-path="the-legend-of-ambalappuzha.html"><a href="the-legend-of-ambalappuzha.html"><i class="fa fa-check"></i><b>27</b> The legend of Ambalappuzha</a>
+<li class="chapter" data-level="28" data-path="the-legend-of-ambalappuzha.html"><a href="the-legend-of-ambalappuzha.html"><i class="fa fa-check"></i><b>28</b> The legend of Ambalappuzha</a>
 <ul>
-<li class="chapter" data-level="27.1" data-path="the-legend-of-ambalappuzha.html"><a href="the-legend-of-ambalappuzha.html#animalsplants-not-grains-of-rice"><i class="fa fa-check"></i><b>27.1</b> Animals/plants, not grains of rice</a>
+<li class="chapter" data-level="28.1" data-path="the-legend-of-ambalappuzha.html"><a href="the-legend-of-ambalappuzha.html#animalsplants-not-grains-of-rice"><i class="fa fa-check"></i><b>28.1</b> Animals/plants, not grains of rice</a>
 <ul>
-<li class="chapter" data-level="27.1.1" data-path="the-legend-of-ambalappuzha.html"><a href="the-legend-of-ambalappuzha.html#quick-exercise-optional"><i class="fa fa-check"></i><b>27.1.1</b> Quick exercise (optional)</a></li>
-<li class="chapter" data-level="27.1.2" data-path="the-legend-of-ambalappuzha.html"><a href="the-legend-of-ambalappuzha.html#discussion-prompts"><i class="fa fa-check"></i><b>27.1.2</b> Discussion prompts</a></li>
+<li class="chapter" data-level="28.1.1" data-path="the-legend-of-ambalappuzha.html"><a href="the-legend-of-ambalappuzha.html#quick-exercise-optional"><i class="fa fa-check"></i><b>28.1.1</b> Quick exercise (optional)</a></li>
+<li class="chapter" data-level="28.1.2" data-path="the-legend-of-ambalappuzha.html"><a href="the-legend-of-ambalappuzha.html#discussion-prompts"><i class="fa fa-check"></i><b>28.1.2</b> Discussion prompts</a></li>
 </ul></li>
-<li class="chapter" data-level="27.2" data-path="the-legend-of-ambalappuzha.html"><a href="the-legend-of-ambalappuzha.html#optional-try-these-calculations-in-r"><i class="fa fa-check"></i><b>27.2</b> Optional: Try these calculations in R</a></li>
+<li class="chapter" data-level="28.2" data-path="the-legend-of-ambalappuzha.html"><a href="the-legend-of-ambalappuzha.html#optional-try-these-calculations-in-r"><i class="fa fa-check"></i><b>28.2</b> Optional: Try these calculations in R</a></li>
 </ul></li>
-<li class="chapter" data-level="28" data-path="from-population-biology-to-fitness.html"><a href="from-population-biology-to-fitness.html"><i class="fa fa-check"></i><b>28</b> From population biology to fitness</a>
+<li class="chapter" data-level="29" data-path="from-population-biology-to-fitness.html"><a href="from-population-biology-to-fitness.html"><i class="fa fa-check"></i><b>29</b> From population biology to fitness</a>
 <ul>
-<li class="chapter" data-level="28.1" data-path="from-population-biology-to-fitness.html"><a href="from-population-biology-to-fitness.html#an-in-silico-experiment"><i class="fa fa-check"></i><b>28.1</b> An <em>in silico</em> experiment</a></li>
-<li class="chapter" data-level="28.2" data-path="from-population-biology-to-fitness.html"><a href="from-population-biology-to-fitness.html#the-link-to-fitness"><i class="fa fa-check"></i><b>28.2</b> The link to fitness</a></li>
-<li class="chapter" data-level="28.3" data-path="from-population-biology-to-fitness.html"><a href="from-population-biology-to-fitness.html#introducing-a-trade-off"><i class="fa fa-check"></i><b>28.3</b> Introducing a trade-off</a></li>
+<li class="chapter" data-level="29.1" data-path="from-population-biology-to-fitness.html"><a href="from-population-biology-to-fitness.html#an-in-silico-experiment"><i class="fa fa-check"></i><b>29.1</b> An <em>in silico</em> experiment</a></li>
+<li class="chapter" data-level="29.2" data-path="from-population-biology-to-fitness.html"><a href="from-population-biology-to-fitness.html#the-link-to-fitness"><i class="fa fa-check"></i><b>29.2</b> The link to fitness</a></li>
+<li class="chapter" data-level="29.3" data-path="from-population-biology-to-fitness.html"><a href="from-population-biology-to-fitness.html#introducing-a-trade-off"><i class="fa fa-check"></i><b>29.3</b> Introducing a trade-off</a></li>
 </ul></li>
-<li class="chapter" data-level="29" data-path="from-plain-english-to-a-matrix-model.html"><a href="from-plain-english-to-a-matrix-model.html"><i class="fa fa-check"></i><b>29</b> From plain English to a matrix model</a>
+<li class="chapter" data-level="30" data-path="from-plain-english-to-a-matrix-model.html"><a href="from-plain-english-to-a-matrix-model.html"><i class="fa fa-check"></i><b>30</b> From plain English to a matrix model</a>
 <ul>
-<li class="chapter" data-level="29.1" data-path="from-plain-english-to-a-matrix-model.html"><a href="from-plain-english-to-a-matrix-model.html#background-19"><i class="fa fa-check"></i><b>29.1</b> Background</a></li>
-<li class="chapter" data-level="29.2" data-path="from-plain-english-to-a-matrix-model.html"><a href="from-plain-english-to-a-matrix-model.html#worked-example-20"><i class="fa fa-check"></i><b>29.2</b> Worked example</a></li>
-<li class="chapter" data-level="29.3" data-path="from-plain-english-to-a-matrix-model.html"><a href="from-plain-english-to-a-matrix-model.html#your-task-21"><i class="fa fa-check"></i><b>29.3</b> Your task</a></li>
-<li class="chapter" data-level="29.4" data-path="from-plain-english-to-a-matrix-model.html"><a href="from-plain-english-to-a-matrix-model.html#takeaways-22"><i class="fa fa-check"></i><b>29.4</b> Takeaways</a></li>
+<li class="chapter" data-level="30.1" data-path="from-plain-english-to-a-matrix-model.html"><a href="from-plain-english-to-a-matrix-model.html#background-19"><i class="fa fa-check"></i><b>30.1</b> Background</a></li>
+<li class="chapter" data-level="30.2" data-path="from-plain-english-to-a-matrix-model.html"><a href="from-plain-english-to-a-matrix-model.html#worked-example-20"><i class="fa fa-check"></i><b>30.2</b> Worked example</a></li>
+<li class="chapter" data-level="30.3" data-path="from-plain-english-to-a-matrix-model.html"><a href="from-plain-english-to-a-matrix-model.html#your-task-21"><i class="fa fa-check"></i><b>30.3</b> Your task</a></li>
+<li class="chapter" data-level="30.4" data-path="from-plain-english-to-a-matrix-model.html"><a href="from-plain-english-to-a-matrix-model.html#takeaways-22"><i class="fa fa-check"></i><b>30.4</b> Takeaways</a></li>
 </ul></li>
-<li class="chapter" data-level="30" data-path="continuous-traits-from-discrete-genes.html"><a href="continuous-traits-from-discrete-genes.html"><i class="fa fa-check"></i><b>30</b> Continuous traits from discrete genes</a>
+<li class="chapter" data-level="31" data-path="continuous-traits-from-discrete-genes.html"><a href="continuous-traits-from-discrete-genes.html"><i class="fa fa-check"></i><b>31</b> Continuous traits from discrete genes</a>
 <ul>
-<li class="chapter" data-level="30.1" data-path="continuous-traits-from-discrete-genes.html"><a href="continuous-traits-from-discrete-genes.html#background-20"><i class="fa fa-check"></i><b>30.1</b> Background</a></li>
-<li class="chapter" data-level="30.2" data-path="continuous-traits-from-discrete-genes.html"><a href="continuous-traits-from-discrete-genes.html#worked-example-21"><i class="fa fa-check"></i><b>30.2</b> Worked example</a></li>
-<li class="chapter" data-level="30.3" data-path="continuous-traits-from-discrete-genes.html"><a href="continuous-traits-from-discrete-genes.html#your-task-22"><i class="fa fa-check"></i><b>30.3</b> Your task</a></li>
-<li class="chapter" data-level="30.4" data-path="continuous-traits-from-discrete-genes.html"><a href="continuous-traits-from-discrete-genes.html#takeaways-23"><i class="fa fa-check"></i><b>30.4</b> Takeaways</a></li>
+<li class="chapter" data-level="31.1" data-path="continuous-traits-from-discrete-genes.html"><a href="continuous-traits-from-discrete-genes.html#background-20"><i class="fa fa-check"></i><b>31.1</b> Background</a></li>
+<li class="chapter" data-level="31.2" data-path="continuous-traits-from-discrete-genes.html"><a href="continuous-traits-from-discrete-genes.html#worked-example-21"><i class="fa fa-check"></i><b>31.2</b> Worked example</a></li>
+<li class="chapter" data-level="31.3" data-path="continuous-traits-from-discrete-genes.html"><a href="continuous-traits-from-discrete-genes.html#your-task-22"><i class="fa fa-check"></i><b>31.3</b> Your task</a></li>
+<li class="chapter" data-level="31.4" data-path="continuous-traits-from-discrete-genes.html"><a href="continuous-traits-from-discrete-genes.html#takeaways-23"><i class="fa fa-check"></i><b>31.4</b> Takeaways</a></li>
 </ul></li>
-<li class="chapter" data-level="31" data-path="building-a-phylogenetic-tree.html"><a href="building-a-phylogenetic-tree.html"><i class="fa fa-check"></i><b>31</b> Building a phylogenetic tree</a>
+<li class="chapter" data-level="32" data-path="building-a-phylogenetic-tree.html"><a href="building-a-phylogenetic-tree.html"><i class="fa fa-check"></i><b>32</b> Building a phylogenetic tree</a>
 <ul>
-<li class="chapter" data-level="31.1" data-path="building-a-phylogenetic-tree.html"><a href="building-a-phylogenetic-tree.html#background-21"><i class="fa fa-check"></i><b>31.1</b> Background</a></li>
-<li class="chapter" data-level="31.2" data-path="building-a-phylogenetic-tree.html"><a href="building-a-phylogenetic-tree.html#worked-example-22"><i class="fa fa-check"></i><b>31.2</b> Worked example</a></li>
-<li class="chapter" data-level="31.3" data-path="building-a-phylogenetic-tree.html"><a href="building-a-phylogenetic-tree.html#your-task-23"><i class="fa fa-check"></i><b>31.3</b> Your task</a></li>
-<li class="chapter" data-level="31.4" data-path="building-a-phylogenetic-tree.html"><a href="building-a-phylogenetic-tree.html#takeaways-24"><i class="fa fa-check"></i><b>31.4</b> Takeaways</a></li>
+<li class="chapter" data-level="32.1" data-path="building-a-phylogenetic-tree.html"><a href="building-a-phylogenetic-tree.html#background-21"><i class="fa fa-check"></i><b>32.1</b> Background</a></li>
+<li class="chapter" data-level="32.2" data-path="building-a-phylogenetic-tree.html"><a href="building-a-phylogenetic-tree.html#worked-example-22"><i class="fa fa-check"></i><b>32.2</b> Worked example</a></li>
+<li class="chapter" data-level="32.3" data-path="building-a-phylogenetic-tree.html"><a href="building-a-phylogenetic-tree.html#your-task-23"><i class="fa fa-check"></i><b>32.3</b> Your task</a></li>
+<li class="chapter" data-level="32.4" data-path="building-a-phylogenetic-tree.html"><a href="building-a-phylogenetic-tree.html#takeaways-24"><i class="fa fa-check"></i><b>32.4</b> Takeaways</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -578,9 +611,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="matrix-population-modelling" class="section level1 hasAnchor" number="10">
 <h1><span class="header-section-number">10</span> Matrix population modelling<a href="matrix-population-modelling.html#matrix-population-modelling" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="matrix-population-modelling.html#cb1-1" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb1-2"><a href="matrix-population-modelling.html#cb1-2" tabindex="-1"></a><span class="fu">library</span>(Rage)</span>
-<span id="cb1-3"><a href="matrix-population-modelling.html#cb1-3" tabindex="-1"></a><span class="fu">library</span>(Rcompadre)</span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="matrix-population-modelling.html#cb6-1" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb6-2"><a href="matrix-population-modelling.html#cb6-2" tabindex="-1"></a><span class="fu">library</span>(Rage)</span>
+<span id="cb6-3"><a href="matrix-population-modelling.html#cb6-3" tabindex="-1"></a><span class="fu">library</span>(Rcompadre)</span></code></pre></div>
 <div id="background-8" class="section level2 hasAnchor" number="10.1">
 <h2><span class="header-section-number">10.1</span> Background<a href="matrix-population-modelling.html#background-8" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Matrix population models are powerful and widely used tools in population ecology that offer a comprehensive framework for studying the dynamics of structured populations. Unlike simple growth models that assume homogeneous populations, matrix population models take into account the variation in vital rates, such as birth, death, and growth rates, across different life stages or age classes. These models are particularly well-suited for species with distinct life stages, such as plants with seedlings, juveniles, and adults, or animals with different age classes. Matrix population models use transition matrices to represent the relationships between different age classes and how individuals move from one stage to another over time. By incorporating demographic data and life-history traits, matrix population models provide a more realistic and detailed understanding of population dynamics, making them invaluable for predicting the future trends of populations and assessing their vulnerability to environmental changes and management actions. In this practical, we will assume that one matrix projection corresponds to one year. Each matrix element therefore represents survival, growth, or reproduction over a one-year interval.</p>
@@ -615,12 +648,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>Next to the arrows, write values for survival probability and fecundity (number of babies) using your biological knowledge. It is fine to use “ballpark” estimates.</li>
 </ol>
 <p>Here’s an example for a fictional organism.</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="matrix-population-modelling.html#cb2-1" tabindex="-1"></a>matA <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(</span>
-<span id="cb2-2"><a href="matrix-population-modelling.html#cb2-2" tabindex="-1"></a>  <span class="fl">0.3</span>, <span class="fl">8.00</span>, <span class="fl">2.00</span>,</span>
-<span id="cb2-3"><a href="matrix-population-modelling.html#cb2-3" tabindex="-1"></a>  <span class="fl">0.1</span>, <span class="fl">0.50</span>, <span class="fl">0.00</span>,</span>
-<span id="cb2-4"><a href="matrix-population-modelling.html#cb2-4" tabindex="-1"></a>  <span class="fl">0.0</span>, <span class="fl">0.40</span>, <span class="fl">0.40</span></span>
-<span id="cb2-5"><a href="matrix-population-modelling.html#cb2-5" tabindex="-1"></a>), <span class="at">nrow =</span> <span class="dv">3</span>, <span class="at">byrow =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb2-6"><a href="matrix-population-modelling.html#cb2-6" tabindex="-1"></a>matA <span class="ot">&lt;-</span> <span class="fu">round</span>(matA, <span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="matrix-population-modelling.html#cb7-1" tabindex="-1"></a>matA <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(</span>
+<span id="cb7-2"><a href="matrix-population-modelling.html#cb7-2" tabindex="-1"></a>  <span class="fl">0.3</span>, <span class="fl">8.00</span>, <span class="fl">2.00</span>,</span>
+<span id="cb7-3"><a href="matrix-population-modelling.html#cb7-3" tabindex="-1"></a>  <span class="fl">0.1</span>, <span class="fl">0.50</span>, <span class="fl">0.00</span>,</span>
+<span id="cb7-4"><a href="matrix-population-modelling.html#cb7-4" tabindex="-1"></a>  <span class="fl">0.0</span>, <span class="fl">0.40</span>, <span class="fl">0.40</span></span>
+<span id="cb7-5"><a href="matrix-population-modelling.html#cb7-5" tabindex="-1"></a>), <span class="at">nrow =</span> <span class="dv">3</span>, <span class="at">byrow =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb7-6"><a href="matrix-population-modelling.html#cb7-6" tabindex="-1"></a>matA <span class="ot">&lt;-</span> <span class="fu">round</span>(matA, <span class="dv">2</span>)</span></code></pre></div>
 <p><img src="tempLifeCycleDiagram.png" /></p>
 <ol start="4" style="list-style-type: decimal">
 <li>Now you can turn this diagram into a matrix population model by filling in a square of survival/fecundity values.</li>
@@ -634,15 +667,15 @@ A = \begin{bmatrix}0.3&amp;8&amp;2 \\0.1&amp;0.5&amp;0 \\0&amp;0.4&amp;0.4 \\\en
 <h2><span class="header-section-number">10.3</span> Using R for matrix modelling<a href="matrix-population-modelling.html#using-r-for-matrix-modelling" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Working with matrices is very tedious in Excel. However, in R you can use this information to predict the future dynamics of the population, and estimate population growth rate, and generation time etc.</p>
 <p>Open up <strong>RStudio</strong>, and let’s see if we can predict future dynamics. First you will need to install a package called <code>popdemo</code>.</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="matrix-population-modelling.html#cb3-1" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;popdemo&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="matrix-population-modelling.html#cb8-1" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;popdemo&quot;</span>)</span></code></pre></div>
 <p>You only need to install packages once. After that you can load the package for use by using the <code>library</code> function.</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="matrix-population-modelling.html#cb4-1" tabindex="-1"></a><span class="fu">library</span>(popdemo)</span></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="matrix-population-modelling.html#cb9-1" tabindex="-1"></a><span class="fu">library</span>(popdemo)</span></code></pre></div>
 <p>You can put your matrix into R like in the example below (change the numbers to match YOUR model). If your model has fewer, or more, stages then you will need to modify the code a bit. Ask for help if you get stuck.</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="matrix-population-modelling.html#cb5-1" tabindex="-1"></a>A <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(</span>
-<span id="cb5-2"><a href="matrix-population-modelling.html#cb5-2" tabindex="-1"></a>  <span class="fl">0.3</span>, <span class="fl">8.00</span>, <span class="fl">2.00</span>,</span>
-<span id="cb5-3"><a href="matrix-population-modelling.html#cb5-3" tabindex="-1"></a>  <span class="fl">0.1</span>, <span class="fl">0.50</span>, <span class="fl">0.00</span>,</span>
-<span id="cb5-4"><a href="matrix-population-modelling.html#cb5-4" tabindex="-1"></a>  <span class="fl">0.0</span>, <span class="fl">0.40</span>, <span class="fl">0.40</span></span>
-<span id="cb5-5"><a href="matrix-population-modelling.html#cb5-5" tabindex="-1"></a>), <span class="at">ncol =</span> <span class="dv">3</span>, <span class="at">byrow =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="matrix-population-modelling.html#cb10-1" tabindex="-1"></a>A <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(</span>
+<span id="cb10-2"><a href="matrix-population-modelling.html#cb10-2" tabindex="-1"></a>  <span class="fl">0.3</span>, <span class="fl">8.00</span>, <span class="fl">2.00</span>,</span>
+<span id="cb10-3"><a href="matrix-population-modelling.html#cb10-3" tabindex="-1"></a>  <span class="fl">0.1</span>, <span class="fl">0.50</span>, <span class="fl">0.00</span>,</span>
+<span id="cb10-4"><a href="matrix-population-modelling.html#cb10-4" tabindex="-1"></a>  <span class="fl">0.0</span>, <span class="fl">0.40</span>, <span class="fl">0.40</span></span>
+<span id="cb10-5"><a href="matrix-population-modelling.html#cb10-5" tabindex="-1"></a>), <span class="at">ncol =</span> <span class="dv">3</span>, <span class="at">byrow =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
 <div class="do-something">
 <p><strong>Important: interpret matrix elements over the chosen time step</strong></p>
 <p>In matrix population models, all transitions occur over a fixed time interval. In this practical, we use a 1-year time step, so:</p>
@@ -657,16 +690,16 @@ A = \begin{bmatrix}0.3&amp;8&amp;2 \\0.1&amp;0.5&amp;0 \\0&amp;0.4&amp;0.4 \\\en
 <h2><span class="header-section-number">10.4</span> Projecting the population<a href="matrix-population-modelling.html#projecting-the-population" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>And now you can use the project function to project what happens to the population, then plot it. Look at what happens if you log or don’t log the y-axis. First you need to define an initial starting population structure.</p>
 <p>In my example, I have 3 stages, so I have 3 values for the initial population sizes. Then I use the <code>popdemo</code> function <code>project</code> to do a population projection for 10 years (10 time steps). Each step represents one annual cycle of survival, growth, and reproduction.</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="matrix-population-modelling.html#cb6-1" tabindex="-1"></a>initial <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">5</span>, <span class="dv">3</span>)</span>
-<span id="cb6-2"><a href="matrix-population-modelling.html#cb6-2" tabindex="-1"></a>pr <span class="ot">&lt;-</span> popdemo<span class="sc">::</span><span class="fu">project</span>(A, <span class="at">vector =</span> initial, <span class="at">time =</span> <span class="dv">10</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="matrix-population-modelling.html#cb11-1" tabindex="-1"></a>initial <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">5</span>, <span class="dv">3</span>)</span>
+<span id="cb11-2"><a href="matrix-population-modelling.html#cb11-2" tabindex="-1"></a>pr <span class="ot">&lt;-</span> popdemo<span class="sc">::</span><span class="fu">project</span>(A, <span class="at">vector =</span> initial, <span class="at">time =</span> <span class="dv">10</span>)</span></code></pre></div>
 <p>Take a look at <code>pr</code>, the projected population. This gives you the total population size, and below that the population sizes in each stage.</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="matrix-population-modelling.html#cb7-1" tabindex="-1"></a>pr</span></code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="matrix-population-modelling.html#cb12-1" tabindex="-1"></a>pr</span></code></pre></div>
 <pre><code>## 1 deterministic population projection over 10 time intervals.
 ## 
 ##  [1]  18.0000  55.7000  58.4300  85.2570 111.5643 151.4946 203.2634 273.8278
 ##  [9] 368.4012 495.8572 667.3121</code></pre>
 <p>You can access the population sizes of the different stages using <code>vec(pr)</code>.</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="matrix-population-modelling.html#cb9-1" tabindex="-1"></a><span class="fu">vec</span>(pr)</span></code></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="matrix-population-modelling.html#cb14-1" tabindex="-1"></a><span class="fu">vec</span>(pr)</span></code></pre></div>
 <pre><code>##             S1       S2        S3
 ##  [1,]  10.0000  5.00000  3.000000
 ##  [2,]  49.0000  3.50000  3.200000
@@ -680,15 +713,15 @@ A = \begin{bmatrix}0.3&amp;8&amp;2 \\0.1&amp;0.5&amp;0 \\0&amp;0.4&amp;0.4 \\\en
 ## [10,] 424.4552 50.17924 21.222808
 ## [11,] 571.2161 67.53514 28.560821</code></pre>
 <p>Let’s plot this…</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="matrix-population-modelling.html#cb11-1" tabindex="-1"></a>pop <span class="ot">&lt;-</span> <span class="fu">vec</span>(pr)</span>
-<span id="cb11-2"><a href="matrix-population-modelling.html#cb11-2" tabindex="-1"></a><span class="fu">matplot</span>(pop, <span class="at">type =</span> <span class="st">&quot;l&quot;</span>, <span class="at">log =</span> <span class="st">&quot;y&quot;</span>)</span>
-<span id="cb11-3"><a href="matrix-population-modelling.html#cb11-3" tabindex="-1"></a><span class="fu">legend</span>(<span class="st">&quot;topleft&quot;</span>, <span class="at">legend =</span> <span class="fu">colnames</span>(pop), </span>
-<span id="cb11-4"><a href="matrix-population-modelling.html#cb11-4" tabindex="-1"></a>       <span class="at">col =</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">ncol</span>(pop), <span class="at">lty =</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">ncol</span>(pop))</span></code></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="matrix-population-modelling.html#cb16-1" tabindex="-1"></a>pop <span class="ot">&lt;-</span> <span class="fu">vec</span>(pr)</span>
+<span id="cb16-2"><a href="matrix-population-modelling.html#cb16-2" tabindex="-1"></a><span class="fu">matplot</span>(pop, <span class="at">type =</span> <span class="st">&quot;l&quot;</span>, <span class="at">log =</span> <span class="st">&quot;y&quot;</span>)</span>
+<span id="cb16-3"><a href="matrix-population-modelling.html#cb16-3" tabindex="-1"></a><span class="fu">legend</span>(<span class="st">&quot;topleft&quot;</span>, <span class="at">legend =</span> <span class="fu">colnames</span>(pop), </span>
+<span id="cb16-4"><a href="matrix-population-modelling.html#cb16-4" tabindex="-1"></a>       <span class="at">col =</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">ncol</span>(pop), <span class="at">lty =</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">ncol</span>(pop))</span></code></pre></div>
 <p><img src="BB512_files/figure-html/plotprojectiongraph-1.png" alt="" width="672" /></p>
 <p>You should see that the population increases exponentially. The population growth rate is the so-called “<em>dominant eigenvalue</em>” of the matrix <strong>A</strong>.</p>
 <p>We can ask R for the <em>eigen values</em> and <em>eigen vectors</em>. These are the population growth rate (<span class="math inline">\(\lambda\)</span>) and the stable stage distribution (<em>SSD</em>) and the reproductive values (<em>RV</em>) of the different stages. <em>SSD</em> is the expected <em>proportion</em> of individuals in the different stage classes at equilibrium (i.e. the long-term time frame) and <em>RV</em> is the expected number of future offspring by individuals in each stage.</p>
 <p>Because our projection interval is one year, λ represents the annual population growth rate. You can see that in this case, using my example values the population is growing 34.58% per year.</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="matrix-population-modelling.html#cb12-1" tabindex="-1"></a><span class="fu">eigs</span>(A)</span></code></pre></div>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="matrix-population-modelling.html#cb17-1" tabindex="-1"></a><span class="fu">eigs</span>(A)</span></code></pre></div>
 <pre><code>## $lambda
 ## [1] 1.345824
 ## 
@@ -701,7 +734,7 @@ A = \begin{bmatrix}0.3&amp;8&amp;2 \\0.1&amp;0.5&amp;0 \\0&amp;0.4&amp;0.4 \\\en
 <div id="elasticity" class="section level2 hasAnchor" number="10.5">
 <h2><span class="header-section-number">10.5</span> Elasticity<a href="matrix-population-modelling.html#elasticity" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Elasticity analysis is a way of analysing a matrix model to identify the most important transitions to population growth. This is very important in management and conservation when we ask questions like, “which parts of the lifecycle should we focus on to preserve the population?”. The mathematics of this are beyond this course, but in a nutshell, we are adding a small value to the elements of the matrix one-at-a-time and asking what difference this makes to population growth rate (lambda). We then express that as a <em>proportion</em>, so that the elasticities sum up to one and are easier to interpret. They can be calculated easily in R.</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="matrix-population-modelling.html#cb14-1" tabindex="-1"></a>popdemo<span class="sc">::</span><span class="fu">elas</span>(A)</span></code></pre></div>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="matrix-population-modelling.html#cb19-1" tabindex="-1"></a>popdemo<span class="sc">::</span><span class="fu">elas</span>(A)</span></code></pre></div>
 <pre><code>##            [,1]       [,2]       [,3]
 ## [1,] 0.09517264 0.30005511 0.03172421
 ## [2,] 0.33177932 0.19612796 0.00000000
@@ -712,17 +745,17 @@ A = \begin{bmatrix}0.3&amp;8&amp;2 \\0.1&amp;0.5&amp;0 \\0&amp;0.4&amp;0.4 \\\en
 <h2><span class="header-section-number">10.6</span> Life table response experiment (LTRE)<a href="matrix-population-modelling.html#life-table-response-experiment-ltre" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>These don’t have much to do with life tables (sorry, that’s confusing!). The idea is very simple: you run “experiments” on your matrix model by asking “what if” questions. For example, what would happen if we could increase survival of the juveniles by 20%? what would happen if adults are hunted more, and thus have a decreased survival by 60%? what would happen if we provided supplemental food to reproducing females, and increase fecundity by 50%? etc. Use your imagination!</p>
 <p>In practice, we do that simply by modifying the matrix model. In the following, I am looking at the effect of increasing fertility in adult and senescent individuals by 50%:</p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="matrix-population-modelling.html#cb16-1" tabindex="-1"></a>A <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(</span>
-<span id="cb16-2"><a href="matrix-population-modelling.html#cb16-2" tabindex="-1"></a>  <span class="fl">0.3</span>, <span class="fl">8.00</span><span class="sc">*</span><span class="fl">1.5</span>, <span class="fl">2.00</span><span class="sc">*</span><span class="fl">1.5</span>,</span>
-<span id="cb16-3"><a href="matrix-population-modelling.html#cb16-3" tabindex="-1"></a>  <span class="fl">0.1</span>, <span class="fl">0.50</span>, <span class="fl">0.00</span>,</span>
-<span id="cb16-4"><a href="matrix-population-modelling.html#cb16-4" tabindex="-1"></a>  <span class="fl">0.0</span>, <span class="fl">0.40</span>, <span class="fl">0.40</span></span>
-<span id="cb16-5"><a href="matrix-population-modelling.html#cb16-5" tabindex="-1"></a>),</span>
-<span id="cb16-6"><a href="matrix-population-modelling.html#cb16-6" tabindex="-1"></a><span class="at">byrow =</span> <span class="cn">TRUE</span>, <span class="at">nrow =</span> <span class="dv">3</span></span>
-<span id="cb16-7"><a href="matrix-population-modelling.html#cb16-7" tabindex="-1"></a>)</span>
-<span id="cb16-8"><a href="matrix-population-modelling.html#cb16-8" tabindex="-1"></a></span>
-<span id="cb16-9"><a href="matrix-population-modelling.html#cb16-9" tabindex="-1"></a>popdemo<span class="sc">::</span><span class="fu">eigs</span>(A, <span class="at">what =</span> <span class="st">&quot;lambda&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="matrix-population-modelling.html#cb21-1" tabindex="-1"></a>A <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(</span>
+<span id="cb21-2"><a href="matrix-population-modelling.html#cb21-2" tabindex="-1"></a>  <span class="fl">0.3</span>, <span class="fl">8.00</span><span class="sc">*</span><span class="fl">1.5</span>, <span class="fl">2.00</span><span class="sc">*</span><span class="fl">1.5</span>,</span>
+<span id="cb21-3"><a href="matrix-population-modelling.html#cb21-3" tabindex="-1"></a>  <span class="fl">0.1</span>, <span class="fl">0.50</span>, <span class="fl">0.00</span>,</span>
+<span id="cb21-4"><a href="matrix-population-modelling.html#cb21-4" tabindex="-1"></a>  <span class="fl">0.0</span>, <span class="fl">0.40</span>, <span class="fl">0.40</span></span>
+<span id="cb21-5"><a href="matrix-population-modelling.html#cb21-5" tabindex="-1"></a>),</span>
+<span id="cb21-6"><a href="matrix-population-modelling.html#cb21-6" tabindex="-1"></a><span class="at">byrow =</span> <span class="cn">TRUE</span>, <span class="at">nrow =</span> <span class="dv">3</span></span>
+<span id="cb21-7"><a href="matrix-population-modelling.html#cb21-7" tabindex="-1"></a>)</span>
+<span id="cb21-8"><a href="matrix-population-modelling.html#cb21-8" tabindex="-1"></a></span>
+<span id="cb21-9"><a href="matrix-population-modelling.html#cb21-9" tabindex="-1"></a>popdemo<span class="sc">::</span><span class="fu">eigs</span>(A, <span class="at">what =</span> <span class="st">&quot;lambda&quot;</span>)</span></code></pre></div>
 <pre><code>## [1] 1.546586</code></pre>
-<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="matrix-population-modelling.html#cb18-1" tabindex="-1"></a><span class="fu">elas</span>(A)</span></code></pre></div>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="matrix-population-modelling.html#cb23-1" tabindex="-1"></a><span class="fu">elas</span>(A)</span></code></pre></div>
 <pre><code>##            [,1]       [,2]        [,3]
 ## [1,] 0.08514005 0.32540118 0.028380016
 ## [2,] 0.35378119 0.16901684 0.000000000
