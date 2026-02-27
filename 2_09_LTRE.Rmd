@@ -18,12 +18,19 @@ Learning outcomes:
 
 ## Set up
 
-First we need to ensure that we have the R packages we need loaded. If you get an error doing this, remember to install them first (`install.packages("PACKAGE_NAME")`)
+For the core LTRE analysis, you only need `popbio`.
+The diagram-export packages are optional and only needed if you want to regenerate the life-cycle diagram image.
 
-```{r LTRE1, echo = TRUE}
+```{r LTRE1, echo = TRUE, eval = FALSE}
+# Core package (required)
+install.packages("popbio")
 library(popbio)
-library(popdemo)
-library(Rcompadre)
+
+# Optional packages (only for rebuilding the diagram figure)
+install.packages(c("Rage", "DiagrammeRsvg", "rsvg"))
+library(Rage)
+library(DiagrammeRsvg)
+library(rsvg)
 ```
 
 
@@ -80,8 +87,8 @@ Next, we can ask what impact these differences have on the population growth rat
 Note that putting the command in parentheses tells R to both create the new object (e.g. `lambdaA1`) **and** print the result to the screen.
 
 ```{r LTRE6, echo = TRUE}
-(lambda_A_ref <- eigs(A_ref, what = "lambda"))
-(lambda_A_treat <-eigs(A_treat, what = "lambda"))
+(lambda_A_ref <- popdemo::eigs(A_ref, what = "lambda"))
+(lambda_A_treat <- popdemo::eigs(A_treat, what = "lambda"))
 ```
 
 We could express this as a difference, or as a proportional difference.

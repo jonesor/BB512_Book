@@ -24,7 +24,20 @@ Learning outcomes:
 
 ## Worked example
 
-If adding 1 offspring at age 1 raises $R_0$ by about 1, then a much larger increase in offspring would be required at age 20 or 25 to achieve the same fitness gain. This demonstrates why selection is stronger on early-life traits.
+### Inputs
+
+- Baseline life table from the worksheet
+- One-unit increase in offspring at different ages
+
+### Steps
+
+1. Add one offspring at an early age (e.g. age 1) and recalculate $R_0$.
+2. Reset and add one offspring at a late age (e.g. age 20 or 25), then recalculate $R_0$.
+3. Compare the size of the change in $R_0$.
+
+### Output and interpretation
+
+Adding 1 offspring at age 1 typically raises $R_0$ much more than adding 1 offspring late in life. This demonstrates why selection is usually stronger on early-life traits.
 
 
 

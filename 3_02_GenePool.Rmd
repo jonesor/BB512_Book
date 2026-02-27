@@ -24,7 +24,21 @@ Learning outcomes:
 
 ## Worked example
 
-With an initial allele frequency of 0.5 and a population size of 20, repeated sampling will often shift frequencies noticeably in just a few generations. In contrast, a population of 1000 will show much smaller random fluctuations.
+### Inputs
+
+- Initial allele frequency of `A`: `0.5`
+- Scenario A population size: `20`
+- Scenario B population size: `1000`
+
+### Steps
+
+1. Run repeated sampling for each population size.
+2. Track allele frequency of `A` across generations.
+3. Compare fluctuation magnitude between the two scenarios.
+
+### Output and interpretation
+
+With population size 20, frequencies usually shift noticeably in a few generations. With population size 1000, random fluctuations are much smaller. This illustrates stronger drift in small populations.
 
 
 ## Your task

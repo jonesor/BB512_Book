@@ -17,7 +17,20 @@ Learning outcomes:
 
 ## Worked example
 
-If survival with 2 eggs is 0.85, the expected surviving chicks are $2 \times 0.85 = 1.7$. Doing this for all clutch sizes reveals a peak at an intermediate number of eggs.
+### Inputs
+
+- Clutch size: `2` eggs
+- Chick survival probability: `0.85`
+
+### Steps
+
+1. Compute expected surviving chicks: clutch size $\times$ survival probability.
+2. Repeat this calculation for all clutch sizes.
+3. Compare expected survivors across clutch sizes.
+
+### Output and interpretation
+
+For 2 eggs, expected survivors are $2 \times 0.85 = 1.7$. Doing this for all clutch sizes typically reveals a peak at an intermediate number of eggs.
 
 
 ## Your task

@@ -24,7 +24,7 @@ Learning outcomes:
 
 :::
 
-## Worked example
+## Key idea
 
 If $\alpha_{12} > 1$ and $\alpha_{21} < 1$, species 2 strongly suppresses species 1 while species 1 weakly affects species 2, so exclusion of species 1 is likely.
 

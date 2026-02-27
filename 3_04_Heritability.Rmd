@@ -73,7 +73,19 @@ Learning Outcomes:
 
 ## Worked example
 
-If the regression slope of offspring on parent values is 0.4, then the narrow-sense heritability estimate is $h^2 = 0.4$. This means about 40% of the trait variance is attributable to additive genetic effects.
+### Inputs
+
+- Regression slope of offspring on parent values: `0.4`
+
+### Steps
+
+1. Fit a linear regression model (`offspring ~ parent`).
+2. Extract the slope coefficient from the model.
+3. Interpret the slope as narrow-sense heritability ($h^2$).
+
+### Output and interpretation
+
+$h^2 = 0.4$, meaning about 40% of trait variance is attributable to additive genetic effects in that population and environment.
 
 ## Your Task
 

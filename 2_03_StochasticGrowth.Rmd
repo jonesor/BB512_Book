@@ -164,6 +164,16 @@ axis(2,
 abline(h = log(pseudoExtinction), lty = 2)
 ```
 
+## Things to try
+
+Work through these experiments and note what happens to (a) the plot and (b) the extinction probability each time.
+
+1. Run the code as-is. Note the extinction probability and the spread of trajectories.
+2. Keep `mean.r = 0.05` but increase `var.r` to **0.5**. How does extinction risk change?
+3. Reset `var.r = 0.1`, then reduce `startPop` from 10 to **3**. Does starting population size matter?
+4. Set `mean.r = 0.0` (population neither growing nor shrinking on average). Is extinction certain, unlikely, or somewhere in between?
+5. **Challenge:** find a combination of `mean.r` and `var.r` where `mean.r > 0` but extinction probability exceeds 0.5. What does this tell you?
+
 ## Questions
 
 - What is the main difference between deterministic and stochastic population growth models?
@@ -174,6 +184,9 @@ abline(h = log(pseudoExtinction), lty = 2)
 
 ## Takeaways
 
-- Stochasticity introduces variability in trajectories even when average growth is positive.
+- Stochasticity introduces variability in trajectories.
+- Even when the average growth rate is positive, stochastic variation can create a real risk of extinction.
 - Small populations are more vulnerable to random declines and extinction.
-- The variance of $r_m$ can be as important as its mean for long-term persistence.
+- The variance of $r$ can be as important as its mean for long-term population persistence. This is why conservationists worry about increasing environmental variability, not just declining average conditions.
+- Running a model many times (as in the R simulation) reveals the *distribution* of possible outcomes — a much richer picture than any single trajectory provides.
+

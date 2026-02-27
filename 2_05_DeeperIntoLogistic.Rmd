@@ -43,7 +43,22 @@ Learning outcomes:
 
 ## Worked example
 
-Set $r_m = 1.2$ and $K = 200$ in the `BasicLogistic` sheet. You should see a smooth approach to $K$ in Figure 1, a straight decreasing line in Figure 2 that crosses zero at $K$, and a single peaked curve in Figure 3 with a maximum near $N = K/2$.
+### Inputs
+
+- `r_m = 1.2`
+- `K = 200`
+- Worksheet: `BasicLogistic`
+
+### Steps
+
+1. Set `r_m` and `K` in the parameter block.
+2. Observe Figure 1 (population through time).
+3. Observe Figure 2 (per-capita growth vs `N`).
+4. Observe Figure 3 (total growth vs `N`).
+
+### Output and interpretation
+
+You should see a smooth approach to $K$ in Figure 1, a straight decreasing line in Figure 2 that crosses zero at $K$, and a single peaked curve in Figure 3 with a maximum near $N = K/2$.
 
 ## Your Task
 

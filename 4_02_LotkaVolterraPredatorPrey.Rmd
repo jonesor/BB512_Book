@@ -17,7 +17,7 @@ Learning outcomes:
 
 :::
 
-## Worked example
+## Key idea
 
 If predator efficiency increases (higher conversion of prey to predator births), predator peaks rise and prey troughs deepen, often increasing oscillation amplitude.
 

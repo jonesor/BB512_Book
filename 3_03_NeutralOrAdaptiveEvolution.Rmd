@@ -32,7 +32,7 @@ Learning outcomes:
 
 :::
 
-## Worked example
+## Key idea
 
 Traits like resistance to infectious disease are likely to face strong selection in environments where the disease is common, while traits with little effect on survival or reproduction (e.g., subtle iris patterns) are more likely to drift.
 

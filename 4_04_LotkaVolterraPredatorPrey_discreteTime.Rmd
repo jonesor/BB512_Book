@@ -10,7 +10,7 @@ Learning outcomes:
 - Compare discrete-time dynamics to continuous-time dynamics.
 :::
 
-## Worked example
+## Key idea
 
 With $\Delta t = 1$, the phase plane typically shows expanding spirals, reflecting instability introduced by discrete time steps.
 

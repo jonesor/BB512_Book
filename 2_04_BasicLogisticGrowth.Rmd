@@ -36,7 +36,21 @@ Learning outcomes:
 
 ## Worked example
 
-With `Initial N = 10`, `r_m = 0.8`, and `K = 200`, the population grows quickly at first, then slows as it approaches `K`. This produces a sigmoidal curve and a per-capita growth rate that declines linearly with `N`.
+### Inputs
+
+- `Initial N = 10`
+- `r_m = 0.8`
+- `K = 200`
+
+### Steps
+
+1. Enter these values in the parameter cells.
+2. Recalculate the model through time.
+3. Inspect both graphs: population size through time and per-capita growth vs population size.
+
+### Output and interpretation
+
+The population grows quickly at first, then slows as it approaches `K`. This produces a sigmoidal curve and a per-capita growth rate that declines linearly with `N`.
 
 ## Your Task
 

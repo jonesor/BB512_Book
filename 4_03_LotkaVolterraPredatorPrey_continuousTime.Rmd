@@ -13,9 +13,14 @@ Learning outcomes:
 - Understanding how the Lotka-Volterra predator-prey model works, and how it is visualised.
 
 :::
-## Worked example
 
-With the default parameters, the time-series plot shows repeating oscillations and the phase plane shows a closed orbit around the coexistence equilibrium.
+## What you should see
+
+With  default parameters, you should see:
+
+- repeating oscillations in predator and prey abundances through time
+- a closed orbit in the phase plane around the coexistence equilibrium
+- straight-line isoclines (ZNGIs) whose intersection is the coexistence equilibrium
 
 ## Your task
 
@@ -30,7 +35,7 @@ In R/RStudio, you will create an R script that programs the continuous time vers
 
 ### Step 1: Load Necessary Libraries
 
-We use the `deSolve` package to solve the system of differential equations numerically. Note that you may need to install the package first using the command `install.packages("deSolve")`.
+We will use the `deSolve` package to solve the system of differential equations numerically. Note that you may need to install the package first using the command `install.packages("deSolve")`.
 
 ```{r loadlib, include = TRUE, echo = TRUE}
 library(deSolve)

@@ -111,7 +111,19 @@ Learning outcomes:
 
 ## Worked example
 
-If the recessive genotype frequency is 0.36, then $q^2 = 0.36$ so $q = 0.6$ and $p = 0.4$. The heterozygote frequency is $2pq = 2(0.4)(0.6) = 0.48$.
+### Inputs
+
+- Recessive genotype frequency: $q^2 = 0.36$
+
+### Steps
+
+1. Calculate $q = \sqrt{0.36} = 0.6$.
+2. Calculate $p = 1 - q = 0.4$.
+3. Calculate heterozygote frequency: $2pq$.
+
+### Output and interpretation
+
+$2pq = 2(0.4)(0.6) = 0.48$. So 48% of individuals are expected to be heterozygous under HWE assumptions.
 
 ## Your task
 

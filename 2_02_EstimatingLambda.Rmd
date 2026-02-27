@@ -78,9 +78,18 @@ Learning outcomes:
 
 ## Worked example
 
-If the regression of $ln(N_t)$ on time gives a slope of 0.08, then:
+### Inputs
 
-$\lambda = e^{0.08} = 1.083$
+- Regression slope from $ln(N_t)$ vs time: $0.08$
+
+### Steps
+
+1. Use $\lambda = e^{\text{slope}}$.
+2. Substitute the slope: $\lambda = e^{0.08}$.
+
+### Output and interpretation
+
+$\lambda = 1.083$
 
 This indicates a population growing by about 8.3% per time step.
 

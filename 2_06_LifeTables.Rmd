@@ -30,7 +30,18 @@ Learning outcomes:
 
 ## Worked example
 
-If 500 individuals start at age 0 and 352 survive to age 1, then:
+### Inputs
+
+- Cohort at age 0: `500`
+- Survivors to age 1: `352`
+
+### Steps
+
+1. Calculate survivorship at age 1: $l_1 = 352/500$.
+2. Calculate survival probability from age 0 to 1: $g_0 = 352/500$.
+3. Calculate death probability in that interval: $q_0 = 1 - g_0$.
+
+### Output and interpretation
 
 - Survivorship at age 1: $l_1 = 352/500 = 0.704$
 - Survival probability from age 0 to 1: $g_0 = 352/500 = 0.704$

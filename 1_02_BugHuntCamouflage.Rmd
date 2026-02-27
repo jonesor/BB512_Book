@@ -86,10 +86,20 @@ Some useful keywords:
 
 ## Worked example
 
+### Inputs
+
+- One starting background (e.g. poppy field)
+- Active hunting by the player
+- Runtime: 2 minutes before switching background
+
+### Steps
+
 Run the model for 2 minutes in one environment (e.g. poppy field) while actively hunting. You should see:
 
 - The average bug colour shift toward the background colour.
 - Your hunting efficiency drop over time as bugs become better camouflaged.
+
+### Output and interpretation
 
 Now switch environments and keep hunting. You should see a temporary jump in hunting efficiency, followed by a new shift in bug colour toward the new background.
 

@@ -13,9 +13,17 @@ Learning outcomes:
 
 ## Worked example
 
-Here is a minimal two-stage example to show the translation from words to a matrix.
+### Inputs
 
 Suppose juveniles do not reproduce, adults produce 2 offspring per year, juvenile survival is 0.4, and adult survival is 0.7. A simple stage matrix would be:
+
+### Steps
+
+1. Put fecundity terms in the top row.
+2. Put survival/transition terms in the subdiagonal/diagonal entries.
+3. Assemble the matrix in row = stage at $t+1$, column = stage at $t$ form.
+
+### Output and interpretation
 
 $$
 A =

@@ -16,6 +16,8 @@ Learning outcomes:
 
 ## Worked example
 
+### Inputs
+
 ```{r prepostbreeding, echo = TRUE}
 p0 <- 0.2
 p1 <- 0.9
@@ -28,6 +30,16 @@ A1 <- matrix(c(0.0, m2 * p1, m3 * p2,
                0.0,p1,0), byrow = TRUE, nrow = 3)
 
 ```
+
+### Steps
+
+1. Define survival and fecundity values.
+2. Build the projection matrix for one annual time step.
+3. Use the matrix for projection and comparison tasks below.
+
+### Output and interpretation
+
+The resulting matrix encodes the pre-/post-breeding census assumptions for transitions and fecundity over one year.
 
 
 
@@ -55,4 +67,3 @@ Compare population growth rates. This uses the `eigs` function from the `popdemo
 
 - Census timing changes how fecundity and survival are encoded in the matrix.
 - Pre- and post-breeding models can yield different $\lambda$ estimates from the same biology.
-

@@ -13,7 +13,20 @@ Learning outcomes:
 
 ## Worked example
 
-If a trait has a baseline of 35 and is influenced by 25 genes, where each gene contributes 1 unit when "on", then the expected trait value is 35 + 12.5 = 47.5. Individual values vary around this because each gene is ON or OFF.
+### Inputs
+
+- Baseline trait value: `35`
+- Number of genes: `25`
+- Each gene contributes `1` unit when ON
+
+### Steps
+
+1. Compute expected number of ON genes under 50:50 ON/OFF: `25 * 0.5 = 12.5`.
+2. Add expected genetic contribution to baseline.
+
+### Output and interpretation
+
+Expected trait value is `35 + 12.5 = 47.5`. Individual values vary around this because each gene is ON or OFF stochastically.
 
 ## Your task
 

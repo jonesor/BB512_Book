@@ -12,7 +12,7 @@ Learning outcomes:
 - Relate morphology-based trees to the idea of evolutionary relatedness.
 :::
 
-## Worked example
+## Key idea
 
 With six organisms and seven characters, you can compute a pairwise difference table, then group the closest relatives first. The internal nodes represent the most recent common ancestors inferred from shared characters.
 

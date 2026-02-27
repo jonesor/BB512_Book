@@ -20,7 +20,20 @@ Learning outcomes:
 
 ## Worked example
 
-With benefits $B = 4$ and costs $C = 3$, the Hawk–Hawk payoff is $(B-C)/2 = 0.5$, Hawk–Dove yields 4 for Hawk and 0 for Dove, and Dove–Dove yields 2 each.
+### Inputs
+
+- Benefit: $B = 4$
+- Cost: $C = 3$
+
+### Steps
+
+1. Compute Hawk-Hawk payoff: $(B-C)/2$.
+2. Compute Hawk-Dove payoff to Hawk: $B$ (and 0 to Dove).
+3. Compute Dove-Dove payoff: $B/2$ to each player.
+
+### Output and interpretation
+
+Hawk-Hawk gives $0.5$ each, Hawk-Dove gives `4` to Hawk and `0` to Dove, and Dove-Dove gives `2` each.
 
 
 ## Your task

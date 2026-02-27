@@ -37,9 +37,20 @@ Learning outcomes:
 
 ## Worked example
 
-With $N_0 = 10$ and $\lambda = 1.1$, the population after 5 time steps is:
+### Inputs
 
-$N_5 = 10 \times 1.1^5 = 16.1051$
+- Initial population: $N_0 = 10$
+- Population multiplication rate: $\lambda = 1.1$
+- Time steps: $t = 5$
+
+### Steps
+
+1. Use the geometric growth equation: $N_t = N_0 \lambda^t$.
+2. Substitute values: $N_5 = 10 \times 1.1^5$.
+
+### Output and interpretation
+
+$N_5 = 16.1051$
 
 Plotting $N_t$ against $t$ gives a curve, while plotting $ln(N_t)$ against $t$ gives a straight line with slope $ln(\lambda)$.
 
