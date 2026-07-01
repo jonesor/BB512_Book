@@ -32,7 +32,7 @@ Imagine you’re typing random letters into a typewriter. How long would it take
 
 ### Steps
 
-In English, there are 26 letters in the alphabet, plus the space character. The chance of randomly typing the first letter correctly is 1 in 27. The probability of getting the first two letters right is \((1/27)^2\), and the chances of typing the entire 14-character sentence correctly by random typing alone is \((1/27)^{14} = 9.14 \times 10^{-21}\), an astronomically small number.
+The R code below doesn't just sample from the 26 letters of the alphabet plus a space: it also allows a few extra symbols (an apostrophe, an exclamation mark, and the Danish letters Å, Æ and Ø), giving a pool of 32 possible characters at each position. The chance of randomly typing the first letter correctly is 1 in 32. The probability of getting the first two letters right is \((1/32)^2\), and the chances of typing the entire 14-character sentence correctly by random typing alone is \((1/32)^{14} = 8.47 \times 10^{-22}\), an astronomically small number.
 
 ### Output and interpretation
 
