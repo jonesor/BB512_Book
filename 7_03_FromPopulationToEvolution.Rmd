@@ -78,7 +78,7 @@ You can see that the population is increasing and we can calculate the precise p
 eigs(A1,what = "lambda")
 ```
 
-Thus, the population is growing at `r format(100*(eigs(A1,what = "lambda")-1),2,4)`% per year.
+Thus, the population is growing at `r format(100*(eigs(A1,what = "lambda")-1), digits = 4)`% per year.
 
 So where does evolution come in?
 
@@ -101,7 +101,7 @@ What effect does that have on population growth rate?
 eigs(A2,what = "lambda")
 ```
 
-The small increase in juvenile survival has resulted in a small increase in population growth rate, from `r format(100*(eigs(A1)$lambda-1),2,4)`% to `r format(100*(eigs(A2)$lambda-1),2,4)`% per year.
+The small increase in juvenile survival has resulted in a small increase in population growth rate, from `r format(100*(eigs(A1)$lambda-1), digits = 4)`% to `r format(100*(eigs(A2)$lambda-1), digits = 4)`% per year.
 
 If you consider that the original population now consists of two genotypes -- "ordinary" and "caring" -- what do you think will happen to the percentage of the two genotypes through time?
 

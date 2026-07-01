@@ -134,6 +134,10 @@ hdg2_candidates <- list.files(
   full.names = TRUE
 )
 
+if (length(hdg2_candidates) == 0) {
+  stop("No 'data/gametheoryResults*.xlsx' file found. Add this year's Game 2 results file to data/ before rendering.")
+}
+
 hdg2_path <- hdg2_candidates[which.max(file.info(hdg2_candidates)$mtime)]
 
 hdg2 <- readxl::read_xlsx(hdg2_path, sheet = 4) %>%
