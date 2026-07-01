@@ -438,7 +438,7 @@ A heritability of `r round(as.vector(coef(mod1)[2]),3)` for wing length indicate
 
 *What other factors might explain the remaining variation?*
 
-There are many other factors at play. The remaining 30% of variation could be due to environmental factors such as diet, climate, or social interactions. It might also include measurement error or other stochastic events.
+There are many other factors at play. The remaining `r round(100 - round(as.vector(coef(mod1)[2]),3)*100,1)`% of variation could be due to environmental factors such as diet, climate, or social interactions. It might also include measurement error or other stochastic events.
 
 *How would the heritability estimate change if you used a different trait (e.g., beak length instead of wing length)?*
 
@@ -553,9 +553,9 @@ Take home messages:
 
 The matrix model with a trade off (increased juvenile survival, but reduced old adult survival) looks like this.
 
-    A3 <- matrix(c(0.00, 5.00, 1.00, 
-                   0.11, 0.80, 0.00, 
-                   0.00, 0.10, 0.20), 
+    A3 <- matrix(c(0.00, 4.00, 2.00,
+                   0.11, 0.80, 0.00,
+                   0.00, 0.10, 0.20),
                 byrow = TRUE, nrow = 3)
     
     eigs(A3)$lambda
