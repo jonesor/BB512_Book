@@ -46,7 +46,7 @@ Adding 1 offspring at age 1 typically raises $R_0$ much more than adding 1 offsp
 
 ## Your task
 
-Open the Excel file [TradeOffsAndForceOfSelection.xlsx](https://www.dropbox.com/s/7eyoencvqc3hwv7/TradeOffsAndForceOfSelection.xlsx?dl=1).
+Open the Excel file [TradeOffsAndForceOfSelection.xlsx](https://www.dropbox.com/scl/fi/972ie76xj7nb9ni61n6ry/Trade_Offs_And_Force_Of_Selection.xlsx?rlkey=jmnpi05n8dicpqt3z8b0hbjhw&dl=0).
 
 This file shows a simplified life table, following a cohort of 1000 individuals for a fictional creature. 
 
@@ -54,7 +54,7 @@ Survival rates from year to year are set to be 0.8 (i.e. 80% make it through to 
 
 The product of survival ($l_x$) and fertility ($m_x$), lxmx is a measure of the expected number of offspring in an age class. For a stable population the sum of these values ($\sum l_x m_x$) is a measure of net population growth rate (also known as $R_0$). $R_0$ is an excellent measure of fitness of a life history strategy.
 
-Note that the initial $R_0$ is 49.811
+Note that the initial $R_0$ is 49.81
 
 ## Exploring different life history strategies
 
@@ -64,7 +64,7 @@ Consider a trade-off between early reproduction and late life survival (i.e. via
 
 * Simulate this by adding 1 to fertility ($m_x$) in year 1 (the benefit) but reducing survival to 0 (all die) at age 25 (the cost). *What is the fitness of this strategy?*
 * By setting survival to 0 at other ages, determine how many years of life could be lost before this cost is no longer worth bearing. Is this surprising?
-* Now reset everything ($m_x$ =10; survival = 0.8). Recall what fitness was when you added 1 to $m_x$ at age 1 (50.811). 
+* Now reset everything ($m_x$ =10; survival = 0.8). Recall what fitness was when you added 1 to $m_x$ at age 1 (50.81).
 
 * If, instead of adding to $m_x$ at age 1 you were to increase $m_x$ at age 25, how much would you need to increase $m_x$ to reach this figure?
 
