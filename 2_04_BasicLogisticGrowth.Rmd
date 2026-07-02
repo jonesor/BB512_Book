@@ -235,7 +235,7 @@ In this code, I have added a line which ensures that population size cannot be n
 
 ```{r logistic_optional_r_code, eval = TRUE, echo = TRUE}
 # Parameters
-r_m <- 3.5  # intrinsic growth rate
+r_m <- 2.9  # intrinsic growth rate
 K <- 1000   # carrying capacity
 N0 <- 10    # initial population size
 timesteps <- 50  # number of time steps

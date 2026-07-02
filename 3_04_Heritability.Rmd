@@ -1,6 +1,6 @@
 # Heritability from a linear regression
 
-```{r set up, echo = FALSE}
+```{r heritability-setup, echo = FALSE}
 
 # Function to simulate data
 simulate_data <- function(n, m, min_x, max_x, r_squared, precision) {

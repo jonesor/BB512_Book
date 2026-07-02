@@ -23,7 +23,7 @@ Learning outcomes:
 | $R$     | Per capita rate of increase, per capita population growth rate   | $R_m$ (Neal), $r$ (Gotelli), $r_c$ is used as the  $R$ *estimated* from a life table in Neal    |
 | $r$     | Intrinsic rate of increase      | $r_m$  |
 |  $\lambda$    | Population growth rate, population multiplication rate      |   |
-|  $R0$   |       |   |
+|  $R_0$   | Net reproductive rate: the expected number of offspring per individual, per generation ($\sum l_x m_x$)  |  Net Reproductive Rate |
 
 
 ## Discrete time model

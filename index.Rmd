@@ -201,8 +201,7 @@ link_to_schedule <- paste0("https://mitsdu.sdu.dk/skema/activity/N100007101/e",s
 
 ```{r schedule-intro, results = 'asis', echo = FALSE, eval = knitr::is_html_output()}
 cat("This is the schedule for the course. You can check itsLearning for the dates, times and locations. Also check itsLearning for details of other tasks/assignments/reading etc.")
-
-
+```
 
 ```{r echo = FALSE, message = FALSE, warning = FALSE}
 schedule <- readxl::read_excel("BB512_Schedule.xlsx")
@@ -247,7 +246,7 @@ cat("The formatted schedule table appears only in the online version of this boo
 - For dates, times and rooms, also check itsLearning.
 
 ")
-
+```
 
 ```{r echo = FALSE, message = FALSE, warning = FALSE}
 #source("scripts/personalCalendar.R")

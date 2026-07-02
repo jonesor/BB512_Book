@@ -43,13 +43,18 @@ knitr::include_graphics('images/bigbird.jpg')
 
 A recent study gathered data on chick survival probability as a function of number of eggs in the nest. These are given in the table below. 
 
-```{r echo = FALSE, message = FALSE, eval = knitr::is_html_output()}
-bbeggs <- data.frame(eggs = 1:10,survival = c(0.9,0.85,0.82,0.7,0.5,0.3,0.22,0.15,0.1,0.05))
-
-bbeggs_ft <- flextable(bbeggs)
-bbeggs_ft 
-
-```
+| Eggs | Survival probability |
+|------|-----------------------|
+| 1    | 0.90                  |
+| 2    | 0.85                  |
+| 3    | 0.82                  |
+| 4    | 0.70                  |
+| 5    | 0.50                  |
+| 6    | 0.30                  |
+| 7    | 0.22                  |
+| 8    | 0.15                  |
+| 9    | 0.10                  |
+| 10   | 0.05                  |
 
 Use these data to plot a graph in Excel with number of eggs on the x-axis and survival probability on the y-axis.
 

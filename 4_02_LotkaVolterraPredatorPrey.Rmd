@@ -2,7 +2,7 @@
 
 ## Background 
 
-The Lotka-Volterra predator-prey model (Rosenzweig and MacArthur 1963) is a fundamental concept in ecological dynamics, used to study the dynamics between predator and prey populations. The model assumes that the predator's population growth is directly influenced by the availability of its prey, while the prey's population growth is affected by predation pressure. As predator numbers increase, the prey population declines, which, in turn, leads to a decrease in predator numbers due to reduced food availability. This cyclical pattern continues as predator and prey populations oscillate over time. 
+The Lotka-Volterra predator-prey model (Lotka 1925; Volterra 1926) is a fundamental concept in ecological dynamics, used to study the dynamics between predator and prey populations. Rosenzweig and MacArthur (1963) later extended this basic model to incorporate prey carrying capacity and predator functional response. The model assumes that the predator's population growth is directly influenced by the availability of its prey, while the prey's population growth is affected by predation pressure. As predator numbers increase, the prey population declines, which, in turn, leads to a decrease in predator numbers due to reduced food availability. This cyclical pattern continues as predator and prey populations oscillate over time. 
 
 The Lotka-Volterra predator-prey model gives us a framework for understanding the dynamics of species interactions. 
 
@@ -47,7 +47,11 @@ Part 2 modifies the basic model to include a refuge, and part 3 modifies the mod
 
 An R version of this exercise is available [here](continuous-time-lotka-volterra-predator-prey-model-in-r.html).
 
-### Reference 
+### References
+
+Lotka, A. J. 1925. *Elements of Physical Biology*. Williams & Wilkins.
+
+Volterra, V. 1926. Variazioni e fluttuazioni del numero d'individui in specie animali conviventi. *Memorie della Reale Accademia Nazionale dei Lincei* 2: 31–113.
 
 Rosenzweig, M. L. and R. H. MacArthur. 1963. Graphical representation and stability conditions of predator-prey interactions. *American Naturalist* 97: 209–223.
 
