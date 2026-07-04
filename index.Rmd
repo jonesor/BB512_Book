@@ -245,7 +245,7 @@ cat("The formatted schedule table appears only in the online version of this boo
 - Official SDU timetable (always up to date): <", link_to_schedule, ">
 - For dates, times and rooms, also check itsLearning.
 
-")
+", sep = "")
 ```
 
 ```{r echo = FALSE, message = FALSE, warning = FALSE}

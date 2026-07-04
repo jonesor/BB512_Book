@@ -122,11 +122,11 @@ plot(output_df$V, output_df$C, type = "l", col = "purple", lwd = 2,
      xlab = "Victim (V)", ylab = "Consumer (C)", 
      main = "Predator-Prey Dynamics with ZNGIs")
 
-# Victim ZNGI
-abline(v = parameters["q"] / (parameters["a"] * parameters["f"]), col = "blue", 
-       lwd = 2, lty = 2)  
-# Consumer ZNGI
-abline(h = parameters["R"] / parameters["a"], col = "red", lwd = 2, lty = 2)  
+# Consumer ZNGI: dC/dt = 0 when V = q / (a * f) (a vertical line)
+abline(v = parameters["q"] / (parameters["a"] * parameters["f"]), col = "red",
+       lwd = 2, lty = 2)
+# Victim ZNGI: dV/dt = 0 when C = R / a (a horizontal line)
+abline(h = parameters["R"] / parameters["a"], col = "blue", lwd = 2, lty = 2)
 
 # Add point for initial population sizes
 points(output_df$V[1], output_df$C[1], pch = 19, col = "black", cex = 1.5)

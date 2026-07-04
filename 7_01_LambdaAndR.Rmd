@@ -170,7 +170,7 @@ summary(mod1)
 
 Interpretation
 
-The summary of the model indicates that the slope of the relationship between year and logN is `r as.vector(mod1$coefficients[2])`. Therefore, the per capita growth rate ($R$) is `r round(as.vector(coef(mod1)[2]),3)` and the population multiplication rate ($\lambda$) is `r 1+round(as.vector(coef(mod1)[2]),3)`.
+The summary of the model indicates that the slope of the relationship between year and logN is `r as.vector(mod1$coefficients[2])`. This slope is $\ln(\lambda)$, so the population multiplication rate ($\lambda$) is $e^{\text{slope}}$ = `r round(exp(as.vector(coef(mod1)[2])),3)`, the intrinsic rate of increase ($r$) is the slope itself = `r round(as.vector(coef(mod1)[2]),3)`, and the per capita rate of increase ($R = \lambda - 1$) is `r round(exp(as.vector(coef(mod1)[2]))-1,3)`.
 
 This suggests that the number of breeding pairs is indeed growing exponentially over the time period studied, with a specific rate of increase. Understanding this rate is crucial for conservation efforts, because it provides insights into the population's resilience, its demands on the ecosystem, and how it might respond to future changes in environmental conditions or conservation policies.
 

@@ -260,8 +260,13 @@ for (t in 2:timesteps) {
   }
   
   # Calculate per capita growth rate for the previous time step
-  per_capita_growth[t-1] <- (population[t] - 
-                               population[t-1]) / population[t-1]
+  # (undefined if the previous population was zero)
+  if (population[t-1] > 0) {
+    per_capita_growth[t-1] <- (population[t] -
+                                 population[t-1]) / population[t-1]
+  } else {
+    per_capita_growth[t-1] <- NA
+  }
 }
 
 par(mfrow=c(1,2))

@@ -18,13 +18,14 @@ Learning outcomes:
 
 ## Set up
 
-For the core LTRE analysis, you only need `popbio`.
+For the core LTRE analysis you need `popbio` (for the `LTRE` function) and `popdemo` (for the `eigs` function used to compare growth rates).
 The diagram-export packages are optional and only needed if you want to regenerate the life-cycle diagram image.
 
 ```{r LTRE1, echo = TRUE, eval = FALSE}
-# Core package (required)
-install.packages("popbio")
+# Core packages (required)
+install.packages(c("popbio", "popdemo"))
 library(popbio)
+library(popdemo)
 
 # Optional packages (only for rebuilding the diagram figure)
 install.packages(c("Rage", "DiagrammeRsvg", "rsvg"))
