@@ -8,14 +8,15 @@ By studying the Hawk and Dove strategies we can gain insights into understanding
 
 The simple model unravels the intricacies of strategic decision-making, with profound implications across various fields, from biology and social sciences to economics and politics.
 
-In this activity, you will play the hawk and dove game with a single partner and then with multiple partners to observe the hypothetical costs and benefits of antagonistic or cooperative behaviour, respectively.
+In this activity, you will play the hawk and dove game with a single partner and then with multiple partners to observe the hypothetical costs and benefits of antagonistic or cooperative behaviour, respectively. The whole class enters results into one shared, live spreadsheet as you play, so we can watch the class-wide patterns emerge on screen in real time, round by round, instead of waiting until after class to see what happened.
 
 ::: {.do-something}
-Learning outcomes: 
+Learning outcomes:
 
 - Understanding of the fundamental concepts of game theory and its application in analysing strategic interactions in competitive environments.
 - Ability to apply game theory concepts to real-world contexts in biology, or politics.
 - Appreciation of how simple models can be used to address complex biological or political decision making.
+- Practice generating a testable prediction from a simple model *before* collecting data, then checking it against real, live class results.
 :::
 
 ## Worked example
@@ -57,58 +58,90 @@ You can determine the benefit by looking at the left column and choosing the row
 | Hawk | 0.5 | 4 |
 | Dove | 0 | 2 |
 
+### What does theory predict?
 
+Before you play, work through this with your partner.
+
+Because B (4) is bigger than C (3), Hawk beats Dove *no matter what your opponent plays*: against a Dove you get 4 (vs. 2 for playing Dove yourself), and against a Hawk you still get 0.5 (vs. 0 for playing Dove). So in a single, anonymous encounter, Hawk is the dominant strategy — theory predicts everyone should end up playing Hawk.
+
+But notice that mutual Hawk-Hawk (0.5 each) is *worse for both of you* than mutual Dove-Dove (2 each). That means this game has the same structure as the famous Prisoner's Dilemma, with Hawk playing the role of "Defect".
+
+- **Prediction for Game Two** (a new partner every round, i.e. effectively a series of one-off encounters): theory says Hawk should dominate and pay off best.
+- **Prediction for Game One** (the *same* partner, 15 times in a row): think about what happens if you play Hawk against your partner. Might they retaliate next round? If you get stuck trading Hawk-Hawk for the rest of the game, is that better or worse than settling into mutual Dove-Dove? Write down what you think will happen to the *frequency of Hawk play* and to *total benefit* as the 15 rounds go on, before you start.
+
+Keep your predictions — we'll come back to them once the live results are in.
 
 ### Hypotheses
 
-The experimental hypothesis for this exercise could be that the dove strategy will become more frequent between repeated partners, and the hawk strategy will become more frequent when interacting with a variety of partners. Conversely, the null hypothesis could be that there will be no change in strategy over time with repeat or different partner combinations. 
+Building on the predictions above: the experimental hypothesis for this exercise is that hawkish play will become *less* frequent, and less profitable, between repeated partners (Game One), while hawkish play will become *more* frequent, and more profitable, when interacting with a variety of partners (Game Two). The null hypothesis is that there is no systematic difference in strategy, or its payoff, between the repeated-partner and changing-partner settings.
 
-### GAME ONE
+### Instructor setup (before class)
 
-1. On a piece of paper, or in Excel (you could use this file [here](https://www.dropbox.com/s/48lypfd6o0hi46e/Table_2_Group_behaviour.xlsx?dl=1)), use a form to collect your results. It should have enough rows for 15 rounds of the game and look like this (where I include an example in the first row):
+*(Read this section if you are running the session — students can skip ahead to "How today's data collection works".)*
 
-| Round  |player 1 card   | player 2 card  | P1 benefit  | P2 benefit |
-|---|---|---|---|---|
-| 1  | hawk   | hawk  | 0.5   | 0.5   |
-| 2  |...   |...   |...   | ...  |
-| ...  |...   |  ... |...   |...   |
-| 15  |...   |...   | ...  |...   |
+To let the whole class see results build up live, set up one shared spreadsheet before class instead of the old per-round Google Form:
 
-2. Collect a set of two game cards.
+1. Duplicate the "Hawk-Dove Live Results" spreadsheet template (keep one copy per year — reuse and re-share it each time you teach the course). It needs two data tabs and one dashboard tab:
+   - **Game1_Data**: one row per pair, pre-filled with `Pair ID` = 1, 2, 3, ... (enough rows for `number of students / 2`). For each of the 15 rounds, two entry columns (`R1_P1`, `R1_P2`, `R2_P1`, `R2_P2`, ... using `H`/`D`), plus a formula-computed benefit column per round and a `Total_P1_benefit` / `Total_P2_benefit` column, so students never have to do the arithmetic themselves. Keep `B` and `C` in two named cells that the benefit formulas refer to, so you can change the payoffs in future years without editing every formula.
+   - **Game2_Data**: one row per student, pre-filled with `Player ID` = 1, 2, 3, ... up to the class size. For each of the 15 rounds, two entry columns (`R1_self`, `R1_opponent`, ...), the same formula-computed per-round and total benefit columns.
+   - **Live_Dashboard**: charts wired to the data tabs — a line chart of "% Hawk played, by round" for each game, and a scatter chart of "mean hawkishness vs. total benefit" per pair/player for each game (these are the same two charts reproduced from archived data in the [Results of the hawk-dove games] chapter after class).
+2. Set sharing so students can edit without individually logging in (e.g. "anyone with the link can edit"), and share the link at the start of class (projected, or via itsLearning).
+3. Assign Pair IDs (Game 1) and Player IDs (Game 2) before class — e.g. by seat number or an attendance list — rather than letting students choose their own names or team labels. This is what lets everyone's data line up automatically and avoids the messy name-matching problems free-text team names caused in past years.
+4. Project the **Live_Dashboard** tab throughout the activity.
+5. After class, keep the spreadsheet (or an exported copy) as this year's archived dataset for the Results chapter.
 
-3. Take out the cards labelled hawk and dove and place them face down on the table or conceal them in your hands.
+### How today's data collection works
 
-4. When the instructor gives the signal, show either of the two cards to the student sitting across from you. Try to strategise how to receive the highest benefit from every interaction, but do not communicate with your partner.
+Instead of filling in a new form after every round, the whole class shares **one live spreadsheet**, projected on the screen as you play:
 
-5. In each round, note the cards played and the benefit received by each player. Also do it here on [this Google Form](https://forms.gle/3fjBGF7xVAYRQ5hXA).
+- You'll be given a **Pair ID** (Game 1) or a **Player ID** (Game 2) — use it to find your row. Don't invent your own label; the ID is what lets the spreadsheet combine everyone's results automatically.
+- You only ever type into your own row.
+- Enter cards as single letters: `H` for Hawk, `D` for Dove. The spreadsheet calculates the benefit for you from the payoff table, so there's no arithmetic to do mid-game.
+- Watch the projected screen: two live charts update automatically as the class enters data, so you can see the round-by-round pattern emerge as you play (see "Watching the results live" below).
 
-6. Repeat the interaction by showing cards to the same partner and determining the benefit,  on your instructor's signal, for a total of 15 rounds.
+### GAME ONE: repeated partner
 
-7. At the end of those 15 rounds, the student with the highest total benefit value is determined to be the "winner", or the most fit.
+1. Find your assigned partner and note your shared **Pair ID**.
+2. Collect a set of two game cards (Hawk and Dove) — one each.
+3. Agree who is recorded as "Player 1" and who is "Player 2" for your pair (it doesn't affect scoring).
+4. Conceal your cards. When the instructor gives the signal ("reveal!"), simultaneously show either card to your partner.
+5. Agree on which card each of you showed, then enter both (`H`/`D`) into your pair's row for that round — one phone or laptop per pair is enough.
+6. Repeat for 15 rounds, waiting for the instructor's signal each time. Try to strategise how to get the best benefit from every round, but don't communicate your strategy with your partner beyond the cards themselves.
+7. At the end, check your row: the spreadsheet shows your total benefit across all 15 rounds. Whoever has the higher total in your pair is the "winner", or the fittest, for Game One.
 
-8. As a class, I will determine the percentages of hawks and doves played as well as the average benefit received for each round, using this formula: *Class average benefit = (sum total benefit)/(number of players)*
+::: {.do-something}
+**No wifi?** Jot your results on paper first (round, your card, partner's card) and enter them all at once at the end — the live chart will simply catch up when you do.
+:::
 
-### GAME TWO
+### GAME TWO: changing partners every round
 
-1. For the second game, you should find a new partner for EACH of the 15 rounds (if possible).
+To swap partners quickly with a large class, use a **rotating circle**: half the class forms an inner circle facing outward, the other half forms an outer circle facing inward, so everyone starts facing one partner.
 
-2. Continue playing for 15 rounds or until students end up back in their starting positions, recording the data as before in [Excel](https://www.dropbox.com/s/3tjkck3kmpek6xc/Table_3_Group_behaviour.xlsx?dl=1) or on paper. Also record the results on a Google Form [here](https://forms.gle/F9YhYcTWRvoF4djt7).
+1. Find your assigned **Player ID** and starting position in the circle.
+2. Play a round exactly as in Game One: conceal your card, reveal on the instructor's signal, agree on both cards played.
+3. Enter your own card and your opponent's card (`H`/`D`) into your row for that round.
+4. When the instructor calls "rotate", everyone in the **outer circle** shifts one position to their left. You now face a new partner for the next round.
+5. Repeat for 15 rounds. Because you rotate through the circle, you'll play against 15 different people without any time lost searching for a free partner.
 
-3. For each round, I will determine the percentages of hawks and doves played that round and the average benefit received, again using the formula: *Class average benefit = (sum total benefit)/(number of players)*
+### Watching the results live
 
+As you play, two charts update automatically on the projected screen:
 
-## SUMMARISE RESULTS
+- **% playing Hawk, by round** — lets you see whether hawkish play increases, decreases, or stays flat as the rounds go by.
+- **Total benefit vs. mean hawkishness**, one point per pair/player — lets you see, once the game finishes, whether being more hawkish or more dovish paid off better.
 
-For both the single partner hawk-dove game and the multiple partners hawk-dove game, I will use the whole class data to plot the percentages as two separate lines - one for the percentage of hawks, and one for the percentage of doves, for each of the 15 rounds.
+We'll pause after each game to look at these together before moving on to the next part.
 
-We will take note of whether the cards played changed as more rounds were played.
+## Summarise and discuss results
 
-We will consider which type of strategy would most likely evolve in a setting where partners interact repeatedly.
+Before looking at the final numbers, revisit the predictions you wrote down earlier.
 
-Think about which tactic might be beneficial for a species that relies on cooperation.
+- Did the % Hawk trend in Game One and Game Two match what you predicted?
+- Did the total-benefit-vs-hawkishness pattern support the one-shot theory prediction (Hawk pays off best), or the repeated-game reciprocity argument (Dove pays off best when you keep meeting the same partner)?
+- Which game, if either, better matches what you'd expect from a species whose individuals encounter each other only once versus a species that lives in small, stable social groups?
+- Discuss as a class what would likely happen if you increased or decreased the relative value of the benefit (B) compared with the cost (C) — would that change which strategy dominates in a one-off encounter?
 
-Discuss as a class what would likely happen if you increased or decreased the relative value of the benefits you receive.
-
+The full analysis of the actual class data — including how the live charts you just watched connect to the underlying theory — is worked through in detail in the [Results of the hawk-dove games] chapter.
 
 ## Acknowledgement
 
@@ -116,6 +149,32 @@ This exercise is taken from https://www.jove.com/science-education/10611/group-b
 
 ## Takeaways
 
-- Payoffs determine which strategies are favored and whether mixtures are stable.
-- Repeated interactions can shift behavior toward cooperation.
-- Game outcomes depend on the structure of interactions, not just the strategies.
+- With B > C, a single anonymous encounter is won by playing Hawk — but repeated encounters with the same partner change the incentives, because mutual Hawk-Hawk is worse for both players than mutual Dove-Dove.
+- Collecting and displaying data live, as a class, makes it possible to test a theoretical prediction in real time rather than waiting until after the session.
+- Game outcomes depend on the structure of the interaction (one-off vs. repeated), not just on the payoffs themselves.
+
+### Optional: running a live dashboard in R
+
+If you're comfortable with R, you can reproduce the same two live charts yourself from the shared spreadsheet using the `googlesheets4` package, instead of (or alongside) the spreadsheet's own charts. This is optional — the built-in spreadsheet charts are enough to run the session — but it lets you generate the exact `ggplot2` figures used in the Results chapter, live, during class.
+
+```{r hawkdove-live-dashboard, eval = FALSE, echo = TRUE}
+library(googlesheets4)
+library(dplyr)
+library(ggplot2)
+
+# A publicly-editable sheet can be read without signing in:
+gs4_deauth()
+
+sheet_url <- "PASTE_THIS_YEAR'S_LIVE_SHEET_URL_HERE"
+
+# Re-run this chunk (or wrap it in a Shiny app / while-loop with Sys.sleep())
+# every 10-15 seconds during class to refresh the live view.
+game1 <- read_sheet(sheet_url, sheet = "Game1_Data")
+
+hawkishness_by_round <- game1 %>%
+  select(starts_with("R")) %>%
+  # ... reshape to one row per (round, player) and summarise mean % Hawk ...
+  summarise(across(everything(), ~ mean(. == "H", na.rm = TRUE)))
+
+# See the Results chapter for the full analysis pipeline these numbers feed into.
+```
