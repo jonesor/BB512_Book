@@ -60,12 +60,12 @@ hawkishness <- bind_rows(hawkishness1,hawkishness2)
 perIndiv_player1 <- hdg %>%
   mutate(hawkNumeric_player1 = ifelse(player_1_card == "Hawk", 1, 0)) %>%
   group_by(teamID) %>%
-  summarise(mean_Hawkishness = mean(hawkNumeric_player1), mean_benefit = sum(player_1_benefit, na.rm = TRUE))
+  summarise(mean_Hawkishness = mean(hawkNumeric_player1), total_benefit = sum(player_1_benefit, na.rm = TRUE))
 
 perIndiv_player2 <- hdg %>%
   mutate(hawkNumeric_player2 = ifelse(player_2_card == "Hawk", 1, 0)) %>%
   group_by(teamID) %>%
-  summarise(mean_Hawkishness = mean(hawkNumeric_player2), mean_benefit = sum(player_2_benefit, na.rm = TRUE))
+  summarise(mean_Hawkishness = mean(hawkNumeric_player2), total_benefit = sum(player_2_benefit, na.rm = TRUE))
 
 perIndiv_bothPlayers <- bind_rows(perIndiv_player2,perIndiv_player1)
 ```
@@ -111,12 +111,12 @@ What we see is that the maximum benefits are received when hawkishness is at an 
 
 
 ```{r hawkdoveresults6, echo = FALSE, message = FALSE}
-ggplot(perIndiv_bothPlayers,aes(x = mean_Hawkishness,y = mean_benefit)) + 
-  geom_point() + 
+ggplot(perIndiv_bothPlayers,aes(x = mean_Hawkishness,y = total_benefit)) +
+  geom_point() +
   stat_smooth(method="lm",formula=y~poly(x, 2),fullrange=TRUE)+
-  ggtitle("The best strategy in Game 1\nis an intermediate level of hawkishness") + 
+  ggtitle("The best strategy in Game 1\nis an intermediate level of hawkishness") +
   xlim(0,1) +
-  ylab("Mean benefit") + 
+  ylab("Total benefit") +
   xlab("Mean hawkishness")
 ```
 
@@ -184,11 +184,13 @@ Finally we can look at what the best strategy is in Game 2.
 perIndiv <- hdg2 %>%
   mutate(hawkNumeric_player1 = ifelse(player_1 == "H", 1, 0)) %>%
   group_by(individual) %>%
-  summarise(meanHawkishness = mean(hawkNumeric_player1), benefit = sum(benefit, na.rm = TRUE))
+  summarise(meanHawkishness = mean(hawkNumeric_player1), total_benefit = sum(benefit, na.rm = TRUE))
 
-ggplot(perIndiv,aes(x = meanHawkishness,y = benefit)) + 
-  geom_point() + 
-  geom_smooth(method="lm", formula=y~poly(x, 2))
+ggplot(perIndiv,aes(x = meanHawkishness,y = total_benefit)) +
+  geom_point() +
+  geom_smooth(method="lm", formula=y~poly(x, 2)) +
+  ylab("Total benefit") +
+  xlab("Mean hawkishness")
 
 ```
 

@@ -62,7 +62,8 @@ jobs:
             libjpeg-dev \
             libtiff5-dev \
             libgit2-dev \
-            libglpk-dev
+            libglpk-dev \
+            libuv1-dev
 
       - name: Install R packages
         run: |
