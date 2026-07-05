@@ -105,20 +105,23 @@ ggplot(hawkishness,aes(x = round,y = meanHawk)) +
   ylab("Mean hawkishness") + 
   xlab("Round")
 ```
-Next, we can ask whether the amount of benefits received (fitness) is associated with the degree of hawkishness. This, in evolutionary terms, is a way of seeing what the Evolutionary Stable Strategy (ESS) is. Is it an intermediate strategy, or more hawkish or dovish?
+Next, we can ask whether the total benefit received (fitness) is associated with the degree of hawkishness. This, in evolutionary terms, is a way of asking what the Evolutionarily Stable Strategy (ESS) is: is it best to be a hawk, a dove, or something in between?
 
-What we see is that the maximum benefits are received when hawkishness is at an intermediate level of around 0.5-0.6, though we clearly suffered from a lack of dove-like individuals in the study group!
+With the payoffs used in this game (B = 4, C = 3), a *single, anonymous* encounter has a simple answer. Because B > C, Hawk beats Dove regardless of what your opponent plays (Hawk-vs-Dove gives 4 > 2 for Dove-vs-Dove, and Hawk-vs-Hawk gives 0.5 > 0 for Dove-vs-Hawk), so the one-shot ESS here is pure Hawk, not an intermediate mix. (The familiar "stable mix of hawks and doves" result only arises when the cost of fighting, C, exceeds the value of the resource, B — the opposite of the situation here. With B > C, the payoff ranking Hawk-vs-Dove > Dove-vs-Dove > Hawk-vs-Hawk > Dove-vs-Hawk is in fact the same structure as the classic Prisoner's Dilemma, with Hawk playing the role of "Defect".)
 
+But Game 1 was not a single anonymous encounter — you played the *same* partner 15 times in a row. That changes the incentives: playing Hawk risks provoking Hawk-Hawk retaliation for the rest of the 15 rounds, which pays only 0.5 each round, far worse than the 2 each you would get by settling into mutual Dove-Dove play. This is the classic argument for reciprocity in repeated games (Axelrod & Hamilton's "evolution of cooperation"): when you meet the same partner repeatedly, cooperation can pay off even though defection (Hawk) would win a single, one-off encounter.
 
 ```{r hawkdoveresults6, echo = FALSE, message = FALSE}
 ggplot(perIndiv_bothPlayers,aes(x = mean_Hawkishness,y = total_benefit)) +
   geom_point() +
-  stat_smooth(method="lm",formula=y~poly(x, 2),fullrange=TRUE)+
-  ggtitle("The best strategy in Game 1\nis an intermediate level of hawkishness") +
+  stat_smooth(method = "lm", fullrange = TRUE) +
+  ggtitle("In Game 1, more dovish partners\nearned more") +
   xlim(0,1) +
   ylab("Total benefit") +
   xlab("Mean hawkishness")
 ```
+
+That is indeed closer to what we see: hawkishness and total benefit are *negatively* related here — the more hawkish you were with your (fixed) partner, the less you earned overall, rather than there being an intermediate optimum. That is consistent with the reciprocity/retaliation argument above, not with the simple one-shot ESS calculation.
 
 ### Game 2 - different opponents
 
@@ -196,8 +199,12 @@ ggplot(perIndiv,aes(x = meanHawkishness,y = total_benefit)) +
 
 It looks like the best strategy has changed a lot! Now the best strategy is to be a hawk.
 
+This matches the one-shot theoretical prediction from earlier much better than Game 1 did. In Game 2 you faced a new partner every round, so there was no opportunity to build reciprocity, and no way to be "punished" for playing Hawk against the same individual again. With no repeated interaction — no "shadow of the future" — the game reduces to the simple one-shot logic, and since B > C, Hawk pays off best.
+
 In this setting we might expect  natural selection to drive towards the evolution of more aggressive individuals.
 
-Think about what this means in terms of human cooperation and conflict avoidance. 
+Put together, the two games illustrate a general result from game theory: repeated interaction with the same partner can favour cooperation even in a game where defection (Hawk) wins any single encounter, while anonymous, one-off interactions favour the individually dominant strategy. This is one reason why reputation, memory, and repeated encounters matter so much for the evolution of cooperation, both in nature and in human societies.
+
+Think about what this means in terms of human cooperation and conflict avoidance.
 
 Can you see the value of understanding your opponent/competitor?
