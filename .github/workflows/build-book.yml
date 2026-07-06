@@ -83,7 +83,31 @@ jobs:
       # needed to validate a PR, only built and committed on push/schedule.
       - name: Build book (single markdown)
         if: github.event_name != 'pull_request'
-        run: Rscript -e "bookdown::render_book('index.Rmd', 'bookdown::markdown_document2', output_dir = 'full-book')"
+        run: |
+          touch /tmp/premd.marker
+          Rscript -e "bookdown::render_book('index.Rmd', 'bookdown::markdown_document2', output_dir = 'full-book')"
+
+      # bookdown/pandoc can write this format's figures outside output_dir;
+      # find them (wherever they landed) and copy them into full-book/ so
+      # the relative image paths in BB512.md actually resolve, and so the
+      # commit step below picks them up. Also prints diagnostics either way.
+      - name: Relocate figures for combined markdown
+        if: github.event_name != 'pull_request'
+        run: |
+          echo "--- full-book/ before relocation ---"
+          find full-book -maxdepth 3 || true
+          echo "--- directories matching *figure-markdown* anywhere in repo ---"
+          find . -type d -iname "*figure-markdown*" -not -path "./.git/*" || true
+          echo "--- any *.png/*.jpg/*.svg files newer than the pre-build marker ---"
+          find . -newer /tmp/premd.marker \( -iname "*.png" -o -iname "*.jpg" -o -iname "*.svg" \) -not -path "./.git/*" || true
+          for d in $(find . -maxdepth 2 -type d -iname "*figure-markdown*" -not -path "./.git/*" -not -path "./full-book/*"); do
+            target="full-book/$(dirname "$d")"
+            mkdir -p "$target"
+            cp -r "$d" "$target/"
+            echo "Copied $d -> $target/"
+          done
+          echo "--- full-book/ after relocation ---"
+          find full-book -maxdepth 3 || true
 
       - name: Commit combined markdown
         if: github.event_name != 'pull_request'
