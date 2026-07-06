@@ -4,6 +4,7 @@ author: "Owen R. Jones (Course Coordinator)"
 date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
 pandoc_args: --listings
+always_allow_html: true
 output:
   bookdown::gitbook:
     config:
