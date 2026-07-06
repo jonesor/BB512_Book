@@ -22,6 +22,11 @@
   committed copy of `docs/` is kept for local browsing/history only — it is
   no longer what GitHub Pages serves from, and no longer needs to be rebuilt
   and committed by hand to publish a change.
+- The same workflow also renders the whole book to a single combined
+  Markdown file, `full-book/BB512.md` (with figures evaluated and embedded,
+  via `bookdown::markdown_document2`), and commits it back to the repo on
+  every push/schedule run (not on pull requests). This is for offline/private
+  reading — view or download it directly from the GitHub file browser.
 
 ### Data provenance
 

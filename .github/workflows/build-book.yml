@@ -10,7 +10,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write
   pages: write
   id-token: write
 
@@ -78,6 +78,19 @@ jobs:
 
       - name: Build book (pdf)
         run: Rscript -e "bookdown::render_book('index.Rmd', 'bookdown::pdf_book')"
+
+      # A single combined Markdown file for offline/private reading - not
+      # needed to validate a PR, only built and committed on push/schedule.
+      - name: Build book (single markdown)
+        if: github.event_name != 'pull_request'
+        run: Rscript -e "bookdown::render_book('index.Rmd', 'bookdown::markdown_document2', output_dir = 'full-book')"
+
+      - name: Commit combined markdown
+        if: github.event_name != 'pull_request'
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "Rebuild full-book/BB512.md"
+          file_pattern: "full-book/**"
 
       # Pull requests only need the build to be validated, not published.
       - name: Upload Pages artifact
