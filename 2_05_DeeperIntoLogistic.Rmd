@@ -11,23 +11,25 @@ The logistic and exponential growth models are closely related and serve as fund
 
 The logistic growth model is represented by the following equation (Eqn. 5.2 in Neal):
 
-$\frac{\delta N}{\delta t}=r_m N\left(1-\frac{N}{K}\right)$
+$\frac{dN}{dt}=r_m N\left(1-\frac{N}{K}\right)$
 
 In this model, as the population size $N$ approaches the carrying capacity $K$, the term $\left(1 - \frac{N}{K}\right)$ decreases, slowing the population growth rate until it reaches zero when $N = K$.
 
 However, if we remove the constraint of a carrying capacity (i.e., set $K = \infty$), the model simplifies to the exponential growth equation:
 
-$\frac{\delta N}{\delta t}=r_m N\left(1-\frac{N}{\infty}\right)$
+$\frac{dN}{dt}=r_m N\left(1-\frac{N}{\infty}\right)$
 
 which simplifies to 
 
-$\frac{\delta N}{\delta t}=r_m N\left(1-0\right)$
+$\frac{dN}{dt}=r_m N\left(1-0\right)$
 
 which simplifies to 
 
-$\frac{\delta N}{\delta t}= r_m N$
+$\frac{dN}{dt}= r_m N$
 
 This is the familiar **geometric (exponential) growth equation** (Eqn. 4.6 in Neal), which assumes unlimited resources and continuous population growth.
+
+The Excel workbook uses the equivalent *discrete-time* versions of these models, in which the population is updated once per time step: $N_{t+1} = N_{t} + r_{m} N_{t}\left(1 - \frac{N_{t}}{K}\right)$ for logistic growth, and $N_{t+1} = N_{t} + r_{m} N_{t}$ for exponential growth. Here, $dN/dt$ is approximated by the change in population size over one time step, $N_{t+1} - N_{t}$. The same simplification applies: setting $K = \infty$ turns the discrete logistic model into the discrete exponential model. Working in discrete time is what makes the oscillations, cycles and chaos you will see in Task 1 possible.
 
 **Take-home Message: The logistic and exponential growth models are closely related. By setting $K = \infty$, we transition from the logistic model to the exponential model.**
 
@@ -58,9 +60,18 @@ Learning outcomes:
 
 ### Output and interpretation
 
-You should see a smooth approach to $K$ in Figure 1, a straight decreasing line in Figure 2 that crosses zero at $K$, and a single peaked curve in Figure 3 with a maximum near $N = K/2$.
+In Figure 1 the population rises quickly and settles at $K$, overshooting it only very slightly (to about 201) before levelling off. Figures 2 and 3 show the same model from two other perspectives. You will explore what their shapes and axis intercepts tell you in Tasks 2 and 3.
 
 ## Your Task
+
+<!-- Instructor notes:
+- Purpose: reinforce the relationships between the different ways of looking at the logistic model (Figures 1-3). Start by writing the exponential and logistic equations on the board and showing that the logistic model is a simple extension of the exponential model, which it becomes when K is infinite.
+- Task 1: have students describe trajectories using the correct vocabulary (smooth convergence, damped oscillation, 2-point/4-point cycle, chaos).
+- Task 2: the key point is that the intercepts are K (x-axis) and r_m (y-axis). Have them sketch the r_m = 1.5, K = 250 graph on paper before checking in Excel.
+- Task 3: carefully explain what a slope (dN/dt) is by drawing some curves on the board. Use Socratic questions to draw out why dN/dt vs. N is a parabola: What is the population growth rate at K? Well below K? Above K? At N = 0? Where does the curve cross the x-axis, and why? Where is it at its maximum (always K/2)?
+- Task 4: have students draw the exponential versions before looking at the Exponential sheet. Watch for confusion between per capita growth rate vs. N (horizontal line) and dN/dt vs. N (straight line through the origin).
+- Task 5: start with a small r_m (smooth convergence), add a 1-step lag to show damped oscillations, then raise r_m to about 1.2 to show sustained cycles. Discuss how time lags make population dynamics hard to predict and manage.
+-->
 
 Download the Excel file [`Deeper Into Logistic Growth.xlsx`](https://www.dropbox.com/s/4xq399z7skl1akv/Deeper%20into%20Logistic%20Growth.xlsx?dl=1).
 
@@ -114,31 +125,41 @@ Sketch equivalent graphs for the exponential (geometric) growth model, including
 
 **Task 5: Adding a Time Lag**
 
-1. In the **`TimeLag` worksheet**, explore how adding a time lag to the logistic model affects population dynamics. This is the equation we are using: $\frac{d N}{d t}=r N\left(1-\frac{N_{t-\tau}}{K}\right)$
+1. In the **`TimeLag` worksheet**, explore how adding a time lag to the logistic model affects population dynamics. This is the equation we are using: $\frac{dN}{dt}=r_m N_t\left(1-\frac{N_{t-\tau}}{K}\right)$, where $\tau$ is the length of the time lag. With $\tau = 1$, density dependence acts on the population size one time step ago rather than the current population size.
 
+2. Adjust the formula in the Excel sheet to incorporate a time lag in the population size ($N_{t-\tau}$). The `dN/dt` column (column C) currently uses the current population size. For a 1-step lag, change the formula in cell C11 to `=$B$5*B11*(1-(B10/$B$6))`, so that the density-dependent term uses the population size from the previous time step. Then fill this formula down to the bottom of the column.
 
-2. Adjust the formula in the Excel sheet to incorporate a time lag in the population size ($N_{t-\tau}$). Start with a small $r_m$ value that results in smooth convergence to $K$ in the ordinary logistic model. 
+3. Start with the default $r_m = 0.6$, which gives smooth convergence to $K$ in the ordinary logistic model. With the 1-step lag, you should see the population overshoot $K$ and then show damped oscillations before settling. Now increase $r_m$ to 1.2. What happens to the oscillations?
 
-3. Add a 1-year time lag and observe how this introduces cycling in the population dynamics. This exercise demonstrates how a simple life history trait (such as a time lag) can introduce complex dynamics, even when population growth rates are low.
+4. Compare this with the ordinary logistic model (no lag) at the same $r_m$ values (e.g. using the `BasicLogistic` worksheet). This exercise demonstrates how a simple life history trait (such as a time lag) can make a population overshoot and oscillate at growth rates that would otherwise give smooth convergence to $K$. With a large enough lag or growth rate, the oscillations become sustained cycles.
 
 
 ## Questions
 
 * How does increasing or decreasing $r_m$ affect the shape and behaviour of the population time series in Figure 1? How does it change the per capita growth rate curve in Figure 2 and the population growth rate in Figure 3?
 
-<!-- In Figure 1, as $r_m$ increases, the population grows more rapidly. For small values of $r_m$ (e.g., 0.8), the population slowly approaches the carrying capacity $K$. For higher values of $r_m$ (e.g., 1.8, 2.7), the population may overshoot $K$ and oscillate before stabilising, or it may exhibit chaotic behaviour if $r_m$ is large enough (e.g., above 2.5).
+<!-- In Figure 1, as $r_m$ increases, the population grows more rapidly. For small values of $r_m$ (e.g., 0.8), the population slowly approaches the carrying capacity $K$. For higher values of $r_m$ (e.g., 1.8, 2.7), the population may overshoot $K$ and oscillate before stabilising, or it may exhibit chaotic behaviour if $r_m$ is large enough (above about 2.57).
 In Figure 2, increasing $r_m$ makes the slope of the line steeper. Higher $r_m$ values result in a higher per capita growth rate when the population size is small. However, the line still intercepts the x-axis at $K$, meaning that the carrying capacity doesn't change, but the rate at which the population reaches $K$ does.
-In Figure 3, as $r_m$ increases, the overall population growth rate increases, with the peak growth rate shifting to a higher value. However, as the population approaches $K$, the growth rate still decreases to zero. -->
+In Figure 3, as $r_m$ increases, the parabola becomes taller: the maximum population growth rate ($r_m K/4$) increases. However, the peak always stays at $N = K/2$, and the growth rate is still zero at $N = 0$ and $N = K$. -->
+
+* The peak of the parabola in Figure 3 gives the *maximum sustainable yield* (MSY): the largest number of individuals that could be harvested each time step without the population declining. What is the MSY for a population with $r_m = 0.8$ and $K = 200$, and at what population size should the population be kept to achieve it? Why might harvesting at exactly the MSY be risky in practice?
+
+<!-- dN/dt is maximised at $N = K/2$, where $dN/dt = r_m \frac{K}{2}\left(1 - \frac{1}{2}\right) = \frac{r_m K}{4}$. With $r_m = 0.8$ and $K = 200$, MSY = 40 individuals per time step, achieved by holding the population at $N = 100$. It is risky because $r_m$ and $K$ are estimated with error and vary between years. If the true MSY is lower than the estimate, or the population falls below $K/2$, harvesting at the estimated MSY takes more than the population can replace, and the population declines further. -->
+
+* In the discrete model, $N_{t+1} = N_t + dN/dt$. Using what you know about Figure 3, what shape would a plot of $N_{t+1}$ against $N_t$ have? Where would it cross the line $N_{t+1} = N_t$, and why?
+
+<!-- It is also a parabola: it is the Figure 3 parabola with the line $N_{t+1} = N_t$ added to it, so it passes through the origin and rises, peaks and then falls. It crosses the line $N_{t+1} = N_t$ at $N_t = 0$ and $N_t = K$, because these are the population sizes where $dN/dt = 0$, so the population does not change from one time step to the next (the equilibria). The steepness of the parabola where it crosses at $K$ depends on $r_m$ and determines whether the population approaches $K$ smoothly, oscillates, or behaves chaotically. -->
 
 * What happens to the population dynamics when a time lag is introduced? A time lag could be caused by a long gestation period, or by the need to take a year out before breeding again.
 
-<!--     Introducing a time lag in the feedback system (i.e., where the population size at a given time depends on the population size at a previous time step) typically leads to more complex and sometimes oscillatory dynamics:
-     A time lag may cause the population to overshoot the carrying capacity and then oscillate around $K$. This happens because the time lag delays the response of the population to changes in resource availability, leading to a cycle of growth and decline.
+<!--     Introducing a time lag in the feedback system (i.e., where density dependence depends on the population size at a previous time step) typically leads to more complex, oscillatory dynamics:
+     A time lag causes the population to overshoot the carrying capacity and then oscillate around $K$. This happens because the time lag delays the response of the population to changes in density, leading to a cycle of growth and decline. With the default $r_m = 0.6$ and a 1-step lag, the oscillations are damped; at $r_m$ above about 1 (e.g. 1.2) they become sustained cycles.
   
 -->
 
 ## Takeaways
 
 - Logistic and exponential growth are linked by the carrying capacity term.
-- The shape of $dN/dt$ and per-capita growth curves explains why oscillations occur.
+- Figures of $N$ vs. time, per-capita growth rate vs. $N$ and $dN/dt$ vs. $N$ are three views of the same model; you should be able to move between them.
+- In discrete time, high $r_m$ causes overshoot, oscillations, cycles and chaos.
 - Time lags can destabilize otherwise stable dynamics.

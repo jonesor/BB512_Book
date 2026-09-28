@@ -62,15 +62,16 @@ In this exercise, you will explore how changes in key parameters affect populati
 2. **Familiarise Yourself with the Spreadsheet**  
    In the file, you’ll see three sections:
    - **Pink Block**: This is where you will input and adjust the model parameters.
+   - **Data Table**: This calculates the population size ($N$) and per capita growth rate at each time step. You do not need to edit it.
    - **Graphs**: These display how the population behaves over time and in relation to the parameters you adjust.
 
 3. **Understand the Parameters**  
    In the *pink block*, you will find the key parameters of the logistic growth model:
-   - `Initial N`: The starting population size at time 1 (default = 10).
-   - `r_m`: The maximum per capita population growth rate (default = 0.8). 
+   - `Initial N`: The starting population size at time 0 (default = 10).
+   - `r_m`: The maximum per capita population growth rate (default = 0.8).
      - If $r_m > 0$, the population grows.
      - If $r_m < 0$, the population shrinks.
-     - The population size cannot fall below zero.
+     - Biologically, population size cannot fall below zero (but see the footnote in Step 5 — the spreadsheet does not enforce this).
    - `K`: The carrying capacity of the population (default = 200).
 
 4. **Explore the Model**  
@@ -86,7 +87,7 @@ In this exercise, you will explore how changes in key parameters affect populati
     
   - At what time does the population reach its maximum size?  
     
-    <!-- The population reaches its maximum size relatively quickly, around 17 time steps. -->
+    <!-- The population approaches its maximum size relatively quickly, reaching about 99% of `K` after around 9 time steps. -->
 
 - **Step 2**: Increase the carrying capacity (`K`) to 300.  
   **Prediction**: What do you expect to happen to the population size over time?  
@@ -103,7 +104,7 @@ In this exercise, you will explore how changes in key parameters affect populati
   
   **Test**: What do you observe in the graph?  
   
-  <!-- The population takes about twice as long to reach the carrying capacity (roughly 40 time steps). -->
+  <!-- The population takes about twice as long to reach the carrying capacity (reaching about 99% of `K` after around 18 time steps rather than 9). -->
 
 - **Step 4**: Increase `r_m` to 1.8.  
 
@@ -121,7 +122,17 @@ In this exercise, you will explore how changes in key parameters affect populati
 
   - How do the population dynamics change as `r_m` increases?  
     
-    <!-- As `r_m` increases, the oscillations become larger and more pronounced, leading to chaotic behaviour at higher values. -->
+    <!-- As `r_m` increases, the nature of the oscillations changes in a predictable way:
+    - r_m < 1: the population approaches K smoothly.
+    - 1 < r_m < 2: damped oscillations of decreasing amplitude around K.
+    - 2 < r_m < 2.57: stable, cyclic oscillations around K (2-point, 4-point... stable limit cycles).
+    - r_m > 2.57: chaotic fluctuations.
+    - r_m too high (around 3 and above): the population fluctuates and crashes (to extinction, or to negative values in the spreadsheet). -->
+
+  - Is there a limit to how high `r_m` can be?
+
+    <!-- Yes. At very high r_m the population overshoots so far that the next time step gives N <= 0, i.e. extinction. -->
+
   - What happens when `r_m` is 2.8 or 3.0^[The behaviour where `r_m` values above 3 cause the population to become very negative, is a mathematical artefact caused by numerical instability in the discrete-time logistic growth model. When the growth rate is too high, the population can overshoot its carrying capacity, and the formula's negative feedback term can drive the population to unrealistic, negative values. This issue arises because the model doesn't impose biological constraints, such as preventing population sizes from falling below zero. In real biological systems, such negative values would not occur.]? Are the dynamics predictable or chaotic?  
     
     <!-- For `r_m` around 2.8, the population enters chaotic oscillations. The population fluctuates unpredictably around `K` with no clear pattern. -->
@@ -156,7 +167,7 @@ In this exercise, you will explore how changes in key parameters affect populati
     <!-- Increasing the carrying capacity shifts the point where the per capita growth rate crosses the x-axis to 300. -->
   - Does the slope of the per capita growth rate change when you alter `K`?  
   
-    <!-- No, the slope remains the same, but the intercept on the x-axis moves to the new carrying capacity. -->
+    <!-- Yes. The y-intercept stays at `r_m`, but the x-intercept moves to the new carrying capacity, so the line becomes shallower (the slope is $-r_m/K$). -->
 
 - **Step 3**: Change `r_m` to 1.8 and observe how the graph is affected.
   - How does increasing `r_m` affect the shape of the curve?
@@ -175,14 +186,8 @@ In this exercise, you will explore how changes in key parameters affect populati
 
 - **Step 5**: Compare the per capita growth rate in **Graph 2** to the population size over time in **Graph 1**.
   **Questions**:  
-  - How are the two graphs connected?  
+  - How are the two graphs connected?
 
-## Takeaways
-
-- Logistic growth captures density dependence through the carrying capacity $K$.
-- High growth rates can cause overshoot, oscillations, or chaos in discrete-time models.
-- Per-capita growth declines linearly with population size in the logistic model.
-    
     <!-- The decline in the per capita growth rate in Graph 2 reflects the slowing population growth shown in Graph 1. As the population size approaches `K` in Graph 1, the per capita growth rate approaches zero in Graph 2. -->
   - What would the per capita growth rate look like for a population experiencing exponential growth instead of logistic growth?  
     
@@ -208,6 +213,11 @@ Some useful keywords:
 * Chaos/Chaotic dynamics
 * Unpredictable/predictable
 
+## Takeaways
+
+- Logistic growth captures density dependence through the carrying capacity $K$.
+- High growth rates can cause overshoot, oscillations, or chaos in discrete-time models.
+- Per-capita growth declines linearly with population size in the logistic model.
 
 ## Questions
 
