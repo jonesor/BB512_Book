@@ -19,6 +19,8 @@ Where:
 
 In this equation, the term $\left(1 - \frac{N_t}{K}\right)$ slows population growth as the population size $N_t$ approaches $K$. If $N_t = K$, the population stops growing.
 
+This is the discrete-time form of the logistic model used by Neal. Here $r_m$ is applied once per time step, so when the population is very small (and $\left(1 - \frac{N_t}{K}\right) \approx 1$) it grows by a factor of about $1 + r_m$ each time step. If you remember from earlier exercises that $\lambda = e^{r_m}$, note that this model treats $\lambda$ as approximately $1 + r_m$ instead. For example, with $r_m = 0.8$, the model gives $1.8$ where $e^{0.8} \approx 2.23$. The approximation is good when $r_m$ is small and poor when it is large. Stepping forward a whole time unit at a time is also what allows the overshoot, oscillations and chaos you will explore below. The continuous-time logistic model always approaches $K$ smoothly.
+
 As growth rates increase beyond a certain point, the population can exhibit more complex behaviours. At higher growth rates, populations may overshoot the carrying capacity, leading to oscillations as they fluctuate around it. In some cases, the population may show what’s called deterministic chaos. This means that while the population fluctuates unpredictably, the system itself is not random — small changes in initial conditions or growth rates can lead to vastly different outcomes.
 
 This Excel-based exercise will help you explore how changes in the growth rate and carrying capacity affect population dynamics. Though simple, the logistic model provides valuable insights into how populations stabilize, fluctuate, and respond to environmental limits.

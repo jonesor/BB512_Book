@@ -177,6 +177,8 @@ The logistic growth equation simplifies to become the exponential growth equatio
 
 This simplification also works with the discrete version of the equation used in the Excel workbook, $N_{t+1}=N_{t}+r_{m} N_{t}\left(1-\frac{N_{t}}{K}\right)$, which becomes $N_{t+1}=N_{t}+r_{m} N_{t}$.
 
+The discrete version uses the same $r_m$ but applies it once per whole time step. It is therefore an approximation of the continuous model: a small population is multiplied by $1 + r_m$ each time step rather than by $\lambda = e^{r_m}$. The approximation is good for small $r_m$ and poor for large $r_m$. This is why the discrete logistic model can overshoot $K$, oscillate and become chaotic at high $r_m$, while the continuous logistic model always approaches $K$ smoothly.
+
 ### Task 1: Type of dynamics depends on $r_m$
 
 As you increase $r_m$, the dynamics of the population change. At low $r_m$ ($< 1$, e.g. 0.8) population size ($N$) simply converges smoothly on the carrying capacity, $K$. As $r_m$ increases ($1 < r_m < 2$, e.g. 1.2 or 1.8) you will see damped oscillations, whereby $N$ overshoots $K$ and then oscillates and converges to $K$. Then ($2 < r_m < 2.57$, e.g. 2.4) you will see stable cycles where the population size oscillates *around* $K$ indefinitely. The cycles can be simple 2-point cycles (where $N$ bounces between two values), or more complex, with $N$ bouncing between 4 points (or more). Above $r_m \approx 2.57$ (e.g. 2.7) the dynamics are chaotic: they never repeat and are unpredictable in practice. The critical values of $r_m$ that define the type of dynamics are fixed: if we know $r_m$ we can predict the type of dynamics.
