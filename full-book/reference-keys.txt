@@ -110,9 +110,12 @@ your-task-8
 using-r-for-matrix-modelling
 package-setup
 projecting-the-population
+what-the-projection-does
+does-the-starting-population-matter
+growth-rate-and-stable-stage-distribution
 elasticity
-life-table-response-experiment-ltre
-your-turn
+in-silico-experiments-changing-the-life-cycle
+your-investigation
 an-evolutionary-experiment
 questions-8
 takeaways-8
@@ -305,6 +308,7 @@ n_t1-vs.-n_t
 chaotic-dynamics
 solutions-life-tables-and-survivorship-types
 solutions-matrix-population-modelling
+model-answers-for-the-matrix-modelling-practical
 solutions-how-many-eggs-should-a-bird-lay
 solutions-trade-offs-and-the-force-of-selection
 solutions-hardy-weinberg-equilibrium
