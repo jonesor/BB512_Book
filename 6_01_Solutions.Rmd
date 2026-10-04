@@ -245,7 +245,18 @@ The main take home messages for this class are that you should:
 (3) be able to write out a matrix model (the square of numbers) for a given life cycle diagram (and *vice versa*).
 (4) understand how population projection works, and to therefore interpret a figure or description showing a population projection.
 (5) understand what an elasticity matrix tells us (it tells us the relative importance of the transitions for population growth)
-(6) understand the concept of doing an LTRE to investigate management options.
+(6) understand the logic of *in silico* experiments (changing the matrix and comparing $\lambda$) to investigate management options.
+
+
+### Model answers for the matrix modelling practical
+
+**Does the starting population matter?** The early (transient) dynamics depend strongly on the starting population structure, and the lines may zigzag or even decline temporarily. Eventually the lines become parallel and straight on the log scale, with the same slope as before. The slope is the same because the long-term growth rate ($\lambda$) depends only on the matrix, not on the starting population. The gaps between the lines are also the same, because the stage proportions converge to the same stable stage distribution. Starting structure affects the short term, but not the long-term growth rate or structure (given constant vital rates).
+
+**Question 1.** On a log scale, straight lines mean the population is growing (or shrinking) exponentially at a constant rate, i.e. the growth rate has stabilised at $\lambda$ once the transient phase has passed.
+
+**Question 2.** Elasticity measures the proportional sensitivity of $\lambda$ to small proportional changes in each vital rate. It identifies which transitions have the greatest influence on population growth. If adult survival has the highest elasticity, conservation might focus on protecting adults (e.g. habitat protection, reducing human-induced mortality). If juvenile survival has a high elasticity, efforts might target juveniles (e.g. habitat restoration or predator control). Managers can then allocate limited resources to where they are likely to matter most, bearing in mind that high elasticity does not mean a rate is easy to change in practice.
+
+**Question 3.** Key assumptions include: constant vital rates; a constant (stable) environment; a closed population with no immigration or emigration; and no density dependence (vital rates do not depend on population size). Several of these are shared with the exponential/geometric growth models.
 
 
 
