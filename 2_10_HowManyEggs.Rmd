@@ -17,20 +17,17 @@ Learning outcomes:
 
 ## Worked example
 
-### Inputs
+Let's consider a clutch containing **2 eggs**, where the probability of each chick surviving is **0.85**.
 
-- Clutch size: `2` eggs
-- Chick survival probability: `0.85`
+To calculate the expected number of surviving chicks, we multiply the number of eggs by the survival probability:
 
-### Steps
+$$
+2 \times 0.85 = 1.7
+$$
 
-1. Compute expected surviving chicks: clutch size $\times$ survival probability.
-2. Repeat this calculation for all clutch sizes.
-3. Compare expected survivors across clutch sizes.
+So, for a clutch of 2 eggs, we expect **1.7 surviving chicks on average**. Of course, an individual nest cannot contain 1.7 surviving chicks, but this is the average we would expect across many nests of this size.
 
-### Output and interpretation
-
-For 2 eggs, expected survivors are $2 \times 0.85 = 1.7$. Doing this for all clutch sizes typically reveals a peak at an intermediate number of eggs.
+We can repeat this calculation for other clutch sizes to investigate how the expected number of surviving chicks changes as clutch size increases. This will help us identify the clutch size that produces the greatest number of surviving offspring.
 
 
 ## Your task
