@@ -21,23 +21,20 @@ Learning outcomes:
 - Understanding what the force of selection is, why it declines with age, and the consequences for late-life deleterious genes.
 
 :::
+
 ## Worked example
 
 Let's consider a life table in which we increase the number of offspring produced at **age 1** by one.
 
 To calculate the effect on net reproductive rate ($R_0$), we use:
 
-$$
-R_0 = \sum l_x m_x
-$$
+$R_0 = \sum l_x m_x$
 
 where $l_x$ is the probability of surviving to age $x$, and $m_x$ is the number of offspring produced at that age.
 
 Adding one offspring at age 1 increases $R_0$ by exactly $l_1$. For example, if the probability of surviving to age 1 is **0.9**, then the increase in $R_0$ is:
 
-$$
-\Delta R_0 = 0.9 \times 1 = 0.9
-$$
+$\Delta R_0 = 0.9 \times 1 = 0.9$
 
 We can repeat this calculation for other ages to investigate how the effect on $R_0$ changes with the age at which reproduction occurs. Because survival probability generally declines with age, adding an offspring at an earlier age usually has a greater effect on $R_0$ than adding one later in life.
 
