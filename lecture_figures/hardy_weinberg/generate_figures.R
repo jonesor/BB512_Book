@@ -45,7 +45,9 @@ save_bb512 <- function(plot, filename, layout = "full") {
 }
 
 
-# BB512 Keynote theme colours ------------------------------------------------
+# Genotype colours -------------------------------------------------------------
+# BB512 Keynote theme colours, also used for genotype text elsewhere on the
+# slides and shared with the Punnett squares (figures 13 and 13b).
 
 col_AA <- "#21443A"  # dark green
 col_Aa <- "#9A4535"  # brick red
@@ -121,11 +123,11 @@ save_bb512(figure_14_half, file.path(half_output_directory, "14_genotype_frequen
 # Adapted from scripts/punnet_square.R. Cell areas are proportional to genotype
 # probabilities, so the square shows p^2 + 2pq + q^2 = 1 geometrically.
 
-# Colours from scripts/punnet_square.R
-pun_AA   <- "#2A6656"  # dark green
-pun_Aa   <- "#D9A441"  # ochre
-pun_aa   <- "#B9C9C0"  # sage
-pun_text <- "#243F36"
+# Same genotype colours as the curves (figure 14) and the slide text
+pun_AA   <- col_AA     # dark green
+pun_Aa   <- col_Aa     # brick red
+pun_aa   <- col_aa     # ochre
+pun_text <- "#243F36"  # dark text, used on the light (ochre) cells
 pun_gap  <- "#FBFAF6"  # cell borders, matches the slide background
 
 punnett_plot <- function(p = 0.6, show_probabilities = TRUE,
@@ -150,8 +152,8 @@ punnett_plot <- function(p = 0.6, show_probabilities = TRUE,
       } else {
         genotype
       },
-      # light text on the dark green cell keeps contrast readable
-      text_colour = ifelse(class == "AA", pun_gap, pun_text)
+      # light text on the dark green and brick red cells keeps contrast readable
+      text_colour = ifelse(class %in% c("AA", "Aa"), pun_gap, pun_text)
     )
 
   g <- ggplot(cells) +
@@ -173,7 +175,7 @@ punnett_plot <- function(p = 0.6, show_probabilities = TRUE,
     # Scales along the top (first gamete) and left (second gamete), both
     # measured from the top-left corner, so each side length is read straight
     # off the axis and each cell's area is width x height.
-    a_col   <- "#9A7020"            # darker ochre so "a" labels stay legible
+    a_col   <- "#8E6420"            # deeper ochre so "a" labels stay legible
     muted   <- "#6B6E75"
     off     <- 0.03                 # gap between square and scale line
     tick    <- 0.018
