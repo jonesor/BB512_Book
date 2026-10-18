@@ -308,40 +308,53 @@ Answers to the Hardy-Weinberg questions.
 Remember the basic formulas: 
 $p^2 + 2pq + q^2 = 1$ and $p + q = 1$
   
-$p$ = frequency of the dominant allele in the population 
+$p$ = frequency of allele A (the dominant allele in these problems)
 
-$q$ = frequency of the recessive allele in the population
+$q$ = frequency of allele a (the recessive allele)
 
-$p^2$ = percentage of homozygous dominant individuals 
+$p^2$ = frequency of homozygous AA individuals 
 
-$q^2$ = percentage of homozygous recessive individuals 
+$q^2$ = frequency of homozygous aa individuals 
 
-$2pq$ = percentage of heterozygous individuals 
+$2pq$ = frequency of heterozygous Aa individuals 
 
 ### Problem 1
 
-The frequency of the *aa* genotype: 36%, as given in the problem itself. 
+The frequency of allele *a*: Since $p + q = 1$ and $p = 0.7$, $q = 1 - 0.7 = 0.3$. 
 
-The frequency of the *a* allele:  The frequency of aa is 36%, which means that $q^2 = 0.36$, by definition. If $q^2 = 0.36$, then $q = 0.6$. Since $q$ equals the frequency of the "a" allele, the frequency is 60%. 
+The expected genotype frequencies: 
 
-The frequency of the *A* allele: Since $q = 0.6$, and $p + q = 1$, then $p = 0.4$; the frequency of *A* is equal to $p$ (see the basic H-W equations), so the answer is 40%. 
+- *AA* = $p^2 = 0.7 \times 0.7 = 0.49$ (49%)
+- *Aa* = $2pq = 2 \times 0.7 \times 0.3 = 0.42$ (42%)
+- *aa* = $q^2 = 0.3 \times 0.3 = 0.09$ (9%)
 
-The frequencies of the genotypes *AA* and *Aa*: The frequency of *AA* is equal to $p^2$, and the frequency of *Aa* is equal to $2pq$. So, using the information above, the frequency of *AA* is 16% (i.e. $p^2 = 0.4 x 0.4 = 0.16$ and Aa is 48% ($2pq = 2 \times 0.4 \times 0.6 = 0.48$). 
+Check: $0.49 + 0.42 + 0.09 = 1$.
 
-The frequencies of the two possible phenotypes if *A* is completely dominant over *a*: Because *A* is totally dominate over *a*, the dominant phenotype will show if either the homozygous *AA* or heterozygous *Aa* genotypes occur. The recessive phenotype is controlled by the homozygous *aa* genotype. Therefore, the frequency of the dominant phenotype equals the sum of the frequencies of *AA* and *Aa*, and the recessive phenotype is simply the frequency of *aa*. Therefore, the dominant frequency is 64% and, in the first part of this question above, you have already shown that the recessive frequency is 36%. 
+The phenotype frequencies if *A* is completely dominant over *a*: Both *AA* and *Aa* individuals show the dominant phenotype, so its frequency is $0.49 + 0.42 = 0.91$ (91%). Only *aa* individuals show the recessive phenotype, so its frequency is 0.09 (9%). Notice that the heterozygotes cannot be told apart from the *AA* homozygotes by looking at them.
 
- 
 ### Problem 2
 
-9% = 0.09 = ss = $q^2$. To find $q$, simply take the square root of 0.09 to get 0.3. Since $p = 1 - 0.3$, then $p$ must equal 0.7. $2pq = 2 \times 0.7 \times 0.3 = 0.42$, so 42% of the population are heterozygotes (carriers). 
+9% = 0.09 = HbS/HbS = $q^2$. To find $q$, take the square root of 0.09 to get 0.3. Since $p = 1 - 0.3$, $p$ must equal 0.7. $2pq = 2 \times 0.7 \times 0.3 = 0.42$, so 42% of babies are expected to be heterozygous (HbA/HbS) at birth. 
+
+Among adults this figure would usually be higher, and the HbS/HbS frequency lower, because heterozygotes survive better than either homozygote. That is selection acting on the genotypes after birth, which is why we applied HWE at birth.
 
 ### Problem 3
 
-The frequency of the recessive allele. Since we believe that the homozygous recessive for this gene ($q^2$) represents 4% (i.e. = 0.04), the square root ($q$) is therefore 0.2 (20%). 
+The allele frequencies: 200 diploid individuals carry 400 allele copies. Each *AA* individual carries two copies of *A* and each *Aa* individual carries one, so the number of *A* copies is $2 \times 120 + 40 = 280$. 
 
-The frequency of the dominant allele.  Since $q = 0.2$, and $p + q = 1$, then $p = 0.8$ (80%). 
+$p = 280 / 400 = 0.7$, and $q = 1 - 0.7 = 0.3$. (Check: the number of *a* copies is $2 \times 40 + 40 = 120$, and $120 / 400 = 0.3$.)
 
-The frequency of heterozygous individuals. The frequency of heterozygous individuals is equal to $2pq$. In this case, $2pq = 0.32$, which means that the frequency of individuals heterozygous for this gene is equal to 32% (i.e. $2 \times 0.8 \times 0.2) = 0.32$. 
+The expected counts under HWE are the expected frequencies multiplied by the sample size, 200:
+
+| Genotype | Observed | Expected under HWE |
+|---|---|---|
+| *AA* | 120 | $0.49 \times 200 = 98$ |
+| *Aa* | 40 | $0.42 \times 200 = 84$ |
+| *aa* | 40 | $0.09 \times 200 = 18$ |
+
+Comparison: there are far fewer heterozygotes than expected (40 observed against 84 expected), and more of both homozygotes than expected. This is a heterozygote deficit. 
+
+Possible explanations include inbreeding or other non-random mating, the sample combining two or more partly separated subpopulations (the Wahlund effect), selection against heterozygotes, or genotyping errors (for example, heterozygotes being misread as homozygotes). With a deficit this large it is unlikely to be chance alone, but a formal statistical test would be needed to confirm that. The comparison tells us there is a pattern to investigate, not which of these causes is responsible.
 
 ### Problem 4
 
@@ -349,6 +362,8 @@ The first thing you'll need to do is obtain $p$ and $q$. So, since white is rece
 To determine $q$, which is the frequency of the recessive allele in the population,  take the square root of $q^2$ which is 0.632. So, $q = 0.63$. Since $p + q = 1$, then $p$ must be $1 - 0.63 = 0.37$. 
 
 Now then, to answer our questions. First, what is the percentage of butterflies in the population that are heterozygous? Well, that would be $2pq$ so the answer is $2 \times 0.37\times 0.63 = 0.47$. Second, what is the frequency of homozygous dominant individuals? That would be $p^2$ or $0.37^2 = 0.14$.
+
+*Extension:* Brown butterflies are those with genotype *BB* or *Bb*, so they make up $1 - 0.4 = 0.6$ of the population (check: $0.14 + 0.47 \approx 0.6$). Of these, the heterozygotes are $0.47 / 0.60 \approx 0.78$, so about 78% of brown butterflies are expected to be heterozygous. Note the difference between this and the 47% heterozygotes in the population as a whole: here the denominator is only the brown butterflies.
 
 ## Solutions: Gene pool model
 
