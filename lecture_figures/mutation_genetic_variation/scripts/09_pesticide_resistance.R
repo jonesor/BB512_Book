@@ -28,7 +28,7 @@ p <- ggplot2::ggplot(df, ggplot2::aes(generation, freq_R)) +
                     label = "Pesticide introduced", hjust = 0,
                     colour = bb512$clay, size = 5.2) +
   ggplot2::scale_y_continuous(limits = c(0, 1), breaks = seq(0, 1, 0.25)) +
-  ggplot2::labs(x = "Generations", y = "Frequency of resistance allele") +
+  ggplot2::labs(x = "Generations", y = "Resistance allele frequency") +
   theme_bb512()
 
-save_bb512(p, "09_pesticide_resistance", layout = "full")
+save_bb512(p, "09_pesticide_resistance", layout = "half")

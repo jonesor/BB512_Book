@@ -33,10 +33,10 @@ p <- ggplot2::ggplot(df,
                                            "Loss" = bb512$blue),
                                 name = NULL) +
   ggplot2::scale_y_continuous(limits = c(0, 1), breaks = c(0, 0.25, 0.5, 0.75, 1)) +
-  ggplot2::labs(x = "Generations", y = "Frequency of the new allele") +
+  ggplot2::labs(x = "Generations", y = "New allele frequency") +
   theme_bb512()
 
-save_bb512(p, "02_neutral_mutation_fate", layout = "full")
+save_bb512(p, "02_neutral_mutation_fate", layout = "takeaway")
 cat(sprintf("N = %d, initial p = 1/(2N) = %.3f; theoretical fixation probability = %.3f\n",
             N, p0, p0))
 cat(sprintf("Observed fixed: %d of %d (simulation will vary with seed)\n",

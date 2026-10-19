@@ -18,10 +18,10 @@ p_fitness <- ggplot2::ggplot(fitness, ggplot2::aes(genotype, relative_fitness)) 
   ggplot2::geom_text(ggplot2::aes(label = sprintf("%.2f", relative_fitness)),
                      vjust = -0.5, size = 5.5, colour = bb512$ink) +
   ggplot2::scale_y_continuous(limits = c(0, 1.12), breaks = seq(0, 1, 0.25)) +
-  ggplot2::labs(x = "Genotype", y = "Relative fitness (illustrative)") +
+  ggplot2::labs(x = "Genotype", y = "Relative fitness") +
   theme_bb512() +
   ggplot2::theme(panel.grid.major.x = ggplot2::element_blank())
-save_bb512(p_fitness, "07a_heterozygote_advantage_fitness", layout = "half")
+save_bb512(p_fitness, "07a_heterozygote_advantage_fitness", layout = "takeaway")
 
 # Under deterministic viability selection, all initial polymorphic
 # populations approach an internal equilibrium when the heterozygote is fittest.
@@ -49,5 +49,5 @@ p_eq <- ggplot2::ggplot(curves,
   ggplot2::scale_y_continuous(limits = c(0, 0.75), breaks = seq(0, 0.75, 0.15)) +
   ggplot2::labs(x = "Generations", y = "Frequency of HbS (q)") +
   theme_bb512()
-save_bb512(p_eq, "07b_heterozygote_advantage_equilibrium", layout = "full")
+save_bb512(p_eq, "07b_heterozygote_advantage_equilibrium", layout = "takeaway")
 cat(sprintf("Illustrative stable HbS frequency = %.4f\n", q_equilibrium))

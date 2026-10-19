@@ -15,19 +15,22 @@ p <- ggplot2::ggplot(df, ggplot2::aes(N, expected, colour = mu)) +
   ggplot2::geom_line(linewidth = 1.2) +
   ggplot2::geom_point(data = example, ggplot2::aes(N, expected),
                       inherit.aes = FALSE, colour = bb512$ink, size = 3.5) +
-  ggplot2::annotate("text", x = 1.6e6, y = 1.3, hjust = 0,
-                    label = "N = 10⁶, μ = 10⁻⁶: E[M] = 2",
-                    colour = bb512$ink, size = 5) +
+  ggplot2::annotate("text", x = 1.8e6, y = 1.1, hjust = 0, vjust = 1,
+                    label = "E(M) == 2",
+                    parse = TRUE, colour = bb512$ink, size = 4.6) +
   ggplot2::scale_colour_manual(
     values = stats::setNames(c(bb512$blue, bb512$forest, bb512$clay),
                              sprintf("%.0e", mu_values)),
-    name = "Mutation rate per allele") +
+    name = "Mutation rate (μ)",
+    labels = function(x) parse(text = sub("1e", "10^", x))) +
   ggplot2::scale_x_log10(breaks = 10^c(2, 4, 6, 8),
-                         labels = function(x) format(x, scientific = TRUE, trim = TRUE)) +
+                         labels = scales::label_math(10^.x, format = log10)) +
   ggplot2::scale_y_log10(breaks = 10^seq(-5, 5, 2),
-                         labels = function(x) format(x, scientific = TRUE, trim = TRUE)) +
-  ggplot2::labs(x = "Diploid population size (N)",
-                y = "Expected new mutants per locus per generation") +
+                         labels = scales::label_math(10^.x, format = log10)) +
+  ggplot2::labs(x = "Population size (N)",
+                y = "New mutants") +
+  ggplot2::guides(colour = ggplot2::guide_legend(title.position = "top",
+                                                 title.hjust = 0.5)) +
   theme_bb512()
 
-save_bb512(p, "04_mutation_supply", layout = "full")
+save_bb512(p, "04_mutation_supply", layout = "half")

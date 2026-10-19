@@ -25,11 +25,11 @@ p <- ggplot2::ggplot(comparison,
                                            "Before exposure" = bb512$clay), guide = "none") +
   ggplot2::scale_y_continuous(trans = scales::pseudo_log_trans(sigma = 1),
                               breaks = c(0, 1, 3, 10, 30, 100, 300, 1000)) +
-  ggplot2::labs(x = NULL, y = "Resistant cells per culture (compressed scale)") +
+  ggplot2::labs(x = NULL, y = "Resistant cells per culture") +
   theme_bb512() +
   ggplot2::theme(axis.text.x = ggplot2::element_text(size = 17))
 
-save_bb512(p, "01_luria_delbruck_fluctuation", layout = "full")
+save_bb512(p, "01_luria_delbruck_fluctuation", layout = "takeaway")
 
 cat(sprintf("Matched predicted mean: %.2f resistant cells/culture\n", sim$expectation))
 cat(sprintf("Variance/mean: at exposure = %.1f; before exposure = %.1f\n",

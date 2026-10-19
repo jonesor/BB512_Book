@@ -33,21 +33,32 @@ Let's first consider where these equations come from. First, Equation 1.
 
 In a diploid organism, each individual carries two alleles for a particular gene. Let's consider a gene with two alleles, A and a. In a given population:
 
-$p$ is the frequency of allele A (in these problems, the dominant allele)
-$q$ is the frequency of allele a (the recessive allele)
+| Symbol | Meaning |
+|---|---|
+| $p$ | Frequency of allele A |
+| $q$ | Frequency of allele a |
 
 The sum of the frequencies of these two alleles in the population must equal 1, as they are the only two possibilities for this gene, so $p+q=1$.
 
 Note that dominance affects the *phenotype*, not the allele frequency. A dominant allele can be rare and a recessive allele can be common.
 
+When genotype counts are available, we can calculate allele frequencies directly by counting allele copies:
+
+$$
+p = \frac{2n_{AA} + n_{Aa}}{2N}, \qquad
+q = \frac{2n_{aa} + n_{Aa}}{2N}.
+$$
+
+Here, $n_{AA}$, $n_{Aa}$ and $n_{aa}$ are the numbers of individuals with each genotype, and $N = n_{AA} + n_{Aa} + n_{aa}$. Each homozygote contributes two copies of the same allele, while each heterozygote contributes one copy of each allele. These calculations do not require HWE. Once we know $p$ and $q$, we can calculate the expected genotype counts under HWE as $Np^2$, $N(2pq)$ and $Nq^2$, and compare them with the observed counts.
+
 Equation 1 serves as the foundational stepping stone for Equation 2. In Equation 1, we establish the sum of allele frequencies, $p$ and $q$, in the gene pool. This equation sets the stage for the more complex Equation 2, where we translate these allele frequencies into genotype frequencies for the population.
 
 We can derive Equation 2 based on the gene pool and random mating. Let's consider a mating event between two random alleles. The possible combinations of alleles are:
 
-$p \times p = p^2$ (AA)
-$q \times q = q^2$ (aa)
-$p \times q = pq$ (Aa)
-$q \times p = pq$ (aA)
+* $p \times p = p^2$ (AA)
+* $q \times q = q^2$ (aa)
+* $p \times q = pq$ (Aa)
+* $q \times p = pq$ (aA)
 
 Notice that we have two $pq$ terms (Aa and aA). The order of alleles doesn't matter, so they are summed together: $2pq$.
 
@@ -74,9 +85,9 @@ knitr::include_graphics("lecture_figures/hardy_weinberg/output/half/14_genotype_
 For a population to be in Hardy-Weinberg Equilibrium, certain assumptions must be met:
 
 - Random mating: There is no preference in mate selection based on genotype.
-- No mutations: The gene pool is stable with no new alleles being added.
-- Large population size: To negate the effects of genetic drift.
-- No gene flow: No new individuals enter or leave the population.
+- No mutation: Alleles do not change into other alleles, so mutation does not alter allele frequencies.
+- Very large population size: Random sampling has a negligible effect on allele frequencies (genetic drift).
+- No gene flow: Migration does not transfer alleles into or out of the population's breeding gene pool.
 - No natural selection: All genotypes in the population have an equal chance of reproductive success.
 
 These assumptions do two different jobs. Random mating is what produces the Hardy-Weinberg genotype proportions ($p^2 : 2pq : q^2$) in each generation. The other four (no mutation, no drift, no gene flow and no selection) are what keep the allele frequencies themselves constant from one generation to the next.
@@ -87,19 +98,13 @@ Any deviation from these assumptions could result in a population that is not in
 
 Unless a problem states otherwise, assume that the population is at HWE. This matters: working back from the frequency of a recessive genotype to an allele frequency (as below) is only valid if the population is at HWE.
 
-### Inputs
-
-- Recessive genotype frequency: $q^2 = 0.16$
-
-### Steps
+Suppose 16% of individuals have the recessive genotype, aa, so $q^2 = 0.16$. What proportion of the population would we expect to be heterozygous?
 
 1. Calculate $q = \sqrt{0.16} = 0.4$.
 2. Calculate $p = 1 - q = 0.6$.
-3. Calculate heterozygote frequency: $2pq$.
+3. Calculate the heterozygote frequency: $2pq = 2(0.6)(0.4) = 0.48$.
 
-### Output and interpretation
-
-$2pq = 2(0.6)(0.4) = 0.48$. So 48% of individuals are expected to be heterozygous under HWE assumptions.
+We therefore expect 48% of individuals to be heterozygous (Aa), assuming the population is at HWE.
 
 ## Your task
 
@@ -115,7 +120,7 @@ A population has two alleles, A and a, at a gene of interest. The frequency of a
 
 ### Problem #2.
 
-Sickle-cell disease is an interesting genetic disease caused by a variant of the haemoglobin gene. People with two copies of the usual allele (HbA/HbA) have normal red blood cells, which the malaria parasite infects readily, so many become severely ill with malaria. People with two copies of the sickle-cell allele (HbS/HbS) have sickle-cell disease: their red blood cells readily collapse into a rigid sickle shape when deoxygenated, causing serious illness. Heterozygous people (HbA/HbS), who are said to have sickle-cell *trait*, have only mild sickling, which is rarely harmful, and they have increased resistance to severe malaria. In regions where malaria is common, heterozygotes therefore tend to survive better than either homozygote.
+Sickle-cell disease is caused by variants of the haemoglobin gene. In this simplified two-allele example, people with two copies of the usual allele (HbA/HbA) do not have sickle-cell disease, but lack the protection against severe malaria associated with sickle-cell trait. People with two copies of the sickle-cell allele (HbS/HbS) have sickle-cell disease: their red blood cells can become rigid and sickle-shaped, causing serious illness. Heterozygous people (HbA/HbS) have sickle-cell *trait*. Most have no symptoms of sickle-cell disease, and they have increased protection against severe malaria. In regions where malaria is common, this can give heterozygotes a survival advantage over either homozygote.
 
 *	In a population from a malaria-endemic region, 9% of babies are born with sickle-cell disease (HbS/HbS). Assuming the population is at HWE at birth, what percentage of babies will be heterozygous (HbA/HbS), and so more resistant to severe malaria?
 
@@ -123,7 +128,7 @@ Because of the survival differences described above, genotype frequencies among 
 
 ### Problem #3.
 
-You genotype a sample of 200 individuals from a population at a gene with two alleles, A and a. You find 120 AA, 40 Aa and 40 aa individuals. This time, do NOT assume the population is at HWE: the aim is to test it.
+You genotype a sample of 200 individuals from a population at a gene with two alleles, A and a. You find 120 AA, 40 Aa and 40 aa individuals. This time, do not assume the population is at HWE: assess whether the observed counts match HWE expectations. A descriptive comparison is sufficient for this exercise; you do not need to perform a formal statistical test.
 
 *	Calculate the frequencies of alleles A and a from the genotype counts. (Hint: 200 diploid individuals carry 400 allele copies, and each heterozygote carries one copy of each allele.)
 *	Calculate the expected number of each genotype if the population were at HWE.
@@ -132,7 +137,7 @@ You genotype a sample of 200 individuals from a population at a gene with two al
 
 ### Problem #4.
 
-Within a population of butterflies, the colour brown (B) is dominant over the colour white (b). And, 40% of all butterflies are white. Given this simple information calculate the following:
+Within a population of butterflies, brown (B) is completely dominant over white (b), and 40% of all butterflies are white. Assuming the population is at HWE, calculate the following:
 
 *	The percentage of butterflies in the population that are heterozygous.
 *	The frequency of homozygous dominant individuals.

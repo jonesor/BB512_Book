@@ -16,12 +16,13 @@ p <- ggplot2::ggplot(df, ggplot2::aes(generation, p_A, colour = mu)) +
   ggplot2::scale_colour_manual(
     values = stats::setNames(c(bb512$blue, bb512$forest, bb512$clay),
                              sprintf("%.0e", mu_values)),
-    name = "Mutation rate per allele per generation") +
+    name = "Mutation rate (μ)",
+    labels = function(x) parse(text = sub("1e", "10^", x))) +
   ggplot2::scale_y_continuous(limits = c(0, 1), breaks = seq(0, 1, 0.25)) +
   ggplot2::scale_x_continuous(labels = scales::label_comma()) +
-  ggplot2::labs(x = "Generations", y = "Frequency of ancestral allele A") +
+  ggplot2::labs(x = "Generations", y = "Frequency of allele A") +
   theme_bb512()
 
-save_bb512(p, "03_mutation_pressure", layout = "full")
+save_bb512(p, "03_mutation_pressure", layout = "takeaway")
 cat(sprintf("For mu = 10^-5, A remaining at 1000 generations: %.4f\n",
             (1 - 1e-5)^1000))

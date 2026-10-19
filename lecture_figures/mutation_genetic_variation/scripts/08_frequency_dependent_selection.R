@@ -26,7 +26,7 @@ p <- ggplot2::ggplot(curves,
                                 name = NULL) +
   ggplot2::scale_x_continuous(limits = c(0, 1), breaks = seq(0, 1, 0.2)) +
   ggplot2::scale_y_continuous(limits = c(0.67, 1.03), breaks = seq(0.7, 1, 0.1)) +
-  ggplot2::labs(x = "Frequency of purple flowers", y = "Relative fitness (illustrative)") +
+  ggplot2::labs(x = "Frequency of purple flowers", y = "Relative fitness") +
   theme_bb512()
 
 save_bb512(p, "08_negative_frequency_dependence", layout = "takeaway")
