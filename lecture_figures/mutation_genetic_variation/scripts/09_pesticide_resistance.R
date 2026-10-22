@@ -1,34 +1,38 @@
-# Slide 38: Standing variation and pesticide resistance.
-# Deterministic haploid selection; no new mutations or drift are needed
-# once the resistance allele is already present.
+# Standing variation vs waiting for a new mutation.
+# Haploid selection s = 0.25 after pesticide at generation 10.
+# Standing: R allele already at 1e-3 (mutation-selection balance).
+# New mutation: R absent; first successful mutation assumed to appear
+# 40 generations later (waiting time depends on 2N*mu, cf. 2N-mu slide).
 source("R/theme_bb512.R")
 
-s <- 0.25
-start_p <- 0.02
-pesticide_at <- 15L
-generations <- 50L
-freq_R <- numeric(generations + 1L)
-freq_R[1L] <- start_p
-for (g in seq_len(generations)) {
-  p_old <- freq_R[g]
-  # Generation 15 marks the start of pesticide selection.
-  if (g >= pesticide_at) {
-    freq_R[g + 1L] <- p_old * (1 + s) / (p_old * (1 + s) + (1 - p_old))
-  } else {
-    freq_R[g + 1L] <- p_old
+s <- 0.25; pest <- 10L; gens <- 120L
+run <- function(p_start, arrival) {
+  p <- numeric(gens + 1L)
+  for (g in 0:gens) {
+    i <- g + 1L
+    if (g == 0) { p[i] <- p_start; next }
+    prev <- p[i - 1L]
+    if (g == arrival) prev <- max(prev, 1e-4)
+    p[i] <- if (g > pest) prev * (1 + s) / (prev * (1 + s) + 1 - prev) else prev
   }
+  p
 }
-df <- data.frame(generation = 0:generations, freq_R = freq_R)
+df <- rbind(
+  data.frame(g = 0:gens, p = run(1e-3, Inf), scenario = "Standing variation"),
+  data.frame(g = 0:gens, p = run(0, pest + 40L), scenario = "New mutation needed")
+)
+df$scenario <- factor(df$scenario, c("Standing variation", "New mutation needed"))
 
-p <- ggplot2::ggplot(df, ggplot2::aes(generation, freq_R)) +
-  ggplot2::geom_vline(xintercept = pesticide_at, linetype = "dashed",
-                      colour = bb512$clay, linewidth = 0.8) +
-  ggplot2::geom_line(colour = bb512$forest, linewidth = 1.5) +
-  ggplot2::annotate("text", x = pesticide_at + 1.1, y = 0.80,
-                    label = "Pesticide introduced", hjust = 0,
-                    colour = bb512$clay, size = 5.2) +
+p <- ggplot2::ggplot(df, ggplot2::aes(g, p, colour = scenario)) +
+  ggplot2::geom_vline(xintercept = pest, linetype = "dashed",
+                      colour = bb512$grey, linewidth = 0.7) +
+  ggplot2::geom_line(linewidth = 1.5) +
+  ggplot2::annotate("text", x = pest + 2, y = 0.97, hjust = 0,
+                    label = "Pesticide", colour = bb512$grey, size = 5) +
+  ggplot2::scale_colour_manual(values = c(bb512$forest, bb512$clay), name = NULL) +
   ggplot2::scale_y_continuous(limits = c(0, 1), breaks = seq(0, 1, 0.25)) +
-  ggplot2::labs(x = "Generations", y = "Resistance allele frequency") +
+  ggplot2::labs(x = "Generations", y = "Resistance allele freq.") +
+  ggplot2::guides(colour = ggplot2::guide_legend(nrow = 2)) +
   theme_bb512()
 
 save_bb512(p, "09_pesticide_resistance", layout = "half")
