@@ -39,9 +39,11 @@ island_model <- function(q0, m, generations) {
 # 1 - q' = p / (1 - s q^2), the balance reduces exactly to s q^2 = m, so
 # q_hat = sqrt(m / s) (Neal Exp. 9.11 is exact for this census point; Neal
 # reaches it by approximation, using m(1 - q) instead of m(1 - q')).
-# If the census were taken after selection, the equilibrium is
-# sqrt(m / (s (1 + m))), which differs only noticeably for large m.
+# If the census were taken after selection instead, the equilibrium is
+# (sqrt(m / s) - m) / (1 - m) (0.59 rather than 0.63 at m = 0.1, s = 0.25).
+# sqrt(m / (s (1 + m))) is the root of Neal's unsimplified Exp. 9.10 (0.60 at m = 0.1).
 migsel <- function(m, s) sqrt(m / s)
+migsel_post_selection <- function(m, s) (sqrt(m / s) - m) / (1 - m)
 
 # Iterate the life cycle (selection, then immigration) as a numerical check.
 migsel_iterate <- function(m, s, q0 = 0, generations = 5000) {

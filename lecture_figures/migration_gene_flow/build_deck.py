@@ -144,7 +144,7 @@ fill(ph(s, 103), [
 ], size=20)
 notes(s, """~1 min.
 Objective 1 = Section 01; objectives 2 and 3 = Section 02 (island models, migration-selection balance); objective 4 = Section 03 (stepping stones and clines); objective 5 and the drift part of objective 3 = Section 04.
-The textbook chapter (Neal Ch. 9) covers sections 01-03. Section 04 (F-statistics, F_ST and Nm) goes beyond Neal Ch. 9 but builds directly on the inbreeding coefficient F from the previous lecture (Neal 8.5) and on Neal 8.4.""")
+The textbook chapter (Neal Ch. 9) covers sections 01-03. Section 04 (F-statistics, F_ST and N_e m) goes beyond Neal Ch. 9 but builds directly on the inbreeding coefficient F from the previous lecture (Neal 8.5) and on Neal 8.4.""")
 
 # 3 Section 01
 s = new("Section")
@@ -164,7 +164,7 @@ fill(ph(s, 102), [
 notes(s, """~2 min.
 Ecologists ask why and how far animals move. Population geneticists ask a different question: do the movers breed where they arrive, so that their alleles enter another gene pool? (Neal Ch. 9 introduction.)
 Troast et al. (2016) PLoS ONE 11: e0148949 found very similar genetic profiles in globe skimmers from North America, South America and Asia, consistent with gene flow across oceans and a common worldwide gene pool.
-The map shows the species' distribution and the main inferred migration routes.
+The map shows the species' global distribution (it does not show migration routes).
 Images carried over from the previous version: photo of a male in flight and a distribution map (Wikimedia Commons, '1920px-Pantala_flavescens_distribution_map.svg.png'). Record photographer and licence (probably CC BY-SA) before sharing outside the course.""")
 
 # 5 Moving is not gene flow
@@ -193,7 +193,7 @@ fill(ph(s, 103), "The movement of alleles from one population into the gene pool
 fill(ph(s, 105), "Migration rate *m* = the proportion of a population's breeders that are immigrants each generation. Immigrants that do not breed contribute nothing.")
 notes(s, """~1 min.
 Neal 9.1: m only counts immigrants that successfully breed and mix their alleles into the native gene pool, which is why it is hard to measure directly.
-m is a proportion (e.g. 0.01 = 1% of breeders). Later we will use Nm, which is a number of migrants per generation. Keep the two apart.""")
+m is a proportion (e.g. 0.01 = 1% of breeders). Later we will use N_e m, which is a number of migrants per generation. Keep the two apart.""")
 
 # 7 Section 02
 s = new("Section")
@@ -282,11 +282,11 @@ picture(s, 101, FIG + "13_island_model.png")
 fill(ph(s, 103), "TAKEAWAY")
 fill(ph(s, 105), [
     "Four islands, *m* = 0.1, each receiving the mean of the others",
-    "All converge on the overall mean (0.5); faster with higher *m*",
+    "All converge on the overall mean (0.5)",
 ])
 notes(s, """~1.5 min.
 Reproduces Neal Fig. 9.1 and Appendix 9.1 (the spreadsheet simulation): starting frequencies 0.2, 0.4, 0.6, 0.8; m = 0.1; equal sizes.
-Neal's conclusion (9.2): gene flow makes populations genetically uniform, and this becomes more powerful as m increases.
+Neal's conclusion (9.2): gene flow makes populations genetically uniform, and this becomes more powerful as m increases (say this aloud; the figure shows only m = 0.1, and slide 10 showed the effect of m).
 Then the question Neal asks next: gene flow beats drift easily (we come back to this in Section 04), but can it beat selection?
 Figure: deterministic iteration of Eqn 9.1, scripts/13_island_model.R.""")
 
@@ -314,7 +314,7 @@ notes(s, """~3 min.
 Neal Exp. 9.10: loss by selection, s p q^2 / (1 - s q^2), balances gain by immigration, m(q_m - q). With q_m = 1 this simplifies to q-hat = sqrt(m/s) (Exp. 9.11).
 m = 0.01, s = 0.25: q-hat = sqrt(0.04) = 0.20, so 1% immigration maintains 20% wing alleles despite strong selection. Because wings are recessive, only q^2 = 4% of insects are winged: the allele hides in heterozygotes.
 m = 0.1: q-hat = 0.632; q^2 = 0.40.
-Accuracy note: Neal derives sqrt(m/s) by approximation. If the island is censused after immigration (selection, then immigration), sqrt(m/s) is exact; if censused after selection, q-hat = sqrt(m/(s(1+m))) (0.60 rather than 0.63 at m = 0.1). The conclusion is unchanged.
+Accuracy note: Neal reaches sqrt(m/s) by approximation, but it is exact if the island is counted after immigration (life cycle: selection, then immigration). Counted after selection instead, the equilibrium is (sqrt(m/s) - m)/(1 - m): 0.59 rather than 0.63 at m = 0.1, and 0.19 rather than 0.20 at m = 0.01. Solving Neal's unsimplified Exp. 9.10 gives 0.60 at m = 0.1. The conclusion is unchanged.
 Different dominance changes the numbers but not Neal's conclusion: gene flow is a powerful factor limiting differentiation by selection.
 Figure: analytical, checked by iterating the recursion; scripts/15_migration_selection.R.""")
 
@@ -346,7 +346,7 @@ picture(s, 101, FIG + "18_stepping_stone_cline.png")
 fill(ph(s, 103), "TAKEAWAY")
 fill(ph(s, 105), [
     "Equal migration: a straight-line gradient between the ends.",
-    "Low migration in one place (a barrier): a sudden step.",
+    "Low migration in one place (a barrier): a steep section.",
 ])
 notes(s, """~2 min.
 Reproduces Neal Fig. 9.4 and Appendix 9.2: nine populations, ends fixed at 0.9 and 0.1, m = 0.2 between neighbours; barrier = m reduced to 0.05 between populations 4-5 and 5-6. Shown at equilibrium.
@@ -444,9 +444,10 @@ fill(ph(s, 102), "F_{ST}, the fixation index")
 fill(ph(s, 103), "The proportion of the total expected heterozygosity that is due to allele-frequency differences among subpopulations.")
 fill(ph(s, 105), "F_{ST} = 0: subpopulations identical.  F_{ST} = 1: fixed for different alleles.  Pooling differentiated subpopulations creates a heterozygote deficit (the Wahlund effect), even with random mating in each.")
 notes(s, """~1 min.
-Common misconception: F_IT > 0 does not mean individuals mate with relatives. It can arise purely from structure: sampling the whole population as if it were one gene pool shows fewer heterozygotes than expected (Wahlund effect).""")
+Common misconception: F_IT > 0 does not mean individuals mate with relatives. It can arise purely from structure: sampling the whole population as if it were one gene pool shows fewer heterozygotes than expected (Wahlund effect).
+Tell students: a fully worked example of F_IS, F_ST and F_IT is on the last slide of the PDF, for self-study. It is not done in class.""")
 
-# 26 Worked example: task
+# Worked example (appendix slide, built at the end): table data and helper
 TABLE_HEAD = ["Subpopulation", "A_{1}A_{1}", "A_{1}A_{2}", "A_{2}A_{2}", "p", "q", "H_{S} = 2pq", "H_{I}"]
 TASK_ROWS = [["1", "0.01", "0.18", "0.81", "0.1", "0.9", "", ""],
              ["2", "0.49", "0.42", "0.09", "0.7", "0.3", "", ""],
@@ -478,40 +479,6 @@ def make_table(slide, rows, top=2.15):
     return tbl
 
 
-s = new("Title Only")
-fill(ph(s, 100), "Your turn: two subpopulations")
-make_table(s, TASK_ROWS)
-textbox(s, 0.8, 4.4, 11.5, 2.0, [
-    "**3 min · pairs.** Genotype frequencies for two subpopulations of one species:",
-    "1. Fill in H_{S} and H_{I} for each subpopulation, then the means.",
-    "2. Calculate H_{T} = 2p̄q̄ from the mean allele frequencies.",
-    "3. Calculate F_{IS}, F_{ST} and F_{IT}. What do they tell you?",
-], size=18)
-notes(s, """~3 min.
-Reminders: H_S for each subpopulation is 2pq at Hardy-Weinberg; H_I is the observed frequency of A1A2.
-p for subpopulation 1 = 0.01 + 0.18/2 = 0.1; subpopulation 2 = 0.49 + 0.42/2 = 0.7.
-(The previous version used decimal commas in this table; changed to decimal points to match the rest of the slides.)""")
-
-# 27 Worked example: answers
-s = new("Title Only")
-fill(ph(s, 100), "Worked example: the answers")
-make_table(s, ANS_ROWS)
-textbox(s, 0.8, 4.3, 6.2, 2.3, [
-    "H_{T} = 2 × 0.4 × 0.6 = **0.48**",
-    "F_{IS} = (0.30 − 0.30) / 0.30 = **0**",
-    "F_{ST} = (0.48 − 0.30) / 0.48 = **0.375**",
-    "F_{IT} = (0.48 − 0.30) / 0.48 = **0.375**",
-], size=18)
-textbox(s, 7.3, 4.3, 5.2, 2.3, [
-    "Each subpopulation is in Hardy–Weinberg proportions: no inbreeding within (F_{IS} = 0).",
-    "The whole heterozygote deficit lies between subpopulations: strong structure.",
-    "One locus cannot tell us whether drift or divergent selection caused it.",
-], size=16, color="1F4D3F")
-notes(s, """~2 min.
-Check: (1 - F_IT) = (1 - 0)(1 - 0.375) = 0.625, so F_IT = 0.375. Consistent.
-Interpretation: pooled, the population has a heterozygote deficit (0.30 observed versus 0.48 expected), entirely due to differentiation between subpopulations (Wahlund effect), not to inbreeding.
-Correction to previous version: its notes said this 'can't be selection because we are at HWE'. Hardy-Weinberg proportions within subpopulations do not rule out selection: divergent selection can create allele-frequency differences while each subpopulation remains in HW proportions at the census. Telling drift from selection needs many loci (selection affects particular loci; drift affects all) or other evidence.""")
-
 # 28 FST to Nm
 s = new("Title, Bullets & Photo")
 fill(ph(s, 100), "From F_{ST} to migrants per generation")
@@ -519,15 +486,16 @@ picture(s, 101, FIG + "28_fst_nm.png")
 fill(ph(s, 103), "TAKEAWAY")
 fill(ph(s, 105), [
     "Wright's island model:",
-    "F_{ST} ≈ 1 / (4*Nm* + 1)",
-    "*Nm* ≈ (1/F_{ST} − 1) / 4",
-    "*Nm* = number of migrants, not a proportion",
+    "F_{ST} ≈ 1 / (4N_{e}*m* + 1)",
+    "N_{e}*m* ≈ (1/F_{ST} − 1) / 4",
+    "N_{e}*m* = number of migrants, not a proportion",
 ])
 notes(s, """~2.5 min.
 Sewall Wright (spelling corrected from 'Sewell' in the previous version) derived F_ST = 1/(4Nm + 1) for an island model at equilibrium between drift and gene flow.
-N = effective size of each subpopulation, m = migration rate (a proportion), so Nm = number of migrants per generation. Correction to previous version: it described Nm as 'the proportion of individuals that move'.
-Worked check: Nm = 1 gives F_ST = 1/5 = 0.2. F_ST = 0.375 (our worked example) implies Nm = (1/0.375 - 1)/4 = 0.42.
-The relationship is flat for F_ST below about 0.1, so small errors in F_ST give large errors in Nm.
+N_e = effective size of each subpopulation, m = migration rate (a proportion), so N_e m = number of migrants per generation. Written N_e m (Neal Eqn 8.4) rather than Nm, because in Neal Exp. 8.1 N_m means the number of males. Correction to previous version: it described Nm as 'the proportion of individuals that move'.
+Worked check: N_e m = 1 gives F_ST = 1/5 = 0.2.
+Do not apply the formula to the two-subpopulation worked example at the end of the slides (F_ST = 0.375, one locus): it assumes many subpopulations. Naively it gives N_e m = 0.42; with the finite-island correction F_ST = 1/(1 + 4 N_e m (n/(n - 1))^2) for n = 2 it gives about 0.10. A useful example of misuse if a student asks.
+The relationship is flat for F_ST below about 0.1, so small errors in F_ST give large errors in N_e m.
 Figure: analytical, scripts/28_fst_nm.R.""")
 
 # 29 Big fact
@@ -538,10 +506,10 @@ notes(s, """~1 min.
 Neal 8.4: changes in allele frequency are dominated by drift only if N_e m is much less than 1. With N_e = 100 and m = 0.01, N_e m = 1 and allele frequencies follow those of the migrants' source.
 The point: because drift is weaker in large populations by exactly as much as a given m represents more migrants, what matters is the NUMBER of migrants, not the proportion.
 Say aloud, because students will see it in the set text: Neal (8.4) says a single migrant every fourth generation is enough to prevent fixation. Most texts use about one migrant per generation (e.g. Mills and Allendorf 1996, Conservation Biology). Both make the point that very few migrants are needed; one per generation is the safer figure.
-Checked with Wright's equilibrium distribution of allele frequencies among islands (beta distribution with parameters 4Nm q-bar and 4Nm(1 - q-bar)):
-- Nm = 1, mean q = 0.5: essentially no populations near fixation for either allele; F_ST = 0.2.
-- Nm = 0.25 (Neal's one every fourth generation), mean q = 0.5: about 6% of populations near fixation (q < 0.01) for each allele; F_ST = 0.5.
-- Nm = 1 but a rare allele (mean q = 0.1): about 29% of populations have q < 0.01, but almost none are fixed for it. So 'prevents fixation for different alleles' is the accurate claim; rare alleles can still be locally lost.
+Checked with Wright's equilibrium distribution of allele frequencies among islands (beta distribution with parameters 4 N_e m q-bar and 4 N_e m (1 - q-bar)):
+- N_e m = 1, mean q = 0.5: essentially no populations near fixation for either allele; F_ST = 0.2.
+- N_e m = 0.25 (Neal's one every fourth generation), mean q = 0.5: about 6% of populations near fixation (q < 0.01) for each allele; F_ST = 0.5.
+- N_e m = 1 but a rare allele (mean q = 0.1): about 29% of populations have q < 0.01, but almost none are fixed for it. So 'prevents fixation for different alleles' is the accurate claim; rare alleles can still be locally lost.
 F_ST = 0.2 is substantial differentiation (Wright called 0.15 to 0.25 'great'), so one migrant per generation limits divergence; it does not abolish it.
 Applications: genetic rescue of small, isolated populations and managed exchange between zoo populations.""")
 
@@ -566,9 +534,9 @@ fill(ph(s, 100), "Checkerspot: genes versus observations")
 picture(s, 101, MED + "s37_653.png")
 fill(ph(s, 102), [
     "Edith's checkerspot (*Euphydryas editha*): 21 populations across central California",
-    "Seven loci: F_{ST} = 0.017 to 0.062, so *Nm* ≈ 3.8 to 14.5 (mean 7.8)",
+    "Seven loci: F_{ST} = 0.017 to 0.062, so N_{e}*m* ≈ 3.8 to 14.5 (mean 7.8)",
     "One locus (*Hk*): F_{ST} = 0.29",
-    "Mark–recapture between nearby populations: *Nm* ≈ 0.1",
+    "Mark–recapture between nearby populations: N_{e}*m* ≈ 0.1",
     "Data: McKechnie et al. (1975); analysis: Slatkin (1987)",
 ], size=20)
 _src = ph(s, 102).text_frame.paragraphs[-1]
@@ -607,26 +575,48 @@ fill(ph(s, 101), "Key points")
 fill(ph(s, 102), [
     "Gene flow needs migrants that breed; movement alone is not enough.",
     "Gene flow pulls populations together: Δq = *m*(q_{m} − q_{0}).",
-    "It opposes drift (≈ 1 migrant per generation) and selection (q ≈ √(*m*/*s*)).",
+    "It opposes drift (≈ 1 migrant per generation) and selection (recessive allele: q ≈ √(*m*/*s*)).",
     "Selection varying in space plus gene flow gives clines; barriers steepen them.",
-    "F_{ST} measures differentiation; converting it to *Nm* needs strong assumptions.",
+    "F_{ST} measures differentiation; converting it to N_{e}*m* needs strong assumptions.",
 ], size=17)
 fill(ph(s, 106), [
     "Neal Ch. 9 and 8.4",
     "Neal 9.4: problems 1–3",
+    "F-statistics worked example: last slide",
     "Practical: neutral or adaptive?",
 ], size=15)
 notes(s, """~1.5 min.
 Back to the guiding question: very few migrants are needed to stop drift separating populations, but local adaptation can persist against much higher gene flow when selection is strong; the outcome depends on m relative to s.
 Practical (second 45-minute slot): https://jonesor.github.io/BB512_Book/neutral-or-adaptive-evolution-in-humans-what-drives-evolution-of-our-traits.html
 Bridge to the practical: which human traits would gene flow homogenise among populations, and which are held apart by selection in different environments (e.g. skin pigmentation and UV)?
-Answers to Neal problems: 1. m = 1 - (0.118/0.176)^(1/10) = 0.039 (with q_m = 0); 2. after five generations each population moves towards the mean of the other three (iterate Eqn 9.1 or use the spreadsheet in Appendix 9.1); 3. about 10 generations (done in class).""")
+Answers to Neal problems: 1. m = 1 - (0.118/0.176)^(1/10) = 0.039 (with q_m = 0); 2. after five generations: 0.317, 0.529, 0.742, 0.812 if q_m is recalculated every generation (Appendix 9.1 spreadsheet); 0.321, 0.530, 0.740, 0.810 with Neal's shortcut of holding q_m fixed (Eqn 9.2, as in Example 9.3); 3. about 10 generations (done in class).""")
 
 # 34 Quote
 s = new("Quote")
 fill(ph(s, 101), "Before I came here I was confused about this subject. Having listened to your lecture I am still confused. But on a higher level.")
 fill(ph(s, 103), "ATTRIBUTED TO ENRICO FERMI")
 notes(s, "Kept from the previous version. Widely attributed to Fermi; no primary source is known, so 'attributed to' is used rather than a definite attribution.")
+
+# 35 Appendix: worked example (self-study, not done in class)
+s = new("Title Only")
+fill(ph(s, 100), "Worked example (self-study): F-statistics")
+make_table(s, ANS_ROWS, top=1.95)
+textbox(s, 0.8, 4.05, 6.55, 2.6, [
+    "1. Allele frequency: p = f(A_{1}A_{1}) + ½ f(A_{1}A_{2}), e.g. 0.01 + 0.09 = 0.1",
+    "2. Each subpopulation: H_{S} = 2pq (expected); H_{I} = f(A_{1}A_{2}) (observed). Means: 0.30 and 0.30",
+    "3. Pooled: H_{T} = 2p̄q̄ = 2 × 0.4 × 0.6 = **0.48**",
+    "4. F_{IS} = (0.30 − 0.30) / 0.30 = **0**;  F_{ST} = (0.48 − 0.30) / 0.48 = **0.375**;  F_{IT} = (0.48 − 0.30) / 0.48 = **0.375**",
+], size=15)
+textbox(s, 7.65, 4.05, 4.9, 2.6, [
+    "**What it means**",
+    "Each subpopulation is in Hardy–Weinberg proportions, so there is no inbreeding within them (F_{IS} = 0).",
+    "The heterozygote deficit in the pooled sample (0.30 vs 0.48) is entirely due to differences between subpopulations: the Wahlund effect.",
+    "One locus cannot tell us whether drift or divergent selection caused the difference.",
+], size=14, color="1F4D3F")
+notes(s, """Appendix slide for self-study in the PDF; not presented in class. Pointed to from the F_ST key concept and the summary.
+Check: (1 - F_IT) = (1 - F_IS)(1 - F_ST) = (1 - 0)(1 - 0.375) = 0.625, so F_IT = 0.375. Consistent.
+Hardy-Weinberg proportions within subpopulations do not rule out selection: divergent selection can create allele-frequency differences while each subpopulation remains in HW proportions. Telling drift from selection needs many loci (selection affects particular loci, drift affects all) or other evidence.
+Do not convert this F_ST to N_e m with Wright's formula: it assumes many subpopulations (see notes on the F_ST to migrants slide).""")
 
 prs.save(OUT)
 print("saved", OUT, len(prs.slides), "slides")
