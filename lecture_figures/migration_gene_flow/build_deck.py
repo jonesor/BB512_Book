@@ -209,7 +209,7 @@ fill(ph(s, 103), "TAKEAWAY")
 fill(ph(s, 105), ["Who exchanges migrants with whom?", "We cover models 1 to 3. Model 4 behaves like a two-dimensional stepping-stone."])
 notes(s, """~1 min. Roadmap.
 1 Continent-island: one-way flow from a large source with fixed allele frequency q_m.
-2 Island: many populations exchange migrants equally, via a shared migrant pool.
+2 Island: every population exchanges migrants equally with every other; immigrants to an island come from the other islands (Neal Appendix 9.1). (Wright's version uses a pool that includes the recipient; with many islands the difference is negligible.)
 3 Stepping-stone: migrants only move between neighbours (Neal 9.3).
 4 Isolation by distance / neighbourhood models: continuous populations where mating probability declines with distance (Wright 1969; Neal Ch. 9 introduction). Neal mentions but does not simulate these; the results resemble the 2-D stepping-stone model.
 Figure: schematic, scripts/08_four_models.R.""")
@@ -264,14 +264,14 @@ Point out that the island moves DOWN towards the mainland frequency: gene flow i
 
 # 12 Check question: island model qm
 s = new("Check Question (4 options)")
-fill(ph(s, 101), "Model 2: islands have q = 0.2, 0.4 and 0.6. What q do immigrants bring to the 0.2 island?", size=26)
+fill(ph(s, 101), "Model 2: three equal islands have q = 0.2, 0.4 and 0.6. Immigrants come from the other two. What q do they bring to the 0.2 island?", size=24)
 fill(ph(s, 105), "0.2")
 fill(ph(s, 109), "0.3")
 fill(ph(s, 113), "0.4")
 fill(ph(s, 117), "0.5")
 notes(s, """~1.5 min. Answer D, 0.5.
 In the island model each population receives migrants from all the others, so q_m is the mean of the DONOR populations: (0.4 + 0.6)/2 = 0.5 (Neal Example 9.3).
-Common wrong answer C (0.4) is the mean of all three islands, including the recipient.
+Common wrong answer C (0.4) is the mean of all three islands, including the recipient. That would be right in Wright's version of the island model, where migrants come from a pool to which every island contributes, which is why the stem says 'from the other two'. With only three islands the two versions differ noticeably; with many islands they converge.
 If populations differ in size, the donors' frequencies must be weighted by size.
 Neal applies Eqn 9.2 with q_m held fixed and gets 0.3954 for this island after 10 generations (m = 0.1); he notes this is an approximation because the q_m values themselves change every generation. Iterating properly (next slide's method) gives 0.36, with all three converging on the overall mean of 0.4.""")
 
@@ -383,17 +383,18 @@ fill(ph(s, 100), "Pollen carries tolerance downwind")
 picture(s, 101, FIG + "21_copper_tolerance.png")
 fill(ph(s, 103), "TAKEAWAY")
 fill(ph(s, 105), [
-    "Upwind: a steep drop off the mine",
-    "Downwind: a long, shallow cline",
-    "Downwind seed beats adults: pollen brings tolerance in, selection removes it",
+    "Upwind: an abrupt drop at the mine edge",
+    "Downwind: tolerance extends well off the mine",
+    "Seed is below adults on the mine, above them downwind: gene flow in, selection out",
 ])
 notes(s, """~2.5 min.
-Note the different distance scales: transect 1 covers 45 m, transect 2 covers 160 m.
+Site: Drws-y-Coed, a small (about 300 x 100 m) copper mine on a glaciated valley floor in North Wales (McNeilly 1968). Transect 1 is at the upwind end of the mine, transect 2 at the downwind end.
+What McNeilly reports: upwind, tolerant adults stop abruptly between the last mine site and a site 1 m off the mine; downwind, tolerant adults extend well onto normal soil with no abrupt change. Every seed sample from the mine was markedly less tolerant than its adults, and every off-mine seed sample downwind was more tolerant than its adults.
 Adults = established plants; Seed = offspring grown from seed collected from those adults, so seed carries the fathers' (pollen) genes.
 On the mine, seed is LESS tolerant than adults: non-tolerant pollen blows in from upwind; selection on the mine then removes non-tolerant seedlings.
 Downwind, seed is MORE tolerant than adults: tolerant pollen blows off the mine; selection against tolerance off the mine then removes tolerant plants before adulthood.
 So each generation, gene flow and selection pull in opposite directions; the cline is the balance.
-Figure: EMPIRICAL but APPROXIMATE. Bar heights were read by eye from the published figure (as used in the previous version), not taken from McNeilly's tables. scripts/21_copper_tolerance.R.""")
+Figure: SCHEMATIC. The shape follows McNeilly's text; the values are illustrative, not his data (his Fig. 3 could not be digitised). The previous version's bar chart came from a redrawn figure that disagreed with McNeilly's text at the first downwind site, so it was replaced. Say aloud that the curves are a sketch of the pattern. scripts/21_copper_tolerance.R.""")
 
 # 22 Section 04
 s = new("Section")
@@ -532,11 +533,16 @@ Figure: analytical, scripts/28_fst_nm.R.""")
 # 29 Big fact
 s = new("Big Fact")
 fill(ph(s, 100), "≈ 1")
-fill(ph(s, 102), "migrant per generation is enough to stop drift fixing different alleles in different populations, whatever their size.")
+fill(ph(s, 102), ["migrant per generation, whatever the population size, stops drift fixing populations for different alleles.", "It does not make them identical: F_{ST} is still about 0.2."], size=20)
 notes(s, """~1 min.
 Neal 8.4: changes in allele frequency are dominated by drift only if N_e m is much less than 1. With N_e = 100 and m = 0.01, N_e m = 1 and allele frequencies follow those of the migrants' source.
 The point: because drift is weaker in large populations by exactly as much as a given m represents more migrants, what matters is the NUMBER of migrants, not the proportion.
-Neal states that a single migrant every fourth generation is sufficient to prevent fixation. Most texts use roughly one migrant per generation as the rule of thumb (e.g. Mills and Allendorf 1996, Conservation Biology). Both make the same point: very few migrants are needed. Contrast with selection: m = 0.01 only kept the wing allele at 20%.
+Say aloud, because students will see it in the set text: Neal (8.4) says a single migrant every fourth generation is enough to prevent fixation. Most texts use about one migrant per generation (e.g. Mills and Allendorf 1996, Conservation Biology). Both make the point that very few migrants are needed; one per generation is the safer figure.
+Checked with Wright's equilibrium distribution of allele frequencies among islands (beta distribution with parameters 4Nm q-bar and 4Nm(1 - q-bar)):
+- Nm = 1, mean q = 0.5: essentially no populations near fixation for either allele; F_ST = 0.2.
+- Nm = 0.25 (Neal's one every fourth generation), mean q = 0.5: about 6% of populations near fixation (q < 0.01) for each allele; F_ST = 0.5.
+- Nm = 1 but a rare allele (mean q = 0.1): about 29% of populations have q < 0.01, but almost none are fixed for it. So 'prevents fixation for different alleles' is the accurate claim; rare alleles can still be locally lost.
+F_ST = 0.2 is substantial differentiation (Wright called 0.15 to 0.25 'great'), so one migrant per generation limits divergence; it does not abolish it.
 Applications: genetic rescue of small, isolated populations and managed exchange between zoo populations.""")
 
 # 30 Assumptions
@@ -559,13 +565,22 @@ s = new("Figure & Bullets")
 fill(ph(s, 100), "Checkerspot: genes versus observations")
 picture(s, 101, MED + "s37_653.png")
 fill(ph(s, 102), [
-    "Edith's checkerspot (*Euphydryas editha*), 21 Californian populations",
-    "F_{ST} = 0.017 to 0.062, implying *Nm* ≈ 3.8 to 14.5 migrants per generation",
-    "Mark–recapture: about 0.1 migrants per generation",
+    "Edith's checkerspot (*Euphydryas editha*): 21 populations across central California",
+    "Seven loci: F_{ST} = 0.017 to 0.062, so *Nm* ≈ 3.8 to 14.5 (mean 7.8)",
+    "One locus (*Hk*): F_{ST} = 0.29",
+    "Mark–recapture between nearby populations: *Nm* ≈ 0.1",
+    "Data: McKechnie et al. (1975); analysis: Slatkin (1987)",
 ], size=20)
+_src = ph(s, 102).text_frame.paragraphs[-1]
+for _r in _src.runs:
+    _r.font.size = Pt(14)
+    _r.font.color.rgb = RGBColor.from_string("6E6F68")
 notes(s, """~1 min.
-Arithmetic check: Nm = (1/0.062 - 1)/4 = 3.78; Nm = (1/0.017 - 1)/4 = 14.5. Consistent with the previous version.
-Source: carried over from the previous version without a reference. Likely McKechnie, Ehrlich and White (1975) Genetics (allozymes) together with Ehrlich's mark-recapture studies, as discussed by Slatkin (1985, Annual Review of Ecology and Systematics). CONFIRM the source and the '21 populations' figure before use.
+Sources: allozyme data for 21 populations from McKechnie, Ehrlich and White (1975) Genetics 81: 571-594; F_ST and Nm by locus in Slatkin (1987) Science 236: 787-792, Table 1, using F_ST = 1/(1 + 4Nm). Direct estimate (Nm about 0.1 between nearby populations) from Ehrlich and colleagues' mark-recapture work (Ehrlich et al. 1975, Science 188: 221), as quoted by Slatkin (1987).
+Slatkin's Table 1: pgm 0.028 (Nm 8.7), pgi 0.052 (4.6), hk 0.291 (0.6), got 0.017 (14.5), ak 0.062 (3.8), bdh 0.034 (7.1), a-gpdh 0.027 (9.0), to 0.035 (6.9). Mean Nm excluding hk = 7.8.
+Arithmetic check: (1/0.062 - 1)/4 = 3.78; (1/0.017 - 1)/4 = 14.5; (1/0.291 - 1)/4 = 0.61.
+Why Hk matters: it is the locus that breaks the pattern. Mueller et al. (1985, Genetics 110: 495-511) found that Hk was one of three loci whose frequency changes in one population were inconsistent with drift alone, so selection is a plausible reason it stands out. This links to 'neutral markers' on the previous slide: different loci can tell different stories.
+Correction to previous version: it gave the 0.017-0.062 range without saying that one of the eight loci was left out.
 Photo: Walter Siegmund, CC BY-SA 3.0 (Wikimedia Commons, Euphydryas_editha_5679.JPG).""")
 
 # 32 Activity: why disagree
@@ -582,7 +597,9 @@ Time scales: F_ST reflects gene flow averaged over many past generations; migrat
 Rare events: occasional long-distance dispersal is easily missed by a few seasons of mark-recapture but has a large genetic effect.
 Assumptions: populations may not be at equilibrium (recent colonisation, local extinction and recolonisation keep F_ST low); unequal population sizes; selection on the markers.
 Measurement: mark-recapture records movement; it may also miss migrants that breed outside the study area.
-Neither estimate is simply 'right': they measure different things.""")
+Spatial scale makes the puzzle sharper: the genetic samples come from throughout central California, yet F_ST is low; the direct estimate is between nearby populations, yet movement is rare.
+Slatkin's (1987) interpretation: movement between existing populations cannot explain their genetic similarity, so there was probably substantial gene flow in the recent past. Local populations also go extinct and are recolonised (a new population was established within a year of one going extinct), which keeps F_ST low.
+Neither estimate is simply 'right': they measure different things over different time scales.""")
 
 # 33 Summary
 s = new("Summary")

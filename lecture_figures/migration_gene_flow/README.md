@@ -14,15 +14,15 @@ Avenir Next before final use.
 
 | Script | Slide | Type | Notes |
 |---|---:|---|---|
-| `08_four_models.R` | 8 | Schematic | Continent–island, island, stepping-stone, isolation by distance |
+| `08_four_models.R` | 8 | Schematic | Continent–island, island (direct exchange, no pool), stepping-stone, isolation by distance |
 | `09_continent_island_diagram.R` | 9 | Schematic | Neal Eqn 9.1 in pictures |
 | `10_continent_island_curve.R` | 10 | Analytical | Eqn 9.2; Neal Example 9.2 (sweet clover), m = 0.01/0.05/0.2 |
 | `13_island_model.R` | 13 | Deterministic iteration | Neal Fig. 9.1 / Appendix 9.1; q = 0.2–0.8, m = 0.1 |
 | `15_migration_selection.R` | 15 | Analytical, checked by iteration | q̂ = √(m/s), s = 0.25, wings recessive; exact when censused after immigration |
 | `17_stepping_stone_diagram.R` | 17 | Schematic | Neal Fig. 9.3 |
 | `18_stepping_stone_cline.R` | 18 | Deterministic iteration to equilibrium | Neal Fig. 9.4; m = 0.2, barrier m = 0.05 between 4–5 and 5–6 |
-| `21_copper_tolerance.R` | 21 | **Empirical, approximate** | McNeilly (1968) values read by eye from the published figure |
+| `21_copper_tolerance.R` | 21 | **Schematic** | Pattern from McNeilly (1968) text; values illustrative, not data |
 | `24_heterozygosity_levels.R` | 24 | Schematic | H_I, H_S, H_T and F_IS, F_ST, F_IT |
-| `28_fst_nm.R` | 28 | Analytical | F_ST ≈ 1/(4Nm + 1); checkerspot band Nm 3.8–14.5 |
+| `28_fst_nm.R` | 28 | Analytical | F_ST ≈ 1/(4Nm + 1); checkerspot band Nm 3.8–14.5 (7 of 8 loci; Slatkin 1987, Table 1) |
 
 `build_deck.py` rebuilds the PPTX from `BB512_Theme.pptx` (python-pptx), including all speaker notes.

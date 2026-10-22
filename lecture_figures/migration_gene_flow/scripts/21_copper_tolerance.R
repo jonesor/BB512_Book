@@ -1,34 +1,58 @@
-# Slide 21: Copper tolerance in Agrostis capillaris (as A. tenuis) around a small
-# copper mine (McNeilly 1968, Heredity 23: 99–108), as redrawn in Neal (2004).
-# EMPIRICAL but APPROXIMATE: bar heights were read by eye from the published
-# figure used in the earlier version of this lecture; they are not the original data.
-# Adults = established plants; seed = seed collected from those plants and grown on.
+# Slide 21: Copper tolerance in Agrostis capillaris (as A. tenuis) across a small copper
+# mine at Drws-y-Coed, North Wales (McNeilly 1968, Heredity 23: 99–108; described in
+# Neal 2004, section 9.3).
+#
+# SCHEMATIC, NOT DATA. The curves are illustrative. Their shape follows what McNeilly
+# reports in the text of the paper:
+#   * Upwind (transect 1): adults tolerant on the mine, with an abrupt drop between the
+#     last mine site and the first site just off the mine; no tolerant plants further out.
+#   * On the mine: seed is markedly LESS tolerant than adults (non-tolerant pollen in).
+#   * Downwind (transect 2): tolerance in adults extends well off the mine with no
+#     abrupt change; every off-mine seed sample is MORE tolerant than its adults.
+# The tolerance values and distances are not McNeilly's numbers (his Fig. 3 could not be
+# digitised). The earlier version of this figure used values read from a redrawn figure
+# that disagreed with McNeilly's text at the first downwind site, so it was replaced.
 source("R/theme_bb512.R")
 library(ggplot2)
 fam <- bb512_font()
-d <- data.frame(
-  transect = rep(c("Transect 1: upwind", "Transect 2: downwind"), each = 10),
-  distance = c(rep(c(0, 15, 20, 35, 45), each = 2), rep(c(0, 60, 80, 95, 160), each = 2)),
-  stage = rep(c("Adults", "Seed"), 10),
-  tolerance = c(12, 12, 25, 18, 42, 25, 53, 38, 56, 39,
-                43, 35, 40, 32, 30, 38, 28, 41, 18, 38))
-d$transect <- factor(d$transect, levels = unique(d$transect))
-mine <- data.frame(transect = factor(levels(d$transect), levels = levels(d$transect)),
-                   xmin = c(18, -Inf), xmax = c(Inf, 8))
-dodge <- c(Adults = -1, Seed = 1)
-d$x <- d$distance + dodge[d$stage] * ifelse(d$transect == levels(d$transect)[1], 0.9, 2.7)
-w <- ifelse(d$transect == levels(d$transect)[1], 1.6, 4.8)
-p <- ggplot(d) +
-  geom_rect(data = mine, aes(xmin = xmin, xmax = xmax, ymin = -Inf, ymax = Inf),
-            fill = bb512$pale, inherit.aes = FALSE) +
-  geom_col(aes(x, tolerance, fill = stage), width = w) +
-  geom_text(data = data.frame(transect = factor(levels(d$transect), levels = levels(d$transect)),
-                              x = c(31.5, 4), y = 63, label = c("mine", "mine")),
-            aes(x, y, label = label), colour = bb512$grey, size = 5, family = fam) +
-  facet_wrap(~transect, scales = "free_x") +
-  scale_fill_manual(values = c(Adults = bb512$forest, Seed = bb512$gold), name = NULL) +
-  scale_y_continuous(limits = c(0, 66), breaks = seq(0, 60, 20)) +
-  labs(x = "Distance along transect (m)", y = "Index of copper tolerance") +
-  theme_bb512() + theme(legend.position = "top", legend.justification = "left",
-                        panel.spacing = unit(1.4, "lines"))
+
+x <- seq(-40, 100, by = 0.5)                 # arbitrary position units; mine = 0 to 30
+logistic <- function(z) 1 / (1 + exp(-z))
+# steep upwind edge x long, shallow downwind tail (one smooth curve)
+adult <- 5 + 52 * logistic(x / 1.2) * logistic(-(x - 62) / 11)
+# Seed differs from adults by a smoothly varying offset: none upwind (little pollen
+# moves upwind), negative on the mine (non-tolerant pollen in), positive downwind.
+on_mine  <- logistic((x - 1) / 1.5) * logistic(-(x - 28) / 2.5)
+downwind <- logistic((x - 32) / 3)
+mine_level <- max(adult)
+# Downwind, tolerant pollen pulls seed part of the way towards the mine adults' level,
+# so seed sits above its own adults but never above the mine population.
+offset <- -14 * on_mine + 0.5 * (mine_level - adult) * downwind
+seed <- pmax(adult + offset, 5)
+d <- rbind(data.frame(x = x, tol = adult, stage = "Adults"),
+           data.frame(x = x, tol = seed, stage = "Seed"))
+
+p <- ggplot(d, aes(x, tol, colour = stage)) +
+  annotate("rect", xmin = 0, xmax = 30, ymin = -Inf, ymax = Inf, fill = bb512$pale) +
+  annotate("text", x = 15, y = 71, label = "mine", colour = bb512$grey, size = 5.2, family = fam) +
+  annotate("segment", x = 40, xend = 95, y = 71, yend = 71, colour = bb512$grey, linewidth = 0.7,
+           arrow = arrow(length = unit(0.12, "in"), type = "closed")) +
+  annotate("text", x = 67.5, y = 75.5, label = "prevailing wind", colour = bb512$grey, size = 5, family = fam) +
+  geom_line(linewidth = 1.5) +
+  annotate("text", x = -38, y = 20, label = "steep upwind edge", hjust = 0, colour = bb512$ink,
+           size = 4.9, family = fam) +
+  annotate("text", x = 15, y = 30, label = "seed below\nadults", colour = bb512$gold,
+           size = 4.9, family = fam, lineheight = 0.9) +
+  annotate("text", x = 98, y = 19.5, label = "seed above\nadults", colour = bb512$gold,
+           size = 4.9, family = fam, hjust = 1, lineheight = 0.9) +
+  scale_colour_manual(values = c(Adults = bb512$forest, Seed = bb512$gold), name = NULL) +
+  scale_x_continuous(breaks = c(-20, 15, 65), labels = c("upwind", "on mine", "downwind"),
+                     expand = expansion(add = 1)) +
+  scale_y_continuous(limits = c(0, 79), breaks = NULL) +
+  labs(x = NULL, y = "Copper tolerance (schematic)") +
+  theme_bb512() +
+  theme(legend.position = "top", legend.justification = "left",
+        panel.grid.major.y = element_blank(),
+        axis.text.x = element_text(size = 16, colour = bb512$ink))
+
 save_bb512(p, "21_copper_tolerance", layout = "takeaway")

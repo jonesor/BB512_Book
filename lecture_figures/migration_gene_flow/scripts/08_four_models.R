@@ -20,9 +20,18 @@ arrow_seg <- function(x, y, xend, yend, both = FALSE, col = bb512$grey) {
 # Panel offsets (x, y): top-left, top-right, bottom-left, bottom-right
 # 1. Continent–island
 blobs <- rbind(circle(1.3, 6.4, 1.05, id = "c"), circle(4.0, 6.4, 0.35, id = "i1"))
-# 2. Island model: four islands around a migrant pool
+# 2. Island model: every island exchanges migrants directly with every other island
+#    (immigrants to an island come from the OTHER islands, as in Neal Appendix 9.1)
 isl <- rbind(circle(7.0, 7.55, 0.3, id = "a"), circle(9.6, 7.55, 0.3, id = "b"),
              circle(7.0, 5.85, 0.3, id = "c2"), circle(9.6, 5.85, 0.3, id = "d"))
+centres <- data.frame(x = c(7.0, 9.6, 7.0, 9.6), y = c(7.55, 7.55, 5.85, 5.85))
+pairs <- t(combn(4, 2))
+isl_links <- lapply(seq_len(nrow(pairs)), function(k) {
+  a <- centres[pairs[k, 1], ]; b <- centres[pairs[k, 2], ]
+  d <- sqrt((b$x - a$x)^2 + (b$y - a$y)^2); ux <- (b$x - a$x) / d; uy <- (b$y - a$y) / d
+  gap <- 0.42
+  arrow_seg(a$x + ux * gap, a$y + uy * gap, b$x - ux * gap, b$y - uy * gap, both = TRUE)
+})
 # 3. Stepping-stone: five islands in a line
 ss <- do.call(rbind, lapply(1:5, function(i) circle(0.45 + (i - 1) * 1.15, 2.2, 0.22, id = paste0("s", i))))
 # 4. Isolation by distance: continuous grid of individuals, one neighbourhood
@@ -42,11 +51,8 @@ p <- ggplot() +
   annotate("text", x = 2.8, y = 5.0, label = "one-way, source to sink", colour = bb512$grey, size = 5, family = fam) +
   # 2
   panel_title(5.9, 8.35, "2  Island") +
-  annotate("rect", xmin = 7.85, xmax = 8.75, ymin = 6.35, ymax = 7.05, fill = bb512$pale, colour = bb512$grey, linewidth = 0.4) +
-  annotate("text", x = 8.3, y = 6.7, label = "pool", colour = bb512$ink, size = 4.9, family = fam) +
   geom_polygon(data = isl, aes(x, y, group = id), fill = bb512$forest) +
-  arrow_seg(7.3, 7.4, 7.85, 7.0, both = TRUE) + arrow_seg(9.3, 7.4, 8.75, 7.0, both = TRUE) +
-  arrow_seg(7.3, 6.0, 7.85, 6.4, both = TRUE) + arrow_seg(9.3, 6.0, 8.75, 6.4, both = TRUE) +
+  isl_links +
   annotate("text", x = 8.3, y = 5.0, label = "all exchange equally", colour = bb512$grey, size = 5, family = fam) +
   # 3
   panel_title(0, 3.95, "3  Stepping-stone") +
