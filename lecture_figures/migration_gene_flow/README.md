@@ -23,6 +23,7 @@ Avenir Next before final use.
 | `18_stepping_stone_cline.R` | 18 | Deterministic iteration to equilibrium | Neal Fig. 9.4; m = 0.2, barrier m = 0.05 between 4–5 and 5–6 |
 | `21_copper_tolerance.R` | 21 | **Schematic** | Pattern from McNeilly (1968) text; values illustrative, not data |
 | `24_heterozygosity_levels.R` | 24 | Schematic | H_I, H_S, H_T and F_IS, F_ST, F_IT |
+| `27b_number_vs_proportion.R` | 28 | Analytical rules of thumb | Drift beaten when N_e·m ≈ 1 (a number); selection swamped when m ≈ s (a proportion); s = 0.01 |
 | `28_fst_nm.R` | 28 | Analytical | F_ST ≈ 1/(4Nm + 1); checkerspot band Nm 3.8–14.5 (7 of 8 loci; Slatkin 1987, Table 1) |
 
 `build_deck.py` rebuilds the PPTX from `BB512_Theme.pptx` (python-pptx), including all speaker notes.
