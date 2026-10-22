@@ -70,16 +70,11 @@ save_bb512 <- function(plot, filename, layout = "full", out_dir = "figures",
   dir.create(out_dir, showWarnings = FALSE, recursive = TRUE)
   sz <- .bb512_dimensions[[layout]]
   png_name <- file.path(out_dir, paste0(filename, ".png"))
-  pdf_name <- file.path(out_dir, paste0(filename, ".pdf"))
 
   ggplot2::ggsave(png_name, plot = plot, device = ragg::agg_png,
                   width = sz[1], height = sz[2], units = "in",
                   dpi = dpi, bg = background, limitsize = FALSE)
-  pdf_device <- if (capabilities("cairo")) grDevices::cairo_pdf else grDevices::pdf
-  ggplot2::ggsave(pdf_name, plot = plot, device = pdf_device,
-                  width = sz[1], height = sz[2], units = "in",
-                  bg = background, limitsize = FALSE)
-  invisible(list(png = png_name, pdf = pdf_name))
+  invisible(png_name)
 }
 
 # Default colour order: forest, clay, blue, gold, sage, grey.

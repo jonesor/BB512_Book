@@ -3,7 +3,7 @@
 Reproducible figures for the revised Lecture 10 deck, styled with `R/theme_bb512.R` (BB512_Theme.pptx colours, Avenir Next with a Nunito Sans/Helvetica fallback). Run from this folder:
 
 ```r
-source("render_all.R")   # writes 300-dpi PNG + PDF to figures/
+source("render_all.R")   # writes 300 dpi PNGs to figures/
 ```
 
 | Script | Slide | Layout | Type | Notes |
@@ -20,6 +20,6 @@ source("render_all.R")   # writes 300-dpi PNG + PDF to figures/
 Notes:
 
 - Packages: ggplot2, ragg (which brings systemfonts), scales.
-- Font: Avenir Next is used when installed (Mac); otherwise Nunito Sans, then Helvetica. The committed PNG/PDF files were rendered with the Nunito Sans fallback, so re-run `render_all.R` on a Mac to get Avenir Next.
+- Font: Avenir Next is used when installed (Mac); otherwise Nunito Sans, then Helvetica. The committed PNG files were rendered with the Nunito Sans fallback, so re-run `render_all.R` on a Mac to get Avenir Next.
 - Seeds: the two illustrative simulations (05, 06) search for a seed that shows the intended pattern; the search conditions are in each script header and the seed used is written to `figures/*_seed.txt`.
 - Figures not used by the 45-minute deck (harmonic mean, drift vs selection) were dropped; the worked numbers are in the speaker notes.

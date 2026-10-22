@@ -16,4 +16,4 @@ for (script in scripts) {
   message("Generating ", script)
   source(script, local = new.env(parent = globalenv()))
 }
-message("Finished: PNG and vector PDF files are in figures/")
+message("Finished: PNG files are in figures/")
