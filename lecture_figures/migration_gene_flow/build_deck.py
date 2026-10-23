@@ -290,27 +290,20 @@ Neal's conclusion (9.2): gene flow makes populations genetically uniform, and th
 Then the question Neal asks next: gene flow beats drift easily (we come back to this in Section 04), but can it beat selection?
 Figure: deterministic iteration of Eqn 9.1, scripts/13_island_model.R.""")
 
-# 14 Check question: wings
-s = new("Check Question (2 options)")
-fill(ph(s, 101), "Windy island: winged insects have fitness 1 − s, with s = 0.25 (wings are recessive). 1% of breeders arrive each generation from a winged mainland. What happens to wings?", size=24)
-fill(ph(s, 105), "Selection wins: the wing allele disappears from the island.")
-fill(ph(s, 109), "Gene flow keeps the wing allele at a substantial frequency.")
-notes(s, """~1.5 min. Ask for a show of hands before revealing. Answer B.
-Set-up from Neal 9.2 and Fig. 9.2: all mainland insects are winged (q_m = 1); on the island winged insects tend to be blown out to sea. The wing allele is recessive, so only q^2 of island insects have wings and suffer selection s.
-Most students expect A because s = 0.25 is strong selection. The next slide shows why it is B.""")
-
 # 15 Migration-selection balance
 s = new("Title, Bullets & Photo")
-fill(ph(s, 100), "Migration–selection balance")
+fill(ph(s, 100), "Windy island: migration–selection balance")
 picture(s, 101, FIG + "15_migration_selection.png")
 fill(ph(s, 103), "TAKEAWAY")
 fill(ph(s, 105), [
+    "Winged insects: fitness 1 − *s*; wings recessive",
     "Equilibrium: q ≈ √(*m*/*s*)",
-    "*m* = 0.01: q = 0.20; 4% winged",
-    "*m* = 0.1: q = 0.63; 40% winged",
+    "*m* = 0.01, *s* = 0.25: q = 0.20; 4% winged",
     "Gene flow limits local adaptation (fit to local conditions)",
-])
-notes(s, """~3 min.
+], size=17)
+notes(s, """~3.5 min. Start with a prediction, before pointing at the figure.
+Set-up (Neal 9.2, Fig. 9.2): all mainland insects are winged (q_m = 1); on the windy island winged insects tend to be blown out to sea, so they have fitness 1 - s with s = 0.25. The wing allele is recessive, so only q^2 of island insects have wings. 1% of the island's breeders arrive from the mainland each generation (m = 0.01).
+Ask for a show of hands: does selection eliminate the wing allele, or does gene flow keep it at a substantial frequency? Most students expect elimination because s = 0.25 is strong selection. The figure shows why not.
 Neal Exp. 9.10: loss by selection, s p q^2 / (1 - s q^2), balances gain by immigration, m(q_m - q). With q_m = 1 this simplifies to q-hat = sqrt(m/s) (Exp. 9.11).
 m = 0.01, s = 0.25: q-hat = sqrt(0.04) = 0.20, so 1% immigration maintains 20% wing alleles despite strong selection. Because wings are recessive, only q^2 = 4% of insects are winged: the allele hides in heterozygotes.
 m = 0.1: q-hat = 0.632; q^2 = 0.40.
@@ -345,22 +338,16 @@ fill(ph(s, 100), "Model 3: a gradient between the ends")
 picture(s, 101, FIG + "18_stepping_stone_cline.png")
 fill(ph(s, 103), "TAKEAWAY")
 fill(ph(s, 105), [
-    "Equal migration: a straight-line gradient between the ends.",
-    "Low migration in one place (a barrier): a steep section.",
-    "A gradient like this is called a cline.",
+    "Equal migration: a straight-line gradient",
+    "A barrier (low *m*): a steep section",
+    "Cline: a gradual change in allele frequency or phenotype across space",
 ])
-notes(s, """~2 min.
+notes(s, """~2.5 min.
+Name the pattern: a gradient like this is a cline. Its shape reflects the balance of selection, gene flow and drift; steep sections often mark barriers to movement or sharp changes in selection. Neal 9.3: intermediate populations on real clines are not set by migration alone; selection and possibly drift also act.
 Reproduces Neal Fig. 9.4 and Appendix 9.2: nine populations, ends fixed at 0.9 and 0.1, m = 0.2 between neighbours; barrier = m reduced to 0.05 between populations 4-5 and 5-6. Shown at equilibrium.
 Neal's conclusion: gene flow limits differentiation of adjacent populations, and abrupt changes are associated with geographical features that reduce movement.
 Caveat: a steep step can also come from an abrupt change in selection, so a step alone does not prove a barrier.
 Figure: deterministic iteration, scripts/18_stepping_stone_cline.R.""")
-
-# 19 Key concept: cline
-s = new("Key Concept")
-fill(ph(s, 102), "Cline")
-fill(ph(s, 103), "A gradual change in allele frequency or phenotype across geographical space.")
-fill(ph(s, 105), "Its shape reflects the balance of selection, gene flow and drift. Steep sections often mark barriers to movement or sharp changes in selection.")
-notes(s, "~0.5 min. Neal 9.3: intermediate populations on real clines are not set by migration alone; selection and possibly drift also act.")
 
 # 20 Agrostis set-up
 s = new("Figure & Bullets")
@@ -443,8 +430,8 @@ Correction to previous version: one slide labelled the differentiation index 'F_
 s = new("Key Concept")
 fill(ph(s, 102), "F_{ST}, the fixation index")
 fill(ph(s, 103), "The proportion of the total expected heterozygosity that is due to allele-frequency differences among subpopulations.")
-fill(ph(s, 105), "F_{ST} = 0: subpopulations identical.  F_{ST} = 1: fixed for different alleles.  Pooling differentiated subpopulations creates a heterozygote deficit (the Wahlund effect), even with random mating in each.")
-notes(s, """~1 min.
+fill(ph(s, 105), "F_{ST} = 0: subpopulations identical.  F_{ST} = 1: fixed for different alleles.")
+notes(s, """~0.5 min.
 Common misconception: F_IT > 0 does not mean individuals mate with relatives. It can arise purely from structure: sampling the whole population as if it were one gene pool shows fewer heterozygotes than expected (Wahlund effect).
 Tell students: a fully worked example of F_IS, F_ST and F_IT is on the last slide of the PDF, for self-study. It is not done in class.""")
 
@@ -553,41 +540,33 @@ s = new("Figure & Bullets")
 fill(ph(s, 100), "Checkerspot: genes versus observations")
 picture(s, 101, MED + "s37_653.png")
 fill(ph(s, 102), [
-    "Edith's checkerspot (*Euphydryas editha*): 21 populations across central California",
+    "Edith's checkerspot (*Euphydryas editha*): 21 populations, central California",
     "Seven loci: F_{ST} = 0.017 to 0.062, so N_{e}*m* ≈ 3.8 to 14.5 (mean 7.8)",
     "One locus (*Hk*): F_{ST} = 0.29, perhaps because it is under selection",
     "Mark–recapture between nearby populations: N_{e}*m* ≈ 0.1",
+    "**Discuss (2 min):** why might F_{ST} suggest far more gene flow than the butterflies show today?",
     "Data: McKechnie et al. (1975); analysis: Slatkin (1987)",
-], size=20)
+], size=16)
 _src = ph(s, 102).text_frame.paragraphs[-1]
 for _r in _src.runs:
     _r.font.size = Pt(14)
     _r.font.color.rgb = RGBColor.from_string("6E6F68")
-notes(s, """~1 min.
+notes(s, """~2.5 min including a 2-minute pair discussion.
+Prompts if the discussion stalls: time scales, rare events, the model's assumptions.
 Sources: allozyme data for 21 populations from McKechnie, Ehrlich and White (1975) Genetics 81: 571-594; F_ST and Nm by locus in Slatkin (1987) Science 236: 787-792, Table 1, using F_ST = 1/(1 + 4Nm). Direct estimate (Nm about 0.1 between nearby populations) from Ehrlich and colleagues' mark-recapture work (Ehrlich et al. 1975, Science 188: 221), as quoted by Slatkin (1987).
 Slatkin's Table 1: pgm 0.028 (Nm 8.7), pgi 0.052 (4.6), hk 0.291 (0.6), got 0.017 (14.5), ak 0.062 (3.8), bdh 0.034 (7.1), a-gpdh 0.027 (9.0), to 0.035 (6.9). Mean Nm excluding hk = 7.8.
 Arithmetic check: (1/0.062 - 1)/4 = 3.78; (1/0.017 - 1)/4 = 14.5; (1/0.291 - 1)/4 = 0.61.
 Why Hk matters: it is the locus that breaks the pattern. Mueller et al. (1985, Genetics 110: 495-511) found that Hk was one of three loci whose frequency changes in one population were inconsistent with drift alone, so selection is a plausible reason it stands out. This links to 'neutral markers' on the previous slide: different loci can tell different stories.
 Correction to previous version: it gave the 0.017-0.062 range without saying that one of the eight loci was left out.
-Photo: Walter Siegmund, CC BY-SA 3.0 (Wikimedia Commons, Euphydryas_editha_5679.JPG).""")
-
-# 32 Activity: why disagree
-s = new("Activity")
-fill(ph(s, 101), "2 MIN · DISCUSS")
-fill(ph(s, 102), "Why might F_{ST} suggest far more gene flow than the butterflies show today?")
-fill(ph(s, 103), [
-    "Think about time scales.",
-    "Think about rare events.",
-    "Think about the model's assumptions.",
-])
-notes(s, """~2 min including answers.
+Answers to the discussion:
 Time scales: F_ST reflects gene flow averaged over many past generations; migration may have been higher in the past (e.g. before habitat fragmentation).
 Rare events: occasional long-distance dispersal is easily missed by a few seasons of mark-recapture but has a large genetic effect.
 Assumptions: populations may not be at equilibrium (recent colonisation, local extinction and recolonisation keep F_ST low); unequal population sizes; selection on the markers.
 Measurement: mark-recapture records movement; it may also miss migrants that breed outside the study area.
 Spatial scale makes the puzzle sharper: the genetic samples come from throughout central California, yet F_ST is low; the direct estimate is between nearby populations, yet movement is rare.
 Slatkin's (1987) interpretation: movement between existing populations cannot explain their genetic similarity, so there was probably substantial gene flow in the recent past. Local populations also go extinct and are recolonised (a new population was established within a year of one going extinct), which keeps F_ST low.
-Neither estimate is simply 'right': they measure different things over different time scales.""")
+Neither estimate is simply 'right': they measure different things over different time scales.
+Photo: Walter Siegmund, CC BY-SA 3.0 (Wikimedia Commons, Euphydryas_editha_5679.JPG).""")
 
 # 33 Summary
 s = new("Summary")
