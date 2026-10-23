@@ -243,11 +243,10 @@ s = new("Figure & Bullets")
 fill(ph(s, 100), "Model 1: one generation, counted")
 picture(s, 101, FIG + "09b_one_generation_counted.png")
 fill(ph(s, 102), [
-    "After one generation: 95 residents, 5 immigrants",
-    "q_{1} = 0.95 × 0 + 0.05 × 1 = 0.05",
-    "0.95 is (1 − *m*): residents keep their alleles",
-    "0.05 is *m*: immigrants bring their alleles",
-    "**In general:**\nq_{1} = (1 − *m*)q_{0} + *m*q_{m}",
+    "95 residents keep their white alleles",
+    "5 immigrants bring yellow alleles",
+    "So the yellow allele is now at 5 in 100: q_{1} = 0.05",
+    "**Neal Eqn 9.1:**\nq_{1} = (1 − *m*)q_{0} + *m*q_{m}\nresidents + immigrants",
 ], size=20)
 notes(s, """~2 min.
 Count, then name the parts. For simplicity every breeder is homozygous, so the proportion of breeders carrying the yellow allele equals its allele frequency.
@@ -260,14 +259,18 @@ s = new("Figure & Bullets")
 fill(ph(s, 100), "Model 1: each generation, the gap shrinks")
 picture(s, 101, FIG + "09c_gap_shrinks.png")
 fill(ph(s, 102), [
-    "Gap to the mainland: 1 → 0.95 → 0.90 → 0.86 …",
-    "Each generation the gap is multiplied by (1 − *m*) = 0.95",
-    "After *t* generations:\nq_{t} − q_{m} = (1 − *m*)^{t}(q_{0} − q_{m})",
-    "Change per generation:\nΔq = *m*(q_{m} − q_{0}), fastest when the gap is large",
+    "Each generation the gap to the mainland shrinks by 5%",
+    "Big gap, big change; small gap, small change",
+    "**Neal Eqn 9.2:**\nq_{t} − q_{m} = (1 − *m*)^{t}(q_{0} − q_{m})",
+    "Worked examples: end of slides",
 ], size=20)
+_src = ph(s, 102).text_frame.paragraphs[-1]
+for _r in _src.runs:
+    _r.font.size = Pt(14)
+    _r.font.color.rgb = RGBColor.from_string("6E6F68")
 notes(s, """~1.5 min.
 The gap q_m - q_t starts at 1 and is multiplied by 0.95 each generation: 1, 0.95, 0.9025, 0.857... This is Neal Eqn 9.2 in words; the derivation is on Neal p. 137.
-Delta q = m(q_m - q_0) (Neal Exp. 9.2): the change depends on the migration rate AND on how different the two populations are, so change is fast at first and slows as the gap closes.
+Also say: Delta q = m(q_m - q_0) (Neal Exp. 9.2): the change depends on the migration rate AND on how different the two populations are, so change is fast at first and slows as the gap closes.
 Figure: analytical, scripts/09c_gap_shrinks.R.""")
 
 # 12 Continent-island curve
@@ -286,18 +289,17 @@ q_1 = 0.05, q_2 = 0.0975, q_3 = 0.1426 (from the previous two slides).
 The grey curves show m = 0.01 and m = 0.2: the rate sets the speed, but every curve heads to q_m = 1. Gene flow homogenises.
 Figure: analytical (Eqn 9.2), scripts/10_continent_island_curve.R.""")
 
-# 11 Your turn
+# 11 Your turn (sketch, not calculation)
 s = new("Activity")
-fill(ph(s, 101), "3 MIN · PAIRS")
-fill(ph(s, 102), "How many generations until an island population of butterflies reaches q = 0.55?")
+fill(ph(s, 101), "2 MIN · PAIRS")
+fill(ph(s, 102), "Sketch q over time: an island starts at q = 0.75, the mainland is at 0.25.", size=28)
 fill(ph(s, 103), [
-    "Island q_{0} = 0.75; mainland q_{m} = 0.25; *m* = 0.05.",
-    "Use q_{t} − q_{m} = (1 − *m*)^{t}(q_{0} − q_{m}) and solve for *t*.",
-    "Hint: take logs of both sides.",
+    "Where does it end up?",
+    "Is the change fast or slow at first? Why?",
+    "What would a higher migration rate change, and what would it not change?",
 ])
-notes(s, """~3 min including answer. Neal 9.4 Problem 3.
-Answer: 0.55 - 0.25 = 0.95^t (0.75 - 0.25), so 0.30 = 0.95^t x 0.50, 0.6 = 0.95^t, t = ln 0.6 / ln 0.95 = 9.96, about 10 generations.
-Point out that the island moves DOWN towards the mainland frequency: gene flow is not directional towards 1, it is towards q_m.""")
+notes(s, """~2 min including answers. A sketch, not a calculation: the calculation (Neal Problem 9.3) is a self-study worked example at the end of the slides.
+Answers: it falls towards 0.25 (gene flow pulls towards the source, not towards 1); fastest at first because the gap is largest; higher m makes it faster but does not change where it ends up.""")
 
 # 12 Check question: island model qm
 s = new("Check Question (4 options)")
@@ -359,12 +361,12 @@ s = new("Figure & Bullets")
 fill(ph(s, 100), "Model 3: the stepping-stone model")
 picture(s, 101, FIG + "17_stepping_stone_diagram.png")
 fill(ph(s, 102), [
-    "Populations in a line exchange migrants only with neighbours.",
-    "Population 2 keeps 1 − (*m*_{21} + *m*_{23}) of its alleles and gains *m*_{12}q_{1} + *m*_{32}q_{3}.",
+    "Populations in a line exchange migrants only with their neighbours (Neal Exp. 9.13).",
+    "Each generation, every population mixes a little with the ones on either side.",
     "Selection holds the ends at q = 0.9 and 0.1. Predict the populations in between.",
 ], size=20)
 notes(s, """~2 min.
-Neal 9.3, Fig. 9.3 and Exp. 9.13: q_1 = [1 - (m21 + m23)] q_0 + m12 q_m1 + m32 q_m3, written here for population 2. Subscripts give direction: m12 is from population 1 into 2; m21 is from 2 into 1.
+Neal 9.3, Fig. 9.3 and Exp. 9.13 (for reference, not on the slide): q_1 = [1 - (m21 + m23)] q_0 + m12 q_m1 + m32 q_m3, written for population 2. Subscripts give direction: m12 is from population 1 into 2; m21 is from 2 into 1.
 Examples of linear chains: altitude on a mountain, salinity along an estuary shoreline.
 Ask students to sketch their prediction before the next slide.
 Correction to previous version: the old diagram labelled two arrows m34; the left-pointing one should be m43.""")
@@ -452,12 +454,19 @@ s = new("Figure & Bullets")
 fill(ph(s, 100), "Three levels of heterozygosity")
 picture(s, 101, FIG + "24_heterozygosity_levels.png")
 fill(ph(s, 102), [
-    "Recall: F = 1 − H_{obs} / H_{exp}",
-    "F_{IS} = (H_{S} − H_{I}) / H_{S}\ninbreeding within subpopulations",
-    "F_{ST} = (H_{T} − H_{S}) / H_{T}\ndifferentiation among subpopulations",
-    "F_{IT} = (H_{T} − H_{I}) / H_{T}\nboth combined",
+    "Each F compares heterozygosity at two levels (recall F from the inbreeding lecture)",
+    "F_{IS}: inbreeding within subpopulations",
+    "F_{ST}: differentiation among subpopulations",
+    "F_{IT}: both combined",
+    "**Key equation:** F_{ST} = (H_{T} − H_{S}) / H_{T}",
+    "Worked example: end of slides",
 ], size=20)
+_src = ph(s, 102).text_frame.paragraphs[-1]
+for _r in _src.runs:
+    _r.font.size = Pt(14)
+    _r.font.color.rgb = RGBColor.from_string("6E6F68")
 notes(s, """~2.5 min.
+Formulas for reference (in the worked example at the end): F_IS = (H_S - H_I)/H_S; F_ST = (H_T - H_S)/H_T; F_IT = (H_T - H_I)/H_T.
 H_I: observed heterozygosity, averaged over subpopulations.
 H_S: expected heterozygosity (2pq) within each subpopulation, averaged.
 H_T: expected heterozygosity 2 p-bar q-bar if all subpopulations were pooled into one randomly mating population.
@@ -471,7 +480,7 @@ fill(ph(s, 103), "The proportion of the total expected heterozygosity that is du
 fill(ph(s, 105), "F_{ST} = 0: subpopulations identical.  F_{ST} = 1: fixed for different alleles.")
 notes(s, """~0.5 min.
 Common misconception: F_IT > 0 does not mean individuals mate with relatives. It can arise purely from structure: sampling the whole population as if it were one gene pool shows fewer heterozygotes than expected (Wahlund effect).
-Tell students: a fully worked example of F_IS, F_ST and F_IT is on the last slide of the PDF, for self-study. It is not done in class.""")
+Tell students: worked examples for self-study, including the F-statistics, are at the end of the PDF. They are not done in class.""")
 
 # Worked example (appendix slide, built at the end): table data and helper
 TABLE_HEAD = ["Subpopulation", "A_{1}A_{1}", "A_{1}A_{2}", "A_{2}A_{2}", "p", "q", "H_{S} = 2pq", "H_{I}"]
@@ -511,15 +520,19 @@ fill(ph(s, 100), "From F_{ST} to migrants per generation")
 picture(s, 101, FIG + "28_fst_nm.png")
 fill(ph(s, 103), "TAKEAWAY")
 fill(ph(s, 105), [
-    "Wright's island model:",
-    "F_{ST} ≈ 1 / (4N_{e}*m* + 1)",
-    "N_{e}*m* ≈ (1/F_{ST} − 1) / 4",
+    "Wright's island model: F_{ST} ≈ 1 / (4N_{e}*m* + 1)",
+    "More migrants, less differentiation",
     "N_{e}*m* = number of migrants, not a proportion",
+    "Worked example: end of slides",
 ])
+_src = ph(s, 105).text_frame.paragraphs[-1]
+for _r in _src.runs:
+    _r.font.size = Pt(14)
+    _r.font.color.rgb = RGBColor.from_string("6E6F68")
 notes(s, """~2.5 min.
 Sewall Wright (spelling corrected from 'Sewell' in the previous version) derived F_ST = 1/(4Nm + 1) for an island model at equilibrium between drift and gene flow.
 N_e = effective size of each subpopulation, m = migration rate (a proportion), so N_e m = number of migrants per generation. Written N_e m (Neal Eqn 8.4) rather than Nm, because in Neal Exp. 8.1 N_m means the number of males. Correction to previous version: it described Nm as 'the proportion of individuals that move'.
-Worked check: N_e m = 1 gives F_ST = 1/5 = 0.2.
+Rearranged (in the worked example at the end): N_e m = (1/F_ST - 1)/4. Worked check: N_e m = 1 gives F_ST = 1/5 = 0.2.
 Do not apply the formula to the two-subpopulation worked example at the end of the slides (F_ST = 0.375, one locus): it assumes many subpopulations. Naively it gives N_e m = 0.42; with the finite-island correction F_ST = 1/(1 + 4 N_e m (n/(n - 1))^2) for n = 2 it gives about 0.10. A useful example of misuse if a student asks.
 The relationship is flat for F_ST below about 0.1, so small errors in F_ST give large errors in N_e m.
 The shaded band ('butterfly data, later example') is Edith's checkerspot, introduced a few slides on.
@@ -611,15 +624,15 @@ s = new("Summary")
 fill(ph(s, 101), "Key points")
 fill(ph(s, 102), [
     "Gene flow needs migrants that breed; movement alone is not enough.",
-    "Gene flow pulls populations together: Δq = *m*(q_{m} − q_{0}).",
+    "Gene flow pulls populations towards a common allele frequency.",
     "It opposes drift (≈ 1 migrant per generation) and selection (recessive allele: q ≈ √(*m*/*s*)).",
     "Selection varying in space plus gene flow gives clines; barriers steepen them.",
     "F_{ST} measures differentiation; converting it to N_{e}*m* needs strong assumptions.",
-], size=17)
+], size=16)
 fill(ph(s, 106), [
     "Neal Ch. 9 and 8.4",
     "Neal 9.4: problems 1–3",
-    "F-statistics worked example: last slide",
+    "Worked examples: end of slides",
     "Practical: neutral or adaptive?",
 ], size=15)
 notes(s, """~1.5 min.
@@ -634,9 +647,61 @@ fill(ph(s, 101), "Before I came here I was confused about this subject. Having l
 fill(ph(s, 103), "ATTRIBUTED TO ENRICO FERMI")
 notes(s, "Kept from the previous version. Widely attributed to Fermi; no primary source is known, so 'attributed to' is used rather than a definite attribution.")
 
+
+def worked(title, lhead, lbody, rhead, rbody, note, size=17):
+    """Self-study worked example: question on the left, solution on the right."""
+    s = new("Two Columns")
+    fill(ph(s, 100), title)
+    fill(ph(s, 101), lhead)
+    fill(ph(s, 103), lbody, size=size)
+    fill(ph(s, 104), rhead)
+    fill(ph(s, 106), rbody, size=size)
+    notes(s, note)
+    return s
+
+# Self-study section divider
+s = new("Section")
+fill(ph(s, 102), "A")
+fill(ph(s, 103), "Worked examples (self-study)")
+notes(s, "Self-study section of the PDF; not presented in class. Each slide works one of Neal's examples or problems, with the equation numbers from Neal Chapter 9.")
+
+worked("Worked example: continent–island",
+       "SWEET CLOVER (NEAL EXAMPLE 9.2)",
+       ["White field q_{0} = 0; yellow fields q_{m} = 1; *m* = 0.05. When is q = 0.5?",
+        "Neal Eqn 9.2: q_{t} − q_{m} = (1 − *m*)^{t}(q_{0} − q_{m})",
+        "0.5 − 1 = 0.95^{t} × (0 − 1), so 0.5 = 0.95^{t}",
+        "*t* = ln 0.5 / ln 0.95 = **13.5 generations**"],
+       "BUTTERFLIES (NEAL PROBLEM 9.3)",
+       ["Island q_{0} = 0.75; mainland q_{m} = 0.25; *m* = 0.05. When is q = 0.55?",
+        "0.55 − 0.25 = 0.95^{t} × (0.75 − 0.25)",
+        "0.30 = 0.95^{t} × 0.50, so 0.6 = 0.95^{t}",
+        "*t* = ln 0.6 / ln 0.95 ≈ **10 generations**"],
+       """Self-study. Both use Neal Eqn 9.2 and take logs to solve for t. Note the butterflies move DOWN towards the mainland frequency: gene flow pulls towards q_m, not towards 1.""")
+
+worked("Worked example: island model",
+       "THE QUESTION (NEAL EXAMPLE 9.3)",
+       ["Three equal islands: q = 0.2, 0.4 and 0.6; *m* = 0.1.",
+        "What do immigrants bring to the 0.2 island, and where is it after 10 generations?"],
+       "THE SOLUTION",
+       ["Immigrants come from the other two: q_{m} = (0.4 + 0.6) / 2 = **0.5**",
+        "Neal Eqn 9.2 with q_{m} fixed: 0.5 + 0.9^{10} × (0.2 − 0.5) = **0.395**",
+        "Caveat: q_{m} changes each generation. Recalculating it every generation gives 0.36, and all islands converge on the overall mean, 0.4."],
+       """Self-study. Neal's own caveat (p. 139): holding q_m fixed is an approximation; populations actually converge on the mean of all islands because the q_m values are not readjusted. The 0.36 comes from iterating Eqn 9.1 with q_m recalculated each generation (Appendix 9.1 spreadsheet; R/models.R).""")
+
+worked("Worked example: migration–selection",
+       "THE QUESTION (NEAL SECTION 9.2)",
+       ["Mainland all winged (q_{m} = 1). On the island winged insects have fitness 1 − *s*, with *s* = 0.25; wings are recessive.",
+        "With *m* = 0.01 or 0.1, what is the equilibrium? How many insects have wings?"],
+       "THE SOLUTION",
+       ["Neal Exp. 9.11: q̂ ≈ √(*m*/*s*)",
+        "*m* = 0.01: q̂ = √0.04 = **0.20**; winged q̂^{2} = **4%**",
+        "*m* = 0.1: q̂ = √0.4 = **0.63**; winged q̂^{2} = **40%**",
+        "Most wing alleles hide in heterozygotes, so selection cannot remove them."],
+       """Self-study. Neal Exp. 9.10 balances loss by selection, s p q^2/(1 - s q^2), against gain by immigration, m(q_m - q). sqrt(m/s) is exact if the island is counted after immigration (see notes on the in-class slide).""")
+
 # 35 Appendix: worked example (self-study, not done in class)
 s = new("Title Only")
-fill(ph(s, 100), "Worked example (self-study): F-statistics")
+fill(ph(s, 100), "Worked example: F-statistics")
 make_table(s, ANS_ROWS, top=1.95)
 textbox(s, 0.8, 4.05, 6.55, 2.6, [
     "1. Allele frequency: p = f(A_{1}A_{1}) + ½ f(A_{1}A_{2}), e.g. 0.01 + 0.09 = 0.1",
@@ -654,6 +719,17 @@ notes(s, """Appendix slide for self-study in the PDF; not presented in class. Po
 Check: (1 - F_IT) = (1 - F_IS)(1 - F_ST) = (1 - 0)(1 - 0.375) = 0.625, so F_IT = 0.375. Consistent.
 Hardy-Weinberg proportions within subpopulations do not rule out selection: divergent selection can create allele-frequency differences while each subpopulation remains in HW proportions. Telling drift from selection needs many loci (selection affects particular loci, drift affects all) or other evidence.
 Do not convert this F_ST to N_e m with Wright's formula: it assumes many subpopulations (see notes on the F_ST to migrants slide).""")
+
+worked("Worked example: F_{ST} to migrants",
+       "THE QUESTION",
+       ["Edith's checkerspot: F_{ST} = 0.062 at one locus.",
+        "Assuming Wright's island model, how many migrants per generation does this imply?"],
+       "THE SOLUTION",
+       ["F_{ST} ≈ 1 / (4N_{e}*m* + 1), so N_{e}*m* ≈ (1/F_{ST} − 1) / 4",
+        "(1/0.062 − 1) / 4 = (16.1 − 1) / 4 ≈ **3.8 migrants per generation**",
+        "Check: N_{e}*m* = 1 gives F_{ST} = 1/5 = 0.2",
+        "Only valid for many subpopulations at equilibrium; do not apply it to the two-subpopulation example."],
+       """Self-study. Data from Slatkin (1987) Table 1 (locus ak). The formula assumes many equal subpopulations exchanging migrants at random, neutral markers and drift-migration equilibrium.""")
 
 prs.save(OUT)
 print("saved", OUT, len(prs.slides), "slides")
