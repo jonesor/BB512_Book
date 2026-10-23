@@ -39,12 +39,7 @@ p <- ggplot(d, aes(x, tol, colour = stage)) +
            arrow = arrow(length = unit(0.12, "in"), type = "closed")) +
   annotate("text", x = 67.5, y = 75.5, label = "prevailing wind", colour = bb512$grey, size = 5, family = fam) +
   geom_line(linewidth = 1.5) +
-  annotate("text", x = -38, y = 20, label = "steep upwind edge", hjust = 0, colour = bb512$ink,
-           size = 4.9, family = fam) +
-  annotate("text", x = 15, y = 30, label = "seed below\nadults", colour = bb512$gold,
-           size = 4.9, family = fam, lineheight = 0.9) +
-  annotate("text", x = 98, y = 19.5, label = "seed above\nadults", colour = bb512$gold,
-           size = 4.9, family = fam, hjust = 1, lineheight = 0.9) +
+  # (In-plot annotations removed: the slide's text explains each region.)
   scale_colour_manual(values = c(Adults = bb512$forest, Seed = bb512$gold), name = NULL) +
   scale_x_continuous(breaks = c(-20, 15, 65), labels = c("upwind", "on mine", "downwind"),
                      expand = expansion(add = 1)) +
@@ -55,4 +50,4 @@ p <- ggplot(d, aes(x, tol, colour = stage)) +
         panel.grid.major.y = element_blank(),
         axis.text.x = element_text(size = 16, colour = bb512$ink))
 
-save_bb512(p, "21_copper_tolerance", layout = "takeaway")
+save_bb512(p, "21_copper_tolerance", layout = "half")

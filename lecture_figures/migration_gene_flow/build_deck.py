@@ -369,15 +369,16 @@ Correction to previous version: it said that off the mine 'there has been no sel
 Image carried over from the previous version (filename 'Agrostis-capillaris_Flints_SHammonds.JPG'); record photographer and licence before sharing.""")
 
 # 21 Copper tolerance data
-s = new("Title, Bullets & Photo")
+s = new("Figure & Bullets")
 fill(ph(s, 100), "Pollen carries tolerance downwind")
 picture(s, 101, FIG + "21_copper_tolerance.png")
-fill(ph(s, 103), "TAKEAWAY")
-fill(ph(s, 105), [
-    "Upwind: an abrupt drop at the mine edge",
-    "Downwind: tolerance extends well off the mine",
-    "Seed is below adults on the mine, above them downwind: gene flow in, selection out",
-])
+fill(ph(s, 102), [
+    "**Seed**: offspring after gene flow (fathers via wind-borne pollen). **Adults**: survivors of selection.",
+    "On the mine: non-tolerant pollen blows in, so seed is less tolerant; copper then kills non-tolerant seedlings.",
+    "Downwind: tolerant pollen blows off the mine, so seed is more tolerant; on normal soil, tolerant plants do worse and are lost.",
+    "Upwind: little pollen arrives, so the edge stays steep.",
+    "Gene flow pulls one way, selection pulls back: the cline is the balance.",
+], size=16)
 notes(s, """~2.5 min.
 Site: Drws-y-Coed, a small (about 300 x 100 m) copper mine on a glaciated valley floor in North Wales (McNeilly 1968). Transect 1 is at the upwind end of the mine, transect 2 at the downwind end.
 What McNeilly reports: upwind, tolerant adults stop abruptly between the last mine site and a site 1 m off the mine; downwind, tolerant adults extend well onto normal soil with no abrupt change. Every seed sample from the mine was markedly less tolerant than its adults, and every off-mine seed sample downwind was more tolerant than its adults.
