@@ -221,38 +221,68 @@ notes(s, """~1 min. Roadmap. Say aloud: we work through models 1 to 3 in detail;
 4 Isolation by distance / neighbourhood models: continuous populations where mating probability declines with distance (Wright 1969; Neal Ch. 9 introduction). Neal mentions but does not simulate these; the results resemble the 2-D stepping-stone model.
 Figure: schematic, scripts/08_four_models.R.""")
 
-# 9 Continent-island model equations
+# 9 Model 1 set-up: the scenario
 s = new("Figure & Bullets")
-fill(ph(s, 100), "Model 1: the continent–island model")
+fill(ph(s, 100), "Model 1: a white field among yellow fields")
 picture(s, 101, FIG + "09_continent_island_diagram.png")
 fill(ph(s, 102), [
-    "A proportion *m* of island breeders are immigrants each generation.",
-    "Next generation:\nq_{1} = (1 − *m*)q_{0} + *m*q_{m}",
-    "Change per generation:\nΔq = *m*(q_{m} − q_{0})",
-    "After *t* generations:\nq_{t} − q_{m} = (1 − *m*)^{t}(q_{0} − q_{m})",
+    "Continent: yellow-flowered sweet clover; yellow allele frequency q_{m} = 1.",
+    "Island: one field of white-flowered clover, q_{0} = 0.",
+    "Each generation, 5% of the field's breeders come from outside (*m* = 0.05).",
+    "How fast does the field turn yellow? Does it ever stop?",
 ], size=20)
-notes(s, """~3 min.
-Notation follows Neal 9.1: q_0 = island ('native') allele frequency, q_m = frequency among immigrants, m = immigration rate. Eqn 9.1, Exp. 9.2 and Eqn 9.2.
-Say it in words: residents keep their alleles (1 - m), immigrants bring their alleles (m).
-Delta q = m(q_m - q_0): change depends on the migration rate AND on how different the two populations are. Nothing else operates here: no selection, no drift, no mutation.
-Derivation of Eqn 9.2 is in Neal p. 137: the difference from the mainland shrinks by a factor (1 - m) every generation, so the island approaches q_m geometrically.
-Neal also rearranges Eqn 9.2 to estimate m from allele frequencies (Eqn 9.3, Example 9.1); point students to it for reading, including Neal's caveats about selection and drift on the markers.
-Correction to the previous version: the old slides used the winged-insect example here with 'no selection'; that example belongs to migration-selection balance (two slides on), and the old wording also contradicted itself about which allele was dominant.""")
+notes(s, """~1.5 min. Context before equations.
+Neal Example 9.2: a farmer sows a pure line of white-flowered sweet clover surrounded by fields of homozygous yellow-flowered clover. Treat the field as the 'island' and the surrounding fields as the 'continent'. This is Neal's hypothetical illustration.
+Notation follows Neal 9.1: q_0 = island ('native') allele frequency, q_m = frequency among immigrants, m = immigration rate (the proportion of the island's breeders that are immigrants).
+Ask for predictions before moving on: does the field ever become completely yellow? (Yes, eventually, if nothing else acts.)
+Neal also rearranges these equations to estimate m from allele frequencies (Eqn 9.3, Example 9.1); point students to it for reading, including Neal's caveats about selection and drift on the markers.
+Figure: schematic, scripts/09_continent_island_diagram.R.""")
 
-# 10 Continent-island in numbers
+# 10 Model 1: one generation, counted
+s = new("Figure & Bullets")
+fill(ph(s, 100), "Model 1: one generation, counted")
+picture(s, 101, FIG + "09b_one_generation_counted.png")
+fill(ph(s, 102), [
+    "After one generation: 95 residents, 5 immigrants",
+    "q_{1} = 0.95 × 0 + 0.05 × 1 = 0.05",
+    "0.95 is (1 − *m*): residents keep their alleles",
+    "0.05 is *m*: immigrants bring their alleles",
+    "**In general:**\nq_{1} = (1 − *m*)q_{0} + *m*q_{m}",
+], size=20)
+notes(s, """~2 min.
+Count, then name the parts. For simplicity every breeder is homozygous, so the proportion of breeders carrying the yellow allele equals its allele frequency.
+q_1 = 0.95 x 0 + 0.05 x 1 = 0.05. The 0.95 is (1 - m): residents keep their alleles. The 0.05 is m: immigrants bring their alleles. This is Neal Eqn 9.1.
+Nothing else operates here: no selection, no drift, no mutation.
+Figure: schematic, scripts/09b_one_generation_counted.R.""")
+
+# 11 Model 1: the gap shrinks
+s = new("Figure & Bullets")
+fill(ph(s, 100), "Model 1: each generation, the gap shrinks")
+picture(s, 101, FIG + "09c_gap_shrinks.png")
+fill(ph(s, 102), [
+    "Gap to the mainland: 1 → 0.95 → 0.90 → 0.86 …",
+    "Each generation the gap is multiplied by (1 − *m*) = 0.95",
+    "After *t* generations:\nq_{t} − q_{m} = (1 − *m*)^{t}(q_{0} − q_{m})",
+    "Change per generation:\nΔq = *m*(q_{m} − q_{0}), fastest when the gap is large",
+], size=20)
+notes(s, """~1.5 min.
+The gap q_m - q_t starts at 1 and is multiplied by 0.95 each generation: 1, 0.95, 0.9025, 0.857... This is Neal Eqn 9.2 in words; the derivation is on Neal p. 137.
+Delta q = m(q_m - q_0) (Neal Exp. 9.2): the change depends on the migration rate AND on how different the two populations are, so change is fast at first and slows as the gap closes.
+Figure: analytical, scripts/09c_gap_shrinks.R.""")
+
+# 12 Continent-island curve
 s = new("Title, Bullets & Photo")
-fill(ph(s, 100), "Model 1 in numbers: sweet clover")
+fill(ph(s, 100), "Model 1: the field turns yellow")
 picture(s, 101, FIG + "10_continent_island_curve.png")
 fill(ph(s, 103), "TAKEAWAY")
 fill(ph(s, 105), [
-    "White field (q_{0} = 0), yellow neighbours (q_{m} = 1), *m* = 0.05",
-    "q_{1} = 0.05, q_{2} = 0.0975, q_{3} ≈ 0.143",
-    "Fastest when the gap is largest; halfway after 13.5 generations",
+    "Fast at first, then slower, because the gap shrinks",
+    "Halfway (q = 0.5) after 13.5 generations",
+    "*m* sets the speed; the field always heads towards q_{m}",
 ])
-notes(s, """~2.5 min.
-Neal Example 9.2: a farmer sows a pure line of white-flowered sweet clover (q = 0 for the yellow allele) surrounded by fields of homozygous yellow-flowered clover (q = 1); m = 0.05.
-Solve 0.5 - 1 = (0.95)^t (0 - 1): 0.5 = 0.95^t, t = ln 0.5 / ln 0.95 = 13.5, about 14 generations.
-Walk through q_1 = 0.05 x 1 + 0.95 x 0 = 0.05; q_2 = 0.05 + 0.95 x 0.05 = 0.0975; q_3 = 0.05 + 0.95 x 0.0975 = 0.1426.
+notes(s, """~1.5 min.
+Solve 0.5 - 1 = (0.95)^t (0 - 1): 0.5 = 0.95^t, t = ln 0.5 / ln 0.95 = 13.5, about 14 generations (Neal Example 9.2).
+q_1 = 0.05, q_2 = 0.0975, q_3 = 0.1426 (from the previous two slides).
 The grey curves show m = 0.01 and m = 0.2: the rate sets the speed, but every curve heads to q_m = 1. Gene flow homogenises.
 Figure: analytical (Eqn 9.2), scripts/10_continent_island_curve.R.""")
 
