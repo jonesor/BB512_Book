@@ -1,27 +1,30 @@
-# Slide 17: Linear stepping-stone model schematic (Neal Fig. 9.3). Not data.
+# Model 3 set-up: a linear stepping-stone chain of nine populations along an
+# environmental gradient (Neal Section 9.3, Fig. 9.3, Appendix 9.2). Selection favours
+# different alleles at the two ends; migrants move only between neighbours. Schematic.
 source("R/theme_bb512.R")
 library(ggplot2)
 fam <- bb512_font()
-xs <- c(0.9, 2.7, 4.5)
+n <- 9
+x <- seq(0.6, 5.4, length.out = n)
+pops <- data.frame(x = x, y = 2.4, fill = c(bb512$forest, rep(bb512$pale, n - 2), bb512$clay),
+                   txt = c("1", rep("?", n - 2), "9"), col = c(bb512$bg, rep(bb512$grey, n - 2), bb512$bg))
+gap <- 0.2
+links <- data.frame(x = x[-n] + gap, xend = x[-1] - gap)
 p <- ggplot() +
-  annotate("rect", xmin = xs - 0.55, xmax = xs + 0.55, ymin = 2.6, ymax = 3.6,
-           fill = c(bb512$sage, bb512$forest, bb512$sage)) +
-  annotate("text", x = xs, y = 3.1, label = c("1", "2", "3"),
-           colour = c(bb512$ink, bb512$bg, bb512$ink), size = 7, family = fam, fontface = "bold") +
-  # arrows right (upper) and left (lower)
-  annotate("segment", x = c(1.5, 3.3, 5.1), xend = c(2.1, 3.9, 5.7), y = 3.4, yend = 3.4,
-           colour = bb512$clay, linewidth = 1, arrow = arrow(length = unit(0.11, "in"), type = "closed")) +
-  annotate("segment", x = c(2.1, 3.9, 5.7), xend = c(1.5, 3.3, 5.1), y = 2.8, yend = 2.8,
-           colour = bb512$blue, linewidth = 1, arrow = arrow(length = unit(0.11, "in"), type = "closed")) +
-  annotate("text", x = c(1.8, 3.6, 5.4), y = 3.8, label = c("m[12]", "m[23]", "m[34]"), parse = TRUE,
-           colour = bb512$clay, size = 5.6, family = fam) +
-  annotate("text", x = c(1.8, 3.6, 5.4), y = 2.4, label = c("m[21]", "m[32]", "m[43]"), parse = TRUE,
-           colour = bb512$blue, size = 5.6, family = fam) +
-  annotate("text", x = 6.05, y = 3.1, label = "...", colour = bb512$grey, size = 8, family = fam) +
-  annotate("text", x = 3.2, y = 1.35, hjust = 0.5, colour = bb512$ink, size = 5.2, family = fam,
-           label = "Each population exchanges migrants\nonly with its two neighbours") +
-  annotate("text", x = 3.2, y = 4.65, hjust = 0.5, colour = bb512$grey, size = 5, family = fam,
-           label = "e.g. along an altitude or salinity gradient") +
-  coord_fixed(xlim = c(0.1, 6.4), ylim = c(0.7, 5.1), expand = FALSE) +
+  annotate("segment", x = 0.4, xend = 5.6, y = 4.05, yend = 4.05, colour = bb512$grey, linewidth = 0.7,
+           arrow = arrow(length = unit(0.11, "in"), type = "closed", ends = "both")) +
+  annotate("text", x = 3, y = 4.4, label = "environmental gradient (e.g. up a mountainside)",
+           colour = bb512$grey, size = 4.8, family = fam) +
+  geom_segment(data = links, aes(x = x, xend = xend, y = 2.4, yend = 2.4), colour = bb512$grey,
+               linewidth = 1.2) +
+  geom_point(data = pops, aes(x, y), shape = 21, size = 10, fill = pops$fill, colour = bb512$grey, stroke = 0.6) +
+  geom_text(data = pops, aes(x, y, label = txt), colour = pops$col, size = 5, family = fam, fontface = "bold") +
+  annotate("text", x = 0.6, y = 3.35, label = "selection\nfavours A", colour = bb512$forest, size = 4.7,
+           family = fam, lineheight = 0.9) +
+  annotate("text", x = 5.4, y = 3.35, label = "selection\nfavours a", colour = bb512$clay, size = 4.7,
+           family = fam, lineheight = 0.9) +
+  annotate("text", x = 3, y = 1.35, label = "Lines: migrants move only between neighbours",
+           colour = bb512$ink, size = 5, family = fam) +
+  coord_cartesian(xlim = c(0.1, 5.9), ylim = c(0.9, 4.7), expand = FALSE) +
   theme_void() + theme(plot.background = element_rect(fill = bb512$bg, colour = NA))
 save_bb512(p, "17_stepping_stone_diagram", layout = "half")

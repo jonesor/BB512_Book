@@ -23,6 +23,8 @@ p <- ggplot(d, aes(m)) +
            colour = bb512$forest, size = 5.4, family = fam) +
   annotate("text", x = 0.15, y = 0.36, label = "\"winged insects, \"*hat(q)^2", parse = TRUE, hjust = 1,
            colour = bb512$clay, size = 5.4, family = fam) +
+  annotate("text", x = 0.002, y = 0.83, hjust = 0, label = "s = 0.25", colour = bb512$grey,
+           size = 5.2, family = fam) +
   scale_x_continuous(breaks = c(0, 0.05, 0.1, 0.15), expand = expansion(mult = c(0.01, 0.03))) +
   scale_y_continuous(limits = c(0, 0.85), breaks = seq(0, 0.8, 0.2)) +
   labs(x = "Immigration rate from mainland (m)", y = "Equilibrium frequency") +

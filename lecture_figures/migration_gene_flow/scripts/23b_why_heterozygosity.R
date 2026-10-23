@@ -39,6 +39,6 @@ p <- ggplot() +
   facet_wrap(~case) +
   scale_x_continuous(breaks = c(0, 0.5, 1), labels = c("0", "0.5", "1")) +
   scale_y_continuous(limits = c(0, 0.6), breaks = seq(0, 0.5, 0.25)) +
-  labs(x = "Allele frequency, p", y = "Expected heterozygosity, 2p(1 − p)") +
+  labs(x = "Allele frequency, p (= 1 − q)", y = "Expected heterozygosity, 2p(1 − p)") +
   theme_bb512() + theme(panel.spacing = unit(1.6, "lines"))
 save_bb512(p, "23b_why_heterozygosity", layout = "takeaway")

@@ -19,9 +19,11 @@ Avenir Next before final use.
 | `09b_one_generation_counted.R` | 10 | Schematic | 95 residents + 5 immigrants: Eqn 9.1 by counting (Neal Example 9.2 numbers) |
 | `09c_gap_shrinks.R` | 11 | Analytical | Gap to mainland shrinks by (1 − m) each generation (Eqn 9.2) |
 | `10_continent_island_curve.R` | 10 | Analytical | Eqn 9.2; Neal Example 9.2 (sweet clover), m = 0.01/0.05/0.2 |
+| `13a_island_setup.R` | 14 | Schematic | Model 2 set-up: four islands, all exchanging migrants |
 | `13_island_model.R` | 13 | Deterministic iteration | Neal Fig. 9.1 / Appendix 9.1; q = 0.2–0.8, m = 0.1 |
+| `16a_migsel_setup.R` | 17 | Schematic | Windy-island set-up (Neal Fig. 9.2 style) |
 | `15_migration_selection.R` | 15 | Analytical, checked by iteration | q̂ = √(m/s), s = 0.25, wings recessive; exact when censused after immigration |
-| `17_stepping_stone_diagram.R` | 17 | Schematic | Neal Fig. 9.3 |
+| `17_stepping_stone_diagram.R` | 20 | Schematic | Nine-population chain along an environmental gradient |
 | `18_stepping_stone_cline.R` | 18 | Deterministic iteration to equilibrium | Neal Fig. 9.4; m = 0.2, barrier m = 0.05 between 4–5 and 5–6 |
 | `21_copper_tolerance.R` | 19 | **Schematic** (half width) | Pattern from McNeilly (1968) text; values illustrative, not data |
 | `23b_why_heterozygosity.R` | 24 | Analytical | Why heterozygosity measures differentiation: H_S falls below H_T as populations diverge |

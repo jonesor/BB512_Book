@@ -39,6 +39,8 @@ p <- ggplot(d, aes(Ne)) +
            family = fam, label = "m = s  (a proportion)") +
   annotate("text", x = 6e3, y = 6e-5, hjust = 0.5, colour = bb512$forest, size = 5,
            family = fam, label = "N[e]*m == 1~~'(a number):'~~F[ST] %~~% 0.2", parse = TRUE, angle = -17) +
+  annotate("text", x = 1.15e2, y = 1.1e-5, hjust = 0, colour = bb512$grey, size = 4.2, family = fam,
+           label = "Starts at Ne = 1/s = 100: below that,\ndrift also overrides selection", lineheight = 0.9) +
   geom_point(data = example, aes(Ne, m), colour = bb512$gold, size = 4) +
   annotate("text", x = 1.3e4, y = 6.5e-4, hjust = 0, vjust = 0.5, colour = bb512$gold, size = 4.8,
            family = fam, label = "10 migrants\nper generation", lineheight = 0.9) +
