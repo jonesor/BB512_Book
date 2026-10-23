@@ -209,8 +209,12 @@ s = new("Title, Bullets & Photo")
 fill(ph(s, 100), "Four ways to model gene flow")
 picture(s, 101, FIG + "08_four_models.png")
 fill(ph(s, 103), "TAKEAWAY")
-fill(ph(s, 105), ["Who exchanges migrants with whom?", "Model 4, isolation by distance: no separate populations; mates come from nearby, so gene flow falls with distance.", "We cover models 1 to 3."])
-notes(s, """~1 min. Roadmap.
+fill(ph(s, 105), [
+    "The models differ only in who exchanges migrants with whom.",
+    "1 and 2 ignore distance; in 3 and 4, most migrants move short distances.",
+    "In 4 there are no separate populations; mates come from nearby.",
+], size=17)
+notes(s, """~1 min. Roadmap. Say aloud: we work through models 1 to 3 in detail; model 4 behaves much like a two-dimensional stepping-stone model.
 1 Continent-island: one-way flow from a large source with fixed allele frequency q_m.
 2 Island: every population exchanges migrants equally with every other; immigrants to an island come from the other islands (Neal Appendix 9.1). (Wright's version uses a pool that includes the recipient; with many islands the difference is negligible.)
 3 Stepping-stone: migrants only move between neighbours (Neal 9.3).
