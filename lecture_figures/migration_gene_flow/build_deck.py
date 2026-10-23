@@ -233,7 +233,7 @@ fill(ph(s, 102), [
 ], size=20)
 notes(s, """~3 min.
 Notation follows Neal 9.1: q_0 = island ('native') allele frequency, q_m = frequency among immigrants, m = immigration rate. Eqn 9.1, Exp. 9.2 and Eqn 9.2.
-Say it in words: residents keep their own alleles (1 - m), immigrants bring theirs (m).
+Say it in words: residents keep their alleles (1 - m), immigrants bring their alleles (m).
 Delta q = m(q_m - q_0): change depends on the migration rate AND on how different the two populations are. Nothing else operates here: no selection, no drift, no mutation.
 Derivation of Eqn 9.2 is in Neal p. 137: the difference from the mainland shrinks by a factor (1 - m) every generation, so the island approaches q_m geometrically.
 Neal also rearranges Eqn 9.2 to estimate m from allele frequencies (Eqn 9.3, Example 9.1); point students to it for reading, including Neal's caveats about selection and drift on the markers.
