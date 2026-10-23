@@ -81,8 +81,10 @@ def add_slide_number(slide):
                 pass
             return
 
-def new(layout, fields=None, notes=None, pictures=None, number=True):
+def new(layout, fields=None, notes=None, pictures=None, number=True, hidden=False):
     slide = prs.slides.add_slide(LAYOUT[layout])
+    if hidden:
+        slide._element.set("show", "0")
     for idx, val in (fields or {}).items():
         if isinstance(val, tuple):
             set_text(ph(slide, idx), val[0], size=val[1])
@@ -220,7 +222,7 @@ Point out that C is not declining in number (λ = 1), but it is still being sele
 new("Section", {102: "02", 103: "Genetic systems"},
     notes="(10 s) The same fitness differences produce different rates of change depending on how genes are packaged and passed on.")
 
-new("Title & Bullets", {100: "Ploidy and sex shape the response",
+new("Title & Bullets", {100: "Ploidy and sex decide which model we use",
                         101: ["**Ploidy:** chromosome sets in the adult: haploid (n) or diploid (2n)",
                               "**Reproduction:** asexual (offspring are copies) or sexual (alleles reshuffled every generation)",
                               "Together they decide which model of selection we use",
@@ -237,7 +239,7 @@ new("Title & Photo", {100: "Four genetic systems",
     pictures={101: F + "02_genetic_systems.png"},
     notes="""
 (2 min) Walk round the four boxes.
-Correction from the previous version: dinoflagellates were listed as asexual diploids, but most dinoflagellates are haploid for most of their life cycle (only the zygote is diploid). They are replaced here by aphids, bdelloid rotifers, apomictic dandelions and parthenogenetic whiptail lizards (*Aspidoscelis*).
+Correction from the previous version: dinoflagellates were listed as asexual diploids, but most dinoflagellates are haploid for most of their life cycle (only the zygote is diploid). They are replaced by aphids and water fleas (*Daphnia*), which are diploid in their asexual (parthenogenetic) phases. Avoid apomictic dandelions and many parthenogenetic whiptail lizards as examples: they are mostly triploid. Bdelloid rotifer ploidy is disputed.
 The coloured line in each box says which model we will use: anything that reproduces clonally, haploid or diploid, follows the haploid selection model (Neal section 10.3). Only diploid sexual organisms need the zygotic model.
 Schematic, script 02_genetic_systems.R.
 """)
@@ -303,7 +305,7 @@ table(s, ["", "Genotype A", "Genotype B", "Total"],
        ["Frequency, generation 1 (÷ total)", "0.01 / 0.7525 = 0.013", "0.7425 / 0.7525 = 0.987", "1"]],
       col_w=[3.9, 2.75, 3.03, 2.05], row_h=0.62, size=17, highlight_rows=(5,))
 
-new("Key Concept", {102: "Δq = −spq / (1 − sq)",
+new("Key Concept", hidden=True, fields={102: "Δq = −spq / (1 − sq)",
                     103: "Change in frequency of the less fit type in one generation (Neal Eqn 10.1). It depends on s, and on how common both types are (pq).",
                     105: "Check: q = 0.99 and s = 0.25 give Δq = −0.0033, so q falls to 0.987, as in the table."},
     notes="""
@@ -313,7 +315,7 @@ For many generations, Neal gives the exact solution q~t~ = q~0~ / [q~0~ + (1 −
 """)
 
 new("Title & Photo", {100: "Haploid selection: slow, fast, slow",
-                      102: "Worked example continued: p~0~ = 0.01, s = 0.25. Deterministic model (no drift)."},
+                      102: "Worked example continued (p~0~ = 0.01, s = 0.25). Change per generation: Δq = −spq / (1 − sq) (Neal Eqn 10.1)."},
     pictures={101: F + "05_haploid_dynamics.png"},
     notes="""
 (2 min) Left: frequencies over 40 generations; A passes 50% at about generation 16 and is above 98% by generation 30. Right: the size of the change per generation against the frequency of A. Change is greatest at intermediate frequencies (here near p = 0.47; the curve is slightly skewed when s is large) and tiny when either type is rare.
@@ -385,29 +387,32 @@ s = new("Title Only", {100: "Four cases of dominance"},
 Neal's example: insect body colour under bird predation. Case B: green, olive and brown insects on green vegetation. Case C: green dominant, brown insects eaten on green vegetation. Case D: the same insects once the vegetation turns brown. Case E: olive heterozygotes best camouflaged on olive vegetation.
 Students should recognise the fitness pattern of each case from data; they do not need to memorise the Δq formulas.
 Case E has an equilibrium where Δq = 0: q̂ = s~1~ / (s~1~ + s~2~) (Neal Eqn 10.15). We use it for sickle-cell haemoglobin.
+The 'favoured allele is' column links the two vocabularies: from the next slide on, the cases are named by the favoured allele (C = favoured dominant, D = favoured recessive), and figures plot the favoured allele's frequency, p.
+Why no Case A? Neal starts his lettering at B; the haploid model plays the role of the simplest case.
 """)
-table(s, ["Case", "A~1~A~1~", "A~1~A~2~", "A~2~A~2~", "Δq in one generation"],
-      [["B: no dominance", "1", "1 − ½s", "1 − s", "−½spq / (1 − sq)"],
-       ["C: selection against recessive", "1", "1", "1 − s", "−spq² / (1 − sq²)"],
-       ["D: selection against dominant", "1", "1 − s", "1 − s", "−sp²q / (1 − 2sq + sq²)"],
-       ["E: heterozygote superiority", "1 − s~1~", "1", "1 − s~2~", "pq(s~1~p − s~2~q) / (1 − s~1~p² − s~2~q²)"]],
-      col_w=[3.7, 1.35, 1.35, 1.35, 3.98], row_h=0.62, size=16)
+table(s, ["Neal's case", "A~1~A~1~", "A~1~A~2~", "A~2~A~2~", "So the favoured allele is", "Δq in one generation"],
+      [["B: no dominance", "1", "1 − ½s", "1 − s", "Neither dominant", "−½spq / (1 − sq)"],
+       ["C: against the recessive", "1", "1", "1 − s", "**Dominant**", "−spq² / (1 − sq²)"],
+       ["D: against the dominant", "1", "1 − s", "1 − s", "**Recessive**", "−sp²q / (1 − 2sq + sq²)"],
+       ["E: heterozygote superior", "1 − s~1~", "1", "1 − s~2~", "Neither: heterozygote best", "pq(s~1~p − s~2~q) / (1 − s~1~p² − s~2~q²)"]],
+      col_w=[2.95, 1.05, 1.05, 1.05, 2.3, 3.33], row_h=0.66, size=15)
 textbox(s, "Relative fitness of each genotype. A~2~ (frequency q) is the allele selected against; in Case E both homozygotes are.",
         0.8, 5.45, 11.7, 0.5, size=14)
 
 new("Title, Bullets & Photo", {100: "Dominance shifts the fastest change",
                                103: "TAKEAWAY",
-                               105: ("A rare recessive allele hides in heterozygotes, so selection against it (green) almost stops when q is small.", 20)},
+                               105: ("A rare favoured recessive allele hides in heterozygotes, so it barely changes while p is small (red).", 20)},
     pictures={101: F + "08_dq_by_case.png"},
     notes="""
-(2 min) Neal Fig. 10.3a, redrawn with s = 0.1; the haploid model (dashed) is added for comparison.
-Peaks: no dominance at q ≈ 0.5; selection against a recessive at q ≈ 0.67; selection against a dominant at q ≈ 0.33 (Neal section 10.4.1, point 3; checked numerically in 00_check_numbers.R).
+(2 min) Neal Fig. 10.3a, redrawn with s = 0.1 and flipped to show the frequency of the **favoured** allele (p = 1 − q), so the axis matches the next slide. The haploid model (dashed) is added for comparison.
+Peaks: no dominance at p ≈ 0.5; favoured dominant (Case C) at p ≈ 0.33; favoured recessive (Case D) at p ≈ 0.67 (Neal section 10.4.1, point 3, gives the same peaks in terms of q; checked numerically in 00_check_numbers.R).
+Read it from both ends: a favoured recessive is slow while rare (left of the red curve); a favoured dominant is slow when nearly fixed (right of the green curve), because the last disfavoured recessive copies hide in heterozygotes.
 With no dominance, Δq is exactly half the haploid value (compare Eqns 10.1 and 10.4), because the homozygote's disadvantage s is shared out at s/2 per allele.
 Script 08_dq_by_case.R.
 """)
 
 new("Title & Photo", {100: "How fast does a favoured allele spread?",
-                      102: "s = 0.1; the favoured allele starts at p = 0.01. Deterministic model (no drift); compare Neal Fig. 10.4."},
+                      102: "s = 0.1, p~0~ = 0.01 (compare Neal Fig. 10.4). Deterministic: real rare alleles are often lost by drift first."},
     pictures={101: F + "09_spread_by_case.png"},
     notes="""
 (3 min) Replaces the textbook figure (ho04f06) with the same comparison drawn from our own models.
@@ -455,13 +460,15 @@ Image: scanning electron micrograph of *Mycobacterium tuberculosis* (CDC Public 
 
 new("Title & Bullets", {100: "What the models tell us",
                         101: (["Change is fastest at intermediate frequencies, where variation in fitness is greatest",
-                              "Haploid change is about twice as fast as diploid with no dominance",
+                              "For the same s, haploid change is twice as fast as diploid with no dominance",
                               "Rare recessives hide in heterozygotes: slow to spread if favoured, slow to remove if harmful",
                               "A favoured dominant spreads fast but takes very long to fix",
-                              "Fisher: mean fitness rises at a rate equal to the additive genetic variance in fitness"], 20)},
+                              "The more variation in fitness, the faster mean fitness rises (Fisher)"], 20)},
     notes="""
 (2 min) Synthesis of Neal section 10.4.1.
 Correction from the previous version: Fisher's (1930) 'fundamental theorem of natural selection' (not 'of evolution') concerns the rate of increase in **mean fitness**, and it is the **additive** genetic variance in fitness, not total genetic variance, that sets it. That is why dominance shifts the peak of Δq away from q = 0.5.
+On the slide this is simplified to 'more variation in fitness, faster change', because additive genetic variance is not introduced until the quantitative genetics lecture. Precise statement: the rate of increase in mean fitness due to natural selection equals the additive genetic variance in relative fitness (divided by mean fitness in absolute terms).
+The 'twice as fast' bullet depends on Neal's definition of s (the diploid homozygote has fitness 1 − s, the heterozygote 1 − s/2).
 Assumptions behind all of these models (Neal section 10.5): one locus of large effect; constant selection; no mutation, migration, drift or linkage to other selected genes.
 """)
 
@@ -469,13 +476,22 @@ Assumptions behind all of these models (Neal section 10.5): one locus of large e
 new("Section", {102: "05", 103: "Industrial melanism"},
     notes="(10 s) Back to the peppered moth: now we can answer the opening question.")
 
+new("Title, Bullets & Photo", {100: "Did you spot the moth?",
+                               103: "THE OPENING PHOTO",
+                               105: ("A pale *typica* peppered moth on lichen-covered birch bark. Its camouflage is what birds select on.", 20)},
+    pictures={101: I + "spot_the_moth_reveal.jpg"},
+    notes="""
+(1 min) The reveal for the title-slide photo. Ask who found it. Now imagine the same bark blackened by soot: the pale moth would stand out, and a dark one would vanish. That is the hypothesis this section tests.
+Image: as on the title slide (file Biston_betularia_20110529_102239_8073M.JPG, Wikimedia Commons; licence to confirm), with the moth circled.
+""")
+
 new("Title, Bullets & Photo", {100: "The peppered moth, *Biston betularia*",
                                103: "TWO FORMS",
-                               105: ("*typica* (left) is pale; *carbonaria* (right) is black and dominant. It is caused by a transposable element in the *cortex* gene, arising around 1819.", 20)},
+                               105: ("*typica* (left) is pale; *carbonaria* (right) is black and dominant. It is caused by a transposable element in the *cortex* gene that arose in the early 1800s.", 20)},
     pictures={101: I + "morphs_pair.jpg"},
     notes="""
 (1 min) Other dark forms (*insularia*) exist; following Neal, we treat the system as two alleles with *carbonaria* (C) dominant to *typica* (c).
-New since the textbook: van't Hof et al. (2016) Nature 534: 102–105 identified the mutation as a large transposable element inserted in the *cortex* gene, and dated its origin to about 1819. (Correction from the previous version: 'a single mutation' is right, but its nature is now known.)
+New since the textbook: van't Hof et al. (2016) Nature 534: 102–105 identified the mutation as a large transposable element inserted in the *cortex* gene, and dated its origin to about 1819. That is a statistical estimate with an uncertainty of a few decades, which is why the slide says 'early 1800s': the first known *carbonaria* specimen was caught before 1811 (next slide). (Correction from the previous version: 'a single mutation' is right, but its nature is now known.)
 Images: Olaf Leillinger, Wikimedia Commons (files Biston.betularia.7200.jpg and Biston.betularia.f.carbonaria.7209.jpg), CC BY-SA 2.5 as far as I know: please confirm on Commons before redistributing.
 """)
 
@@ -503,7 +519,7 @@ table(s, ["Year", "*carbonaria* (CC + Cc)", "*typica* (cc) = q²", "Allele frequ
        ["1898", "0.99", "0.01", "q~t~ = √0.01 = 0.10"]],
       col_w=[1.7, 3.2, 3.0, 3.83], row_h=0.62, size=17)
 textbox(s, ["Selection is against the recessive (*typica*): **Case C**, over t = 50 generations.",
-            "Solve for the s that takes q from 0.995 to 0.10 in 50 generations (Neal Eqn 10.11, or iterate the model)."],
+            "Solve for s (Neal Eqn 10.11):   s × t = (q~0~ − q~t~) / (q~0~q~t~) + ln[q~0~(1 − q~t~) / (q~t~(1 − q~0~))]"],
         0.8, 4.4, 11.7, 1.4, size=20, color=INK)
 
 new("Title, Bullets & Photo", {100: "Selection against *typica* was strong",
@@ -521,7 +537,7 @@ new("Activity", {101: "4 MIN · PAIRS",
                  102: ("With W(*typica*) = 0.67, how long for *carbonaria* to rise from 10% to 90%?", 32),
                  103: ["Convert each phenotype frequency to q (remember *typica* = q²)",
                        "Decide which case of dominance applies",
-                       "Use Neal Eqn 10.11 (Table 10.4), or iterate the model in R"]},
+                       "Use s × t = (q~0~ − q~t~) / (q~0~q~t~) + ln[q~0~(1 − q~t~) / (q~t~(1 − q~0~))]"]},
     notes="""
 (4 min) Neal problem 11.4, 2(a).
 q~0~ = √0.90 = 0.949; q~t~ = √0.10 = 0.316. Case C, s = 0.33.
@@ -529,38 +545,40 @@ Eqn 10.11: st = (q~0~ − q~t~)/(q~0~q~t~) + ln[q~0~(1 − q~t~)/(q~t~(1 − q~0
 So most of the change in Manchester could have happened in under 20 years.
 """)
 
-new("Title, Bullets & Photo", {100: "Kettlewell: was bird predation the cause?",
+new("Title, Bullets & Photo", {100: "Camouflaged moths are recaptured more",
                                103: "TAKEAWAY",
-                               105: ("Marked moths were released and recaptured. Each form survived about twice as well where it was camouflaged.", 20)},
+                               105: ("Kettlewell released and recaptured marked moths. Each form was recaptured about twice as often where it was camouflaged.", 20)},
     pictures={101: F + "11_kettlewell.png"},
     notes="""
 (3 min) H.B.D. Kettlewell (1955, 1956) released marked moths of both forms in a polluted wood near Birmingham and an unpolluted wood in Dorset, then recaptured them at light traps over the following days (data: Neal Table 11.1).
 Relative fitness: typica in Birmingham W = 0.47 (naively) or 0.45 after Neal's log correction; carbonaria in Dorset W = 0.51, or 0.75 after correction. The correction (ratio of log survival rates, Neal Example 11.2) is needed because survival is compounded over several days.
-Kettlewell, with Niko Tinbergen, filmed birds taking resting moths, which convinced sceptics who doubted that birds ate many moths.
+These data show differential survival, not its cause; recapture rates also depend on dispersal and on how moths respond to traps. The evidence that birds were responsible comes next: Kettlewell, with Niko Tinbergen, filmed birds taking resting moths, which convinced sceptics who doubted that birds ate many moths.
 (The previous version attributed the dead-moth experiments to Kettlewell; those were mainly by others, e.g. Bishop 1972: see next slide.)
 Script 11_kettlewell.R.
 """)
 
-new("Figure & Bullets", {100: "Criticised, then confirmed",
-                         102: (["Critics: unnatural densities and resting sites",
+new("Figure & Bullets", {100: "Bird predation: criticised, confirmed",
+                         102: (["Kettlewell and Tinbergen filmed birds taking moths",
+                               "Critics: unnatural densities and resting sites",
                                "Dead moths on trees gave the same pattern",
                                "Majerus: 4,864 moths, natural densities, six years",
-                               "Birds now take more *carbonaria*: s ≈ 0.09 per day"], 22)},
+                               "Birds now take more *carbonaria*: s ≈ 0.09 **per day**, not per generation"], 20)},
     pictures={101: I + "morphs_on_bark.jpg"},
     notes="""
 (2 min) Kettlewell's methods were criticised from the 1970s onwards, and the peppered moth became a target for creationist attacks in the 1990s and 2000s.
-Majerus designed the definitive test: moths released singly at night into a 1 ha rural garden, resting positions recorded, survival checked next morning, and bird predation watched with binoculars (nine bird species). He died in 2009; the results were published by Cook, Grant, Saccheri and Mallet (2012) Biology Letters 8: 609–612. Maximum-likelihood selection against *carbonaria*: 0.091 per day (95% CI 0.028–0.157).
+Majerus designed the definitive test: moths released singly at night into a 1 ha rural garden, resting positions recorded, survival checked next morning, and bird predation watched with binoculars (nine bird species). He died in 2009; the results were published by Cook, Grant, Saccheri and Mallet (2012) Biology Letters 8: 609–612. Maximum-likelihood selection against *carbonaria*: 0.091 per day (95% CI 0.028–0.157). Stress the units: this is per day of adult life, so it cannot be compared directly with the per-generation values of s elsewhere in the lecture (e.g. 0.3 from Haldane).
 Also: Bishop's (1972) Sefton Park data give W(typica) = 0.795 relative to carbonaria (Neal Example 11.2).
 Image: the two forms on bark, carried over from the previous version; source and licence to confirm.
 """)
 
 new("Title, Bullets & Photo", {100: "Clean air: the decline of *carbonaria*",
                                103: "TAKEAWAY",
-                               105: ("After the Clean Air Act (1956), *carbonaria* fell from 93% to 33% at West Kirby: s ≈ 0.15 against it.", 20)},
+                               105: ("Clean air reversed selection: now the dominant *carbonaria* allele is selected against (so q is now *carbonaria*). At West Kirby: 93% to 33%, s ≈ 0.15.", 18)},
     pictures={101: F + "12_west_kirby.png"},
     notes="""
 (2 min) Data: West Kirby, near Liverpool (Neal section 11.2.1): 93% (1959), 84% (1976), 33% (1990).
-Now *carbonaria* is the dominant allele being selected against: Neal's Case D. typica = p², so p = √(typica frequency).
+Point out the switch: in Haldane's calculation q was the *typica* allele; here q is the *carbonaria* allele, because Neal's q is always the allele selected against. Now *carbonaria* is the dominant allele being selected against: Neal's Case D. After the Clean Air Act (1956).
+The constant-s model misses the 1976 point (75% predicted, 84% observed), consistent with selection strengthening over time. typica = p², so p = √(typica frequency).
 Exact fit from 1959 to 1990: s = 0.15 (Neal's approximation gives 0.16). Fitting each interval separately (Neal) gives 0.11 for 1959–1976 and 0.23 for 1976–1990: selection strengthened as lichens returned.
 Correction from the previous version: the main UK legislation was the Clean Air Act 1956 (extended 1968), not the 1960s–1970s.
 *carbonaria* is now rare across Britain. Selection reversed, and the moth is close to its pre-industrial state.
@@ -584,7 +602,7 @@ Image: normal red blood cells and a sickle cell, coloured scanning electron micr
 
 s = new("Title Only", {100: "Fitness in Tanzania (Allison 1956)"},
     notes="""
-(3 min) Allison (1956) genotyped 287 infants and 654 adults in Tanzania (Neal Table 11.3). Absolute fitness here is survival from infancy to adulthood: adult frequency ÷ infant frequency. We assume the genotypes are equally fertile, which is probably not true.
+(3 min) Allison (1956) genotyped 287 infants and 654 adults in Tanzania (Neal Table 11.3). Neal calls the ratio of adult to infant frequency 'absolute fitness'; the slide calls it a survival ratio, because that is what it is. It compares two different groups sampled at the same time (not the same children followed to adulthood), and it measures survival only. We assume the genotypes are equally fertile, which is probably not true.
 The relative fitnesses fit Case E: s~1~ = 0.24 against AA (malaria), s~2~ = 0.80 against SS (sickle-cell disease).
 Note on numbers: the previous slide's values (λ = 1.228 and 0.244; W~SS~ = 0.199) are correct. Neal's printed table gives 0.2420 and 0.1971 for SS, which do not follow from his own counts.
 Expected HWE in infants from q = 0.186: 0.662, 0.303, 0.035 (observed 0.659, 0.310, 0.031).
@@ -594,10 +612,10 @@ table(s, ["", "AA", "AS", "SS", "Total", "q (HbS)"],
        ["Infants (frequency)", "0.659", "0.310", "0.031", "1", "0.186"],
        ["Adults (number)", "400", "249", "5", "654", ""],
        ["Adults (frequency)", "0.612", "0.381", "0.008", "1", "0.198"],
-       ["Absolute fitness (adult ÷ infant)", "0.929", "1.228", "0.244", "", ""],
+       ["Survival ratio (adult ÷ infant frequency)", "0.929", "1.228", "0.244", "", ""],
        ["Relative fitness (W)", "0.757", "1", "0.199", "", ""],
        ["Selection coefficient", "s~1~ = 0.24", "0", "s~2~ = 0.80", "", ""]],
-      col_w=[3.95, 1.6, 1.4, 1.6, 1.4, 1.78], row_h=0.55, size=16, highlight_rows=(5, 6))
+      col_w=[4.35, 1.5, 1.3, 1.5, 1.3, 1.78], row_h=0.55, size=16, highlight_rows=(5, 6))
 
 new("Title, Bullets & Photo", {100: "Heterozygote advantage keeps both",
                                103: "TAKEAWAY",
@@ -610,13 +628,13 @@ This links back to the 'heterozygote advantage' slide in the mutation and geneti
 Script 13_sickle_equilibrium.R.
 """)
 
-new("Figure & Bullets", {100: "Where malaria is common, so is HbS",
-                         102: ["HbS is common only where malaria is, or was",
-                               "Without malaria, HbS declines, but slowly",
-                               "Heterozygote advantage maintains variation"]},
-    pictures={101: I + "hbs_malaria_map.jpg"},
+new("Title & Photo", {100: "Where malaria is common, so is HbS",
+                      102: "(a) HbS allele frequency; (b) historical range of malaria. Without malaria, HbS declines, but slowly. Source to confirm."},
+    pictures={101: I + "hbs_malaria_map_wide.jpg"},
     notes="""
-(2 min) Correction from the previous version: the heterozygote is not 'maladaptive' outside malarial regions; it simply loses its advantage, while SS remains strongly disadvantageous, so the S allele declines.
+(2 min) Say: HbS is common only where malaria is, or was. Without malaria it declines, but slowly, because most copies are in healthy carriers. Heterozygote advantage is one way selection maintains genetic variation.
+The map is now shown as two large panels; the source image is low resolution, so a better copy would help.
+Correction from the previous version: the heterozygote is not 'maladaptive' outside malarial regions; it simply loses its advantage, while SS remains strongly disadvantageous, so the S allele declines.
 I have removed the '~2% per generation decline in the US Black population'. Neal (section 11.2.2) gives a different figure (about 7% per generation, part of it due to gene flow), and neither has a primary source I could check. If you want a number, cite a primary source.
 Map: (a) HbS allele frequency and (b) historical distribution of malaria. Carried over from the previous version; source not recorded (a textbook figure), so confirm and add the credit.
 """)
@@ -653,13 +671,14 @@ Neal Example 11.5: a dictator wanting a recessive trait reduced from 1 in 10,000
 Script 14_eugenics.R.
 """)
 
-new("Title & Bullets", {100: "Mutation–selection balance",
+new("Title & Bullets", hidden=True, fields={100: "Mutation–selection balance",
                         101: ["New mutations replace the alleles selection removes",
                               "Achondroplasia in Denmark (Mørch 1941): 10 in 94,075 births; s = 0.80",
                               "Mutation rate, estimated two ways: 4.3 × 10⁻⁵ per generation",
-                              "Making s = 1 would cut incidence only from 11 to 9 per 100,000"]},
+                              "When selection is already strong, more selection changes little: even s = 1 gives 8.5 rather than 10.6 per 100,000"]},
     notes="""
-(2 min) Optional if time is short. Neal Example 11.6 and Box 11.1; a Danish study.
+(2 min) HIDDEN by default to keep the lecture within time; unhide it if there is time. Neal Example 11.6 and Box 11.1; a Danish study.
+Framing: present this as the population genetics of new mutations, not as a policy question. Coming straight after the eugenics slides, avoid any wording that treats people with achondroplasia as a problem to remove.
 Achondroplasia is dominant, so Neal Eqn 11.3 applies: equilibrium heterozygote frequency H = 2u/s. H = 10/94,075 = 0.000106 and s = 1 − (27/108)/(582/457) = 0.80, giving u = 4.3 × 10⁻⁵.
 Directly: 8 of the 10 affected babies had unaffected parents, so they carried new mutations: u = 8/(2 × 94,075) = 4.3 × 10⁻⁵. The close match is partly luck; both estimates are imprecise.
 With s = 1, H = 2u = 0.000085. When selection is already strong, imposing more achieves almost nothing.
@@ -677,8 +696,17 @@ new("Summary", {101: "Key points",
                 106: (["**Read:** Neal (2004), Chapters 10 and 11",
                       "**Practise:** Neal problems 11.4"], 16)},
     notes="""
-(2 min) One summary point per section. Optionally finish with the opening photo and ask whether the class now spotted the moth faster.
-Practical: if this lecture is followed by an R practical on selection models, link it here (add the URL to these notes). The models in R/models.R in the lecture-figures folder could be adapted for it.
+(2 min) One summary point per section. Practical: if this lecture is followed by an R practical on selection models, link it here (add the URL to these notes). The models in R/models.R in the lecture-figures folder could be adapted for it.
+""")
+
+new("Activity", {101: "AFTER THE LECTURE · R",
+                 102: ("Can you reproduce the spread of *carbonaria* in R?", 34),
+                 103: ["Write a function for one generation of zygotic selection: × W, ÷ total, new q",
+                       "Start the *carbonaria* allele at 0.005, s = 0.30 against *typica* (Case C); iterate 50 generations",
+                       "Repeat with *carbonaria* recessive (Case D). How long now?"]},
+    notes="""
+(1 min) Points students to independent practice. If there is an R practical for this lecture, add its URL here.
+Model answer: R/models.R in the lecture-figures folder (zygotic_step and iterate). With carbonaria recessive and s = 0.3, the rise from 1% is far slower at first: the same idea as the 100,000-generations slide.
 """)
 
 prs.save(OUT)

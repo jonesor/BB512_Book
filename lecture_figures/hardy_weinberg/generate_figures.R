@@ -10,8 +10,9 @@
 # Run from the repository root:
 #   source("lecture_figures/hardy_weinberg/generate_figures.R")
 #
-# Writes full- and half-width PNGs, using the same slide sizes as the BB852
-# lecture figure generators. Colours are taken from the BB512 Keynote theme.
+# Writes full- and half-width PNGs (300 dpi) at the BB512 placeholder
+# sizes. Follows the BB512 figure rules: theme colours, slide background
+# #FBFAF6 (not transparent), all text at least 14 pt at final size.
 
 library(ggplot2)
 library(ragg)
@@ -36,11 +37,15 @@ half_output_directory <- file.path(output_root, "half")
 dir.create(full_output_directory, recursive = TRUE, showWarnings = FALSE)
 dir.create(half_output_directory, recursive = TRUE, showWarnings = FALSE)
 
+bb512_bg   <- "#FBFAF6"  # slide background
+bb512_grid <- "#D8DDD5"  # horizontal gridlines
+bb512_grey <- "#6E6F68"  # axis labels, secondary text
+
 save_bb512 <- function(plot, filename, layout = "full") {
   size <- bb512_sizes[[layout]]
   ggsave(paste0(filename, ".png"), plot,
          width = size[1], height = size[2], units = "in", dpi = 300,
-         device = ragg::agg_png, bg = "transparent")
+         device = ragg::agg_png, bg = bb512_bg)
   invisible(filename)
 }
 
@@ -49,10 +54,10 @@ save_bb512 <- function(plot, filename, layout = "full") {
 # BB512 Keynote theme colours, also used for genotype text elsewhere on the
 # slides and shared with the Punnett squares (figures 13 and 13b).
 
-col_AA <- "#21443A"  # dark green
-col_Aa <- "#9A4535"  # brick red
-col_aa <- "#B9822F"  # ochre
-ink    <- "#2B2B2B"
+col_AA <- "#1F4D3F"  # forest (theme accent 1)
+col_Aa <- "#A4503A"  # clay (theme accent 3)
+col_aa <- "#C08A2E"  # gold (theme accent 2)
+ink    <- "#1F2623"  # theme text colour
 
 
 # Data -----------------------------------------------------------------------
@@ -83,8 +88,9 @@ genotype_plot <- function(base_size = 18, label_size = 6.5,
                           y_title = "Expected genotype\nfrequency") {
   ggplot(dat, aes(p, freq, colour = genotype)) +
     # mark the heterozygosity maximum discussed on the next slide
-    geom_vline(xintercept = 0.5, colour = "grey75",
-               linewidth = 0.4, linetype = "dashed") +
+    # (stops at the maximum, 2pq = 0.5, so it does not run through the Aa label)
+    annotate("segment", x = 0.5, xend = 0.5, y = 0, yend = 0.5, colour = bb512_grey,
+             linewidth = 0.6, linetype = "dashed") +
     geom_line(linewidth = 1.6, lineend = "round") +
     geom_text(data = labs_df,
               aes(label = genotype, hjust = hjust, vjust = vjust),
@@ -97,23 +103,24 @@ genotype_plot <- function(base_size = 18, label_size = 6.5,
     labs(x = "Allele frequency, p", y = y_title) +
     theme_minimal(base_size = base_size, base_family = bb512_font) +
     theme(
-      plot.background    = element_rect(fill = "transparent", colour = NA),
-      panel.background   = element_rect(fill = "transparent", colour = NA),
+      plot.background    = element_rect(fill = bb512_bg, colour = NA),
+      panel.background   = element_rect(fill = bb512_bg, colour = NA),
       panel.grid.minor   = element_blank(),
       panel.grid.major.x = element_blank(),
-      panel.grid.major.y = element_line(colour = "grey88", linewidth = 0.4),
-      axis.text    = element_text(colour = ink),
-      axis.title   = element_text(colour = ink),
+      panel.grid.major.y = element_line(colour = bb512_grid, linewidth = 0.5),
+      axis.line    = element_line(colour = bb512_grey, linewidth = 0.5),
+      axis.text    = element_text(colour = bb512_grey, size = 15),
+      axis.title   = element_text(colour = ink, size = 18),
       axis.title.y = element_text(margin = margin(r = 10)),
       axis.title.x = element_text(margin = margin(t = 8)),
       plot.margin  = margin(10, 20, 6, 6)
     )
 }
 
-# Half width is taller than it is wide, so the y title fits on one line
+# Both sizes use a two-line y title: at 18 pt a one-line title does not fit the
+# 4.25 in height of the half-width placeholder
 figure_14      <- genotype_plot()
-figure_14_half <- genotype_plot(base_size = 16, label_size = 5.5,
-                                y_title = "Expected genotype frequency")
+figure_14_half <- genotype_plot(base_size = 18, label_size = 6)
 
 save_bb512(figure_14,      file.path(full_output_directory, "14_genotype_frequencies"), "full")
 save_bb512(figure_14_half, file.path(half_output_directory, "14_genotype_frequencies"), "half")
@@ -128,7 +135,7 @@ pun_AA   <- col_AA     # dark green
 pun_Aa   <- col_Aa     # brick red
 pun_aa   <- col_aa     # ochre
 pun_text <- "#243F36"  # dark text, used on the light (ochre) cells
-pun_gap  <- "#FBFAF6"  # cell borders, matches the slide background
+pun_gap  <- bb512_bg   # cell borders, matches the slide background
 
 punnett_plot <- function(p = 0.6, show_probabilities = TRUE,
                          show_gametes = TRUE, cell_size = 6.5,
@@ -176,7 +183,7 @@ punnett_plot <- function(p = 0.6, show_probabilities = TRUE,
     # measured from the top-left corner, so each side length is read straight
     # off the axis and each cell's area is width x height.
     a_col   <- "#8E6420"            # deeper ochre so "a" labels stay legible
-    muted   <- "#6B6E75"
+    muted   <- bb512_grey
     off     <- 0.03                 # gap between square and scale line
     tick    <- 0.018
     v       <- seq(0, 1, by = 0.1)
@@ -236,17 +243,18 @@ punnett_plot <- function(p = 0.6, show_probabilities = TRUE,
     coord_fixed(xlim = xlims, ylim = ylims, expand = FALSE, clip = "off") +
     theme_void(base_family = bb512_font) +
     theme(
-      plot.background  = element_rect(fill = "transparent", colour = NA),
-      panel.background = element_rect(fill = "transparent", colour = NA),
+      plot.background  = element_rect(fill = bb512_bg, colour = NA),
+      panel.background = element_rect(fill = bb512_bg, colour = NA),
       plot.margin = margin(10, 10, 10, 10)
     )
 }
 
 # Figure 13: the lecture example, p = 0.6
-figure_13      <- punnett_plot(p = 0.6, cell_size = 5.4, gamete_size = 5,
-                               scale_size = 3.6)
-figure_13_half <- punnett_plot(p = 0.6, cell_size = 4.6, gamete_size = 4.2,
-                               scale_size = 3.4)
+# Text sizes are in ggplot units (size 5 = 14.2 pt), so nothing is below 14 pt.
+figure_13      <- punnett_plot(p = 0.6, cell_size = 5.6, gamete_size = 5.4,
+                               scale_size = 5)
+figure_13_half <- punnett_plot(p = 0.6, cell_size = 5.2, gamete_size = 5,
+                               scale_size = 5)
 
 save_bb512(figure_13,      file.path(full_output_directory, "13_punnett_square"), "full")
 save_bb512(figure_13_half, file.path(half_output_directory, "13_punnett_square"), "half")
@@ -262,6 +270,6 @@ punnett_panel <- function(p) {
 
 figure_13b <- wrap_plots(lapply(c(0.2, 0.5, 0.8), punnett_panel), nrow = 1) +
   plot_annotation(theme = theme(
-    plot.background = element_rect(fill = "transparent", colour = NA)
+    plot.background = element_rect(fill = bb512_bg, colour = NA)
   ))
 save_bb512(figure_13b, file.path(full_output_directory, "13b_punnett_squares_p_values"), "full")

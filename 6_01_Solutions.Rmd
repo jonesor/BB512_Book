@@ -460,111 +460,139 @@ Traits like muscle strength, running speed may have been important for fitness w
 
 ## Solutions: Heritability
 
-You can read in data like this:
+*Predictions.* If offspring were on average exactly like their parents, the slope would be 1 ($h^2 = 1$). If offspring were no more like their own parents than like any other bird, the line would be flat (slope 0, $h^2 = 0$). A slope in between means that offspring resemble their parents partly: on average, they lie part of the way between their parents' value and the population mean ("regression towards the mean").
 
-```{r eval = FALSE}
-population_1 <- read.csv("data/heritability_pop1.csv")
+You can read in the data like this (or download the file first, or use the "Import Dataset" wizard in RStudio):
+
+```{r eval = FALSE, echo = TRUE}
+pop_1 <- read.csv("https://raw.githubusercontent.com/jonesor/BB512_Book/master/data/heritability_pop1.csv")
 ```
-
-Though you can also use the "Wizard" in RStudio.
 
 ```{r echo = FALSE, eval = TRUE}
 pathToDirectory <- "data"
 pop_1 <- read.csv(file.path(pathToDirectory, "heritability_pop1.csv"))
+pop_2 <- read.csv(file.path(pathToDirectory, "heritability_pop2.csv"))
+mod1 <- lm(Offspring_value ~ Midparent_value, data = pop_1)
+mod2 <- lm(Offspring_value ~ Midparent_value, data = pop_2)
+h2_1 <- unname(coef(mod1)[2]); ci_1 <- unname(confint(mod1)[2, ])
+h2_2 <- unname(coef(mod2)[2]); ci_2 <- unname(confint(mod2)[2, ])
+VP_1 <- var(pop_1$Offspring_value); VA_1 <- h2_1 * VP_1
+VP_2 <- var(pop_2$Offspring_value); VA_2 <- h2_2 * VP_2
+f2 <- function(x) sprintf("%.2f", x)
 ```
 
-Plot the data as follows.
+Plot the data and fit the model as follows.
 
-```{r plotheritability}
+```{r plotheritability, echo = TRUE}
 # Plot the relationship
-plot(pop_1$Parent_value, pop_1$Offspring_value,
-     xlab ="Parent value",
-     ylab ="Offspring value")
+plot(pop_1$Midparent_value, pop_1$Offspring_value,
+     xlab = "Mid-parent wing length (mm)",
+     ylab = "Offspring wing length (mm)")
 
-# fit the linear regression model
-mod1 <- lm(Offspring_value~ Parent_value, data = pop_1)
+# Fit the linear regression model
+mod1 <- lm(Offspring_value ~ Midparent_value, data = pop_1)
 
-# summarise the model
+# Add the regression line to the plot
+abline(mod1, col = "red")
+
+# Summarise the model, and get the 95% confidence interval of the slope
 summary(mod1)
-
-# add the regression line to the model
-abline(mod1)
+confint(mod1)[2, ]
 ```
 
+*What is your estimate of $h^2$, and how precise is it?*
 
-The heritability is the slope of the relationship, so is `r round(as.vector(coef(mod1)[2]),3)` in this case. This is fairly high heritability.
+The heritability is the slope of the relationship: `r f2(h2_1)`, with a 95% confidence interval of `r f2(ci_1[1])` to `r f2(ci_1[2])`. This is a high heritability. (The data were simulated with a true value of 0.70.)
 
-*What does the heritability tell us about the amount of variation explained by genetic factors?*
+*What does this heritability tell us about the variation in wing length in this population? What does it not tell us about any one bird?*
 
-A heritability of `r round(as.vector(coef(mod1)[2]),3)` for wing length indicates that `r round(as.vector(coef(mod1)[2]),3)*100`% of the observed variation in this trait within the population can be attributed to genetic factors. In other words, a significant portion of the variation in wing length is genetically determined.
+About `r round(100 * h2_1)`% of the variation in wing length among birds in this population is due to additive genetic differences between them. It does not mean that `r round(100 * h2_1)`% of any one bird's wing length "comes from its genes": heritability describes variation in a population, not individuals. It also applies only to this population in this environment.
 
-*What other factors might explain the remaining variation?*
+*What else might explain the remaining variation?*
 
-There are many other factors at play. The remaining `r round(100 - round(as.vector(coef(mod1)[2]),3)*100,1)`% of variation could be due to environmental factors such as diet, climate, or social interactions. It might also include measurement error or other stochastic events.
+The remaining `r round(100 - 100 * h2_1)`% or so is due to differences in the environment that the birds grew up in (for example food supply, brood size, weather during the nestling period, parasites), to chance events during development, to measurement error, and to any non-additive genetic effects (dominance and interactions between genes).
 
-*How would the heritability estimate change if you used a different trait (e.g., beak length instead of wing length)?*
+*Calculate $V_P$ and $V_A$.*
 
-Heritability is trait-specific. The heritability estimate for beak length could be higher, lower, or the same as that for wing length, depending on the genetic and environmental variances contributing to this particular trait.
+```{r echo = TRUE}
+VP_1 <- var(pop_1$Offspring_value)
+VA_1 <- coef(mod1)[2] * VP_1
+VP_1
+VA_1
+```
 
-*What does the heritability tell us about how fast a trait might change due to selection?*
+$V_P$ = `r f2(VP_1)` mm² and $V_A = h^2 \times V_P$ = `r f2(h2_1)` × `r f2(VP_1)` = `r f2(VA_1)` mm². We use the offspring values for $V_P$ because each offspring value is a single bird's phenotype. Each mid-parent value is the mean of two birds, and averaging two independent values halves the variance, so `var(pop_1$Midparent_value)` (here `r f2(var(pop_1$Midparent_value))` mm²) is only about half of $V_P$.
 
-A higher heritability (like `r round(as.vector(coef(mod1)[2]),3)`) suggests that the trait would respond more quickly to selection because a large proportion of the variation is genetic. Traits with lower heritability would be slower to respond to selection as they have a larger environmental component.
+*Predict the response to selection with $S$ = 2 mm.*
+
+$R = h^2 S$ = `r f2(h2_1)` × 2 = `r f2(2 * h2_1)` mm: the mean wing length of the next generation should increase by about `r sprintf("%.1f", 2 * h2_1)` mm.
 
 The graph for the second population looks like this:
 
-
-```{r echo = FALSE, eval = TRUE}
-pathToDirectory <- "data"
+```{r plotparentoffspring, echo = TRUE}
 pop_2 <- read.csv(file.path(pathToDirectory, "heritability_pop2.csv"))
-```
-Plot the data as follows.
+plot(pop_2$Midparent_value, pop_2$Offspring_value,
+     xlab = "Mid-parent wing length (mm)",
+     ylab = "Offspring wing length (mm)")
 
-```{r plotparentoffspring}
-plot(pop_2$Parent_value, pop_2$Offspring_value,
-     xlab ="Parent value",
-     ylab ="Offspring value")
-
-# fit the model.
-mod2 <- lm(Offspring_value~ Parent_value, data = pop_2)
-abline(mod2)
+mod2 <- lm(Offspring_value ~ Midparent_value, data = pop_2)
+abline(mod2, col = "red")
 summary(mod2)
+confint(mod2)[2, ]
+
+VP_2 <- var(pop_2$Offspring_value)
+VA_2 <- coef(mod2)[2] * VP_2
+VP_2
+VA_2
 ```
 
-For this population, the heritability (slope of the relationship) is `r round(as.vector(coef(mod2)[2]),3)` in this case. This is fairly low heritability.
+*How does the heritability compare with population 1? Do the two confidence intervals overlap?*
 
-*What does the heritability tell us this time?*
+For this population the heritability is `r f2(h2_2)` (95% confidence interval `r f2(ci_2[1])` to `r f2(ci_2[2])`), much lower than in population 1 (`r f2(h2_1)`). The two confidence intervals `r if (ci_2[2] < ci_1[1]) "only just fail to overlap" else "overlap"`, and the interval for population 2 `r if (ci_2[1] < 0) "includes zero" else "does not include zero"`. (The true values used in the simulation were 0.18 and 0.70.) Note how wide both intervals are, even with 100 families: heritability is hard to estimate precisely, and estimates from a few dozen families are very uncertain. Report the uncertainty, not just the slope.
 
-A heritability of `r round(as.vector(coef(mod2)[2]),3)` in the second population indicates that only `r round(as.vector(coef(mod2)[2]),3)*100`% of the variation in wing length is attributable to genetic factors. This is substantially lower compared to the first population, suggesting that environmental factors have a greater influence on the trait in this particular population.
+*Compare $V_P$ and $V_A$ between the populations.*
 
-*Can you identify any environmental factors that might explain the difference?*
+| | Population 1 | Population 2 |
+|---|---|---|
+| $h^2$ | `r f2(h2_1)` | `r f2(h2_2)` |
+| $V_P$ (mm²) | `r f2(VP_1)` | `r f2(VP_2)` |
+| $V_A$ (mm²) | `r f2(VA_1)` | `r f2(VA_2)` |
+| $V_P - V_A$ (mm²) | `r f2(VP_1 - VA_1)` | `r f2(VP_2 - VA_2)` |
 
-Various environmental factors could explain the lower heritability in the second population. These might include (but are not limited to):
-Nutrition: Inadequate nutrition can lead to stunted growth or development, which could introduce a significant environmental variable into wing length. Poor nutrition might limit the expression of genes related to wing growth, thereby reducing the observed heritability as the environment (nutrition) plays a more substantial role.
+The additive genetic variance is about the same in both populations (both data sets were simulated with $V_A$ = 2.8 mm²). What differs is the phenotypic variance: population 2 is about four times as variable, and almost all of the extra variance is non-genetic. So heritability is lower in population 2 not because it has less genetic variation, but because its environment is more variable. This is why heritability is a property of a population in an environment, not of a trait.
 
-Predation Pressure: In a population under higher predation pressure, there could be strong selection for specific wing lengths that allow for more agile flight. However, if this selection pressure varies frequently (e.g., due to fluctuations in predator populations), it could introduce more environmental variance in wing length. The heritability would then appear lower because of this inconsistency in selection pressure.
-Climate: Variable climates, especially those that are more extreme, could influence the development of wing length. Cold climates may lead to smaller wings due to the need for a more rounded body shape to conserve heat (Bergmann's rule). In contrast, hot and arid climates may lead to longer wings for more efficient soaring. If the second population is exposed to a more variable or extreme climate, this could contribute to lower heritability.
-Social Structure: Different mating systems could impact heritability. For instance, if the second population has a polygamous system where a few males sire most of the offspring, genetic variance could be skewed and less representative, thus affecting heritability calculations.
-e.
+*Can you suggest environmental differences that could explain this?*
+
+Anything that makes the conditions in which chicks grow up more variable in population 2 would do it. For example:
+
+- **Food supply:** in a patchy habitat, some territories are rich and others poor, so chicks in different nests get very different amounts of food.
+- **Weather:** cold, wet spells during the nestling period reduce growth in some broods but not others, especially if breeding is spread over a long season.
+- **Brood size and competition:** chicks in large broods get less food each.
+- **Parasites and disease:** infection during growth reduces final size in some individuals.
+
+In each case $V_E$ increases, so $V_P$ increases and $h^2 = V_A/V_P$ falls, even though $V_A$ is unchanged.
+
+*For the same selection differential, which population would respond faster to selection?*
+
+Population 1. With $S$ = 2 mm, $R$ = `r f2(h2_1)` × 2 = `r f2(2 * h2_1)` mm in population 1 but only `r f2(h2_2)` × 2 = `r f2(2 * h2_2)` mm in population 2. In population 2, most of the difference between the selected parents and the rest of the population is environmental, and is not passed on.
 
 *Can you think of any real-world applications where understanding heritability would be important?*
 
-- Agriculture: Plant and animal breeding programs often rely on heritability estimates to improve desirable traits like yield, disease resistance, or growth rate.
-- Medicine: In personalized medicine, understanding the heritability of certain conditions or responses to treatments can lead to more effective, tailored interventions.
-- Conservation Biology: For endangered species, understanding the heritability of traits related to survival and reproduction can guide conservation efforts.
-- Public Health: Understanding the heritability of traits like BMI or cholesterol levels can inform public health policies and preventative measures.
-- Psychology and Education: Knowing the heritability of cognitive traits or educational attainment can help in developing targeted educational programs.
-
+- Agriculture: plant and animal breeding programmes use heritability to predict how fast yield, disease resistance or growth rate will respond to selection.
+- Conservation biology: the heritability of traits linked to survival and reproduction (for example breeding time, or tolerance of heat) indicates how fast a population might adapt to environmental change.
+- Fisheries and hunting: harvesting the largest individuals is a form of selection; heritability predicts how fast body size or age at maturity will evolve in response (compare the bighorn sheep example from the lecture).
+- Medicine: heritability estimates indicate how much of the variation in a disease risk is genetic, which guides the search for the genes involved (but a heritable condition can still be prevented or treated by changing the environment).
 
 *Violation of assumptions*
 
-- Additive Genetic Effects: Epistasis or gene-gene interactions could violate this assumption, affecting the predicted heritability.
-- No Shared Environment: If parent and offspring share significant environmental influences, like diet or habitat, this assumption is compromised.
-- Linearity: Non-linear relationships between parent and offspring traits would violate this assumption.
-- Measurement Accuracy: Instrumental errors or observer bias could invalidate this assumption.
-- Random Mating: If there is assortative mating based on the trait of interest, this assumption is violated.
-- No Selection Bias: If the sample is not representative of the population, perhaps due to selective pressures, this assumption is compromised.
-- Statistical Independence: If data from sibling or repeated measures are included, this assumption is broken.
-- No Genetic Drift or Migration: A sudden influx of new individuals or loss of existing ones due to various factors can violate this assumption.
+- **Additive genetic effects:** dominance and interactions between genes are not passed on predictably, so the slope estimates only the additive part; genotype-by-environment interactions mean that the estimate applies only to the environment studied.
+- **No shared environment:** if parents and offspring share a good or a poor territory, they resemble each other for non-genetic reasons, and $h^2$ is overestimated. Cross-fostering removes this bias.
+- **Correct parentage:** extra-pair paternity means that some chicks are not the offspring of their social father, which weakens the resemblance and underestimates $h^2$.
+- **Linearity:** if the relationship is curved (for example because of dominance, or because extreme parents produce offspring that do poorly), a straight line is a poor summary.
+- **Measurement accuracy:** errors in measuring the parents make the slope shallower (heritability is underestimated); errors in the offspring add noise and widen the confidence interval.
+- **Random mating:** if birds choose mates of similar size (assortative mating), the mid-parent values vary more than under random mating, and the simple regression no longer estimates $h^2$ exactly.
+- **Representative sample:** if only some birds are measured, for example only those that survived a harsh winter (selection on wing length), the sample is biased.
+- **Independence:** if the same parent appears in several families, or several chicks from one nest are entered as separate points, the data points are not independent and the confidence interval will be too narrow.
 
 
 ## Solutions: Lotka-Volterra competition

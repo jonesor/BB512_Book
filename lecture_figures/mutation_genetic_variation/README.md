@@ -1,5 +1,14 @@
 # BB512: Mutation and genetic variation — ggplot2 figures
 
+From the book project root, use the [shared runner](../README.md):
+
+```r
+source("lecture_figures/render_all.R")
+render_lecture("mutation_genetic_variation")
+# Or generate every lecture:
+render_lectures()
+```
+
 These are reproducible R scripts for the illustrated revision of BB512 Lecture 09. All figures match the supplied `BB512_Theme.pptx` (Avenir Next, cream `#FBFAF6`, forest green `#1F4D3F`, gold `#C08A2E`, clay `#A4503A`, blue `#3E6E7E`, etc.). The figure functions deliberately omit titles and captions; these belong in the slide itself.
 
 ## Installation and use
@@ -17,7 +26,7 @@ install.packages(c("ggplot2", "scales", "ragg"))
 source("render_all.R")
 ```
 
-Alternatively run one figure with `source("scripts/06_drift_vs_selection.R")`, etc. Each script generates a 300-dpi PNG and a vector PDF in the `figures/` folder. The PDF is preferable for slide sharpness, while the PNG offers predictable appearance across systems. The fonts rely on your local Avenir Next installation; change `base_family` to `Helvetica` in `R/theme_bb512.R` if needed.
+Alternatively run one figure with `source("scripts/06_drift_vs_selection.R")`, etc. Each script generates a 300 dpi PNG in the `figures/` folder. The fonts rely on your local Avenir Next installation; change `base_family` to `Helvetica` in `R/theme_bb512.R` if needed.
 
 ## Mapping to the revised 39-slide presentation
 

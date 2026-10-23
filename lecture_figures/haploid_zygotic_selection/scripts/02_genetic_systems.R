@@ -6,7 +6,7 @@ cells <- data.frame(
   x = c(1, 2, 1, 2), y = c(2, 2, 1, 1),
   head = c("Haploid, asexual", "Diploid, asexual", "Haploid, sexual", "Diploid, sexual"),
   ex = c("",
-         "Aphids in summer, bdelloid rotifers,\ndandelions, some lizards",
+         "",
          "Most fungi, many algae,\nmosses (haploid phase dominant)",
          "Most animals, flowering plants,\nconifers, ferns"),
   fill = c(bb512$pale, bb512$pale, bb512$pale, bb512$pale))
@@ -23,6 +23,10 @@ p <- ggplot2::ggplot() +
                      size = 5.2, colour = bb512$ink, lineheight = 0.95) +
   ggplot2::annotate("text", x = 1, y = 2.02, label = "'Bacteria, e.g.'~italic('Mycobacterium tuberculosis')",
                     parse = TRUE, family = fam, size = 5.2, colour = bb512$ink) +
+  ggplot2::annotate("text", x = 2, y = 2.02, parse = TRUE, family = fam, size = 5.2, colour = bb512$ink,
+                    label = "'Aphids and water fleas ('*italic('Daphnia')*') in their'") +
+  ggplot2::annotate("text", x = 2, y = 1.90, family = fam, size = 5.2, colour = bb512$ink,
+                    label = "asexual phases") +
   ggplot2::geom_text(data = model, ggplot2::aes(x, y, label = txt, colour = col), family = fam,
                      size = 5, fontface = "bold") +
   ggplot2::scale_colour_identity() +

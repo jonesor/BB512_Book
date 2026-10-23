@@ -1,8 +1,17 @@
 # BB512: Inbreeding, ggplot2 figures
 
+From the book project root, use the [shared runner](../README.md):
+
+```r
+source("lecture_figures/render_all.R")
+render_lecture("inbreeding")
+# Or generate every lecture:
+render_lectures()
+```
+
 Reproducible figures for the revised BB512 lecture "Inbreeding" (session 21), styled with `R/theme_bb512.R` (copied unchanged from `mutation_genetic_variation`). No titles or captions in the figures; these belong on the slide.
 
-Run all figures from this folder with `source("render_all.R")`, or `LANG=C.UTF-8 Rscript render_all.R` from a terminal. Needs ggplot2 (3.4 or later, for `linewidth`), scales, ragg and patchwork. Labels use plotmath rather than Unicode sub/superscripts, so they render in Avenir Next. Each script writes a 300 dpi PNG and a PDF to `figures/`.
+Run all figures from this folder with `source("render_all.R")`, or `LANG=C.UTF-8 Rscript render_all.R` from a terminal. Needs ggplot2 (3.4 or later, for `linewidth`), scales, ragg and patchwork. Labels use plotmath rather than Unicode sub/superscripts, so they render in Avenir Next. Each script writes a 300 dpi PNG to `figures/`.
 
 | Script | Slide | Layout | Description | Type |
 |---|---|---|---|---|
