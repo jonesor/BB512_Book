@@ -129,11 +129,11 @@ def textbox(slide, x, y, w, h, lines, size=16, color="1F2623", bold_first=False)
 s = new("Title")
 fill(ph(s, 103), "Migration, gene flow and the differentiation of populations", size=34)
 fill(ph(s, 104), "Why do some populations stay genetically alike while others drift apart?")
-picture(s, 100, MED + "s02_126.jpg")
+picture(s, 100, MED + "s16_466.jpg")
 notes(s, """~0.5 min.
 Lecture 12 of BB512. Reading: Neal (2004) Chapter 9, plus section 8.4 (drift versus migration) from the previous chapter.
 Guiding question (why do some populations stay genetically alike while others drift apart?), to come back to at the end: very few migrants are needed (roughly one per generation) to stop drift pulling populations apart, but far more are needed to swamp local adaptation.
-Image: dandelion seed head (wind dispersal), carried over from the previous version of this lecture. Source and licence not recorded in the old deck: CHECK before sharing slides outside the course.""")
+Image: flowering common bent (Agrostis capillaris), a wind-pollinated grass, the species in the copper-mine example later on. (The previous version used a dandelion, but dandelions mostly reproduce without sex, an odd emblem for gene flow.) Same photo as the copper-mine slide (filename 'Agrostis-capillaris_Flints_SHammonds.JPG'); record photographer and licence before sharing outside the course.""")
 
 # 2 Learning objectives
 s = new("Agenda")
@@ -161,7 +161,7 @@ fill(ph(s, 100), "A dragonfly that crosses oceans")
 picture(s, 101, "pantala_composite.jpg")
 fill(ph(s, 102), [
     "The globe skimmer (*Pantala flavescens*) migrates thousands of kilometres, over several generations.",
-    "Populations on different continents are genetically almost identical.",
+    "Populations on different continents are genetically very similar.",
     "Its genes travel, not just its bodies: close to one worldwide gene pool.",
 ], size=20)
 notes(s, """~2 min.
@@ -192,7 +192,7 @@ Right column: plants do not move as adults at all, yet can have high gene flow t
 # 6 Key concept: gene flow
 s = new("Key Concept")
 fill(ph(s, 102), "Gene flow")
-fill(ph(s, 103), "The movement of alleles from one population into the gene pool of another, through migrants or gametes that survive and reproduce there.")
+fill(ph(s, 103), "The movement of alleles from one population into the gene pool of another, through migrants that breed there or gametes (such as pollen) that fertilise there.")
 fill(ph(s, 105), "Migration rate *m* = the proportion of a population's breeders that are immigrants each generation. Immigrants that do not breed contribute nothing.")
 notes(s, """~1 min.
 Neal 9.1: m only counts immigrants that successfully breed and mix their alleles into the native gene pool, which is why it is hard to measure directly.
@@ -261,7 +261,7 @@ picture(s, 101, FIG + "09c_gap_shrinks.png")
 fill(ph(s, 102), [
     "Each generation the gap to the mainland shrinks by 5%",
     "Big gap, big change; small gap, small change",
-    "**Neal Eqn 9.2:**\nq_{t} − q_{m} = (1 − *m*)^{t}(q_{0} − q_{m})",
+    "**Neal Eqn 9.2** (gap form):\nq_{m} − q_{t} = (1 − *m*)^{t}(q_{m} − q_{0})",
     "Worked examples: end of slides",
 ], size=20)
 _src = ph(s, 102).text_frame.paragraphs[-1]
@@ -269,7 +269,7 @@ for _r in _src.runs:
     _r.font.size = Pt(14)
     _r.font.color.rgb = RGBColor.from_string("6E6F68")
 notes(s, """~1.5 min.
-The gap q_m - q_t starts at 1 and is multiplied by 0.95 each generation: 1, 0.95, 0.9025, 0.857... This is Neal Eqn 9.2 in words; the derivation is on Neal p. 137.
+The equation is Neal Eqn 9.2 multiplied by -1 on both sides, so it matches the positive gap in the bars; Neal writes q_t - q_m = (1 - m)^t (q_0 - q_m). The gap q_m - q_t starts at 1 and is multiplied by 0.95 each generation: 1, 0.95, 0.9025, 0.857... This is Neal Eqn 9.2 in words; the derivation is on Neal p. 137.
 Also say: Delta q = m(q_m - q_0) (Neal Exp. 9.2): the change depends on the migration rate AND on how different the two populations are, so change is fast at first and slows as the gap closes.
 Figure: analytical, scripts/09c_gap_shrinks.R.""")
 
@@ -325,7 +325,7 @@ fill(ph(s, 105), [
 ])
 notes(s, """~1.5 min.
 Reproduces Neal Fig. 9.1 and Appendix 9.1 (the spreadsheet simulation): starting frequencies 0.2, 0.4, 0.6, 0.8; m = 0.1; equal sizes.
-Neal's conclusion (9.2): gene flow makes populations genetically uniform, and this becomes more powerful as m increases (say this aloud; the figure shows only m = 0.1, and slide 10 showed the effect of m).
+Neal's conclusion (9.2): gene flow makes populations genetically uniform, and this becomes more powerful as m increases (say this aloud; the figure shows only m = 0.1; the Model 1 curve slide showed the effect of m).
 Then the question Neal asks next: gene flow beats drift easily (we come back to this in Section 04), but can it beat selection?
 Figure: deterministic iteration of Eqn 9.1, scripts/13_island_model.R.""")
 
@@ -377,7 +377,7 @@ fill(ph(s, 100), "Model 3: a gradient between the ends")
 picture(s, 101, FIG + "18_stepping_stone_cline.png")
 fill(ph(s, 103), "TAKEAWAY")
 fill(ph(s, 105), [
-    "Equal migration: a straight-line gradient",
+    "At equilibrium, equal migration gives a straight-line gradient",
     "A barrier (low *m*): a steep section",
     "Cline: a gradual change in allele frequency or phenotype across space",
 ])
@@ -455,12 +455,12 @@ fill(ph(s, 100), "Why measure heterozygosity?")
 picture(s, 101, FIG + "23b_why_heterozygosity.png")
 fill(ph(s, 103), "TAKEAWAY")
 fill(ph(s, 105), [
-    "H_{S}: average within populations; H_{T}: populations pooled",
+    "H_{S}: within populations; H_{T}: pooled",
     "The more populations differ, the further H_{S} falls below H_{T}",
-    "So the gap measures differentiation, and a lack of gene flow",
+    "The gap measures differentiation; with a model, we can infer gene flow",
 ], size=17)
 notes(s, """~2 min. The 'why' before the F-statistics.
-We want to measure how different populations are, because that tells us about gene flow (more gene flow, more similar). Heterozygosity is a convenient yardstick.
+We want to measure how different populations are, because, given a model, that lets us infer gene flow (more gene flow, more similar). Differentiation can also come from divergent selection or recent isolation plus drift, which is why the inference needs a model (Section 04 caveats). Heterozygosity is a convenient yardstick.
 Expected heterozygosity 2p(1 - p) (from the Hardy-Weinberg lecture) is hump-shaped. Two populations with different allele frequencies each sit lower on the hump than their pooled average would: H_S (the mean of the two green points) lies below H_T (the curve at the mean allele frequency).
 Similar populations (p = 0.4 and 0.6): H_S = 0.48, H_T = 0.50, gap 0.02, F_ST = 0.04. Different populations (p = 0.1 and 0.9): H_S = 0.18, H_T = 0.50, gap 0.32, F_ST = 0.64.
 Same logic as the inbreeding lecture: there, F measured a heterozygote deficit caused by mating with relatives; here the deficit is caused by population structure (the Wahlund effect). Next slide puts these into the three-level framework.
@@ -611,7 +611,7 @@ fill(ph(s, 102), [
     "Edith's checkerspot (*Euphydryas editha*): 21 populations, central California",
     "Seven loci: F_{ST} = 0.017 to 0.062, so N_{e}*m* ≈ 3.8 to 14.5 (mean 7.8)",
     "One locus (*Hk*): F_{ST} = 0.29, perhaps because it is under selection",
-    "Mark–recapture between nearby populations: N_{e}*m* ≈ 0.1",
+    "Mark–recapture between nearby populations: about 0.1 individuals moving per generation (observed)",
     "**Discuss (2 min):** why might F_{ST} suggest far more gene flow than the butterflies show today?",
     "Data: McKechnie et al. (1975); analysis: Slatkin (1987)",
 ], size=16)
@@ -621,7 +621,7 @@ for _r in _src.runs:
     _r.font.color.rgb = RGBColor.from_string("6E6F68")
 notes(s, """~2.5 min including a 2-minute pair discussion.
 Prompts if the discussion stalls: time scales, rare events, the model's assumptions.
-Sources: allozyme data for 21 populations from McKechnie, Ehrlich and White (1975) Genetics 81: 571-594; F_ST and Nm by locus in Slatkin (1987) Science 236: 787-792, Table 1, using F_ST = 1/(1 + 4Nm). Direct estimate (Nm about 0.1 between nearby populations) from Ehrlich and colleagues' mark-recapture work (Ehrlich et al. 1975, Science 188: 221), as quoted by Slatkin (1987).
+Sources: allozyme data for 21 populations from McKechnie, Ehrlich and White (1975) Genetics 81: 571-594; F_ST and Nm by locus in Slatkin (1987) Science 236: 787-792, Table 1, using F_ST = 1/(1 + 4Nm). Direct estimate (about 0.1 individuals moving per generation between nearby populations; Slatkin writes this as Nm, but mark-recapture counts movers, not effective gene flow) from Ehrlich and colleagues' mark-recapture work (Ehrlich et al. 1975, Science 188: 221), as quoted by Slatkin (1987).
 Slatkin's Table 1: pgm 0.028 (Nm 8.7), pgi 0.052 (4.6), hk 0.291 (0.6), got 0.017 (14.5), ak 0.062 (3.8), bdh 0.034 (7.1), a-gpdh 0.027 (9.0), to 0.035 (6.9). Mean Nm excluding hk = 7.8.
 Arithmetic check: (1/0.062 - 1)/4 = 3.78; (1/0.017 - 1)/4 = 14.5; (1/0.291 - 1)/4 = 0.61.
 Why Hk matters: it is the locus that breaks the pattern. Mueller et al. (1985, Genetics 110: 495-511) found that Hk was one of three loci whose frequency changes in one population were inconsistent with drift alone, so selection is a plausible reason it stands out. This links to 'neutral markers' on the previous slide: different loci can tell different stories.
