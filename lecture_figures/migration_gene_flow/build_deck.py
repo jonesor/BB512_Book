@@ -206,7 +206,7 @@ s = new("Title, Bullets & Photo")
 fill(ph(s, 100), "Four ways to model gene flow")
 picture(s, 101, FIG + "08_four_models.png")
 fill(ph(s, 103), "TAKEAWAY")
-fill(ph(s, 105), ["Who exchanges migrants with whom?", "We cover models 1 to 3. Model 4 behaves like a two-dimensional stepping-stone."])
+fill(ph(s, 105), ["Who exchanges migrants with whom?", "Model 4, isolation by distance: no separate populations; mates come from nearby, so gene flow falls with distance.", "We cover models 1 to 3."])
 notes(s, """~1 min. Roadmap.
 1 Continent-island: one-way flow from a large source with fixed allele frequency q_m.
 2 Island: every population exchanges migrants equally with every other; immigrants to an island come from the other islands (Neal Appendix 9.1). (Wright's version uses a pool that includes the recipient; with many islands the difference is negligible.)
@@ -292,7 +292,7 @@ Figure: deterministic iteration of Eqn 9.1, scripts/13_island_model.R.""")
 
 # 14 Check question: wings
 s = new("Check Question (2 options)")
-fill(ph(s, 101), "Windy island: s = 0.25 against winged insects, but 1% of breeders arrive from a winged mainland. What happens to wings?", size=26)
+fill(ph(s, 101), "Windy island: winged insects have fitness 1 − s, with s = 0.25 (wings are recessive). 1% of breeders arrive each generation from a winged mainland. What happens to wings?", size=24)
 fill(ph(s, 105), "Selection wins: the wing allele disappears from the island.")
 fill(ph(s, 109), "Gene flow keeps the wing allele at a substantial frequency.")
 notes(s, """~1.5 min. Ask for a show of hands before revealing. Answer B.
@@ -305,10 +305,10 @@ fill(ph(s, 100), "Migration–selection balance")
 picture(s, 101, FIG + "15_migration_selection.png")
 fill(ph(s, 103), "TAKEAWAY")
 fill(ph(s, 105), [
-    "Wing allele at equilibrium: q ≈ √(*m*/*s*)",
-    "*m* = 0.01: q = 0.20, but only 4% winged",
-    "*m* = 0.1: q = 0.63, 40% winged",
-    "Gene flow limits local adaptation",
+    "Equilibrium: q ≈ √(*m*/*s*)",
+    "*m* = 0.01: q = 0.20; 4% winged",
+    "*m* = 0.1: q = 0.63; 40% winged",
+    "Gene flow limits local adaptation (fit to local conditions)",
 ])
 notes(s, """~3 min.
 Neal Exp. 9.10: loss by selection, s p q^2 / (1 - s q^2), balances gain by immigration, m(q_m - q). With q_m = 1 this simplifies to q-hat = sqrt(m/s) (Exp. 9.11).
@@ -347,6 +347,7 @@ fill(ph(s, 103), "TAKEAWAY")
 fill(ph(s, 105), [
     "Equal migration: a straight-line gradient between the ends.",
     "Low migration in one place (a barrier): a steep section.",
+    "A gradient like this is called a cline.",
 ])
 notes(s, """~2 min.
 Reproduces Neal Fig. 9.4 and Appendix 9.2: nine populations, ends fixed at 0.9 and 0.1, m = 0.2 between neighbours; barrier = m reduced to 0.05 between populations 4-5 and 5-6. Shown at equilibrium.
@@ -496,16 +497,17 @@ N_e = effective size of each subpopulation, m = migration rate (a proportion), s
 Worked check: N_e m = 1 gives F_ST = 1/5 = 0.2.
 Do not apply the formula to the two-subpopulation worked example at the end of the slides (F_ST = 0.375, one locus): it assumes many subpopulations. Naively it gives N_e m = 0.42; with the finite-island correction F_ST = 1/(1 + 4 N_e m (n/(n - 1))^2) for n = 2 it gives about 0.10. A useful example of misuse if a student asks.
 The relationship is flat for F_ST below about 0.1, so small errors in F_ST give large errors in N_e m.
+The shaded band ('butterfly data, later example') is Edith's checkerspot, introduced a few slides on.
 Figure: analytical, scripts/28_fst_nm.R.""")
 
 # 29 Big fact
 s = new("Big Fact")
 fill(ph(s, 100), "≈ 1")
-fill(ph(s, 102), ["migrant per generation, whatever the population size, stops drift fixing populations for different alleles.", "It does not make them identical: F_{ST} is still about 0.2."], size=20)
+fill(ph(s, 102), ["migrant per generation, whatever the population size, stops drift fixing populations for different alleles.", "It does not make them identical: F_{ST} is still about 0.2.", "Neal (8.4) says one every fourth generation; either way, very few migrants are needed."], size=18)
 notes(s, """~1 min.
 Neal 8.4: changes in allele frequency are dominated by drift only if N_e m is much less than 1. With N_e = 100 and m = 0.01, N_e m = 1 and allele frequencies follow those of the migrants' source.
 The point: because drift is weaker in large populations by exactly as much as a given m represents more migrants, what matters is the NUMBER of migrants, not the proportion.
-Say aloud, because students will see it in the set text: Neal (8.4) says a single migrant every fourth generation is enough to prevent fixation. Most texts use about one migrant per generation (e.g. Mills and Allendorf 1996, Conservation Biology). Both make the point that very few migrants are needed; one per generation is the safer figure.
+Neal's wording is now on the slide, because students will see it in the set text. Neal (8.4) says a single migrant every fourth generation is enough to prevent fixation. Most texts use about one migrant per generation (e.g. Mills and Allendorf 1996, Conservation Biology). Both make the point that very few migrants are needed; one per generation is the safer figure.
 Checked with Wright's equilibrium distribution of allele frequencies among islands (beta distribution with parameters 4 N_e m q-bar and 4 N_e m (1 - q-bar)):
 - N_e m = 1, mean q = 0.5: essentially no populations near fixation for either allele; F_ST = 0.2.
 - N_e m = 0.25 (Neal's one every fourth generation), mean q = 0.5: about 6% of populations near fixation (q < 0.01) for each allele; F_ST = 0.5.
@@ -553,7 +555,7 @@ picture(s, 101, MED + "s37_653.png")
 fill(ph(s, 102), [
     "Edith's checkerspot (*Euphydryas editha*): 21 populations across central California",
     "Seven loci: F_{ST} = 0.017 to 0.062, so N_{e}*m* ≈ 3.8 to 14.5 (mean 7.8)",
-    "One locus (*Hk*): F_{ST} = 0.29",
+    "One locus (*Hk*): F_{ST} = 0.29, perhaps because it is under selection",
     "Mark–recapture between nearby populations: N_{e}*m* ≈ 0.1",
     "Data: McKechnie et al. (1975); analysis: Slatkin (1987)",
 ], size=20)

@@ -9,7 +9,7 @@ d$Fst <- fst_from_nm(d$Nm)
 band <- nm_from_fst(c(0.062, 0.017))  # 3.8 to 14.5
 p <- ggplot(d, aes(Nm, Fst)) +
   annotate("rect", xmin = band[1], xmax = band[2], ymin = -Inf, ymax = Inf, fill = bb512$pale) +
-  annotate("text", x = sqrt(prod(band)), y = 0.62, label = "checkerspot\n(7 loci)",
+  annotate("text", x = sqrt(prod(band)), y = 0.62, label = "butterfly data\n(later example)",
            colour = bb512$grey, size = 4.9, family = fam, lineheight = 0.9) +
   geom_line(colour = bb512$forest, linewidth = 1.5) +
   annotate("segment", x = 1, xend = 1, y = 0, yend = 0.2, linetype = "dashed", colour = bb512$grey, linewidth = 0.6) +
