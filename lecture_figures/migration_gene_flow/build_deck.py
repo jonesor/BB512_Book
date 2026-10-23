@@ -620,7 +620,7 @@ Neither estimate is simply 'right': they measure different things over different
 Photo: Walter Siegmund, CC BY-SA 3.0 (Wikimedia Commons, Euphydryas_editha_5679.JPG).""")
 
 # 33 Summary
-s = new("Summary")
+s = new("Summary (Key Points Only)")
 fill(ph(s, 101), "Key points")
 fill(ph(s, 102), [
     "Gene flow needs migrants that breed; movement alone is not enough.",
@@ -628,14 +628,14 @@ fill(ph(s, 102), [
     "It opposes drift (≈ 1 migrant per generation) and selection (recessive allele: q ≈ √(*m*/*s*)).",
     "Selection varying in space plus gene flow gives clines; barriers steepen them.",
     "F_{ST} measures differentiation; converting it to N_{e}*m* needs strong assumptions.",
-], size=16)
-fill(ph(s, 106), [
-    "Neal Ch. 9 and 8.4",
-    "Neal 9.4: problems 1–3",
-    "Worked examples: end of slides",
-    "Practical: neutral or adaptive?",
-], size=15)
+    "Worked examples for self-study: end of slides",
+], size=18)
+_src = ph(s, 102).text_frame.paragraphs[-1]
+for _r in _src.runs:
+    _r.font.size = Pt(14)
+    _r.font.color.rgb = RGBColor.from_string("6E6F68")
 notes(s, """~1.5 min.
+Say aloud (no longer on the slide): reading is Neal Ch. 9 and section 8.4; try Neal 9.4 problems 1-3; the practical is 'Neutral or adaptive evolution in humans'.
 Back to the guiding question: very few migrants are needed to stop drift separating populations, but local adaptation can persist against much higher gene flow when selection is strong; the outcome depends on m relative to s.
 Practical (second 45-minute slot): https://jonesor.github.io/BB512_Book/neutral-or-adaptive-evolution-in-humans-what-drives-evolution-of-our-traits.html
 Bridge to the practical: which human traits would gene flow homogenise among populations, and which are held apart by selection in different environments (e.g. skin pigmentation and UV)?
