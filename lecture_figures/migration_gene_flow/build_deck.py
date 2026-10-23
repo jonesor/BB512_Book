@@ -578,12 +578,12 @@ fill(ph(s, 103), "TAKEAWAY")
 fill(ph(s, 105), [
     "Drift: N_{e}*m* ≈ 1, a number, whatever the size",
     "Selection: *m* ≈ *s*, a proportion",
-    "Gold point: 10 migrants stop drift, but *m* < *s*, so local adaptation persists",
+    "Gold point: 10 migrants hold drift in check (F_{ST} ≈ 0.02), but *m* < *s*, so local adaptation persists",
 ])
 notes(s, """~2 min. The idea that ties the lecture together.
 Drift versus gene flow (Neal 8.4, Eqn 8.4): drift dominates only if N_e m is much less than 1. The boundary N_e m = 1 is a NUMBER of migrants, so in a large population a tiny proportion is enough (the green line falls as N_e rises).
 Selection versus gene flow: a locally favoured allele is swamped once m is of the order of s, a PROPORTION, whatever the population size (the red line is flat). In Neal's recessive wing example q-hat = sqrt(m/s) reaches 1 at m = s; for an additive allele in the continent-island model the local allele is lost once m reaches s.
-So between the lines, neutral genes are homogenised but locally selected genes can stay different. Example (gold point): N_e = 10,000 and m = 0.001 gives 10 migrants per generation, plenty to stop drift, but m = 0.001 is well below s = 0.01, so local adaptation persists.
+So between the lines, drift is held in check (populations are not fixed for different alleles, and neutral differences shrink as N_e m rises) but locally selected genes can stay different. Both lines are rules of thumb, not on/off switches: differentiation falls steadily with N_e m (F_ST about 0.2 at N_e m = 1, 0.02 at 10, 0.002 at 100), and a locally favoured allele declines steadily as m approaches s. Example (gold point): N_e = 10,000 and m = 0.001 gives 10 migrants per generation, plenty to stop drift, but m = 0.001 is well below s = 0.01, so local adaptation persists.
 Link back: the wing example (m = 0.01 kept the allele at only 20%) and the 'about 1 migrant' slide. This also answers the guiding question on the title slide.
 Caveats: these are rules of thumb, not sharp thresholds. The figure assumes s = 0.01 and starts at N_e = 100, because below N_e = 1/s drift also overrides selection (Neal 8.4: N_e s much less than 1).
 Figure: analytical rules of thumb, not a simulation; scripts/27b_number_vs_proportion.R.""")

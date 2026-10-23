@@ -6,7 +6,9 @@
 #     order of s, i.e. a PROPORTION of migrants. (For Neal's recessive wing example,
 #     q_hat = sqrt(m / s) reaches 1 at m = s; for an additive allele in a
 #     continent–island model, q_hat ~ 1 - m/s and the allele is lost when m >= s.)
-#   * Illustrated for s = 0.01. Boundaries are approximate, not sharp thresholds.
+#   * Illustrated for s = 0.01. Boundaries are rules of thumb, not sharp thresholds:
+#     differentiation falls steadily with Ne m (F_ST ~ 1/(4 Ne m + 1): 0.2 at Ne m = 1,
+#     0.02 at Ne m = 10), so the line marks where drift stops fixing different alleles.
 #   * Below Ne = 1/s (= 100 here) drift also overrides selection (Ne s < 1), so the
 #     plot starts at Ne = 100.
 source("R/theme_bb512.R")
@@ -28,18 +30,20 @@ p <- ggplot(d, aes(Ne)) +
   geom_line(aes(y = drift), colour = bb512$forest, linewidth = 1.5) +
   annotate("segment", x = 100, xend = 1e5, y = s, yend = s, colour = bb512$clay, linewidth = 1.5) +
   annotate("text", x = 1.2e2, y = 0.12, hjust = 0, colour = bb512$ink, size = 5, family = fam,
-           label = "All genes alike: gene flow swamps selection") +
-  annotate("text", x = 9e4, y = 5e-3, hjust = 1, colour = bb512$ink, size = 5, family = fam,
-           label = "Neutral genes alike;\nlocally selected genes differ", lineheight = 0.9) +
+           label = "Gene flow swamps local adaptation") +
+  annotate("text", x = 9e4, y = 3.8e-3, hjust = 1, colour = bb512$ink, size = 5, family = fam,
+           label = "Drift held in check;\nlocal adaptation persists", lineheight = 0.9) +
   annotate("text", x = 8.5e4, y = 3e-6, hjust = 1, colour = bb512$ink, size = 5, family = fam,
-           label = "Drift can differentiate populations") +
+           label = "Drift can fix different alleles") +
   annotate("text", x = 1.1e5, y = s * 1.6, hjust = 1, vjust = 0, colour = bb512$clay, size = 5,
            family = fam, label = "m = s  (a proportion)") +
-  annotate("text", x = 800, y = 2.7e-3, hjust = 0.5, colour = bb512$forest, size = 5,
-           family = fam, label = "N[e]*m == 1~~'(a number)'", parse = TRUE, angle = -17) +
+  annotate("text", x = 6e3, y = 6e-5, hjust = 0.5, colour = bb512$forest, size = 5,
+           family = fam, label = "N[e]*m == 1~~'(a number):'~~F[ST] %~~% 0.2", parse = TRUE, angle = -17) +
   geom_point(data = example, aes(Ne, m), colour = bb512$gold, size = 4) +
-  annotate("text", x = 1.3e4, y = 9e-4, hjust = 0, vjust = 0.5, colour = bb512$gold, size = 4.8,
+  annotate("text", x = 1.3e4, y = 6.5e-4, hjust = 0, vjust = 0.5, colour = bb512$gold, size = 4.8,
            family = fam, label = "10 migrants\nper generation", lineheight = 0.9) +
+  annotate("text", x = 1.3e4, y = 1.9e-4, hjust = 0, colour = bb512$gold, size = 4.8,
+           family = fam, label = "F[ST] %~~% 0.02", parse = TRUE) +
   scale_x_log10(breaks = c(1e2, 1e3, 1e4, 1e5), labels = c("100", "1,000", "10,000", "100,000"),
                 expand = c(0, 0)) +
   scale_y_log10(breaks = c(1e-6, 1e-4, 1e-2, 1), labels = c("0.000001", "0.0001", "0.01", "1"),
