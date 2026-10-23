@@ -87,11 +87,11 @@ Write down your answers, then check them against your results at the end.
 
 You are provided with two datasets for wing length (mm) in a small songbird. Each row is one family: `Midparent_value` is the mean wing length of the two parents, and `Offspring_value` is the wing length of one of their offspring, measured as an adult. Each dataset contains 100 families.
 
-[Data set 1](https://raw.githubusercontent.com/jonesor/BB512_Book/master/data/heritability_pop1.csv)
+[Data set 1](https://www.dropbox.com/scl/fi/8oe1can46pshxojw1p29m/heritability_pop1.csv?rlkey=ssg6ymzr85gkrzw9e1y63ghzu&dl=0)
 
-[Data set 2](https://raw.githubusercontent.com/jonesor/BB512_Book/master/data/heritability_pop2.csv)
+[Data set 2](https://www.dropbox.com/scl/fi/yoy0x7kczvlr1eku5057m/heritability_pop2.csv?rlkey=30hta1di8v6w93ghbhq09dlbm&dl=0)
 
-1) Import the first data set into R (RStudio). You can download the file, or read it straight from the web address.
+1) Download the first data set and import it into R (RStudio). The starter code assumes you have saved it in a folder called `data` inside your project; change the path if you saved it somewhere else.
 2) Plot the data, with mid-parent value on the x-axis and offspring value on the y-axis.
 3) Fit a linear regression model of the form `y ~ x`.
 4) Look at the slope of the relationship: this is your estimate of the heritability. Use `confint()` to find its 95% confidence interval.
@@ -99,7 +99,7 @@ You are provided with two datasets for wing length (mm) in a small songbird. Eac
 Starter code in R:
 
 ```{r heritability_starter_code, eval = FALSE, echo = TRUE}
-pop_1 <- read.csv("https://raw.githubusercontent.com/jonesor/BB512_Book/master/data/heritability_pop1.csv")
+pop_1 <- read.csv("data/Heritability_Pop1.csv")
 plot(pop_1$Midparent_value, pop_1$Offspring_value,
      xlab = "Mid-parent wing length (mm)", ylab = "Offspring wing length (mm)")
 mod1 <- lm(Offspring_value ~ Midparent_value, data = pop_1)

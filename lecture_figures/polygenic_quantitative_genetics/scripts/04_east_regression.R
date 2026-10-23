@@ -1,7 +1,7 @@
 # Slide "Offspring resemble their parents: the slope is h²": mid-parent-offspring regression.
-# Empirical: East (1916) Nicotiana longiflora corolla length, from Neal (2004) Fig. 12.4.
+# Empirical: East (1916) Nicotiana longiflora corolla length, from Neal (2004), parent–offspring regression figure.
 # Points were DIGITISED by eye from Neal's figure (17 families), so they are approximate.
-# The fitted line uses the PUBLISHED slope, 0.8348 (Neal 2004, p. 192), drawn through the mean of the
+# The fitted line uses the PUBLISHED slope, 0.8348 (Neal 2004), drawn through the mean of the
 # digitised points. (OLS on the digitised points gives 0.838, close to the published value.)
 # Reference lines show the expectations if h² were 1 (dashed) or 0 (flat, dotted).
 source("R/theme_bb512.R")

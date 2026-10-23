@@ -1,17 +1,8 @@
 # BB512: Haploid and zygotic selection, figures and deck builder
 
-From the book project root, use the [shared runner](../README.md):
-
-```r
-source("lecture_figures/render_all.R")
-render_lecture("haploid_zygotic_selection")
-# Or generate every lecture:
-render_lectures()
-```
-
 Reproducible figures for the revised BB512 lecture 14 "Haploid and zygotic selection" (Neal 2004, Chapters 10 and 11), styled with `R/theme_bb512.R` (copied unchanged from `mutation_genetic_variation`). No titles or captions in the figures; these belong on the slide.
 
-Run all figures from this folder with `source("render_all.R")`, or `LANG=C.UTF-8 Rscript render_all.R`. Needs ggplot2 (3.4 or later), scales, ragg and patchwork. Each script writes a 300 dpi PNG to `figures/`. `scripts/00_check_numbers.R` prints every number used on the slides and in the speaker notes (it makes no figure).
+Run all figures from this folder with `source("render_all.R")`, or `LANG=C.UTF-8 Rscript render_all.R`. Needs ggplot2 (3.4 or later), scales, ragg and patchwork. Each script writes a 300 dpi PNG and a PDF to `figures/`. `scripts/00_check_numbers.R` prints every number used on the slides and in the speaker notes (it makes no figure).
 
 `R/models.R` holds the deterministic selection models (haploid; zygotic Cases B to E, following Neal's notation, with q always the frequency of the allele selected against). All models assume an infinite population (no drift), no mutation or migration, constant fitness, random mating and non-overlapping generations.
 

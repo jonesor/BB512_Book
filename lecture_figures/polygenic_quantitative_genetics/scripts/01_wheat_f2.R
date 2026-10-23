@@ -1,5 +1,5 @@
 # Slide "Three loci, seven colour classes": F2 of Nilsson-Ehle's (1909) wheat kernel-colour cross.
-# Analytical (Neal 2004, Fig. 12.1). Model: 3 unlinked loci, 2 alleles each, purely additive effects,
+# Analytical (Neal 2004, wheat kernel colour figure). Model: 3 unlinked loci, 2 alleles each, purely additive effects,
 # no dominance, no environmental effect. F1 (heterozygous at all loci) makes 2^3 = 8 gamete types,
 # so F1 x F1 gives 8 x 8 = 64 equally likely combinations, 27 distinct genotypes and 7 phenotype
 # classes (0 to 6 red alleles) in proportions choose(6, k) / 64 = 1:6:15:20:15:6:1.

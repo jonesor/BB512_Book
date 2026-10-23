@@ -174,7 +174,7 @@ new("Agenda", {101: "Quantitative genetics",
                       "Interpret evidence of selection on quantitative traits in wild populations"], 18)},
     notes="""
 (1 min) One objective per section. They are general skills; Nilsson-Ehle's wheat, East's tobacco, Darwin's finches, great tits and bighorn sheep are the evidence we use to practise them.
-Reading: Neal (2004) Chapter 12, sections 12.1 to 12.5 and 12.7 (the course schedule lists "Neal 16 & 17": check which edition the students have). Section 12.6 (IQ and race) is not covered in the lecture beyond the check question in section 05, but it is worth reading for its clear explanation of why within-group heritability says nothing about differences between groups.
+Reading: Neal (2004), "Polygenic inheritance, quantitative genetics and heritability", all sections except "Intelligence, race and societal class". That section is not covered in the lecture beyond the check question in section 05, but it is worth reading for its clear explanation of why within-group heritability says nothing about differences between groups.
 After the lecture: practical "Heritability from a linear regression".
 """)
 
@@ -202,14 +202,14 @@ new("Figure & Bullets", {100: "Nilsson-Ehle's wheat: one trait, three loci",
                                "F~1~ × F~1~ → F~2~: predict!"], 18)},
     pictures={101: I + "wheat.jpg"},
     notes="""
-(1.5 min) Context before content. Herman Nilsson-Ehle (Swedish geneticist, Lund) published the first genetic analysis of a quantitative trait in 1909 (Neal section 12.1).
+(1.5 min) Context before content. Herman Nilsson-Ehle (Swedish geneticist, Lund) published the first genetic analysis of a quantitative trait in 1909 (Neal, "Polygenic inheritance").
 The alleles are additive: the phenotype depends only on how many red alleles a plant carries, not which loci they are at.
 The F~1~ is heterozygous at all three loci, so it is intermediate in colour. Ask students to predict the F~2~ before showing the next slide.
 Photo: white (left) and red (right) wheat grain, carried over from the previous version of the lecture (file "White-wheat-left-and-red-wheat-right-used-in-this-study.png", from a research article). Source and licence to confirm.
 """)
 
 new("Title & Photo", {100: "Three loci give seven colour classes",
-                      102: "Each dot is one of the 64 equally likely combinations of F~1~ gametes (8 × 8). After Neal (2004) Fig. 12.1."},
+                      102: "Each dot is one of the 64 equally likely combinations of F~1~ gametes (8 × 8). After Neal (2004), wheat kernel colour figure."},
     pictures={101: F + "01_wheat_f2.png"},
     notes="""
 (1.5 min) The F~1~ (heterozygous at three loci) makes 2^3^ = 8 kinds of gamete, so F~1~ × F~1~ gives 8 × 8 = 64 equally likely combinations.
@@ -223,7 +223,7 @@ new("Title & Photo", {100: "More loci + environment = a bell curve",
                       102: "F~2~ of a cross between pure lines; additive loci. Analytical; environmental effect of illustrative size."},
     pictures={101: F + "02_more_loci.png"},
     notes="""
-(1.5 min) Left to right: one locus gives three classes (1 : 2 : 1); three loci give seven. Add a little environmental variation and the classes blur together (Neal Fig. 12.2): the trait now looks continuous, even though only three genes are involved. With 20 loci the distribution is smooth and close to normal.
+(1.5 min) Left to right: one locus gives three classes (1 : 2 : 1); three loci give seven. Add a little environmental variation and the classes blur together (Neal's hypothetical continuous kernel-colour figure): the trait now looks continuous, even though only three genes are involved. With 20 loci the distribution is smooth and close to normal.
 Why normal? Each trait value is the sum of many small, independent contributions (alleles and environmental effects). Sums of many small independent effects tend towards a normal distribution (the central limit theorem). It is an approximation, not a law: a few genes of large effect, dominance or epistasis can make the distribution skewed or lumpy.
 Neal's point: there is really no distinction between "meristic" traits (counted in discrete classes, e.g. seeds per pod) and continuous traits; both are quantitative traits.
 Note also that the 20-locus distribution is narrower on this 0–1 scale: with more loci, each of small effect, extreme types become very rare.
@@ -243,7 +243,7 @@ new("Section", {102: "02", 103: "Partitioning phenotypic variation"},
 
 new("Key Concept", {102: "V~P~ = V~G~ + V~E~",
                     103: "Phenotypic variance (V~P~) is the sum of variance due to genetic differences between individuals (V~G~) and variance due to differences in their environments (V~E~).",
-                    105: "This is about **variation among individuals in a population**, not about how much of one individual's trait \"comes from\" its genes. It assumes genetic and environmental effects simply add up (Neal Eqn 12.1)."},
+                    105: "This is about **variation among individuals in a population**, not about how much of one individual's trait \"comes from\" its genes. It assumes genetic and environmental effects simply add up (Neal 2004)."},
     notes="""
 (1.5 min) Example from the previous version: a newborn animal with "good" genes can grow large, but only in a good environment.
 Variance = the average squared deviation from the mean. V~P~ is easy to measure: measure the trait in many individuals. V~G~ and V~E~ are not directly observable, so we need clever experiments.
@@ -272,7 +272,7 @@ new("Figure & Bullets", {100: "East's tobacco flowers",
                                "Measured P~1~, F~1~ and F~2~ plants"]},
     pictures={101: I + "nicotiana_half.jpg"},
     notes="""
-(1 min) Context first: organism, question, measurement. Edward M. East (Connecticut Agricultural Experiment Station, later Harvard) began these crosses in 1912 and published in 1916 (Neal section 12.2).
+(1 min) Context first: organism, question, measurement. Edward M. East (Connecticut Agricultural Experiment Station, later Harvard) began these crosses in 1912 and published in 1916 (Neal, "Partitioning phenotypic variation into different components").
 Both parental lines were inbred (homozygous), so each was genetically uniform. Ask: which generations have no genetic variation? (Both parents and the F~1~.) Which does? (The F~2~, because alleles segregate.)
 Photo: jacilluch, Flickr, CC BY-SA 2.0 (carried over from the previous version).
 """)
@@ -284,7 +284,7 @@ new("Title, Bullets & Photo", {100: "Only the F~2~ has genetic variation",
     notes="""
 (1 min) Read the figure: the two parental lines (top, short and long), the F~1~ (middle, intermediate and as narrow as the parents) and the F~2~ (bottom, intermediate mean but much wider).
 The F~1~ are all heterozygous at every locus and genetically identical, so their spread is environmental. The F~2~ mean is similar to the F~1~ mean, but the spread is much greater.
-Figure: Neal (2004) Fig. 12.3, data from East (1916), carried over from the previous version of the lecture. Copyright Blackwell/Wiley; teaching use only.
+Figure: Neal (2004), figure of East's breeding experiments, data from East (1916), carried over from the previous version of the lecture. Copyright Blackwell/Wiley; teaching use only.
 """)
 
 new("Title, Bullets & Photo", {100: "Partitioning East's data",
@@ -295,19 +295,19 @@ new("Title, Bullets & Photo", {100: "Partitioning East's data",
                                       "87% genetic, 13% environmental, **in this F**~2~"], 17)},
     pictures={101: F + "03a_variance_vg_ve.png"},
     notes="""
-(1.5 min) Correction from the previous version: V~E~ = 5.2 is the average variance of the three genetically uniform groups (both parental lines and the F~1~), not the F~1~ alone (Neal section 12.2.1).
-Then rearrange Eqn 12.1: V~G~ = V~P~ − V~E~ = 40.5 − 5.2 = 35.3.
+(1.5 min) Correction from the previous version: V~E~ = 5.2 is the average variance of the three genetically uniform groups (both parental lines and the F~1~), not the F~1~ alone (Neal, "Genetic and environmental components").
+Then rearrange V~P~ = V~G~ + V~E~: V~G~ = V~P~ − V~E~ = 40.5 − 5.2 = 35.3.
 Key caveat (Neal's first "general point"): these percentages are not fixed properties of corolla length. In the parental lines V~G~ = 0, so the same trait would be "0% genetic". In a more variable greenhouse V~E~ would be larger. The answer to "nature or nurture?" depends on the population and the environment.
 Variance units: mm² (corolla length in mm). Script 03_variance_budget.R; empirical values from Neal (2004).
 """)
 
 s = new("Title Only", {100: "Genetic variance has parts"},
         notes="""
-(1.5 min) Neal's hypothetical two-locus series (section 12.2.2). Red alleles are capital letters.
+(1.5 min) Neal's hypothetical two-locus series (section "Partitioning the components of genetic variation"). Red alleles are capital letters.
 Row 1, additive: each red allele adds one unit, wherever it is.
 Row 2, dominance: one red allele at a locus does as much as two (A is dominant to a), so Aabb = AAbb.
 Row 3, dominance plus epistasis: A only has an effect when B is also present (interaction between loci).
-So V~G~ = V~A~ + V~D~ + V~I~ (Neal Eqn 12.2). V~D~ and V~I~ are hard to separate, so they are lumped as non-additive variance.
+So V~G~ = V~A~ + V~D~ + V~I~ (Neal 2004). V~D~ and V~I~ are hard to separate, so they are lumped as non-additive variance.
 Why does the additive part matter most? Parents pass on **alleles**, not genotypes. Dominance and epistasis depend on combinations of alleles that are broken up every generation by segregation and recombination, so they do not make offspring resemble their parents in a predictable way. V~A~ is the main cause of resemblance between relatives, and so of the response to selection.
 """)
 table(s, ["Genotype", "aabb", "Aabb", "AAbb", "AABb", "AABB"],
@@ -317,7 +317,7 @@ table(s, ["Genotype", "aabb", "Aabb", "AAbb", "AABb", "AABB"],
       col_w=[3.6, 1.5, 1.5, 1.5, 1.5, 1.5], top=2.25, row_h=0.62, size=18)
 textbox(s, ["V~G~ = V~A~ + (V~D~ + V~I~)",
             "additive + (dominance + interaction between loci)"], 0.8, 5.0, 11.0, 1.2, size=20, color=INK)
-textbox(s, "Phenotypic scores. After Neal (2004) section 12.2.2.", 0.8, 6.25, 9.0, 0.35, size=14)
+textbox(s, "Phenotypic scores. After Neal (2004), “Partitioning the components of genetic variation”.", 0.8, 6.25, 9.0, 0.35, size=14)
 
 # ---------------------------------------------------------------- Section 03
 new("Section", {102: "03", 103: "Heritability"},
@@ -327,8 +327,8 @@ new("Key Concept", {102: "Heritability, h² = V~A~ / V~P~",
                     103: "Narrow-sense heritability is the proportion of phenotypic variance in a population that is due to additive genetic effects.",
                     105: "Broad-sense heritability, H² = V~G~ / V~P~, includes dominance and interaction. Like V~P~, both describe a population in an environment, not an individual. h² = 0 means no additive variance, not that genes are unimportant."},
     notes="""
-(1.5 min) Neal Eqn 12.3. In this course, "heritability" means narrow-sense h² unless stated.
-Why "h squared"? Historical: it was first calculated as the square of a path coefficient (Neal footnote 1). It is not something squared that you need to take the root of.
+(1.5 min) Neal (2004), "Heritability". In this course, "heritability" means narrow-sense h² unless stated.
+Why "h squared"? Historical: it was first calculated as the square of a path coefficient (Neal explains this in a footnote). It is not something squared that you need to take the root of.
 Correction from the previous version: it said "if h² = 0, genetics is not at all important". Not so: a trait can have V~G~ > 0 (dominance or epistasis) and still have h² = 0; and a trait can matter enormously for the organism yet have h² ≈ 0 because selection has used up its additive variance (section 05).
 East's tobacco: H² = 35.3/40.5 = 0.87.
 """)
@@ -340,11 +340,11 @@ new("Title, Bullets & Photo", {100: "Parent–offspring slope = h²",
                                       "On a single parent, slope = h²/2"], 17)},
     pictures={101: F + "04_east_regression.png"},
     notes="""
-(2 min) East's F~2~ families: each point is one pair of parents and the mean of their offspring (Neal Fig. 12.4).
+(2 min) East's F~2~ families: each point is one pair of parents and the mean of their offspring (Neal's parent–offspring regression figure).
 Reference lines: if h² = 1 (dashed), offspring on average equal the mid-parent; if h² = 0 (dotted, flat), knowing the parents tells you nothing about the offspring. The real slope, 0.83, is in between: offspring "regress" part of the way back towards the population mean.
 Single parent: each parent passes on half its alleles, so the slope of offspring on one parent estimates h²/2. The previous version just said "parent"; it is mid-parent that gives h² directly (the practical now uses mid-parent values).
 Caveat (link to the practical's assumptions list): parents and offspring often share an environment (territory, diet, maternal care), which also makes them similar and inflates the estimate. Cross-fostering experiments break this link.
-Figure: empirical. Points digitised by eye from Neal Fig. 12.4 (East 1916); line drawn with the published slope 0.8348 through the mean of the points. A least-squares fit to the digitised points gives 0.838. Script 04_east_regression.R.
+Figure: empirical. Points digitised by eye from Neal's parent–offspring regression figure (East 1916); line drawn with the published slope 0.8348 through the mean of the points. A least-squares fit to the digitised points gives 0.838. Script 04_east_regression.R.
 """)
 
 new("Title, Bullets & Photo", {100: "Completing the partition",
@@ -354,9 +354,9 @@ new("Title, Bullets & Photo", {100: "Completing the partition",
                                       "Additive 83%, non-additive 4%, environment 13%"], 17)},
     pictures={101: F + "03b_variance_va.png"},
     notes="""
-(1 min) Rearrange Eqn 12.3: V~A~ = h² V~P~. Then Eqn 12.2: V~D~ + V~I~ = V~G~ − V~A~.
+(1 min) Rearrange h² = V~A~/V~P~: V~A~ = h² V~P~. Then V~G~ = V~A~ + (V~D~ + V~I~): V~D~ + V~I~ = V~G~ − V~A~.
 Correction from the previous version: the formula was written as V~A~ − V~G~ (the numbers, 35.3 − 33.8, were already the right way round).
-Almost all of East's genetic variance is additive, which is why the F~2~ responds well to selection. This completes Neal Table 12.1.
+Almost all of East's genetic variance is additive, which is why the F~2~ responds well to selection. This completes Neal's table summarising the partition of East's data.
 Script 03_variance_budget.R.
 """)
 
@@ -366,9 +366,9 @@ new("Activity", {101: "3 MIN · PAIRS",
                        "Find h², V~E~, V~G~, V~A~ and V~D~ + V~I~",
                        "What is H², the broad-sense heritability?"]},
     notes="""
-(3 min) Neal problem 12.1 (a) and (b). Part (c) comes after the breeder's equation.
+(3 min) Neal's end-of-chapter problem on mouse tails, parts (a) and (b). Part (c) comes after the breeder's equation.
 Answers: h² = 0.75. V~E~ = 2.5 (the F~1~ is genetically uniform). V~P~ = 12.5, so V~G~ = 12.5 − 2.5 = 10. V~A~ = 0.75 × 12.5 = 9.375. V~D~ + V~I~ = 10 − 9.375 = 0.625. H² = 10/12.5 = 0.8.
-Neal's problem does not say "mid-parent"; we assume it, as in his Fig. 12.4.
+Neal's problem does not say "mid-parent"; we assume it, as in his parent–offspring regression figure.
 """)
 
 new("Title, Bullets & Photo", {100: "Heritability in the wild: Darwin's finches",
@@ -405,7 +405,7 @@ new("Section", {102: "04", 103: "Response to selection"},
 
 new("Key Concept", {102: "The breeder's equation: R = h²S",
                     103: "The response to selection (R) equals the heritability (h²) multiplied by the selection differential (S).",
-                    105: "S = mean of the selected parents − mean of the whole population.  R = mean of their offspring − mean of the whole population (Neal Eqns 12.4–12.6)."},
+                    105: "S = mean of the selected parents − mean of the whole population.  R = mean of their offspring − mean of the whole population."},
     notes="""
 (1 min) Intuition: h² is the slope of offspring on mid-parent. If the selected parents are S units above the population mean, their offspring are expected to be h² × S units above it.
 S is sometimes called the selection differential or the strength of selection; Neal calls it the intensity of selection or selection pressure.
@@ -421,8 +421,8 @@ new("Title, Bullets & Photo", {100: "Predicting the response: heavier sheep",
     pictures={101: F + "05_breeders_equation.png"},
     notes="""
 (1.5 min) Kept from the previous version, redrawn. Ask: what if h² were 0? (R = 0: the offspring average 100 kg however hard we select.) What if h² were 1? (R = 25: offspring average 125 kg.)
-The offspring lie between the selected parents and the old mean: "regression towards the mean" (Neal section 12.4).
-Repeat each generation and the mean keeps moving (Neal Fig. 12.5): two generations at S = 25 gives 125 kg, if h² stays at 0.5. Does it? Section 05.
+The offspring lie between the selected parents and the old mean: "regression towards the mean" (Neal, "Response to selection").
+Repeat each generation and the mean keeps moving (Neal's two-generation selection figure): two generations at S = 25 gives 125 kg, if h² stays at 0.5. Does it? Section 05.
 Figure: analytical, illustrative values. Body weight drawn as normal with SD 15 kg (assumed); the heaviest 12% are selected (truncation at 117.6 kg gives a selected mean of exactly 125 kg); the offspring curve keeps the same SD for simplicity. Script 05_breeders_equation.R.
 """)
 
@@ -431,7 +431,7 @@ new("Check Question (4 options)", {101: ("Mean tail length 80 mm; h² = 0.75. Pa
     notes="""
 (1.5 min) Answer: 87.5 mm. Mid-parent = 90, S = 90 − 80 = 10, R = 0.75 × 10 = 7.5, so 80 + 7.5 = 87.5 mm.
 80 mm assumes h² = 0; 90 mm assumes h² = 1; 97.5 mm adds R to the mid-parent instead of to the population mean.
-Follow-up (Neal problem 12.1c, second part): parents averaging 70 mm: S = −10, R = −7.5, offspring 72.5 mm.
+Follow-up (Neal's mouse-tail problem, part c): parents averaging 70 mm: S = −10, R = −7.5, offspring 72.5 mm.
 Neal gives the units as cm; mm are more plausible for mice, and the arithmetic is the same.
 """)
 
@@ -447,7 +447,7 @@ new("Title, Bullets & Photo", {100: "Heritability is slippery",
                                       "Either way, h² falls"], 17)},
     pictures={101: I + "icy_road_signs.jpg"},
     notes="""
-(1 min) Kept from the previous version (the "slippery" signs). Heritability is a ratio of two variances, measured in one population in one environment (Neal section 12.3).
+(1 min) Kept from the previous version (the "slippery" signs). Heritability is a ratio of two variances, measured in one population in one environment (Neal, "Heritability").
 Examples from East: either parental line has h² = 0, because V~A~ = 0, even though corolla length in the F~2~ has h² = 0.83. Height of plants grown in uniform conditions will have a higher h² than the same seed stock grown on patchy soil, because V~E~ is smaller.
 Image: stock photograph from the previous version (shutterstock_1015220521); check that the licence covers the course.
 """)
@@ -459,15 +459,15 @@ new("Title, Bullets & Photo", {100: "Selection uses up additive variance",
                                       "The lines still diverged: V~A~ not yet exhausted"], 17)},
     pictures={101: F + "06_corn_heritability.png"},
     notes="""
-(1.5 min) The Illinois long-term selection experiment on maize (*Zea mays*) began in 1896, before Mendel's work was rediscovered, from 163 ears with 4–6% oil (Neal section 12.5). The high and low lines left the original range within a few generations, and were still diverging after 76 generations.
-As selection fixes favourable alleles, V~A~ shrinks and so does h² (Neal Table 12.3): high line 0.32 to 0.12, low line 0.50 to 0.15. With at least 20 loci affecting oil content, V~A~ takes a long time to run out; new mutations also add a little each generation.
+(1.5 min) The Illinois long-term selection experiment on maize (*Zea mays*) began in 1896, before Mendel's work was rediscovered, from 163 ears with 4–6% oil (Neal, "Empirical examples of selection of quantitative characters"). The high and low lines left the original range within a few generations, and were still diverging after 76 generations.
+As selection fixes favourable alleles, V~A~ shrinks and so does h² (Neal's table of oil-content heritability): high line 0.32 to 0.12, low line 0.50 to 0.15. With at least 20 loci affecting oil content, V~A~ takes a long time to run out; new mutations also add a little each generation.
 Response continues for a long time, but more slowly: the breeder's equation is a short-term prediction.
-Figure: empirical, Dudley (1977) via Neal (2004) Table 12.3, plotted at the mid-point of each block of generations. Script 06_corn_heritability.R.
+Figure: empirical, Dudley (1977) via Neal (2004)'s table of oil-content heritability, plotted at the mid-point of each block of generations. Script 06_corn_heritability.R.
 """)
 
 s = new("Title Only", {100: "Fitness traits have low heritability"},
         notes="""
-(2 min) Neal Table 12.2 (from Hartl & Clark 1989). Traits close to fitness (calving interval, eggs per hen, litter size, maize yield) have low h²; "trivial" traits have high h². Mousseau & Roff (1987, *Heredity*) found the same pattern in wild animals.
+(2 min) Neal's table of heritabilities in domestic species (from Hartl & Clark 1989). Traits close to fitness (calving interval, eggs per hen, litter size, maize yield) have low h²; "trivial" traits have high h². Mousseau & Roff (1987, *Heredity*) found the same pattern in wild animals.
 Neal's explanation: fitness traits have been under strong, persistent selection, which has used up their additive variance.
 But that is not the whole story. Houle (1992, *Genetics* 130: 195–204) compared traits on a common scale (the additive genetic coefficient of variation) and found that fitness traits often have *more* additive variance than morphological traits. Their low h² arises mainly because V~E~ (and non-additive variance) is very large: fitness depends on everything else that happens to the organism.
 So: low h² does not prove that V~A~ is small. Correction to the previous version, which said "traits closely related to fitness are always under strong selection" and that the pattern simply "aligns with" selection reducing V~A~.
@@ -480,13 +480,13 @@ table(s, ["Species", "Trait less tied to fitness", "h²", "Trait closely tied to
       col_w=[1.7, 3.3, 1.0, 3.6, 1.0], top=2.3, row_h=0.55, size=17)
 textbox(s, ["**Two explanations:** selection has used up V~A~ (Neal), and",
             "fitness integrates many traits, so V~E~ is large (Houle 1992)"], 0.8, 5.15, 11.7, 1.0, size=19, color=INK)
-textbox(s, "Approximate h² values from Neal (2004) Table 12.2 (Hartl & Clark 1989).", 0.8, 6.25, 9.5, 0.35, size=14)
+textbox(s, "Approximate h² values from Neal (2004), after Hartl & Clark (1989).", 0.8, 6.25, 9.5, 0.35, size=14)
 
 new("Check Question (2 options)", {101: ("Dog size: h² = 0.8 within white dogs and within black dogs. White dogs are larger. Is the difference genetic?", 28),
                                    105: "Yes: size is highly heritable", 109: "Can't tell from h²"},
     notes="""
-(1.5 min) Answer: can't tell. Neal's thought experiment (section 12.6): feed white puppies a rich diet and black puppies a poor one. Within each group, 80% of the variance in size is additive genetic, yet the 15 cm difference between the groups is entirely due to diet.
-Heritability is measured within a population. It says nothing about the cause of differences between populations. Neal uses this to dismantle the hereditarian argument about IQ differences between groups (section 12.6): high within-group h² of IQ does not imply that group differences are genetic, and the evidence points to environmental causes.
+(1.5 min) Answer: can't tell. Neal's thought experiment (section "Intelligence, race and societal class"): feed white puppies a rich diet and black puppies a poor one. Within each group, 80% of the variance in size is additive genetic, yet the 15 cm difference between the groups is entirely due to diet.
+Heritability is measured within a population. It says nothing about the cause of differences between populations. Neal uses this to dismantle the hereditarian argument about IQ differences between groups (section "Intelligence, race and societal class"): high within-group h² of IQ does not imply that group differences are genetic, and the evidence points to environmental causes.
 Also worth saying: even a trait with h² near 1 can be changed by the environment (Neal's phenylketonuria example: a diet abolishes the effect).
 """)
 
@@ -583,8 +583,8 @@ new("Summary", {101: "Key points",
                        "Response to selection: R = h²S",
                        "h² is specific to a population and environment",
                        "Wild traits respond to selection, including ours"], 17),
-                106: (["**Read:** Neal (2004), Chapter 12",
-                       "**Practise:** Neal problem 12.1",
+                106: (["**Read:** Neal (2004), *Polygenic inheritance, quantitative genetics and heritability*",
+                       "**Practise:** Neal's end-of-chapter problem",
                        "**Practical:** Heritability from a linear regression"], 15)},
     notes="""
 (1 min) One point per section.

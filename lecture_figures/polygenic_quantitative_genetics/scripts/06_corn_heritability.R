@@ -1,6 +1,6 @@
 # Slide "Selection uses up additive variance": heritability of oil content during the Illinois
 # long-term selection experiment on maize (Zea mays), started 1896.
-# Empirical: Dudley (1977), as tabulated in Neal (2004) Table 12.3. Values are for blocks of generations;
+# Empirical: Dudley (1977), as tabulated in Neal (2004), table of oil-content heritability. Values are for blocks of generations;
 # plotted at the block mid-points.
 source("R/theme_bb512.R")
 fam <- "Avenir Next"

@@ -5,7 +5,7 @@ remain separate from the Bookdown source and rendered book files.
 
 ## RStudio Console
 
-To immediately generate all four lectures from the repository root:
+To immediately generate all lectures from the repository root:
 
 ```r
 source("lecture_figures/generate_all.R")
@@ -23,6 +23,7 @@ render_lecture("inbreeding")
 render_lecture("mutation_genetic_variation")
 render_lecture("haploid_zygotic_selection")
 render_lecture("polygenic_quantitative_genetics")
+render_lecture("life_histories")
 
 # Generate all lectures
 render_lectures()
@@ -57,7 +58,7 @@ Rscript lecture_figures/render_all.R inbreeding 04_heterozygote_deficit.R
 ```
 
 From another directory, supply the absolute path to the runner. Running it
-without arguments also generates all four lectures. Existing per-lecture
+without arguments also generates all lectures. Existing per-lecture
 `render_all.R` files still generate their own lecture when sourced or executed.
 Hardy-Weinberg currently generates all its figures together in one script.
 
@@ -85,6 +86,7 @@ Use Avenir Next for the intended lecture typography.
 | Mutation and genetic variation | `mutation_genetic_variation/figures/` | PNG |
 | Haploid and zygotic selection | `haploid_zygotic_selection/figures/` | PNG |
 | Polygenic inheritance and quantitative genetics | `polygenic_quantitative_genetics/figures/` | PNG |
+| Evolution of life histories | `life_histories/figures/` | PNG |
 
 Existing names, dimensions and styling are preserved, including the
 Hardy-Weinberg figure referenced by the book. Rendering overwrites matching

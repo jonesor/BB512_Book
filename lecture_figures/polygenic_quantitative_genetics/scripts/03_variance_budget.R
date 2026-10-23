@@ -1,6 +1,6 @@
 # Slides "Partitioning East's tobacco data" and "Completing the partition": variance components.
-# Empirical: East (1916) Nicotiana longiflora corolla length, as analysed in Neal (2004, section 12.2
-# and Table 12.1). V_E = 5.2 (mean variance of P1, P2 and F1), V_P(F2) = 40.5, V_G = V_P - V_E = 35.3,
+# Empirical: East (1916) Nicotiana longiflora corolla length, as analysed in Neal (2004, section
+# "Partitioning phenotypic variation into different components"). V_E = 5.2 (mean variance of P1, P2 and F1), V_P(F2) = 40.5, V_G = V_P - V_E = 35.3,
 # h2 = 0.8348 (mid-parent regression), V_A = h2 * V_P = 33.8, V_D + V_I = V_G - V_A = 1.5.
 # Assumes genetic and environmental effects are additive and independent.
 source("R/theme_bb512.R")

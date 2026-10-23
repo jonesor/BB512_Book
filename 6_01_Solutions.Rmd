@@ -462,10 +462,10 @@ Traits like muscle strength, running speed may have been important for fitness w
 
 *Predictions.* If offspring were on average exactly like their parents, the slope would be 1 ($h^2 = 1$). If offspring were no more like their own parents than like any other bird, the line would be flat (slope 0, $h^2 = 0$). A slope in between means that offspring resemble their parents partly: on average, they lie part of the way between their parents' value and the population mean ("regression towards the mean").
 
-You can read in the data like this (or download the file first, or use the "Import Dataset" wizard in RStudio):
+After downloading the file, you can read in the data like this (or use the "Import Dataset" wizard in RStudio):
 
 ```{r eval = FALSE, echo = TRUE}
-pop_1 <- read.csv("https://raw.githubusercontent.com/jonesor/BB512_Book/master/data/heritability_pop1.csv")
+pop_1 <- read.csv("data/Heritability_Pop1.csv")
 ```
 
 ```{r echo = FALSE, eval = TRUE}

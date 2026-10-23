@@ -1,5 +1,5 @@
 # Slide "More loci plus environment give a bell curve": F2 phenotype distributions.
-# Analytical (extends Neal 2004, Figs 12.1-12.2). Model: n unlinked additive loci, 2 alleles each,
+# Analytical (extends Neal 2004's kernel colour figures). Model: n unlinked additive loci, 2 alleles each,
 # F2 of a cross between homozygous lines, so the number of "+" alleles is Binomial(2n, 0.5).
 # Phenotype is scaled to 0-1 (proportion of "+" alleles). Where environment is included it adds
 # Normal(0, sd_e) noise on this 0-1 scale (sd_e chosen for illustration, not estimated).
