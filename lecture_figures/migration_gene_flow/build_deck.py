@@ -128,11 +128,11 @@ def textbox(slide, x, y, w, h, lines, size=16, color="1F2623", bold_first=False)
 # 1 Title
 s = new("Title")
 fill(ph(s, 103), "Migration, gene flow and the differentiation of populations", size=34)
-fill(ph(s, 104), "How much movement does it take to keep populations alike?")
+fill(ph(s, 104), "Why do some populations stay genetically alike while others drift apart?")
 picture(s, 100, MED + "s02_126.jpg")
 notes(s, """~0.5 min.
 Lecture 12 of BB512. Reading: Neal (2004) Chapter 9, plus section 8.4 (drift versus migration) from the previous chapter.
-Guiding question to come back to at the end: very few migrants are needed (roughly one per generation) to stop drift pulling populations apart, but far more are needed to swamp local adaptation.
+Guiding question (why do some populations stay genetically alike while others drift apart?), to come back to at the end: very few migrants are needed (roughly one per generation) to stop drift pulling populations apart, but far more are needed to swamp local adaptation.
 Image: dandelion seed head (wind dispersal), carried over from the previous version of this lecture. Source and licence not recorded in the old deck: CHECK before sharing slides outside the course.""")
 
 # 2 Learning objectives
