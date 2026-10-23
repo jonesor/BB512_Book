@@ -449,6 +449,23 @@ notes(s, """~1.5 min.
 Direct: following pollinators, fruit-eaters or seeds is very difficult; wind pollination almost impossible to track. Gene flow is a long-term process, but field studies last a few seasons.
 Indirect: use the genetic consequences of past gene flow. That needs a way to quantify differentiation (next slides) and a model linking it to gene flow.""")
 
+# 23b Why heterozygosity measures differentiation
+s = new("Title, Bullets & Photo")
+fill(ph(s, 100), "Why measure heterozygosity?")
+picture(s, 101, FIG + "23b_why_heterozygosity.png")
+fill(ph(s, 103), "TAKEAWAY")
+fill(ph(s, 105), [
+    "H_{S}: average within populations; H_{T}: populations pooled",
+    "The more populations differ, the further H_{S} falls below H_{T}",
+    "So the gap measures differentiation, and a lack of gene flow",
+], size=17)
+notes(s, """~2 min. The 'why' before the F-statistics.
+We want to measure how different populations are, because that tells us about gene flow (more gene flow, more similar). Heterozygosity is a convenient yardstick.
+Expected heterozygosity 2p(1 - p) (from the Hardy-Weinberg lecture) is hump-shaped. Two populations with different allele frequencies each sit lower on the hump than their pooled average would: H_S (the mean of the two green points) lies below H_T (the curve at the mean allele frequency).
+Similar populations (p = 0.4 and 0.6): H_S = 0.48, H_T = 0.50, gap 0.02, F_ST = 0.04. Different populations (p = 0.1 and 0.9): H_S = 0.18, H_T = 0.50, gap 0.32, F_ST = 0.64.
+Same logic as the inbreeding lecture: there, F measured a heterozygote deficit caused by mating with relatives; here the deficit is caused by population structure (the Wahlund effect). Next slide puts these into the three-level framework.
+Figure: analytical, scripts/23b_why_heterozygosity.R.""")
+
 # 24 Three heterozygosities
 s = new("Figure & Bullets")
 fill(ph(s, 100), "Three levels of heterozygosity")
