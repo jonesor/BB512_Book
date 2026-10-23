@@ -15,6 +15,8 @@ OUT = "BB512_12_Migration_and_gene_flow.pptx"
 FIG = "/home/claude/work/BB512_Book/lecture_figures/migration_gene_flow/figures/"
 MED = "/home/claude/work/orig/media/"
 
+SLIDE_NUMBERS = False  # set True to show slide numbers
+
 prs = Presentation(THEME)
 
 # --- remove the theme's sample slides -------------------------------------
@@ -102,7 +104,8 @@ def notes(slide, text):
 
 def new(layout_name):
     s = prs.slides.add_slide(L[layout_name])
-    add_slide_number(s)
+    if SLIDE_NUMBERS:
+        add_slide_number(s)
     return s
 
 
