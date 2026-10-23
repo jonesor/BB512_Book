@@ -8,12 +8,12 @@
 render_lecture <- local({
   root <- dirname(normalizePath(.lecture_runner_file, mustWork = TRUE))
   packages <- list(
+    natural_selection = c("ggplot2", "ragg", "patchwork"),
     hardy_weinberg = c("ggplot2", "ragg", "dplyr", "tibble", "patchwork", "systemfonts"),
     inbreeding = c("ggplot2", "scales", "ragg", "patchwork"),
     mutation_genetic_variation = c("ggplot2", "scales", "ragg"),
     haploid_zygotic_selection = c("ggplot2", "scales", "ragg", "patchwork"),
-    polygenic_quantitative_genetics = c("ggplot2", "scales", "ragg"),
-    life_histories = c("ggplot2", "scales", "ragg")
+    polygenic_quantitative_genetics = c("ggplot2", "scales", "ragg")
   )
 
   function(lecture, script = NULL) {
@@ -78,9 +78,9 @@ render_lecture <- local({
 })
 
 render_lectures <- function() {
-  for (lecture in c("hardy_weinberg", "inbreeding",
+  for (lecture in c("natural_selection", "hardy_weinberg", "inbreeding",
                     "mutation_genetic_variation", "haploid_zygotic_selection",
-                    "polygenic_quantitative_genetics", "life_histories")) {
+                    "polygenic_quantitative_genetics")) {
     render_lecture(lecture)
   }
   invisible(NULL)
