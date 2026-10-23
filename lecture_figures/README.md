@@ -36,6 +36,16 @@ and random-number state afterwards. Each figure script and its helpers run
 in a separate environment. Stochastic scripts retain their existing seeds.
 After loading the runner, its commands work even if you change working directory.
 
+Before every script, the runner resets the seed to `512` using
+`Mersenne-Twister`, `Inversion` and `Rejection` RNG settings. This makes random
+draws independent of which scripts ran earlier. Individual scripts can override
+the default: the fluctuation simulation uses `51205`, drift versus selection
+uses `51206`, and the gene-pool illustration uses `512`. The neutral-mutation
+figure searches from seed `1` reproducibly for its illustrative fixation outcome.
+The fluctuation plots also fix their point-jitter seed to `1`.
+The runner restores both the caller's RNG settings and random-number state,
+including when rendering fails.
+
 ## Terminal
 
 From the repository root:

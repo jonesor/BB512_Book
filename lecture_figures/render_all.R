@@ -44,10 +44,12 @@ render_lecture <- local({
     }
     if (!length(scripts)) stop("No scripts found for ", lecture)
     old_wd <- getwd()
+    old_rng_kind <- RNGkind()
     had_seed <- exists(".Random.seed", envir = .GlobalEnv, inherits = FALSE)
     if (had_seed) old_seed <- get(".Random.seed", envir = .GlobalEnv)
     on.exit({
       setwd(old_wd)
+      do.call(RNGkind, as.list(old_rng_kind))
       if (had_seed) {
         assign(".Random.seed", old_seed, envir = .GlobalEnv)
       } else if (exists(".Random.seed", envir = .GlobalEnv, inherits = FALSE)) {
@@ -57,6 +59,10 @@ render_lecture <- local({
     setwd(work_dir)
     for (file in scripts) {
       message("Generating ", lecture, "/", basename(file))
+      # Reset for each script so results do not depend on execution order.
+      # A script can override this default with its own documented seed.
+      set.seed(512, kind = "Mersenne-Twister", normal.kind = "Inversion",
+               sample.kind = "Rejection")
       env <- new.env(parent = globalenv())
       # Keep nested helper sources inside this script's environment as well.
       env$source <- local({
