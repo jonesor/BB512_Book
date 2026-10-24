@@ -14,6 +14,7 @@ On the other hand, predators with better detection skills, like keen eyesight, a
 Learning outcomes:
 
 - Understand adaptive evolution via natural selection.
+- Identify the four conditions for evolution by natural selection in a model.
 - Explain how fitness depends on the environment.
 - Use the terms adaptation, selection, selection pressure, and heritability correctly.
 
@@ -38,44 +39,75 @@ In the simulation you assume the role of a predatory bird that feeds on insects,
 
 
 
+### How the simulation works
+
+Read this before you start, so that you know what the model does (and does not) include.
+
+The simulation starts with bugs of random colours. Each bug has three pigment "genes" (red, green and blue) that together set its colour (see "Details about colours" at the end).
+
+The model makes these assumptions:
+
+- **Constant population size.** Each time you catch a bug, one of the surviving bugs is chosen at random to produce one offspring, so the number of bugs stays at the carrying capacity.
+- **Asexual reproduction.** An offspring has a single parent and inherits its colour genes.
+- **Small mutations.** Each of the offspring's three colour genes can differ slightly from the parent's, by up to the value of the "max-mutation-step" slider.
+- **Offspring appear near their parent**, within the distance set by the "offspring-distance" slider.
+- **Newborn bugs start very small** and grow to full size over time.
+- **Bugs do not move**, and the predator (you) is the only cause of death.
+
+So if you consistently catch (e.g.) non-reddish bugs, the reddish bugs that remain will have offspring that are also reddish, and the average colour of the population will shift towards red.
+
+Evolution can be defined as: "*change in the heritable characteristics [colour traits] of biological populations [bugs] over successive generations [time].*"
+
+### Predict first
+
+Before you run the model, write down your predictions:
+
+1. What will happen to the average colour of the bugs after you have hunted for two minutes on one background?
+2. What will happen to the time it takes you to catch 10 bugs?
+3. What will happen when you then switch to a different background?
+
+You will check these predictions against what you observe.
+
 ### Getting started
 
-1. When you open the model, you will see a screen with various purple and green “sliders”, buttons and menus that control parts of the model.
-2. Start with 30 bugs, by moving the “carrying-capacity” slider until it reads 30.
-3. Now click “setup”. You should see the environment appear on the right hand side, and you should see a few “bugs” on the environment. Start the simulation by clicking “go”. 
-4. After you click go, you need to click on bugs as fast as you can using your mouse/track pad. You can also keep the mouse button depressed, and move the cursor around the world to catch the bugs. Try to consume bugs as fast as possible to remove any “deliberation” on your part as a predator. The camouflaging effect will emerge more clearly if you aren’t taking your time trying to find bugs that typically would be more difficult to find.
+1. When you open the model, you will see a screen with various purple and green "sliders", buttons and menus that control parts of the model.
+2. Start with 30 bugs, by moving the "carrying-capacity" slider until it reads 30.
+3. Now click "setup". You should see the environment appear on the right hand side, and you should see a few "bugs" on the environment. Start the simulation by clicking "go".
+4. After you click go, you need to click on bugs as fast as you can using your mouse/track pad. You can also keep the mouse button depressed, and move the cursor around the world to catch the bugs. Try to consume bugs as fast as possible to remove any "deliberation" on your part as a predator. The camouflaging effect will emerge more clearly if you aren't taking your time trying to find bugs that typically would be more difficult to find.
 
-You can track your progress by looking at the graphs on the left. The most important of these are the two at the top, which show (1) the number of bugs caught through time and (2) the average colour values of the bugs.
+You can track your progress by looking at the graphs on the left. The most useful are (1) the number of bugs caught through time, (2) the time taken to catch each batch of 10 bugs, and (3) the average colour values of the bugs.
 
-In the “Bugs Caught vs. Time” plot the slope of the curve gives a good idea of your hunting efficiency – the faster you can catch bugs, the steeper the slope. If you didn’t catch any bugs for a while, the slope would be horizontal.
+In the "Bugs Caught vs. Time" plot the slope of the curve gives a good idea of your hunting efficiency: the faster you can catch bugs, the steeper the slope. If you didn't catch any bugs for a while, the slope would be horizontal.
 
-You should notice that bugs with contrasting colours (e.g. black on white) are easier to catch.  Keep hunting for 2 mins or until you can’t find any more bugs then pause the simulation by clicking “go” again. Now take a look at the graphs and see what effect your hunting has had on the phenotype distribution in the population.
+You should notice that bugs with contrasting colours (e.g. black on white) are easier to catch. Keep hunting for 2 minutes, then pause the simulation by clicking "go" again. Now take a look at the graphs and see what effect your hunting has had on the colours in the population.
 
-To understand what’s going on, you need to understand how the simulation works.
+### Measure your hunting efficiency
 
- 
-#### How the simulation works
+Use the "Time to catch 10 bugs" plot to put numbers on your hunting efficiency. Record:
 
-*Simple version:* 
-The simulation starts with bugs with random colours.
+| | Time to catch 10 bugs |
+|---|---|
+| First 10 bugs | |
+| Last 10 bugs before you switch background | |
+| First 10 bugs after you switch background | |
+| Last 10 bugs on the new background | |
 
-Each time you kill a bug, one of the remaining bugs produces an offspring so that the population size stays constant. The colour of the offspring is inherited from its parent, though it can change slightly due to mutation (determined by the “max-mutation-step” slider). Therefore, the offspring of a red parent will be reddish, the offspring of a blue parent will be bluish and so on. Therefore, if you consistently kill off (e.g.) non-reddish bugs, the reddish bugs that remain will have offspring that are also red and the average colour of the population will then shift towards being redder. 
-
-Colour here is indicated by “hue”, “saturation” and “brightness” which range from 0 to 255. Basically, hue describes colour value (red/green/blue), saturation describes how “washed out” or vivid the colour is (a low value for saturation would look white), and brightness describes how bright the colour is (a low value for brightness would look black). See below for more details.
-
-Evolution can be defined as: “*change in the heritable characteristics [colour traits] of biological populations [bugs] over successive generations [time].*” 
+Compare your numbers with your neighbour's. They will differ (you are different predators!), but is the pattern the same?
 
 ## Questions
 
 Answer the following questions, then make sure you confirm your understanding and have the right answers with an instructor.
 
-*	What happens to the average colour of the bug population with time as you hunt? 
-*	What happens to your hunting efficiency?
+*	What happens to the average colour of the bug population with time as you hunt? Was your prediction correct?
+*	What happens to your hunting efficiency? Use your measurements.
 *	Would you say that the bug population becomes worse or better adapted to their environment?
 *	Can you explain how this happens?
 *	After simulating in one environment (e.g. poppy field) for a few minutes, pause then switch to another environment. Are the bugs now well- or poorly-adapted to their environment?
 *	Do the genotypes of individuals change (e.g. with individual age)?
-*	Increasing the “max-mutation-step” makes bug offspring less like their parents. How do you think this will influence the speed of adaptation of the bugs?
+*	Increasing the "max-mutation-step" makes bug offspring less like their parents. How do you think this will influence the speed of adaptation of the bugs?
+*	In the lecture we met four conditions for evolution by natural selection: (1) individuals vary in a trait, (2) individuals vary in reproductive success, (3) the trait affects reproductive success, and (4) the trait is inherited. Where do you see each of these in the model? Where does new variation come from?
+*	Newborn bugs start very small. Could this let some bugs escape for reasons that have nothing to do with their colour? How might that affect the results?
+*	How does this model differ from a real predator–prey system? Give at least two differences.
 
 Some useful keywords:
 
@@ -84,34 +116,26 @@ Some useful keywords:
 *	Selection pressure
 *	Heritability
 
-## Worked example
+::: {.do-something}
+**Optional extension: gene flow and local adaptation**
 
-### Inputs
+In the lecture we saw that gene flow can swamp local adaptation. You can explore this with the "offspring-distance" slider, which sets how far from its parent an offspring can appear.
 
-- One starting background (e.g. poppy field)
-- Active hunting by the player
-- Runtime: 2 minutes before switching background
+1. Choose the background with the most distinct patches of different colour.
+2. Set "offspring-distance" to a small value and hunt for a few minutes. Use "flash" or "clear-background" to see where the bugs are. Do bugs in different patches come to match their own patch?
+3. Repeat with a large "offspring-distance". What happens now, and why?
 
-### Steps
-
-Run the model for 2 minutes in one environment (e.g. poppy field) while actively hunting. You should see:
-
-- The average bug colour shift toward the background colour.
-- Your hunting efficiency drop over time as bugs become better camouflaged.
-
-### Output and interpretation
-
-Now switch environments and keep hunting. You should see a temporary jump in hunting efficiency, followed by a new shift in bug colour toward the new background.
-
+:::
 
 ## Details about colours (optional) 
 
-The primary colours red, green and blue (RGB) can be mixed to produce any colour (this is how the pixels of TVs and computer monitors work if you look closely). Mixtures of these colours are also used to control the colour of the bugs. Each bug has three pigment “genes”  (R, G and B) that determine their colour phenotype. The more frequently the gene for a pigment is coded for, the stronger that presence of colour is in the overall blend of pigments that results in a single phenotype for colouration. For example, a bug that had lots of R, but little G or B would appear as red. In this simulation RGB can vary from 0 to 100.  The mixture of these primary colours results in a colour which has a particular **hue**, **brightness** and **saturation** (Fig  \@ref(fig:colours)).
+Each bug has three pigment genes: red, green and blue. Each gene has a value from 0 to 100, which sets how strongly that pigment is expressed. Switch on "show-genotype?" to see each bug's values; for example, 40-100-24 means red at 40%, green at 100% and blue at 24%. The three pigments are mixed, as in the pixels of a TV or computer screen, to give the bug's colour. A bug with a lot of red but little green or blue looks red.
 
-**Hue** ranges from 0 to 255 with both ends of that spectrum being red, and as you move from 0 to 255 you pass through all the colours of the rainbow.
+The plots summarise colour in a different way, as **hue**, **saturation** and **brightness** (Fig \@ref(fig:colours)):
 
-The other two elements of colour are **brightness** and **saturation**. If a colour is bright it is very vibrant, if it is not bright, it is dark: a brightness value of 0, would be black, no matter what the hue was. Similarly, a low saturation values give “washed out” colours and a value of 0 would be  white. 
-
+- **Hue** is the position around the colour wheel: red, through orange, yellow, green and blue, and back to red.
+- **Saturation** is how vivid the colour is. Low saturation gives washed-out colours (greys, and white at full brightness).
+- **Brightness** is how light or dark the colour is. A brightness of 0 is black, whatever the hue.
 
 ```{r colours, out.width = "65%", fig.align = 'center', echo = FALSE, fig.cap = "Hue, brightness and saturation"}
 knitr::include_graphics('images/colours.png')
@@ -124,5 +148,6 @@ Read more about the model here: http://ccl.northwestern.edu/netlogo/models/BugHu
 ## Takeaways
 
 - Selection changes trait distributions when survival depends on the environment.
+- All four conditions for evolution by natural selection are present in the model; mutation supplies the new variation.
 - Adaptation is context-dependent: a well-adapted population can become poorly adapted when conditions change.
 - Heritability and mutation govern how quickly populations can respond to selection pressure.

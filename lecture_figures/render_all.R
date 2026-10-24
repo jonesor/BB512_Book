@@ -13,7 +13,11 @@ render_lecture <- local({
     inbreeding = c("ggplot2", "scales", "ragg", "patchwork"),
     mutation_genetic_variation = c("ggplot2", "scales", "ragg"),
     haploid_zygotic_selection = c("ggplot2", "scales", "ragg", "patchwork"),
-    polygenic_quantitative_genetics = c("ggplot2", "scales", "ragg")
+    polygenic_quantitative_genetics = c("ggplot2", "scales", "ragg"),
+    life_tables = c("ggplot2", "scales", "ragg", "patchwork", "png"),
+    age_stage_structured_models = c("ggplot2", "scales", "ragg"),
+    life_histories = c("ggplot2", "scales", "ragg"),
+    sexual_selection = c("ggplot2", "ragg", "systemfonts")
   )
 
   function(lecture, script = NULL) {
@@ -80,7 +84,9 @@ render_lecture <- local({
 render_lectures <- function() {
   for (lecture in c("natural_selection", "hardy_weinberg", "inbreeding",
                     "mutation_genetic_variation", "haploid_zygotic_selection",
-                    "polygenic_quantitative_genetics")) {
+                    "polygenic_quantitative_genetics", "life_tables",
+                    "age_stage_structured_models", "life_histories",
+                    "sexual_selection")) {
     render_lecture(lecture)
   }
   invisible(NULL)

@@ -23,13 +23,15 @@ p <- ggplot2::ggplot(df, ggplot2::aes(sex, value)) +
   ggplot2::geom_segment(data = seg, ggplot2::aes(x = sex, xend = sex, y = y0, yend = y1),
                         colour = bb512$sage, linewidth = 1.6,
                         arrow = ggplot2::arrow(length = ggplot2::unit(0.12, "in"), type = "closed")) +
-  ggplot2::geom_point(ggplot2::aes(colour = pop), size = 4) +
+  ggplot2::geom_point(ggplot2::aes(colour = pop, shape = pop), size = 4.2) +
   ggplot2::facet_wrap(~measure, scales = "free_y") +
   ggplot2::scale_colour_manual(values = c(bb512$clay, bb512$forest), name = NULL) +
+  # Shape as well as colour, so the two populations are distinguishable without colour vision
+  ggplot2::scale_shape_manual(values = c(16, 17), name = NULL) +
   ggplot2::scale_y_continuous(expand = ggplot2::expansion(mult = c(0.25, 0.15))) +
   ggplot2::labs(x = NULL, y = NULL) +
   theme_bb512() +
-  ggplot2::guides(colour = ggplot2::guide_legend(nrow = 2)) +
+  ggplot2::guides(colour = ggplot2::guide_legend(nrow = 2), shape = ggplot2::guide_legend(nrow = 2)) +
   ggplot2::theme(axis.text.x = ggplot2::element_text(size = 16, colour = bb512$ink),
                  panel.spacing = ggplot2::unit(2, "lines"),
                  legend.text = ggplot2::element_text(size = 15),

@@ -84,7 +84,7 @@ def add_slide_number(slide):
                 pass
             return
 
-def new(layout, fields=None, notes=None, pictures=None, number=True, hidden=False):
+def new(layout, fields=None, notes=None, pictures=None, number=False, hidden=False):
     slide = prs.slides.add_slide(LAYOUT[layout])
     if hidden:
         slide._element.set("show", "0")
@@ -99,8 +99,9 @@ def new(layout, fields=None, notes=None, pictures=None, number=True, hidden=Fals
     for s in list(slide.placeholders):
         if s.has_text_frame and not s.text_frame.text.strip() and s.placeholder_format.idx not in (fields or {}):
             s._element.getparent().remove(s._element)
-    if number and layout not in ("Title", "Photo"):
-        add_slide_number(slide)
+    # No slide numbers: BB512 decks are built without them (the layouts' number placeholders are not copied)
+    if number:
+        pass
     if notes:
         slide.notes_slide.notes_text_frame.text = notes.strip()
     return slide

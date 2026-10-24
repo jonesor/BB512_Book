@@ -1,6 +1,7 @@
 # Slide "Fitness landscapes": a one-trait fitness landscape (Wright 1932, drawn in its
 # phenotypic form) with a lower local peak and a higher global peak.
-# SCHEMATIC. Mean fitness is the sum of two Gaussian peaks (illustrative shapes, no data).
+# SCHEMATIC. Fitness of an individual with a given trait value is the sum of two Gaussian peaks
+# (illustrative shapes, no data).
 # The population (dots) sits on the local peak; selection alone moves the population mean
 # uphill only, so it cannot cross the valley to the higher peak.
 source("R/theme_bb512.R")
@@ -24,7 +25,7 @@ p <- ggplot2::ggplot(curve_df, ggplot2::aes(x, w)) +
                     family = fam, size = 5, colour = bb512$grey, lineheight = 0.9) +
   ggplot2::scale_y_continuous(limits = c(0, 1.32), breaks = NULL) +
   ggplot2::scale_x_continuous(breaks = NULL) +
-  ggplot2::labs(x = "Trait value", y = "Mean fitness") +
+  ggplot2::labs(x = "Trait value", y = "Fitness") +
   theme_bb512() +
   ggplot2::theme(panel.grid.major.y = ggplot2::element_blank())
 save_bb512(p, "05_fitness_landscape", layout = "takeaway")

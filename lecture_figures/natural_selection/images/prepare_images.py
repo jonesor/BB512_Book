@@ -58,9 +58,24 @@ make("archaeopteryx_berlin.jpg", "archaeopteryx_half.jpg", "half", "fit")
 make("flying_squirrel.jpg", "wing_glide.jpg", "wing")
 make("microraptor.jpg", "wing_microraptor.jpg", "wing")
 make("wair_chukar_video.png", "wing_wair.jpg", "wing", crop=(0, 0, 470, 330), focus=(0.45, 0.4))
+# Four-panel version of the half-a-wing slide (2.76 x 2.45 in per panel)
+SIZES["wing4"] = (2.76, 2.45)
+make("microraptor.jpg", "wing_microraptor_q.jpg", "wing4", focus=(0.5, 0.4))
+make("wair_chukar_video.png", "wing_wair_q.jpg", "wing4", crop=(0, 0, 470, 330), focus=(0.5, 0.4))
+import os
+if os.path.exists(S + "fowler2011_fig1_RPR.png"):  # Fowler et al. 2011 PLoS ONE Fig. 1, Creative Commons Attribution licence
+    make("fowler2011_fig1_RPR.png", "wing_deinonychus.jpg", "wing4", "fit")
+if os.path.exists(S + "red_tailed_hawk_mantling_8191228707.jpg"):  # Reago & McClarren, CC BY 2.0
+    make("red_tailed_hawk_mantling_8191228707.jpg", "wing_hawk.jpg", "wing4", focus=(0.45, 0.5))
 # Section 03
 make("guppies.png", "guppies.jpg", "half")
 make("morphs_pair.jpg", "peppered_morphs.jpg", "takeaway")
+# Peppered moths against backgrounds: pale form on lichen (left), both forms on pale birch bark (right)
+pm = Image.new("RGB", (int(7.40 * 220), int(4.25 * 220)), BG)
+SIZES["moth_panel"] = (3.62, 4.25)
+pm.paste(shape(load(S + "peppered_moth_old.jpg"), "moth_panel", focus=(0.42, 0.5)), (0, 0))
+pm.paste(shape(load(S + "morphs_on_bark.jpg"), "moth_panel", focus=(0.5, 0.5)), (int(3.78 * 220), 0))
+pm.save("images/peppered_backgrounds.jpg", quality=92)
 make("antibiotics.jpg", "antibiotics.jpg", "half", "fit")
 # Section 04
 make("sickle_cells.jpg", "sickle_cells.jpg", "half")

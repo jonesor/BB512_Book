@@ -17,12 +17,12 @@ Run all figures from this folder with `source("render_all.R")`, or `LANG=C.UTF-8
 | `01_allocation.R` | 9 | `takeaway` | Budget split between maintenance, growth and reproduction, slow vs fast | Schematic |
 | `02_logistic_rK.R` | 11 | `half` | Logistic growth with the r- and K-selection regimes | Analytical, illustrative |
 | `03_optimality.R` | 16 | `takeaway` | Saturating benefit, accelerating cost, net benefit and optimum | Schematic |
-| `04_lack_starlings.R` | 20 | `takeaway` | Swiss starlings: brood-size frequency and young recovered per brood | Empirical (Lack 1948, via Neal's table) |
-| `05_lifetime_clutch.R` | 23 | `takeaway` | Single-season vs lifetime optimal clutch with a parental survival cost | Schematic |
-| `06_thought_experiment.R` | 26, 27 | `full` | Expected offspring by age (s = 0.8, m = 10, ages 1–21), normal and mutant | Analytical |
-| `07_red_deer_force.R` | 28 | `takeaway` | Hamilton's force of selection on survival, red deer, Rhum 1957 | Empirical life table (Lowe 1969, via Neal's table), analytical measure |
+| `04_lack_starlings.R` | 21 | `takeaway` | Swiss starlings: brood-size frequency and young recovered per brood | Empirical (Lack 1948, via Neal's table) |
+| `05_lifetime_clutch.R` | 24 | `takeaway` | Single-season vs lifetime optimal clutch with a parental survival cost | Schematic |
+| `06_thought_experiment.R` | 27, 28 | `full` | Expected offspring by age (s = 0.8, m = 10, ages 1–21), normal and mutant | Analytical |
+| `07_red_deer_force.R` | 29 | `takeaway` | Hamilton's force of selection on survival, red deer, Rhum 1957 | Empirical life table (Lowe 1969, via Neal's table), analytical measure |
 
-Slide 17 (maternal age and infant mortality) is hidden by default; the speaker-note timings add up to about 44 minutes for the visible slides. The last two slides are self-study slides for the PDF and are not presented.
+Slides 10 (extrinsic and intrinsic factors) and 18 (maternal age and infant mortality) are hidden by default; the speaker-note timings add up to about 45 minutes for the visible slides. The last two slides are self-study slides for the PDF and are not presented.
 
 `images/prepare_images.py` crops or letterboxes photographs to their placeholder sizes (sources in `images/source/`, credits and open questions in `images/CREDITS.md`). `build_deck.py` builds the PPTX from `BB512_Theme.pptx`, including speaker notes. Inline markup in slide text: `*italic*`, `**bold**`, `~subscript~`, `^superscript^`, and backticks for code (set in Menlo).
 

@@ -85,7 +85,7 @@ def add_slide_number(slide):
                 pass
             return
 
-def new(layout, fields=None, notes=None, pictures=None, number=True, hidden=False):
+def new(layout, fields=None, notes=None, pictures=None, number=False, hidden=False):
     slide = prs.slides.add_slide(LAYOUT[layout])
     if hidden:
         slide._element.set("show", "0")
@@ -182,7 +182,7 @@ new("Agenda", {101: "Life history evolution",
                       "Explain why the force of selection declines with age, and how this lets senescence evolve",
                       "Predict how extrinsic mortality shapes the pace of life and ageing"], 18)},
     notes="""
-(1 min) Objective 1 goes with section 01, 2 with section 02, 3 with section 03, and 4 and 5 with section 04. They are general principles; Lack's starlings, kestrels and red deer are the evidence we use.
+(1 min) Objective 1 goes with section 01, 2 with section 02 (practised in the guppy check question), 3 with section 03, and 4 and 5 with section 04. They are general principles; Lack's starlings, kestrels and red deer are the evidence we use.
 Reading: Neal (2004), "Evolution of life histories" (all sections). Neal is thinner on senescence than on clutch size; the lecture covers more of that.
 After the lecture: practicals "How many eggs should a bird lay?" and "Trade-offs and the declining force of selection".
 """)
@@ -210,13 +210,13 @@ Photos carried over from the previous version; sources and licences to confirm (
 
 new("Photo - 3 Up", {101: (["**Kiwi:** one huge egg", "*Apteryx australis*"], 14),
                      103: (["**Atlantic cod:** millions of eggs", "*Gadus morhua*"], 14),
-                     105: (["**Orchids:** up to a billion seeds", "Orchidaceae"], 14)},
+                     105: (["**Orchids:** ~4 million seeds per pod", "Orchidaceae"], 14)},
     pictures={100: I + "third_kiwi.jpg", 102: I + "third_cod.jpg", 104: I + "third_orchid.jpg"},
     notes="""
 (1 min) ...and in offspring number and size.
 Kiwi: usually a single egg, up to about 20% of the female's body mass (the X-ray shows how much of her it fills).
 Atlantic cod: about 500,000 eggs per kg of female; a record of about 9 million eggs has been reported for a 34 kg female. Almost all die.
-Orchids: dust-like seeds; Neal gives up to 1 billion (10^9^) seeds for some species. Each seed is about the size of a fungal spore and depends on mycorrhizal fungi to germinate. Contrast: the coconut palm makes a few nuts of several kg each (Neal's number–size trade-off example).
+Orchids: dust-like seeds. A single capsule of *Cycnoches chlorochilon* holds almost 4 million seeds (Kew); a plant can carry several capsules. Neal says "as many as 1 billion (10^9^)" for some species; I could not find support for that per-plant figure, so the slide uses the per-capsule one. Each seed is about the size of a fungal spore and depends on mycorrhizal fungi to germinate. Contrast: the coconut palm makes a few nuts of several kg each (Neal's number–size trade-off example).
 Others from the previous version, for discussion: a Mexican dung beetle (*Copris*) produces only a handful of offspring in its life, one egg per dung ball; ghost moths (Hepialidae) can lay tens of thousands of eggs; annual and monocarpic plants breed once and die.
 Photos carried over from the previous version; sources and licences to confirm.
 """)
@@ -244,7 +244,7 @@ Neal's examples: number versus size of offspring (orchid seeds versus coconuts).
 
 new("Title, Bullets & Photo", {100: "One budget, three uses",
                                103: "TAKEAWAY",
-                               105: ("Maintenance, growth and reproduction compete for the same budget. Different splits give slow and fast life histories.", 18)},
+                               105: (["Maintenance, growth and reproduction compete for the same budget. Different splits give slow and fast life histories.", "", "*Schematic: illustrative values, not data.*"], 18)},
     pictures={101: F + "01_allocation.png"},
     notes="""
 (1.5 min) Redrawn from the elephant and mouse bars of the previous version. A slow life history (elephant) spends more on maintenance and growth, and breeds late and slowly; a fast one (mouse) puts much more into reproduction and little into maintenance.
@@ -253,14 +253,14 @@ Keep this picture in mind: it comes back at the end as the "disposable soma" the
 Schematic: shares are illustrative, not measured. Script 01_allocation.R.
 """)
 
-new("Two Columns", {100: "What decides the split?",
+new("Two Columns", hidden=True, fields={100: "What decides the split?",
                     101: "EXTRINSIC: THE ENVIRONMENT", 103: ["Predation, disease, climate, food, competition",
                                                          "Set the chances of surviving, and the rewards for breeding now or later"],
                     104: "INTRINSIC: THE ORGANISM", 106: ["Trade-offs between traits",
                                                           "Physiological, developmental and genetic constraints",
                                                           "Limit which combinations of traits are possible"]},
     notes="""
-(1.5 min) Life histories evolve through the interaction of the environment and biological constraints. The two interact: for example, high predation (extrinsic) changes how the reproduction–survival trade-off (intrinsic) is resolved. We return to extrinsic mortality in section 04.
+(1.5 min) HIDDEN by default to keep within 45 minutes; the extrinsic side returns in section 04. Life histories evolve through the interaction of the environment and biological constraints. The two interact: for example, high predation (extrinsic) changes how the reproduction–survival trade-off (intrinsic) is resolved. We return to extrinsic mortality in section 04.
 """)
 
 new("Figure & Bullets", {100: "An early idea: r- and K-selection",
@@ -279,9 +279,9 @@ Figure: analytical logistic curve, illustrative parameters. Script 02_logistic_r
 
 new("Check Question (4 options)", {101: ("Elms are huge, live for centuries and breed for decades, yet make millions of tiny seeds. r or K?", 28),
                                    105: "r-selected", 109: "K-selected",
-                                   113: "Both: adults and seeds face different selection", 117: "Neither: life histories are random"},
+                                   113: "Both: adults and seeds face different selection", 117: "Can't tell without knowing the population's density"},
     notes="""
-(1.5 min) Answer: C. Neal's American elm example. Canopy trees compete for light and space (K-like traits: large, long-lived, iteroparous), but a seedling can only establish when a canopy tree falls, which is rare and unpredictable. So it pays to make huge numbers of small, well-dispersed seeds (r-like). Different stages of one life cycle face different selection.
+(1.5 min) Answer: C. Distractor D is tempting because r/K is defined by density relative to K, but the point here is that one life cycle can contain both r-like and K-like stages. Neal's American elm example. Canopy trees compete for light and space (K-like traits: large, long-lived, iteroparous), but a seedling can only establish when a canopy tree falls, which is rare and unpredictable. So it pays to make huge numbers of small, well-dispersed seeds (r-like). Different stages of one life cycle face different selection.
 Neal's other "misfits": periodical cicadas and bamboos (long-lived but semelparous and synchronised) and Pacific sockeye salmon (large, long generation time, breed once).
 """)
 
@@ -318,6 +318,16 @@ new("Title, Bullets & Photo", {100: "Costs and benefits give an intermediate opt
 Correction to the previous diagram, which drew two U-shaped curves and marked the optimum where they came closest together.
 The same logic applies to age at maturity (this section) and clutch size (next section).
 Schematic: B(x) = 10(1 − e^−x/3^), C(x) = 0.12x²; optimum at x = 3.85. Script 03_optimality.R.
+""")
+
+new("Check Question (4 options)", {101: ("Predators start killing many adults, but not juveniles. How should age at first breeding evolve?", 28),
+                                   105: "Earlier", 109: "Later",
+                                   113: "No change: only juveniles matter", 117: "No change: predation isn't heritable"},
+    notes="""
+(1.5 min) Answer: A. If adults are likely to die soon, the cost of waiting (dying before breeding) rises, so the optimum on the previous slide shifts to an earlier age. Draw it: the cost curve gets steeper and the optimum moves left.
+Evidence: Trinidadian guppies (*Poecilia reticulata*). Where the cichlid *Crenicichla alta* eats mainly large adults, guppies mature earlier and smaller, and put more into reproduction, with more, smaller offspring; where the killifish *Rivulus hartii* eats mainly juveniles, the reverse. The differences are heritable. Moving guppies from a high-predation site to a stream with only *Rivulus* produced evolution in the predicted direction within 11 years, roughly 30–60 generations (Reznick, Bryga & Endler 1990, *Nature* 346: 357–359).
+Follow-up: what if predators killed mainly juveniles? (Later maturity and fewer, larger offspring: the *Rivulus* streams.)
+D is wrong because the trait that evolves is the guppies' age at maturity, not the predation.
 """)
 
 new("Figure & Bullets", hidden=True, fields={100: "Example: maternal age and infant mortality",
@@ -394,7 +404,7 @@ Photo: female kestrel, carried over from the previous version; source to confirm
 
 new("Title, Bullets & Photo", {100: "Count over the whole life, not one season",
                                103: "TAKEAWAY",
-                               105: ("If big broods cost parents survival, the lifetime optimum is smaller than Lack's one-season optimum.", 18)},
+                               105: (["If big broods cost parents survival, the lifetime optimum is smaller than Lack's one-season optimum.", "", "*Schematic: illustrative values, not data.*"], 18)},
     pictures={101: F + "05_lifetime_clutch.png"},
     notes="""
 (1.5 min) Pale curve: young raised in one season (Lack's measure); it peaks at 6 here. Dark curve: young raised over the whole lifetime, when bigger broods lower the parent's chance of surviving to breed again; it peaks at 5.
@@ -437,10 +447,12 @@ Script 06_thought_experiment.R.
 
 new("Title, Bullets & Photo", {100: "The force of selection fades after maturity",
                                103: "TAKEAWAY",
-                               105: ("Red deer: selection on survival is at full strength until breeding starts at 3, then falls. Genes that harm only old deer are barely “seen” by selection.", 17)},
+                               105: (["Strength of selection = share of lifetime reproduction still to come",
+                                      "Full strength until breeding starts at 3, then falls",
+                                      "Neal's **reproductive value** tells the same story: it peaks at first breeding"], 16)},
     pictures={101: F + "07_red_deer_force.png"},
     notes="""
-(2 min) Female red deer (*Cervus elaphus*) on Rhum, 1957, from the life table in Neal (from Lowe 1969). For each age, the strength of selection on surviving the next year = the share of lifetime reproduction that still lies ahead (Hamilton's 1966 force of selection; the population is treated as stationary, as Neal does).
+(2 min) Genes that harm only old deer are barely "seen" by selection. Female red deer (*Cervus elaphus*) on Rhum, 1957, from the life table in Neal (from Lowe 1969). For each age, the strength of selection on surviving the next year = the share of lifetime reproduction that still lies ahead (Hamilton's 1966 force of selection; the population is treated as stationary, as Neal does).
 Before age 3 nothing has been produced yet, so dying costs everything: strength 1. After that, each year of breeding "uses up" part of the total. By age 9 only 5% of lifetime reproduction is still to come.
 Link to Neal: he explains the same idea with Fisher's reproductive value, v~x~ (expected future offspring of an individual of age x), which peaks at first breeding (1.69 at age 3) and then declines. Neal notes that Hamilton (1966) and Charlesworth (1980) refined Fisher's argument; Hamilton's force of selection is the quantity plotted here. The kink at ages 8–9 is in Lowe's data (Neal discusses whether it is real).
 Previous version's human version of this curve: "Evolution doesn't care (so much) what happens to you after 45!" Same shape: flat until maturity, then falling to near zero at the end of reproduction.
@@ -480,6 +492,15 @@ This is Williams' (1957) prediction: when extrinsic mortality is high, the force
 Caveat for keen students: the theory is subtler than this. If extra mortality hits all ages equally and does not change density-dependent processes, it need not change the evolution of ageing (Abrams 1993; reviewed by Moorad, Promislow & Silvertown 2019, *TREE*). The prediction is still well supported by comparisons such as the next slide.
 """)
 
+new("Check Question (4 options)", {101: ("Island opossums have lived without predators for thousands of years. How should they differ from mainland opossums?", 28),
+                                   105: "They age more slowly and live longer", 109: "They age faster and die younger",
+                                   113: "No difference: ageing is wear and tear", 117: "They breed earlier and more intensively"},
+    notes="""
+(1.5 min) The island is Sapelo Island, Georgia, USA. Answer: A. Austad (1993, *Journal of Zoology* 229: 695–708), "Retarded senescence in an insular population of Virginia opossums (*Didelphis virginiana*)". Island opossums aged more slowly and lived longer than mainland opossums, which face predators such as dogs and foxes; reproduction also declined less with age (island two-year-olds kept larger litters, which mainland two-year-olds did not). Opossums normally live only 2–3 years.
+D is the prediction for the opposite case (higher extrinsic mortality).
+Popular accounts give the isolation time as anything from about 4,000 to 9,000 years; check Austad (1993) before quoting a figure.
+""")
+
 new("Figure & Bullets", {100: "Safer lives, slower ageing",
                          102: (["Flight lowers extrinsic mortality",
                                 "Bats live several times longer than ground-dwelling mammals of the same size",
@@ -487,37 +508,35 @@ new("Figure & Bullets", {100: "Safer lives, slower ageing",
                                 "A house mouse (*Mus musculus*) rarely lives beyond 3–4 years, even in the lab"], 17)},
     pictures={101: I + "bat.jpg"},
     notes="""
-(1.5 min) Wilkinson & South (2002, *Ageing Research Reviews*): bats live on average about 3.5 times longer than non-flying placental mammals of similar size. Birds, also flying, live longer than mammals of the same size. Brandt's bat record: a male recaptured 41 years after ringing in Siberia (Podlutsky et al. 2005, *Journal of Gerontology*).
-Second example (Austad 1993, *Journal of Zoology*): Virginia opossums on Sapelo Island, Georgia, isolated from mainland predators for thousands of years, aged more slowly, lived longer and had smaller litters than mainland opossums. The previous version showed a rat and a bat to make this contrast.
+(1 min) The comparative evidence, after the opossum prediction. Wilkinson & South (2002, *Ageing Research Reviews*): bats live on average about 3.5 times longer than non-flying placental mammals of similar size. Birds, also flying, live longer than mammals of the same size. Brandt's bat record: a male recaptured 41 years after ringing in Siberia (Podlutsky et al. 2005, *Journal of Gerontology*).
+The previous version showed a rat and a bat to make this contrast.
 Photo: noctule bat, carried over from the previous version; source and licence to confirm.
 """)
 
 new("Figure & Bullets", {100: "Life after reproduction: menopause",
-                         102: (["Females live long after their last offspring in humans and four toothed whales: killer whale, short-finned pilot whale, beluga and narwhal",
-                                "But selection on survival should be almost zero after the last birth. So why live on?",
-                                "**Grandmother hypothesis:** helping relatives raises **inclusive fitness**",
+                         102: (["Females live long after their last offspring: humans and four toothed whales (killer whale, pilot whale, beluga, narwhal)",
+                                "Selection on survival should be almost zero after the last birth. So why live on?",
+                                "**Grandmother hypothesis:** helping relatives raises **inclusive fitness** (own offspring plus relatives' offspring, weighted by relatedness)",
                                 "Old killer whale females lead their groups to salmon when food is scarce"], 16)},
     pictures={101: I + "killer_whale.jpg"},
     notes="""
 (1.5 min) Our model was a simplification: it counted only an individual's own offspring. Fitness can also include effects on the reproductive success of relatives, weighted by relatedness (kin selection, inclusive fitness: later in the course, in the animal behaviour part).
-Menopause (a long post-reproductive lifespan) is known in humans and four toothed whales (Ellis et al. 2018, *Scientific Reports*, adding belugas and narwhals). Killer whales: post-reproductive females lead collective movements, especially when salmon are scarce (Brent et al. 2015, *Current Biology*); breeding late in life would also bring mothers into competition with their daughters (Croft et al. 2017, *Current Biology*). Elephants, also long-lived and with matriarchs, keep breeding into old age: no menopause. Recent work suggests some wild chimpanzees (Ngogo, Uganda) also have a post-reproductive lifespan (Wood et al. 2023, *Science*); still debated.
+"Pilot whale" on the slide = short-finned pilot whale. Menopause (a long post-reproductive lifespan) is known in humans and four toothed whales (Ellis et al. 2018, *Scientific Reports*, adding belugas and narwhals). Killer whales: post-reproductive females lead collective movements, especially when salmon are scarce (Brent et al. 2015, *Current Biology*); breeding late in life would also bring mothers into competition with their daughters (Croft et al. 2017, *Current Biology*). Elephants, also long-lived and with matriarchs, keep breeding into old age: no menopause. Recent work suggests some wild chimpanzees (Ngogo, Uganda) also have a post-reproductive lifespan (Wood et al. 2023, *Science*); still debated.
 Previous version's link: Grandmother hypothesis in killer whales and elephants, http://phenomena.nationalgeographic.com/2015/03/05/why-killer-whales-go-through-menopause-but-elephants-dont/
 The previous version's kin selection slide (meerkats, relatedness diagram, black widow spider, praying mantis) is folded into this slide; the spider and mantis illustrate sexual cannibalism rather than kin selection.
 Photo: killer whale (*Orcinus orca*), carried over from the previous version; source and licence to confirm.
 """)
 
 # ---------------------------------------------------------------- Summary
-new("Summary", {101: "Key points",
+new("Summary (Key Points Only)", {101: "Key points",
                 102: (["A life history is a schedule of growth, reproduction and survival",
                        "Limited resources force trade-offs; costs and benefits often give intermediate optima",
                        "Clutch size: count young over the parent's whole life, not one season",
                        "The force of selection fades after maturity, so senescence can evolve",
-                       "High extrinsic mortality favours fast lives and faster ageing"], 17),
-                106: (["**Read:** Neal (2004), *Evolution of life histories*",
-                       "**Practicals:** *How many eggs should a bird lay?*; *Trade-offs and the declining force of selection*",
-                       "**Self-study:** last two slides"], 14)},
+                       "High extrinsic mortality favours fast lives and faster ageing"], 18)},
     notes="""
 (1 min) One point per section (section 04 has two).
+Reading: Neal (2004), "Evolution of life histories". Self-study: the last two slides (in the PDF).
 Practicals: """ + URL_EGGS + """ and """ + URL_FOS + """
 """)
 

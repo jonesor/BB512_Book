@@ -24,6 +24,10 @@ render_lecture("inbreeding")
 render_lecture("mutation_genetic_variation")
 render_lecture("haploid_zygotic_selection")
 render_lecture("polygenic_quantitative_genetics")
+render_lecture("life_tables")
+render_lecture("age_stage_structured_models")
+render_lecture("life_histories")
+render_lecture("sexual_selection")
 
 # Generate all lectures
 render_lectures()
@@ -87,6 +91,9 @@ Use Avenir Next for the intended lecture typography.
 | Mutation and genetic variation | `mutation_genetic_variation/figures/` | PNG |
 | Haploid and zygotic selection | `haploid_zygotic_selection/figures/` | PNG |
 | Polygenic inheritance and quantitative genetics | `polygenic_quantitative_genetics/figures/` | PNG |
+| Life tables and age-structured population growth | `life_tables/figures/` | PNG |
+| Age and stage-structured models | `age_stage_structured_models/figures/` | PNG |
+| Evolution of life histories | `life_histories/figures/` | PNG |
 
 Existing names, dimensions and styling are preserved, including the
 Hardy-Weinberg figure referenced by the book. Rendering overwrites matching

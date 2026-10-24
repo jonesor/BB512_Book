@@ -81,7 +81,7 @@ def add_slide_number(slide):
                 pass
             return
 
-def new(layout, fields=None, notes=None, pictures=None, number=True, hidden=False):
+def new(layout, fields=None, notes=None, pictures=None, number=False, hidden=False):
     slide = prs.slides.add_slide(LAYOUT[layout])
     if hidden:
         slide._element.set("show", "0")
@@ -97,7 +97,7 @@ def new(layout, fields=None, notes=None, pictures=None, number=True, hidden=Fals
         if s.has_text_frame and not s.text_frame.text.strip() and s.placeholder_format.idx not in (fields or {}):
             s._element.getparent().remove(s._element)
     if number and layout not in ("Title", "Photo"):
-        add_slide_number(slide)
+        add_slide_number(slide)  # off by default: slide numbers not wanted on these slides
     if notes:
         slide.notes_slide.notes_text_frame.text = notes.strip()
     return slide
@@ -222,23 +222,13 @@ Point out that C is not declining in number (λ = 1), but it is still being sele
 new("Section", {102: "02", 103: "Genetic systems"},
     notes="(10 s) The same fitness differences produce different rates of change depending on how genes are packaged and passed on.")
 
-new("Title & Bullets", {100: "Ploidy and sex decide which model we use",
-                        101: ["**Ploidy:** chromosome sets in the adult: haploid (n) or diploid (2n)",
-                              "**Reproduction:** asexual (offspring are copies) or sexual (alleles reshuffled every generation)",
-                              "Together they decide which model of selection we use",
-                              "Other systems exist, e.g. haplodiploid bees and ants"]},
-    notes="""
-(2 min) Diploid from Greek *diplous*, double; haploid from *haploos*, single.
-Ploidy decides whether an allele can be hidden by another allele in the same individual (dominance). Sex decides whether genotypes are inherited intact (clones) or rebuilt each generation from the allele pool.
-Diagrams of chromosome sets from the previous version can be shown here if wanted; the next two slides replace the four life-cycle slides.
-Source on the old slide: learn.genetics.utah.edu/content/variation/reproduction/
-""")
-
-new("Title & Photo", {100: "Four genetic systems",
+new("Title & Photo", {100: "Four genetic systems, two models",
                       102: "Examples are typical rather than absolute: aphids, for example, are asexual in summer and sexual in autumn."},
     pictures={101: F + "02_genetic_systems.png"},
     notes="""
-(2 min) Walk round the four boxes.
+(2 min) Columns: ploidy, the number of chromosome sets in the adult (haploid n, diploid 2n; from Greek *haploos*, single, and *diplous*, double). Rows: reproduction, asexual (offspring are copies) or sexual (alleles reshuffled every generation). Other systems exist, e.g. haplodiploid bees, ants and wasps (haploid males, diploid females), and polyploids such as tetraploid potatoes.
+Ploidy decides whether an allele can be hidden by another allele in the same individual (dominance). Sex decides whether genotypes are inherited intact (clones) or rebuilt each generation from the allele pool.
+Walk round the four boxes.
 Correction from the previous version: dinoflagellates were listed as asexual diploids, but most dinoflagellates are haploid for most of their life cycle (only the zygote is diploid). They are replaced by aphids and water fleas (*Daphnia*), which are diploid in their asexual (parthenogenetic) phases. Avoid apomictic dandelions and many parthenogenetic whiptail lizards as examples: they are mostly triploid. Bdelloid rotifer ploidy is disputed.
 The coloured line in each box says which model we will use: anything that reproduces clonally, haploid or diploid, follows the haploid selection model (Neal section 10.3). Only diploid sexual organisms need the zygotic model.
 Schematic, script 02_genetic_systems.R.
@@ -334,10 +324,11 @@ Neal's conclusions 3 and 4 (section 10.3.1): selection increases the overall fit
 Script 06_mean_fitness.R.
 """)
 
-new("Check Question (4 options)", {101: ("λ~A~ = 4 and λ~B~ = 2, or λ~A~ = 0.8 and λ~B~ = 0.4: in which population does A spread faster?", 30),
-                                   105: "The first (growing)", 109: "The second (shrinking)", 113: "The same in both", 117: "Need population sizes"},
+new("Check Question (4 options)", {101: ("In two populations, genotype A multiplies twice as fast as B. In which does A's frequency rise faster?", 30),
+                                   105: ["Growing population", "λ~A~ = 4, λ~B~ = 2"], 109: ["Shrinking population", "λ~A~ = 0.8, λ~B~ = 0.4"],
+                                   113: "The same in both", 117: "Cannot tell without population sizes"},
     notes="""
-(2 min) Answer C. In both, W~B~ = 0.5 and s = 0.5, so the deterministic change in frequency is identical.
+(under 1 min) Answer C. In both, W~B~ = 0.5 and s = 0.5, so the deterministic change in frequency is identical.
 Discussion point: D is partly right in practice. A shrinking population becomes small, and then genetic drift matters; our models ignore drift.
 """)
 
@@ -519,35 +510,37 @@ table(s, ["Year", "*carbonaria* (CC + Cc)", "*typica* (cc) = q²", "Allele frequ
        ["1898", "0.99", "0.01", "q~t~ = √0.01 = 0.10"]],
       col_w=[1.7, 3.2, 3.0, 3.83], row_h=0.62, size=17)
 textbox(s, ["Selection is against the recessive (*typica*): **Case C**, over t = 50 generations.",
-            "Solve for s (Neal Eqn 10.11):   s × t = (q~0~ − q~t~) / (q~0~q~t~) + ln[q~0~(1 − q~t~) / (q~t~(1 − q~0~))]"],
-        0.8, 4.4, 11.7, 1.4, size=20, color=INK)
+            "Solve Neal's Eqn 10.11 for s:"],
+        0.8, 4.05, 11.7, 1.0, size=20, color=INK)
+s.shapes.add_picture(I + "eqn_10_11.png", Inches(1.3), Inches(5.05), height=Inches(0.95))
 
 new("Title, Bullets & Photo", {100: "Selection against *typica* was strong",
                                103: "TAKEAWAY",
                                105: ("1% to 99% in 50 generations needs s ≈ 0.3: *typica* had about 70% of the fitness of *carbonaria*.", 20)},
     pictures={101: F + "10_haldane_carbonaria.png"},
     notes="""
-(2 min) Neal's approximate equation (Eqn 10.11) gives s = 0.33, so W~typica~ = 0.67; equivalently *carbonaria* had about a 50% advantage (1/0.67 = 1.49), which is how Haldane expressed it.
+(2 min) The line is the model with the exact value of s (0.30), found by iterating Case C until it reproduces 1% and 99% in 50 generations. Neal's approximate equation (Eqn 10.11) gives s = 0.33, so W~typica~ = 0.67; equivalently *carbonaria* had about a 50% advantage (1/0.67 = 1.49), which is how Haldane expressed it.
 Iterating the exact model gives s = 0.30. Neal warns that the approximations are accurate only when s is small (about 0.01); with s this large the approximation overestimates by about 10%. Either way, selection was far stronger than anyone then thought possible.
 Haldane did not know what was causing it. That came 30 years later.
 Model trajectory: deterministic Case C, script 10_haldane_carbonaria.R; the two points are Haldane's round figures, not a time series.
 """)
 
-new("Activity", {101: "4 MIN · PAIRS",
-                 102: ("With W(*typica*) = 0.67, how long for *carbonaria* to rise from 10% to 90%?", 32),
-                 103: ["Convert each phenotype frequency to q (remember *typica* = q²)",
-                       "Decide which case of dominance applies",
-                       "Use s × t = (q~0~ − q~t~) / (q~0~q~t~) + ln[q~0~(1 − q~t~) / (q~t~(1 − q~0~))]"]},
+s = new("Activity", {101: "4 MIN · PAIRS",
+                 102: ("How many generations would *carbonaria* take to rise from 10% to 90%?", 32),
+                 103: (["Relative fitness W = 0.67: *typica* leaves 67% as many offspring as *carbonaria*",
+                        "Convert phenotype frequencies to q (*typica* = q²); pick the case",
+                        "Solve Neal's Eqn 10.11 for t (s = 1 − W = 0.33):"], 20)},
     notes="""
 (4 min) Neal problem 11.4, 2(a).
 q~0~ = √0.90 = 0.949; q~t~ = √0.10 = 0.316. Case C, s = 0.33.
 Eqn 10.11: st = (q~0~ − q~t~)/(q~0~q~t~) + ln[q~0~(1 − q~t~)/(q~t~(1 − q~0~))] = 2.11 + 3.70 = 5.81, so t ≈ 17.6 generations. Exact iteration: 16 generations.
 So most of the change in Manchester could have happened in under 20 years.
 """)
+s.shapes.add_picture(I + "eqn_10_11.png", Inches(1.3), Inches(5.45), height=Inches(0.9))
 
-new("Title, Bullets & Photo", {100: "Camouflaged moths are recaptured more",
+new("Title, Bullets & Photo", {100: "Camouflaged moths survive better",
                                103: "TAKEAWAY",
-                               105: ("Kettlewell released and recaptured marked moths. Each form was recaptured about twice as often where it was camouflaged.", 20)},
+                               105: ("Kettlewell released marked moths and trapped them again days later. Only survivors can be recaptured, so each form survived about twice as well where it was camouflaged.", 18)},
     pictures={101: F + "11_kettlewell.png"},
     notes="""
 (3 min) H.B.D. Kettlewell (1955, 1956) released marked moths of both forms in a polluted wood near Birmingham and an unpolluted wood in Dorset, then recaptured them at light traps over the following days (data: Neal Table 11.1).
@@ -557,23 +550,23 @@ These data show differential survival, not its cause; recapture rates also depen
 Script 11_kettlewell.R.
 """)
 
-new("Figure & Bullets", {100: "Bird predation: criticised, confirmed",
-                         102: (["Kettlewell and Tinbergen filmed birds taking moths",
-                               "Critics: unnatural densities and resting sites",
-                               "Dead moths on trees gave the same pattern",
-                               "Majerus: 4,864 moths, natural densities, six years",
-                               "Birds now take more *carbonaria*: s ≈ 0.09 **per day**, not per generation"], 20)},
+new("Figure & Bullets", {100: "Bird predation: criticised, then confirmed",
+                         102: (["Kettlewell and Niko Tinbergen filmed birds eating the moths that did not match the bark",
+                               "Critics objected that the moths were released at unnaturally high densities, onto trunks where they rarely rest",
+                               "Michael Majerus repeated the test near Cambridge: 4,864 moths released one at a time, at natural densities, over six years",
+                               "Birds ate more *carbonaria*, which is now conspicuous on clean bark: s ≈ 0.09 **per day** (not per generation)"], 18)},
     pictures={101: I + "morphs_on_bark.jpg"},
     notes="""
 (2 min) Kettlewell's methods were criticised from the 1970s onwards, and the peppered moth became a target for creationist attacks in the 1990s and 2000s.
 Majerus designed the definitive test: moths released singly at night into a 1 ha rural garden, resting positions recorded, survival checked next morning, and bird predation watched with binoculars (nine bird species). He died in 2009; the results were published by Cook, Grant, Saccheri and Mallet (2012) Biology Letters 8: 609–612. Maximum-likelihood selection against *carbonaria*: 0.091 per day (95% CI 0.028–0.157). Stress the units: this is per day of adult life, so it cannot be compared directly with the per-generation values of s elsewhere in the lecture (e.g. 0.3 from Haldane).
+Other studies, e.g. Bishop (1972), pinned dead moths to trunks and found the same pattern.
 Also: Bishop's (1972) Sefton Park data give W(typica) = 0.795 relative to carbonaria (Neal Example 11.2).
 Image: the two forms on bark, carried over from the previous version; source and licence to confirm.
 """)
 
-new("Title, Bullets & Photo", {100: "Clean air: the decline of *carbonaria*",
+new("Title, Bullets & Photo", {100: "After the Clean Air Act of 1956",
                                103: "TAKEAWAY",
-                               105: ("Clean air reversed selection: now the dominant *carbonaria* allele is selected against (so q is now *carbonaria*). At West Kirby: 93% to 33%, s ≈ 0.15.", 18)},
+                               105: ("The UK Clean Air Act (1956, extended 1968) reversed selection: the dominant *carbonaria* allele is now selected against (so q is now *carbonaria*). West Kirby: 93% to 33%, s ≈ 0.15.", 18)},
     pictures={101: F + "12_west_kirby.png"},
     notes="""
 (2 min) Data: West Kirby, near Liverpool (Neal section 11.2.1): 93% (1959), 84% (1976), 33% (1990).
@@ -686,17 +679,15 @@ For a recessive, the equilibrium is q̂ = √(u/s) (Neal Eqn 11.2).
 """)
 
 # ---------------------------------------------------------------- Summary
-new("Summary", {101: "Key points",
+new("Summary (Key Points Only)", {101: "Key points",
                 102: (["Fitness is relative: s = 1 − W",
                       "Genetic system decides the model: haploid or zygotic",
                       "Slow, fast, slow; dominance sets the speed",
                       "Selection in the wild can be strong (s ≈ 0.3)",
                       "Heterozygote advantage maintains variation",
-                      "Eugenics: unethical and ineffective"], 20),
-                106: (["**Read:** Neal (2004), Chapters 10 and 11",
-                      "**Practise:** Neal problems 11.4"], 16)},
+                      "Eugenics: unethical and ineffective"], 22)},
     notes="""
-(2 min) One summary point per section. Practical: if this lecture is followed by an R practical on selection models, link it here (add the URL to these notes). The models in R/models.R in the lecture-figures folder could be adapted for it.
+(2 min) One summary point per section. Reading: Neal (2004), Chapters 10 and 11; practice: Neal problems 11.4. Practical: if this lecture is followed by an R practical on selection models, link it here (add the URL to these notes). The models in R/models.R in the lecture-figures folder could be adapted for it.
 """)
 
 new("Activity", {101: "AFTER THE LECTURE · R",

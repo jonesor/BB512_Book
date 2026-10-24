@@ -2,7 +2,7 @@
 Run from the lecture folder:  python3 build_deck.py <path/to/BB512_Theme.pptx> <out.pptx>
 Inline markup in text: *italic*, **bold**, ~subscript~, ^superscript^.
 """
-import re, sys, copy
+import re, sys, copy, os
 from pptx import Presentation
 from pptx.util import Inches, Pt, Emu
 from pptx.dml.color import RGBColor
@@ -81,7 +81,7 @@ def add_slide_number(slide):
                 pass
             return
 
-def new(layout, fields=None, notes=None, pictures=None, number=True, hidden=False):
+def new(layout, fields=None, notes=None, pictures=None, number=False, hidden=False):
     slide = prs.slides.add_slide(LAYOUT[layout])
     if hidden:
         slide._element.set("show", "0")
@@ -96,8 +96,9 @@ def new(layout, fields=None, notes=None, pictures=None, number=True, hidden=Fals
     for s in list(slide.placeholders):
         if s.has_text_frame and not s.text_frame.text.strip() and s.placeholder_format.idx not in (fields or {}):
             s._element.getparent().remove(s._element)
-    if number and layout not in ("Title", "Photo"):
-        add_slide_number(slide)
+    # No slide numbers: BB512 decks are built without them (the layouts' number placeholders are not copied)
+    if number:
+        pass
     if notes:
         slide.notes_slide.notes_text_frame.text = notes.strip()
     return slide
@@ -170,6 +171,18 @@ def three_up(slide, items, top=2.2, h=2.75):
         textbox(slide, f"**{head}**", x, top + h + 0.08, 3.73, 0.4, size=16, color=FOREST)
         textbox(slide, text, x, top + h + 0.48, 3.73, 1.0, size=14, color=INK)
 
+def four_up(slide, items, top=2.2, h=2.45):
+    """items: list of (image, heading, text). Four pictures across the content width with native captions."""
+    w, gap = 2.76, 0.23
+    for k, (img, head, text) in enumerate(items):
+        x = 0.8 + k * (w + gap)
+        if os.path.exists(img):
+            pic(slide, img, x, top, w, h)
+        else:  # labelled placeholder until the image is added to images/
+            panel(slide, x, top, w, h, f"IMAGE NEEDED\n{os.path.basename(img)}")
+        textbox(slide, f"**{head}**", x, top + h + 0.08, w, 0.4, size=16, color=FOREST)
+        textbox(slide, text, x, top + h + 0.48, w, 1.2, size=14, color=INK)
+
 F = "figures/"; I = "images/"
 
 # ================================================================ Opening
@@ -188,7 +201,7 @@ new("Agenda", {101: ("Understanding natural selection", 32),
                       "Explain why natural selection does not produce perfect organisms",
                       "Explain how traits that reduce survival, or even reproduction, can be favoured"], 20)},
     notes="""
-(1 min) Five objectives, one per section. They are general skills; eyes, wings, guppies, peppered moths, sickle-cell haemoglobin and meerkats are the evidence we use to practise them.
+(1 min) Five objectives, one per section. They are general skills; eyes, wings, guppies, peppered moths, sickle-cell haemoglobin and bee-eaters are the evidence we use to practise them.
 Reading: Neal (2004), chapter "Understanding natural selection". This afternoon's practical (Bug hunt camouflage) practises objectives 1 and 3.
 """)
 
@@ -209,14 +222,31 @@ Stress "better able to": a favoured variant has a better *chance* of leaving off
 new("Section", {102: "01", 103: "Natural selection in a nutshell"},
     notes="(10 s) First, the logic: what has to be true for natural selection to happen?")
 
-new("Statement", {101: ("If individuals **vary** in a trait, the trait affects **reproductive success**, and the trait is **inherited**, the population will evolve.", 34),
-                  103: "Evolution by natural selection, in one sentence"},
+CONDITIONS = [("1", "Individuals **vary** in a trait"),
+              ("2", "Individuals vary in **reproductive success**"),
+              ("3", "The trait **affects** reproductive success"),
+              ("4", "The trait is **inherited**")]
+
+def conditions_row(slide, top=2.35, h=2.6):
+    """Four numbered panels, one per condition; used on the overview slide."""
+    w, gap = 2.76, 0.23
+    for k, (num, text) in enumerate(CONDITIONS):
+        x = 0.8 + k * (w + gap)
+        box = slide.shapes.add_shape(1, Inches(x), Inches(top), Inches(w), Inches(h))
+        box.fill.solid(); box.fill.fore_color.rgb = PALE; box.line.fill.background()
+        textbox(slide, f"**{num}**", x + 0.2, top + 0.15, 1.0, 0.9, size=44, color=GOLD)
+        textbox(slide, text, x + 0.2, top + 1.1, w - 0.4, 1.4, size=20, color=INK)
+
+s = new("Title Only", {100: "Natural selection: four conditions"},
     notes="""
-(1.5 min) Kept from the previous version ("In a single sentence"), reworded. The next four slides take the conditions one at a time: (1) variation in the trait, (2) variation in reproductive success, (3) a relationship between the two, (4) inheritance.
+(1.5 min) Replaces the one-sentence slide (the previous version's "In a single sentence"). It now shows the same four conditions that the next four slides take one at a time, so the numbering matches throughout the lecture, the pair task on the guppies and the Bug hunt practical.
 Conditions 1 to 3 are natural selection: some variants do better than others within a generation. Condition 4 turns selection into evolution: the next generation resembles the successful parents. (This framing follows Endler 1986, *Natural Selection in the Wild*.)
-The previous wording ended "Natural selection leads to adaptive evolution". True, but the slide now says what selection actually needs; adaptation is the outcome we see at the end of the section.
+Say the one-sentence version aloud: if all four hold, the trait changes in a predictable direction from one generation to the next.
 Logic note for students who meet the "tautology" criticism ("survival of the fittest; the fittest are those that survive"): the argument is a set of testable facts and a deduction from them. Each condition could have been false, and each has been tested (Neal, "Is natural selection a valid scientific theory?").
 """)
+conditions_row(s)
+textbox(s, "**All four together: evolution by natural selection**", 0.8, 5.25, 11.73, 0.5, size=20, color=FOREST,
+        align=PP_ALIGN.CENTER)
 
 new("Title, Bullets & Photo", {100: "Condition 1: individuals vary",
                                103: "TAKEAWAY",
@@ -233,18 +263,19 @@ new("Title & Photo", {100: "Condition 2: reproductive success varies",
     pictures={101: F + "01_rs_variation.png"},
     notes="""
 (1.5 min) Our own data. Great tits: clutch size in one season (the first bar includes boxes with 0 or 1 egg; these counts were digitised from the histogram in the previous version of the slide, so replace with the raw data if available). Soay sheep: the number of offspring produced over a whole lifetime. The lifetime distribution is extremely skewed: most sheep leave no offspring at all.
+Note that clutch size is not the same as recruitment (the number of offspring that survive to breed). Clutch size is one year's egg production; many eggs fail to hatch, many chicks die before fledging, and most fledglings do not survive to breed. Variation in recruitment, and in lifetime reproductive success (as in the Soay sheep panel), is what selection acts on, and it is usually even more skewed than clutch size.
 This is Darwin's overproduction and struggle for existence in data. A pair of great tits lays 7 to 10 eggs a year, but on average only about two offspring per pair need to survive to breed for the population to stay the same size.
 Correction to the previous notes: across species, high fecundity goes with high mortality (a positive relationship), otherwise we would be "buried in mice and small birds".
 Optional (previous version): the old slide also had photos of the nest box, a great tit in the hand, a nest with eggs, and Soay sheep being caught. They are in images/source/ if you want to add them back.
 """)
 
 new("Title & Photo", {100: "Condition 3: the trait affects reproduction",
-                      102: "Simulated data. Real example: taller West Point graduates had more children (Mueller & Mazur 2001)."},
+                      102: "Simulated data. Real example: in one cohort of West Point graduates, taller men had more children (Mueller & Mazur 2001)."},
     pictures={101: F + "02_trait_rs.png"},
     notes="""
 (2 min) Merges two slides from the previous version: the three trait-versus-reproductive-success sketches, and "Adaptive evolution is part of a continuum".
 Left and centre: the trait predicts reproductive success, so selection acts, in opposite directions. The steeper the relationship, the stronger the selection. Right: no relationship. The trait can still change from generation to generation, but only by chance (genetic drift, a later lecture). This is neutral evolution. Most real traits lie somewhere on this continuum, and drift and selection act at the same time.
-The example: Mueller & Mazur (2001) followed men from the West Point class of 1950. Taller men had more children, mainly because they were more likely to remarry (an example of selection on a human trait; the cultural context matters).
+The example: Mueller & Mazur (2001, *Behav. Ecol. Sociobiol.* 50: 302–311) followed one cohort of West Point graduates (confirm the class year before quoting it). Taller men had more children, because they were more likely to take a second or later wife, not because their wives were more fertile. One cohort is not a general rule: the academy admitted only healthy men within height limits, and other samples disagree. Nettle (2002, *Human Nature*) found that the shortest men were more often childless but the tallest did not have more children, and Stulp and colleagues found a curvilinear (peaked) relationship. A good moment to point out that the strength and shape of selection vary between populations and contexts.
 Simulated data, script 02_trait_rs.R (Poisson reproductive success; slopes +0.6, −0.6 and 0; seed 512).
 """)
 
@@ -342,14 +373,7 @@ new("Figure & Bullets", {100: "Two camera eyes, two histories",
 The vertebrate retina is "inverted": light passes through nerve cells before reaching the photoreceptors. That is not what a designer starting from scratch would do; it is what you get by modifying what was there before (the vertebrate eye develops as an outgrowth of the brain, the cephalopod eye from an infolding of the skin). Camera eyes evolved independently in the two lineages (convergent evolution).
 Nuance for curious students: the inverted design is not purely a defect. It keeps photoreceptors next to their blood supply and pigment layer, and glial cells may guide light through the retina.
 Neal's parallel example of history showing through: our airway and food pipe cross, so we can choke, because lungs evolved as outgrowths of the gut in air-gulping fish.
-""")
-
-new("Big Fact", {100: "< 400,000",
-                 102: "generations to turn a flat light-sensitive patch into a focused camera eye, assuming only 0.005% change per generation (Nilsson & Pelger 1994)"},
-    notes="""
-(1 min) Cut first if short of time. Numbers in context: Nilsson & Pelger (1994, *Proc. R. Soc. B* 256: 53–58) modelled the change from a flat patch of photoreceptors to a fish-like lens eye as 1,829 steps of 1% change in shape, each step improving image quality. With deliberately pessimistic assumptions (heritability 0.5, very weak selection), each generation changes the eye by only 0.005%, giving 363,992 generations.
-For small animals with one generation a year, that is under half a million years: a geological blink. Eyes appear in the fossil record in the Cambrian, more than 500 million years ago.
-This answers Darwin's "absurd in the highest possible degree": there is plenty of time.
+Optional aside on time (the former "< 400,000" Big Fact slide, removed for time): Nilsson & Pelger (1994, *Proc. R. Soc. B* 256: 53–58) modelled the change from a flat patch of photoreceptors to a fish-like lens eye as 1,829 steps of 1% change in shape. With deliberately pessimistic assumptions (heritability 0.5, very weak selection, 0.005% change per generation) it takes 363,992 generations: under half a million years for small animals with one generation a year. Caveat: the model covers only the eye's shape and optics, assuming the light-sensitive cells, nerves and lens proteins already exist.
 """)
 
 new("Figure & Bullets", {100: "What good is half a wing?",
@@ -365,16 +389,17 @@ new("Figure & Bullets", {100: "What good is half a wing?",
 
 s = new("Title Only", {100: "Three ideas for half a wing"},
     notes="""
-(2 min) The three hypotheses from the previous version (one slide instead of four with the same bullets), with corrections.
-Gliding (arboreal hypothesis): climbing animals that glide from trees save energy and escape predators, even without powered flight. The flying squirrel is a mammal, so it is an **analogue**: it shows that gliding works without flapping, not how birds evolved. Microraptor, a small four-winged dromaeosaur dinosaur, is usually cited as evidence for this idea.
-Pouncing and pinning prey: predatory dinosaurs may have used feathered forelimbs to balance while pouncing and holding down prey ("pouncing proavis", Garner, Taylor & Thomas 1999; prey restraint in dromaeosaurs such as *Deinonychus*, Fowler et al. 2011). Correction: the previous version used Microraptor as the example of "riding prey"; that idea comes from larger dromaeosaurs.
+(2 min) The three hypotheses from the previous version (one slide instead of four with the same bullets), with corrections. Four pictures, three ideas: the middle two go together.
+Gliding (arboreal, "trees down" hypothesis): climbing animals that glide from trees save energy and escape predators, even without powered flight. *Microraptor*, a small four-winged dromaeosaur with long flight feathers on arms and legs, is usually cited as evidence for this idea; it probably glided or flew weakly. (The previous version also showed a flying squirrel: a mammal, so only an analogue showing that gliding works without flapping. Mention it if you like; it is no longer on the slide.)
+Pouncing and pinning prey: Fowler et al. (2011, *PLoS ONE* 6: e28964) argue that dromaeosaurs such as *Deinonychus* stood on prey, gripped it with the enlarged second-toe claw and flapped their feathered arms to keep their balance on top of struggling prey ("stability flapping"), with the arms spread around the prey ("mantling"). Their model is based on how living hawks and eagles handle prey, so the red-tailed hawk shows the same behaviour today. Earlier version of the idea: "pouncing proavis" (Garner, Taylor & Thomas 1999). Correction: the previous version used *Microraptor* as the example of "riding prey"; that idea comes from larger dromaeosaurs.
 Wing-assisted incline running (WAIR): chukar partridge chicks (*Alectoris chukar*) flap their small, partly feathered wings to run up steep slopes and tree trunks long before they can fly (Dial 2003, *Science*). Video: https://www.youtube.com/watch?v=VFUNhTdcNdk
 These ideas are not mutually exclusive.
-Images carried over from the previous version; sources to confirm.
+Images: *Deinonychus*-type dromaeosaur, Fowler et al. (2011) Fig. 1, Creative Commons Attribution licence (cropped). Red-tailed hawk (*Buteo jamaicensis*) on prey, Andy Reago & Chrissy McClarren, Wikimedia Commons "Red-tailed Hawk (8191228707).jpg", CC BY 2.0 (cropped). *Microraptor* and chukar images carried over from the previous version; sources to confirm.
 """)
-three_up(s, [(I + "wing_glide.jpg", "Gliding down", "Gliding works without powered flight: the flying squirrel is a mammal analogue"),
-             (I + "wing_microraptor.jpg", "Pouncing on prey", "Feathered arms for balance while pouncing on and pinning prey"),
-             (I + "wing_wair.jpg", "Running uphill", "Chukar chicks flap small wings to run up slopes (WAIR)")])
+four_up(s, [(I + "wing_microraptor_q.jpg", "Gliding down", "*Microraptor*: four feathered wings, probably a glider"),
+            (I + "wing_deinonychus.jpg", "Pouncing on prey", "Dromaeosaurs may have flapped to stay on top of prey"),
+            (I + "wing_hawk.jpg", "\u2026as hawks do today", "A red-tailed hawk spreads its wings over its prey"),
+            (I + "wing_wair_q.jpg", "Running uphill", "Chukar chicks flap small wings to run up slopes (WAIR)")])
 
 new("Key Concept", {102: "Exaptation",
                     103: "A trait that evolved for one function and was later taken over for another.",
@@ -402,7 +427,7 @@ Endler (1980) and Reznick and colleagues moved guppies from high-predation sites
 Image: male guppies, carried over from the previous version (source to confirm). The previous version also showed experimental stream channels (images/source/guppy_stream.png); its source is unknown.
 """)
 
-new("Check Question (4 options)", {101: ("Adults are no longer eaten. After 11 years, how will age at maturity have evolved?", 28),
+new("Check Question (4 options)", {101: ("Adults are now rarely eaten. After 11 years, how will age at maturity have evolved?", 28),
                                    105: "Earlier maturity", 109: "Later maturity",
                                    113: "No change: 11 years is too short", 117: "It depends on the guppy's needs"},
     notes="""
@@ -413,7 +438,7 @@ D is the "need" misconception again: selection does not respond to need; it sort
 
 new("Title, Bullets & Photo", {100: "Guppies evolved in about 18 generations",
                                103: "TAKEAWAY",
-                               105: ("Without adult predators, males and females matured later and larger, with fewer, larger offspring.", 20)},
+                               105: ("Lab-reared fish still differed, so the change is genetic: with few adult predators, guppies matured later and larger.", 20)},
     pictures={101: F + "04_guppy_life_history.png"},
     notes="""
 (1.5 min) Real data: Reznick, Shaw, Rodd & Shaw (1997) *Science* 275: 1934–1937, Aripo River, 11 years after introduction (about 18 generations). Fish were reared in a common laboratory environment, so the differences are genetic, not plastic. All four differences are statistically significant.
@@ -422,40 +447,56 @@ Rates: thousands of darwins, several orders of magnitude faster than typical rat
 Empirical, values hard-coded from the paper's Table 1; script 04_guppy_life_history.R.
 """)
 
+new("Activity", {101: "2 MIN · PAIRS",
+                 102: ("Which of the four conditions can you see in the guppy study?", 34),
+                 103: ["Go through conditions 1 to 4 (variation, varying success, trait affects success, inheritance)",
+                       "For each one: what is the evidence, or is it only assumed?"]},
+    notes="""
+(2 min) Practises objective 1 (spot the conditions in an example). Pairs, then take one answer per condition.
+Model answer:
+1. Variation: guppies differ in age and size at maturity within each population (the lab-reared fish vary around the means on the previous slide).
+2. Reproductive success varies: below the falls many adults are eaten before they breed, so some leave offspring and others leave none.
+3. The trait affects reproductive success: under heavy adult predation, fish that mature early breed before they are caught. This is inferred from the predation regime rather than measured in the 1997 study.
+4. Inheritance: the strongest evidence. Fish from both populations were reared for two generations in a common laboratory environment and still differed, so the differences are genetic, not plastic.
+Point to draw out: the study demonstrates the outcome (evolution) and condition 4 directly; conditions 2 and 3 are supported by the ecology of the two sites. Good science distinguishes what was measured from what was inferred.
+""")
+
 new("Title, Bullets & Photo", {100: "The environment decides which trait wins",
                                103: "TAKEAWAY",
-                               105: ("Peppered moths: the dark form spread where soot blackened trees, then declined after clean-air laws.", 20)},
-    pictures={101: I + "peppered_morphs.jpg"},
+                               105: ("Birds find moths that contrast with the bark. The dark form spread where soot blackened trees, then declined after clean-air laws.", 20)},
+    pictures={101: I + "peppered_backgrounds.jpg"},
     notes="""
 (1.5 min) Peppered moth (*Biston betularia*): pale *typica* (left) and dark *carbonaria* (right). Before the Industrial Revolution the pale form was common. Around Manchester the dark form rose from about 1% in 1848 to about 99% by 1898 (Haldane's round numbers, Neal), because birds took more of the conspicuous moths on soot-darkened, lichen-free bark. After the Clean Air Acts of the 1950s the dark form declined again.
 The same allele was favoured in one place and time and disfavoured in another: the strength and even the direction of selection depend on the environment. The previous version stopped at "during the industrial revolution, dark morph common"; the reversal is the strongest evidence.
 This is exactly what students do in this afternoon's Bug hunt practical when they switch backgrounds.
 Details (Haldane's estimate of s, Kettlewell's experiments) come in the haploid and zygotic selection lecture.
-Image: Olaf Leillinger, Wikimedia Commons, CC BY-SA 2.5 (as used in the selection lecture).
+Images: left, pale *typica* camouflaged on lichen-covered bark (Mendip Wildlife watermark; carried over from the previous version, licence to confirm); right, both forms on pale birch bark, where the dark *carbonaria* stands out (previous deck file BistonC-T1.jpg, as used in the selection lecture; source to confirm). Ask: on soot-blackened bark without lichen, which would a bird see first?
 """)
 
 new("Figure & Bullets", {100: "Antibiotic resistance: favoured or costly",
                          102: (["With the antibiotic: resistant bacteria survive and spread rapidly",
                                "Without it: resistance often carries a cost, and susceptible bacteria grow faster",
                                "The same mutation can be favoured or disfavoured, depending on the environment"], 18)},
-    pictures={101: I + "antibiotics.jpg"},
+    pictures={101: F + "07_antibiotic_fitness.png"},
     notes="""
 (1 min) Cut if short of time. Correction from the previous version: it said resistance mutations are "neutral in the absence of an antibiotic". Often they are not: many resistance mutations reduce growth rate when no antibiotic is present (a fitness cost), although some are cost-free and costs are often reduced over time by compensatory mutations (Andersson & Hughes 2010, *Nature Reviews Microbiology*). That is why stopping antibiotic use does not reliably make resistance disappear.
 Either way the teaching point is the same: fitness is a property of a genotype in an environment.
-Image carried over from the previous version (source to confirm).
+Figure: illustrative values, not data (script 07_antibiotic_fitness.R): resistant bacteria grow at 0.9 of the susceptible rate without the drug, and susceptible growth falls to 0.05 with it. Replaces the pill-bottle photo.
 """)
 
 # ================================================================ Section 04
-new("Section", {102: "04", 103: "Why selection does not produce perfection"},
-    notes="(10 s) If selection is so powerful, why are organisms not perfect? Four reasons.")
+s = new("Section", {102: "04", 103: "Why selection is not perfect"},
+    notes="(15 s) If selection is so powerful, why are organisms not perfect? Name the four reasons now; each gets one slide: (1) selection cannot cross fitness valleys, (2) gene flow from other habitats, (3) costs that selection cannot avoid, e.g. sickle-cell disease in people with two copies, (4) time lags: traits shaped by past environments.")
+textbox(s, "Four reasons: valleys \u00b7 gene flow \u00b7 costs \u00b7 time lags", 0.8, 5.45, 11.0, 0.5,
+        size=20, color=RGBColor(0xC9, 0xD6, 0xC8))
 
 new("Title, Bullets & Photo", {100: "Fitness landscapes: stuck on a local peak",
                                103: "TAKEAWAY",
                                105: ("Selection only climbs uphill. A population can get stuck on a lower peak.", 20)},
     pictures={101: F + "05_fitness_landscape.png"},
     notes="""
-(1.5 min) Sewall Wright's (1932) fitness landscape, drawn here in its phenotypic form: trait value along the bottom, mean fitness as height. In reality there are many trait dimensions, so landscapes are rugged with many peaks (the 3-D surface on the previous version).
-Each generation there is some variation around the population mean, and selection moves the mean uphill. To reach the higher peak, the population would have to pass through the valley: worse intermediates. Selection alone cannot do this, because every step must be an improvement. Chance (genetic drift in small populations) or a change in the environment, which reshapes the landscape, can sometimes move populations across valleys.
+(1.5 min) Sewall Wright's (1932) fitness landscape, drawn here in its phenotypic form: trait value along the bottom, fitness as height (strictly, Wright's adaptive landscape plots the population's mean fitness against its genetic make-up; this one-trait curve shows the fitness of an individual with each trait value). In reality there are many trait dimensions, so landscapes are rugged with many peaks (the 3-D surface on the previous version).
+Each generation there is some variation around the population mean, and selection moves the mean uphill. (This "only uphill" rule assumes that fitnesses stay constant; with frequency-dependent selection mean fitness can fall.) To reach the higher peak, the population would have to pass through the valley: worse intermediates. Selection alone cannot do this, because every step must be an improvement. Chance (genetic drift in small populations) or a change in the environment, which reshapes the landscape, can sometimes move populations across valleys.
 This is the same idea as Mount Improbable, and one reason why "perfection" is unattainable.
 Schematic, script 05_fitness_landscape.R.
 """)
@@ -475,35 +516,35 @@ new("Figure & Bullets", {100: "Sickle-cell: selection is not design",
                          102: (["One copy of the HbS allele (carriers): protected against severe malaria",
                                "Two copies: sickle-cell disease, often with a shortened life",
                                "Where malaria is common, selection keeps the allele common",
-                               "No designer would protect some people by harming others"], 18)},
+                               "Selection favours the allele despite the cost to people with two copies"], 18)},
     pictures={101: I + "sickle_cells.jpg"},
     notes="""
 (1.5 min) Neal uses this example against the argument from design: natural selection is blind to the cost it imposes on some individuals.
 Critical correction from the previous version: it said "SCD is adaptive in malarial regions". The **disease** (two copies, HbSS) is never adaptive. It is the **allele** that is favoured, because heterozygous carriers (HbAS) are protected against severe malaria. This is heterozygote advantage, a form of balancing selection.
-Also reworded: carriers are usually healthy; their red cells contain both normal and sickle haemoglobin and sickle mainly at low oxygen. Correct the grammar of "Sickle cell diseases is".
+Also reworded: carriers are usually healthy; their red cells contain both normal and sickle haemoglobin and sickle mainly at low oxygen. Correct the grammar of "Sickle cell diseases is". The previous last bullet ("No designer would protect some people by harming others") was reworded to keep the point scientific; Neal makes the design argument explicitly if you want to quote him.
 Quantitative version (equilibrium allele frequency of about 0.23 from Allison's fitness estimates) in the haploid and zygotic selection lecture.
 Image: red blood cells including a sickled cell (OpenStax Anatomy and Physiology, CC BY 4.0, as used in the selection lecture).
 """)
 
 new("Title, Bullets & Photo", {100: "Ghosts of past selection",
                                103: "TAKEAWAY",
-                               105: ("Pronghorn outrun every living North American predator. Their speed probably evolved for a predator that is now extinct.", 20)},
+                               105: ("Pronghorn outrun every living North American predator. Their speed may have evolved for a predator that is now extinct.", 20)},
     pictures={101: I + "pronghorn.jpg"},
     notes="""
 (1.5 min) Pronghorn (*Antilocapra americana*). Corrections from the previous notes: pronghorn are **not antelopes** (they are the last surviving member of their own family, Antilocapridae), and they are not "faster than cheetah over any distance". Cheetahs are faster in a sprint; pronghorn can sustain high speed (over about 80 km/h in bursts) for much longer than any living North American predator.
-Hypothesis (Byers 1997, *American Pronghorn: Social Adaptations and the Ghosts of Predators Past*): their speed evolved under predation by the "American cheetah" *Miracinonyx*, which went extinct at the end of the Pleistocene, around 12,000 years ago. *Miracinonyx* was a cheetah-like relative of the puma rather than a true cheetah, and the idea is plausible but hard to test.
+Hypothesis (Byers 1997, *American Pronghorn: Social Adaptations and the Ghosts of Predators Past*): their speed evolved under predation by the "American cheetah" *Miracinonyx*, which went extinct at the end of the Pleistocene, around 12,000 years ago. *Miracinonyx* was a cheetah-like relative of the puma rather than a true cheetah, and the idea is plausible but has not been tested. An alternative is that sustained speed helps on long seasonal migrations.
 General point: traits reflect selection in past environments. A trait that makes little sense today may have made sense before (also called evolutionary lag).
 Image: pronghorn running, USDA, Flickr (public domain, to confirm).
 """)
 
 # ================================================================ Section 05
-new("Section", {102: "05", 103: "Fitness is genes passed on, not survival"},
-    notes="(10 s) “Survival of the fittest” is misleading. What counts is copies of genes in future generations.")
+new("Section", {102: "05", 103: "Inclusive fitness: genes passed on, not survival"},
+    notes="(10 s) “Survival of the fittest” is misleading. What counts is copies of genes in future generations. Name the term: **inclusive fitness** is an individual's own reproductive success (direct fitness) plus its effect on the reproduction of relatives, weighted by relatedness (indirect fitness). Up to now \u201cfitness\u201d has meant direct fitness; this section widens it.")
 
 new("Figure & Bullets", {100: "Dying for reproduction",
-                         102: ["Selection favours traits that increase reproductive success, even at the cost of survival",
-                               "Sexual cannibalism: male redback spiders that are eaten during mating father more offspring",
-                               "Matriphagy: *Stegodyphus* spider mothers are eaten by their young"]},
+                         102: (["Selection favours traits that increase reproductive success, even at the cost of survival",
+                               "Sexual cannibalism (top: praying mantis). In redback spiders, males that are eaten during mating father more offspring",
+                               "Matriphagy (bottom: *Stegodyphus*): spider mothers are eaten by their young"], 18)},
     pictures={101: I + "cannibalism.jpg"},
     notes="""
 (1.5 min) Previously "Taken to an extreme: cannibalism", moved here because it shows that fitness means reproduction, not survival.
@@ -515,13 +556,14 @@ Images carried over from the previous version (sources to confirm).
 
 new("Title, Bullets & Photo", {100: "Why help others breed?",
                                103: "TAKEAWAY",
-                               105: ("Meerkat helpers raise pups that are not their own. Helping can spread genes if the pups are relatives.", 20)},
-    pictures={101: I + "meerkats.jpg"},
+                               105: ("White-fronted bee-eater helpers choose to help their closest relatives. Helping kin passes on copies of your own genes.", 20)},
+    pictures={101: I + "bee_eaters.jpg"},
     notes="""
 (1 min) So far we have been individual-focused. Why would an individual give up breeding to help others (altruism)?
-Examples: cooperative breeders such as meerkats (*Suricata suricatta*), where subordinate helpers babysit and feed pups; social insects, where workers do not reproduce and raise the queen's offspring.
+Example: white-fronted bee-eaters (*Merops bullockoides*) in Kenya live in extended-family clans. Many adults do not breed in a given year but help to feed the nestlings of others. Helpers do not help at random: they help at the nest of the breeders they are most closely related to, and are more likely to help when close kin are available (Emlen & Wrege 1988, *Behav. Ecol. Sociobiol.* 23: 305–315). That kin discrimination is what kin selection predicts. Social insects, where workers raise the queen's offspring, are the other classic example.
+Replaces meerkats: meerkat helpers do not adjust their care to relatedness (Duncan et al. 2019, *Am. Nat.* 193: 841–851, "largely indiscriminate altruists"), and group augmentation and direct benefits also explain helping, so they are a poor first example of kin selection.
+PHOTO NEEDED: the picture is a labelled placeholder. Replace it with a photo of white-fronted bee-eaters (e.g. Wikimedia Commons), 7.40 × 4.25 in, saved as images/bee_eaters.jpg, and add the credit to images/CREDITS.md.
 Correction from the previous version: "parental care in general" was listed as an example. Caring for your own offspring increases your own (direct) reproductive success, so it does not need kin selection to explain it.
-Image: meerkats at Tswalu, Wikimedia Commons (licence to confirm).
 """)
 
 new("Title, Bullets & Photo", {100: "Kin selection: relatives share genes",
@@ -539,19 +581,19 @@ new("Activity", {101: "THIS AFTERNOON · NETLOGO",
                  102: ("You are the predator: can you make bugs evolve camouflage?", 34),
                  103: ["Bug hunt camouflage: hunt bugs on a background, then switch backgrounds",
                        "Watch how the bugs' colour and your hunting rate change",
-                       "Find all four conditions in the model. Which one is mutation?"]},
+                       "Find all four conditions in the model. Where does new variation come from?"]},
     notes="""
 (1 min) Preview of the practical (BB512 course book, chapter "Bug hunt camouflage (NetLogo)": https://jonesor.github.io/BB512_Book/ ; check the chapter link before posting).
 It practises objectives 1 and 3: variation in colour, reproductive success that depends on colour (you eat conspicuous bugs), inheritance with small mutations ("max-mutation-step"), and context-dependence when the background changes (the peppered moth story).
-Answer to the last prompt: mutation is the max-mutation-step slider; it creates the new variation each generation.
+Answer to the last prompt: new variation comes from mutation (the max-mutation-step slider), which makes offspring colour differ slightly from the parent. Mutation is not one of the four conditions; it supplies the variation that condition 1 needs.
 """)
 
 new("Summary", {101: "Key points",
-                102: (["Variation + reproductive success + inheritance = evolution",
+                102: (["Four conditions: variation, varying success, a trait\u2013success link, inheritance",
                        "Cumulative selection builds complexity from working steps",
                        "Selection can be fast; the environment sets its direction",
-                       "Local peaks, gene flow, trade-offs and history limit perfection",
-                       "Fitness is genes passed on, via offspring or relatives"], 18),
+                       "Valleys, gene flow, costs and time lags limit perfection",
+                       "Inclusive fitness: genes passed on via offspring or relatives"], 18),
                 106: (["**Read:** Neal (2004), “Understanding natural selection”",
                        "**Practical:** Bug hunt camouflage",
                        "**Next:** Exponential growth"], 16)},

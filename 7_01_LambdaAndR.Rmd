@@ -20,10 +20,10 @@ Learning outcomes:
 
 | Symbol  | Meaning  | Alternatives   |
 |---------|----------|----------------|
-| $R$     | Per capita rate of increase, per capita population growth rate   | $R_m$ (Neal), $r$ (Gotelli), $r_c$ is used as the  $R$ *estimated* from a life table in Neal    |
-| $r$     | Intrinsic rate of increase      | $r_m$  |
+| $R$     | Per capita rate of increase, per capita population growth rate (discrete time)   | $R_m$ (Neal), $r_d$ (Gotelli)    |
+| $r$     | Intrinsic rate of increase (continuous time)      | $r_m$ (Neal). From a life table, $r \approx \ln(R_0)/T$, which Neal calls $r_c$, the capacity for increase  |
 |  $\lambda$    | Population growth rate, population multiplication rate      |   |
-|  $R_0$   | Net reproductive rate: the expected number of offspring per individual, per generation ($\sum l_x m_x$)  |  Net Reproductive Rate |
+|  $R_0$   | Net reproductive rate: the expected number of female offspring per female, per generation ($\sum l_x m_x$)  |  Not the same as the "basic reproduction number" of epidemiology, which uses the same symbol |
 
 
 ## Discrete time model

@@ -10,24 +10,15 @@ Understanding such trade-offs sheds light on the fascinating strategies that org
 ::: {.do-something}
 Learning outcomes: 
 
-- Understanding the concept of a life history trade off.
-- Understanding how balancing the benefits and drawbacks of trade offs tends to lead to intermediate trait values.
+- Calculate the expected number of surviving offspring from clutch size and chick survival.
+- Explain how a trade-off between offspring number and offspring survival produces an intermediate optimum.
+- Predict how the optimum changes when the environment, or the cost of breeding to the parents, changes.
 
 :::
 
-## Worked example
+## Before you start: predict
 
-Let's consider a clutch containing **2 eggs**, where the probability of each chick surviving is **0.85**.
-
-To calculate the expected number of surviving chicks, we multiply the number of eggs by the survival probability:
-
-$$
-2 \times 0.85 = 1.7
-$$
-
-So, for a clutch of 2 eggs, we expect **1.7 surviving chicks on average**. Of course, an individual nest cannot contain 1.7 surviving chicks, but this is the average we would expect across many nests of this size.
-
-We can repeat this calculation for other clutch sizes to investigate how the expected number of surviving chicks changes as clutch size increases. This will help us identify the clutch size that produces the greatest number of surviving offspring.
+Before you calculate anything, make a prediction and write it down: will a big bird that lays **10 eggs** raise more surviving chicks than one that lays **4 eggs**, or fewer? Why? You will check your prediction below.
 
 
 ## Your task
@@ -63,14 +54,20 @@ What do you notice? What is the optimum number of eggs to lay?
 
 Advanced: What happens to the optimum as you change the relationship between clutch size and survival?
 
+## Assumptions
+
+This simple model assumes that every egg hatches, that every chick in a nest has the same chance of surviving, that we count only one breeding season, and that laying and raising more eggs has no cost to the parents' own survival. Question 3 relaxes the last assumption.
+
 
 ## Questions
 
-1. What is Lack's clutch size trade-off, and why is it considered a fundamental concept in evolutionary ecology?
-2. How does the trade-off between clutch size and offspring quality manifest in different bird species, and what factors influence their clutch size decisions?
-3. What are the potential advantages and disadvantages of producing larger clutches with smaller-sized eggs compared to smaller clutches with larger-sized eggs?
+1. What is Lack's hypothesis? Does the big bird's optimum support it?
+2. In a good food year, each chick's survival probability in clutches of 5 or more eggs is 0.2 higher (for example, 0.50 becomes 0.70). Recalculate. What is the best clutch size now, and why?
+3. Raising chicks is costly for the parents. Suppose the probability that a parent survives to breed again next year is $0.8 - 0.08 \times \text{eggs}$ (so 0.72 with 1 egg, and 0.48 with 4 eggs). On average, a parent then breeds $1 / (1 - \text{parent survival})$ times in its life. Calculate the number of surviving chicks over a parent's whole life for each clutch size. Does the best clutch size change? What does this mean for Lack's hypothesis?
+4. (Discussion) Birds also trade off the number of eggs against the size of each egg. What would you need to add to this model to study that trade-off?
 
 ## Takeaways
 
 - Trade-offs often produce intermediate optimal strategies.
 - Expected reproductive success depends on both offspring number and survival probability.
+- If raising young costs the parents' future survival, the best clutch is smaller than the one that produces the most surviving young in a single season.

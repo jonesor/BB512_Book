@@ -5,6 +5,7 @@
 # Right: frequent migration mixes the forms, so neither habitat is well adapted (here 50%).
 # The outcome in reality depends on the migration rate relative to the strength of selection
 # (migration-selection balance; see the lecture on migration and gene flow). Seed 512.
+# Pale (desert-matching) form: gold circles. Green (grass-matching) form: forest-green triangles.
 source("R/theme_bb512.R")
 fam <- "Avenir Next"
 set.seed(512)
@@ -33,13 +34,15 @@ p <- ggplot2::ggplot() +
                      colour = bb512$bg, linewidth = 1.5) +
   ggplot2::geom_text(data = lab, ggplot2::aes(x, y, label = habitat), family = fam, size = 5.5,
                      fontface = "bold", colour = bb512$ink) +
-  ggplot2::geom_point(data = pts, ggplot2::aes(x, y, colour = form), size = 4.2) +
+  ggplot2::geom_point(data = pts, ggplot2::aes(x, y, colour = form, shape = form), size = 4.4) +
   ggplot2::geom_segment(data = arrows, ggplot2::aes(x = x, xend = xend, y = y, yend = y),
                         colour = bb512$ink, linewidth = 1,
                         arrow = ggplot2::arrow(length = ggplot2::unit(0.1, "in"), type = "closed")) +
   ggplot2::facet_wrap(~scenario, nrow = 1) +
   ggplot2::scale_fill_manual(values = c(Desert = "#E8D9B4", Grassland = "#C9D6C8"), guide = "none") +
   ggplot2::scale_colour_manual(values = c(pale = bb512$gold, green = bb512$forest), guide = "none") +
+  # Shape as well as colour (pale form = circle, green form = triangle) for colour-blind viewers
+  ggplot2::scale_shape_manual(values = c(pale = 16, green = 17), guide = "none") +
   ggplot2::coord_cartesian(xlim = c(0, 2), ylim = c(0, 1.05), expand = FALSE) +
   ggplot2::theme_void(base_family = fam) +
   ggplot2::theme(plot.background = ggplot2::element_rect(fill = bb512$bg, colour = NA),

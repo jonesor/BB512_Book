@@ -317,18 +317,27 @@ Darwin read the 6th edition (1826) of Malthus's *Essay* on 28 September 1838 (No
 Script 01_timeline.R (historical dates, not data).
 """)
 
-new("Figure & Bullets", {100: "Charles Darwin (1809–1882)",
-                         102: (["Born in Shrewsbury into a wealthy family of physicians",
-                                "Grandfathers: Erasmus Darwin (physician, poet and early evolutionist) and Josiah Wedgwood (potter)",
-                                "Edinburgh, medicine (1825–27): hated surgery, left in his second year",
-                                "Cambridge (1828–31): a degree on the way to becoming a clergyman",
-                                "Real passions: beetles, botany with John Henslow, and geology"], 18)},
+new("Figure & Bullets", {100: "Charles Darwin: not a promising student",
+                         102: (["Born 1809 in Shrewsbury, into a wealthy family of doctors",
+                                "Aged 16, sent to Edinburgh to study medicine with his brother Erasmus",
+                                "Hated it: dull lectures, and he fled an operation done without anaesthetic",
+                                "Gave up in his second year, for shooting and collecting",
+                                "Plan B: Cambridge (1828–31), to become a clergyman"], 18)},
     pictures={101: I + "sharples.jpg"},
     notes="""
-(1.5 min) His father was not pleased: "You care for nothing but shooting, dogs, and rat-catching, and you will be a disgrace to yourself and all your family" (Darwin's *Autobiography*). Neal notes that biographies differ on whether this was said before Edinburgh or after; the *Autobiography* places it at the end of his schooling.
-In Edinburgh his mentor was Robert Grant, a sponge expert and convinced evolutionist (a follower of Lamarck), who introduced Darwin to careful comparative work on marine invertebrates.
-Correction to the previous version: natural history was not a required part of a theology degree. Darwin attended Henslow's botany lectures voluntarily, and Henslow became his mentor. In 1831 he also learned field geology from Adam Sedgwick in north Wales.
-Painting: Ellen Sharples (1816), Charles with his sister Catherine. Public domain.
+(1.5 min) Restored from the previous version, with detail from Neal ch. 1. Darwin's father Robert and grandfather Erasmus were both physicians trained at Edinburgh, so Charles was expected to follow. He went in 1825, aged 16, with his older brother Erasmus ("Ras").
+He found most of the medical lectures incredibly dull (the anatomy professor, Alexander Monro III, was rumoured to use his own grandfather's lecture notes), and he hated dissection. The final straw was surgery before general anaesthetics: he watched two operations and fled during the second, never to return to an operating theatre.
+Not wasted time, though: he learned taxidermy from John Edmonstone, a freed slave from Guyana, joined the student Plinian Society, and collected marine invertebrates with Robert Grant, a sponge expert and convinced evolutionist (a follower of Lamarck). He left in April 1827, in his second year.
+Grandfathers: Erasmus Darwin (physician, poet and early evolutionist) and Josiah Wedgwood (potter).
+Painting: Ellen Sharples (1816), Charles (aged 7) with his sister Catherine. Public domain.
+""")
+
+new("Quote", {101: ("You care for nothing but shooting, dogs, and rat-catching, and you will be a disgrace to yourself and all your family.", 36),
+              103: "ROBERT DARWIN TO HIS SON, AS RECALLED IN CHARLES'S AUTOBIOGRAPHY"},
+    notes="""
+(1 min) Kept from the previous version, and given its own slide. Pause on it: the student his father wrote off became the most influential biologist in history. A good moment to reassure anyone who is unsure about their own start at university.
+Timing: Darwin's *Autobiography* (written 1876, published 1887) places the remark at the end of his schooling at Shrewsbury, before Edinburgh; Neal (and the previous version) puts it after Edinburgh. Biographies differ, so it is safest to say "his father told him".
+What next: his father decided he should become a Church of England vicar, a respectable career that left time for natural history. At Cambridge Darwin nearly failed again, collecting beetles when he should have been studying, then crammed and passed in January 1831, tenth of 178. Correction to the previous version: natural history was not part of the degree. Darwin attended Henslow's botany lectures voluntarily, and Henslow became his mentor; in 1831 Adam Sedgwick also taught him field geology in north Wales. Henslow then recommended him for the Beagle.
 """)
 
 new("Figure & Bullets", {100: "Geology: how fast does the earth change?",
@@ -391,17 +400,21 @@ The finches are now a classic case of natural selection in action (the Grants on
 Image: Gould's drawings from the *Journal of Researches* (1845), public domain.
 """)
 
-new("Title & Photo", {100: "A missed clue: giant tortoises",
-                      102: "Tortoise shell shape and habitat on different islands. Images: Sulloway (2009) *Journal of the History of Biology*."},
+new("Title, Bullets & Photo", {100: "A missed clue: giant tortoises",
+                               103: "IGNORED ADVICE",
+                               105: ("The governor told Darwin he could tell a tortoise's island from its shell. Darwin thought they had been brought in, and did not record where his came from.", 17)},
     pictures={101: I + "tortoises.jpg"},
     notes="""
 (1 min) The acting governor, Nicholas Lawson, told Darwin he could tell which island a tortoise came from by its shell. Darwin ignored it: he thought the tortoises had been brought from the Indian Ocean by buccaneers.
-He could have made the same argument as for the mockingbirds. Instead the crew took 18 giant tortoises on board for fresh meat, and ate them, throwing the shells overboard.
-Saddle-backed shells (left) are found on dry islands, where tortoises reach up to browse cactus; domed shells on wetter, higher islands.
+The crew did eat the evidence, sort of: FitzRoy recorded taking 18 small and 30 large tortoises on Chatham Island (San Cristóbal) for fresh meat; all were eaten crossing the Pacific and the remains, shells included, thrown overboard (Neal mentions only the 18). But they all came from one island, so they could not have shown differences between islands anyway.
+The real missed clue was Darwin's: he dismissed Lawson and did not record where tortoises came from. He, FitzRoy and Covington brought back juveniles from James, Charles and Hood islands as pets, too young and poorly labelled to settle anything (Darwin's survives at the Natural History Museum as *Chelonoidis darwini*).
+The tortoises were not irrelevant: his July 1836 note doubting the stability of species opens with the Spaniards telling a tortoise's island from its shell. But the mockingbirds, labelled by island, carried the argument.
+Images: Sulloway (2009) *Journal of the History of Biology*. Saddle-backed shells are found on dry islands, where tortoises reach up to browse cactus; domed shells on wetter, higher islands.
 """)
 
-new("Title & Photo", {100: "Fossils resemble the living species in the same place",
-                      102: "Extinct South American giants and their living relatives. Image credits in the notes."},
+new("Title, Bullets & Photo", {100: "Fossils resemble the living species in the same place",
+                               103: "WHY?",
+                               105: ("Recent fossils in South America look like the sloths and armadillos living there today. Unless they are related, why?", 17)},
     pictures={101: I + "fossils.jpg"},
     notes="""
 (1.5 min) In Argentina Darwin dug up fossils of giant ground sloths (*Megatherium*, *Scelidotherium*) and the armour of glyptodonts. Recent fossils in shallow deposits looked like the living sloths and armadillos of the same continent. Why would extinct and living species be similar in the same place, unless the living ones descended from the extinct ones (or from shared ancestors)?
@@ -414,13 +427,12 @@ new("Figure & Bullets", {100: "The ideas were not totally new",
                          102: (["Al-Jāḥiẓ (9th c.): animals struggle to survive, shaped by environment",
                                 "Robert Hooke (17th c.): fossils are extinct species",
                                 "Erasmus Darwin (1794): animals from one “living filament”",
-                                "Lamarck (1809): change by inheriting acquired characteristics",
-                                "*Vestiges* (1844, anonymous): popular, poor science"], 18)},
+                                "Lamarck (1809): change by inheriting acquired characteristics"], 18)},
     pictures={101: I + "predecessors.jpg"},
     notes="""
 (1.5 min) Darwin's contribution was not the idea that species change but (1) a mass of evidence that they had, and (2) a workable mechanism, natural selection.
 Al-Jāḥiẓ, *Kitāb al-Ḥayawān* (Book of Animals), Basra, 9th century: often credited with early ideas about the struggle for existence and environmental influence. Historians debate how close these were to evolution. The previous version's quotation ("God invested matter with energy for development") could not be traced to a source and has been removed.
-Erasmus Darwin, *Zoonomia* (1794). Lamarck, *Philosophie zoologique* (1809): the best-known evolutionary theory before Darwin (Neal ch. 1). Robert Chambers published *Vestiges of the Natural History of Creation* anonymously in 1844; scientists savaged it, which made Darwin even more cautious (section 06). Denis Diderot (18th century) also speculated about species arising by trial and survival.
+Erasmus Darwin, *Zoonomia* (1794). Lamarck, *Philosophie zoologique* (1809): the best-known evolutionary theory before Darwin (Neal ch. 1). Denis Diderot (18th century) also speculated about species arising by trial and survival.
 Images: a giraffe from *Kitāb al-Ḥayawān* by al-Jāḥiẓ (public domain, carried over from the previous version); Jean-Baptiste Lamarck, portrait by Charles Thévenin (public domain, Wikimedia Commons).
 """)
 
@@ -633,7 +645,6 @@ new("Section", {102: "06", 103: "Publication and reception"},
 
 new("Title & Bullets", {100: "Why wait 20 years?",
                         101: (["1842 sketch and 1844 essay: unpublished, with instructions to his wife to publish if he died",
-                               "Saw scientists savage *Vestiges* (1844)",
                                "“It is like confessing a murder”: letter to Joseph Hooker, 1844",
                                "Eight years classifying barnacles (1846–54)",
                                "1856: began a huge book, with no hurry"], 20)},
@@ -669,16 +680,14 @@ Image: first page of the joint Darwin–Wallace paper, *Journal of the Proceedin
 """)
 
 # ================================================================ Summary and practical
-new("Summary", {101: "Key points",
-                102: (["Evolution: heritable change in populations",
-                       "Two theories: common descent (pattern) and natural selection (mechanism)",
+new("Summary (Key Points Only)", {101: "Key points",
+                102: (["Evolution: heritable change in populations over generations",
+                       "Two theories: common descent (the pattern) and natural selection (the mechanism)",
                        "Selection follows from variation, heritability and overproduction",
                        "Fossils, geography and anatomy support common descent",
-                       "Missing piece: particulate (Mendelian) inheritance"], 17),
-                106: (["**Read:** Neal, chapters 1 and 2",
-                       "**Practical:** The Blind Watchmaker",
-                       "**Next:** Understanding natural selection (Neal ch. 3)"], 15)},
-    notes="(1 min) One point per objective. Ask students which of the five they could explain to a friend without notes.")
+                       "The missing piece was particulate (Mendelian) inheritance"], 20)},
+    notes="""(1 min) One point per objective. Ask students which of the five they could explain to a friend without notes.
+Before next time (no longer on the slide): read Neal chapters 1 and 2; do the Blind Watchmaker practical; next lecture is Understanding natural selection (Neal ch. 3).""")
 
 new("Activity", {101: "PRACTICAL · R",
                  102: ("Can random typing plus selection write a sentence?", 32),

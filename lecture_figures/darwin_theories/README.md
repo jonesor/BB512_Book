@@ -7,10 +7,10 @@ Run all figures from this folder with `source("render_all.R")` or `LANG=C.UTF-8 
 | Script | Slide | Layout | Description | Type |
 |---|---|---|---|---|
 | `01_timeline.R` | 15 | `full` | Darwin's life and ideas 1809–1900, with the Beagle voyage and the 20-year delay | Historical dates |
-| `02_malthus.R` | 27 | `takeaway` | Population doubling every 25 years against food increasing by a fixed amount (Malthus's own numbers) | Analytical |
-| `03_facts_inferences.R` | 28 | `full` | Darwin's argument: five facts, three inferences (Neal, after Mayr 1982) | Schematic |
-| `04_blending.R` | 41 | `takeaway` | Variance under blending (halves each generation) vs particulate inheritance (20 loci) | Simulation, N = 2000, seed 512 |
-| `05_speciation_pump.R` | 32 | `full` | Allopatric "species pump": a falling lake level splits one species into two | Schematic, redrawn from the previous deck |
+| `02_malthus.R` | 28 | `takeaway` | Population doubling every 25 years against food increasing by a fixed amount (Malthus's own numbers) | Analytical |
+| `03_facts_inferences.R` | 29 | `full` | Darwin's argument: five facts, three inferences (Neal, after Mayr 1982) | Schematic |
+| `04_blending.R` | 42 | `takeaway` | Variance under blending (halves each generation) vs particulate inheritance (20 loci) | Simulation, N = 2000, seed 512 |
+| `05_speciation_pump.R` | 33 | `full` | Allopatric "species pump": a falling lake level splits one species into two | Schematic, redrawn from the previous deck |
 
 `images/prepare_images.py` crops, letterboxes and assembles photographs into grids at their placeholder sizes (sources in `images/source/`, credits in `images/CREDITS.md`). `build_deck.py` builds the PPTX from `BB512_Theme.pptx`, copying bullet and paragraph styles from the theme's sample slides, and writes speaker notes for every slide. Inline markup: `*italic*`, `**bold**`, `~subscript~`, `^superscript^`, backticks for code (Menlo).
 

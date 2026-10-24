@@ -28,7 +28,9 @@ cells <- rbind(
   cell(2, 2, "allo", "A[2]*A[2]",  "q^2*(1-F)"),
   cell(2, 3, "auto", "A[2]*A[2]",  "qF")
 )
-fills <- c(allo = bb512$forest, het = bb512$pale, auto = bb512$clay)
+# Blue vs clay (not green vs clay) so the two homozygote types stay distinct
+# for red-green colour-blind viewers.
+fills <- c(allo = bb512$blue, het = bb512$pale, auto = bb512$clay)
 txt   <- c(allo = bb512$bg,     het = bb512$ink,  auto = bb512$bg)
 cells$fill <- fills[cells$type]; cells$tcol <- txt[cells$type]
 
@@ -54,7 +56,7 @@ p <- ggplot2::ggplot(cells) +
   ggplot2::annotate("text", x = c(-0.2, 0.30, 0.66), y = -0.08,
                     label = c("Allozygous homozygote", "Heterozygote", "Autozygous (IBD)"),
                     hjust = 0, size = 5, fontface = "bold",
-                    colour = c(bb512$forest, bb512$grey, bb512$clay),
+                    colour = c(bb512$blue, bb512$grey, bb512$clay),
                     family = "Avenir Next") +
   ggplot2::coord_cartesian(xlim = c(-0.2, 1.02), ylim = c(-0.12, 1.1), clip = "off") +
   ggplot2::theme_void() +

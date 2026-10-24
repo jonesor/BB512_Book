@@ -28,13 +28,17 @@ Two ways. Firstly, natural selection does not have a specific long-term goal (i.
 
 ## Solutions: Bug hunt camouflage
 
-*	_What happens to the average colour of the bug population with time as you hunt?_
+*	_Predictions_
+
+Typical good predictions: the average colour will move towards the background colour; it will take longer to catch 10 bugs as time goes on; after switching background, catching will suddenly become easy again, and the bugs will then start to evolve towards the new background. Students who predicted that individual bugs would change colour have met a key misconception (see the genotype question below).
+
+*	_What happens to the average colour of the bug population with time as you hunt? Was your prediction correct?_
 
 The colour evolves to become more similar to the background colour because you (the hunter) find it harder to find these better-camouflaged individuals.
 
-*	_What happens to your hunting efficiency?_
+*	_What happens to your hunting efficiency? Use your measurements._
 
-Your hunting efficiency tends to decrease with time because the bugs are evolving to be harder to see. They are evolving camouflaged colours.
+Your hunting efficiency tends to decrease with time because the bugs are evolving to be harder to see. They are evolving camouflaged colours. In your measurements, the time to catch 10 bugs should increase over the first two minutes, drop sharply when you switch background (the bugs are suddenly conspicuous), and then increase again as the bugs adapt to the new background. The exact times differ between students, because each of you is a different predator, but the pattern should be the same.
 
 *	_Would you say that the bug population becomes worse or better adapted to their environment?_
 
@@ -52,9 +56,30 @@ Changing the environment means that the individuals are now poorly-adapted to th
 
 No, individuals' genotypes are fixed. The change in the population occurs because of selection of individuals to reproduce. Better-adapted individuals are more likely to reproduce.
 
-*	_Increasing the “max-mutation-step” makes bug offspring less like their parents. How do you think this will influence the speed of adaptation of the bugs?_
+*	_Increasing the "max-mutation-step" makes bug offspring less like their parents. How do you think this will influence the speed of adaptation of the bugs?_
 
 Increasing the amount of variation in offspring will tend to speed up adaptation. However, there are limits: too much variation can cause maladaptation of offspring. For example, if a parent is well-adapted (perfectly camouflaged), too much variation in offspring could lead to some offspring being poorly-camouflaged and therefore vulnerable to predation. 
+
+*	_Where do you see each of the four conditions in the model? Where does new variation come from?_
+
+1. **Individuals vary in a trait:** the bugs differ in colour.
+2. **Individuals vary in reproductive success:** bugs that you catch leave no more offspring; survivors may be chosen to reproduce.
+3. **The trait affects reproductive success:** colours that contrast with the background are caught first, so they are less likely to survive and reproduce.
+4. **The trait is inherited:** offspring get their colour genes from their parent.
+
+New variation comes from mutation: each offspring's colour genes can differ slightly from its parent's (the "max-mutation-step" slider). Mutation is not one of the four conditions; it supplies the variation that condition 1 needs.
+
+*	_Newborn bugs start very small. Could this let some bugs escape for reasons that have nothing to do with their colour? How might that affect the results?_
+
+Yes. A newborn bug is hard to see because it is small, whatever its colour, so for a short time it escapes for a reason that has nothing to do with camouflage. This adds chance to who survives and weakens selection on colour slightly. It does not stop camouflage evolving, because every bug is small only briefly and colour still matters once it has grown.
+
+*	_How does this model differ from a real predator–prey system? Give at least two differences._
+
+Possible answers: there is only one predator, and it does not evolve (although you do learn!); reproduction is asexual, with one parent and no recombination; the population size is fixed, so there is no population growth or decline; bugs do not move or choose where to rest; the only selection is predation on colour, whereas real prey face many other pressures (temperature, food, mates); generations overlap in an unusual way, because one offspring is born each time a bug is caught.
+
+*	_Optional extension: gene flow and local adaptation_
+
+With a small "offspring-distance", offspring stay close to their parents, so bugs in each patch of background are mostly the descendants of bugs that survived in that patch: each patch can evolve its own matching colour (local adaptation). With a large "offspring-distance", offspring are scattered across the whole background. This is like frequent gene flow between populations: well-camouflaged colours from one patch keep arriving in patches where they stand out, so local adaptation is weaker or absent. Whether gene flow swamps local adaptation depends on how much movement there is compared with the strength of selection.
 
 
 ## Solutions: Geometric growth
@@ -227,12 +252,23 @@ Chaotic dynamics are deterministic in the sense that if you have the same initia
 
 ## Solutions: Life tables and survivorship types
 
-The take home messages for this exercise are that life tables are a rich source of information on the life history of a population or species. From a simple accounting of ages at death and fertility we can obtain information about the "shape" of the survivorship trajectory: do most deaths happen early or late? Is mortality risk constant with age? We can also calculate measures including **generation time**, $R_0$ and population growth rate. You should know what these measures mean.
+The take home messages for this exercise are that life tables are a rich source of information on the life history of a population or species. From a simple accounting of survivors and fertility at each age we can obtain information about the "shape" of the survivorship trajectory: do most deaths happen early or late? Is mortality risk constant with age? We can also calculate measures including life expectancy, **generation time**, $R_0$ and population growth rate. You should know what these measures mean.
 
+**Life table.** For the cohort in the *Life table* sheet:
+
+- $R_0 = \sum l_x m_x = 4.06$ daughters per female, so the population is growing.
+- $T = \sum x l_x m_x / R_0 = 15.35/4.06 = 3.78$ years.
+- $r \approx \ln(R_0)/T = \ln(4.06)/3.78 = 0.37$ per year ($\lambda = e^r \approx 1.45$). The exact value from the Euler–Lotka equation is $r = 0.41$ ($\lambda = 1.50$): $\ln(R_0)/T$ slightly underestimates $r$ when generations overlap.
+- Life expectancy at birth is $e_0 = 3.76$ years. It rises to $e_1 = 4.14$ years: once the risky first year is survived, an individual can expect to live longer than a newborn.
+- $p_x$ and $q_x$ for each age, e.g. $p_2 = 254/298 = 0.852$ and $q_2 = 0.148$; $q_9 = 0.88$ (only 5 of 43 nine-year-olds survive to age 10).
+
+**Declining force of selection.** Adding one daughter at age $x$ raises $R_0$ by exactly $l_x$: by 0.70 (17%) at age 1, 0.60 (15%) at age 2, 0.13 (3%) at age 8 and 0.01 (0.2%) at age 10. The effect falls with age because fewer and fewer females survive to use the extra reproduction. (The approximate $r = \ln(R_0)/T$ behaves oddly here: it actually *falls* slightly when a daughter is added at ages 7 to 10, because $T$ increases more than $\ln(R_0)$. The exact $r$ always increases, by 40% at age 1 but by less than 1% from age 7 onwards. This is why we use $R_0$ for the experiment.)
+
+**Survivorship curves.** Population 1 is Type I ($q_x$ rises with age, from 0.02 to over 0.6); Population 2 is close to Type II ($q_x$ stays roughly between 0.25 and 0.4, so $\ln(l_x)$ falls in a nearly straight line); Population 3 is Type III ($q_x$ falls from 0.73 in the first year to about 0.1 in old age).
 
 You should understand the relationship between mortality risk and survivorship curve. In other words, you should be able to describe, or do a rough sketch of mortality risk with age, if you have a survivorship curve (or vice versa). 
 
-The completed Excel spreadsheet is [here](https://www.dropbox.com/s/j8uv2wf7nz0ygmp/Life%20tables%20exercise%20-%20complete.xlsx?dl=1). 
+The completed Excel spreadsheet is [here](https://www.dropbox.com/scl/fi/tsvfeezeiz7z6j7b9jrju/Life_Tables_Exercise_Complete.xlsx?rlkey=ius84aakppl11oqvdw5ksnlyp&dl=1). 
 
 
 
@@ -262,7 +298,9 @@ The main take home messages for this class are that you should:
 
 ## Solutions: How many eggs should a bird lay?
 
-You can find a completed Excel spreadsheet [here](https://www.dropbox.com/s/tcpxmdfvm35jzgr/How%20many%20eggs%20-%20answers.xlsx?dl=1).
+You can find a completed Excel spreadsheet [here](https://www.dropbox.com/scl/fi/c6f1j0g8yoqx2c5o8m98k/How_Many_Eggs_Answers.xlsx?rlkey=ru8jhmcfaxa33ijqgqo6etpu5&dl=0).
+
+The expected numbers of surviving chicks for clutches of 1 to 10 eggs are 0.9, 1.7, 2.46, **2.8**, 2.5, 1.8, 1.54, 1.2, 0.9 and 0.5, so the optimum is **4 eggs**. Laying 10 eggs gives only 0.5 surviving chicks on average.
 
 The take-home message is that the trade-off between number of eggs and juvenile survival leads to an optimum number of eggs required to maximise reproductive success (i.e. number of surviving chicks).
 
@@ -270,17 +308,35 @@ You can move this optimum if the trade-off is changed. For example, if you incre
 
 This fact reminds us that the environment (e.g. predation risk and resource abundance) will be an important factor in determining the evolution of life history parameters (like average number of babies). 
 
+*1. What is Lack's hypothesis? Does the big bird's optimum support it?*
+
+Lack's hypothesis is that clutch size evolves to the number from which, on average, the most young survive. For the big bird that is 4 eggs (4 × 0.70 = 2.8 surviving chicks). If big birds usually lay 4 eggs, these data support Lack's hypothesis.
+
+*2. A good food year.*
+
+Survival in clutches of 5 or more rises by 0.2, so the expected numbers of surviving chicks for 4 to 8 eggs become 2.8, **3.5**, 3.0, 2.94 and 2.8. The optimum rises to **5 eggs**. When food is plentiful, chicks in larger broods are fed better and survive better, so larger clutches pay. Many birds do lay more eggs in good years or rich habitats.
+
+*3. A cost to the parents.*
+
+Parent survival is 0.72, 0.64, 0.56, 0.48 and 0.40 for 1 to 5 eggs, so the expected number of breeding seasons is 3.57, 2.78, 2.27, 1.92 and 1.67. Multiplying by the surviving chicks per season gives lifetime totals of 3.21, 4.72, **5.59**, 5.38 and 4.17. The optimum falls from 4 eggs to **3 eggs**.
+
+Lack counted the young raised in a single season. Once the cost to the parents' future breeding is included, the best clutch is smaller than the one that produces the most surviving young in one season. This is the argument behind the kestrel brood manipulations in the lecture: parents given extra chicks paid for them later.
+
+*4. Egg number versus egg size.*
+
+You would need a second relationship, describing how the size of an egg (or offspring) affects its chance of survival, and a fixed amount of resources to divide among the eggs, so that more eggs means smaller eggs. The best combination is the one that maximises the number of surviving offspring (Smith & Fretwell 1974).
+
 
 
 ## Solutions: Trade-offs and the force of selection
 
-*Simulate this by adding 1 to fertility (mx) in year 1 (the benefit) but reducing survival to 0 (all die) at age 25 (the cost). What is the fitness of this strategy?*
+*Simulate this by adding 1 to fertility (mx) at age 1 (the benefit), but setting Survival to 0 in the age-25 row, so that all die before age 25 (the cost). What is the fitness of this strategy?*
   
 Fitness (R0) would be 50.76 (compared to 49.81).
 
 *By setting survival to 0 at other ages, determine how many years of life could be lost before this cost is no longer worth bearing. Is this surprising?*
   
-You could “kill” the species at 18, losing 8 years of life, before the new strategy of a small increase in fertility at the expense of years of life at the end of life becomes unfavourable. In other words, a cost of losing 8 yrs of life is worth bearing if the benefit is an extra baby in year 1.
+You could “kill” the species at 18 (so that nobody reaches age 18), losing 8 years of life (ages 18 to 25), before the new strategy of a small increase in fertility at the expense of years of life at the end of life becomes unfavourable. In other words, a cost of losing 8 yrs of life is worth bearing if the benefit is an extra baby in year 1. With death at 18, $R_0$ = 49.87, still just above 49.81; with death at 17 it falls to 49.59.
 
 
 *Now reset everything (mx =10; survival = 0.8). Recall what fitness was when you added 1 to mx at age 1 (R0=50.811). 
@@ -295,11 +351,30 @@ At age 25 you would need to increase Fertility from 10 to 222 to reach the same 
 
 *What do you notice?*
 
-You should notice that changes made at younger ages have a bigger effect than those at older ages. I have plotted this to the right. The plot shows the amount of increase in fertility that would be required to raise fitness (R0) from 49.81 to >50.81 at ages 1 through to 25 (i.e. the figures you estimated above). You can see that you only need to change fertility a little bit at young ages, but you would need to make BIG changes at older ages. 
+You should notice that changes made at younger ages have a bigger effect than those at older ages. The plot below shows the increase in fertility that would be required to raise fitness ($R_0$) from 49.81 to 50.81 at ages 1 to 25 (the figures you estimated above). Adding $\Delta m$ offspring at age $x$ adds $l_x \Delta m$ to $R_0$, so the extra fertility needed is exactly $1/l_x$: 2.4, 7.5, 22.7, 69.4 and 211.8 at ages 5, 10, 15, 20 and 25 (the figures above are rounded up). You only need to change fertility a little at young ages, but you would need to make BIG changes at older ages.
+
+```{r forceselectionplot, echo = FALSE, fig.cap = "Extra offspring needed at each age to raise R0 by 1, when annual survival is 0.8."}
+age <- 1:25
+lx <- 0.8^(age - 1)          # survivorship: annual survival 0.8 from age 1
+extra <- 1 / lx              # extra fertility at age x that adds 1 to R0
+plot(age, extra, type = "b", pch = 16,
+     xlab = "Age at which fertility is increased",
+     ylab = "Extra offspring needed to add 1 to R0")
+```
+
 
 *Reset everything again (mx =10; survival = 0.8). Set mx from age 15 onwards to be 0. Now alter survival rate after this point (at ages 15-25). What happens to fitness?*
   
 You should notice that any changes you make to survival AFTER reproduction has been completed will have no effect on fitness. In other words evolution “doesn’t care about you” after you have finished with reproduction.
+
+This is only true for an individual's *own* offspring. If older individuals help their relatives to survive and reproduce, survival after reproduction can still raise their inclusive fitness: see the grandmother hypothesis and killer whales in the lecture.
+
+*Questions*
+
+- *The declining force of selection.* A change in survival or reproduction at age $x$ only affects the individuals still alive at that age, so its effect on fitness shrinks as survivorship ($l_x$) falls and as less of the lifetime's reproduction remains. Selection therefore acts strongly on early life and weakly on late life. Early reproduction, and genes with early benefits and late costs, are favoured, and senescence can evolve.
+- *Age-related disease in humans.* Many diseases of old age (e.g. many cancers, heart disease, dementia) have their main effects after most reproduction has happened, so selection against them is weak. Harmful mutations with late effects can build up (mutation accumulation), and some genes that cause late disease may have been favoured for their early benefits (antagonistic pleiotropy).
+- *Predation risk.* Where predation is high, an individual is unlikely to survive to old age whatever it invests in its body, so resources spent on maintenance and repair are less valuable. Selection should favour putting more into early reproduction and less into maintenance.
+- *Survival after reproduction.* Older individuals can raise inclusive fitness by helping relatives. Post-reproductive killer whale females lead their groups to salmon when food is scarce, and in humans, grandmothers can improve their grandchildren's survival (the grandmother hypothesis).
 
 ## Solutions: Hardy-Weinberg equilibrium
 
