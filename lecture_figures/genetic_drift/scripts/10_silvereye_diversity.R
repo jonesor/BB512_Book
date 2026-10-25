@@ -1,4 +1,4 @@
-# Slide: "Founder effects are weak when the founding flock is large" (Figure & Bullets, "half")
+# Slide: "Large founding flocks mean weak founder effects" (Figure & Bullets, "half")
 # Empirical data: silvereye (Zosterops lateralis) allelic diversity (mean number of
 # alleles per locus, 6 microsatellites) against the number of founder events since
 # Tasmania. Values were digitised from Clegg et al. (2002) PNAS 99: 8127-8132, Fig. 2a
@@ -49,4 +49,4 @@ fig <- ggplot() +
   coord_cartesian(xlim = c(-0.35, 4.35), clip = "off") +
   theme_bb512()
 
-save_bb512(fig, "09_silvereye_diversity", layout = "half")
+save_bb512(fig, "10_silvereye_diversity", layout = "half")

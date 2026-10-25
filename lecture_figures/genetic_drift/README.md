@@ -16,7 +16,8 @@ source("render_all.R")   # writes 300 dpi PNGs to figures/
 | `06_fixation.R` | Result 1: a neutral allele's fixation probability = its frequency | takeaway | Wright–Fisher simulation | 2N = 20 replicates; seed searched for exactly one fixation; seed in `figures/06_fixation_seed.txt` |
 | `07_heterozygosity.R` | Result 2: diversity lost at 1/(2N) | takeaway | Analytical | H_t = H_0 (1 − 1/2N)^t |
 | `08_founder_bottleneck.R` | Founder effects and bottlenecks | full | Schematic | Colours = four alleles |
-| `09_silvereye_diversity.R` | Founder effects are weak when the founding flock is large | half | Empirical (digitised from Clegg et al. 2002, Fig. 2a) | Founder numbers from their Table 1 |
+| `09_silvereye_map.R` | Silvereyes: a natural experiment in founder events | full | Map (mapdata coastlines), after Clegg et al. 2002, Fig. 1 | Right side left empty for the bird photo, placed separately in Keynote |
+| `10_silvereye_diversity.R` | Large founding flocks mean weak founder effects | half | Empirical (digitised from Clegg et al. 2002, Fig. 2a) | Founder numbers from their Table 1 |
 
 Notes:
 

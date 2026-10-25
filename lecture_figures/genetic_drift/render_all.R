@@ -2,7 +2,7 @@
 #     Rscript render_all.R
 # Or open this directory in RStudio and run source("render_all.R").
 
-needed <- c("ggplot2", "scales", "ragg")
+needed <- c("ggplot2", "scales", "ragg", "maps", "mapdata")
 missing <- needed[!vapply(needed, requireNamespace, logical(1), quietly = TRUE)]
 if (length(missing)) {
   stop("Please install packages before running:\n  install.packages(c(",
