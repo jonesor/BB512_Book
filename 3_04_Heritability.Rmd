@@ -1,6 +1,6 @@
 # Heritability from a linear regression
 
-```{r heritability-setup, echo = FALSE}
+```{r heritability-setup, include = FALSE}
 
 # Simulate parent-offspring data for wing length in two bird populations.
 # Model (narrow-sense heritability, additive genes only, random mating):

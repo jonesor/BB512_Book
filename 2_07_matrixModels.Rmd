@@ -183,7 +183,7 @@ In matrix population models, all transitions occur over a fixed time interval. I
 
 * survival probabilities are annual
 * fecundity is offspring per individual per year
-* λ is growth per year
+* $\lambda$ is growth per year
 
 :::
 
@@ -291,7 +291,7 @@ We can ask R for the *eigenvalues* and *eigenvectors* of the matrix. The dominan
 **Predict first.** Look at your projection plot. Is $\lambda$ above 1, below 1, or about 1? Roughly how steep is the line on the log scale? Which stage do you think will have the highest *SSD*?
 :::
 
-Because our projection interval is one year, λ represents the annual population growth rate. You can see that in this case, using my example values the population is growing `r round(100 * (eigs(A, what = "lambda") - 1), 1)`% per year.
+Because our projection interval is one year, $\lambda$ represents the annual population growth rate. You can see that in this case, using my example values the population is growing `r round(100 * (eigs(A, what = "lambda") - 1), 1)`% per year.
 
 ```{r eigenproperties, echo = TRUE}
 eigs(A, what = c("lambda", "ss"))
@@ -303,7 +303,7 @@ eigs(A, what = c("lambda", "ss"))
 Elasticity analysis asks how responsive the population growth rate ($\lambda$) is to a small *proportional* change in each transition of the matrix. A transition with a high elasticity is one where a given percentage change produces a relatively large percentage change in $\lambda$. The elasticities of all the matrix elements sum to one, so each can be read as that transition's share of the total influence on $\lambda$. This is useful in management and conservation when we ask questions like, "which parts of the lifecycle should we focus on to preserve the population?". The mathematics are beyond this course, and R can calculate the elasticities for us.
 
 ::: {.do-something}
-**Predict first.** Looking at your own matrix, which single element do you think λ is most sensitive to? Write it down before running the code.
+**Predict first.** Looking at your own matrix, which single element do you think $\lambda$ is most sensitive to? Write it down before running the code.
 :::
 
 ```{r elasticity, echo = TRUE}
@@ -317,7 +317,7 @@ Which transition has the highest elasticity, and what does that tell you about y
 
 Now that we have a model, we can use it as an experimental system. The idea is very simple: you run "experiments" on your matrix model (*in silico*, i.e. on the computer) by asking "what if" questions. For example, what would happen if we could increase survival of the juveniles by 20%? what would happen if adults are hunted more, and thus have a decreased survival by 60%? what would happen if we provided supplemental food to reproducing females, and increase fecundity by 50%? etc. Use your imagination!
 
-For each "what if" question, follow the same pattern: **predict** what will happen to λ, **change** the matrix, **observe** the new λ, and **explain** the difference in biological terms.
+For each "what if" question, follow the same pattern: **predict** what will happen to $\lambda$, **change** the matrix, **observe** the new $\lambda$, and **explain** the difference in biological terms.
 
 In practice, we do that simply by modifying the matrix model. In the following, I am looking at the effect of increasing fecundity in adult and senescent individuals by 50%:
 
@@ -356,7 +356,7 @@ Now it is time to work with your own organism. Rather than just running every fu
 
 You can think of lambda (population growth rate) as being a measure of fitness. Imagine that some of your population had a mutation that caused them to have, say, 1 extra baby, but at the expense of reduced survival in one of the younger stages. Would this mutation persist in the population?
 
-First, predict: increasing fecundity is beneficial and decreasing survival is costly. Which effect do you think will win? Then modify the matrix, calculate λ for the mutant life history, and compare it with λ for the original. Does the mutant have a higher or lower λ? What does that suggest about selection on this trade-off? (Comparing $\lambda$ like this treats it as fitness, which works when growth is density-independent, as it is in this model. With density dependence, as in the logistic growth chapters, things are more complicated.)
+First, predict: increasing fecundity is beneficial and decreasing survival is costly. Which effect do you think will win? Then modify the matrix, calculate $\lambda$ for the mutant life history, and compare it with $\lambda$ for the original. Does the mutant have a higher or lower $\lambda$? What does that suggest about selection on this trade-off? (Comparing $\lambda$ like this treats it as fitness, which works when growth is density-independent, as it is in this model. With density dependence, as in the logistic growth chapters, things are more complicated.)
 
 
 ### Questions

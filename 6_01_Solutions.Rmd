@@ -10,7 +10,7 @@ Use these solutions to check your reasoning after you attempt the tasks. If your
 
 * _Predictions and the default run_
 
-With selection on, the default code (Dawkins' 28-character phrase, 27 possible characters, `set.seed(123)`) reaches the target at generation 66. With other seeds the number varies: in 5,000 simulated runs the median was 98 generations, and 90% of runs finished between about 60 and 166 generations. Compare this with single-step selection, where you would expect to need about \(27^{28} \approx 10^{40}\) attempts.
+With selection on, one example run using Dawkins' 28-character phrase and 27 possible characters reached the target at generation 66. The number varies between runs: in 5,000 simulated runs the median was 98 generations, and 90% of runs finished between about 60 and 166 generations. Compare this with single-step selection, where you would expect to need about \(27^{28} \approx 10^{40}\) attempts.
 
 *	_What happens if selection is turned OFF?_
 

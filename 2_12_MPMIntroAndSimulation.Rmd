@@ -447,6 +447,13 @@ for (rep in 1:nreps) {
   totals_no[, rep] <- rowSums(out_no)
 }
 
+```
+
+```{r mpm_seed_reps_cull, include=FALSE}
+set.seed(1204)
+```
+
+```{r mpm_sim_reps_cull, echo=TRUE, include=TRUE}
 # Scenario B: run all replicates with culling
 for (rep in 1:nreps) {
   out_cu <- matrix(0L, nrow = years + 1, ncol = 3)

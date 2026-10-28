@@ -109,6 +109,10 @@ During the next time step (i.e. 1 generation), the individuals in the population
 
 This code is saying "**sample, from the gene pool, `r 2*pop_size` alleles, with replacement**". We need to sample $2 \times$ the population size because each individual contains two alleles. We sample *with replacement* because any allele in the parents' gene pool can be passed on to more than one offspring (or to none).
 
+```{r genepool-one-generation-seed, include = FALSE}
+set.seed(123)
+```
+
 ```{r projectgenepool, echo = TRUE}
 new_gene_pool <- sample(gene_pool, 2 * pop_size, replace = TRUE)
 ```
@@ -131,6 +135,10 @@ We can do this using a loop in R. In our loop, we repeat the gene pool sampling 
 
 Let's set up a simulation that runs for 100 generations, starting with a small population of 20 individuals.
 You can copy and paste this code, which is a complete gene pool model.
+
+```{r genepool-trajectory-seed, include = FALSE}
+set.seed(124)
+```
 
 ```{r simulationsetup, echo = TRUE}
 # Set the population size and number of generations
@@ -218,6 +226,10 @@ simulate_gene_pool <- function(pop_size, n_gen, initial_freq_A) {
 
 Now we can use `replicate` to run the function many times. Here we simulate 20 populations, each of 20 individuals, for 100 generations. The result is a matrix with one row per generation and one column per population. The `matplot` function plots each column as a separate line (Figure \@ref(fig:replicateplot)).
 
+```{r genepool-replicates-seed, include = FALSE}
+set.seed(125)
+```
+
 ```{r replicateplot, fig.cap = "Twenty replicate populations of 20 individuals, each starting with allele A at a frequency of 0.5", echo = TRUE}
 n_gen <- 100
 results <- replicate(20, simulate_gene_pool(pop_size = 20, n_gen = n_gen,
@@ -246,6 +258,10 @@ Use this code to investigate the following questions:
 ### Rare alleles and new mutations
 
 A brand-new mutation starts as a single copy in the gene pool, so its starting frequency is $1/(2N)$. Let's see what happens to it. Here we run 200 populations of 20 individuals, each starting with one copy of *A* (frequency $1/40$), for 300 generations (long enough for nearly all of them to be fixed or lost).
+
+```{r genepool-rare-allele-seed, include = FALSE}
+set.seed(126)
+```
 
 ```{r rareallele, echo = TRUE}
 pop_size <- 20
@@ -279,6 +295,10 @@ if (i %in% 30:50) {
 This code means, "*...if the generation is between `30` and `50`, make the population size 10, otherwise make the population size 1000*". In other words, the population goes through a bottleneck of 10 individuals for about 20 generations. You can modify this code to change the length and severity of the bottleneck.
 
 Figure \@ref(fig:bottlenecksimulationplot) shows an example of what your plot of a bottleneck simulation might look like. I have added some lines to show where the bottleneck starts and ends. Here is the complete code:
+
+```{r genepool-bottleneck-seed, include = FALSE}
+set.seed(127)
+```
 
 ```{r bottlenecksimulationplot, fig.cap = "Simulation of a genetic bottleneck: 1000 individuals, falling to 10 individuals in generations 30 to 50", echo = TRUE}
 # Set the starting population size and number of generations
@@ -334,6 +354,10 @@ Run the bottleneck simulation several times, and answer the following questions:
 ### Founder effects
 
 A founder effect is like a bottleneck at the very start of a new population. To simulate it, take a large source population (1000 individuals, frequency of *A* = 0.5) and found a new population from just 10 individuals (20 alleles) drawn at random from it. Repeat this 50 times, as if 50 islands were each colonised by a different group of 10 founders:
+
+```{r genepool-founders-seed, include = FALSE}
+set.seed(128)
+```
 
 ```{r foundereffect, fig.cap = "Frequency of allele A in 50 new populations, each founded by 10 individuals from a source population where the frequency of A is 0.5", echo = TRUE}
 source_pool <- c(rep("A", 1000), rep("a", 1000))

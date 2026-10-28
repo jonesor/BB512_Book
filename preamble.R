@@ -1,3 +1,7 @@
+# Reproducible rendered examples, independent of the caller's RNG settings.
+RNGkind("Mersenne-Twister", "Inversion", "Rejection")
+set.seed(123)
+
 #packages for the main content
 library(dplyr)
 library(tidyr)

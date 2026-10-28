@@ -69,7 +69,6 @@ Before you run the code, write down your predictions:
 phrase <- "Methinks it is like a weasel"
 nGenerations <- 200
 selection <- TRUE
-set.seed(123)
 
 ###################################################
 # Do not edit below this line
@@ -110,7 +109,7 @@ Note that this program is a simplified version of Dawkins' original. Here, each 
 
 1) **Change the phrase**: make it shorter or longer (letters and spaces only). How does this change the number of generations needed?
 2) **Change the number of generations**: experiment with different values for `nGenerations`. With 100 generations, is the target always reached?
-3) **Change the seed**: change `set.seed(123)` to another number and run the code again. Does it always take the same number of generations?
+3) **Repeat the simulation**: run the code again with the same settings. Does it always take the same number of generations?
 4) **Turn selection off**: set `selection <- FALSE`. What happens?
 
 ## Questions

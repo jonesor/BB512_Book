@@ -11,6 +11,12 @@
 
 ### Build/release notes
 
+- Rendered stochastic examples use fixed RNG settings in `preamble.R` and
+  hidden seeds before independent simulations. Keep seed chunks separate from
+  teaching code and use `include = FALSE`. Seed once per simulation, not inside
+  generation or replicate loops, so replicates still vary. Student code omits
+  these build seeds, allowing students to explore different random outcomes.
+
 - The published site is deployed automatically by the `Build Book` GitHub Actions
   workflow (`.github/workflows/build-book.yml`): every push to `main`/`master`
   builds the book and publishes it to GitHub Pages via

@@ -1,6 +1,6 @@
 # Stochastic population growth
 
-```{r echo = FALSE}
+```{r stochastic-growth-seed, include = FALSE}
 set.seed(134)
 ```
 
@@ -91,7 +91,7 @@ The final line of the code (`nExtinct/nTrials`) gives you an estimate of extinct
 Modify the simulation settings to explore what happens to (i) the plot of population growth and (ii) extinction risk, when you vary  `mean.r` ($\bar{r_m}$), the amount of stochasticity ($\sigma_{r_m}^2$) (`var.r`), and the number of generations (`nGen`).
 :::
 
-```{r eval = TRUE, echo = FALSE}
+```{r stochastic-projection-seed, include = FALSE}
 set.seed(1234)
 ```
 

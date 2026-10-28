@@ -37,8 +37,11 @@ Use the intuition exercise in `supplemental/Quantitative_Genetics/Continuous_Tra
 3. Now simulate the same process in R for 100 individuals and 25 genes. Compare your histogram to the classroom version.
 4. Relate the outcome to the concept of additive genetic variance in `3_04_Heritability.Rmd`.
 
-```{r discrete-genes-sim, echo = TRUE}
+```{r discrete-genes-seed, include = FALSE}
 set.seed(123)
+```
+
+```{r discrete-genes-sim, echo = TRUE}
 baseline <- 35
 n_genes <- 25
 n_individuals <- 100
