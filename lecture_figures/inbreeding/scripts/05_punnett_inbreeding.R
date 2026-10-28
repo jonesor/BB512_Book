@@ -45,7 +45,7 @@ p <- ggplot2::ggplot(cells) +
   ggplot2::scale_colour_identity() +
   # column headers
   ggplot2::annotate("text", x = (x0 + x1) / 2, y = 1.07,
-                    label = c("A[1]:~p*(1-F)", "A[2]:~q*(1-F)", "IBD:~F"), parse = TRUE,
+                    label = c("atop(A[1],~p*(1-F))", "atop(A[2],~q*(1-F))", "atop(IBD,~F)"), parse = TRUE,
                     size = 5.2, colour = c(bb512$ink, bb512$ink, bb512$clay),
                     family = "Avenir Next") +
   # row headers
@@ -53,14 +53,14 @@ p <- ggplot2::ggplot(cells) +
                     label = c("A[1]:~p", "A[2]:~q"), parse = TRUE, hjust = 1,
                     size = 5.2, colour = bb512$ink, family = "Avenir Next") +
   # legend by direct labels underneath
-  ggplot2::annotate("text", x = c(-0.2, 0.30, 0.66), y = -0.08,
-                    label = c("Allozygous homozygote", "Heterozygote", "Autozygous (IBD)"),
-                    hjust = 0, size = 5, fontface = "bold",
+  ggplot2::annotate("text", x = c(0.10, 0.50, 0.90), y = -0.12,
+                    label = c("Allozygous\nhomozygote", "Heterozygote", "Autozygous\n(IBD)"),
+                    hjust = 0.5, size = 4.5, fontface = "bold",
                     colour = c(bb512$blue, bb512$grey, bb512$clay),
                     family = "Avenir Next") +
-  ggplot2::coord_cartesian(xlim = c(-0.2, 1.02), ylim = c(-0.12, 1.1), clip = "off") +
+  ggplot2::coord_fixed(ratio = 1, xlim = c(-0.2, 1.08), ylim = c(-0.22, 1.18), clip = "off") +
   ggplot2::theme_void() +
   ggplot2::theme(plot.background = ggplot2::element_rect(fill = bb512$bg, colour = NA),
                  plot.margin = ggplot2::margin(8, 10, 8, 8))
 
-save_bb512(p, "05_punnett_inbreeding", layout = "takeaway")
+save_bb512(p, "05_punnett_inbreeding", layout = "square")

@@ -46,6 +46,7 @@ theme_bb512 <- function(base_size = 18, base_family = "Avenir Next") {
 
 # Exact figure-container sizes from the supplied PPTX theme (inches).
 .bb512_dimensions <- list(
+  square   = c(7.400, 7.400),  # square diagrams with surrounding labels
   full     = c(11.733, 3.950),  # Title & Photo
   fullbox  = c(11.733, 4.250),  # Title & Photo placeholder as used in Keynote
   takeaway = c(7.400, 4.250),   # Title, Bullets & Photo
