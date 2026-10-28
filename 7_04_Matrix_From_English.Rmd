@@ -15,11 +15,11 @@ Learning outcomes:
 
 ### Inputs
 
-Suppose juveniles do not reproduce, adults produce 2 offspring per year, juvenile survival is 0.4, and adult survival is 0.7. A simple stage matrix would be:
+Suppose juveniles do not reproduce, each adult contributes 2 offspring per year that survive to be counted as juveniles at the next census, juvenile survival is 0.4, and adult survival is 0.7. A simple stage matrix would be:
 
 ### Steps
 
-1. Put fecundity terms in the top row.
+1. Put fecundity terms in the top row (when all newborns enter stage 1). A fecundity term is the number of offspring counted at the *next* census per individual now, so it must include any survival needed to get there (see the fecundity box in the chapter "Matrix population modelling"). If a description gives you the number of babies born, multiply by the survival needed to reach the next count.
 2. Put survival/transition terms in the subdiagonal/diagonal entries.
 3. Assemble the matrix in row = stage at $t+1$, column = stage at $t$ form.
 

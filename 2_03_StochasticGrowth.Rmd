@@ -22,15 +22,17 @@ We will create some models in Excel, and then in R, to explore the effect of sto
 
 We can simulate variation in $r_m$ by drawing a random number from a normal distribution with a particular mean ($\bar{r_m}$) and variance ($\sigma_{r_m}^2$) (Fig. \@ref(fig:stochGrowthRate)). The $\bar{r_m}$ value determines the long-term average while the $\sigma_{r_m}^2$ estimates how much "spread" there is in the data from year to year.
 
-In the figure you can see that the peak of the $r_m$ distribution is $>0$ (approximately 0.1), so on average, the population will tend to grow.  However, in poor years $r_m$ is $<$ 0, so the population will decline in those cases. Both the mean value and the spread of the distribution (i.e. variance) determine the fate of the population. 
+The figure shows 1,000 values drawn from a normal distribution with mean 0.05 and variance 0.1 (the settings you will use in this practical). The peak of the $r_m$ distribution is just above 0 (at 0.05), so on average the population will tend to grow. However, in poor years $r_m$ is $<$ 0, so the population will decline in those years. With this much variation, declines are almost as common as increases: about 44% of years have $r_m < 0$. Both the mean value and the spread of the distribution (i.e. variance) determine the fate of the population. 
 
 Remember that we can convert $r_m$ to $\lambda$ by taking the exponential, because $r_m = ln(\lambda)$.
 
 
-```{r stochGrowthRate, echo = FALSE, fig.width = 6, fig.height = 4, fig.align = 'center', fig.cap = "A normal distribution of potential r values"}
+```{r stochGrowthRate, echo = FALSE, fig.width = 6, fig.height = 4, fig.align = 'center', fig.cap = "1,000 values of $r_m$ drawn from a normal distribution with mean 0.05 and variance 0.1. The dashed line marks $r_m = 0$."}
 set.seed(123)
-pgr <- data.frame(r = rnorm(1000,0,0.25))
-ggplot(pgr,aes(x=r))+geom_histogram(bins =30) +
+pgr <- data.frame(r = rnorm(1000, mean = 0.05, sd = sqrt(0.1)))
+ggplot(pgr, aes(x = r)) + geom_histogram(bins = 30) +
+  geom_vline(xintercept = 0, linetype = 2) +
+  labs(x = expression(r[m]), y = "Count") +
   theme_minimal()
 ```
 
@@ -54,16 +56,18 @@ Use the Excel worksheet, [StochasticPopulationGrowth.xlsx](https://www.dropbox.c
 :::
 
 
-If $r_m$ is drawn from a distribution with mean 0.05 and variance 0.1, then most years are positive but some are negative. This means a population can grow on average yet still crash by chance, especially when starting size is small.
+In this practical we use the same settings throughout: $r_m$ is drawn from a normal distribution with **mean 0.05 and variance 0.1**. Years of growth then only slightly outnumber years of decline (about 56:44). This means a population can grow on average yet still crash by chance, especially when starting size is small.
+
+In the Excel template, first set the mean of $r_m$ to **0.05** and the variance to **0.1** (the template may contain other values), and use a starting population of **100**.
 
 
-1)	Use Excel formulae to calculate deterministic population size through time (20 generations, with starting population of 100), linking to the mean finite population growth rate.
+1)	Use Excel formulae to calculate deterministic population size through time (25 generations, t = 0 to 25, with starting population of 100), linking to the mean finite population growth rate.
 2)	Use charts to plot the results. (you already did this last time!)
-3)	Use a formula to generate a column of stochastic $r_m$ values, based on a chosen mean and variance. In English versions of Excel the function may be written either as `=NORM.INV(RAND(), $F$10, SQRT($F$11))` (newer versions) or `=NORMINV(RAND(), $F$10, SQRT($F$11))` (older versions), while in Danish Excel it appears as `=NORMINV(SLUMP(); $F$10; KVROD($F$11))`. If you encounter errors, check whether your copy of Excel expects commas or semi-colons as argument separators and adjust the formula accordingly.
+3)	Use a formula to generate a column of stochastic $r_m$ values, based on a chosen mean and variance. The formula refers to the cells that hold the mean and the variance of $r_m$; check where these are in your sheet (in the template they are G10 and G11). In English versions of Excel the function may be written either as `=NORM.INV(RAND(), $G$10, SQRT($G$11))` (newer versions) or `=NORMINV(RAND(), $G$10, SQRT($G$11))` (older versions), while in Danish Excel it appears as `=NORMINV(SLUMP(); $G$10; KVROD($G$11))`. If you encounter errors, check whether your copy of Excel expects commas or semi-colons as argument separators and adjust the formula accordingly.
 4)	Use the same procedure as before, to create a stochastic population size vector (stochastic N). Remember to convert $r_m$ to $\lambda$ by taking the exponential.
 5)	Compare the two trajectories using a chart.
 6)	Try altering initial population size, mean population growth, and the amount of stochasticity (Variance).
-7)	Extinction occurs when N $\leq$ 0. What happens to extinction risk as stochasticity (variance) increases? What happens when initial N is small? Does the population ALWAYS survive if the population growth rate, $r_m$ is $>$ 0?
+7)	In this model N is multiplied by $e^{r_m}$, which is always positive, so N can never reach exactly 0. Instead, we treat the population as (quasi-)extinct if N falls below 1 at any point, i.e. fewer than one individual is left (the R code below uses the same rule). What happens to extinction risk as stochasticity (variance) increases? What happens when initial N is small? Does the population ALWAYS survive if the mean population growth rate, $\bar{r_m}$, is $>$ 0?
 
 ::: {.do-something}
 Note: Excel re-randomises the random numbers every time you change any cell in the sheet. This is OK, and allows you to explore a stochastic simulation many times.
@@ -82,7 +86,7 @@ The output of the modelling is shown in  Fig. \@ref(fig:stochProjection)
 ::: {.do-something}
 Copy-and-paste the code below into a text file (or directly into *R*).
 
-The final line of the code (`nExtinct/nTrials`) gives you an estimate of extinction probability - the proportion of trials that lead to a population size of 1 (or less).
+The final line of the code (`nExtinct/nTrials`) gives you an estimate of extinction probability - the proportion of trials in which the population falls to 1 or fewer individuals at some point, the same rule as in the Excel exercise. The R settings use the same mean (0.05) and variance (0.1) of $r_m$ as the Excel exercise, but a smaller starting population (10), so that extinctions are common enough to see.
 
 Modify the simulation settings to explore what happens to (i) the plot of population growth and (ii) extinction risk, when you vary  `mean.r` ($\bar{r_m}$), the amount of stochasticity ($\sigma_{r_m}^2$) (`var.r`), and the number of generations (`nGen`).
 :::
@@ -100,7 +104,7 @@ mean.r = 0.05 # the mean value of r
 var.r = 0.1 # the variance in r (stochasticity)
 startPop = 10 # pop size at start
 nGen = 50 # number of generations
-nTrials = 100 # number of repeated simulations
+nTrials = 1000 # number of repeated simulations
 
 ##########################################################
 #If you are unfamiliar with R, don't edit below this line!
@@ -141,7 +145,7 @@ cat("Pseudo-extinction probability:", round(probExtinct, 3), "\n")
 
 ### Example stochastic trajectories
 
-```{r stochProjection, echo = TRUE, fig.width = 6, fig.height = 4, fig.align = 'center', fig.cap = "An example of stochastic population projection (100 simulations for 50 generations)"}
+```{r stochProjection, echo = TRUE, fig.width = 6, fig.height = 4, fig.align = 'center', fig.cap = "An example of stochastic population projection (100 of the 1,000 simulations, 50 generations)"}
 
 #Make a plot of the population trajectories
 plot(
@@ -153,7 +157,7 @@ plot(
   ylab = "log(N)",
   ylim = log(c(0.1, 100000))
 )
-matlines(log(trials),
+matlines(log(trials[, 1:min(100, nTrials)]), # plot up to 100 trajectories
          col = "#FF234520",
          lty = 1,
          lwd = 3)

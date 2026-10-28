@@ -19,7 +19,17 @@ Learning outcomes:
 
 ## Key idea
 
-If predator efficiency increases (higher conversion of prey to predator births), predator peaks rise and prey troughs deepen, often increasing oscillation amplitude.
+The two isoclines (the lines where prey or predator numbers stop changing) are set by different parameters: the prey isocline by the prey's growth rate and the predator's attack rate, the predator isocline by the predator's death rate and how efficiently it turns prey into offspring. Changing a parameter moves an isocline, and so moves the equilibrium point where they cross. Whether the populations then cycle more or less widely depends on how far the starting numbers are from that new equilibrium.
+
+::: {.do-something}
+**Important: the spreadsheet is a discrete-time model**
+
+In the lecture, the Lotka-Volterra model is written in continuous time (dH/dt, dP/dt). In that model the populations cycle for ever: the cycles neither grow nor shrink (they are *neutrally stable*), and their size depends only on the starting numbers.
+
+The spreadsheet instead updates the populations once per time step (N(t+1) = N(t) + change over one step), like the discrete logistic model in *Deeper into logistic growth*. Because each step uses the population sizes at the start of the step, the model always reacts a little too late, and the oscillations **grow** until one or both populations crash. This is a property of the discrete-time version (a time lag), not of predator-prey interactions in general.
+
+Keep this in mind when you answer the questions below, especially question 6. You can compare the two versions in the R chapters [Continuous-time Lotka-Volterra predator-prey model in R](continuous-time-lotka-volterra-predator-prey-model-in-r.html) and [Discrete-time Lotka-Volterra predator-prey model in R](discrete-time-lotka-volterra-predator-prey-model-in-r.html).
+:::
 
 
 ## Your task 
@@ -28,7 +38,7 @@ Follow the PDF worksheet ([here](https://www.dropbox.com/s/bhwoe161wp9p6hp/10.%2
 
 
 
-The worksheet is divided into three parts. We will mainly **focus on Part 1** - the basic model - in the class. 
+The worksheet is divided into four parts. We will mainly **focus on Part 1** - the basic model - in the class. 
 
 After completing the Excel sheet, try to answer the following questions:
 
@@ -37,15 +47,15 @@ After completing the Excel sheet, try to answer the following questions:
 3. What happens if the predator is more efficient at converting prey into offspring? Less efficient?
 4. What happens if the predator is better at finding prey? Worse?
 5. Is the behaviour of the model sensitive to starting populations? Begin with populations near the point where the isoclines cross, and move slowly farther out.
-6. What is the ultimate outcome of the predator-prey interaction, regardless of parameter values? How does this compare to real predator and prey populations? What factors not included in the model may explain the differences between model predictions and reality?
+6. What is the ultimate outcome of the predator-prey interaction in the spreadsheet, regardless of parameter values? Is this outcome caused by the biology or by the model being discrete-time (see the box above)? How does this compare to real predator and prey populations? What factors not included in the model may explain the differences between model predictions and reality?
 
 ## Optional extras
 
-Part 2 modifies the basic model to include a refuge, and part 3 modifies the model to include carrying capacity. Feel free to continue to work on these if there is time, and if you are interested.
+Part 2 modifies the basic model to include a refuge for the prey, part 3 adds a carrying capacity for the prey, and part 4 adds carrying capacities for both prey and predator. Feel free to continue to work on these if there is time, and if you are interested. Part 3 is particularly worth trying: prey self-limitation turns the expanding oscillations into damped ones that settle at an equilibrium.
 
 ## R-version
 
-An R version of this exercise is available [here](continuous-time-lotka-volterra-predator-prey-model-in-r.html).
+Two R versions are available: a [continuous-time version](continuous-time-lotka-volterra-predator-prey-model-in-r.html) (the model in the lecture) and a [discrete-time version](discrete-time-lotka-volterra-predator-prey-model-in-r.html) (the same model as this spreadsheet).
 
 ### References
 
@@ -58,5 +68,6 @@ Rosenzweig, M. L. and R. H. MacArthur. 1963. Graphical representation and stabil
 ## Takeaways
 
 - Predator-prey feedbacks can generate oscillations without external forcing.
-- Parameter changes alter stability and oscillation amplitude.
+- Parameter changes move the isoclines and the equilibrium; in the continuous model the size of the cycles is set by the starting numbers.
+- The spreadsheet's growing oscillations come from its discrete time steps; the continuous model gives neutrally stable cycles.
 - Simple models highlight mechanisms but omit real-world constraints.

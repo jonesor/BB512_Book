@@ -35,13 +35,26 @@ Things to think about:
 * Does the organism ever skip stages?
 * Can the organism move "backwards" through the life cycle?
 
-3) Next to the arrows, write values for survival probability and fecundity (number of babies) using your biological knowledge. It is fine to use "ballpark" estimates.
+3) Next to the arrows, write values for survival probability and fecundity using your biological knowledge. It is fine to use "ballpark" estimates. Read the box below before you choose your fecundity values: a reproduction arrow is not simply the number of babies.
+
+::: {.do-something}
+**What goes on a reproduction arrow?**
+
+A matrix entry tells you how many individuals will be in a stage at the *next* census (next year's count) for each individual in a stage *now*. So a reproduction arrow is the number of newborns that will be counted next year per individual this year. That includes whatever survival is needed for those newborns to be counted:
+
+* If you count the population just **after** breeding (a post-breeding census), the parent must survive the year to breed again before the next count. The entry is the parent's survival × the number of offspring it then produces. For example, an individual that survives the year with probability 0.8 and then has 2 offspring contributes 0.8 × 2 = 1.6 newborns to next year's count.
+* If you count just **before** breeding (a pre-breeding census), the newborns must survive from birth until the next count. The entry is the number of offspring × their first-year survival.
+
+Putting the raw number of babies straight into the matrix is the most common mistake in building matrix models (see the lecture, and the chapter "Pre- and Post-reproduction census" for a worked comparison). Demographers call this matrix entry *fertility* (Neal: the fertility coefficient); here we use the everyday word fecundity for the same thing.
+
+The model also follows females only (counting daughters), and assumes there is no shortage of mates.
+:::
 
 ::: {.do-something}
 **Sanity check your numbers**
 
 * Survival and stage-transition probabilities must be between 0 and 1.
-* Fecundity (offspring per individual per year) can be greater than 1.
+* Fecundity (new individuals counted at the next census, per individual per year) can be greater than 1.
 * For individuals starting in a given stage, the survival and transition probabilities leaving that stage cannot add up to more than 1. For example, 0.8 staying in the same stage plus 0.7 moving to the next stage is impossible, because it adds up to 1.5. (Fecundity does not count towards this total, because newborns are *added* to the population rather than being a fate of the parent.)
 :::
 

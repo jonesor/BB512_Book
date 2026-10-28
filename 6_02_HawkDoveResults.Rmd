@@ -1,209 +1,178 @@
 # Results of the hawk-dove games
 
-This section summarizes class outcomes for Game 1 (same partner) and Game 2 (changing partners). Use it to compare with your own observations and results.
-
-I have crunched the numbers for `r format(Sys.Date(), "%Y")` and will summarise the results of the hawk-dove game.
-
-
-In the game, you were asked to compete with the same person 15 times in a row.
-
+This section summarises class outcomes for Game 1 (same partner) and Game 2 (changing partners). Use it to compare with your own observations and results.
 
 ```{r hawkdoveresults1, echo = FALSE, message = FALSE}
-library(tidyverse)
+library(dplyr)
+library(ggplot2)
 library(readxl)
-library(janitor)
 
-downloadNewData <- FALSE
+# Class results: both games played by the same cohort.
+# Each row is one player in one round: their own card and their opponent's card (H or D).
+results_file <- "data/gametheoryResults2022.xlsx"
+cohort_year <- regmatches(results_file, regexpr("[0-9]{4}", results_file))
 
-if (downloadNewData == TRUE) {
-  if (!requireNamespace("googledrive", quietly = TRUE)) {
-    stop("Package 'googledrive' is required when downloadNewData is TRUE.")
-  }
-  # Download from Google Drive
-  file <- googledrive::drive_find(pattern = "Game theory part 1", type = "spreadsheet")
-  file
-  googledrive::drive_download(
-    file = googledrive::as_id(file$id),
-    path = paste("data/", file$name, ".xlsx", sep = ""),
-    type = "xlsx", overwrite = TRUE
-  )
+# Payoffs used in the class game (B = 4, C = 3, no display cost)
+payoff <- function(own, opp, B = 4, C = 3) {
+  ifelse(own == "H" & opp == "H", (B - C) / 2,
+    ifelse(own == "H", B,
+      ifelse(opp == "H", 0, B / 2)))
 }
 
-hdg <- readxl::read_xlsx("data/Game theory part 1 (Responses).xlsx", sheet = 1) %>%
-  clean_names() 
+read_game <- function(sheet) {
+  # na = c("", "NA") makes sure rounds typed in as "NA" are treated as missing
+  game <- read_xlsx(results_file, sheet = sheet, na = c("", "NA"),
+                    .name_repair = "minimal")[, 1:4]
+  names(game) <- c("player", "round", "own", "opp")
+  game %>%
+    filter(!is.na(own), !is.na(opp)) %>%   # drop rounds that were not played
+    mutate(hawk = ifelse(own == "H", 1, 0),
+           payoff = payoff(own, opp))
+}
 
-names(hdg) <- c("timestamp","teamID","round","player_1_card","player_2_card","player_1_benefit", "player_2_benefit")
+game1 <- read_game("Game1_raw")
+game2 <- read_game("Game2_raw")
 
-hdg <- hdg %>% 
-  select(teamID, round, player_1_card, player_2_card, player_1_benefit, player_2_benefit)
+# Summaries used below
+perPlayer1 <- game1 %>%
+  group_by(player) %>%
+  summarise(meanHawk = mean(hawk), meanPayoff = mean(payoff))
 
-#Filter name errors
-fewRecordsTeams <- names(which(table(hdg$teamID)<10))
+perPlayer2 <- game2 %>%
+  group_by(player) %>%
+  summarise(meanHawk = mean(hawk), meanPayoff = mean(payoff))
 
-hdg <- hdg %>% 
-  filter(!teamID %in% fewRecordsTeams)
+byRound1 <- game1 %>% group_by(round) %>% summarise(meanHawk = mean(hawk))
+byRound2 <- game2 %>% group_by(round) %>% summarise(meanHawk = mean(hawk))
 
-# Does hawkishness change during the game?
-hawkishness1 <- hdg %>%
-  mutate(hawkNumeric_player1 = ifelse(player_1_card == "Hawk", 1, 0)) %>%
-  group_by(round) %>%
-  summarise(meanHawk = mean(hawkNumeric_player1))
+mod_round1 <- lm(meanHawk ~ round, data = byRound1)
+mod_round2 <- lm(meanHawk ~ round, data = byRound2)
+p_round1 <- round(summary(mod_round1)$coefficients[2, 4], 2)
+p_round2 <- round(summary(mod_round2)$coefficients[2, 4], 2)
 
-hawkishness2 <- hdg %>%
-  mutate(hawkNumeric_player2 = ifelse(player_2_card == "Hawk", 1, 0)) %>%
-  group_by(round) %>%
-  summarise(meanHawk = mean(hawkNumeric_player2))
-
-hawkishness <- bind_rows(hawkishness1,hawkishness2)
-
-# How does the average hawkishness of individuals relate to the benefits received?
-perIndiv_player1 <- hdg %>%
-  mutate(hawkNumeric_player1 = ifelse(player_1_card == "Hawk", 1, 0)) %>%
-  group_by(teamID) %>%
-  summarise(mean_Hawkishness = mean(hawkNumeric_player1), total_benefit = sum(player_1_benefit, na.rm = TRUE))
-
-perIndiv_player2 <- hdg %>%
-  mutate(hawkNumeric_player2 = ifelse(player_2_card == "Hawk", 1, 0)) %>%
-  group_by(teamID) %>%
-  summarise(mean_Hawkishness = mean(hawkNumeric_player2), total_benefit = sum(player_2_benefit, na.rm = TRUE))
-
-perIndiv_bothPlayers <- bind_rows(perIndiv_player2,perIndiv_player1)
+# Spread in hawkishness expected by chance, if every player
+# played Hawk with the same probability in each of 15 rounds
+p_all <- mean(game1$hawk)
+sd_expected <- sqrt(p_all * (1 - p_all) / 15)
+sd_observed <- sd(perPlayer1$meanHawk)
 ```
 
+These results are from the `r cohort_year` class, who played both games.
 
+## Game 1: the same partner for 15 rounds
 
-```{r hawkdoveresults2, echo = FALSE, results = 'hide'}
-mod1 <- lm(meanHawk ~ round, data = hawkishness)
-summary(mod1)
-round(summary(mod1)$coefficients[2,4],3)
-```
+The average hawkishness in Game 1 (the proportion of rounds in which Hawk was played) was `r round(mean(perPlayer1$meanHawk), 2)` (averaged over players), but players differed.
 
-The average hawkishness overall is `r round(mean(hawkishness$meanHawk),3)`, but there is some variation among individuals.
-
-```{r hawkdoveresults3, echo = FALSE, message = FALSE}
-ggplot(perIndiv_bothPlayers,aes(x = mean_Hawkishness)) + 
-  geom_histogram(bins = 13) + 
-  xlim(0,1) + 
-  ggtitle("There is variation in strategy among individuals") +
+```{r hawkdoveresults3, echo = FALSE, message = FALSE, warning = FALSE}
+ggplot(perPlayer1, aes(x = meanHawk)) +
+  geom_histogram(breaks = seq(0, 1, by = 0.1)) +
+  ggtitle("Spread in hawkishness among players (Game 1)") +
   xlab("Mean hawkishness")
 ```
 
+Is this more spread than we would expect by chance? The lecture showed that a mixed ESS can be reached in two ways: a mixture of pure Hawks and pure Doves, or every individual playing Hawk with the same probability. If every player had played Hawk with the same probability (`r round(p_all, 2)`) in each of their 15 rounds, chance alone would give a standard deviation in hawkishness among players of about `r round(sd_expected, 2)`. The observed standard deviation is `r round(sd_observed, 2)`, so these players really did differ in strategy: some were consistently hawkish, others consistently dovish.
 
-
-
-We can now ask whether the level of hawkishness changed during the game on average across all the participants.
-
-We can see from this graph that as the game proceeds round-by-round, there is no significant change in the level of hawkishness (p=`r round(summary(mod1)$coefficients[2,4],3)`). 
-
-In other cases, it has been found that the average level of hawkishness tends to decline with the amount of time playing together, as opponents build trust and begin to see the value in cooperation.
+Did the level of hawkishness change as the game went on?
 
 ```{r hawkdoveresults5, echo = FALSE, message = FALSE}
-ggplot(hawkishness,aes(x = round,y = meanHawk)) + 
-  geom_point() + 
-  geom_smooth(method = "lm") +
-  ylim(0,1) + 
-  ylab("Mean hawkishness") + 
+ggplot(byRound1, aes(x = round, y = meanHawk)) +
+  geom_point() +
+  geom_smooth(method = "lm", formula = y ~ x) +
+  ylim(0, 1) +
+  ylab("Mean hawkishness") +
   xlab("Round")
 ```
-Next, we can ask whether the total benefit received (fitness) is associated with the degree of hawkishness. This, in evolutionary terms, is a way of asking what the Evolutionarily Stable Strategy (ESS) is: is it best to be a hawk, a dove, or something in between?
 
-With the payoffs used in this game (B = 4, C = 3), a *single, anonymous* encounter has a simple answer. Because B > C, Hawk beats Dove regardless of what your opponent plays (Hawk-vs-Dove gives 4 > 2 for Dove-vs-Dove, and Hawk-vs-Hawk gives 0.5 > 0 for Dove-vs-Hawk), so the one-shot ESS here is pure Hawk, not an intermediate mix. (The familiar "stable mix of hawks and doves" result only arises when the cost of fighting, C, exceeds the value of the resource, B — the opposite of the situation here. With B > C, the payoff ranking Hawk-vs-Dove > Dove-vs-Dove > Hawk-vs-Hawk > Dove-vs-Hawk is in fact the same structure as the classic Prisoner's Dilemma, with Hawk playing the role of "Defect".)
+No: there is no detectable trend across the 15 rounds (p = `r p_round1`). Nor was there a jump in Hawk play in the final round (round 15: `r round(mean(game1$hawk[game1$round == 15]), 2)`), even though there was no next round in which to be punished.
 
-But Game 1 was not a single anonymous encounter — you played the *same* partner 15 times in a row. That changes the incentives: playing Hawk risks provoking Hawk-Hawk retaliation for the rest of the 15 rounds, which pays only 0.5 each round, far worse than the 2 each you would get by settling into mutual Dove-Dove play. This is the classic argument for reciprocity in repeated games (Axelrod & Hamilton's "evolution of cooperation"): when you meet the same partner repeatedly, cooperation can pay off even though defection (Hawk) would win a single, one-off encounter.
+### Does being hawkish pay with a fixed partner?
+
+With the payoffs used in this game (B = 4, C = 3), a *single, anonymous* encounter has a simple answer. Because B > C, Hawk beats Dove regardless of what your opponent plays (Hawk-vs-Dove gives 4 > 2 for Dove-vs-Dove, and Hawk-vs-Hawk gives 0.5 > 0 for Dove-vs-Hawk), so the one-shot ESS here is pure Hawk, not an intermediate mix. (The stable mix of Hawks and Doves, with Hawk frequency p* = B/C, only arises when the cost of fighting, C, exceeds the value of the resource, B: the opposite of the situation here. With B > C, the payoff ranking Hawk-vs-Dove > Dove-vs-Dove > Hawk-vs-Hawk > Dove-vs-Hawk has the same structure as the classic Prisoner's Dilemma, with Hawk playing the role of "Defect".)
+
+This has an important consequence: **within a pair, the more hawkish player always earns at least as much as their partner**, because in every round Hawk earns more than Dove against the same opponent. So asking "who won in each pair?" always favours Hawk. The interesting question for Game 1 is a different one: do pairs that play Hawk a lot end up worse off, *both of them*, than pairs that hold back?
+
+To answer it, we look at each pair as a unit: the pair's mean hawkishness (both players' cards) against the pair's mean payoff per player per round.
 
 ```{r hawkdoveresults6, echo = FALSE, message = FALSE}
-ggplot(perIndiv_bothPlayers,aes(x = mean_Hawkishness,y = total_benefit)) +
+# Each player's row also records their partner's card, so we can compute
+# pair-level values from each player's records.
+perPair <- game1 %>%
+  group_by(player) %>%
+  summarise(pairHawk = mean(c(own == "H", opp == "H")),
+            pairPayoff = mean((payoff(own, opp) + payoff(opp, own)) / 2))
+
+mod_pair <- lm(pairPayoff ~ pairHawk, data = perPair)
+
+ggplot(perPair, aes(x = pairHawk, y = pairPayoff)) +
   geom_point() +
-  stat_smooth(method = "lm", fullrange = TRUE) +
-  ggtitle("In Game 1, more dovish partners\nearned more") +
-  xlim(0,1) +
-  ylab("Total benefit") +
-  xlab("Mean hawkishness")
+  geom_smooth(method = "lm", formula = y ~ x) +
+  ggtitle("In Game 1, more hawkish pairs earned less") +
+  xlim(0, 1) +
+  ylab("Pair mean payoff per player per round") +
+  xlab("Pair mean hawkishness")
 ```
 
-That is indeed closer to what we see: hawkishness and total benefit are *negatively* related here — the more hawkish you were with your (fixed) partner, the less you earned overall, rather than there being an intermediate optimum. That is consistent with the reciprocity/retaliation argument above, not with the simple one-shot ESS calculation.
+The relationship is strongly negative (slope `r round(coef(mod_pair)[2], 2)` per round): pairs that escalated a lot got stuck in Hawk-Hawk rounds worth only 0.5 each, while pairs that held back earned close to the 2 per round of mutual Dove. (The data file records players rather than pair IDs, so most pairs appear twice in this plot, once from each partner's records, and the two points usually lie on top of each other. Because of this duplication we do not quote a p-value.)
 
-### Game 2 - different opponents
+That is the pattern expected if hawkishness provokes hawkishness: with a fixed partner, playing Hawk does not make you lose to your partner, but it lowers what *both* of you earn.
 
-We didn't do this one in class this year, so here is what we found last year.
+::: {.do-something}
+**Reciprocity in repeated games**
 
-The students were asked to compete against a new opponent every round. The idea was that this would make it much harder to learn your opponents strategy and may be harder to come to an agreement that reduces aggression.
+This idea is not covered in the lecture, but it explains why repeated play can change the outcome.
 
+When you meet the same partner again and again, what you do now affects how they treat you later. This is sometimes called the *shadow of the future*. A simple strategy that does well in repeated Prisoner's Dilemma games is **tit-for-tat**: cooperate (Dove) in the first round, then copy whatever your partner did in the previous round. Tit-for-tat is never the first to escalate, punishes escalation immediately, and forgives as soon as the partner returns to Dove (Axelrod & Hamilton 1981, *Science* 211: 1390-1396).
 
-```{r hawkdoveresults7, echo = FALSE, warning = FALSE}
-hdg2_candidates <- list.files(
-  "data",
-  pattern = "^gametheoryResults.*\\.xlsx$",
-  full.names = TRUE
-)
+Two caveats. First, in a game of known, fixed length, defecting (Hawk) in the last round always pays, because there is no future to protect, so cooperation is not guaranteed in theory (in practice people often cooperate anyway). Second, with the class payoffs, taking turns (Hawk/Dove, then Dove/Hawk) pays exactly as well as mutual Dove, 2 per round each, so there is more than one way to cooperate.
+:::
 
-if (length(hdg2_candidates) == 0) {
-  stop("No 'data/gametheoryResults*.xlsx' file found. Add this year's Game 2 results file to data/ before rendering.")
-}
+## Game 2: a new partner every round
 
-hdg2_path <- hdg2_candidates[which.max(file.info(hdg2_candidates)$mtime)]
+The students were asked to compete against a new opponent every round. The idea was that this would make it much harder to learn your opponent's strategy, and harder to come to an agreement that reduces aggression.
 
-hdg2 <- readxl::read_xlsx(hdg2_path, sheet = 4) %>%
-  clean_names() %>%
-  select(individual, round, player_1, player_2, benefit)
-```
-
-
-
-
-```{r hawkdoveresults8, echo = FALSE, results = 'hide'}
-# Does hawkishness change during the game?
-hawkishness <- hdg2 %>%
-  mutate(hawkNumeric_player1 = ifelse(player_1 == "H", 1, 0)) %>%
-  group_by(round) %>%
-  summarise(meanHawk = mean(hawkNumeric_player1))
-
-mod1 <- lm(meanHawk ~ round, data = hawkishness)
-summary(mod1)
-round(summary(mod1)$coefficients[2,4],3)
-
-
-```
-
-Firstly I have calculated the average hawkishness as  `r round(mean(hawkishness$meanHawk),3)`, which is not so different from the previous game.
-
-Again, we can ask whether hawkishness changed during the game.
-
-In this case, it DOES look like hawkishness declines more during the game. However, this trend is not significantly different from horizontal (p = `r round(summary(mod1)$coefficients[2,4],3)`).
+The average hawkishness in Game 2 was `r round(mean(perPlayer2$meanHawk), 2)`, a little higher than in Game 1 (`r round(mean(perPlayer1$meanHawk), 2)`).
 
 ```{r hawkdoveresults9, echo = FALSE}
-ggplot(hawkishness,aes(x = round,y = meanHawk)) + 
-  geom_point() + 
-  geom_smooth(method = "lm")
+ggplot(byRound2, aes(x = round, y = meanHawk)) +
+  geom_point() +
+  geom_smooth(method = "lm", formula = y ~ x) +
+  ylim(0, 1) +
+  ylab("Mean hawkishness") +
+  xlab("Round")
 ```
 
+Again, hawkishness did not change systematically over the game (p = `r p_round2`).
 
-Finally we can look at what the best strategy is in Game 2.
-
-
+Finally, we can look at what the best strategy is in Game 2. Here each point is one player, and we use the mean payoff per round, because a few players missed some rounds.
 
 ```{r hawkdoveresults10, echo = FALSE}
-# How does the hawkishness of individuals relate to the benefits received?
-perIndiv <- hdg2 %>%
-  mutate(hawkNumeric_player1 = ifelse(player_1 == "H", 1, 0)) %>%
-  group_by(individual) %>%
-  summarise(meanHawkishness = mean(hawkNumeric_player1), total_benefit = sum(benefit, na.rm = TRUE))
+mod_g2 <- lm(meanPayoff ~ meanHawk, data = perPlayer2)
 
-ggplot(perIndiv,aes(x = meanHawkishness,y = total_benefit)) +
+ggplot(perPlayer2, aes(x = meanHawk, y = meanPayoff)) +
   geom_point() +
-  geom_smooth(method="lm", formula=y~poly(x, 2)) +
-  ylab("Total benefit") +
+  geom_smooth(method = "lm", formula = y ~ x) +
+  ylab("Mean payoff per round") +
   xlab("Mean hawkishness")
-
 ```
 
-It looks like the best strategy has changed a lot! Now the best strategy is to be a hawk.
+The best strategy has changed: now the more hawkish players earned more (slope `r round(coef(mod_g2)[2], 2)` per round, p = `r round(summary(mod_g2)$coefficients[2, 4], 3)`).
 
-This matches the one-shot theoretical prediction from earlier much better than Game 1 did. In Game 2 you faced a new partner every round, so there was no opportunity to build reciprocity, and no way to be "punished" for playing Hawk against the same individual again. With no repeated interaction — no "shadow of the future" — the game reduces to the simple one-shot logic, and since B > C, Hawk pays off best.
+This matches the one-shot theoretical prediction much better than Game 1 did. In Game 2 you faced a new partner every round, so there was no opportunity to build reciprocity, and no way to be "punished" for playing Hawk against the same individual again. With no repeated interaction, no "shadow of the future", the game reduces to the simple one-shot logic, and since B > C, Hawk pays off best.
 
-In this setting we might expect  natural selection to drive towards the evolution of more aggressive individuals.
+In this setting we might expect natural selection to drive towards the evolution of more aggressive individuals.
 
-Put together, the two games illustrate a general result from game theory: repeated interaction with the same partner can favour cooperation even in a game where defection (Hawk) wins any single encounter, while anonymous, one-off interactions favour the individually dominant strategy. This is one reason why reputation, memory, and repeated encounters matter so much for the evolution of cooperation, both in nature and in human societies.
+## Comparing the two games
+
+```{r hawkdoveresults11, echo = FALSE}
+test_hawk <- t.test(perPlayer1$meanHawk, perPlayer2$meanHawk)
+test_payoff <- t.test(perPlayer1$meanPayoff, perPlayer2$meanPayoff)
+```
+
+Our hypothesis was that, compared with Game 2, players in Game 1 would play Hawk less often and earn more per round. In this class, hawkishness was slightly lower in Game 1 (`r round(mean(perPlayer1$meanHawk), 2)` vs `r round(mean(perPlayer2$meanHawk), 2)` per player; p = `r round(test_hawk$p.value, 2)`), but mean payoff per round was *not* higher (`r round(mean(perPlayer1$meanPayoff), 2)` vs `r round(mean(perPlayer2$meanPayoff), 2)`; p = `r round(test_payoff$p.value, 2)`). Neither difference is statistically significant, so with one class of 18 players we cannot reject the null hypothesis. Remember too that Game 2 was always played after Game 1, so any difference between the games could also reflect learning or fatigue.
+
+What did differ clearly between the games was *which* strategy paid: within Game 1, pairs that held back did best, while within Game 2, individual Hawks did best.
+
+Put together, the two games illustrate a general result from game theory: repeated interaction with the same partner can favour restraint even in a game where Hawk wins any single encounter, while anonymous, one-off interactions favour the individually dominant strategy. This is one reason why reputation, memory, and repeated encounters matter so much for the evolution of cooperation, both in nature and in human societies.
 
 Think about what this means in terms of human cooperation and conflict avoidance.
 

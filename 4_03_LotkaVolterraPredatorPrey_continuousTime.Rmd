@@ -16,11 +16,13 @@ Learning outcomes:
 
 ## What you should see
 
-With  default parameters, you should see:
+With the default parameters, you should see:
 
-- repeating oscillations in predator and prey abundances through time
-- a closed orbit in the phase plane around the coexistence equilibrium
+- repeating oscillations in predator and prey abundances through time, with the predator peaks following the prey peaks
+- a closed orbit in the phase plane around the coexistence equilibrium (the same loop is traced again and again)
 - straight-line isoclines (ZNGIs) whose intersection is the coexistence equilibrium
+
+This is the same model as the Excel spreadsheet and the [discrete-time R chapter](discrete-time-lotka-volterra-predator-prey-model-in-r.html), with the same parameter values, but solved in continuous time. Comparing the three shows which behaviour belongs to the biology and which to the time steps.
 
 ## Your task
 
@@ -63,10 +65,12 @@ predator_prey_model <- function(t, state, parameters) {
 
 ### Step 3: Set Parameters and Initial Conditions
 
-We set the parameters and initial conditions for the model. I use the same nomenclature as the PDF from the [Excel exercise](https://jonesor.github.io/BB512_Book/lotka-volterra-predator-prey-dynamics.html). The parameters are as follows: *R* is the victim population growth rate, *a* is the attack rate of the predator, *f* is the conversion efficiency of the predator and *q* is the predator starvation (death) rate. For more detail about these, read the relevant section in the Neal textbook.
+We set the parameters and initial conditions for the model. I use the same nomenclature as the PDF from the [Excel exercise](https://jonesor.github.io/BB512_Book/lotka-volterra-predator-prey-dynamics.html), and the same values. The parameters are as follows: *R* is the victim population growth rate, *a* is the attack rate of the predator, *f* is the conversion efficiency of the predator and *q* is the predator starvation (death) rate. Here *R* is an instantaneous rate (Neal's *r*), because the model is in continuous time.
+
+The Neal textbook (chapter *Predator-Prey Interactions*) writes the same model as $dH/dt = rH - aHP$ and $dP/dt = cHP - dP$. The translation is: $V = H$ (prey), $C = P$ (predators), $R = r$, $a = a$, $a \cdot f = c$ and $q = d$.
 
 ```{r parameters, echo = TRUE}
-parameters <- c(R = 0.8,  # Victim (prey) growth rate
+parameters <- c(R = 0.25, # Victim (prey) growth rate
                 a = 0.01, # Attack rate
                 f = 0.008, # Conversion efficiency
                 q = 0.1)  # Predator death rate
@@ -80,7 +84,7 @@ initial_state <- c(V = 1000,  # Initial victim population
 We simulate the model over a specified time period and store the results.
 
 ```{r simulation, echo = TRUE}
-time <- seq(0, 100, by = 0.1)  # Time sequence
+time <- seq(0, 200, by = 0.1)  # Time sequence
 output <- ode(y = initial_state, times = time, func = predator_prey_model, parms = parameters)
 output_df <- as.data.frame(output)
 ```
@@ -97,6 +101,9 @@ How does the size of the two populations change through time? You should see tha
 The plot below shows the changes in consumer and victim populations over time.
 
 ```{r population-dynamics, echo = TRUE}
+# Make room in the right-hand margin for the second axis label
+par(mar = c(5, 4, 4, 5))
+
 # Plot victim population on the primary y-axis
 plot(output_df$time, output_df$V, type = "l", col = "blue", lwd = 2, 
      ylab = "Victim Population (V)", xlab = "Time", main = "Predator-Prey Dynamics")
@@ -141,63 +148,57 @@ arrows(x0 = output_df$V[nrow(output_df) - 1],
 
 ### Questions
 
-**1. Oscillatory Dynamics**
-- Run the simulation with the default parameters. Describe the oscillatory behaviour of predator and prey populations over time. How do the populations interact?
-- What happens to the *amplitude* and *period* of the oscillations if you double the initial prey population (\( V \))? What about doubling the initial predator population (\( C \))?
+Before you change anything, write down a prediction for each question (a sentence or a quick sketch), then run the code to check it.
 
-**2. Neutral Stability**
-- Change the predator's death rate (\( q \)) and observe the long-term dynamics. Do the oscillations persist, amplify, or diminish? Why?
+**1. Oscillations**
 
-**3. Equilibrium Points**
-- Identify the equilibrium point (coexistence) for the default parameters. Verify it by calculating the equilibrium populations using:
+- Run the simulation with the default parameters. Describe how the two populations change through time. Which peaks first, prey or predators, and why?
+- In the phase plot, which way does the orbit go round (clockwise or anticlockwise)? Explain the direction using the four regions marked out by the isoclines.
+
+**2. Neutral stability and starting numbers**
+
+- *Predict:* what will happen if you start exactly at the equilibrium, $V = 1250$, $C = 25$? And just next to it, at $V = 1300$, $C = 25$?
+- Now try starting values further away, e.g. $V = 2000, C = 20$ and $V = 1000, C = 40$. What happens to the *amplitude* and the *period*? Do the oscillations grow, shrink or stay the same over time?
+
+**3. Equilibrium and time-averages**
+
+- Calculate the equilibrium for the default parameters, using
   \[
   V^* = \frac{q}{a \cdot f}, \quad C^* = \frac{R}{a}.
   \]
-  Do the simulated populations approach these values?
-- How do the equilibrium populations change when you increase the prey growth rate (\( R \)) or predator attack rate (\( a \))?
+- The populations never settle at these values. Instead, compare them with the *average* population sizes over the simulation: `mean(output_df$V)` and `mean(output_df$C)`. What do you find?
 
-**4. Parameter Sensitivity**
-- Investigate the effect of each parameter on the dynamics:
-  - Alter \( R \) (prey growth rate). How does this affect the predator population?
-  - Alter \( q \) (predator death rate). What happens to the predator-prey oscillations?
-  - Alter \( f \) (conversion efficiency). What happens to the predator-prey oscillations?
-  - Alter \( a \) (attack rate). What happens to the predator-prey oscillations?
+**4. Moving the isoclines**
 
+- *Predict* which isocline (prey or predator) moves, and in which direction, if you double each of $R$, $a$, $f$ and $q$ in turn. Check your predictions on the phase plot.
+- A pesticide kills both prey and predators: it lowers $R$ and raises $q$. Try $R = 0.2$ and $q = 0.12$. What happens to the *average* numbers of prey and predators? Is this what you would have guessed? (This is Volterra's principle; see Neal's *Predator-Prey Interactions*.)
 
-**5. Phase Plane Analysis**
-- Plot the phase plane with the default parameters. Add the Zero Net Growth Isoclines (ZNGIs) for predators and prey. What do these isoclines represent?
-- Change the prey growth rate (\( R \)),  predator attack rate (\( a \)) and other parameters. How do the positions of the isoclines change? What about the shape and size of the orbits? What does this imply for the dynamics?
-- Change the initial population sizes. Does the initial population size impact the dynamics?
+**5. Extinction and reality**
 
-**6. Extinction Scenarios**
-- Set a very high predator death rate (\( q \)) or a very low attack rate (\( a \)). What happens to the predator population? Is it possible to drive the predators extinct? What are the implications for prey dynamics?
-- What conditions (parameter combinations) are most likely to lead to extinction of both predators and prey?
-
-**7. Real-World Relevance**
-- Reflect on the assumptions of the model. What real-world factors might disrupt the neutrally stable oscillations predicted by the Lotka-Volterra model?
-
+- Start far from the equilibrium, at $V = 1000$, $C = 100$. What are the smallest prey and predator numbers reached? Can either population reach exactly zero in this model? What would happen to a real population at these numbers?
+- Which assumptions of the model are unrealistic? Which real-world factors might stop the cycles continuing for ever?
 
 
 ### Conclusion
 
-This document demonstrates how to implement and explore the Lotka-Volterra predator-prey model in continuous time using R. By varying parameters and initial conditions, you can investigate how predator-prey dynamics are influenced by ecological factors. Notice that, unlike the discrete time model, which has an implicit time lag of 1, the continuous-time model results in dynamically stable cycles rather than cycles with increasing amplitude (and certain extinction). To fit a discrete-time version of the model, take a look at the Excel exercise ([here](https://jonesor.github.io/BB512_Book/lotka-volterra-predator-prey-dynamics.html)) or the R exercise [here](discrete-time-lotka-volterra-predator-prey-model-in-r.html).
+This document demonstrates how to implement and explore the Lotka-Volterra predator-prey model in continuous time using R. By varying parameters and initial conditions, you can investigate how predator-prey dynamics are influenced by ecological factors. Notice that, unlike the discrete-time model (which has an implicit time lag of one time step and gives oscillations of increasing amplitude that end in extinction), the continuous-time model gives *neutrally stable* cycles: they neither grow nor shrink, and their size depends on the starting populations. To see the discrete-time version, take a look at the Excel exercise ([here](https://jonesor.github.io/BB512_Book/lotka-volterra-predator-prey-dynamics.html)) or the R exercise [here](discrete-time-lotka-volterra-predator-prey-model-in-r.html).
 
 The main findings of the continuous time model are as follows: 
 
-1. **Oscillatory Dynamics**: Predator and prey populations exhibit cyclical oscillations. The prey population increases when predator numbers are low, while the predator population grows when prey is abundant.
+1. **Oscillatory Dynamics**: Predator and prey populations exhibit cyclical oscillations. The prey population increases when predator numbers are low, while the predator population grows when prey is abundant, so predator peaks follow prey peaks.
    
-2. **Neutral Stability**: The oscillations are neutrally stable under idealized conditions; they persist indefinitely without damping or amplification unless external factors or parameter changes are introduced. Unless the parameters are set to truly extreme values, extinction is not possible.
+2. **Neutral Stability**: The oscillations are neutrally stable. They persist indefinitely without damping or amplification, and each pair of starting numbers gives its own orbit: the further from equilibrium you start, the larger the cycles. In the model neither population can ever reach exactly zero, but large orbits can take a population down to a fraction of one individual (for example, starting at $V = 1000$, $C = 100$ the predators fall to about 2 and the prey to about 8; with $q = 1$ the predators fall to about 0.01). In a real population that would mean extinction.
 
 3. **Equilibrium Points**: There are two equilibria:
    - The trivial equilibrium, where both predator and prey populations are zero.
-   - The coexistence equilibrium, where the predator and prey populations remain constant over time.
+   - The coexistence equilibrium, $V^* = q/(af)$ and $C^* = R/a$. The populations cycle around it rather than settling at it, but the average population sizes over a cycle equal the equilibrium values.
 
-4. **Parameter Dependence**: The amplitude and period of the oscillations depend on the parameters \( R \), \( a \), \( f \), and \( q \).
+4. **Parameter Dependence**: The parameters set the position of the isoclines, and so the equilibrium: $R$ and $a$ move the prey isocline, $q$, $a$ and $f$ move the predator isocline. The *amplitude* of the cycles is set by how far the starting numbers are from the equilibrium. For small cycles the *period* is approximately $2\pi/\sqrt{Rq}$ (about 40 time units with the default parameters); large cycles take longer.
 
-5. **Phase Plane Behaviour**: Predator and prey populations follow closed orbits in the phase plane around the coexistence equilibrium, under the assumption that the system remains undisturbed.
+5. **Phase Plane Behaviour**: Predator and prey populations follow closed orbits in the phase plane around the coexistence equilibrium, anticlockwise when prey are on the x-axis, under the assumption that the system remains undisturbed.
 
 ## Takeaways
 
-- Continuous-time predator-prey models generate sustained cycles under ideal conditions.
-- Equilibria and isoclines help explain why cycles form and how parameters shift them.
+- Continuous-time predator-prey models generate sustained, neutrally stable cycles: their size is set by the starting numbers, not by the parameters alone.
+- Equilibria and isoclines help explain why cycles form and how parameters shift them; the average population sizes over a cycle equal the equilibrium.
 - Real ecosystems add damping, delays, and noise that change these dynamics.

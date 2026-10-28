@@ -4,14 +4,19 @@
 
 *If a pocket watch is found on a heath, it is most reasonable to assume that someone dropped it and that it was made by at least one watchmaker, not by natural forces.*
 
-In the early days of evolutionary theory, Charles Darwin's concept of natural selection faced criticism from those who found it difficult to reconcile the idea of unguided evolution with the complexity of life. One famous criticism was the "watchmaker analogy." This analogy argues that, just as finding a pocket watch would naturally lead one to infer a skilled watchmaker, the intricate structures and adaptations of living organisms must also imply the existence of an intelligent designer.
+This is the "watchmaker analogy", made famous by the theologian William Paley in his book *Natural Theology* (1802), more than 50 years before Darwin published *On the Origin of Species*. Paley argued that, just as finding a pocket watch would naturally lead one to infer a skilled watchmaker, the intricate structures and adaptations of living organisms (such as the eye) must also imply the existence of an intelligent designer. Darwin read Paley as a student at Cambridge and admired the argument; his theory of natural selection was, in part, an answer to it.
 
-However, evolutionary biologist Richard Dawkins responded with a different perspective in his 1986 book *The Blind Watchmaker*. Dawkins argued that the complexity and diversity of life can arise through a "blind" process — natural selection — which is unguided and without foresight. Evolution, like a blind watchmaker, can achieve impressive complexity through small, incremental changes selected over long periods of time.
+More than a century later, the evolutionary biologist Richard Dawkins took up the same image in his 1986 book *The Blind Watchmaker*. Dawkins argued that the complexity and diversity of life can arise through a "blind" process, natural selection, which is unguided and has no foresight. Evolution, like a blind watchmaker, can achieve impressive complexity through small, incremental changes selected over long periods of time.
 
 ### Randomness and Selection
-In this exercise, we will explore how random variation, when paired with selection, can lead to specific outcomes that might otherwise seem impossible. We will use an R program to simulate the typing of a target sentence through random letter generation. You'll see firsthand how selection can guide random variation toward a meaningful result, just as natural selection drives biological complexity.
+In this exercise, we will explore how random variation, when paired with selection, can lead to outcomes that would otherwise seem impossible. We will use an R program to simulate the typing of a target sentence through random letter generation. This is a simplified version of a famous computer program described by Dawkins, who used the target phrase "METHINKS IT IS LIKE A WEASEL" (a line from Shakespeare's *Hamlet*).
 
-By simulating this process, you’ll discover how random changes alone lead to nonsense, but with selection, the "blind" process can quickly achieve a desired result.
+The key idea is the difference between two kinds of selection that Dawkins described:
+
+- **Single-step selection:** the whole phrase is produced at random in one go, and kept only if it is completely right. Every attempt starts again from scratch.
+- **Cumulative selection:** each generation starts from the previous one, and improvements are kept and built on.
+
+By simulating this process, you will discover how random changes alone produce nonsense, but random changes combined with cumulative selection quickly reach the target.
 
 ## Learning outcomes
 
@@ -19,8 +24,9 @@ By simulating this process, you’ll discover how random changes alone lead to n
 Learning outcomes:
 
 - Gain a deeper understanding of adaptive evolution via natural selection.
-- Recognize how random change can lead to order if paired with selection.
-- Learn to use R to explore biological phenomena.
+- Explain the difference between single-step and cumulative selection.
+- Recognise how random change can lead to order if paired with selection.
+- Run and modify a simple R simulation to explore a biological idea.
 
 :::
 
@@ -28,89 +34,94 @@ Learning outcomes:
 
 ### Inputs
 
-Imagine you’re typing random letters into a typewriter. How long would it take to come up with a sensible sentence by pure chance? Let’s say the sentence is "`I LOVE SCIENCE`" (14 characters, including spaces).
+Imagine you are typing random letters on a typewriter. How long would it take to type a sensible sentence by pure chance? Take Dawkins' phrase "`METHINKS IT IS LIKE A WEASEL`" (28 characters, including spaces).
 
 ### Steps
 
-The R code below doesn't just sample from the 26 letters of the alphabet plus a space: it also allows a few extra symbols (an apostrophe, an exclamation mark, and the Danish letters Å, Æ and Ø), giving a pool of 32 possible characters at each position. The chance of randomly typing the first letter correctly is 1 in 32. The probability of getting the first two letters right is \((1/32)^2\), and the chances of typing the entire 14-character sentence correctly by random typing alone is \((1/32)^{14} = 8.47 \times 10^{-22}\), an astronomically small number.
+The R code below picks each character at random from the 26 letters of the alphabet plus a space, giving a pool of 27 possible characters at each position. The chance of randomly typing the first letter correctly is 1 in 27. The probability of getting the first two letters right is \((1/27)^2\), and the chance of typing the entire 28-character phrase correctly in one attempt is \((1/27)^{28} \approx 8 \times 10^{-41}\). On average you would need about \(27^{28} \approx 1.2 \times 10^{40}\) attempts. This is single-step selection, and it would never work in practice.
 
 ### Output and interpretation
 
-But what if selection was applied after each correct letter was typed? How might selection drastically change the outcome? Let’s find out.
+But what if every correct letter was kept, and only the wrong ones were typed again in the next generation? That is cumulative selection. Let's find out how much difference it makes.
 
 ## Your task
 
 0. Make sure you have both R and RStudio installed.
 1. Open RStudio.
 2. Open a new script (File > New File > New Script)
-3. Cut and paste the R code (below) into your script.
+3. Copy and paste the R code (below) into your script.
 4. Save your script with a memorable file name.
 
-Note, only edit the top part of the file (above the marked comment)
+Note: only edit the top part of the code (above the line of `#` symbols). The phrase can only contain letters and spaces.
+
+::: {.do-something}
+**Predict first**
+
+Before you run the code, write down your predictions:
+
+- With selection turned on, roughly how many generations will it take to reach the target phrase? 10? 100? 10,000?
+- With selection turned off, will it ever get there?
+:::
 
 ### The code
 
-```
-phrase <- "With your feet on the air and your head on the ground"
-nGenerations <- 100
+```r
+phrase <- "Methinks it is like a weasel"
+nGenerations <- 200
 selection <- TRUE
 set.seed(123)
 
 ###################################################
-#Do not edit between the ##
+# Do not edit below this line
+pool <- c(LETTERS, " ")
 phraseSplit <- unlist(strsplit(toupper(phrase), ""))
+if (!all(phraseSplit %in% pool)) stop("Use only letters and spaces in the phrase")
 output <- data.frame(generation = 1:nGenerations, 
                      phrase = rep(NA, nGenerations))
 fixed <- NULL
 for (i in 1:nGenerations){
-  randomPhrase <- sample(c(LETTERS," ","'","Å","Æ","Ø","!"), 
-  length(phraseSplit), replace = TRUE)
+  randomPhrase <- sample(pool, length(phraseSplit), replace = TRUE)
   if(selection == TRUE) {
     randomPhrase[fixed] <- phraseSplit[fixed]
-    fixed <- append(fixed,which(randomPhrase == phraseSplit))
+    fixed <- append(fixed, which(randomPhrase == phraseSplit))
     fixed <- sort(unique(fixed))
   }
-  output$phrase[i] <- paste(randomPhrase,collapse = "")
+  output$phrase[i] <- paste(randomPhrase, collapse = "")
 }
 ###################################################
 
 output
 
+# First generation that matches the target (NA if it was never reached)
+which(output$phrase == paste(phraseSplit, collapse = ""))[1]
 ```
 
-## How the simulation works.
+## How the simulation works
 
 An instructor will explain the code and demonstrate its use.
 
-The program generates a random sequence of characters of the same length as a target phrase (stored in `phrase`). If selection is turned on (`selection <- TRUE`), correct letters are "fixed" in place as the program iterates over generations. Incorrect letters continue to be replaced randomly.
+The program generates a random sequence of characters of the same length as the target phrase (stored in `phrase`). If selection is turned on (`selection <- TRUE`), correct letters are "fixed" in place and kept in every following generation, while incorrect letters continue to be replaced at random. This is cumulative selection: each generation builds on the one before.
 
-Over multiple generations, the process narrows down the random sequence until it matches the target phrase. Without selection, no meaningful sentence would be generated.
+Over the generations, the number of correct letters builds up until the sequence matches the target phrase. The last line of the code tells you the generation at which this happened. With selection turned off, each generation is a fresh random guess (single-step selection), and no meaningful sentence appears.
+
+Note that this program is a simplified version of Dawkins' original. Here, each correct letter is locked in place and can never change again. Dawkins' program instead made a population of copies of the current phrase, each with a few random copying errors (mutations), and kept the copy closest to the target. In that version a correct letter can, in principle, be lost again, as in real populations. Both versions show the same thing: cumulative selection is enormously faster than chance alone.
 
 **Try it yourself**
 
-1) **Change the phrase** - make it shorter/longer.
-2) **Change the number of generations** - Experiment with different values for `nGenerations`.
+1) **Change the phrase**: make it shorter or longer (letters and spaces only). How does this change the number of generations needed?
+2) **Change the number of generations**: experiment with different values for `nGenerations`. With 100 generations, is the target always reached?
+3) **Change the seed**: change `set.seed(123)` to another number and run the code again. Does it always take the same number of generations?
+4) **Turn selection off**: set `selection <- FALSE`. What happens?
 
 ## Questions
 
 * What happens if selection is turned OFF?
-
-<!-- Without selection, the random sequence does not evolve toward the target phrase and remains random. -->
-
 * Does the number of generations affect whether the target phrase is reached?
-
-<!-- Yes, more generations provide more opportunities for selection to act, allowing the phrase to be reached. -->
-
 * Does the speed of reaching the target phrase depend on the length of the phrase?
-
-<!-- Yes, longer phrases take more generations to reach because there are more characters to randomize and fix in place. -->
-
 * How does this simulation differ from real natural selection?
-
-<!-- This simulation uses an explicit target phrase, whereas natural selection does not have a predefined goal. Real evolution selects for traits that confer a reproductive advantage in the current environment. -->
 
 ## Takeaways
 
-- Selection can rapidly amplify small, random improvements when there is a consistent criterion for success.
+- Cumulative selection, which keeps and builds on small random improvements, is enormously faster than single-step selection (pure chance).
 - Random variation alone is extremely unlikely to generate complex outcomes, but selection changes the odds.
-- Real natural selection has no target; it favors traits that improve fitness in the current environment.
+- Real natural selection has no target; it favours traits that improve fitness in the current environment.

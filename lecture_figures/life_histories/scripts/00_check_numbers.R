@@ -3,18 +3,22 @@
 # Run from the lecture folder: LANG=C.UTF-8 Rscript scripts/00_check_numbers.R
 
 cat("\n== Force of selection thought experiment (slides 'Thought experiment') ==\n")
-# Fictional organism kept from the previous version of the lecture:
-# first breeds at age 1, survives each year with probability 0.8, 10 offspring per year, at most 21 breeding ages.
-s <- 0.8; m <- 10; ages <- 1:21
+# Fictional organism kept from the previous version of the lecture, now with the practical's 25 ages:
+# first breeds at age 1, survives each year with probability 0.8, 10 offspring per year, at most 25 breeding ages.
+s <- 0.8; m <- 10; ages <- 1:25
 lx <- s^(ages - 1)                       # l_1 = 1
 R0 <- sum(lx * m)
-cat("R0 (ages 1-21)                        :", round(R0, 2), "\n")              # 49.54
-cat("l_x at ages 1,2,3,19,20,21            :", round(lx[c(1, 2, 3, 19, 20, 21)], 3), "\n")
-cat("Expected offspring at age 21 (l21*m)  :", round(lx[21] * m, 3), "\n")      # 0.115
-cat("Dies before age 21, no benefit        :", round(R0 - lx[21] * m, 2), "\n")  # 49.42
-cat("+1 offspring at age 1, dies before 21 :", round(R0 + 1 * lx[1] - lx[21] * m, 2), "\n")  # 50.42
-cat("Old slide value 50.54 = R0 + 1 (cost ignored):", round(R0 + 1, 2), "\n")
-cat("Share of R0 from ages 1-5            :", round(sum(lx[1:5] * m) / R0, 3), "\n")
+cat("R0 (ages 1-25)                        :", round(R0, 2), "\n")              # 49.81
+cat("l_x at ages 1,2,3,23,24,25            :", round(lx[c(1, 2, 3, 23, 24, 25)], 4), "\n")
+cat("Expected offspring at age 25 (l25*m)  :", round(lx[25] * m, 3), "\n")      # 0.047
+cat("Dies before age 25, no benefit        :", round(R0 - lx[25] * m, 2), "\n")  # 49.76
+cat("+1 offspring at age 1, dies before 25 :", round(R0 + 1 * lx[1] - lx[25] * m, 2), "\n")  # 50.76
+cat("+1 offspring at age 1, no cost        :", round(R0 + 1, 2), "\n")         # 50.81
+cat("Share of R0 from ages 1-5            :", round(sum(lx[1:5] * m) / R0, 3), "\n")  # 0.675
+cat("Share of R0 from ages 15+            :", round(sum(lx[15:25] * m) / R0, 3), "\n")
+# Break-even: earliest death age at which +1 at age 1 still beats the normal life history
+be <- sapply(2:25, function(k) R0 + 1 - sum(lx[k:25] * m))
+cat("+1 at age 1, dies before age k, k = 15..20:", round(be[14:19], 2), "\n")  # crosses R0 between 17 and 18
 
 cat("\n== Practical 'Trade-offs and the declining force of selection' (25 ages) ==\n")
 lx25 <- s^(0:24)

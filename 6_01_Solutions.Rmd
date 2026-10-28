@@ -8,23 +8,29 @@ Use these solutions to check your reasoning after you attempt the tasks. If your
 
 ## Solutions: The blind watchmaker
 
+* _Predictions and the default run_
+
+With selection on, the default code (Dawkins' 28-character phrase, 27 possible characters, `set.seed(123)`) reaches the target at generation 66. With other seeds the number varies: in 5,000 simulated runs the median was 98 generations, and 90% of runs finished between about 60 and 166 generations. Compare this with single-step selection, where you would expect to need about \(27^{28} \approx 10^{40}\) attempts.
+
 *	_What happens if selection is turned OFF?_
 
-If there is no selection, then there is no adaptation. Selection is required to retain the changes and pass to the next generation. With no selection the result is purely random.
+Each generation is then a completely new random guess (single-step selection), and nothing is kept from one generation to the next. The output stays random nonsense. The chance of hitting the whole phrase in any one generation is \((1/27)^{28} \approx 8 \times 10^{-41}\), so in practice it never happens.
 
 * _Does the number of generations affect whether the target phrase is reached?_
 
-Yes, if the phrase is complex, it may take many generations to reach. Increasing the number of generations will improve the chance that the target is reached.
+Yes. With 100 generations, only about half of runs (about 52%) reach this phrase; with 200 generations almost all do (about 99%). The last letters to be fixed are the slow part: each wrong letter has only a 1 in 27 chance of being right in any one generation.
 
 * _Does the speed of reaching the target phrase depend on the length of the phrase?_
 
-Yes. Shorter target phrases are achieved quicker than longer ones.
+Yes, but much less than you might expect. Longer phrases take more generations, because there are more letters that all have to be fixed, but the increase is small: "I LOVE SCIENCE" (14 characters) takes a median of about 81 generations, the 28-character weasel phrase about 98, and the 53-character "WITH YOUR FEET ON THE AIR AND YOUR HEAD ON THE GROUND" about 117. With single-step selection, every extra character makes success 27 times less likely.
 
 * _How does this simulation differ from real natural selection?_
 
-Two ways. Firstly, natural selection does not have a specific long-term goal (i.e. target). It is simply that the better survivors are more represented in the next generation. Secondly, in natural selection each intermediate step needs to be advantageous compared to the previous step, which is not necessarily the case here.
+1. Natural selection has no long-term goal or target. Here, every phrase is judged by how close it is to a fixed target that is decided in advance. In nature, individuals are "judged" only by how well they survive and reproduce in their current environment.
+2. The intermediate phrases have no use of their own: "METHINKS IT IS LIKE A WXASEL" is only better because it is closer to the target. In evolution, every intermediate form (for example, each stage in the evolution of an eye) must itself work well enough to survive and reproduce.
+3. The simulation judges each letter separately, with perfect knowledge of the right answer, and a correct letter can never be lost again. There is no population, no reproduction and no inheritance. Real selection acts on whole organisms in a population, and favourable variants can still be lost by chance.
 
-
+The important lesson still holds: random variation combined with cumulative selection can produce outcomes that would be impossible by chance alone.
 
 ## Solutions: Bug hunt camouflage
 
@@ -92,7 +98,22 @@ Take home messages:
 * Lambda ($\lambda$) values $<1$ lead to a exponential *decrease*, while values $>1$ lead to exponential growth. A $\lambda$ of 1 indicates no change.
 * Exponential growth is unlimited. This is unrealistic because very soon competition (what Darwin called "The struggle for existence") will soon take effect as the population runs out of space or resources. Nevertheless, the model is useful and realistic for some limited situations (e.g. early population growth for new invaders)
 * Growth trajectories can be plotted on the *natural scale* or on a *log scale*. Exponential growth (or decline) plotted on a log scale is a straight line. This could be useful to infer biological processes (or the lack of them). For example, exponential growth in population size indicates that there are no forces currently limiting the population (e.g. predators/competition/management actions).
-* The slope of the population growth on the natural log scale can tell you what $\lambda$ is. The "opposite" of *ln* is *exp*, so you can ask Excel to `=EXP(slope).
+* The slope of the population growth on the natural log scale can tell you what $\lambda$ is. The "opposite" of *ln* is *exp*, so you can ask Excel to calculate `=EXP(slope)`.
+
+Answers to the task:
+
+* **Steps 1-2:** with $N_0 = 10$ and $\lambda = 1.1$, the population reaches 16.1 at $t = 5$ and 67.3 at $t = 20$. Plotted against time, N curves upwards ever more steeply.
+* **Steps 3-4:** plotting ln(N) against time turns the curve into a straight line. A constant *proportional* increase each time step becomes a constant *absolute* increase on the log scale.
+* **Step 5:** with $\lambda = 1.2$ the curve rises faster (steeper straight line on the log plot); with $\lambda = 0.8$ the population declines towards zero (straight line sloping downwards on the log plot); with $\lambda = 1$ the population stays at 10 (flat line). $\lambda = 1$ is the boundary between growth and decline: the population exactly replaces itself each time step ($R_m = 0$).
+* **Step 6:** the trendline slope is 0.0953 = ln(1.1), and `=EXP(0.0953)` returns 1.1, the $\lambda$ you used. The slopes for $\lambda$ = 0.8, 1 and 1.2 are -0.223, 0 and 0.182. If you get a different slope, check that you fitted the trendline to the `logN` (natural log) column, not to N on a logarithmic axis.
+* **Geometric series:** $N_5 = 10 \times 1.1^5 = 16.1$, the same as the spreadsheet. After 900 generations, $N_{900} = 10 \times 1.1^{900} \approx 1.8 \times 10^{38}$. That is absurdly large (far more individuals than there are atoms in a human body, around $10^{27}$), which shows why unlimited geometric growth cannot continue for long in reality.
+
+Answers to the questions:
+
+* **Constant growth rate:** the population is multiplied by the same factor each time step, so it grows by the same *proportion* each step and by ever-larger *numbers*. For example, with $\lambda = 1.1$ the population grows by 10% each step: from 10 to 11 in the first step, but from 61.2 to 67.3 between steps 19 and 20. It also doubles at a constant interval: $\ln 2 / \ln 1.1 \approx 7.3$ time steps.
+* **Why unrealistic:** it assumes unlimited resources and space, no density dependence (competition, predation or disease do not increase as the population grows), and a constant $\lambda$ every year (no environmental variation). Real populations eventually run out of resources and growth slows.
+* **Where it might be suitable:** the early stages of growth when a population is small relative to its resources, e.g. an invasive species newly arrived in a suitable habitat, a population recovering after a crash or after protection (e.g. some seal or raptor populations), or bacteria in fresh culture medium.
+* **Decline of 25% per year:** this means $\lambda = 0.75$, so $N_4 = 800 \times 0.75^4 = 253.1$, i.e. about 253 individuals.
 
 ## Solutions: Estimating Population Growth Rate
 
@@ -108,7 +129,8 @@ You can find the completed Excel file [here](https://www.dropbox.com/scl/fi/sxvt
 
 
 - From the linear regression performed on the log-transformed data, the slope of the line corresponds to $log(\lambda)$. To find $\lambda$, exponentiate the slope: $\lambda = e^{\text{slope}}$.
-- For example, if the slope of the regression line is 0.086, then $\lambda = e^{0.086} \approx 1.09$. This means the population grows by approximately 9% per year, matching the initial assumption of $\lambda = 1.09$.
+- With the data provided, the slope of the regression of ln(N) on year is about 0.070 (0.0696), so $\lambda = e^{0.0696} \approx 1.07$. The population grows by about 7% per year. (Small differences in the third decimal place are fine; they come from rounding in the trendline label.)
+- In fact, the data were simulated with an average $\lambda$ of 1.09, with random year-to-year variation in $\lambda$ and measurement error in the counts. Our estimate is lower than 1.09 for two reasons: year-to-year variation in $\lambda$ lowers long-run growth (growth follows the geometric mean of $\lambda$, which is smaller than the arithmetic mean), and with only 25 years of noisy counts the estimate has considerable sampling error. This is a useful reminder that an estimate from real data is never exactly the "true" value.
 
 3. What assumptions does this model make? Discuss any potential real-world factors that might affect the accuracy of your estimate for $\lambda$.
 
@@ -522,16 +544,51 @@ Now then, to answer our questions. First, what is the percentage of butterflies 
 
 ## Solutions: Neutral or adaptive evolution in humans
 
-The take home message here is that whether traits are adaptive or neutral depends on the environment. 
+There is no single correct ordering: groups can defend different placements. What matters is the reasoning. A good answer for each trait goes through three questions:
 
-Consider genes that confer antibiotic resistance on bacteria. In the absence of antibiotics, these genes are not important and are not selected for. They still evolve (if they vary among individuals and are inherited), but this evolution is neutral with no selection. On the other hand, when antibiotics are introduced to the system, those same genes are strongly selected for and evolution of the genes for antibiotic resistance is now strongly adaptive. Context matters.
+1. **Is the variation heritable?** If not, the trait cannot evolve by drift *or* by selection.
+2. **How strongly does the trait affect survival or reproduction, in this environment?** Strong effects put the trait at the selection end of the continuum; weak or no effects put it at the drift end.
+3. **Is the population large enough for that selection to beat drift?** Selection is effective only when $s$ is clearly larger than about $1/(2N_e)$.
 
-The same is the case for traits in humans. Assuming that the traits vary among individuals and are inherited, their neutrality or adaptiveness depends on their effect on fitness. If the traits have strong effects on fitness then they will be under strong selection but if they have weak or no effects on fitness they will evolve via neutral evolution.
+The take-home message is that whether a trait evolves adaptively or neutrally depends on the environment (and on population size), not just on the trait. A useful comparison is antibiotic resistance in bacteria. With antibiotics, resistance genes are strongly selected *for*. Without antibiotics they are not neutral: resistance usually has a fitness cost, so it is usually selected *against* (which is why resistance can decline when an antibiotic is used less, although compensatory mutations can reduce the cost). The environment can change both the strength and the direction of selection.
 
-Example traits that evolve via neutral evolution include fingerprint structure and iris structure. The detailed structures are not important to fitness, but are still genetically determined, and inherited.
+Humans are still evolving. In industrialised societies such as Denmark, almost everyone survives to adulthood, so selection now acts mainly through differences in the number of children people have (and the age at which they have them), rather than through survival. Studies of modern populations have measured selection on traits such as height, age at first birth and cholesterol in exactly this way (e.g. Byars et al. 2010, *PNAS*; Sanjak et al. 2018, *PNAS*).
 
-Traits like muscle strength, running speed may have been important for fitness when they helped our ancestors obtain food. In those environments, they would have been under selection and therefore evolve via adaptive evolution. In more modern times, these selection pressures are weaker.
+### Suggested placements
 
+| Trait | Heritable variation? | As foragers | In Denmark today | Where on the drift-selection continuum, and why |
+|---|---|---|---|---|
+| Metabolic efficiency | Yes, partly | Probably important: food was often scarce, so efficient use of energy aided survival and reproduction | Weak, possibly reversed: food is abundant, and very efficient storage may contribute to obesity and type 2 diabetes | Towards selection as foragers; weaker today. *Debatable*: the "thrifty gene" idea has weak direct genetic support |
+| Amount of body hair | Yes | Probably weak (temperature regulation, parasites, mate choice are all suggested) | Weak, apart from possible mate choice | Probably near the drift end, with some selection (e.g. sexual selection). *Debatable* |
+| Singing ability | Partly | Unknown; possibly sexual selection or social bonding | Weak | Near the drift end, but sexual selection is possible. *Debatable* |
+| Intelligence | Yes, within populations (variation among individuals) | Probably important for problem solving and social life | Unclear: in modern data, educational attainment is weakly associated with having *fewer* children | Somewhere in the middle; the direction of selection may differ between environments. Within-population heritability says nothing about differences between groups (see the note in the practical) |
+| Eye colour | Yes, strongly (mainly *OCA2*/*HERC2*) | Probably weak, except perhaps through mate choice | Weak | Blue eyes rose quickly in Europe, which suggests some selection (on pigmentation in general, or sexual selection), but drift and "hitch-hiking" with selected pigmentation alleles are possible. *Debatable* |
+| Earwax type (*ABCC11*) | Yes, simple (one DNA change) | Unknown; a selection signal exists, perhaps linked to sweat or body odour | Weak | Some evidence of past selection, target uncertain (see evidence card). *Debatable* |
+| Sperm motility | Partly | Strong: affects fertilisation directly | Still selected, but assisted reproduction reduces selection for some couples | Towards selection: tightly linked to reproduction |
+| Muscle strength | Partly | Probably important for hunting, carrying and fighting | Weak | Towards selection as foragers; nearer the drift end today |
+| Face symmetry | Weakly; much is developmental noise | Possibly via mate choice, as a cue of health | Weak | Mostly not heritable, so it can evolve little by either process |
+| Running speed | Partly | Probably important for hunting and escaping danger | Weak | Towards selection as foragers; nearer the drift end today |
+| Height | Yes, highly heritable (many genes) | Probably selected, but the optimum depends on environment | Modern studies detect weak selection, mainly through number of children, with differences between the sexes (e.g. Stulp et al. 2015, *Proc. R. Soc. B*) | In the middle: weak but measurable selection |
+| Birth canal (pelvic) shape | Yes | Stabilising selection: the canal must allow birth of a big-brained baby while still allowing efficient walking | Weaker: caesarean section reduces the cost of a mismatch | Selection keeps the shape within limits, but much of the variation between populations fits drift during serial founder effects as humans spread out of Africa (Betti & Manica 2018, *Proc. R. Soc. B*; see the drift lecture). A good example of both acting together |
+| Resistance to bubonic plague | Yes, partly (immune genes) | Weak: plague is a disease of dense agricultural and urban societies, not of small foraging groups | Weak: plague is rare and treatable | Strongly selected in medieval Europe during the Black Death (Klunk et al. 2022, *Nature*, immune genes such as *ERAP2*), not in foragers and not today. A clear example of environment-dependent selection |
+| Sense of smell | Yes (hundreds of olfactory receptor genes) | Probably important for finding food and avoiding danger | Weak | Many human olfactory receptor genes have become non-functional, which is consistent with relaxed selection followed by drift. Near the drift end today |
+| Resistance to common cold | Partly | Weak: rarely fatal | Weak | Near the drift end: colds rarely affect survival or number of children |
+| Eyesight acuity | Partly | Probably important for hunting and gathering | Weak: glasses correct poor vision | Towards selection as foragers; near the drift end today |
+
+Examples of traits that **cannot** evolve much because their variation is mostly not heritable: the fine texture of the iris, the detailed ridge minutiae of fingerprints (these differ between identical twins), and much of the variation in face symmetry.
+
+### Gene flow between populations
+
+- Differences that gene flow would erase: neutral variation (most DNA differences, and traits close to the drift end of the continuum). Very few migrants per generation are enough to prevent large neutral differences between populations, which is one reason why most human genetic variation is found *within* populations rather than between them.
+- Differences that local selection can maintain against gene flow: traits where the selection coefficient is large compared with the migration rate. Examples are skin pigmentation (UV intensity differs with latitude), lactase persistence (dairying history), and HbS and Duffy-null (malaria). These traits vary between populations much more than most neutral markers do.
+
+### Discussion questions
+
+* **Traits categorised differently between the two societies.** Muscle strength, running speed, eyesight acuity and metabolic efficiency were probably more strongly selected in foraging societies than in Denmark today. Others (e.g. plague resistance) were strongly selected only in particular historical environments. In both settings, though, selection still acts, especially through the number of children.
+* **Traits with little heritable variation.** Iris texture, fingerprint detail and much of face symmetry: they can vary a lot but cannot evolve much by either process.
+* **Gene flow vs local selection.** See above.
+* **Preconceived notions.** Common ones are that "evolution has stopped in humans" (it has not), that "every trait is an adaptation" (many traits drift, and some barely vary heritably), and that "drift only matters in tiny populations" (it acts in every finite population; it dominates whenever $s$ is small compared with $1/(2N_e)$).
+* **Other traits to add.** Lactase persistence, skin pigmentation, blood groups, alcohol flush reaction, ability to taste bitter compounds (*TAS2R38*), and wisdom teeth are all good candidates with some genetic evidence.
 
 ## Solutions: Heritability
 
@@ -678,21 +735,23 @@ The answers to the questions are [here](https://www.dropbox.com/s/oz2c10bmyf8t7s
 
 
 
-To add to this document, you can see the conditions for coexistence in the Neal textbook (p. 278). Note that in this textbook, $\alpha_{12}$ is written as $\alpha$ and $\alpha_{21}$ is written as $\beta$
+The general conditions are in Neal, *Interspecific Competition* (Lotka-Volterra competition section). Note that in the textbook, $\alpha_{12}$ is written as $\alpha$ and $\alpha_{21}$ is written as $\beta$.
 
-Let's break down the implications of the conditions $\alpha_{12} < \frac{K_1}{K_2}$ and $\alpha_{21} < \frac{K_2}{K_1}$ for stable coexistence in a more intuitive way:
+The simplest way to understand the four outcomes is to ask whether each species can invade when it is rare and the other species is at its carrying capacity:
 
-1. **Carrying Capacities $K_1$ and $K_2$**: Think of the carrying capacity as the maximum number of guests each species can have at their own "party" (their environment) before it becomes too crowded.
+- When species 2 is at $K_2$, a rare species 1 experiences crowding equivalent to $\alpha_{12} K_2$ of its own individuals. It can grow if this is less than its own carrying capacity: $\alpha_{12} K_2 < K_1$, or $\alpha_{12} < K_1/K_2$.
+- In the same way, a rare species 2 can grow when species 1 is at $K_1$ if $\alpha_{21} K_1 < K_2$, or $\alpha_{21} < K_2/K_1$.
 
-2. **Competition Coefficients ($\alpha_{12}$ and $\alpha_{21}$)**: The competition coefficients are like how much each uninvited guest from the other species "eats" if they crash the party. If they eat too much (high $\alpha$), they could ruin the party by leaving not enough food for the intended guests.
+| Species 1 can invade? | Species 2 can invade? | Outcome (question) |
+|---|---|---|
+| Yes | No | Species 1 excludes species 2 (Q1) |
+| No | Yes | Species 2 excludes species 1 (Q2) |
+| Yes | Yes | Stable coexistence (Q3) |
+| No | No | Either species can win, depending on the starting densities (Q4) |
 
-3. **Condition $\alpha_{12} < \frac{K_1}{K_2}$**: This means that the uninvited guests from species 2 don't eat too much at species 1's party. Even if they eat some food, there's still enough for all of species 1's intended guests — so species 1 can still have a successful party.
+In ecological terms, coexistence requires that each species limits its own growth more than it limits its competitor's, once you allow for differences in carrying capacity. If the two species have similar carrying capacities, this means $\alpha_{12} < 1$ and $\alpha_{21} < 1$: each individual competes more strongly with members of its own species than with the other species, for example because the two species partly use different resources (niche differences).
 
-4. **Condition $\alpha_{21} < \frac{K_2}{K_1}$**: Similarly, this means that the uninvited guests from species 1 are polite enough not to eat too much at species 2's party, leaving enough for species 2's intended guests.
-
-When both conditions are met, it's like both species can have their parties without ruining each other's. They both manage to have enough resources (food) to sustain a good number of guests (population) without the other species taking so much that it causes a problem.
-
-In ecological terms, these conditions mean that while there is some competition for resources between the two species, it's not so severe that one species would prevent the other from surviving. They can both maintain healthy populations without outcompeting each other to the point of extinction. Each species manages to "live and let live," with neither being too greedy for the shared environment to handle.
+Note that comparing a coefficient with 1 is not enough when the carrying capacities differ. In the answer to Q1, species 1 wins even though $\alpha_{12} = 1.25 > 1$, because its carrying capacity is three times larger ($K_1 = 3000$, $K_2 = 1000$).
 
 
 ## Solutions: Lotka-Volterra predator-prey dynamics
@@ -703,6 +762,101 @@ You can find a completed Excel spreadsheet [here](https://www.dropbox.com/s/wet7
 The answers to the questions are [here](https://www.dropbox.com/s/mt43nvqu7cjif69/10.%20Answers%20to%20Pred-Prey%20exercise.pdf?dl=1).
 
 
+
+## Solutions: Continuous-time Lotka-Volterra predator-prey model in R
+
+All numbers below come from the chapter code with the default parameters ($R = 0.25$, $a = 0.01$, $f = 0.008$, $q = 0.1$), start $V = 1000$, $C = 20$, run to time 200, unless stated otherwise.
+
+**1. Oscillations**
+
+- Both populations cycle regularly and for ever. The prey peak first (at $t \approx 13.7, 53.8, 93.9, \ldots$) and the predators peak about a quarter of a cycle later ($t \approx 22.4, 62.5, 102.6, \ldots$). Prey increase while predators are scarce; predators then increase because food is plentiful; the larger predator population pushes the prey down; the predators then starve and decline, and the cycle repeats.
+- With prey on the x-axis the orbit runs **anticlockwise**. Below the prey isocline ($C < R/a = 25$) prey increase (move right); above it they decrease (move left). To the right of the predator isocline ($V > q/(af) = 1250$) predators increase (move up); to the left they decrease (move down). Following these arrows round the four regions gives right, up, left, down: anticlockwise.
+
+**2. Neutral stability and starting numbers**
+
+- Starting exactly at $V = 1250$, $C = 25$ nothing changes: this is the equilibrium. Starting just next to it ($V = 1300$, $C = 25$) gives a very small cycle (prey 1201 to 1300, predators 24.4 to 25.6), which does not grow or shrink.
+- Further away, the cycles are bigger: from $V = 2000$, $C = 20$ the prey range is 632 to 2180; from $V = 1000$, $C = 40$ it is 475 to 2601 (predators 14 to 41). In every case the size of the cycle stays the same for the whole run: the oscillations neither grow nor die away. This is **neutral stability**: the model has no tendency to return to the equilibrium or to move away from it, so the size of the cycles is set entirely by where you start.
+- The period changes a little with the size of the cycle: about 39.7 time units for the tiny cycle, about 40 at the default start, about 40.5 to 41.5 for the larger ones. For small cycles the period is $2\pi/\sqrt{Rq} = 2\pi/\sqrt{0.025} \approx 39.7$.
+
+**3. Equilibrium and time-averages**
+
+- $V^* = q/(af) = 0.1/(0.01 \times 0.008) = 1250$ and $C^* = R/a = 0.25/0.01 = 25$.
+- The populations never settle there, but `mean(output_df$V)` = 1250.6 and `mean(output_df$C)` = 25.01: the **averages over the cycles equal the equilibrium** (the small difference is because the run does not end at the end of a complete cycle).
+
+**4. Moving the isoclines**
+
+- Doubling $R$ (to 0.5) raises the prey isocline to $C = 50$ (more predators are needed to stop the prey growing). Doubling $a$ (to 0.02) lowers the prey isocline to $C = 12.5$ *and* moves the predator isocline left to $V = 625$. Doubling $f$ (to 0.016) moves only the predator isocline, to $V = 625$. Doubling $q$ (to 0.2) moves the predator isocline right, to $V = 2500$. Because the starting point (1000, 20) is now a different distance from the new equilibrium, the cycles also change size.
+- With $R = 0.2$ and $q = 0.12$ the equilibrium moves to $V^* = 1500$, $C^* = 20$. The run gives average prey 1511 and average predators 19.95. So killing both species **increases the average number of prey** and decreases the average number of predators. This is Volterra's principle: an indiscriminate mortality factor (pesticide, fishing) can benefit the prey because it hits their predators.
+
+**5. Extinction and reality**
+
+- From $V = 1000$, $C = 100$ the predators fall to about 2.0 and the prey to about 8. In the model neither population can ever reach exactly zero (the growth rates are proportional to population size, so the populations approach zero but never reach it). In a real population, a handful of individuals, or a fraction of one, means extinction, and chance events (demographic stochasticity) would make it very likely.
+- Unrealistic assumptions include: prey grow exponentially without predators (no carrying capacity); each predator eats in proportion to prey density without limit (no handling time or satiation, i.e. a Type I functional response); predator death rate is constant; no time lags, no refuges, no other prey or predators; individuals meet at random; populations are large enough to treat as continuous. Prey carrying capacity, predator satiation, refuges, alternative prey, spatial structure and environmental noise will all change the cycles: some damp them, others destabilise them, so real cycles are rarely neutrally stable.
+
+## Solutions: Discrete-time Lotka-Volterra predator-prey model in R
+
+All numbers below come from the chapter code with the default parameters ($R = 0.25$, $a = 0.01$, $f = 0.008$, $q = 0.1$), start $V = 1000$, $C = 20$ and `total_time = 300`. The model is deterministic, so you should get exactly these numbers.
+
+- **Default run ($\Delta t = 1$).** Instead of a closed loop, the phase plot spirals **outwards**: each cycle is a little larger than the one before. By the last cycle the prey reach about 16,000 and the predators about 230. The prey hit zero at $t = 220$; after that the predators have nothing to eat and dwindle towards zero (about 0.05 by $t = 300$). The populations "react one step too late": the change over each step is calculated from the numbers at the start of the step, so the prey keep growing for a whole step after predators have become numerous enough to stop them, and so on round the cycle.
+- **Smaller time steps.** With $\Delta t = 0.1$ the spiral still grows, but much more slowly: over 300 time units the prey stay between about 670 and 2120 and neither population goes extinct. With $\Delta t = 0.01$ the orbit is almost closed (prey up to about 1850), very close to the continuous-time model (prey 812 to 1823). Small time steps are just a more accurate way of calculating the continuous model.
+- **Larger time step.** With $\Delta t = 2$ the spiral grows faster and the prey hit zero earlier, at $t = 142$.
+- **Which parameters control the spiral?** $R$ and $q$. Doubling $R$ (to 0.5) brings the prey crash forward from $t = 220$ to $t = 64$; doubling $q$ (to 0.2) brings it forward to $t = 58$. Doubling $a$ or $f$ also changes the time of the crash from the default start ($t = 175$ and $t = 154$), but only because the equilibrium moves and the start is then a different distance from it. If you start the same relative distance from the equilibrium (e.g. at 80 % of $V^*$ and $C^*$), doubling $a$ or $f$ makes no difference (crash at $t = 220$, as with the defaults), while doubling $R$ ($t = 79$) or $q$ ($t = 132$) still speeds it up.
+- **Why.** Near the equilibrium, each step multiplies the distance from the equilibrium by about $\sqrt{1 + \Delta t^2 R q}$. With the defaults this is $\sqrt{1 + 0.025} \approx 1.012$, about 1 % growth per step. The factor contains $R$, $q$ and $\Delta t$ but not $a$ or $f$, and it is always bigger than 1, so the discrete model always spirals out eventually; it gets closer to 1 (no growth, as in the continuous model) as $\Delta t$ gets smaller.
+
+## Solutions: Game theory: Hawks and doves
+
+Your own class results will differ from year to year. A worked analysis of real class data (2022) is in the [Results of the hawk-dove games] chapter.
+
+*	_Predictions before playing_
+
+Game Two (new partner every round): with B = 4 and C = 3, Hawk earns more than Dove whatever the opponent plays (4 > 2 against a Dove, 0.5 > 0 against a Hawk), so theory predicts mostly Hawk play, and that more hawkish players earn more.
+
+Game One (same partner for 15 rounds): a good prediction is that Hawk play will be less common than in Game Two, and that pairs who settle into mutual Dove (2 each per round) will earn far more than pairs stuck in mutual Hawk (0.5 each per round). Taking turns (Hawk/Dove, then Dove/Hawk) also averages 2 per round each, so it is just as good as mutual Dove with these payoffs. In round 15 there is no future round in which to be punished, so theory predicts more Hawk play in the last round. (In practice people often keep cooperating; in the 2022 class, Hawk play in round 15 was no higher than average.)
+
+*	_Did the % Hawk trend in Game One and Game Two match what you predicted?_
+
+Compare your class's charts with your predictions. In the 2022 class, neither game showed a trend in Hawk play across rounds (p = 0.9 for Game 1 and 0.72 for Game 2), and Hawk play was only slightly lower in Game 1 (0.62 vs 0.69 per player; not significant). A flat line does not mean nothing happened: many pairs settle on a pattern within the first few rounds and then keep to it.
+
+*	_Did the total-benefit-vs-hawkishness pattern support the one-shot theory prediction (Hawk pays off best), or the repeated-game reciprocity argument (Dove pays off best when you keep meeting the same partner)?_
+
+Both, depending on the game and on how you look at it.
+
+- Within a pair in Game 1, the more hawkish player *always* earns at least as much as their partner, because Hawk earns more than Dove in every round against the same opponent. So comparing partners always favours Hawk.
+- Across pairs in Game 1, more hawkish *pairs* earn less: escalation provokes escalation, and both players end up with 0.5 per round instead of 2. This supports the reciprocity argument (2022 class: pair mean payoff fell by about 2 per round from an all-Dove to an all-Hawk pair).
+- In Game 2, more hawkish individuals earned more (2022 class: slope 1.21 per round, p = 0.006), as the one-shot theory predicts.
+
+*	_Which game, if either, better matches what you'd expect from a species whose individuals encounter each other only once versus a species that lives in small, stable social groups?_
+
+Game 2 is like a species in which individuals rarely meet the same opponent twice: the one-shot logic applies, and selection should favour Hawk when B > C. Game 1 is like a small, stable social group in which the same individuals meet repeatedly: restraint can pay because escalation is answered in later encounters (reciprocity, the "shadow of the future"). Being able to recognise individuals and remember past encounters is required for this.
+
+*	_Did you or your partner take turns? What happened in round 15?_
+
+Taking turns gives each player (4 + 0)/2 = 2 per round, exactly the same as mutual Dove, so it is a perfectly good way to cooperate in this game. (With Neal's payoffs, which include a display cost, taking turns is actually better than mutual Dove.) In round 15, a player who has cooperated so far gains by switching to Hawk (4 instead of 2) because the partner cannot retaliate. If your class showed a jump in Hawk play in the last round, that is the end-game effect; if not, people cooperated beyond what strict theory predicts.
+
+*	_What would happen if you increased or decreased the value of the benefit (B) relative to the cost (C)? Would that change which strategy dominates in a one-off encounter?_
+
+Yes. Let p be the frequency of Hawks in the population (with no display cost, D = 0). The average payoffs are:
+
+- Hawk: $p\frac{B-C}{2} + (1-p)B$
+- Dove: $(1-p)\frac{B}{2}$
+
+If B > C (as in the class game), Hawk always earns more than Dove, so Hawk is the ESS: a population of Hawks cannot be invaded by Doves. Making B larger relative to C only strengthens this.
+
+If C > B, Hawks do well when rare (they beat the Doves) but badly when common (they keep meeting and injuring each other), and Doves do the opposite. Neither pure strategy is stable. Setting the two payoffs equal and solving gives the mixed ESS:
+
+$$p^* = \frac{B}{C}$$
+
+Worked example: B = 4, C = 8. Then $p^* = 4/8 = 0.5$. Check: Hawk earns $0.5 \times (4-8)/2 + 0.5 \times 4 = -1 + 2 = 1$; Dove earns $0.5 \times 4/2 = 1$. The payoffs are equal, so neither strategy can do better by becoming more common. If Hawks were more common than 0.5, Doves would earn more and increase, and vice versa.
+
+The more costly fighting is relative to the prize, the fewer Hawks there are at equilibrium (with B = 4: C = 5 gives $p^* = 0.8$, C = 8 gives 0.5, C = 16 gives 0.25). Neal's version, which includes a cost of display D for Doves, gives $p^* = (B/2 + D)/(C/2 + D)$; with B = 50, C = 100 and D = 10 this is 7/12, the example used in the lecture.
+
+Note that the ESS is not the best outcome for the group: at the mixed ESS with B = 4, C = 8, everyone earns 1 per encounter, whereas a population of Doves would earn 2 each. A population of Doves cannot resist invasion by Hawks.
+
+Take-home messages:
+
+* In a one-off contest with B > C, Hawk is the ESS, even though everyone would do better as Doves.
+* When C > B, the ESS is a mix of Hawks and Doves with Hawk frequency p* = B/C.
+* Repeated interaction with the same partner changes the incentives: escalation is answered in kind, so restraint can pay.
 
 ## Solutions: The legend of Ambalappuzha
 

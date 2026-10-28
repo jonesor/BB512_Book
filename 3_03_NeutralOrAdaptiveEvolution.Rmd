@@ -4,96 +4,129 @@
 
 Understanding the role of natural selection and genetic drift in human traits requires a look at several key aspects:
 
-* Importance of Variation: Traits require variation to be responsive to either natural selection or genetic drift.
-* Selection vs Drift: Traits under strong selection will tend to optimise, while those under weak or no selection may change via random genetic drift.
-* Role of Environment: Environmental factors can significantly impact the strength of selection on various traits.
+* Heritable variation: a trait can only evolve (by drift or by selection) if individuals differ in it *and* some of those differences are inherited.
+* Selection vs drift: selection acts when variation in a trait is correlated with variation in survival or reproduction. Drift is chance change in allele frequencies, and it acts in every finite population.
+* Role of environment: the environment can change the strength, and even the direction, of selection on a trait.
 
-Traits that are under moderate or strong selection will tend to be restricted to some optimal value, or change directionally -- natural selection leading to adaptive evolution.  Traits that are under weak or no selection will not be restricted so much so will tend to change via a random process -- random genetic drift leading to neutral evolution.  Both of these changes require the existence of variation in the trait to begin with: if there is no, or very little, variation the trait will not respond much even if there is strong selection. 
+**First ask: is the variation heritable?** Some traits vary a lot but are hardly inherited at all. For example, the fine texture of the iris and the detailed ridge patterns (minutiae) of fingerprints differ even between identical twins: they are mostly the result of chance events during development. Variation like this cannot evolve by drift or by selection, because it is not passed on.
 
-Finally, the strength of selection will largely depend on the environment. Traits may be important in some environments but not others. There may also be traits that would be selected for in some environments, but against in others. E.g., production of the skin pigment, melanin, would be selected for in areas with high UV-radiation since it protects against skin cancer, but selected against in cool temperate zones with low UV radiation since it inhibits the ability to make vitamin D (deficiency is a health risk). 
+**Neutral and adaptive evolution are two ends of a continuum.** In the lecture on genetic drift we defined neutral evolution. Suppose a trait varies, individuals vary in reproductive success, and the trait is inherited, *but* the trait is not (or only very weakly) correlated with reproductive success. The trait still evolves, but by chance: this is neutral evolution, caused by genetic drift. When the correlation between the trait and reproductive success is strong, we get adaptive evolution, caused by natural selection. Most traits lie somewhere in between.
 
-The objective of this exercise is to develop an intuitive understanding of the effect of selection and genetic drift on traits. 
+Population size also decides where a trait sits on this continuum. Drift acts on the alleles that affect a trait, and its strength per generation is about $1/(2N_e)$, where $N_e$ is the effective population size. Selection on those alleles is effective only when the selective advantage, $s$, is clearly larger than roughly $1/(2N_e)$. So weak selection that is effective in a large population can be swamped by drift in a small one. Whether a trait evolves "neutrally" therefore depends on population size as well as on the environment.
 
+When selection is moderate or strong, a trait tends to be held close to some optimal value (stabilising selection) or to change in a consistent direction (directional selection): adaptive evolution. When selection is weak or absent, the alleles that affect the trait change in frequency at random, and the trait drifts: neutral evolution. Both require heritable variation to begin with: if there is little heritable variation, the trait will not respond much even if selection is strong.
 
-```{r huntergatherer, out.width = "50%", fig.align = 'center', echo = FALSE, fig.cap = "How will selection differ between these environments?"}
+Finally, the strength of selection depends on the environment. A trait may be important in some environments but not others, and may be selected for in one environment but against in another. For example, the skin pigment melanin protects against intense ultraviolet (UV) radiation, including UV damage to the vitamin folate, so darker skin is favoured where UV is intense. Where UV is weak, lighter skin allows more vitamin D to be made in the skin (Jablonski & Chaplin 2010, *PNAS*). Ancient DNA shows that some of the main light-skin alleles became common in Europe only within roughly the last 8,000 years (Mathieson et al. 2015, *Nature*). Exactly which selective pressures mattered most, and when, is still debated.
+
+The objective of this exercise is to develop an intuitive understanding of the effect of selection and genetic drift on traits.
+
+<!-- TODO Owen: add source and licence for this image, or replace it -->
+
+```{r huntergatherer, out.width = "50%", fig.align = 'center', echo = FALSE, fig.cap = "Two present-day human environments: a forest where people hunt and gather (left) and a modern city, Copenhagen (right). Both photographs show people living today: all living human populations are equally evolved, and all are still subject to natural selection. How would selection on each trait differ between these environments?"}
 knitr::include_graphics("images/huntergathererDK.png")
 ```
 
 
 ::: {.do-something}
-Learning outcomes: 
+Learning outcomes:
 
-- Interpret the Influence of Selection Pressure: By the end of this exercise, participants will be able to categorise traits based on the level of natural selection acting upon them and articulate reasons for their categorisation.
-- Distinguish between Adaptive and Neutral Evolution: Participants will be equipped to differentiate traits evolving due to adaptive evolution from those likely evolving through genetic drift.
-- Apply Terminology Accurately: Participants will utilise correct scientific terminology to articulate viewpoints about trait evolution in different populations.
-- Evaluate Environmental Factors: Participants will demonstrate the ability to assess how different environments (hunter-gatherer-type societies vs modern industrialised countries) impact the strength of natural selection on various traits.
-- Engage in Collaborative Argumentation: Participants will collaboratively argue and defend their categorisation of traits, providing evidence or logical reasoning for their views.
-- Engage in Critical Thinking: Develop analytical skills in evaluating the role of selection and drift in trait evolution.
+- Decide whether a trait can evolve at all, by asking whether its variation is heritable.
+- Place traits on the continuum from neutral evolution (genetic drift) to adaptive evolution (natural selection), and justify each placement with evidence or reasoning.
+- Explain how the environment (foraging societies vs modern industrialised countries such as Denmark) and population size change the strength of selection on a trait.
+- Predict which differences between human populations gene flow would erase, and which local selection could maintain.
+- Use correct scientific terminology when arguing for your categorisation in a group.
 
 :::
 
 ## Key idea
 
-Traits like resistance to infectious disease are likely to face strong selection in environments where the disease is common, while traits with little effect on survival or reproduction (e.g., subtle iris patterns) are more likely to drift.
+Traits like resistance to infectious disease are likely to face strong selection in environments where the disease is common. Heritable variation with little or no effect on survival or reproduction (for example, many DNA differences at synonymous sites, which do not change the protein) is more likely to change by drift.
 
-## Your task (30 minutes)
+## Evidence cards: some well-studied human cases
+
+These five cases have strong genetic evidence. Use them as reference points when you place the other traits.
+
+::: {.do-something}
+**Lactase persistence (digesting milk sugar as an adult).** This is caused by variants near the *LCT* gene that keep the lactase enzyme switched on in adults. *Different* variants have arisen and spread in Europe, East Africa and the Middle East, in populations that keep milk-producing animals (Tishkoff et al. 2007, *Nature Genetics*). They carry some of the strongest signals of recent selection in the human genome. Ancient DNA shows that the main European variant was rare until the last few thousand years. Why selection was so strong is still debated: milk drinking alone may not explain it, and famine and disease may have intensified it (Evershed et al. 2022, *Nature*).
+
+**EDAR V370A.** This is a single amino-acid change in the *EDAR* gene, common in East Asia and the Americas. It affects hair thickness, sweat gland density and tooth shape, and it shows a strong signal of past selection (Kamberov et al. 2013, *Cell*). Which of these traits (if any) was the target of selection is not known.
+
+**Malaria resistance: HbS and Duffy-null.** People heterozygous for the sickle-cell allele (HbS) are protected against severe *Plasmodium falciparum* malaria: heterozygote advantage, as in the Hardy-Weinberg practical. The Duffy-null allele protects against *Plasmodium vivax* malaria. It is close to fixation in much of sub-Saharan Africa but rare elsewhere, a pattern that suggests strong local selection (Hamblin & Di Rienzo 2000, *American Journal of Human Genetics*).
+
+**ABO blood groups.** The A and B alleles are very old: the polymorphism is shared with other primates, which suggests that selection has *maintained* variation for millions of years (balancing selection), probably through infectious diseases (Ségurel et al. 2012, *PNAS*).
+
+**Earwax type (wet or dry), *ABCC11*.** A single DNA change determines dry earwax (Yoshiura et al. 2006, *Nature Genetics*). The dry allele is common in East Asia and rare in Europe and Africa. There is a signal of selection (Ohashi et al. 2011, *Molecular Biology and Evolution*), but the trait it acted on (perhaps sweat and body odour) is uncertain. This is a good example of a case where the honest answer is "we don't fully know".
+:::
+
+## Your task (35 minutes)
 
 You are given a list of traits for humans (below). In small groups:
 
-1. Write the traits on PostIt notes (5 minutes).
-2. Discuss and categorise these traits based on the strength of natural selection in hunter-gatherer societies (10 minutes).
-3. Repeat the exercise for modern industrialised societies like Denmark (15 minutes).
+1. Write the traits on PostIt notes, and read the evidence cards above (5 minutes).
+2. Discuss and categorise the traits based on the strength of natural selection in foraging (hunter-gatherer) societies, like those in which most of human evolution took place (10 minutes).
+3. Repeat the exercise for modern industrialised societies like Denmark (10 minutes). In Denmark today, most people survive to adulthood, so ask how each trait might affect the *number of children* people have: selection still acts, but now mainly through differences in reproduction rather than survival.
+4. **Gene flow between populations** (10 minutes). Human populations exchange migrants, and gene flow pulls their allele frequencies together. In the lecture on migration and gene flow we saw that very few migrants (about one per generation) are enough to stop drift making populations very different, but that local selection can keep populations different if it is strong compared with the migration rate ($s$ larger than $m$). For each trait, ask:
+    * Does the trait differ between human populations living in different environments?
+    * Would gene flow erase those differences (as expected for neutral traits), or could local selection hold them apart? Skin pigmentation and UV, lactase persistence and dairying, and HbS and malaria are good places to start.
+    * Remember that most human genetic variation is found *within* populations rather than between them.
 
-
-Order the traits from those likely influenced by **GENETIC DRIFT** to those evolving through **ADAPTIVE EVOLUTION** via **NATURAL SELECTION**.
+For steps 2 and 3, order the traits from those likely influenced by **GENETIC DRIFT** to those evolving through **ADAPTIVE EVOLUTION** via **NATURAL SELECTION**. For each trait, start with the question "is the variation heritable?".
 
 ### The traits
 
-```{r echo = FALSE, message = FALSE, eval = knitr::is_html_output()}
+```{r traits-table, echo = FALSE, message = FALSE}
 # Traits and their descriptions
-traits <- c(
-  "Metabolic efficiency: How effectively your body converts food into energy.",
-  "Amount of body hair: The density and length of hair covering your body.",
-  "Singing ability: Skill and aptitude for musical vocalization.",
-  "Intelligence: Cognitive abilities including problem solving and learning.",
-  "Iris structure: The unique patterns in the iris of the eye.",
-  "Sperm motility: The movement and swimming of sperm.",
-  "Muscle strength: Physical power and force exerted by muscles.",
-  "Face symmetry: The balance and proportionality of facial features.",
-  "Running speed: How fast an individual can run.",
-  "Height: Physical stature, from base to top.",
-  "Resistance to bubonic plague: Immunity or resilience against the bubonic plague.",
-  "Sense of smell: The ability to detect and identify odours.",
-  "Resistance to common cold: Immunity or resilience against the common cold.",
-  "Eyesight acuity: Sharpness of vision."
+traits <- data.frame(
+  Trait = c(
+    "Metabolic efficiency", "Amount of body hair", "Singing ability",
+    "Intelligence", "Eye colour", "Earwax type", "Sperm motility",
+    "Muscle strength", "Face symmetry", "Running speed", "Height",
+    "Birth canal (pelvic) shape", "Resistance to bubonic plague",
+    "Sense of smell", "Resistance to common cold", "Eyesight acuity"
+  ),
+  Description = c(
+    "How effectively your body converts food into energy.",
+    "The density and length of hair covering your body.",
+    "Skill and aptitude for musical vocalisation.",
+    "Cognitive abilities including problem solving and learning (read the note below).",
+    "The colour of the iris (brown, green, blue and so on).",
+    "Wet or dry earwax (see the evidence cards).",
+    "The movement and swimming of sperm.",
+    "Physical power and force exerted by muscles.",
+    "The balance and proportionality of facial features.",
+    "How fast an individual can run.",
+    "Physical stature, from base to top.",
+    "The shape of the bony opening through which a baby is born.",
+    "Immunity or resilience against bubonic plague.",
+    "The ability to detect and identify odours.",
+    "Immunity or resilience against the common cold.",
+    "Sharpness of vision."
+  )
 )
 
-# Convert the traits into a matrix and then a data frame
-traits_mat <- matrix(traits, ncol = 2, nrow = 7)
-traits_mat <- as.data.frame(traits_mat)
-
-# Create a flextable
-traits_ft <- flextable::flextable(traits_mat) %>%
-  flextable::delete_part(part = "header") %>%
-  flextable::width(width = c(6, 6)) %>%
-  flextable::fontsize(size = 14) %>%
-  flextable::border_remove()
-
-# Print or render the flextable
-traits_ft
-
+# A markdown (pipe) table renders in both the HTML and the PDF versions of the
+# book, and long descriptions wrap in the PDF
+knitr::kable(traits, format = "pipe")
 ```
 
-## Discussion (Timing: 15 minutes)
+::: {.do-something}
+**A note on the intelligence trait.** Discuss only how selection might act on differences *between individuals within* a population. Do not compare or rank human populations. A trait can be highly heritable within each of two groups, and yet the difference between the groups can be entirely environmental: heritability measured within a group says nothing about the causes of differences between groups (Neal, "Polygenic Inheritance and Quantitative Genetics", and the lecture on polygenic inheritance and quantitative genetics). The history of eugenics, which tried to "improve" human populations by stopping some people from having children, shows why this matters. It was ethically indefensible and, as the lecture on haploid and zygotic selection shows, genetically ineffective.
+:::
+
+## Discussion (10 minutes)
 
 After the exercise, discuss as a class:
 
 * Were there any traits that were categorised differently between the two types of societies? Why?
+* Which traits did you decide had little or no heritable variation, and so could not evolve by drift or by selection?
+* Which differences between human populations would gene flow erase, and which are maintained by local selection?
 * Did the exercise challenge any preconceived notions you had about trait evolution?
 * Can you think of any other traits that would be interesting to add to this exercise?
 
 ## Takeaways
 
-- Selection strength depends on environment and context, not just the trait itself.
-- Many traits can evolve neutrally if they do not strongly affect fitness.
-- Different environments can reverse which traits are adaptive.
+- A trait can only evolve if its variation is heritable.
+- Neutral and adaptive evolution are two ends of a continuum: where a trait sits depends on how strongly it affects survival or reproduction, and on population size ($s$ compared with $1/(2N_e)$).
+- Selection strength depends on environment and context, not just on the trait itself, and different environments can reverse which traits are favoured.
+- Humans are still evolving: in industrialised societies, selection acts mainly through differences in the number of children.
+- Gene flow erases neutral differences between populations, but local selection can maintain differences in traits such as skin pigmentation.

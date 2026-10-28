@@ -26,7 +26,21 @@ Learning outcomes:
 
 ## Key idea
 
-If $\alpha_{12} > 1$ and $\alpha_{21} < 1$, species 2 strongly suppresses species 1 while species 1 weakly affects species 2, so exclusion of species 1 is likely.
+Whether a coefficient is bigger or smaller than 1 does not decide the outcome on its own. What matters is how each competition coefficient compares with the ratio of the carrying capacities. The easiest way to see this is to ask whether each species can invade when it is rare and the other species is sitting at its carrying capacity.
+
+- Species 1 can invade a population of species 2 at $K_2$ if $K_1 > \alpha_{12} K_2$, i.e. if $\alpha_{12} < K_1/K_2$.
+- Species 2 can invade a population of species 1 at $K_1$ if $K_2 > \alpha_{21} K_1$, i.e. if $\alpha_{21} < K_2/K_1$.
+
+| Species 1 can invade? | Species 2 can invade? | Outcome |
+|---|---|---|
+| Yes | No | Species 1 excludes species 2 |
+| No | Yes | Species 2 excludes species 1 |
+| Yes | Yes | Stable coexistence |
+| No | No | Exclusion, but which species wins depends on the starting densities |
+
+On the isocline graph, the same conditions appear as a comparison of the intercepts: $K_1$ and $K_1/\alpha_{12}$ for species 1, and $K_2$ and $K_2/\alpha_{21}$ for species 2.
+
+For example, with $K_1 = 3000$, $\alpha_{12} = 1.25$, $K_2 = 1000$ and $\alpha_{21} = 0.5$, species 2 has the stronger per capita effect ($\alpha_{12} > 1$), yet species 1 wins: species 1 can invade ($1.25 < 3000/1000 = 3$) but species 2 cannot ($0.5 > 1000/3000 = 0.33$).
 
 ## Your task
 
@@ -37,6 +51,11 @@ This PDF walks you through the creation of an Excel spreadsheet exploring inters
 
 
 * Create the Excel spreadsheet by following the instructions in the PDF
+
+::: {.do-something}
+**Note on the PDF:** the labels added to Figure 5 have the subscripts the wrong way round. The correct isocline intercepts are $K_1$ and $K_1/\alpha_{12}$ for species 1, and $K_2$ and $K_2/\alpha_{21}$ for species 2 (as in the PDF text and the Key idea above).
+:::
+
 * Use the Lotka-Volterra model you have created to answer the questions at the end of the PDF.
 
 
@@ -51,4 +70,4 @@ This PDF walks you through the creation of an Excel spreadsheet exploring inters
 
 - Competition outcomes depend on relative self-limitation vs. interspecific effects.
 - The competition coefficients $\alpha_{12}$ and $\alpha_{21}$ encode how much one species suppresses the other.
-- Coexistence occurs when each species limits itself more than it limits the other.
+- Coexistence occurs when each species limits itself more than it limits the other, in the scaled sense that $\alpha_{12} < K_1/K_2$ and $\alpha_{21} < K_2/K_1$ (each species can invade when rare). Comparing a coefficient with 1 is not enough when the carrying capacities differ.

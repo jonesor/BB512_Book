@@ -73,7 +73,7 @@ We will use three stages:
 
 The life-cycle assumptions (per \\(\\Delta t = 1\\) year) are:
 
-- Adults produce juveniles: \\(F_A\\) juveniles per adult per year (recruits to J).
+- Adults produce juveniles: \\(F_A\\) juveniles per adult per year (recruits to J). This is a fertility: the number of new juveniles *counted at the next census* per adult, so it already includes the survival needed to reach that count, not just the number born (see the fecundity box in the chapter "Matrix population modelling").
 - Juveniles that survive and grow move to Subadult with probability \\(G_J\\).
 - Subadults either:
   - survive and remain subadult with probability \\(P_S\\), or

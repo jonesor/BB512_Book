@@ -58,12 +58,14 @@ Plotting $N_t$ against $t$ gives a curve, while plotting $ln(N_t)$ against $t$ g
 
 Download and open the Excel file [`GeometricGrowth.xlsx`](https://www.dropbox.com/s/xxx05sckvop5i52/GeometricGrowth.xlsx?dl=1).
 
-1.	Starting with an initial population size (`N`) of 10 [at time (`t`) =0], and with a $\lambda$ of `1.1`, use Excel’s equation functions to work out the population size from `t=1` through to `t=20`. E.g. The formula might look something like this “`=B8*$F$8`”.
+1.	Starting with an initial population size (`N`) of 10 [at time (`t`) =0], and with a $\lambda$ of `1.1`, use Excel’s equation functions to work out the population size from `t=1` through to `t=20`. In the template, $\lambda$ is in cell B8 and $N_0$ in B10, so the formula for $t = 1$ (cell B11) is `=B10*$B$8`, filled down.
 2.	Use charts to plot the results. On the horizontal axis (x-axis) you should have time, and on the vertical axis (y-axis) you should have population size (`N`). A scatterplot would be best for this.
-3.	Make another plot of the same data, but this time use a natural logarithmic axis for the population size. The formula in Excel for natural log is `LN()`.
+3.	Fill in the `logN` column with the natural logarithm of population size. The Excel formula for natural log is `LN()` (the same in Danish Excel), e.g. `=LN(B10)` in cell C10, filled down the column. Then make another scatterplot with time on the x-axis and `logN` on the y-axis.
 4.	What do you notice about the curves in these different versions of plotting the same data?
 5.	Try altering the population growth rate. Try values of 0.8, 1 and 1.2 for example. What happens to the curves? What is special about the value of 1?
-6. Add a trendline with an equation to the log transformed graph. Identify the slope. The slope is $ln(\lambda)$), so you can work out $\lambda$ by "reversing" the $ln$ by taking its exponential. e.g. `=EXP(0.0953)` in Excel.
+6. Add a linear trendline with its equation to the `logN` plot from step 3. Identify the slope. The slope is $ln(\lambda)$, so you can work out $\lambda$ by "reversing" the $ln$ by taking its exponential, e.g. `=EXP(0.0953)` in Excel (`=EKSP(0,0953)` in Danish Excel).
+
+    Note: do not use Excel's "logarithmic scale" axis option for this step. That option only changes how the axis is drawn (and uses base-10 logs); a trendline added to that chart is still fitted to the untransformed N, so its slope is not $ln(\lambda)$.
 
 
 Now reset the population growth rate to 1.1. Now let's see if the mathematical rules of so-called “geometric series” work...
