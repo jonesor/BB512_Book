@@ -61,7 +61,7 @@ instructors <- data.frame(
 
 
 Welcome to the Population and Evolution course. 
-The course, and this website, is divided into five parts:
+The course is divided into five teaching parts:
 
 1. Evolution by Natural Selection
 2. Population Growth Models
@@ -69,10 +69,10 @@ The course, and this website, is divided into five parts:
 4. Interactions Between Species and Community Structure
 5. Animal Behaviour, Altruism and Sexual Selection
 
-The recommended textbook is Neal (2018). Other useful textbooks, that are NOT mandatory, but could be useful are Gotelli (2008) and Stearns & Hoekstra (2005).
+The recommended textbook is Neal (2019). Other useful textbooks, that are NOT mandatory, but could be useful are Gotelli (2008) and Stearns & Hoekstra (2005).
 
 
-* Neal, D. (2018). *Introduction to Population Biology* (2nd edition). Cambridge: Cambridge University Press. doi:10.1017/9781139107976
+* Neal, D. (2019). *Introduction to Population Biology* (2nd edition). Cambridge: Cambridge University Press. <https://doi.org/10.1017/9781139107976>
 * Gotelli, NJ (2008) *A Primer of Ecology*. Fourth Edition, Sinauer Associates. ISBN: 978-0878933181
 * Stearns, SC & Hoekstra, RF (2005) *Evolution: An Introduction*. 2nd Edition, Oxford University Press. ISBN: 978-0199255634
 
@@ -80,27 +80,28 @@ In addition to this, I will provide a reading list of journal articles that are 
 
 ## How to use this book
 
-Each chapter follows a consistent template so you can move quickly between concepts and tasks.
+Most chapters contain the same building blocks, so you can move quickly between concepts and tasks:
 
-- Learning outcomes: what you should be able to do by the end.
 - Background: the core concepts and equations.
-- Worked example: a short walk-through that shows the method.
+- Learning outcomes: what you should be able to do by the end.
 - Your task: the practical exercise or analysis.
 - Takeaways: a short summary of the main ideas.
 
-If you are short on time, read the Learning outcomes and Takeaways first, then do the Your task section. Use the worked example only if you need a refresher.
+Some chapters also have a worked example that walks through the method before you try it yourself. Answers to the questions are in the Solutions part, so try the questions first and then check.
+
+If you are short on time, read the Learning outcomes and Takeaways first, then do the Your task section.
 
 ## Parts overview
 
-The table below shows how each part maps onto the major skills you will build through the course.
+The table below shows how each part of this website maps onto the major skills you will build through the course. Parts 6 and 7 hold the solutions and some optional extras.
 
 | Part | Focus | Skills you build |
 | --- | --- | --- |
 | 1. Evolution by Natural Selection | Selection, adaptation, variation | Explain selection in natural contexts; identify selective pressures and outcomes |
 | 2. Population Growth Models | Exponential and logistic growth, stochasticity | Build and interpret population growth models; reason about parameter effects |
-| 3. Population Genetics and Evolution | Allele frequencies, drift, heritability | Analyze genetic change over time; estimate heritability from data |
+| 3. Population Genetics and Evolution | Allele frequencies, drift, heritability | Analyse genetic change over time; estimate heritability from data |
 | 4. Interactions Between Species and Community Structure | Competition and predator-prey models | Evaluate stability and dynamics of interacting species |
-| 5. Animal Behaviour, Altruism and Sexual Selection | Game theory and behavior | Interpret behavior through evolutionary payoffs and strategies |
+| 5. Animal Behaviour, Altruism and Sexual Selection | Game theory and behaviour | Interpret behaviour through evolutionary payoffs and strategies |
 | 6. Solutions/answers | Answer keys and model results | Check work and compare interpretations |
 | 7. Appendix - extras | Extensions and advanced examples | Apply methods to additional contexts |
 
@@ -134,7 +135,7 @@ apply(instructors, 1, function(x) {
 })
 ```
 
-If you have any problems accessing materials, or have any questions regarding the course feel free to send me (Owen) an email, or make a comment in the form I mentioned above. You can also make an appointment to see me via Zoom or in my office if necessary*. PLEASE REMEMBER to tell me which course you are referring to if you send an email!
+If you have any problems accessing materials, or have any questions regarding the course, feel free to send me (Owen) an email. You can also make an appointment to see me via Zoom or in my office if necessary. PLEASE REMEMBER to tell me which course you are referring to if you send an email!
 
 Owen Jones, course coordinator - [jones@biology.sdu.dk](mailto:jones@biology.sdu.dk ) 
 
@@ -148,8 +149,22 @@ We will use Excel and R/RStudio during this course.
 
 I expect you will already have Excel installed, so there is not much to say here.
 
-Be aware that Excel differs depending on the language it is localised in. For example, Danish vs. English. This means that some of the commands might differ between versions. 
-See [here](https://easy-excel.com/excel-in-other-languages/excel-formulas-in-danish/) for examples.
+Be aware that Excel differs depending on the language it is set up in (for example, Danish vs English). The practicals give formulas in English Excel. In Danish Excel:
+
+- Function names are translated. The ones used most in this course are:
+
+| English | Danish |
+| --- | --- |
+| `EXP` | `EKSP` |
+| `SLOPE` | `HÆLDNING` |
+| `RAND` | `SLUMP` |
+| `SQRT` | `KVROD` |
+| `IF` | `HVIS` |
+
+- The decimal separator is a comma (`0,05` rather than `0.05`).
+- Arguments are separated by semicolons rather than commas, e.g. `=HÆLDNING(C10:C30;A10:A30)` rather than `=SLOPE(C10:C30,A10:A30)`.
+
+See [here](https://easy-excel.com/excel-in-other-languages/excel-formulas-in-danish/) for more translations.
 
 ### R and RStudio
 
@@ -161,17 +176,13 @@ Already have them installed?  I strongly recommend updating to the latest versio
 * RStudio: [https://www.rstudio.com/products/rstudio/](https://www.rstudio.com/products/rstudio/). 
 
 
-If you are unsure whether you should update your R or RStudio try the following code. If it produces a nice graph, then your R is sufficiently up-to-date. If there are error messages, then you probably need to update R.
+To check which version of R you have, type this in the RStudio console:
 
 ```
-install.packages("popdemo")
-library(popdemo)
-
-A <- matrix(c(0,1,2,0.5,0.1,0,0,0.6,0.6), byrow=TRUE, ncol=3)
-
-pr <- project(A, vector="n", time=10)
-plot(pr)
+R.version.string
 ```
+
+Compare the version number with the latest release listed at [https://cran.r-project.org](https://cran.r-project.org). If yours is more than one minor version behind (for example 4.3 when the latest is 4.5), please update before the course starts. Some practicals install add-on packages, and these often need a recent version of R.
 
 
 ::: {.do-something}

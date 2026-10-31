@@ -6,4 +6,20 @@ By the end of Part 2, you should be able to:
 
 - Distinguish exponential, geometric, and logistic growth models.
 - Interpret how parameters like growth rate and carrying capacity shape dynamics.
-- Use life tables and matrix models to analyze structured populations.
+- Estimate $\lambda$ from time-series data.
+- Explain how environmental stochasticity and small population size affect extinction risk.
+- Use life tables and matrix models to analyse structured populations.
+
+::: {.advanced-box}
+**Notation used in Part 2 (following Neal)**
+
+Different books use different symbols for growth rates. In this course we follow Neal (chapters *Exponential Growth*, *Logistic Growth* and *Life Tables*):
+
+- $\lambda$: the *multiplication rate* (also called the finite rate of increase). Over one time step, $N_{t+1} = \lambda N_t$, so $N_t = N_0 \lambda^t$.
+- $R_m = \lambda - 1$: the per capita rate of increase per time step, used in discrete-time (*geometric*) growth: $\frac{\Delta N}{\Delta t} = R_m N_t$, i.e. $N_{t+1} = N_t + R_m N_t$. It equals births minus deaths over the time step, per individual: $R_m = (B - D)/N$.
+- $r_m = \ln \lambda = b - d$: the *intrinsic rate of increase*, the per capita rate in continuous time (*exponential* growth): $\frac{dN}{dt} = r_m N$, so $N_t = N_0 e^{r_m t}$ and $\lambda = e^{r_m}$. The doubling time is $t_d = \ln 2 / r_m$.
+- $r = r_m\left(1 - \frac{N}{K}\right)$: the *realised* per capita growth rate in the logistic model. It falls from $r_m$ (when $N$ is small) to 0 (when $N = K$).
+- $r_c = \ln(R_0)/T$: an approximation of $r_m$ calculated from a life table (you will meet $R_0$ and $T$ in the life tables chapter).
+
+Note that $dN/dt = r_m N$ is *exponential* (continuous) growth, while $N_{t+1} = \lambda N_t$ is *geometric* (discrete) growth. $R_m$ and $r_m$ are both per capita births minus deaths, but $R_m$ is measured over a whole time step and $r_m$ over an infinitesimally small one. Some other books use $R$ for $\lambda$, so check the definitions when you compare equations from different sources. The discrete logistic model used in the Excel practicals applies $r_m$ once per time step, so a small population is multiplied by about $1 + r_m$ per step rather than by $e^{r_m}$.
+:::

@@ -1,66 +1,51 @@
 # Life Table Response Experiments
 
-## Introduction
+## Background
 
-A Life Table Response Experiment (LTRE), in matrix population modelling, is a technique used to analyse how differences in demographic parameters between two or more populations or "treatments" contribute to differences in their overall growth rate. It's particularly useful for understanding how specific factors like survival rates, fecundity, or other stage-to-stage transitions influence the growth or decline of a population under different conditions. 
+A Life Table Response Experiment (LTRE), in matrix population modelling, is a technique used to analyse how differences in demographic parameters between two or more populations or "treatments" contribute to the observed difference in their population growth rate ($\lambda$). It answers the question: *why* do these populations have different growth rates? Which of the differences in survival, growth or fertility account for most of the difference in $\lambda$?
 
-The method involves comparing matrix models of the populations in question and decomposing the differences in growth rates different models into contributions from individual matrix elements. This approach provides insights into which life cycle stages or transitions are most important for population growth and can inform conservation or management strategies.
+The method compares matrix models of the populations in question and decomposes the difference in growth rate between the models into contributions from the individual matrix elements. Each contribution is (roughly) the difference in that element multiplied by how sensitive $\lambda$ is to that element.
+
+LTRE is a **retrospective** analysis (Caswell's terminology): it looks back at differences that have already happened, and explains an observed difference in $\lambda$. Sensitivity and elasticity analysis, and *in silico* experiments like those in "Matrix population modelling", are **prospective**: they ask what *would* happen to $\lambda$ if we changed a vital rate in the future. The two kinds of question need different tools, and we come back to this distinction at the end of the chapter.
+
+The background reading is the chapter *Growth of Age-Structured and Stage-Structured Populations* in Neal. Sensitivity was introduced in the lecture; we compute it below.
 
 ## Learning outcomes
 
 ::: {.do-something}
 Learning outcomes:
 
-- Explain the purpose of an LTRE and when it is useful.
-- Quantify how matrix element changes contribute to $\lambda$ differences.
-- Interpret LTRE output in a biological or management context.
+- Explain the purpose of an LTRE, and the difference between a retrospective analysis (LTRE) and a prospective one (sensitivity, elasticity, *in silico* experiments).
+- Calculate the sensitivity of $\lambda$ to each matrix element, and the LTRE contribution of each element as (difference in element) × (sensitivity at the midpoint matrix).
+- Check that the contributions add up (approximately) to the observed difference in $\lambda$, and explain why the match is not exact.
+- Interpret LTRE output biologically, including the sign of each contribution.
 :::
 
 ## Set up
 
-For the core LTRE analysis you need `popbio` (for the `LTRE` function) and `popdemo` (for the `eigs` function used to compare growth rates).
-The diagram-export packages are optional and only needed if you want to regenerate the life-cycle diagram image.
+For the core LTRE analysis you need `popbio` (for the `LTRE` function) and `popdemo` (for the `eigs` function used to compare growth rates). If you have not installed them already, do so now.
 
 ```{r LTRE1, echo = TRUE, eval = FALSE}
-# Core packages (required)
 install.packages(c("popbio", "popdemo"))
 library(popbio)
 library(popdemo)
-
-# Optional packages (only for rebuilding the diagram figure)
-install.packages(c("Rage", "DiagrammeRsvg", "rsvg"))
-library(Rage)
-library(DiagrammeRsvg)
-library(rsvg)
 ```
 
 
 ## A worked example
 
-In this example, we consider a two-stage matrix model to analyse, say, squirrel populations in two different geographic locations. The first, a reference population from Location A, represents an area with favourable environmental conditions. The matrix model for this population distinguishes between juveniles (J) and adults (A), incorporating probabilities for juveniles maturing into adults (0.5) and adults surviving and staying adult (0.6), as well as the fecundity rate (2.3), which is the number of juveniles produced by an adult. 
+In this example, we consider a two-stage matrix model to analyse, say, squirrel populations in two different geographic locations. The life cycle has juveniles (J) and adults (A). Each year, a juvenile can survive and stay a juvenile, or survive and mature into an adult; an adult can survive (and stay adult) and also produces juveniles (the fertility: juveniles counted at the next census per adult).
 
+The reference population, from Location A, lives in an area with favourable environmental conditions. The treatment population, from Location B, experiences worse conditions in spring. This particularly affects juveniles, which are much less likely to survive and mature, and adults produce fewer young (mothers in poor condition produce fewer young). Adult survival, on the other hand, is a little higher at Location B.
 
-```{r LTRE2, echo = TRUE}
-matA <- matrix(c(0.1,2.3,
-                 0.5,0.6), nrow = 2, ncol = 2, byrow = TRUE)
+| Matrix element | Meaning | Reference (Location A) | Treatment (Location B) |
+|---|---|---|---|
+| $a_{11}$ (top left) | Juvenile survives and stays juvenile | 0.1 | 0.1 |
+| $a_{21}$ (bottom left) | Juvenile survives and matures to adult | 0.5 | 0.2 |
+| $a_{12}$ (top right) | Fertility: juveniles produced per adult | 2.3 | 1.3 |
+| $a_{22}$ (bottom right) | Adult survives | 0.6 | 0.7 |
 
-matA <- round(matA, 2)
-```
-
-```{r LTRE3, echo = FALSE, fig.cap = "."}
-matA_plot <- Rage::plot_life_cycle(matA, stages = c("J", "A"))
-
-# 1. Make a play graph
-tmp <- matA_plot
-
-# 2. Convert to SVG, then save as png
-tmp <- DiagrammeRsvg::export_svg(tmp)
-tmp <- charToRaw(tmp) # flatten
-rsvg::rsvg_png(tmp, "tempLifeCycleDiagramLTRE.png") # saved graph as png in current working directory
-```
-![ ](tempLifeCycleDiagramLTRE.png)
-
-The treatment population, from Location B, experiences generally worse environmental conditions during the spring which particularly impacts the juvenile stages, and includes an effect on fecundity (e.g. via neonatal maternal energy allocation). The two matrices can be created in R as follows. Compare the values in the matrix, to the values in the life cycle diagram.
+The two matrices can be created in R as follows. Compare the values in the matrices with the values in the life cycle diagrams below.
 
 ```{r LTRE4, echo = TRUE}
 A_ref <- matrix(c(0.1,2.3,
@@ -71,26 +56,62 @@ A_treat <- matrix(c(0.1,1.3,
 
 ```
 
+```{r LTRE3, echo = FALSE, fig.height = 3, fig.width = 8, fig.cap = "Life cycle diagrams for the reference population (Location A, left) and the treatment population (Location B, right). J = juvenile, A = adult. Arrows show survival and maturation probabilities, and the fertility (arrow from A to J)."}
+draw_lc2 <- function(M, main = "") {
+  op <- par(mar = c(0, 0, 2, 0)); on.exit(par(op))
+  plot(NA, xlim = c(0, 10), ylim = c(1, 5.5), asp = 1, axes = FALSE,
+       xlab = "", ylab = "", main = main)
+  x <- c(2.5, 7.5); y <- 3; r <- 0.8
+  th <- seq(0, 2 * pi, length.out = 100)
+  curve_arrow <- function(x0, x1, bend, lab) {
+    s <- seq(0.12, 0.88, length.out = 50)
+    xs <- x0 + (x1 - x0) * s
+    ys <- y + bend * sin(pi * s)
+    lines(xs, ys, lwd = 2)
+    arrows(xs[49], ys[49], xs[50], ys[50], length = 0.12, lwd = 2)
+    text(mean(c(x0, x1)), y + bend * 1.25, lab, cex = 1.1)
+  }
+  self_loop <- function(xc, lab) {
+    a <- seq(-0.3 * pi, 1.3 * pi, length.out = 60)
+    xs <- xc + 0.55 * cos(a); ys <- y + r + 0.45 + 0.55 * sin(a)
+    lines(xs, ys, lwd = 2)
+    arrows(xs[59], ys[59], xs[60], ys[60], length = 0.1, lwd = 2)
+    text(xc, y + r + 1.3, lab, cex = 1.1)
+  }
+  if (M[1, 1] > 0) self_loop(x[1], M[1, 1])
+  if (M[2, 2] > 0) self_loop(x[2], M[2, 2])
+  if (M[2, 1] > 0) curve_arrow(x[1] + r, x[2] - r, -1.4, M[2, 1])
+  if (M[1, 2] > 0) curve_arrow(x[2] - r, x[1] + r, 1.4, M[1, 2])
+  for (i in 1:2) polygon(x[i] + r * cos(th), y + r * sin(th), col = "grey90", lwd = 2)
+  text(x, y, c("J", "A"), cex = 1.4, font = 2)
+}
+par(mfrow = c(1, 2))
+draw_lc2(A_ref, "Reference (Location A)")
+draw_lc2(A_treat, "Treatment (Location B)")
+```
+
 
 ### Comparing matrices
 
 Before we dig into the formal LTRE, it is useful to compare the two matrices, `A_ref` and `A_treat`, to see how they are different from each other.
 
-We can check what overall difference there is between the matrix in a couple of ways.
+We can check what overall difference there is between the matrices in a couple of ways.
 
-Firstly, we can examine the differences in the individual transition rates between the matrices by subtracting one from the other. 
+Firstly, we can examine the differences in the individual transition rates between the matrices by subtracting one from the other.
 
 ```{r LTRE5, echo = TRUE}
 A_ref - A_treat
 ```
 
 Next, we can ask what impact these differences have on the population growth rate (lambda).
-Note that putting the command in parentheses tells R to both create the new object (e.g. `lambdaA1`) **and** print the result to the screen.
+Note that putting the command in parentheses tells R to both create the new object (e.g. `lambda_A_ref`) **and** print the result to the screen.
 
 ```{r LTRE6, echo = TRUE}
 (lambda_A_ref <- popdemo::eigs(A_ref, what = "lambda"))
 (lambda_A_treat <- popdemo::eigs(A_treat, what = "lambda"))
 ```
+
+The reference population is growing ($\lambda > 1$), whereas $\lambda$ for the treatment population is just below 1, so the Location B population is slowly declining.
 
 We could express this as a difference, or as a proportional difference.
 
@@ -106,46 +127,102 @@ This is a `r round((lambdaDiff/lambda_A_ref) * 100)`% reduction, compared to the
 (lambdaDiff/lambda_A_ref) * 100
 ```
 
-So far, so good. We can see that treatment reduces the population growth rate, but we don't know exactly how. There are 3 changes in the matrix. Which of these changes is most instrumental in driving change in the population growth rate?
+So far, so good. We can see that $\lambda$ is lower at Location B, but we don't know exactly why. There are 3 changes in the matrix. Which of these changes is most instrumental in driving the change in the population growth rate?
 
 
-### Contributions from individual matrix elements 
+### Sensitivity: how much does $\lambda$ change when one element changes?
 
-The objective of the LTRE (Life Table Response Experiment) analysis in this context is to understand the impact of these environmental differences on the difference in population growth rate between the two populations. This is important because identifying the specific life history traits (i.e. the individual transitions, represented by individual elements of the matrix, such as survival or fecundity) that are most sensitive to environmental changes allows us to pinpoint the key drivers of population dynamics. 
+To answer this, we need to know how strongly $\lambda$ responds to each matrix element. This is the **sensitivity** of $\lambda$ to element $a_{ij}$, written $s_{ij}$: the change in $\lambda$ for a small *absolute* change in $a_{ij}$ (the slope of $\lambda$ against $a_{ij}$). Elasticity, which you met in "Matrix population modelling", is the *proportional* version of the same idea.
 
-By understanding where differences in growth rate originate, we can make more informed decisions about conservation and management strategies. For instance, if the analysis shows that adult survival has a larger impact on growth rate than fecundity, conservation efforts can be more effectively focused on improving adult survival rates rather than fecundity. Conversely, if juvenile survival or fecundity is more influential, efforts might be better directed towards enhancing these aspects. This targeted approach ensures that resources are allocated efficiently, and interventions are tailored to address the most critical factors affecting the population's viability under varying environmental conditions.
+Sensitivities can be calculated from two eigenvectors of the matrix: the stable stage distribution $\mathbf{w}$ (the right eigenvector) and the reproductive values $\mathbf{v}$ (the left eigenvector, which is the right eigenvector of the transposed matrix). The formula is
 
-By comparing the two models, we can decompose the differences in the overall growth rate ($\lambda$) between the baseline (Location A) and the modified model (Location B). This analysis will specifically highlight how changes in adult survival and fecundity in the less favourable environment of Location B contribute to any differences in population growth rates compared to the more favourable conditions in Location A. Such insights are crucial for developing effective management and conservation strategies, particularly in understanding the relative importance of different life stages and demographic parameters under varying environmental conditions.
+$$
+s_{ij} = \frac{v_i \, w_j}{\sum_k v_k w_k}.
+$$
 
+So $\lambda$ is most sensitive to transitions *into* stages with high reproductive value ($v_i$) *from* stages that are common in the stable stage distribution ($w_j$). In base R:
 
+```{r LTRE_sens, echo = TRUE}
+sensitivity <- function(M) {
+  # Right eigenvector: stable stage distribution w
+  eig_right <- eigen(M)
+  w <- Re(eig_right$vectors[, which.max(Re(eig_right$values))])
+  # Left eigenvector: reproductive values v (eigenvector of the transposed matrix)
+  eig_left <- eigen(t(M))
+  v <- Re(eig_left$vectors[, which.max(Re(eig_left$values))])
+  # s_ij = v_i * w_j / sum(v * w)
+  outer(v, w) / sum(v * w)
+}
 
-
-
-```{r LTRE9, echo = TRUE}
-popbio::LTRE(A_treat,A_ref)
+sensitivity(A_ref)
 ```
 
+(The `popbio` package has a function `sensitivity()` that does the same thing; here you can see what it does.)
 
-This summary quantifies the relative importance (and direction) of the effect of the differences between the two matrices on the difference in population growth rate.
-One of the changes actually has a positive impact on growth rate, but this is opposed by the other two changes. The most important of these two is the lower left element, which represents the ontogenetic development from juvenile to adult stage.
+### Contributions from individual matrix elements
 
+The LTRE splits the observed difference in $\lambda$ into one contribution per matrix element. The contribution of element $a_{ij}$ is
 
-## Relationship with elasticity analysis
+$$
+c_{ij} = \left(a_{ij}^{\mathrm{treat}} - a_{ij}^{\mathrm{ref}}\right) \times s_{ij}\left(\mathbf{A}_{\mathrm{mid}}\right), \qquad \mathbf{A}_{\mathrm{mid}} = \frac{\mathbf{A}_{\mathrm{ref}} + \mathbf{A}_{\mathrm{treat}}}{2},
+$$
 
-There are similarities between LTRE analysis and elasticity analysis. Comparing LTRE with elasticity analysis reveals some distinct advantages of LTRE in certain contexts. 
+that is, how much the element differs, multiplied by how much $\lambda$ responds to that element. The sensitivity is calculated from the matrix halfway between the two populations (the midpoint matrix), because the sensitivities of the two populations are not the same, and the midpoint is a fair compromise. A large contribution can come from a large difference in an element, from a high sensitivity, or from both.
 
-LTRE can handle comparisons where changes occur in multiple life history parameters simultaneously, providing a more comprehensive view of the potential impacts of various factors on population dynamics. This is in contrast to elasticity analysis, which examines the sensitivity of the population growth rate to small changes in individual demographic rates and assumes other parameters remain constant.
+We can calculate the contributions by hand:
 
-Therefore, LTRE is more directly applicable for evaluating and comparing the impacts of different management strategies or environmental changes that simultaneously affect several demographic traits. It allows for a more nuanced understanding of how specific interventions (like changes in fecundity or survival rates) will influence the population. This is crucial for making informed decisions in conservation and wildlife management.
+```{r LTRE_byhand, echo = TRUE}
+A_mid <- (A_ref + A_treat) / 2
+(contributions <- (A_treat - A_ref) * sensitivity(A_mid))
+```
 
-In summary, while elasticity analysis is valuable for understanding the inherent sensitivity of a population's growth rate to changes in its life cycle processes, LTRE can be a more useful tool for analysing the more complex effects of environmental variations or different management strategies on population dynamics.
+The `LTRE` function in the `popbio` package does exactly this calculation. Note the order of the arguments: treatment first, then reference.
+
+```{r LTRE9, echo = TRUE}
+popbio::LTRE(A_treat, A_ref)
+```
+
+The contributions should add up to the observed difference in $\lambda$ (treatment minus reference):
+
+```{r LTRE10, echo = TRUE}
+sum(popbio::LTRE(A_treat, A_ref))
+lambda_A_treat - lambda_A_ref
+```
+
+The two numbers are very close, but not identical (`r sprintf("%.3f", sum(contributions))` vs `r sprintf("%.3f", lambda_A_treat - lambda_A_ref)`). The LTRE treats $\lambda$ as if it changed in a straight line with each element, with a slope equal to the sensitivity at the midpoint matrix. In reality the sensitivities change as the elements change, so this linear approximation is only approximately right. It is very good when the differences between the matrices are small, and gets worse when they are large.
+
+### Interpreting the contributions
+
+Contributions are in the same units as $\lambda$. A **negative** contribution means that difference in the element *lowers* $\lambda$ in the treatment population relative to the reference; a **positive** contribution means it raises $\lambda$.
+
+Here, the juvenile stasis element contributes nothing, because it is the same (0.1) in both populations. The other three differences all contribute:
+
+- The lower probability of juveniles maturing into adults (0.5 → 0.2, bottom left) makes the largest contribution (`r round(contributions[2, 1], 3)`). The difference is only 0.3, but $\lambda$ is very sensitive to this element.
+- The lower fertility (2.3 → 1.3, top right) contributes `r round(contributions[1, 2], 3)`. The difference in the element is much larger (1.0), but $\lambda$ is much less sensitive to it.
+- The slightly higher adult survival at Location B (0.6 → 0.7, bottom right) makes a small *positive* contribution (`r round(contributions[2, 2], 3)`), which partly offsets the other two.
+
+So the main reason the Location B population has a lower growth rate (and is declining) is that fewer juveniles survive and mature into adults; the reduced fertility is the second most important reason.
+
+## Retrospective vs prospective analyses
+
+It is tempting to read an LTRE as a management recommendation ("juvenile maturation made the largest contribution, so managers should improve juvenile maturation"). That is not what an LTRE tells you. Following Caswell, it helps to separate two kinds of question:
+
+- **Retrospective** (LTRE): *Why do these observed populations differ in $\lambda$?* The LTRE takes differences in vital rates that have already happened and shares out the observed difference in $\lambda$ among them. A contribution is large if the element *did* differ a lot, if $\lambda$ is sensitive to it, or both.
+- **Prospective** (sensitivity, elasticity, *in silico* experiments): *What would happen to $\lambda$ if we changed a vital rate?* These analyses do not depend on how much the rates have varied in the past. They are the tools for exploring management options, together with knowledge of which rates can actually be changed, and by how much.
+
+The answers can differ. A vital rate can make a large LTRE contribution simply because it happened to vary a lot between places (for example because of weather), even if managers cannot change it. And a vital rate with a high sensitivity or elasticity can make no LTRE contribution at all, if it did not differ between the populations: in our example $\lambda$ has a sensitivity of `r round(sensitivity(A_mid)[1, 1], 3)` to juvenile stasis at the midpoint matrix, but juvenile stasis contributes nothing because it is 0.1 in both populations.
+
+The two approaches complement each other. LTRE is useful for understanding what has caused observed differences between populations, years or experimental treatments (and so for generating hypotheses about the causes), and it can handle several vital rates differing at the same time. To ask what management actions *would* do, use prospective tools.
 
 ## Your task
 
-- Modify one element in `A_treat` and predict which LTRE contribution will change most.
-- Re-run `popbio::LTRE` and check whether your prediction matches the output.
+- Before running any more code, look at the table of matrix elements and the sensitivities. Predict the sign of each LTRE contribution, and which one will be largest. Then compare your prediction with the output above.
+- Check for yourself that the contributions sum approximately to $\lambda_{\mathrm{treat}} - \lambda_{\mathrm{ref}}$.
+- Modify one element in `A_treat` (for example, set the treatment fertility to 1.8 instead of 1.3, or the treatment maturation probability to 0.4 instead of 0.2). Predict which LTRE contribution will change most, and in which direction. Re-run the contributions (by hand and with `popbio::LTRE`) and check your prediction. Explain the change using "difference in element × sensitivity".
+- Explain, in two or three sentences, why the LTRE result does not on its own tell a manager which vital rate to target.
 
 ## Takeaways
 
-- LTRE decomposes $\lambda$ differences into contributions from specific transitions.
-- It complements elasticity analysis by focusing on actual changes between scenarios.
+- LTRE is retrospective: it decomposes an *observed* difference in $\lambda$ into contributions from specific matrix elements.
+- Each contribution is (difference in the element) × (sensitivity of $\lambda$ to that element, at the midpoint matrix), and the contributions sum approximately to the observed difference in $\lambda$.
+- Sensitivity and elasticity analyses are prospective: they ask what would happen if a vital rate changed, and are the right tools for exploring management options.

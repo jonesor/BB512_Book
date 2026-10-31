@@ -4,6 +4,16 @@ This part explores how species interactions shape population and community dynam
 
 By the end of Part 4, you should be able to:
 
+- Predict the outcome of competition from the isocline intercepts ($K_1$, $K_1/\alpha$, $K_2$, $K_2/\beta$).
 - Interpret competition and predator-prey dynamics from model outputs.
-- Compare continuous- and discrete-time interaction models.
+- Explain why Lotka-Volterra predator-prey cycles are neutrally stable in continuous time, and why the discrete-time version spirals outwards.
 - Reason about stability and equilibrium in multi-species systems.
+
+**Reading:** Neal, chapters *Interspecific Competition*, *Predator-Prey Interactions* and *Species Interactions and Community Structure*.
+
+::: {.advanced-box}
+**Notation used in Part 4 (following Neal)**
+
+- Competition: $\frac{dN_1}{dt} = r_1 N_1 \frac{K_1 - N_1 - \alpha N_2}{K_1}$ and $\frac{dN_2}{dt} = r_2 N_2 \frac{K_2 - N_2 - \beta N_1}{K_2}$. $\alpha$ is the per capita effect of species 2 on species 1, and $\beta$ the effect of species 1 on species 2. The Excel worksheet calls these $\alpha_{12}$ and $\alpha_{21}$.
+- Predator-prey: $\frac{dH}{dt} = rH - aHP$ and $\frac{dP}{dt} = cHP - dP$, with isoclines $P = r/a$ (prey) and $H = d/c$ (predator). The Excel worksheet and the R chapters use $V$ (prey), $C$ (predator), $R$, $a$, $f$ and $q$, where $V = H$, $C = P$, $R = r$, $af = c$ and $q = d$.
+:::

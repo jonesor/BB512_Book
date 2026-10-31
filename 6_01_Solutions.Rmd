@@ -44,7 +44,11 @@ The colour evolves to become more similar to the background colour because you (
 
 *	_What happens to your hunting efficiency? Use your measurements._
 
-Your hunting efficiency tends to decrease with time because the bugs are evolving to be harder to see. They are evolving camouflaged colours. In your measurements, the time to catch 10 bugs should increase over the first two minutes, drop sharply when you switch background (the bugs are suddenly conspicuous), and then increase again as the bugs adapt to the new background. The exact times differ between students, because each of you is a different predator, but the pattern should be the same.
+Your hunting efficiency tends to decrease with time because the bugs are evolving to be harder to see. They are evolving camouflaged colours. In your measurements, the time to catch 10 bugs should increase over the first two minutes, drop sharply when you switch background (the bugs are suddenly conspicuous), and then increase again as the bugs adapt to the new background. The exact times differ between students, because each of you is a different predator, but the pattern should usually be the same.
+
+*	_Apart from bug evolution, what else could change how long it takes you to catch 10 bugs? Which of the plots gives more direct evidence that the bugs themselves have evolved?_
+
+You, the predator, also change: you learn where to look and get faster (catch times fall), you get tired or bored (catch times rise), and a new background can be distracting at first, or make you concentrate harder. So catch time mixes changes in the bugs with changes in you, and a student whose times did not rise has not shown that evolution failed. The direct evidence that the bugs evolved is in the colour plots (the histograms of the colour values and the change in average genotype): the distribution of colours in the population shifts towards the background.
 
 *	_Would you say that the bug population becomes worse or better adapted to their environment?_
 
@@ -60,7 +64,7 @@ Changing the environment means that the individuals are now poorly-adapted to th
 
 *	_Do the genotypes of individuals change (e.g. with individual age)?_
 
-No, individuals' genotypes are fixed. The change in the population occurs because of selection of individuals to reproduce. Better-adapted individuals are more likely to reproduce.
+No, individuals' genotypes are fixed: with "show-genotype?" switched on, each bug keeps the same three numbers for its whole life. The change in the population occurs because of selection of individuals to reproduce. Better-adapted individuals are more likely to reproduce.
 
 *	_Increasing the "max-mutation-step" makes bug offspring less like their parents. How do you think this will influence the speed of adaptation of the bugs?_
 
@@ -87,7 +91,6 @@ Possible answers: there is only one predator, and it does not evolve (although y
 
 With a small "offspring-distance", offspring stay close to their parents, so bugs in each patch of background are mostly the descendants of bugs that survived in that patch: each patch can evolve its own matching colour (local adaptation). With a large "offspring-distance", offspring are scattered across the whole background. This is like frequent gene flow between populations: well-camouflaged colours from one patch keep arriving in patches where they stand out, so local adaptation is weaker or absent. Whether gene flow swamps local adaptation depends on how much movement there is compared with the strength of selection.
 
-
 ## Solutions: Geometric growth
 
 You can find the completed Excel file [here](https://www.dropbox.com/s/sfxu1lbrxyqt462/GeometricGrowth%20-%20complete.xlsx?dl=1). 
@@ -106,14 +109,16 @@ Answers to the task:
 * **Steps 3-4:** plotting ln(N) against time turns the curve into a straight line. A constant *proportional* increase each time step becomes a constant *absolute* increase on the log scale.
 * **Step 5:** with $\lambda = 1.2$ the curve rises faster (steeper straight line on the log plot); with $\lambda = 0.8$ the population declines towards zero (straight line sloping downwards on the log plot); with $\lambda = 1$ the population stays at 10 (flat line). $\lambda = 1$ is the boundary between growth and decline: the population exactly replaces itself each time step ($R_m = 0$).
 * **Step 6:** the trendline slope is 0.0953 = ln(1.1), and `=EXP(0.0953)` returns 1.1, the $\lambda$ you used. The slopes for $\lambda$ = 0.8, 1 and 1.2 are -0.223, 0 and 0.182. If you get a different slope, check that you fitted the trendline to the `logN` (natural log) column, not to N on a logarithmic axis.
+* **Step 7 (doubling time):** with $\lambda = 1.1$ the population passes 20 between $t = 7$ ($N = 19.5$) and $t = 8$ ($N = 21.4$), and passes 40 about 7 time steps later. The doubling time is $t_d = \ln 2 / \ln 1.1 = 0.693/0.0953 = 7.27$ time steps. It does not depend on the starting population size: a geometrically growing population doubles at a constant interval, whatever its size.
 * **Geometric series:** $N_5 = 10 \times 1.1^5 = 16.1$, the same as the spreadsheet. After 900 generations, $N_{900} = 10 \times 1.1^{900} \approx 1.8 \times 10^{38}$. That is absurdly large (far more individuals than there are atoms in a human body, around $10^{27}$), which shows why unlimited geometric growth cannot continue for long in reality.
 
 Answers to the questions:
 
 * **Constant growth rate:** the population is multiplied by the same factor each time step, so it grows by the same *proportion* each step and by ever-larger *numbers*. For example, with $\lambda = 1.1$ the population grows by 10% each step: from 10 to 11 in the first step, but from 61.2 to 67.3 between steps 19 and 20. It also doubles at a constant interval: $\ln 2 / \ln 1.1 \approx 7.3$ time steps.
-* **Why unrealistic:** it assumes unlimited resources and space, no density dependence (competition, predation or disease do not increase as the population grows), and a constant $\lambda$ every year (no environmental variation). Real populations eventually run out of resources and growth slows.
+* **Why unrealistic:** it assumes density independence (unlimited resources and space; competition, predation or disease do not increase as the population grows), constant birth and death rates and so a constant $\lambda$ every year (no environmental variation), no time lags, no age or stage structure (all individuals are identical), and a closed population (no immigration or emigration). Real populations eventually run out of resources and growth slows.
 * **Where it might be suitable:** the early stages of growth when a population is small relative to its resources, e.g. an invasive species newly arrived in a suitable habitat, a population recovering after a crash or after protection (e.g. some seal or raptor populations), or bacteria in fresh culture medium.
 * **Decline of 25% per year:** this means $\lambda = 0.75$, so $N_4 = 800 \times 0.75^4 = 253.1$, i.e. about 253 individuals.
+* **$\lambda$ per half-year:** $r_m = \ln 1.1 = 0.0953$ per year, so $r_m = 0.0477$ per half-year, and $\lambda = e^{0.0477} = 1.049$ per half-year. Check: $1.049^2 = 1.1$. (Simply halving the 10% increase to 5% would be slightly too much, because growth compounds.)
 
 ## Solutions: Estimating Population Growth Rate
 
@@ -158,9 +163,27 @@ Take home messages:
 * We can repeatedly simulate a population projection (e.g. in R, or more laboriously in Excel) to get a feel for the likely fate of a population. E.g. "what percent of the projections show extinction within 50 years?".
 * We can use this relatively simple and "unrealistic" model to nevertheless get an intuition about general trends in population dynamics and extinction risk.
 * Extinction probability increases as (i) initial population size decreases; (ii) variance increases; (iii) growth rates decrease; (iv) the time frame increases.
+* Long-run growth follows the mean of $r_m$ (the geometric mean of $\lambda$), not the arithmetic mean of $\lambda$. With mean $r_m$ = 0.05 and variance 0.1, the typical (median) population grows by $e^{0.05} = 1.051$ per year, but the average $\lambda$ is $e^{0.05 + 0.1/2} = 1.105$. In the default R run, after 50 generations the median population size is about 116 (theory: $10 \times e^{0.05 \times 49} = 116$), while the mean is about 1,900, pulled up by a few runs that boom.
 
+### Things to try
 
+Your numbers will differ from these, because each run draws new random numbers. The values below are from the example run shown in the chapter, followed in brackets by the range seen over 100 further runs of 1,000 trials each. Differences of a few percentage points between runs are just chance.
 
+1. **Default settings** (mean 0.05, variance 0.1, `startPop` = 10, 50 generations): extinction probability **0.058** (range 0.04 to 0.08). Most trajectories grow, but they spread out enormously: after 50 generations some populations are near 1 and others are in the tens or hundreds of thousands.
+2. **`var.r` = 0.5**: extinction probability rises to **0.418** (range 0.39 to 0.47), about seven times higher, even though the mean growth rate is unchanged. The trajectories also spread out much more.
+3. **`startPop` = 3**: extinction probability rises to **0.235** (range 0.21 to 0.28). Starting size matters a lot: a small population needs only a short run of bad years to fall below 1 individual, whereas a larger one has a buffer.
+4. **`mean.r` = 0**: extinction probability is **0.249** over 50 generations (range 0.24 to 0.30). So extinction is not certain within 50 generations. But it is certain in the long run: with a mean of zero the log population size is a random walk with no upward drift, and such a walk eventually hits any lower boundary. You can see this by increasing `nGen`: with `nGen = 200` the extinction probability is **0.567** (range 0.54 to 0.61), and it keeps rising towards 1 as time increases.
+5. **Challenge:** keep `mean.r = 0.05` and increase `var.r` to **1**: extinction probability is **0.576** (range 0.55 to 0.62), so more than half of the populations go extinct even though they grow on average (and the median population still grows in the long run). Other combinations work too (e.g. `mean.r = 0.02` with `var.r = 0.5` gives about 0.5). This tells us that a positive average growth rate does not guarantee persistence: with enough year-to-year variation, chance runs of bad years drive many populations below the extinction threshold before the positive trend can carry them to safety. The variance matters as much as the mean.
+
+If you compare these results with the rule from the lecture (extinction is almost certain if $\sigma^2 > 2\bar{r}$), remember that the rule uses $\bar{r}$ on the $\lambda$ scale and describes the very long run. In this simulation $r_m$ is drawn on the log scale, so the long-run growth rate is $\bar{r}_m$ itself, and certain long-run extinction needs $\bar{r}_m \leq 0$ (see the box in the chapter).
+
+### Questions
+
+* **Deterministic vs. stochastic:** a deterministic model always gives the same trajectory for the same parameters; a stochastic model draws the growth rate at random each time step, so each run gives a different trajectory and the model predicts a *distribution* of possible outcomes (including a probability of extinction) rather than a single number.
+* **Why more realistic:** real growth rates vary from year to year with weather, food supply, disease and so on, and small populations are also affected by chance births and deaths. A stochastic model captures this variation, and so shows the uncertainty in forecasts and the risk of extinction, which a deterministic model cannot.
+* **Two populations with identical growth rates:** run the R code (or the Excel sheet) twice with the same settings, or look at any two of the trajectories in the plot. With mean 0.05 and variance 0.1, one population may grow into the thousands while another, with exactly the same parameters, falls below 1 and goes extinct. The implication is that the fate of a single real population is partly a matter of luck, so we should describe it with probabilities, and that two populations that differ in outcome need not differ in their underlying biology.
+* **Extinction risk and population size:** small populations are at much higher risk (in the default runs, about 0.06 for 10 individuals against about 0.24 for 3), because a short run of bad years can take them below the threshold.
+* **Extinction risk and environmental variation:** more variable environments (higher variance in $r_m$) increase extinction risk, even if the average growth rate does not change (about 0.06 at variance 0.1 against about 0.42 at variance 0.5). This is why increasing environmental variability, for example more frequent extreme weather, is a conservation concern.
 
 ## Solutions: Basic logistic population growth
 
@@ -182,15 +205,16 @@ This means that if a population has even a moderate population growth rate and d
 
 - $r_m < 1$: the population approaches $K$ smoothly.
 - $1 < r_m < 2$: damped oscillations of decreasing amplitude around $K$.
-- $2 < r_m < 2.57$: stable cyclic oscillations around $K$ (stable limit cycles). The population first bounces between two values (a 2-point cycle, e.g. $r_m$ = 2.1 or 2.4), then between four values (a 4-point cycle, e.g. $r_m$ = 2.5), and so on.
-- $r_m > 2.57$: the population fluctuates chaotically, with no repeating pattern (e.g. $r_m$ = 2.8, 2.9 or 3.0).
-- $r_m$ above about 3: the population overshoots so far that the next time step gives $N \leq 0$, i.e. extinction. In the spreadsheet this shows up as negative population sizes, which are a mathematical artefact of the model.
+- $2 < r_m < 2.449$: a stable 2-point limit cycle, in which the population bounces between two values around $K$ (e.g. $r_m$ = 2.1 or 2.4).
+- $2.449 < r_m < 2.57$: the cycle doubles to 4 points (e.g. $r_m$ = 2.5), then 8 points, and so on (period doubling).
+- $r_m > 2.57$: the population fluctuates chaotically, with no repeating pattern (e.g. $r_m$ = 2.8, 2.9 or 3.0). Within the chaotic region there are narrow windows of regular cycles (for example a 3-point cycle near $r_m = 2.83$), but you are unlikely to hit one by chance.
+- $r_m$ above 3 (e.g. 3.1): the population overshoots so far that a later time step gives $N \leq 0$ (with `Initial N` = 10 and $K$ = 200, at $t = 4$), i.e. extinction. In the spreadsheet this shows up as negative population sizes, which are a mathematical artefact of the model. At exactly $r_m$ = 3.0 the population stays positive and chaotic.
 
 So yes, there is a limit to how high $r_m$ can be.
 
 **Step 6** (sensitivity). When $r_m$ is high ($> 2.57$) the dynamics are chaotic, and the population becomes extremely hard (in practice impossible) to predict. Changing $r_m$ from 2.8 to 2.81, or changing the initial population size by 1, produces trajectories that soon become completely different. Because a change this small could simply be measurement error, this would cause big problems for a population manager.
 
-Many pest species and diseases have very high population growth rates, for example locusts or measles. This is one reason why it is hard to predict when the next pest or disease outbreak will happen.
+Many pest species have very high population growth rates, for example outbreak insects such as locusts and some forest moths. High growth rates with density dependence are one reason why it can be hard to predict when the next pest outbreak will happen (real outbreaks are also driven by weather and other external factors).
 
 Chaos is not the same as randomness. The model contains no random element: run it again with exactly the same parameters and you get exactly the same trajectory. The unpredictability comes from extreme sensitivity to the starting conditions and parameter values.
 
@@ -228,7 +252,7 @@ The discrete version uses the same $r_m$ but applies it once per whole time step
 
 ### Task 1: Type of dynamics depends on $r_m$
 
-As you increase $r_m$, the dynamics of the population change. At low $r_m$ ($< 1$, e.g. 0.8) population size ($N$) simply converges smoothly on the carrying capacity, $K$. As $r_m$ increases ($1 < r_m < 2$, e.g. 1.2 or 1.8) you will see damped oscillations, whereby $N$ overshoots $K$ and then oscillates and converges to $K$. Then ($2 < r_m < 2.57$, e.g. 2.4) you will see stable cycles where the population size oscillates *around* $K$ indefinitely. The cycles can be simple 2-point cycles (where $N$ bounces between two values), or more complex, with $N$ bouncing between 4 points (or more). Above $r_m \approx 2.57$ (e.g. 2.7) the dynamics are chaotic: they never repeat and are unpredictable in practice. The critical values of $r_m$ that define the type of dynamics are fixed: if we know $r_m$ we can predict the type of dynamics.
+As you increase $r_m$, the dynamics of the population change. At low $r_m$ ($< 1$, e.g. 0.8) population size ($N$) simply converges smoothly on the carrying capacity, $K$. As $r_m$ increases ($1 < r_m < 2$, e.g. 1.2 or 1.8) you will see damped oscillations, whereby $N$ overshoots $K$ and then oscillates and converges to $K$. Then ($2 < r_m < 2.57$) you will see stable cycles where the population size oscillates *around* $K$ indefinitely. Between 2 and 2.449 (e.g. 2.4) these are 2-point cycles, where $N$ bounces between two values. Between 2.449 and 2.57 they are 4-point, then 8-point (and so on) cycles. Above $r_m \approx 2.57$ (e.g. 2.7) the dynamics are chaotic: they never repeat and are unpredictable in practice. The critical values of $r_m$ that define the type of dynamics are fixed: if we know $r_m$ we can predict the type of dynamics.
 
 The type of dynamics depends only on $r_m$, not on $K$ or starting population size ($N_0$) (as long as $0 < N_0 < K$).
 
@@ -258,15 +282,19 @@ The equivalent figures for exponential growth are:
 - **Fig 2** (per capita growth rate vs. $N$): a horizontal line at $r_m$. The per capita growth rate is constant and unaffected by $N$, unlike the negative slope of the logistic model.
 - **Fig 3** ($dN/dt$ vs. $N$): a straight line through the origin with slope $r_m$. The more individuals there are, the faster the population grows, unlike the logistic parabola.
 
+In the `Exponential` worksheet the parameter labelled "r_m intrinsic growth rate" (0.1) is applied once per time step, $N_{t+1} = N_t(1 + 0.1)$, so it acts as the per-step rate $R_m$ (geometric growth with $\lambda = 1.1$). $dN/dt$ increases linearly with $N$ (Figure 3) but exponentially with time.
+
 ### Task 5: Time lag
 
 Time-lagged density dependence results in oscillations. With the default $r_m = 0.6$, the ordinary logistic model converges smoothly on $K$. With a 1-step lag, the population overshoots $K$ and then shows damped oscillations. At $r_m$ above about 1 (e.g. 1.2), the oscillations become sustained cycles. This happens because the population responds to its density one time step ago. It keeps growing after it has passed $K$, and keeps declining after it has fallen below $K$.
+
+The lecture's thresholds for lags ($r_m\tau < e^{-1}$ smooth, up to $\pi/2$ damped, above that cycles with a period of about $4\tau$) apply to the continuous-time lag model. In this discrete version with a 1-step lag the approach is smooth only for $r_m$ below about 0.25, oscillations are damped between about 0.25 and 1, and above 1 there are sustained cycles with a period of about 6 to 7 time steps (7 at $r_m = 1.2$, where $N$ cycles between about 67 and 647 with $K = 400$). The message is the same: lags cause overshoot and cycles.
 
 Therefore, if we see oscillations in population dynamics, they could be due to a high $r_m$ value or to lagged density dependence. Time lags make populations harder to predict and manage, because the population's response to a change (e.g. a harvest or a cull) is delayed.
 
 ### $N_{t+1}$ vs. $N_t$
 
-Because $N_{t+1} = N_t + dN/dt$, a plot of $N_{t+1}$ against $N_t$ is also a parabola: it is the Figure 3 parabola with the line $N_{t+1} = N_t$ added to it. It passes through the origin and crosses the line $N_{t+1} = N_t$ at $N_t = 0$ and $N_t = K$. These are the equilibria, where $dN/dt = 0$ and the population does not change from one time step to the next. How steeply the parabola crosses the line at $K$ depends on $r_m$. This slope determines whether the population approaches $K$ smoothly, oscillates, or behaves chaotically.
+Because $N_{t+1} = N_t + dN/dt$, a plot of $N_{t+1}$ against $N_t$ is also a parabola: it is the Figure 3 parabola with the line $N_{t+1} = N_t$ added to it. It passes through the origin and crosses the line $N_{t+1} = N_t$ at $N_t = 0$ and $N_t = K$. These are the equilibria, where $dN/dt = 0$ and the population does not change from one time step to the next. How steeply the parabola crosses the line at $K$ depends on $r_m$. This slope determines whether the population approaches $K$ smoothly, oscillates, or behaves chaotically. The slope at $K$ is $1 - r_m$: for $r_m < 1$ it is between 0 and 1 and the population approaches $K$ smoothly; for $1 < r_m < 2$ it is between $-1$ and 0 and the population overshoots and oscillates back towards $K$ (damped oscillations); for $r_m > 2$ it is steeper than $-1$, so $K$ is unstable and the population cycles or behaves chaotically. This one rule explains all the dynamics in Task 1.
 
 ### Chaotic dynamics
 
@@ -280,43 +308,124 @@ The take home messages for this exercise are that life tables are a rich source 
 
 - $R_0 = \sum l_x m_x = 4.06$ daughters per female, so the population is growing.
 - $T = \sum x l_x m_x / R_0 = 15.35/4.06 = 3.78$ years.
-- $r \approx \ln(R_0)/T = \ln(4.06)/3.78 = 0.37$ per year ($\lambda = e^r \approx 1.45$). The exact value from the Euler–Lotka equation is $r = 0.41$ ($\lambda = 1.50$): $\ln(R_0)/T$ slightly underestimates $r$ when generations overlap.
+- $r_c = \ln(R_0)/T = \ln(4.06)/3.78 = 0.37$ per year ($\lambda \approx e^{r_c} = 1.45$). The exact intrinsic rate of increase from the Euler-Lotka equation is $r_m = 0.41$ ($\lambda = 1.50$): the capacity for increase, $r_c$, slightly underestimates $r_m$ when generations overlap.
 - Life expectancy at birth is $e_0 = 3.76$ years. It rises to $e_1 = 4.14$ years: once the risky first year is survived, an individual can expect to live longer than a newborn.
 - $p_x$ and $q_x$ for each age, e.g. $p_2 = 254/298 = 0.852$ and $q_2 = 0.148$; $q_9 = 0.88$ (only 5 of 43 nine-year-olds survive to age 10).
 
-**Declining force of selection.** Adding one daughter at age $x$ raises $R_0$ by exactly $l_x$: by 0.70 (17%) at age 1, 0.60 (15%) at age 2, 0.13 (3%) at age 8 and 0.01 (0.2%) at age 10. The effect falls with age because fewer and fewer females survive to use the extra reproduction. (The approximate $r = \ln(R_0)/T$ behaves oddly here: it actually *falls* slightly when a daughter is added at ages 7 to 10, because $T$ increases more than $\ln(R_0)$. The exact $r$ always increases, by 40% at age 1 but by less than 1% from age 7 onwards. This is why we use $R_0$ for the experiment.)
+**Declining force of selection (optional task).** Adding one daughter at age $x$ (ages 1 to 10) raises $R_0$ by exactly $l_x$: by 0.70 (17%) at age 1, 0.60 (15%) at age 2, 0.13 (3%) at age 8 and 0.01 (0.2%) at age 10. The effect falls with age because fewer and fewer females survive to use the extra reproduction. Age 0 is left out because newborns cannot breed at birth. (The capacity for increase $r_c = \ln(R_0)/T$ behaves oddly here: it actually *falls* slightly when a daughter is added at ages 7 to 10, because $T$ increases more than $\ln(R_0)$. The exact $r_m$ always increases, by 40% at age 1 but by less than 1% from age 7 onwards. This is why we use $R_0$ for the experiment.)
 
 **Survivorship curves.** Population 1 is Type I ($q_x$ rises with age, from 0.02 to over 0.6); Population 2 is close to Type II ($q_x$ stays roughly between 0.25 and 0.4, so $\ln(l_x)$ falls in a nearly straight line); Population 3 is Type III ($q_x$ falls from 0.73 in the first year to about 0.1 in old age).
 
-You should understand the relationship between mortality risk and survivorship curve. In other words, you should be able to describe, or do a rough sketch of mortality risk with age, if you have a survivorship curve (or vice versa). 
+You should understand the relationship between mortality risk and survivorship curve. In other words, you should be able to describe, or do a rough sketch of mortality risk with age, if you have a survivorship curve (or vice versa).
 
-The completed Excel spreadsheet is [here](https://www.dropbox.com/scl/fi/tsvfeezeiz7z6j7b9jrju/Life_Tables_Exercise_Complete.xlsx?rlkey=ius84aakppl11oqvdw5ksnlyp&dl=1). 
+The completed Excel spreadsheet is [here](https://www.dropbox.com/scl/fi/tsvfeezeiz7z6j7b9jrju/Life_Tables_Exercise_Complete.xlsx?rlkey=ius84aakppl11oqvdw5ksnlyp&dl=1).
 
+### Answers to the questions
 
+*1. What are the three main types of survivorship curves, and which organisms typically exhibit each type?*
 
+Type I curves show high survival in early life and high mortality at older ages (e.g. humans in developed countries, zoo and domestic animals). Type II curves show roughly constant mortality throughout life (e.g. many small birds). Type III curves show high juvenile mortality, followed by lower mortality for the few that survive the vulnerable early period (e.g. many fish and trees).
+
+*2. What does a net reproductive rate ($R_0$) of less than 1 signify for a population?*
+
+On average, each female is replaced by fewer than one daughter over her lifetime, so the population is declining.
+
+*3. How does the shape of a survivorship curve reflect trade-offs in life history strategies, typically?*
+
+Type I curves suggest heavy investment in each offspring, with low juvenile mortality: typical of species with few offspring and much parental care. Type III curves reflect species that produce many offspring but give each one little care, leading to high early mortality.
+
+*4. How is survivorship ($l_x$) different from survival probability ($p_x$)?*
+
+- **Survivorship ($l_x$)** is the proportion of newborns that survive from birth to age $x$. It is cumulative across all the age classes up to $x$, starts at $l_0 = 1$ and can only fall with age.
+- **Survival probability ($p_x$)** is the probability that an individual alive at age $x$ survives to age $x+1$. It measures survival over a single time step, and can rise or fall with age.
+
+The two are linked: $l_{x+1} = l_x \times p_x$. In the worked example, $l_2 = 0.4$ and $p_2 = 0.25$, so $l_3 = 0.4 \times 0.25 = 0.1$.
+
+*5. How does altering reproduction or survival/mortality at different ages affect $R_0$ and population growth rate?*
+
+Changes early in life have a larger effect on $R_0$ and population growth rate than changes later in life, because fewer individuals survive to experience late-life changes (adding one daughter at age $x$ raises $R_0$ by $l_x$). This is the declining force of selection.
+
+*6. Two populations have the same $R_0$, but one has a shorter generation time. Which grows faster per year, and why?*
+
+The one with the shorter generation time. $R_0$ is growth per generation, and $r_c = \ln(R_0)/T$ is (approximately) growth per year, so a shorter $T$ means the population multiplies by $R_0$ more often. For example, with $R_0 = 2$: $T = 1$ year gives $r_c = 0.69$ per year; $T = 2$ years gives $r_c = 0.35$ per year.
+
+*7. The probability of dying in a year, $q_x$, can never be greater than 1, but the force of mortality, $\mu_x$, can. Why?*
+
+$q_x$ is a probability over an interval, so it lies between 0 and 1. $\mu_x$ is an instantaneous rate per individual still alive (like a speed), so it has no upper limit. For a rate that is constant over a year, $q_x = 1 - e^{-\mu_x}$: at low mortality $q_x$ is close to $\mu_x$, but as $\mu_x$ increases, $q_x$ approaches 1 without reaching it (e.g. $\mu_x = 2$ gives $q_x = 0.86$).
 
 ## Solutions: Matrix population modelling
 
-The main take home messages for this class are that you should: 
-(1) understand, and be able to draw or interpret life cycle diagram;
-(2) be able to (roughly) parameterise a model shown in the life cycle diagram;
-(3) be able to write out a matrix model (the square of numbers) for a given life cycle diagram (and *vice versa*).
-(4) understand how population projection works, and to therefore interpret a figure or description showing a population projection.
-(5) understand what an elasticity matrix tells us (it tells us the relative importance of the transitions for population growth)
+The main take home messages for this class are that you should:
+(1) understand, and be able to draw or interpret, a life cycle diagram;
+(2) be able to (roughly) parameterise a model shown in the life cycle diagram, remembering that a reproduction entry must include the survival needed for newborns to be counted at the next census;
+(3) be able to write out a matrix model (the square of numbers) for a given life cycle diagram (and *vice versa*);
+(4) understand how population projection works, and therefore be able to interpret a figure or description showing a population projection;
+(5) understand what an elasticity matrix tells us (the relative influence of a proportional change in each transition on population growth), and how it differs from sensitivity (the effect of an absolute change);
 (6) understand the logic of *in silico* experiments (changing the matrix and comparing $\lambda$) to investigate management options.
-
 
 ### Model answers for the matrix modelling practical
 
 **Does the starting population matter?** The early (transient) dynamics depend strongly on the starting population structure, and the lines may zigzag or even decline temporarily. Eventually the lines become parallel and straight on the log scale, with the same slope as before. The slope is the same because the long-term growth rate ($\lambda$) depends only on the matrix, not on the starting population. The gaps between the lines are also the same, because the stage proportions converge to the same stable stage distribution. Starting structure affects the short term, but not the long-term growth rate or structure (given constant vital rates).
 
+**An evolutionary experiment (homework).** For the example matrix, $\lambda = 1.346$. A mutant that has one extra baby as an adult (fecundity 8 to 9) but lower juvenile-to-adult survival (0.10 to 0.08) has $\lambda = 1.295$, so the mutant has lower fitness and would not spread: the small loss of juvenile survival outweighs the extra baby. If juvenile-to-adult survival only falls to 0.09, the mutant's $\lambda$ is 1.3466, almost exactly the same as the original (1.3458), so selection on this trade-off would be very weak. Juvenile-to-adult survival has the highest elasticity in this matrix, which is why a small proportional cost there matters so much. Your own organism will give different numbers, but the logic is the same: compare $\lambda$ for the original and mutant matrices.
+
 **Question 1.** On a log scale, straight lines mean the population is growing (or shrinking) exponentially at a constant rate, i.e. the growth rate has stabilised at $\lambda$ once the transient phase has passed.
 
-**Question 2.** Elasticity measures the proportional sensitivity of $\lambda$ to small proportional changes in each vital rate. It identifies which transitions have the greatest influence on population growth. If adult survival has the highest elasticity, conservation might focus on protecting adults (e.g. habitat protection, reducing human-induced mortality). If juvenile survival has a high elasticity, efforts might target juveniles (e.g. habitat restoration or predator control). Managers can then allocate limited resources to where they are likely to matter most, bearing in mind that high elasticity does not mean a rate is easy to change in practice.
+**Question 2.** Elasticity measures the proportional change in $\lambda$ caused by a small proportional change in each matrix element. It identifies which transitions have the greatest influence on population growth. If adult survival has the highest elasticity, conservation might focus on protecting adults (e.g. habitat protection, reducing human-induced mortality). If juvenile survival has a high elasticity, efforts might target juveniles (e.g. habitat restoration or predator control). Managers can then allocate limited resources to where they are likely to matter most, bearing in mind that high elasticity does not mean a rate is easy to change in practice.
 
-**Question 3.** Key assumptions include: constant vital rates; a constant (stable) environment; a closed population with no immigration or emigration; and no density dependence (vital rates do not depend on population size). Several of these are shared with the exponential/geometric growth models.
+**Question 3.** Key assumptions include:
 
+- constant vital rates (no environmental variation from year to year);
+- no density dependence (vital rates do not depend on population size);
+- a closed population, with no immigration or emigration;
+- all individuals within a stage are identical;
+- only females are modelled, and there is no shortage of mates;
+- a fixed time step (here one year) with the census at a fixed point in the annual cycle.
 
+Several of these are shared with the exponential/geometric growth models.
+
+## Solutions: Pre- and Post-reproduction census
+
+**Why `A1` and `A2` give the same $\lambda$.** Both give $\lambda = 1.0703$ (to 4 decimal places), and they are exactly identical, not just equal to rounding error. Both matrices have the same characteristic equation, $\lambda^3 = p_0 p_1 m_2 \lambda + p_0 p_1 p_2 m_3$: each term is one route from birth to reproduction (survive to age 2 and breed, or survive to age 3 and breed), and each route contains the same survival and reproduction terms in both census types. The net reproductive rate is also the same in both: $R_0 = p_0 p_1 m_2 + p_0 p_1 p_2 m_3 = 0.54 + 0.648 = 1.188$. Census timing only changes *when* we count the population (and so which age classes are in the matrix), not what the animals do, so it cannot change how fast the population grows. What *does* change is anything that depends on the classes counted: the stable age distribution (post-breeding: 74% newborns of age 0; pre-breeding: 43% age 1, with no newborns counted), the reproductive values and the sensitivities.
+
+**`A2` vs `A3`.** The matrices differ only in the top row (the fertilities): `A2` has $m_2 p_0 = 0.6$ and $m_3 p_0 = 1.2$, whereas `A3` has $m_2 p_1 = 2.7$ and $m_3 p_2 = 3.6$. In `A3`, first-year survival $p_0$ appears nowhere in the matrix: it was removed from the sub-diagonal (correctly) but never added to the fertilities. So every newborn is effectively assumed to survive its first year, and $p_0 = 0.2$ is the lowest survival rate in the whole life cycle. Instead, the parent's survival ($p_1$ or $p_2$) is counted twice: once on the sub-diagonal and once in the fertility. The result is $\lambda = 1.864$ instead of 1.070: a rapidly growing population instead of a slowly growing one. (The mistaken matrix also gives $R_0 = 4.374$ instead of 1.188.)
+
+**Changing a survival probability.** The correct conversion always agrees, whatever values you use, because the characteristic equations are identical. The error from the mistake depends on which parameter you change:
+
+| Change | $\lambda$ for `A1` and `A2` | $\lambda$ for `A3` (mistake) | Error |
+|---|---|---|---|
+| None ($p_0 = 0.2$, $p_1 = 0.9$) | 1.070 | 1.864 | 0.79 |
+| $p_1 = 0.7$ | 0.969 | 1.562 | 0.59 |
+| $p_1 = 0.5$ | 0.850 | 1.266 | 0.42 |
+| $p_0 = 0.5$ | 1.548 | 1.864 | 0.32 |
+
+Lowering $p_1$ shrinks the error a little, because $p_1$ is counted twice in `A3`, but the error stays large (at $p_1 = 0.5$ the correct matrices say the population is declining, while the mistake says it is growing by 27% per year). Changing $p_0$ shows what really drives the error: `A3` does not respond to $p_0$ at all (its $\lambda$ stays at 1.864), and the error shrinks as $p_0$ gets closer to 1. The mistake is equivalent to assuming that all newborns survive their first year, so it does the most damage in species with low first-year survival, which is most birds, mammals, fish and plants.
+
+## Solutions: Life Table Response Experiments
+
+**Predicting the contributions.** Each contribution is (treatment element − reference element) × (sensitivity at the midpoint matrix). Sensitivities are always positive here, so the sign of each contribution is the sign of the difference in the element:
+
+| Element | Difference (treatment − reference) | Sensitivity at midpoint | Contribution |
+|---|---|---|---|
+| Juvenile stasis (top left) | 0 | 0.336 | 0 |
+| Fertility (top right) | 1.3 − 2.3 = −1.0 | 0.208 | −0.208 |
+| Juvenile → adult (bottom left) | 0.2 − 0.5 = −0.3 | 1.071 | −0.321 |
+| Adult survival (bottom right) | 0.7 − 0.6 = +0.1 | 0.664 | +0.066 |
+
+The largest difference in an element is in fertility, but the largest contribution is from maturation (juvenile → adult), because $\lambda$ is about five times more sensitive to maturation than to fertility.
+
+**Checking the sum.** The contributions sum to −0.463, while the observed difference is $\lambda_{\mathrm{treat}} - \lambda_{\mathrm{ref}} = 0.992 - 1.451 = -0.460$. They are close but not identical, because the LTRE is a linear approximation: it assumes $\lambda$ changes in a straight line with each element, with the slope (sensitivity) taken from the midpoint matrix, whereas in reality the sensitivities change as the elements change.
+
+**Changing one element of `A_treat`.** For example:
+
+- Treatment fertility 1.8 instead of 1.3: the fertility difference halves (−0.5 instead of −1.0), so the fertility contribution roughly halves, to −0.098. The maturation and adult survival contributions change slightly (−0.345 and +0.065), because the midpoint matrix, and therefore the sensitivities, have changed. The sum is −0.378 (observed Δλ = −0.380).
+- Treatment maturation 0.4 instead of 0.2: the maturation difference falls from −0.3 to −0.1, so its contribution drops to −0.096, and fertility (−0.239) becomes the largest contribution. The sum is −0.270 (observed Δλ = −0.270).
+
+In both cases the element you changed shows the biggest change in contribution, and the change can be explained as (new difference) × (sensitivity), with small knock-on changes in the other contributions because the sensitivities are recalculated at the new midpoint matrix.
+
+**Interpretation.** The Location B population has a lower $\lambda$ (0.99, slowly declining) than Location A (1.45) mainly because fewer juveniles survive and mature into adults; lower fertility is the second most important reason; and slightly higher adult survival at Location B partly offsets these. Negative contributions lower $\lambda$ at Location B relative to Location A, positive ones raise it.
+
+**Why LTRE alone does not tell a manager what to target.** LTRE is retrospective: it explains an observed difference in $\lambda$ that has already happened. A contribution is large if the element *did* differ a lot between the populations and/or if $\lambda$ is sensitive to it. A vital rate can make a large contribution because it varied a lot for reasons managers cannot influence (e.g. spring weather), and a rate with a high sensitivity (here juvenile stasis, 0.336) can make no contribution at all because it did not differ. To ask what *would* happen if a vital rate were changed, use prospective tools (sensitivity, elasticity, *in silico* experiments), together with knowledge of which rates can realistically be changed, by how much, and at what cost.
 
 ## Solutions: How many eggs should a bird lay?
 
@@ -328,11 +437,11 @@ The take-home message is that the trade-off between number of eggs and juvenile 
 
 You can move this optimum if the trade-off is changed. For example, if you increase survival of the chicks from larger clutches, then the optimum number of eggs will increase.
 
-This fact reminds us that the environment (e.g. predation risk and resource abundance) will be an important factor in determining the evolution of life history parameters (like average number of babies). 
+This fact reminds us that the environment (e.g. predation risk and resource abundance) will be an important factor in determining the evolution of life history parameters (like average number of babies).
 
-*1. What is Lack's hypothesis? Does the big bird's optimum support it?*
+*1. What is Lack's hypothesis? Does the big bird's optimum support it, given that most big birds lay 3 eggs?*
 
-Lack's hypothesis is that clutch size evolves to the number from which, on average, the most young survive. For the big bird that is 4 eggs (4 × 0.70 = 2.8 surviving chicks). If big birds usually lay 4 eggs, these data support Lack's hypothesis.
+Lack's hypothesis is that clutch size evolves to the number from which, on average, the most young survive. For the big bird that is 4 eggs (4 × 0.70 = 2.8 surviving chicks). But most big birds lay only 3 eggs (2.46 surviving chicks), one fewer than the single-season optimum, so these data do not fully support Lack's hypothesis. Many real birds also lay slightly fewer eggs than the clutch that produces the most young in one season. Question 3 shows one reason why.
 
 *2. A good food year.*
 
@@ -340,15 +449,13 @@ Survival in clutches of 5 or more rises by 0.2, so the expected numbers of survi
 
 *3. A cost to the parents.*
 
-Parent survival is 0.72, 0.64, 0.56, 0.48 and 0.40 for 1 to 5 eggs, so the expected number of breeding seasons is 3.57, 2.78, 2.27, 1.92 and 1.67. Multiplying by the surviving chicks per season gives lifetime totals of 3.21, 4.72, **5.59**, 5.38 and 4.17. The optimum falls from 4 eggs to **3 eggs**.
+Parent survival is 0.72, 0.64, 0.56, 0.48 and 0.40 for 1 to 5 eggs, so the expected number of breeding seasons (counting this season as the first) is 3.57, 2.78, 2.27, 1.92 and 1.67. Multiplying by the surviving chicks per season gives lifetime totals of 3.21, 4.72, **5.59**, 5.38 and 4.17. The optimum falls from 4 eggs to **3 eggs**, which is exactly the clutch that most big birds lay.
 
-Lack counted the young raised in a single season. Once the cost to the parents' future breeding is included, the best clutch is smaller than the one that produces the most surviving young in one season. This is the argument behind the kestrel brood manipulations in the lecture: parents given extra chicks paid for them later.
+Lack counted the young raised in a single season. Once the cost to the parents' future breeding is included, the best clutch is smaller than the one that produces the most surviving young in one season. This is the argument behind the kestrel brood manipulations in the lecture: parents given extra chicks paid for them later. Neal's chapter *Evolution of Life Histories* discusses the same idea.
 
 *4. Egg number versus egg size.*
 
 You would need a second relationship, describing how the size of an egg (or offspring) affects its chance of survival, and a fixed amount of resources to divide among the eggs, so that more eggs means smaller eggs. The best combination is the one that maximises the number of surviving offspring (Smith & Fretwell 1974).
-
-
 
 ## Solutions: Trade-offs and the force of selection
 
@@ -398,69 +505,143 @@ This is only true for an individual's *own* offspring. If older individuals help
 - *Predation risk.* Where predation is high, an individual is unlikely to survive to old age whatever it invests in its body, so resources spent on maintenance and repair are less valuable. Selection should favour putting more into early reproduction and less into maintenance.
 - *Survival after reproduction.* Older individuals can raise inclusive fitness by helping relatives. Post-reproductive killer whale females lead their groups to salmon when food is scarce, and in humans, grandmothers can improve their grandchildren's survival (the grandmother hypothesis).
 
+## Solutions: Matrix Population Models (MPMs): Projection and Simulation
+
+The simulation results below come from 2,000 replicates per scenario. They are stochastic: in another set of runs, probabilities of extinction typically change by about ±0.02 and medians by a few individuals. Your results with 200 replicates will vary more. The deterministic $\lambda$ values are exact.
+
+**Exercise 1: Projection interval.**
+
+1. $\Delta t = 1$ year means that one multiplication by $\mathbf{A}$ moves the population forward by one year, so every entry in the matrix is a rate per year (e.g. $P_A = 0.8$ is the probability that an adult survives one whole year).
+2. With $\Delta t = 1$ month, $P_A$ would be the probability of surviving one *month*. If mortality is spread evenly through the year, the monthly survival that gives the same annual survival is $0.8^{1/12} = 0.982$. $F_A$ would be the number of new juveniles (counted at the next monthly census) per adult per *month*. For most animals and plants this is not constant: reproduction happens in a breeding season, so $F_A$ would be zero in most months, and the matrix would have to change from month to month (a seasonal model). Growth probabilities ($G_J$, $G_S$) would also have to be per month.
+3. For example: the species is short-lived or breeds several times a year (insects, rodents), so a year is too coarse; you want to model seasonal events such as a breeding season, a hunting season or a harsh winter; or management (e.g. culling) happens at a particular time of year.
+
+**Exercise 2: Lower adult survival.** With $P_A = 0.70$, $\lambda = 0.964$, so the population now declines by about 4% per year. You can tell because $\lambda < 1$, and because the deterministic projection of total population size eventually goes down (after the transient phase). `simulate_once()` does not need to be changed, because it reads the vital rates from the matrix `A` that you give it: rebuild `A` and the simulation uses the new $P_A$ automatically. (This is why we never use `A` as the name of an adult count.)
+
+**Exercise 3: Culling as management.**
+
+1. With a 20% adult harvest, the deterministic prediction (adult column × 0.8) is $\lambda = 0.903$, compared with 0.960 for 10% and 1.019 for no harvest. In the replicates, the median final population size (year 30) falls from about 143 (no harvest) to about 42 (10%) and about 11 (20%), and the probability of extinction within 30 years rises from 0 to about 0.03. The 10-90% band at year 30 moves down from about 88-209 (no harvest) to about 20-69 (10%) and 3-24 (20%), so with a 20% harvest a sizeable minority of runs end with only a handful of individuals.
+2. A fixed quota of 5 adults per year gives a probability of extinction of about 0.85 (median final size 0), and 10 adults per year about 1.00. A 10% harvest gives about 0. A fixed quota is much riskier because the *proportion* removed rises as the population shrinks: when there are 50 adults, 5 is 10%, but when there are 10 adults, 5 is half of them. This sets up a downward spiral. A proportional harvest automatically takes fewer individuals when the population is small. (With about 20 adults at the start of culling, removing 5 per year is more than the population can replace.)
+3. Culling the same number or the same proportion from each stage:
+
+| Stage culled | Fixed quota, 5/year: median final N | Fixed quota: P(extinct) | 10% harvest: $\lambda$ | 10% harvest: median final N |
+|---|---|---|---|---|
+| None | 143 | 0 | 1.019 | 143 |
+| Juveniles | 101 | 0 | 1.006 | 109 |
+| Subadults | 23 | 0.05 | 0.992 | 83 |
+| Adults | 0 | 0.85 | 0.960 | 42 |
+
+Culling adults has by far the largest effect, then subadults, and juveniles the least. The reason is reproductive value: how many future juveniles an individual in each stage is expected to produce. Relative to a juvenile, the reproductive values are juvenile 1 : subadult 2.9 : adult 5.5. A juvenile is worth little, because it has a low chance (0.35) of even reaching the subadult stage, whereas an adult is already breeding and has a high survival rate. Removing an adult therefore removes much more future reproduction than removing a juvenile.
+
+```{r, eval = FALSE}
+# Reproductive values, scaled to 1 for juveniles
+v <- Re(eigen(t(A))$vectors[, 1])
+v / v[1]
+```
+
+**Exercise 4: Contraception.** Add an argument `fert_mult = 1` to the function, and replace the births line with:
+
+```{r, eval = FALSE}
+simulate_once <- function(A, n0, years,
+                          cull_stage = "Adult", cull_prop = 0, cull_n = 0,
+                          cull_start = 10, fert_mult = 1) {
+  # ... everything else as before, but in Step 5:
+  F_now <- if (year >= cull_start) F_A * fert_mult else F_A
+  newJ <- rpois(1, lambda = F_now * nA)
+  # ...
+}
+
+# Contraception scenario (no culling): fertility reduced by 90% from year 10
+simulate_once(A, n0, years, fert_mult = 0.1)
+```
+
+The deterministic prediction for 90% effective contraception is $\lambda = 0.843$ (multiply `A["Juvenile", "Adult"]` by 0.1 and recompute the dominant eigenvalue), a much stronger reduction than the 10% adult harvest ($\lambda = 0.960$). In the replicates, the median final population size is about 2 (10-90% range 0 to 5), with a probability of extinction within 30 years of about 0.16, compared with a median of about 42 for the 10% adult harvest and 143 for no treatment. Contraception gives the largest reduction in population growth here, because it cuts the fertility of *all* adults by 90%, whereas the harvest removes only 10% of them. Note the time lag: contraception acts only through future recruitment, so the adults and subadults already present decline only slowly at first. Whether it is better in practice also depends on cost, feasibility and animal welfare, which the model does not include.
+
+**Exercise 5 (optional): Environmental stochasticity.** Add one line at the start of each year in a copy of the function (just after `n_now <- out[t, ]`):
+
+```{r, eval = FALSE}
+P_A <- if (runif(1) < 0.5) 0.9 else 0.7 # good or bad year for adult survival
+```
+
+With this change, the median final population size is about 136 (10-90% range about 71 to 235), compared with about 145 (about 90 to 214) for demographic stochasticity alone. The average adult survival is unchanged, but the spread of outcomes is wider, because in a run of bad years all adults have low survival at the same time. Variation between years also tends to reduce the long-run growth rate slightly (the stochastic growth rate $\lambda_s$ is lower than the $\lambda$ of the average matrix); see the chapter "Stochastic population growth".
+
 ## Solutions: Hardy-Weinberg equilibrium
 
 Answers to the Hardy-Weinberg questions.
 
-Remember the basic formulas: 
+Remember the basic formulas:
 $p^2 + 2pq + q^2 = 1$ and $p + q = 1$
-  
-$p$ = frequency of allele A (the dominant allele in these problems)
 
-$q$ = frequency of allele a (the recessive allele)
+$p$ = frequency of allele A (where there is dominance, A is the dominant allele)
 
-$p^2$ = frequency of homozygous AA individuals 
+$q$ = frequency of allele a
 
-$q^2$ = frequency of homozygous aa individuals 
+$p^2$ = frequency of homozygous AA individuals
 
-$2pq$ = frequency of heterozygous Aa individuals 
+$q^2$ = frequency of homozygous aa individuals
+
+$2pq$ = frequency of heterozygous Aa individuals
+
+A general rule for all these problems: keep full precision in your calculator and **round only at the end**. Rounding $p$ or $q$ early can change the final answer in the second decimal place, which matters on a multiple-choice exam.
 
 ### Problem 1
 
-The frequency of allele *a*: Since $p + q = 1$ and $p = 0.7$, $q = 1 - 0.7 = 0.3$. 
+The frequency of allele *a*: Since $p + q = 1$ and $p = 0.8$, $q = 1 - 0.8 = 0.2$.
 
-The expected genotype frequencies: 
+The expected genotype frequencies:
 
-- *AA* = $p^2 = 0.7 \times 0.7 = 0.49$ (49%)
-- *Aa* = $2pq = 2 \times 0.7 \times 0.3 = 0.42$ (42%)
-- *aa* = $q^2 = 0.3 \times 0.3 = 0.09$ (9%)
+- *AA* = $p^2 = 0.8 \times 0.8 = 0.64$ (64%)
+- *Aa* = $2pq = 2 \times 0.8 \times 0.2 = 0.32$ (32%)
+- *aa* = $q^2 = 0.2 \times 0.2 = 0.04$ (4%)
 
-Check: $0.49 + 0.42 + 0.09 = 1$.
+Check: $0.64 + 0.32 + 0.04 = 1$.
 
-The phenotype frequencies if *A* is completely dominant over *a*: Both *AA* and *Aa* individuals show the dominant phenotype, so its frequency is $0.49 + 0.42 = 0.91$ (91%). Only *aa* individuals show the recessive phenotype, so its frequency is 0.09 (9%). Notice that the heterozygotes cannot be told apart from the *AA* homozygotes by looking at them.
+The phenotype frequencies if *A* is completely dominant over *a*: Both *AA* and *Aa* individuals show the dominant phenotype, so its frequency is $0.64 + 0.32 = 0.96$ (96%). Only *aa* individuals show the recessive phenotype, so its frequency is 0.04 (4%). Notice that the heterozygotes cannot be told apart from the *AA* homozygotes by looking at them, and that there are eight times as many of them as there are recessive homozygotes: most copies of a rare recessive allele are "hidden" in heterozygotes.
 
 ### Problem 2
 
-9% = 0.09 = HbS/HbS = $q^2$. To find $q$, take the square root of 0.09 to get 0.3. Since $p = 1 - 0.3$, $p$ must equal 0.7. $2pq = 2 \times 0.7 \times 0.3 = 0.42$, so 42% of babies are expected to be heterozygous (HbA/HbS) at birth. 
+The frequency of HbS/HbS infants is $q^2 = 9/287 = 0.0314$. To find $q$, take the square root: $q = \sqrt{0.0314} = 0.177$. Since $p = 1 - q$, $p = 0.823$. Then $2pq = 2 \times 0.823 \times 0.177 = 0.291$, so about 29% of babies are expected to be heterozygous (HbA/HbS) at birth.
 
-Among adults this figure would usually be higher, and the HbS/HbS frequency lower, because heterozygotes survive better than either homozygote. That is selection acting on the genotypes after birth, which is why we applied HWE at birth.
+Among 287 infants this predicts $0.291 \times 287 = 84$ heterozygotes. Allison observed 89 (31%), which is close. (If you count alleles directly, as in Problem 3, you get $q = (2 \times 9 + 89)/574 = 0.186$, the value in Neal and the selection lecture. The $q^2$ route gives a slightly different answer because it relies on HWE and uses only the smallest class, 9 individuals, so it is more affected by chance. Neal's $\chi^2$ test confirms that the infants fit HWE.)
+
+Among adults the heterozygote frequency is higher and the HbS/HbS frequency lower: Allison's 654 adults were 61.2% HbA/HbA, 38.1% HbA/HbS and only 0.8% HbS/HbS. Heterozygotes survive better than either homozygote, so selection acting on the genotypes after birth pushes the adults away from HWE. This is why we applied HWE at birth. It also shows that a population at HWE (the infants) can still be under strong selection: conforming to HWE does not prove that there is no selection.
 
 ### Problem 3
 
-The allele frequencies: 200 diploid individuals carry 400 allele copies. Each *AA* individual carries two copies of *A* and each *Aa* individual carries one, so the number of *A* copies is $2 \times 120 + 40 = 280$. 
+The allele frequencies: 200 diploid individuals carry 400 allele copies. Each *AA* individual carries two copies of *A* and each *Aa* individual carries one, so the number of *A* copies is $2 \times 90 + 70 = 250$.
 
-$p = 280 / 400 = 0.7$, and $q = 1 - 0.7 = 0.3$. (Check: the number of *a* copies is $2 \times 40 + 40 = 120$, and $120 / 400 = 0.3$.)
+$p = 250 / 400 = 0.625$, and $q = 1 - 0.625 = 0.375$. (Check: the number of *a* copies is $2 \times 40 + 70 = 150$, and $150 / 400 = 0.375$.)
 
 The expected counts under HWE are the expected frequencies multiplied by the sample size, 200:
 
 | Genotype | Observed | Expected under HWE |
 |---|---|---|
-| *AA* | 120 | $0.49 \times 200 = 98$ |
-| *Aa* | 40 | $0.42 \times 200 = 84$ |
-| *aa* | 40 | $0.09 \times 200 = 18$ |
+| *AA* | 90 | $0.625^2 \times 200 = 0.390625 \times 200 = 78.1$ |
+| *Aa* | 70 | $2 \times 0.625 \times 0.375 \times 200 = 0.46875 \times 200 = 93.75$ |
+| *aa* | 40 | $0.375^2 \times 200 = 0.140625 \times 200 = 28.1$ |
 
-Comparison: there are far fewer heterozygotes than expected (40 observed against 84 expected), and more of both homozygotes than expected. This is a heterozygote deficit. 
+Comparison: there are fewer heterozygotes than expected (70 observed against about 94 expected), and more of both homozygotes than expected. This is a heterozygote deficit.
 
-Possible explanations include inbreeding or other non-random mating, the sample combining two or more partly separated subpopulations (the Wahlund effect), selection against heterozygotes, or genotyping errors (for example, heterozygotes being misread as homozygotes). With a deficit this large it is unlikely to be chance alone, but a formal statistical test would be needed to confirm that. The comparison tells us there is a pattern to investigate, not which of these causes is responsible.
+Possible explanations include inbreeding or other non-random mating, the sample combining two or more partly separated subpopulations (the Wahlund effect), selection against heterozygotes, or genotyping errors (for example, heterozygotes being misread as homozygotes). The comparison tells us there is a pattern to investigate, not which of these causes is responsible. (In the Inbreeding lecture you will quantify a deficit like this with $F = 1 - H_o/H_e$, here $1 - 0.35/0.469 = 0.25$.)
+
+*Optional extension: the $\chi^2$ test.*
+
+| Genotype | $O$ | $E$ | $(O - E)^2/E$ |
+|---|---|---|---|
+| *AA* | 90 | 78.125 | 1.81 |
+| *Aa* | 70 | 93.75 | 6.02 |
+| *aa* | 40 | 28.125 | 5.01 |
+| Total | 200 | 200 | $\chi^2 = 12.84$ |
+
+There are three classes, so you might expect $3 - 1 = 2$ degrees of freedom (one is lost because the expected counts are forced to add up to the sample size, 200). But we also used the data to estimate one parameter, $p$, to calculate the expected counts, and that costs a second degree of freedom. So df $= 3 - 1 - 1 = 1$. With 1 degree of freedom, $\chi^2 = 12.84$ is larger than the critical value for $P = 0.001$ (10.83): `pchisq(12.84, df = 1, lower.tail = FALSE)` gives $P = 0.0003$. The heterozygote deficit is very unlikely to be due to chance alone. (Neal uses the same df = 1 for the Tanzanian haemoglobin data: $\chi^2 = 0.15$ for the infants, which fit HWE, and 25.8 for the adults, which do not.)
 
 ### Problem 4
 
-The first thing you'll need to do is obtain $p$ and $q$. So, since white is recessive (i.e. *bb*), and 40% of the butterflies are white, then *bb* = $q^2$ = 0.4. 
-To determine $q$, which is the frequency of the recessive allele in the population,  take the square root of $q^2$ which is 0.632. So, $q = 0.63$. Since $p + q = 1$, then $p$ must be $1 - 0.63 = 0.37$. 
+The first thing you'll need to do is obtain $p$ and $q$. Since white is recessive (i.e. *bb*), and 40% of the butterflies are white, *bb* = $q^2$ = 0.4.
+To determine $q$, the frequency of the recessive allele, take the square root of $q^2$: $q = \sqrt{0.4} = 0.6325$. Since $p + q = 1$, $p = 1 - 0.6325 = 0.3675$. (Keep these to four decimal places, or better, leave them in your calculator.)
 
-Now then, to answer our questions. First, what is the percentage of butterflies in the population that are heterozygous? Well, that would be $2pq$ so the answer is $2 \times 0.37\times 0.63 = 0.47$. Second, what is the frequency of homozygous dominant individuals? That would be $p^2$ or $0.37^2 = 0.14$.
+Now to answer our questions. The percentage of butterflies that are heterozygous is $2pq = 2 \times 0.3675 \times 0.6325 = 0.465$, i.e. 46.5%. The frequency of homozygous dominant individuals is $p^2 = 0.3675^2 = 0.135$.
 
-*Extension:* Brown butterflies are those with genotype *BB* or *Bb*, so they make up $1 - 0.4 = 0.6$ of the population (check: $0.14 + 0.47 \approx 0.6$). Of these, the heterozygotes are $0.47 / 0.60 \approx 0.78$, so about 78% of brown butterflies are expected to be heterozygous. Note the difference between this and the 47% heterozygotes in the population as a whole: here the denominator is only the brown butterflies.
+*Extension:* Brown butterflies are those with genotype *BB* or *Bb*, so they make up $1 - 0.4 = 0.6$ of the population (check: $0.135 + 0.465 = 0.6$). Of these, the heterozygotes are $0.465 / 0.6 = 0.775$, so 77.5% of brown butterflies are expected to be heterozygous. Note the difference between this and the 46.5% heterozygotes in the population as a whole: here the denominator is only the brown butterflies. (If you round to $q = 0.63$ and $p = 0.37$ too early, you get 0.47, 0.14 and about 78% instead.)
 
 ## Solutions: Gene pool model
 
@@ -473,7 +654,7 @@ Now then, to answer our questions. First, what is the percentage of butterflies 
    - Both happen, roughly equally often. Drift has no direction: starting from 0.5, *A* is fixed in about half of the populations and lost in the other half.
 
 3. **When the population size is large (say 1000), can you see an allele become fixed within 100 generations? Could it happen if you ran the simulation for much longer?**
-   - Not within 100 generations: in large populations drift is slow. But yes, given enough time an allele is eventually fixed even in a large population. Starting from p = 0.5, the expected time until one allele is fixed is about $2.8N$ generations (more precisely $-4N[p \ln p + q \ln q]$), i.e. around 55 generations for N = 20 and around 2,800 generations for N = 1000. With `n_gen <- 3000` you will see fixation in some runs but not all.
+   - Not within 100 generations: in large populations drift is slow. But yes, given enough time an allele is eventually fixed even in a large population. Starting from p = 0.5, the expected time until one allele is fixed is about $2.8N$ generations (more precisely $-4N[p \ln p + q \ln q]$), i.e. around 55 generations for N = 20 and around 2,800 generations for N = 1000. With `n_gen <- 3000` you will see fixation in some runs but not all. (This is a different quantity from the time a *new mutation that does fix* takes to get there, which is about $4N$ generations, as in the mutation lecture.)
 
 ### Part 3: Many populations
 
@@ -490,13 +671,13 @@ Now then, to answer our questions. First, what is the percentage of butterflies 
    - More likely. A neutral allele at frequency $p$ is eventually fixed with probability $p$ and lost with probability $1 - p$. So an allele at 0.1 is lost 90% of the time, and an allele at 0.75 is lost only 25% of the time.
 
 5. **Compare the proportion of populations where the new allele was fixed with $1/(2N)$. What does this tell you about the fate of most new mutations?**
-   - With N = 20, a single new copy starts at $1/40 = 0.025$, and roughly 2 to 3% of populations end up fixed for it (with 200 replicates you might see anywhere from about 1% to 5%). This matches $1/(2N)$. Most new neutral mutations, about 39 out of 40 here and 1,999 out of 2,000 in a population of 1000, are lost by chance, usually within a few generations. This is the "Model 1" result from the lecture.
+   - With N = 20, a single new copy starts at $1/40 = 0.025$, and roughly 2 to 3% of populations end up fixed for it (with 200 replicates you might see anywhere from about 0.5% to 5%). This matches $1/(2N)$. Most new neutral mutations, about 39 out of 40 here and 1,999 out of 2,000 in a population of 1000, are lost by chance, usually within a few generations. This is the "Model 1" result from the lecture.
 
 6. **Can you find a simple rule linking starting frequency to probability of fixation?**
-   - The probability of fixation of a neutral allele equals its starting frequency.
+   - The probability of fixation of a neutral allele equals its starting frequency. For example, one run of the template with 200 replicates gave 0.095 for $p_0 = 0.1$, 0.26 for 0.25 and 0.675 for 0.75. Your numbers will differ by a few percentage points from run to run (the standard error with 200 replicates is about 0.02 to 0.03), but they cluster around the starting frequency.
 
 7. **Going further: does the simulated decline in $H_e$ agree with $H_t = H_0 (1 - 1/(2N))^t$?**
-   - Yes. Averaged over many populations, $H_e$ declines smoothly and follows the theoretical curve closely (with N = 20, it falls by about 2.5% per generation, from 0.5 to about 0.04 after 100 generations). Individual populations are noisy, which is why the average is needed. Note that $H_e$ declines in every case, even though the average allele frequency across populations stays at about 0.5: drift removes variation *within* populations while creating differences *between* them.
+   - Yes. Averaged over 500 populations, $H_e$ declines smoothly and follows the theoretical curve closely. With N = 20 it falls by 2.5% per generation, from 0.5 to about 0.04 after 99 generations of drift (theory: $0.5 \times (1 - 1/40)^{99} = 0.041$; repeated runs of the code give between about 0.03 and 0.05). Individual populations are noisy, which is why the average is needed. Note that $H_e$ declines in every case, even though the average allele frequency across populations stays at about 0.5: drift removes variation *within* populations while creating differences *between* them.
 
 ### Part 4: Bottlenecks and founder effects
 
@@ -504,15 +685,18 @@ Now then, to answer our questions. First, what is the percentage of butterflies 
    - During the bottleneck the population is small, so drift is strong and allele frequencies can change a lot in a few generations. One allele may be lost altogether. The genetic composition after the bottleneck is therefore often quite different from that before it, and genetic diversity is usually reduced.
 
 2. **How might a genetic bottleneck affect the probability that one allele is fixed and the other lost?**
-   - It greatly increases it. With 10 individuals for about 20 generations, roughly half of all runs lose one allele during the bottleneck, whereas in a constant population of 1000 this essentially never happens within 100 generations. Which allele is fixed is still a matter of chance.
+   - It greatly increases it. With 10 individuals for 21 generations, roughly half of all runs lose one allele during the bottleneck, whereas in a constant population of 1000 this essentially never happens within 100 generations. Which allele is fixed is still a matter of chance.
 
 3. **What happens to allele frequency after the bottleneck? Does the population "recover" its original allele frequency?**
    - No. Once the population is large again, drift is weak, so the frequency stays close to wherever the bottleneck left it. Nothing pulls it back to 0.5. If an allele was lost, it cannot return without mutation or migration. The effects of a bottleneck persist long after the population has recovered in size.
 
 4. **Does the severity of the bottleneck (i.e. length and population size) matter?**
-   - Yes. Smaller and longer bottlenecks cause larger changes and a higher chance of losing an allele. Each generation of the bottleneck multiplies heterozygosity by $1 - 1/(2N)$, so 20 generations at N = 10 leaves about $(1 - 1/20)^{20} \approx 0.36$ of the original heterozygosity, whereas 20 generations at N = 100 leaves about 0.90.
+   - Yes. Smaller and longer bottlenecks cause larger changes and a higher chance of losing an allele. Each generation of the bottleneck multiplies heterozygosity by $1 - 1/(2N)$, so 21 generations at N = 10 leaves about $(1 - 1/20)^{21} \approx 0.34$ of the original heterozygosity, whereas 21 generations at N = 100 leaves about 0.90.
 
-5. **Founder effects: how different are the new populations from the source population, and from each other? How would this change with 50 founders?**
+5. **Optional: effective population size. What are the arithmetic and harmonic means of N over the bottleneck run?**
+   - The arithmetic mean is 792.1 (79 generations at 1000 and 21 at 10), but the harmonic mean is only about 46 (`1 / mean(1 / N)` = 45.9). So the population loses diversity as if it had about 46 individuals throughout, not 790. A few generations at small size dominate the long-term effect of drift: $N_e$ is much closer to the smallest population sizes than to the average. (Compare the lecture's example, 1,000, then 10, then 1,000, which gives $N_e \approx 29$ against an arithmetic mean of 670.) This is one reason why $N_e$ is usually much smaller than the census size in real populations.
+
+6. **Founder effects: how different are the new populations from the source population, and from each other? How would this change with 50 founders?**
    - Although the source population has a frequency of 0.5, the founded populations typically range from about 0.3 to 0.7, and some are further off. They also differ from each other. The spread reflects sampling only 20 alleles (standard deviation about $\sqrt{0.5 \times 0.5 / 20} \approx 0.11$). With 50 founders (100 alleles), the spread is smaller (standard deviation about 0.05), so the new populations resemble the source population more closely.
 
 ### Conclusions
@@ -541,7 +725,6 @@ Now then, to answer our questions. First, what is the percentage of butterflies 
 4. **Challenge: how could you simulate a population that is steadily shrinking through time?**
    - Inside the loop, set the population size as a function of the generation number before sampling, for example `pop_size <- round(1000 * 0.95^(i - 1))` for a 5% decline per generation, or `pop_size <- max(10, 1000 - 10 * i)` for a linear decline to a floor of 10. As the population shrinks, drift becomes stronger and the frequency of *A* fluctuates more and more until one allele is fixed.
 
-
 ## Solutions: Neutral or adaptive evolution in humans
 
 There is no single correct ordering: groups can defend different placements. What matters is the reasoning. A good answer for each trait goes through three questions:
@@ -559,21 +742,13 @@ Humans are still evolving. In industrialised societies such as Denmark, almost e
 | Trait | Heritable variation? | As foragers | In Denmark today | Where on the drift-selection continuum, and why |
 |---|---|---|---|---|
 | Metabolic efficiency | Yes, partly | Probably important: food was often scarce, so efficient use of energy aided survival and reproduction | Weak, possibly reversed: food is abundant, and very efficient storage may contribute to obesity and type 2 diabetes | Towards selection as foragers; weaker today. *Debatable*: the "thrifty gene" idea has weak direct genetic support |
-| Amount of body hair | Yes | Probably weak (temperature regulation, parasites, mate choice are all suggested) | Weak, apart from possible mate choice | Probably near the drift end, with some selection (e.g. sexual selection). *Debatable* |
-| Singing ability | Partly | Unknown; possibly sexual selection or social bonding | Weak | Near the drift end, but sexual selection is possible. *Debatable* |
-| Intelligence | Yes, within populations (variation among individuals) | Probably important for problem solving and social life | Unclear: in modern data, educational attainment is weakly associated with having *fewer* children | Somewhere in the middle; the direction of selection may differ between environments. Within-population heritability says nothing about differences between groups (see the note in the practical) |
-| Eye colour | Yes, strongly (mainly *OCA2*/*HERC2*) | Probably weak, except perhaps through mate choice | Weak | Blue eyes rose quickly in Europe, which suggests some selection (on pigmentation in general, or sexual selection), but drift and "hitch-hiking" with selected pigmentation alleles are possible. *Debatable* |
-| Earwax type (*ABCC11*) | Yes, simple (one DNA change) | Unknown; a selection signal exists, perhaps linked to sweat or body odour | Weak | Some evidence of past selection, target uncertain (see evidence card). *Debatable* |
-| Sperm motility | Partly | Strong: affects fertilisation directly | Still selected, but assisted reproduction reduces selection for some couples | Towards selection: tightly linked to reproduction |
-| Muscle strength | Partly | Probably important for hunting, carrying and fighting | Weak | Towards selection as foragers; nearer the drift end today |
-| Face symmetry | Weakly; much is developmental noise | Possibly via mate choice, as a cue of health | Weak | Mostly not heritable, so it can evolve little by either process |
-| Running speed | Partly | Probably important for hunting and escaping danger | Weak | Towards selection as foragers; nearer the drift end today |
+| Eyesight acuity | Partly | Probably important for hunting and gathering | Weak: glasses correct poor vision | Towards selection as foragers; near the drift end today |
 | Height | Yes, highly heritable (many genes) | Probably selected, but the optimum depends on environment | Modern studies detect weak selection, mainly through number of children, with differences between the sexes (e.g. Stulp et al. 2015, *Proc. R. Soc. B*) | In the middle: weak but measurable selection |
 | Birth canal (pelvic) shape | Yes | Stabilising selection: the canal must allow birth of a big-brained baby while still allowing efficient walking | Weaker: caesarean section reduces the cost of a mismatch | Selection keeps the shape within limits, but much of the variation between populations fits drift during serial founder effects as humans spread out of Africa (Betti & Manica 2018, *Proc. R. Soc. B*; see the drift lecture). A good example of both acting together |
 | Resistance to bubonic plague | Yes, partly (immune genes) | Weak: plague is a disease of dense agricultural and urban societies, not of small foraging groups | Weak: plague is rare and treatable | Strongly selected in medieval Europe during the Black Death (Klunk et al. 2022, *Nature*, immune genes such as *ERAP2*), not in foragers and not today. A clear example of environment-dependent selection |
-| Sense of smell | Yes (hundreds of olfactory receptor genes) | Probably important for finding food and avoiding danger | Weak | Many human olfactory receptor genes have become non-functional, which is consistent with relaxed selection followed by drift. Near the drift end today |
-| Resistance to common cold | Partly | Weak: rarely fatal | Weak | Near the drift end: colds rarely affect survival or number of children |
-| Eyesight acuity | Partly | Probably important for hunting and gathering | Weak: glasses correct poor vision | Towards selection as foragers; near the drift end today |
+| Eye colour | Yes, strongly (mainly *OCA2*/*HERC2*) | Probably weak, except perhaps through mate choice | Weak | Blue eyes rose quickly in Europe, which suggests some selection (on pigmentation in general, or sexual selection), but drift and "hitch-hiking" with selected pigmentation alleles are possible. *Debatable* |
+| Earwax type (*ABCC11*) | Yes, simple (one DNA change) | Unknown; a selection signal exists, perhaps linked to sweat or body odour | Weak | Some evidence of past selection, target uncertain (see evidence card). *Debatable* |
+| Face symmetry | Weakly; much is developmental noise | Possibly via mate choice, as a cue of health | Weak | Mostly not heritable, so it can evolve little by either process |
 
 Examples of traits that **cannot** evolve much because their variation is mostly not heritable: the fine texture of the iris, the detailed ridge minutiae of fingerprints (these differ between identical twins), and much of the variation in face symmetry.
 
@@ -584,11 +759,11 @@ Examples of traits that **cannot** evolve much because their variation is mostly
 
 ### Discussion questions
 
-* **Traits categorised differently between the two societies.** Muscle strength, running speed, eyesight acuity and metabolic efficiency were probably more strongly selected in foraging societies than in Denmark today. Others (e.g. plague resistance) were strongly selected only in particular historical environments. In both settings, though, selection still acts, especially through the number of children.
+* **Traits categorised differently between the two societies.** Eyesight acuity and metabolic efficiency were probably more strongly selected in foraging societies than in Denmark today. Others (e.g. plague resistance) were strongly selected only in particular historical environments. In both settings, though, selection still acts, especially through the number of children.
 * **Traits with little heritable variation.** Iris texture, fingerprint detail and much of face symmetry: they can vary a lot but cannot evolve much by either process.
 * **Gene flow vs local selection.** See above.
 * **Preconceived notions.** Common ones are that "evolution has stopped in humans" (it has not), that "every trait is an adaptation" (many traits drift, and some barely vary heritably), and that "drift only matters in tiny populations" (it acts in every finite population; it dominates whenever $s$ is small compared with $1/(2N_e)$).
-* **Other traits to add.** Lactase persistence, skin pigmentation, blood groups, alcohol flush reaction, ability to taste bitter compounds (*TAS2R38*), and wisdom teeth are all good candidates with some genetic evidence.
+* **Other traits to add.** Sense of smell (many olfactory receptor genes have become non-functional, consistent with relaxed selection and drift), lactase persistence, skin pigmentation, blood groups, alcohol flush reaction, ability to taste bitter compounds (*TAS2R38*), and wisdom teeth are all good candidates with some genetic evidence.
 
 ## Solutions: Heritability
 
@@ -597,7 +772,7 @@ Examples of traits that **cannot** evolve much because their variation is mostly
 After downloading the file, you can read in the data like this (or use the "Import Dataset" wizard in RStudio):
 
 ```{r eval = FALSE, echo = TRUE}
-pop_1 <- read.csv("data/Heritability_Pop1.csv")
+pop_1 <- read.csv("data/heritability_pop1.csv")
 ```
 
 ```{r echo = FALSE, eval = TRUE}
@@ -662,7 +837,7 @@ $R = h^2 S$ = `r f2(h2_1)` × 2 = `r f2(2 * h2_1)` mm: the mean wing length of t
 The graph for the second population looks like this:
 
 ```{r plotparentoffspring, echo = TRUE}
-pop_2 <- read.csv(file.path(pathToDirectory, "heritability_pop2.csv"))
+pop_2 <- read.csv("data/heritability_pop2.csv")
 plot(pop_2$Midparent_value, pop_2$Offspring_value,
      xlab = "Mid-parent wing length (mm)",
      ylab = "Offspring wing length (mm)")
@@ -680,7 +855,7 @@ VA_2
 
 *How does the heritability compare with population 1? Do the two confidence intervals overlap?*
 
-For this population the heritability is `r f2(h2_2)` (95% confidence interval `r f2(ci_2[1])` to `r f2(ci_2[2])`), much lower than in population 1 (`r f2(h2_1)`). The two confidence intervals `r if (ci_2[2] < ci_1[1]) "only just fail to overlap" else "overlap"`, and the interval for population 2 `r if (ci_2[1] < 0) "includes zero" else "does not include zero"`. (The true values used in the simulation were 0.18 and 0.70.) Note how wide both intervals are, even with 100 families: heritability is hard to estimate precisely, and estimates from a few dozen families are very uncertain. Report the uncertainty, not just the slope.
+For this population the heritability is `r f2(h2_2)` (95% confidence interval `r f2(ci_2[1])` to `r f2(ci_2[2])`), much lower than in population 1 (`r f2(h2_1)`). The two confidence intervals `r if (ci_2[2] < ci_1[1]) "only just fail to overlap" else "overlap"`, and the interval for population 2 `r if (ci_2[1] < 0) "includes zero" else "does not include zero"`. (The true values used in the simulation were 0.18 and 0.70.) Note how wide both intervals are, even with 100 families: heritability is hard to estimate precisely, and estimates from a few dozen families are very uncertain. Report the uncertainty, not just the slope. (Non-overlapping 95% confidence intervals are a conservative, informal check, not a formal test of the difference.)
 
 *Compare $V_P$ and $V_A$ between the populations.*
 
@@ -726,21 +901,16 @@ Population 1. With $S$ = 2 mm, $R$ = `r f2(h2_1)` × 2 = `r f2(2 * h2_1)` mm in 
 - **Representative sample:** if only some birds are measured, for example only those that survived a harsh winter (selection on wing length), the sample is biased.
 - **Independence:** if the same parent appears in several families, or several chicks from one nest are entered as separate points, the data points are not independent and the confidence interval will be too narrow.
 
-
 ## Solutions: Lotka-Volterra competition
 
 You can find a completed Excel spreadsheet [here](https://www.dropbox.com/s/q1qoqxhnm82uugw/9.%20LV%20Competition.xlsx?dl=1).
 
-The answers to the questions are [here](https://www.dropbox.com/s/oz2c10bmyf8t7s6/9.%20Answers%20to%20questions.pdf?dl=1).
+The full answers from the worksheet are [here](https://www.dropbox.com/s/oz2c10bmyf8t7s6/9.%20Answers%20to%20questions.pdf?dl=1). Brief answers are given below. They use Neal's notation (*Interspecific Competition*): $\alpha$ is the PDF's $\alpha_{12}$ (effect of species 2 on species 1) and $\beta$ is the PDF's $\alpha_{21}$ (effect of species 1 on species 2).
 
+**The general rule.** Ask whether each species can invade when it is rare and the other species is at its carrying capacity:
 
-
-The general conditions are in Neal, *Interspecific Competition* (Lotka-Volterra competition section). Note that in the textbook, $\alpha_{12}$ is written as $\alpha$ and $\alpha_{21}$ is written as $\beta$.
-
-The simplest way to understand the four outcomes is to ask whether each species can invade when it is rare and the other species is at its carrying capacity:
-
-- When species 2 is at $K_2$, a rare species 1 experiences crowding equivalent to $\alpha_{12} K_2$ of its own individuals. It can grow if this is less than its own carrying capacity: $\alpha_{12} K_2 < K_1$, or $\alpha_{12} < K_1/K_2$.
-- In the same way, a rare species 2 can grow when species 1 is at $K_1$ if $\alpha_{21} K_1 < K_2$, or $\alpha_{21} < K_2/K_1$.
+- When species 2 is at $K_2$, a rare species 1 experiences crowding equivalent to $\alpha K_2$ of its own individuals. It can grow if this is less than its own carrying capacity: $\alpha K_2 < K_1$, or $\alpha < K_1/K_2$. On the isocline graph, this means $K_2 < K_1/\alpha$.
+- In the same way, a rare species 2 can grow when species 1 is at $K_1$ if $\beta K_1 < K_2$, or $\beta < K_2/K_1$. On the isocline graph, $K_1 < K_2/\beta$.
 
 | Species 1 can invade? | Species 2 can invade? | Outcome (question) |
 |---|---|---|
@@ -749,19 +919,42 @@ The simplest way to understand the four outcomes is to ask whether each species 
 | Yes | Yes | Stable coexistence (Q3) |
 | No | No | Either species can win, depending on the starting densities (Q4) |
 
-In ecological terms, coexistence requires that each species limits its own growth more than it limits its competitor's, once you allow for differences in carrying capacity. If the two species have similar carrying capacities, this means $\alpha_{12} < 1$ and $\alpha_{21} < 1$: each individual competes more strongly with members of its own species than with the other species, for example because the two species partly use different resources (niche differences).
+**Q1.** For example $R_1 = 0.25$, $K_1 = 3000$, $\alpha = 1.25$; $R_2 = 0.5$, $K_2 = 1000$, $\beta = 0.5$; start $N_1 = 50$, $N_2 = 100$. Species 1 goes to 3000 and species 2 to zero (after 50 time steps the sheet shows about 2979 and 2.4). Species 1 can invade ($\alpha = 1.25 < K_1/K_2 = 3$) but species 2 cannot ($\beta = 0.5 > K_2/K_1 = 0.33$). This happens even though species 2 grows faster, starts larger and has the larger per capita effect ($\alpha > \beta$). Changing $R$ or the starting numbers does not change the outcome. In ecological terms, species 1 can keep growing even when species 2 is at its own carrying capacity, but not the other way round.
 
-Note that comparing a coefficient with 1 is not enough when the carrying capacities differ. In the answer to Q1, species 1 wins even though $\alpha_{12} = 1.25 > 1$, because its carrying capacity is three times larger ($K_1 = 3000$, $K_2 = 1000$).
+**Q2.** For example $R_1 = 0.25$, $K_1 = 3000$, $\alpha = 2.25$; $R_2 = 0.25$, $K_2 = 2000$, $\beta = 0.25$; start 50 and 50. Species 2 goes to 2000 and species 1 to zero, even though $K_1 > K_2$: species 1 cannot invade ($\alpha = 2.25 > K_1/K_2 = 1.5$) but species 2 can ($\beta = 0.25 < K_2/K_1 = 0.67$).
 
+**Q3.** For example $R_1 = 0.75$, $K_1 = 2500$, $\alpha = 0.75$; $R_2 = 0.5$, $K_2 = 2000$, $\beta = 0.5$. Both species can invade ($0.75 < 1.25$ and $0.5 < 0.8$), and the populations settle at $N_1 = 1600$, $N_2 = 1200$. You can check this with the equilibrium formulae $N_1^* = (K_1 - \alpha K_2)/(1 - \alpha\beta)$ and $N_2^* = (K_2 - \beta K_1)/(1 - \alpha\beta)$. The equilibrium is stable: starting from (1000, 1), (1, 1000), (500, 2500), (1000, 3000) or (250, 3000), the populations always return to (1600, 1200). The worksheet's default values also give stable coexistence, at (720, 640). In ecological terms, each species limits its own growth more than it limits its competitor's, once you allow for differences in carrying capacity. If the carrying capacities are similar, this means $\alpha < 1$ and $\beta < 1$: each individual competes more strongly with its own species than with the other species, for example because the two species partly use different resources (niche differences).
+
+**Q4.** For example $R_1 = R_2 = 0.5$, $K_1 = K_2 = 1000$, $\alpha = \beta = 1.25$. Neither species can invade ($1.25 > 1$), so the isoclines cross at an *unstable* equilibrium, $N_1 = N_2 = 444.4$. Starting at (50, 50) the populations go to this point and stay there, but whichever species starts larger wins: (100, 50) and even (445, 444) end at (1000, 0); (50, 100) and (444, 445) end at (0, 1000). The growth rates matter too: starting at (50, 50) with $R_1 = 0.8$, $R_2 = 0.4$, species 1 wins, and with the $R$ values swapped species 2 wins. In ecological terms, each species affects the other more than it affects itself: interspecific competition is stronger than intraspecific competition, for example through interference or mutual predation.
+
+**Fifth case.** If the isoclines lie exactly on top of each other ($K_1 = K_2/\beta$ and $K_2 = K_1/\alpha$), every point on the line is an equilibrium. For example, with identical species ($\alpha = \beta = 1$, $K_1 = K_2 = 1000$, $R_1 = R_2 = 0.5$), starting at (100, 300) the populations end at (250, 750) and starting at (300, 100) they end at (750, 250): they keep their starting ratio. So the basic model does not predict that identical species exclude each other; that conclusion comes from Gause's experiments (see Neal, *Interspecific Competition*).
+
+**Q5 (optional).** (a) *Rhizopertha* and *Oryzaephilus*: both can invade ($\alpha = 0.235 < K_1/K_2 = 0.75$; $\beta = 0.12 < K_2/K_1 = 1.33$), so they coexist, at $N_1 = 233$, $N_2 = 412$. Neal reports that this is what Crombie observed. (b) *Tribolium confusum* and *T. castaneum*: neither can invade ($\alpha = 1 > 0.65$; $\beta = 2.2 > 1.55$), so the winner depends on the starting densities. With $R_1 = R_2 = 0.5$, starting at (100, 20) *T. confusum* wins (220, 0), and starting at (20, 100) *T. castaneum* wins (0, 340). Park found the same in his experiments, with an "indeterminate zone" of starting densities where either species could win by chance.
+
+Note that comparing a coefficient with 1 is not enough when the carrying capacities differ. In Q1, species 1 wins even though $\alpha = 1.25 > 1$, because its carrying capacity is three times larger.
 
 ## Solutions: Lotka-Volterra predator-prey dynamics
 
-
 You can find a completed Excel spreadsheet [here](https://www.dropbox.com/s/wet7brtgxywdqi5/10.%20Pred-PreyDynamics.xlsx?dl=1).
 
-The answers to the questions are [here](https://www.dropbox.com/s/mt43nvqu7cjif69/10.%20Answers%20to%20Pred-Prey%20exercise.pdf?dl=1).
+The worksheet's own answers are [here](https://www.dropbox.com/s/mt43nvqu7cjif69/10.%20Answers%20to%20Pred-Prey%20exercise.pdf?dl=1). **One of them is wrong:** the answer to question 3 says that smaller values of $f$ delay extinction and larger values hasten it. That is not what the spreadsheet does (see below). Use the answers here instead.
 
+All numbers come from the spreadsheet model ($V_{t+1} = V_t + RV_t - aC_tV_t$, $C_{t+1} = C_t + afV_tC_t - qC_t$, with populations not allowed to go below zero), with the default values $R = 0.25$, $a = 0.01$, $f = 0.008$, $q = 0.1$, starting at $V = 1000$, $C = 20$, copied down far enough to see the prey hit zero. In Neal's notation, $V = H$, $C = P$, $R = r$, $af = c$ and $q = d$.
 
+| Change from default | Time step at which the prey hit zero |
+|---|---|
+| None | 220 |
+| $R$ = 0.15 / 0.4 | 416 / 55 |
+| $q$ = 0.05 / 0.2 | 398 / 58 |
+| $f$ = 0.004 / 0.006 / 0.010 / 0.012 / 0.016 | 129 / 173 / 200 / 203 / 154 |
+| $a$ = 0.005 / 0.0075 / 0.015 / 0.02 | 78 / 122 / 257 / 175 |
+
+1. **R.** A larger prey growth rate makes the system *less* stable: the cycles grow faster and extinction comes sooner. Faster prey growth allows faster predator growth, and each population responds one whole time step late, so the overshoot is bigger.
+2. **q.** Predators that starve faster also make the system less stable (extinction sooner); slower starvation delays it. With high $q$ the predators crash when prey are scarce, so the prey recover to very high numbers; the predators then explode and wipe them out.
+3. **f.** The effect of conversion efficiency is **not simple**. From the default start, both the smallest ($f = 0.004$) and the largest ($f = 0.016$) values give the earliest extinction, and intermediate values the latest. The reason is that $f$ only moves the predator isocline ($V = q/(af)$: 2500 prey at $f = 0.004$, 1250 at the default, 625 at $f = 0.016$). It does not change how fast the discrete model spirals outwards. What changes is how far the fixed starting point (1000, 20) is from the new equilibrium: the further away it is, the bigger the first cycle and the sooner the crash. If you start at the same relative position (80 % of the equilibrium numbers), $f = 0.004$, 0.008 and 0.016 all give extinction at time step 220.
+4. **a.** The attack rate moves both isoclines ($C = R/a$ and $V = q/(af)$), so its effect also depends on where you start: from the default start, both a much lower ($a = 0.005$) and a somewhat higher ($a = 0.02$) attack rate bring extinction forward, but $a = 0.015$ delays it.
+5. **Starting numbers.** Yes. Starting exactly where the isoclines cross ($V = 1250$, $C = 25$), nothing changes. The further from that point you start, the larger the cycles and the sooner the extinction.
+6. **Ultimate outcome.** In the spreadsheet, both species always go extinct in the end: the cycles grow until the prey hit zero, and then the predators starve. With the defaults this takes 220 time steps, longer than the 100 steps in the original sheet, but the growing cycles show it coming. This is caused by the discrete time steps (each population responds to the other one step late), not by the biology: in the continuous-time model the cycles keep the same size for ever (see the solutions to the continuous- and discrete-time R chapters). Near the equilibrium, the distance from the equilibrium grows by a factor of about $\sqrt{1 + Rq}$ per time step. This contains $R$ and $q$ but not $a$ or $f$, which is why $R$ and $q$ have simple effects in the table and $a$ and $f$ do not. Real predator and prey populations rarely show either growing or perfectly constant cycles. Factors missing from the model include prey carrying capacity, refuges for the prey, predators that become satiated (a Type II functional response), alternative prey, predator interference or territoriality, spatial structure and environmental variation. Parts 2 to 4 of the worksheet add some of these: refuges stop the prey going extinct, and a prey carrying capacity turns the expanding oscillations into damped ones that settle at an equilibrium (Neal discusses this in *Predator-Prey Interactions*).
 
 ## Solutions: Continuous-time Lotka-Volterra predator-prey model in R
 
@@ -862,30 +1055,66 @@ Take-home messages:
 
 You can find the completed Excel file [here](https://www.dropbox.com/s/ybe5qhmfltuhoyv/RiceOnAChessboard_completed.xlsx?dl=1).
 
+**How much rice?** The 64 squares hold $2^{64} - 1 = 1.84 \times 10^{19}$ grains of rice. At 25 mg (0.000025 kg) per grain, that is about $4.6 \times 10^{14}$ kg (461 billion tonnes): hundreds of times the world's annual rice production.
+
+**Great tits (optional exercise).** Each female lays about 6 eggs, so she produces about 3 daughters per year. We start with 100 females (one per breeding pair).
+
+- If every female survives every year, and daughters breed the year after they hatch, each female this year becomes herself plus 3 daughters next year: $F_{t+1} = F_t + 3F_t = 4F_t$, so $\lambda = 4$. After 5 years there are $100 \times 4^5 = 102{,}400$ females.
+- If instead adults die after breeding once, only the 3 daughters per female are left next year, so $\lambda = 3$ and after 5 years there are $100 \times 3^5 = 24{,}300$ females.
+
+Either way, numbers explode within a few years. The answer depends strongly on the assumptions, which is the point of the discussion prompts: real great tits have far from 100% survival (most fledglings die in their first year), and density dependence (territories, food, nest sites) stops growth long before these numbers are reached.
+
 Take home messages:
 
 * Exponential/geometric growth is extremely powerful and can very quickly lead to very large numbers.
-
-
+* The multiplication rate, $\lambda$, depends on both reproduction and survival, and on assumptions about the life cycle (e.g. whether adults survive to breed again).
 
 ## Solutions: From population biology to fitness
 
-The matrix model with a trade off (increased juvenile survival, but reduced old adult survival) looks like this.
+The matrix model with a trade-off (increased juvenile survival, but old-adult survival reduced to 0.05) looks like this.
 
     A3 <- matrix(c(0.00, 4.00, 2.00,
                    0.11, 0.80, 0.00,
-                   0.00, 0.10, 0.20),
+                   0.00, 0.10, 0.05),
                 byrow = TRUE, nrow = 3)
-    
+
     eigs(A3)$lambda
 
-We can compare the $\lambda$ value from this model to the original one to ask ourselves whether the large cost is worth paying for the small benefit. It turns out that it is. You can then ask how MUCH cost would be worth bearing, by repeating the exercise and slowly reducing old-adult survival until you reach the original $\lambda$ value.
+We can compare the $\lambda$ value from this model (1.187) with the original one (1.166) to ask whether the large cost is worth paying for the small benefit. It turns out that it is. You can then ask how MUCH cost would be worth bearing, by repeating the exercise and slowly reducing old-adult survival until you reach the original $\lambda$ value.
 
-You should find that the cost can be huge, and still worth bearing. In fact, you could reduce old adult survival to 0 and it is still worth doing! You can even reduce old-age adult reproduction without much effect on fitness.
+You should find that the cost can be huge, and still worth bearing. In fact, you could reduce old-adult survival to 0 and it is still worth doing ($\lambda = 1.186$)! You can even reduce old-age adult reproduction without much effect on fitness: with old-adult survival at 0.05 and old-adult reproduction set to 0, $\lambda$ is 1.175, still above the original.
 
-HOWEVER, changes to prime age adults are much more important. You can only reduce survival to about 0.76 (from 0.8) before the cost is not worth bearing (population growth rate falls below that of the first baseline model). 
+HOWEVER, changes to prime-age adults are much more important. With juvenile survival at 0.11, you can only reduce prime-age adult survival to about 0.76 (from 0.8) before the cost is not worth bearing (population growth rate falls below that of the baseline model).
 
-Thus, old-age costs are "worth it" while prime age costs are much more important. This finding is central to the evolution of senescence and life span, which we will cover later in the course.
+Thus, old-age costs are "worth it" while prime-age costs are much more important. This finding is central to the evolution of senescence and life span, which you met in the practical *Trade-offs and the declining force of selection* (the declining force of selection).
 
+## Solutions: From plain English to a matrix model
 
-Cobweb diagrams and bifurcation plots offer another way of visualising dynamics of populations (see the article about Chaos, by Mathiopoulos).
+**Matrix.** With stages hatchling (H), juvenile (J) and adult (A), and the census once a year:
+
+- Fertilities (top row): juveniles 1, adults 3 hatchlings per year (the text says these are hatchlings, so we treat them as already counted at the next census).
+- Hatchling to juvenile: 0.20.
+- Juveniles survive with probability 0.70 (30% mortality). Of the survivors, 5% stay juvenile and 95% become adults: stasis $0.70 \times 0.05 = 0.035$, growth $0.70 \times 0.95 = 0.665$.
+- Adults survive with probability 0.82 (18% mortality) and stay adults.
+
+    A_hawk <- matrix(c(0.00, 1.000, 3.00,
+                       0.20, 0.035, 0.00,
+                       0.00, 0.665, 0.82),
+                     byrow = TRUE, nrow = 3)
+    popdemo::eigs(A_hawk, what = "lambda")   # 1.172
+    pr <- popdemo::project(A_hawk, vector = c(1000, 150, 5), time = 20)
+
+**Assumption about juvenile stasis.** "5% of juveniles fail to transition" can also be read as 5% of *all* juveniles: stasis 0.05 and growth 0.65 (so survival is still 0.70). This gives $\lambda = 1.171$, almost the same as 1.172, so the assumption barely matters here. What matters is that you state it, and that stasis plus growth for juveniles does not exceed their survival of 0.70.
+
+**Interpretation.** $\lambda \approx 1.17$, so the population grows by about 17% per year. After the transient period (the starting population is dominated by hatchlings), the projection settles into steady exponential growth, reaching about 14,300 individuals after 20 years.
+
+## Solutions: Continuous traits from discrete genes
+
+*Shape of the histograms.* Both the classroom histogram and the R histogram should be roughly bell-shaped and centred near 47.5 (35 + 12.5). With only 30 individuals the classroom histogram will be lumpy; with 100 it is smoother. With genes alone, every value is a whole number, so the distribution has many classes but is still discrete.
+
+*Does the environment make the trait continuous?* Yes. After adding the environmental effect, the values are no longer whole numbers, and the gaps between the genetic classes are filled in: individuals with the same number of ON genes now differ slightly, and individuals with different numbers of ON genes overlap. This is exactly Neal's point about wheat kernel colour: with little environmental effect there are only a few discrete classes, but environmental (and other small genetic) effects blur them into a continuous distribution.
+
+*Variances.* In the example run shown in the chapter, `var(trait_value)` is 6.29 (expected 6.25) and `var(trait_value_env)` is 8.24 (expected $6.25 + 2.25 = 8.5$). These values vary a lot between runs: with 100 individuals, the genetic variance typically lies between about 4.7 and 8.0, and the phenotypic variance between about 6.3 and 11.1.
+
+*Heritability.* All the genetic variance here is additive, so $h^2 = V_A/V_P = 6.25/8.5 = 0.74$. With an environmental standard deviation of 4, $V_E = 16$, $V_P = 22.25$ and $h^2 = 6.25/22.25 = 0.28$. The genes are exactly the same, but the more variable environment lowers the heritability, just as for the two bird populations in the heritability practical.
+

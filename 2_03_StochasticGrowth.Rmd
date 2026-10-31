@@ -8,13 +8,13 @@ set.seed(134)
 
 In contrast to the deterministic nature of the geometric growth model, a stochastic version of the model introduces an element of randomness, making it more reflective of real-world scenarios.  Instead of assuming fixed and predictable growth rates, the stochastic model incorporates uncertainties and fluctuations that occur due to various factors, such as environmental variability, chance events, and individual-level variations in reproductive success. By embracing this stochastic approach, the population dynamics become more realistic, allowing us to better understand and predict the inherent variability and uncertainties associated with natural populations. This stochastic framework provides a valuable tool for ecologists and researchers to explore the dynamics of real populations under more complex and dynamic conditions.
 
-Remember – this model still allows for unbounded population growth – the populations are not influenced by population density.
+Remember: this model still allows for unbounded population growth (the populations are not influenced by population density).
 
 
 
 We'll focus on the discrete (Geometric) growth model:  $N_{t+1}=\lambda N_t$.
 
-Because $\lambda = \mathrm{e}^{r_m}$ (and $r_m = ln(\lambda)$), we can rearrange the equation to express it as $N_{t+1}=\mathrm{e}^{r_m} N_t$.
+Because $\lambda = \mathrm{e}^{r_m}$ (and $r_m = \ln(\lambda)$; see the notation box in the [Part 2 introduction](#part-2)), we can rearrange the equation to express it as $N_{t+1}=\mathrm{e}^{r_m} N_t$.
 
 Therefore, we can predict next year's population size from this year's population if we know either $r_m$ or $\lambda$.
 
@@ -24,7 +24,7 @@ We can simulate variation in $r_m$ by drawing a random number from a normal dist
 
 The figure shows 1,000 values drawn from a normal distribution with mean 0.05 and variance 0.1 (the settings you will use in this practical). The peak of the $r_m$ distribution is just above 0 (at 0.05), so on average the population will tend to grow. However, in poor years $r_m$ is $<$ 0, so the population will decline in those years. With this much variation, declines are almost as common as increases: about 44% of years have $r_m < 0$. Both the mean value and the spread of the distribution (i.e. variance) determine the fate of the population. 
 
-Remember that we can convert $r_m$ to $\lambda$ by taking the exponential, because $r_m = ln(\lambda)$.
+Remember that we can convert $r_m$ to $\lambda$ by taking the exponential, because $r_m = \ln(\lambda)$.
 
 
 ```{r stochGrowthRate, echo = FALSE, fig.width = 6, fig.height = 4, fig.align = 'center', fig.cap = "1,000 values of $r_m$ drawn from a normal distribution with mean 0.05 and variance 0.1. The dashed line marks $r_m = 0$."}
@@ -38,14 +38,38 @@ ggplot(pgr, aes(x = r)) + geom_histogram(bins = 30) +
 
 When using the equation above to calculate population at time $t+1$ ($N_{t+1}$) from the population at time $t$ ($N_t$), one would draw a random $r_m$ value from this distribution. Sometimes $r_m$ will be high, other times it will be low, most of the time it will be from around the middle of the distribution.
 
+::: {.advanced-box}
+**Average growth: why the mean $\lambda$ is misleading**
+
+In this model $r_m = \ln \lambda$ is drawn afresh each year. After $t$ years, $\ln N_t$ is $\ln N_0$ plus the sum of $t$ random $r_m$ values, so the *median* (typical) trajectory grows at exactly the mean, $\bar{r}_m$, per year: $\lambda = e^{0.05} = 1.051$ with our settings. The *arithmetic mean* of $\lambda$ is larger, $e^{\bar{r}_m + \sigma^2/2} = e^{0.05 + 0.05} = 1.105$, because a few very good years pull the average up. A population projected with the average $\lambda$ would therefore grow about twice as fast (on the log scale) as a typical stochastic population. Long-run growth follows the *geometric mean* of $\lambda$ ($e^{\bar{r}_m}$), not the arithmetic mean. Put the other way round: if the arithmetic mean $\lambda$ stays the same, more year-to-year variation lowers long-run growth.
+
+You may meet the rule that extinction is (eventually) almost certain when $\sigma^2 > 2\bar{r}$. That rule takes $\bar{r}$ as the average growth rate on the $\lambda$ scale, so its long-run growth is $\bar{r} - \sigma^2/2$. In this practical $r_m$ is drawn on the log scale, so long-run growth is $\bar{r}_m$ itself, and the population is doomed in the long run only if $\bar{r}_m \leq 0$. Both say the same thing: a population is doomed if its long-run (geometric-mean) growth rate is zero or below. The rule is also about the very long run; over 50 generations, extinction risk can be well below 1.
+:::
+
 ::: {.do-something}
 Learning outcomes: 
 
-- Increased competence in using Excel formulae for mathematical modeling.
+- Increased competence in using Excel formulae for mathematical modelling.
 - Understanding the concept of stochasticity in simple population models.
 - Competence in using mathematical models in Excel to strengthen own understanding of biological processes.
 - Understanding how stochasticity relates to (i) uncertainty in the prediction of population trajectories and (ii) probability of (local) extinction.
 :::
+
+## Worked example
+
+### Inputs
+
+- Population this year: $N_t = 100$
+- $r_m$ drawn at random for this year: $-0.2$ (a poor year)
+
+### Steps
+
+1. Convert $r_m$ to $\lambda$: $\lambda = e^{-0.2} = 0.819$.
+2. Project one year: $N_{t+1} = 100 \times e^{-0.2} = 81.9$.
+
+### Output and interpretation
+
+$N_{t+1} = 81.9$: in this poor year the population shrinks by about 18%. Next year a new $r_m$ is drawn (for example $+0.3$, giving $81.9 \times e^{0.3} = 110.5$), and so on. Repeating this step with a fresh random $r_m$ each year produces one stochastic trajectory.
 
 
 ## Your task
@@ -61,10 +85,10 @@ In this practical we use the same settings throughout: $r_m$ is drawn from a nor
 In the Excel template, first set the mean of $r_m$ to **0.05** and the variance to **0.1** (the template may contain other values), and use a starting population of **100**.
 
 
-1)	Use Excel formulae to calculate deterministic population size through time (25 generations, t = 0 to 25, with starting population of 100), linking to the mean finite population growth rate.
+1)	Use Excel formulae to calculate deterministic population size through time (25 generations, t = 0 to 25, with starting population of 100), using the multiplication rate for the mean $r_m$, $\lambda = e^{\bar{r}_m}$.
 2)	Use charts to plot the results. (you already did this last time!)
 3)	Use a formula to generate a column of stochastic $r_m$ values, based on a chosen mean and variance. The formula refers to the cells that hold the mean and the variance of $r_m$; check where these are in your sheet (in the template they are G10 and G11). In English versions of Excel the function may be written either as `=NORM.INV(RAND(), $G$10, SQRT($G$11))` (newer versions) or `=NORMINV(RAND(), $G$10, SQRT($G$11))` (older versions), while in Danish Excel it appears as `=NORMINV(SLUMP(); $G$10; KVROD($G$11))`. If you encounter errors, check whether your copy of Excel expects commas or semi-colons as argument separators and adjust the formula accordingly.
-4)	Use the same procedure as before, to create a stochastic population size vector (stochastic N). Remember to convert $r_m$ to $\lambda$ by taking the exponential.
+4)	Use the same procedure as before, to create a stochastic population size vector (stochastic N). Remember to convert $r_m$ to $\lambda$ by taking the exponential (`=EXP(...)`; Danish Excel: `=EKSP(...)`).
 5)	Compare the two trajectories using a chart.
 6)	Try altering initial population size, mean population growth, and the amount of stochasticity (Variance).
 7)	In this model N is multiplied by $e^{r_m}$, which is always positive, so N can never reach exactly 0. Instead, we treat the population as (quasi-)extinct if N falls below 1 at any point, i.e. fewer than one individual is left (the R code below uses the same rule). What happens to extinction risk as stochasticity (variance) increases? What happens when initial N is small? Does the population ALWAYS survive if the mean population growth rate, $\bar{r_m}$, is $>$ 0?
@@ -77,7 +101,7 @@ Note: Excel re-randomises the random numbers every time you change any cell in t
 
 Excel is of limited use to really get a feel for this. For the next part we'll use *R*.
 
-If you already have R on your computers you can play along, otherwise take a look at my demonstration in class. I will show how you can use this simulation approach to estimate extinction risk and how this is related to starting population size, mean lambda, and the amount of stochasticity.
+The simulation below repeats the stochastic projection many times, so you can estimate extinction risk and see how it is related to starting population size, mean growth rate, and the amount of stochasticity.
 
 You can copy/paste the code below into *R*.
 
@@ -100,8 +124,8 @@ set.seed(1234)
 #Simulating stochastic geometric population growth rate
 
 #Simulation settings (try changing these)
-mean.r = 0.05 # the mean value of r
-var.r = 0.1 # the variance in r (stochasticity)
+mean.r = 0.05 # the mean value of r_m
+var.r = 0.1 # the variance in r_m (stochasticity)
 startPop = 10 # pop size at start
 nGen = 50 # number of generations
 nTrials = 1000 # number of repeated simulations
@@ -130,7 +154,11 @@ for (j in 1:nTrials) {
   popSize = startPop
   for (i in 2:nGen) {
     stoch.r = rValues[i, j]
-    popSize = append(popSize, popSize[i - 1] * exp(stoch.r))
+    newN = popSize[i - 1] * exp(stoch.r)
+    # once the population falls below the threshold it is extinct,
+    # so set it to 0 (it cannot recover)
+    if (newN < pseudoExtinction) newN = 0
+    popSize = append(popSize, newN)
   }
   trials[, j] = popSize
   rm(popSize)
@@ -148,6 +176,7 @@ cat("Pseudo-extinction probability:", round(probExtinct, 3), "\n")
 ```{r stochProjection, echo = TRUE, fig.width = 6, fig.height = 4, fig.align = 'center', fig.cap = "An example of stochastic population projection (100 of the 1,000 simulations, 50 generations)"}
 
 #Make a plot of the population trajectories
+yMax <- max(100000, max(trials)) # upper limit of the y-axis
 plot(
   1:nGen,
   log(seq(0.1, max(trials), length.out = nGen)),
@@ -155,7 +184,7 @@ plot(
   axes = F,
   xlab = "Time",
   ylab = "log(N)",
-  ylim = log(c(0.1, 100000))
+  ylim = log(c(0.1, yMax))
 )
 matlines(log(trials[, 1:min(100, nTrials)]), # plot up to 100 trajectories
          col = "#FF234520",
@@ -163,8 +192,8 @@ matlines(log(trials[, 1:min(100, nTrials)]), # plot up to 100 trajectories
          lwd = 3)
 axis(1)
 axis(2,
-     at = log(c(0.1, 1, 10, 100, 1000, 10000, 100000)),
-     labels = c(0.1, 1, 10, 100, 1000, 10000, 100000))
+     at = log(10^(-1:ceiling(log10(yMax)))),
+     labels = 10^(-1:ceiling(log10(yMax))))
 abline(h = log(pseudoExtinction), lty = 2)
 ```
 
@@ -189,8 +218,9 @@ Work through these experiments and note what happens to (a) the plot and (b) the
 ## Takeaways
 
 - Stochasticity introduces variability in trajectories.
+- Long-run growth follows the mean of $r_m$ (the geometric mean of $\lambda$), not the arithmetic mean of $\lambda$, so projecting with the average $\lambda$ overestimates typical growth.
 - Even when the average growth rate is positive, stochastic variation can create a real risk of extinction.
 - Small populations are more vulnerable to random declines and extinction.
-- The variance of $r$ can be as important as its mean for long-term population persistence. This is why conservationists worry about increasing environmental variability, not just declining average conditions.
-- Running a model many times (as in the R simulation) reveals the *distribution* of possible outcomes — a much richer picture than any single trajectory provides.
+- The variance of $r_m$ can be as important as its mean for long-term population persistence. This is why conservationists worry about increasing environmental variability, not just declining average conditions.
+- Running a model many times (as in the R simulation) reveals the *distribution* of possible outcomes, a much richer picture than any single trajectory provides.
 

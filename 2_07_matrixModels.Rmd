@@ -6,7 +6,7 @@ Matrix population models are powerful and widely used tools in population ecolog
 
 A matrix population model uses a transition matrix to describe how individuals move between stages, and how many new individuals each stage contributes, over a fixed time step. By incorporating demographic data and life-history traits, these models give a more realistic picture of population dynamics. They are widely used to *project* the future trajectory of a population under stated assumptions, and to assess how vulnerable it is to environmental change and management actions. In this practical, we will assume that one matrix projection corresponds to one year. Each matrix element therefore represents survival, growth, or reproduction over a one-year interval.
 
-This practical aims to give you a good understanding of the basics of their construction and use.
+This practical aims to give you a good understanding of the basics of their construction and use. The background reading is Neal's chapter *Growth of Age-Structured and Stage-Structured Populations*.
 
 ::: {.do-something}
 Learning outcomes: 
@@ -140,7 +140,7 @@ $$
 
 ## Using R for matrix modelling
 
-Working with matrices is very tedious in Excel. However, in R you can use this information to predict the future dynamics of the population, and estimate population growth rate, and generation time etc.
+Working with matrices is very tedious in Excel. However, in R you can use this information to predict the future dynamics of the population, and estimate the population growth rate.
 
 Open up **RStudio**, and let's see if we can predict future dynamics. First you will need to install a package called `popdemo`.
 
@@ -303,14 +303,22 @@ eigs(A, what = c("lambda", "ss"))
 Elasticity analysis asks how responsive the population growth rate ($\lambda$) is to a small *proportional* change in each transition of the matrix. A transition with a high elasticity is one where a given percentage change produces a relatively large percentage change in $\lambda$. The elasticities of all the matrix elements sum to one, so each can be read as that transition's share of the total influence on $\lambda$. This is useful in management and conservation when we ask questions like, "which parts of the lifecycle should we focus on to preserve the population?". The mathematics are beyond this course, and R can calculate the elasticities for us.
 
 ::: {.do-something}
-**Predict first.** Looking at your own matrix, which single element do you think $\lambda$ is most sensitive to? Write it down before running the code.
+**Predict first.** Looking at your own matrix, which single element do you think has the highest elasticity, i.e. which one would change λ most, in proportional terms, if you changed it by the same percentage? Write it down before running the code.
 :::
 
 ```{r elasticity, echo = TRUE}
 popdemo::elas(A)
 ```
 
-Which transition has the highest elasticity, and what does that tell you about your organism's life cycle? Was your prediction correct? If not, why do you think the biology of your organism led you to the wrong guess? Note that a high elasticity means $\lambda$ is *sensitive* to that transition, which is not the same as saying it is easy or practical to change in the real world.
+Which transition has the highest elasticity, and what does that tell you about your organism's life cycle? Was your prediction correct? If not, why do you think the biology of your organism led you to the wrong guess? Note that a high elasticity means $\lambda$ responds strongly to a *proportional* change in that transition, which is not the same as saying it is easy or practical to change in the real world.
+
+Elasticity is not the same as *sensitivity*. Sensitivity measures the change in $\lambda$ for a small *absolute* change in a matrix element (e.g. adding 0.01), whereas elasticity measures the proportional change in $\lambda$ for a proportional change in the element (e.g. a 1% increase). Because elasticity rescales by the size of each element, small probabilities tend to have a high sensitivity but a lower elasticity, and large fecundities the reverse, so the two rankings can differ. You can compare them:
+
+```{r sensitivity, echo = TRUE}
+popdemo::sens(A)
+```
+
+For the example matrix, adult fecundity has a low sensitivity (0.05) but one of the highest elasticities (0.30), because it is a large number (8), so a 1% change in it is a large absolute change. Juvenile to adult (0.1) has the highest sensitivity (4.47) and also the highest elasticity (0.33).
 
 
 ## In silico experiments: changing the life cycle
@@ -352,11 +360,13 @@ Now it is time to work with your own organism. Rather than just running every fu
 5. **Compare.** Calculate $\lambda$ for both matrices. Was your prediction right?
 6. **Explain.** Explain the result in biological terms. Use your elasticity results to help: does the change you made involve a transition with high or low elasticity?
 
-### An evolutionary experiment
+### An evolutionary experiment (homework, optional)
+
+If you run out of time in class, do this section at home. A model answer is in the Solutions.
 
 You can think of lambda (population growth rate) as being a measure of fitness. Imagine that some of your population had a mutation that caused them to have, say, 1 extra baby, but at the expense of reduced survival in one of the younger stages. Would this mutation persist in the population?
 
-First, predict: increasing fecundity is beneficial and decreasing survival is costly. Which effect do you think will win? Then modify the matrix, calculate $\lambda$ for the mutant life history, and compare it with $\lambda$ for the original. Does the mutant have a higher or lower $\lambda$? What does that suggest about selection on this trade-off? (Comparing $\lambda$ like this treats it as fitness, which works when growth is density-independent, as it is in this model. With density dependence, as in the logistic growth chapters, things are more complicated.)
+First, predict: increasing fecundity is beneficial and decreasing survival is costly. Which effect do you think will win? Then modify the matrix, calculate λ for the mutant life history, and compare it with λ for the original. Does the mutant have a higher or lower λ? What does that suggest about selection on this trade-off? (Comparing $\lambda$ like this treats it as fitness, which works when growth is density-independent, as it is in this model. With density dependence, as in the logistic growth chapters, things are more complicated.)
 
 
 ### Questions
@@ -370,5 +380,5 @@ First, predict: increasing fecundity is beneficial and decreasing survival is co
 ## Takeaways
 
 - Matrix models link life history to population growth through structured vital rates.
-- The dominant eigenvalue $\lambda$ summarizes long-term growth, while its eigenvector gives the stable stage distribution.
+- The dominant eigenvalue $\lambda$ summarises long-term growth, while its eigenvector gives the stable stage distribution.
 - Elasticity analysis and *in silico* experiments turn models into management and evolutionary experiments.

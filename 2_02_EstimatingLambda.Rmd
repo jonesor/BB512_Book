@@ -2,9 +2,9 @@
 
 ## Background
 
-In population biology, one important measure of population dynamics is the population growth rate (\(\lambda\)), also known as the finite rate of increase. 
+In population biology, one important measure of population dynamics is the population growth rate (\(\lambda\)), called the multiplication rate in Neal and also known as the finite rate of increase. 
 
-The finite rate of increase (\(\lambda\)) is defined as the ratio of population size at time t + 1 to that at time t (\(N_{t+1}/N_t\)), and it is related to the intrinsic rate of increase r by the expression (\(r = \ln \lambda\)).
+The finite rate of increase (\(\lambda\)) is defined as the ratio of population size at time t + 1 to that at time t (\(N_{t+1}/N_t\)), and it is related to the intrinsic rate of increase \(r_m\) by the expression \(r_m = \ln \lambda\) (so \(\lambda = e^{r_m}\); see the notation box in the [Part 2 introduction](#part-2)).
 
 This rate tells us how fast a population is growing or shrinking over time. When \(\lambda > 1\), the population grows exponentially; when \(\lambda = 1\), it stays constant, and when \(\lambda < 1\), the population declines.
 
@@ -73,18 +73,18 @@ Learning outcomes:
 - Understanding the role of $\lambda$ in population growth and its estimation through log-transformed data.
 - Competence in applying mathematical models in Excel to analyse real biological data.
 - Awareness of how log transformations can linearise exponential growth data for easier interpretation.
-- Knowing that the slope of the $ln(N)$ vs. time relationship represents $ln(\lambda)$ and can be used to estimate population growth rate.
+- Knowing that the slope of the $\ln(N)$ vs. time relationship represents $\ln(\lambda) = r_m$ and can be used to estimate population growth rate.
 :::
 
 ## Worked example
 
 ### Inputs
 
-- Regression slope from $ln(N_t)$ vs time: $0.08$
+- Regression slope from $\ln(N_t)$ vs time: $0.08$
 
 ### Steps
 
-1. Use $\lambda = e^{\text{slope}}$.
+1. The slope is $\ln \lambda = r_m$, so use $\lambda = e^{\text{slope}}$.
 2. Substitute the slope: $\lambda = e^{0.08}$.
 
 ### Output and interpretation
@@ -99,6 +99,7 @@ This indicates a population growing by about 8.3% per time step.
 
 - Download the provided Excel file: [`EstimatingGrowth.xlsx`](https://www.dropbox.com/scl/fi/k9z32wndllofihsyhj728/EstimatingGrowth.xlsx?rlkey=7gukyzvdm4pv1wsbnljfymvx1&dl=1).
 - Open the file in Excel to view the population data for a species recorded annually over a 25-year period.
+- Danish Excel: `LN` is the same, `EXP` is `EKSP` and `SLOPE` is `HÆLDNING`; decimals use a comma and arguments are separated by `;`. The trendline menu items are "Tilføj tendenslinje" and "Vis ligning i diagram".
 
 **Step 2: Plot the Population Size Over Time**
 
@@ -107,13 +108,13 @@ This indicates a population growing by about 8.3% per time step.
 **Step 3: Log-Transform the Population Size**
 
 - Add a new column in Excel for the natural logarithm of the population size using the formula `=LN(cell)`. This transformation helps linearise the exponential growth data.
-- Create a new scatter plot with **log-transformed population size** (\(\log_e(N_t)\)) on the y-axis and **time** (Year) on the x-axis.
+- Create a new scatter plot with **log-transformed population size** (\(\ln(N_t)\)) on the y-axis and **time** (Year) on the x-axis.
 
 **Step 4: Fit a Linear Regression Model**
 
 - In the log-transformed scatter plot, add a trendline by right-clicking on the data points and selecting "Add Trendline."
 - Choose "Linear" and ensure you check the box to "Display Equation on Chart."
-- The slope of the trendline represents \(\log(\lambda)\).
+- The slope of the trendline represents \(\ln(\lambda) = r_m\). The trendline label rounds the slope; for the exact value use `=SLOPE(ln-column, year-column)` (Danish: `=HÆLDNING(ln-kolonne; år-kolonne)`). Strictly, the slope is the *realised* average growth rate over the census years; it equals the intrinsic rate $r_m$ only if growth was not limited by density during that time.
 
 **Step 5: Calculate \(\lambda\)**
 
@@ -128,5 +129,5 @@ This indicates a population growing by about 8.3% per time step.
 ## Takeaways
 
 - Estimating $\lambda$ from data relies on a log-transform and a linear trend over time.
-- The slope of $ln(N_t)$ vs. time is $ln(\lambda)$, so $\lambda$ is the exponential of the slope.
+- The slope of $\ln(N_t)$ vs. time is $\ln(\lambda) = r_m$, so $\lambda$ is the exponential of the slope.
 - Measurement error and changing environments can bias simple growth estimates.

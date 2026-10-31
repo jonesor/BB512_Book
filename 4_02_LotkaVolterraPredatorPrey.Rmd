@@ -38,11 +38,41 @@ Follow the PDF worksheet ([here](https://www.dropbox.com/s/bhwoe161wp9p6hp/10.%2
 
 
 
-The worksheet is divided into four parts. We will mainly **focus on Part 1** - the basic model - in the class. 
+The worksheet is divided into four parts. We will mainly **focus on Part 1** - the basic model - in the class.
+
+::: {.do-something}
+**Symbols: worksheet vs Neal**
+
+The worksheet uses different symbols from Neal (*Predator-Prey Interactions*), whose continuous model is $dH/dt = rH - aHP$ and $dP/dt = cHP - dP$. The worksheet's equations are $V_{t+1} = V_t + RV_t - aC_tV_t$ and $C_{t+1} = C_t + afV_tC_t - qC_t$.
+
+| Worksheet | Neal | Meaning |
+|---|---|---|
+| $V$ ("victim") | $H$ | Prey population |
+| $C$ ("consumer") | $P$ | Predator population |
+| $R$ | $r$ | Prey growth rate (in the worksheet, per time step) |
+| $a$ | $a$ | Attack rate |
+| $af$ ($f$ = conversion efficiency) | $c$ | Rate at which prey eaten become new predators |
+| $q$ | $d$ | Predator death (starvation) rate |
+
+So the prey isocline $C = R/a$ is Neal's $P = r/a$, and the predator isocline $V = q/(af)$ is Neal's $H = d/c$.
+:::
+
+::: {.do-something}
+**Correct formula for step 7 of the PDF**
+
+The predator formula printed in the PDF is missing a minus sign. In cell C15 use:
+
+- English Excel: `=IF(C14+$H$8*$H$9*B14*C14-$H$7*C14>0,C14+$H$8*$H$9*B14*C14-$H$7*C14,0)`
+- Danish Excel: `=HVIS(C14+$H$8*$H$9*B14*C14-$H$7*C14>0;C14+$H$8*$H$9*B14*C14-$H$7*C14;0)`
+
+The prey formula in cell B15 (step 6) in Danish Excel is `=HVIS(B14+$F$7*B14-$H$9*C14*B14>0;B14+$F$7*B14-$H$9*C14*B14;0)`, and `MAX` is `MAKS`. Your first rows should read 1050.000, 19.600 (time 1) and 1106.700, 19.286 (time 2).
+:::
+
+The sheet runs for 100 time steps. With the default values neither species goes extinct within that time, although the cycles clearly grow. To see the end of the story, copy the formulas further down (to row 314 gives 300 time steps): the prey hit zero at time step 220.
 
 After completing the Excel sheet, try to answer the following questions:
 
-1. Does a larger prey population growth rate (R) increase or decrease the stability of the predator-prey interaction?
+1. In the spreadsheet model, does a larger prey population growth rate (R) increase or decrease the stability of the predator-prey interaction?
 2. What happens if the predators starve more quickly? Less quickly?
 3. What happens if the predator is more efficient at converting prey into offspring? Less efficient?
 4. What happens if the predator is better at finding prey? Worse?

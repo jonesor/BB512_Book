@@ -2,45 +2,81 @@
 
 ## Background
 
-This activity builds intuition for phylogenetic trees by using discrete morphological characters. It aligns with the macroevolution exercise guide in `supplemental/Macroevolution_Building_A_Tree/FylTree_ENG_2015.pdf`.
+This activity builds intuition for phylogenetic trees by using discrete morphological characters. It follows the classroom activity by Wojciech Grajkowski, *Building a phylogenetic tree* (Bioscience Explained 6(2)), which you can [download here as a PDF](https://github.com/jonesor/BB512_Book/raw/master/supplemental/Macroevolution_Building_A_Tree/FylTree_ENG_2015.pdf). The PDF includes the organism cards and a worksheet.
+
+**Reading:** Neal, chapter *Darwin's Evolutionary Theories* (common descent and Darwin's "tree of life").
 
 ::: {.do-something}
-Learning outcomes: 
+Learning outcomes:
 
 - Build a simple character table for a set of organisms.
 - Compute pairwise differences and translate them into a tree.
-- Relate morphology-based trees to the idea of evolutionary relatedness.
+- Relate morphology-based trees to the idea of evolutionary relatedness, and recognise when similarity may not reflect relatedness.
 :::
 
 ## Key idea
 
-With six organisms and seven characters, you can compute a pairwise difference table, then group the closest relatives first. The internal nodes represent the most recent common ancestors inferred from shared characters.
+With six organisms and seven characters, you can compute a pairwise difference table, then group the most similar organisms first. The internal nodes of the tree represent inferred common ancestors: the pairs joined first represent the *most recent* common ancestors, and the deeper splits represent older ones.
+
+**A caveat: similarity is not the same as relatedness.** Grouping organisms by overall similarity (the method used here, which is called UPGMA when done by computer) recovers the true tree only if characters change at a roughly constant rate in all lineages and the same character state never evolves more than once. In reality, unrelated organisms can evolve the same feature independently (**convergence**, e.g. wings in birds and bats, or loss of thorns in several plant lineages), and features can be lost again (**reversal**). Some shared features are also simply inherited from a distant ancestor of the whole group (ancestral states) and say nothing about who is most closely related. Modern phylogenetics therefore groups organisms by shared *derived* characters (new features that arose in their common ancestor), uses an outgroup to decide which states are ancestral, and increasingly uses DNA sequences. Keep this in mind when you interpret your tree.
+
+## Worked example
+
+The PDF's example has six beetle-like organisms (A to F), described by seven characters:
+
+```{r beetle-characters, echo = TRUE}
+beetles <- data.frame(
+  row.names    = c("A", "B", "C", "D", "E", "F"),
+  body_shape   = c("Oval", "Oval", "Round", "Oval", "Round", "Round"),
+  colour       = c("Yellow", "Yellow", "Orange", "Pink", "Pink", "Orange"),
+  head_colour  = c("White", "Black", "Black", "White", "Black", "Black"),
+  antennae     = c("No", "No", "No", "Yes", "Yes", "No"),
+  jaws_visible = c("Yes", "Yes", "Yes", "No", "No", "Yes"),
+  spots        = c("Yes", "Yes", "Yes", "No", "No", "Yes"),
+  spot_colour  = c("Black", "Black", "Black", "None", "None", "White")
+)
+beetles
+```
+
+Next, count the number of characters that differ between each pair of organisms. This is the "data matrix" in the PDF:
+
+```{r beetle-differences, echo = TRUE}
+n <- nrow(beetles)
+differences <- matrix(0, nrow = n, ncol = n,
+                      dimnames = list(rownames(beetles), rownames(beetles)))
+for (i in 1:n) {
+  for (j in 1:n) {
+    differences[i, j] <- sum(beetles[i, ] != beetles[j, ])
+  }
+}
+differences
+```
+
+Finally, join the most similar organisms first (Figure \@ref(fig:beetle-tree)). The function `hclust` with `method = "average"` does this automatically: at each step it joins the two closest groups, measuring the distance between groups as the average number of differences between their members.
+
+```{r beetle-tree, echo = TRUE, fig.cap = "Tree for the six beetle-like organisms in the PDF, built by joining the most similar organisms first (UPGMA). The height of each join is the average number of character differences between the two groups."}
+tree <- hclust(as.dist(differences), method = "average")
+plot(tree, main = "", xlab = "", sub = "",
+     ylab = "Average number of differences")
+```
+
+A and B differ in only one character, as do C and F, so these pairs are joined first (at a height of 1): they share the most recent common ancestors. D and E (2 differences) are joined next, then the A+B and C+F groups (an average of 3 differences), and finally the two main groups. This is the same tree as the one drawn by hand in the PDF.
+
+Now look back at the character table. On this tree, no single change can explain body shape or head colour. E is round like C and F, but groups with D, and A has a white head like D, but groups with B. At least one of these characters must have changed more than once (convergence or reversal). Which one, and in which direction, cannot be decided without knowing the ancestral states, for example from an outgroup.
 
 ## Your task
 
-Use `supplemental/Macroevolution_Building_A_Tree/FylTree_ENG_2015.pdf` as a guide for the classroom activity.
+Use the [PDF](https://github.com/jonesor/BB512_Book/raw/master/supplemental/Macroevolution_Building_A_Tree/FylTree_ENG_2015.pdf) as a guide for the classroom activity.
 
-1. Pick six organisms (use the cards if you have them, or invent six organisms with clear traits).
-2. Identify seven discrete characters that differ among the organisms (presence/absence, color class, tail length category, etc.).
+1. Pick six organisms (use the cards in the PDF: plants, birds or butterflies, or invent six organisms with clear traits).
+2. Identify seven discrete characters that differ among the organisms (presence/absence, colour class, tail length category, etc.).
 3. Fill in a character table and then compute a pairwise difference table.
-4. Draw a phylogenetic tree by grouping the closest relatives first, then adding deeper splits.
-5. Optional: compare your hand-drawn tree with an R clustering result.
-
-```{r tree-from-characters, echo = TRUE, eval = FALSE}
-# Replace this with your own character table
-characters <- data.frame(
-  row.names = c("A", "B", "C", "D", "E", "F"),
-  trait1 = c(1, 1, 0, 0, 0, 1),
-  trait2 = c(0, 1, 1, 0, 0, 1),
-  trait3 = c(1, 1, 1, 0, 0, 0)
-)
-
-dist_mat <- dist(characters, method = "manhattan")
-tree <- hclust(dist_mat, method = "average")
-plot(tree, main = "Tree from morphological characters")
-```
+4. Draw a phylogenetic tree by grouping the most similar organisms first, then adding deeper splits.
+5. Identify any characters that look convergent on your tree (the PDF's "Additional questions").
+6. Optional: compare your hand-drawn tree with an R result, by replacing the `beetles` table in the worked example with your own character table.
 
 ## Takeaways
 
 - Morphological characters can be converted into a simple distance matrix.
-- The closest pairs in the distance matrix define the earliest groupings in a tree.
+- The most similar pairs in the distance matrix are joined first, and represent the most recent common ancestors in the tree.
+- Overall similarity is not the same as relatedness: convergence and reversals can mislead, which is why phylogenetics relies on shared derived characters and on many characters, including DNA.

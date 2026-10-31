@@ -1,7 +1,3 @@
-```{r mpm_intro_seed, include=FALSE}
-set.seed(1)
-```
-
 # Matrix Population Models (MPMs): Projection and Simulation
 
 This short tutorial introduces **matrix population models (MPMs)** and shows two closely related uses:
@@ -11,32 +7,46 @@ This short tutorial introduces **matrix population models (MPMs)** and shows two
 
 The examples use a simple 3-stage life cycle. The goal is to be clear about:
 
-- the **projection interval** (time step, \\(\\Delta t\\)),
+- the **projection interval** (time step, $\Delta t$),
 - how **survival/transition** and **reproduction** appear in the matrix,
-- how to project a **population vector** \\(\\mathbf{n}_t\\),
+- how to project a **population vector** $\mathbf{n}_t$,
 - how to convert the deterministic model into a basic **stochastic simulation**.
+
+The background reading is the chapter *Growth of Age-Structured and Stage-Structured Populations* in Neal. The chapter "Matrix population modelling" covers building a matrix, projection and $\lambda$ in more detail, using the `popdemo` package; here we do everything in base R.
+
+## Learning outcomes
+
+::: {.do-something}
+Learning outcomes:
+
+- Explain why the vital rates in a matrix must match the projection interval $\Delta t$.
+- Build a stage-structured projection matrix in base R, project a population forward and calculate $\lambda$ with `eigen()`.
+- Explain the difference between a deterministic projection and a stochastic simulation with demographic stochasticity.
+- Write a simulation once as a function, and use it to run replicate simulations and summarise their uncertainty.
+- Use simulation to compare management scenarios (proportional harvest, fixed quotas, contraception) and explain the results in terms of the life cycle.
+:::
 
 ## What is a matrix population model?
 
 An MPM describes how a structured population changes over discrete time steps.
 
-## The projection interval (\\(\\Delta t\\))
+## The projection interval ($\Delta t$)
 
-MPMs are defined for a particular **projection interval** \\(\\Delta t\\) (the time step between updates). Common choices are:
+MPMs are defined for a particular **projection interval** $\Delta t$ (the time step between updates). Common choices are:
 
-- \\(\\Delta t = 1\\) year (very common in ecology)
-- \\(\\Delta t = 1\\) month (or other shorter steps)
+- $\Delta t = 1$ year (very common in ecology)
+- $\Delta t = 1$ month (or other shorter steps)
 
-**Key rule:** the vital rates you put in the matrix must match the chosen \\(\\Delta t\\).
+**Key rule:** the vital rates you put in the matrix must match the chosen $\Delta t$.
 
-- If \\(\\Delta t\\) is one year, use **annual survival** and **annual fertility/recruitment**.
-- If \\(\\Delta t\\) is one month, use **monthly survival** and **monthly recruitment**.
+- If $\Delta t$ is one year, use **annual survival** and **annual fertility/recruitment**.
+- If $\Delta t$ is one month, use **monthly survival** and **monthly recruitment**.
 
 A common mistake is mixing time scales (e.g. monthly survival with yearly reproduction).
 
 ## The population vector
 
-Let \\(\\mathbf{n}_t\\) be a vector of abundances at time \\(t\\) (measured in units of \\(\\Delta t\\)):
+Let $\mathbf{n}_t$ be a vector of abundances at time $t$ (measured in units of $\Delta t$):
 
 $$
 \mathbf{n}_t =
@@ -52,7 +62,7 @@ Each element is the number (or density) in a class (age/stage/size/etc.).
 
 ## The projection matrix
 
-Let \\(\\mathbf{A}\\) be a square matrix of **vital rates**. The basic model is:
+Let $\mathbf{A}$ be a square matrix of **vital rates**. The basic model is:
 
 $$
 \mathbf{n}_{t+\Delta t} = \mathbf{A}\,\mathbf{n}_t
@@ -71,14 +81,14 @@ We will use three stages:
 2. Subadult (S)
 3. Adult (A)
 
-The life-cycle assumptions (per \\(\\Delta t = 1\\) year) are:
+The life-cycle assumptions (per $\Delta t = 1$ year) are:
 
-- Adults produce juveniles: \\(F_A\\) juveniles per adult per year (recruits to J). This is a fertility: the number of new juveniles *counted at the next census* per adult, so it already includes the survival needed to reach that count, not just the number born (see the fecundity box in the chapter "Matrix population modelling").
-- Juveniles that survive and grow move to Subadult with probability \\(G_J\\).
+- Adults produce juveniles: $F_A$ juveniles per adult per year (recruits to J). This is a fertility: the number of new juveniles *counted at the next census* per adult, so it already includes the survival needed to reach that count, not just the number born (see the fecundity box in the chapter "Matrix population modelling").
+- Juveniles that survive and grow move to Subadult with probability $G_J$.
 - Subadults either:
-  - survive and remain subadult with probability \\(P_S\\), or
-  - survive and grow to adult with probability \\(G_S\\).
-- Adults survive and remain adult with probability \\(P_A\\).
+  - survive and remain subadult with probability $P_S$, or
+  - survive and grow to adult with probability $G_S$.
+- Adults survive and remain adult with probability $P_A$.
 
 A common stage-structured (Lefkovitch) matrix is:
 
@@ -91,9 +101,9 @@ G_J & P_S & 0 \\
 \end{bmatrix}
 $$
 
-## Projection: projecting \\(\\mathbf{n}_t\\) forward
+## Projection: projecting $\mathbf{n}_t$ forward
 
-## Define vital rates and build \\(\\mathbf{A}\\)
+## Define vital rates and build $\mathbf{A}$
 
 ```{r mpm_define_rates, echo=TRUE, include=TRUE}
 # Vital rates for a 1-year projection interval
@@ -120,7 +130,7 @@ dimnames(A) <- list(
 A
 ```
 
-## Define an initial population vector \\(\\mathbf{n}_0\\)
+## Define an initial population vector $\mathbf{n}_0$
 
 ```{r mpm_initial_vector, echo=TRUE, include=TRUE}
 # Initial population vector (year 0)
@@ -136,7 +146,7 @@ n1 <- A %*% n0
 n1
 ```
 
-Given the stage abundances at time \\(t\\), multiplying by \\(\\mathbf{A}\\) gives the expected abundances at time \\(t+1\\) (because \\(\\Delta t=1\\) year here).
+Given the stage abundances at time $t$, multiplying by $\mathbf{A}$ gives the expected abundances at time $t+1$ (because $\Delta t=1$ year here).
 
 ## Project for many years (deterministic)
 
@@ -179,9 +189,9 @@ matplot(
 legend("topleft", legend = colnames(nmat), lty = 1, bty = "n")
 ```
 
-## Long-term growth rate (\\(\\lambda\\))
+## Long-term growth rate ($\lambda$)
 
-For a constant matrix \\(\\mathbf{A}\\), the asymptotic growth rate is the **dominant eigenvalue** \\(\\lambda\\).
+For a constant matrix $\mathbf{A}$, the asymptotic growth rate is the **dominant eigenvalue** $\lambda$.
 
 ```{r mpm_lambda, echo=TRUE, include=TRUE}
 # Eigenvalues of the projection matrix
@@ -192,9 +202,11 @@ lambda <- Re(eig$values[which.max(Re(eig$values))])
 lambda
 ```
 
-- If \\(\\lambda > 1\\): growth (on average) per time step  
-- If \\(\\lambda = 1\\): stationary  
-- If \\(\\lambda < 1\\): decline  
+- If $\lambda > 1$: growth (on average) per time step
+- If $\lambda = 1$: stationary
+- If $\lambda < 1$: decline
+
+Here $\lambda$ is only just above 1 (`r round(lambda, 3)`): the population is expected to grow by about `r round((lambda - 1) * 100)`% per year. Keep this in mind for the management scenarios below: a population that is only just growing does not need much extra mortality to tip it into decline.
 
 ## Simulation: adding stochasticity and management actions
 
@@ -210,297 +222,195 @@ Below is a transparent stochastic simulation that:
 - simulates survival/transitions with binomial variation,
 - allows a simple **culling** intervention.
 
+This simulation includes **demographic stochasticity only**: the matrix (the vital rates) is the same every year, and the randomness comes from the fact that a whole number of individuals survive, grow or are born, by chance. Environmental stochasticity (good and bad years, with different vital rates) is covered in the chapter "Stochastic population growth", and in an optional exercise at the end of this chapter.
 
 ```{r mpm_sim_settings, echo=FALSE, include=TRUE}
 # basic validity check: probabilities should sum to <= 1
 stopifnot(G_S + P_S <= 1)
 ```
 
+### Writing the simulation once, as a function
+
+We are going to run the same simulation many times, with and without culling, so we write it once as a function. The function:
+
+1. Reads the vital rates from the matrix `A` (so if you change the matrix, the simulation changes too).
+2. Creates an output matrix with one row per year and one column per stage, and fills row 1 with the initial stage abundances (`n0`).
+3. For each year, reads the current stage counts (`nJ`, `nS`, `nA`). We do not call these `J`, `S` and `A`: the name `A` is already taken by the projection matrix, and overwriting it would silently break everything that uses the matrix afterwards.
+4. If the year has reached `cull_start`, removes individuals from the target stage: a proportion `cull_prop` (each individual is removed with that probability), plus a fixed number `cull_n`. Both are 0 by default (no culling).
+5. Draws the number of births and transitions using random distributions:
+   - births from adults: Poisson,
+   - survival/transition events: Binomial.
+6. Writes the resulting stage counts into the next row, and returns the whole trajectory.
+
+The stored counts are the census counts before any cull. The cull is applied to the working counts only, just before breeding and survival.
+
+```{r mpm_sim_function, echo=TRUE, include=TRUE}
+simulate_once <- function(A, n0, years,
+                          cull_stage = "Adult", cull_prop = 0, cull_n = 0,
+                          cull_start = 10) {
+  # Step 1: read the vital rates from the projection matrix
+  F_A <- A["Juvenile", "Adult"]
+  G_J <- A["Subadult", "Juvenile"]
+  P_S <- A["Subadult", "Subadult"]
+  G_S <- A["Adult", "Subadult"]
+  P_A <- A["Adult", "Adult"]
+
+  # Step 2: a matrix to store the trajectory, with year 0 in row 1
+  out <- matrix(0L, nrow = years + 1, ncol = 3)
+  colnames(out) <- c("Juvenile", "Subadult", "Adult")
+  out[1, ] <- as.integer(n0[c("Juvenile", "Subadult", "Adult")])
+
+  for (t in 1:years) {
+    year <- t - 1 # row t holds year t - 1
+
+    # Step 3: current stage counts at the census
+    n_now <- out[t, ]
+
+    # Step 4: culling, once the start year has been reached
+    if (year >= cull_start) {
+      removed <- rbinom(1, size = n_now[cull_stage], prob = cull_prop) + cull_n
+      removed <- min(removed, n_now[cull_stage]) # cannot remove more than are there
+      n_now[cull_stage] <- n_now[cull_stage] - removed
+    }
+    nJ <- n_now["Juvenile"]
+    nS <- n_now["Subadult"]
+    nA <- n_now["Adult"]
+
+    # Step 5: births, survival and transitions
+    newJ <- rpois(1, lambda = F_A * nA)          # births from adults
+    J_to_S <- rbinom(1, size = nJ, prob = G_J)    # juvenile -> subadult
+    S_stay <- rbinom(1, size = nS, prob = P_S)    # subadult stays subadult
+    S_remaining <- nS - S_stay                    # the rest either grow or die
+    p_grow_cond <- if ((1 - P_S) > 0) G_S / (1 - P_S) else 0
+    S_to_A <- rbinom(1, size = S_remaining, prob = p_grow_cond)
+    A_surv <- rbinom(1, size = nA, prob = P_A)    # adult survival
+
+    # Step 6: write next year's abundances
+    out[t + 1, "Juvenile"] <- newJ
+    out[t + 1, "Subadult"] <- J_to_S + S_stay
+    out[t + 1, "Adult"] <- S_to_A + A_surv
+  }
+  out
+}
+```
+
+The subadult step needs a little explanation. A subadult has three possible fates: stay subadult ($P_S$), grow to adult ($G_S$) or die ($1 - P_S - G_S$). We first draw how many stay. Among the rest, the probability of growing (rather than dying) is $G_S / (1 - P_S)$, so on average a fraction $G_S$ of all subadults grow, as in the matrix.
+
 ### One simulated trajectory (no culling)
 
-Here we write the simulation as a sequence of explicit steps.
-
-1. Create an output matrix (`sim1`) with one row per year and one column per stage.
-2. Fill row 1 with the initial stage abundances (`n0`).
-3. For each year, read the current stage counts (`J`, `S`, `A`).
-4. Draw the number of births and transitions using random distributions:
-   - births from adults: Poisson
-   - survival/transition events: Binomial
-5. Write the resulting stage counts into the next row.
-6. After the loop, plot total abundance through time.
+Each run draws new random numbers, so your trajectory will differ from the one shown here. Run the chunk a few times to see how much it varies.
 
 ```{r mpm_seed_no_cull, include=FALSE}
 set.seed(1201)
 ```
 
 ```{r mpm_sim_no_cull, echo=TRUE, include=TRUE}
-# Step 1: create a matrix to store the trajectory
-sim1 <- matrix(0L, nrow = years + 1, ncol = 3)
-colnames(sim1) <- c("Juvenile", "Subadult", "Adult")
+sim1 <- simulate_once(A, n0, years)
 
-# Step 2: set the initial population (year 0)
-sim1[1, ] <- as.integer(n0[c("Juvenile", "Subadult", "Adult")])
-
-# Step 3-5: update the population one year at a time
-for (t in 1:years) {
-  # Current stage abundances at year t
-  J <- sim1[t, "Juvenile"]
-  S <- sim1[t, "Subadult"]
-  A <- sim1[t, "Adult"]
-
-  # Births: each adult contributes recruits stochastically
-  newJ <- rpois(1, lambda = F_A * A)
-
-  # Juvenile -> Subadult transition
-  J_to_S <- rbinom(1, size = J, prob = G_J)
-
-  # Subadult transitions: stay subadult or move to adult
-  S_stay <- rbinom(1, size = S, prob = P_S)
-  S_remaining <- S - S_stay
-  p_grow_cond <- if ((1 - P_S) > 0) G_S / (1 - P_S) else 0
-  S_to_A <- rbinom(1, size = S_remaining, prob = p_grow_cond)
-
-  # Adult survival
-  A_surv <- rbinom(1, size = A, prob = P_A)
-
-  # Write next year's abundances
-  sim1[t + 1, "Juvenile"] <- newJ
-  sim1[t + 1, "Subadult"] <- J_to_S + S_stay
-  sim1[t + 1, "Adult"] <- S_to_A + A_surv
-}
-
-# Step 6: plot the total population trajectory
+# Plot the total population trajectory
 plot(0:years, rowSums(sim1), type = "l",
      xlab = "Year", ylab = "Total population size (simulated)")
 ```
 
-Just after running the simulation, we can calculate the realised `lambda` for this no-culling trajectory.
+We can calculate the realised $\lambda$ for this trajectory. This is the average yearly multiplication rate over the whole run, $(N_T / N_0)^{1/T}$, where $N_0$ and $N_T$ are the total population sizes at the start and at the end, after $T$ years.
 
 ```{r mpm_sim_no_cull_lambda, echo=TRUE, include=TRUE}
 tot_no <- rowSums(sim1)
-realised_lambda_no <- if (length(tot_no) < 2 || tot_no[1] <= 0) {
-  NA_real_
-} else if (any(tot_no <= 0)) {
-  0
-} else {
-  exp(mean(diff(log(tot_no))))
-}
-realised_lambda_no
+(realised_lambda_no <- (tot_no[years + 1] / tot_no[1])^(1 / years))
 ```
+
+This is a finite-horizon, trajectory-specific estimate. Different runs give different values, scattered around the deterministic $\lambda$ (`r round(lambda, 3)`). (In many ecology texts the long-run stochastic growth rate is written $\lambda_s$; that is related to, but not the same as, a single-run realised value.) If the population goes extinct, $N_T = 0$ and so the realised $\lambda$ is 0. It is better to report extinction separately, as we do below with many replicates.
 
 ### Add a culling intervention
 
-Example: remove 5 adults per year starting at year 10.
-This section uses the same simulation rules as before, but adds a management step at the start of each year.
+Example: from year 10 onwards, harvest 10% of the adults each year (each adult has a probability of 0.1 of being removed). This is a **proportional harvest**: the number removed goes up and down with the number of adults.
 
-What happens:
+A proportional harvest of adults has the same effect as multiplying the adult column of the matrix by 0.9 (only 90% of adults are left to breed and survive). So we can predict its long-term effect with a deterministic calculation before we simulate it:
 
-1. Scenario A (no culling) was simulated in the previous section and stored as `sim1`.
-2. We set intervention controls (`cull_enabled`, `cull_stage`, `cull_start_year`, `cull_n`) for Scenario B.
-3. At each year `t`, we first read current stage abundances (`J`, `S`, `A`).
-4. If culling is active and `t` is at/after the start year, we remove individuals from the target stage.
-5. We then refresh `J`, `S`, `A` so births and survival are based on the post-cull population.
-6. After that, demographic updates are exactly the same as in Scenario A.
-7. Finally, we compare Scenario A and B in one figure and compute realised growth rates.
+```{r mpm_harvest_lambda, echo=TRUE, include=TRUE}
+A_harvest <- A
+A_harvest[, "Adult"] <- A_harvest[, "Adult"] * 0.9
+(lambda_harvest <- max(Re(eigen(A_harvest)$values)))
+```
 
-```{r mpm_seed_cull, include=FALSE}
+With a 10% adult harvest, $\lambda$ falls from `r round(lambda, 3)` to `r round(lambda_harvest, 3)`, so once harvesting starts the population should change from slowly growing to declining by about `r round((1 - lambda_harvest) * 100)`% per year. Now the simulation:
+
+```{r mpm_seed_with_cull, include=FALSE}
 set.seed(1202)
 ```
 
 ```{r mpm_sim_with_cull, echo=TRUE, include=TRUE}
-# Management settings for the intervention scenario
-cull_enabled <- TRUE
-cull_stage <- "Adult"
-cull_start_year <- 10
-cull_n <- 5
-
-# Storage for the culling trajectory
-sim_cull <- matrix(0L, nrow = years + 1, ncol = 3)
-colnames(sim_cull) <- c("Juvenile", "Subadult", "Adult")
-sim_cull[1, ] <- as.integer(n0[c("Juvenile", "Subadult", "Adult")])
-
-# Simulate year by year, applying culling before demographic updates
-for (t in 1:years) {
-  # Current stage abundances at year t
-  J <- sim_cull[t, "Juvenile"]
-  S <- sim_cull[t, "Subadult"]
-  A <- sim_cull[t, "Adult"]
-
-  # Apply culling before births/survival if intervention is active
-  if (cull_enabled && t >= cull_start_year) {
-    # Never remove more individuals than are currently present
-    remove_n <- min(sim_cull[t, cull_stage], as.integer(cull_n))
-    sim_cull[t, cull_stage] <- sim_cull[t, cull_stage] - remove_n
-
-    # Refresh stage counts after culling
-    J <- sim_cull[t, "Juvenile"]
-    S <- sim_cull[t, "Subadult"]
-    A <- sim_cull[t, "Adult"]
-  }
-
-  # Demographic updates (same as the no-culling simulation)
-  newJ <- rpois(1, lambda = F_A * A)
-  J_to_S <- rbinom(1, size = J, prob = G_J)
-  S_stay <- rbinom(1, size = S, prob = P_S)
-  S_remaining <- S - S_stay
-  p_grow_cond <- if ((1 - P_S) > 0) G_S / (1 - P_S) else 0
-  S_to_A <- rbinom(1, size = S_remaining, prob = p_grow_cond)
-  A_surv <- rbinom(1, size = A, prob = P_A)
-
-  sim_cull[t + 1, "Juvenile"] <- newJ
-  sim_cull[t + 1, "Subadult"] <- J_to_S + S_stay
-  sim_cull[t + 1, "Adult"] <- S_to_A + A_surv
-}
+sim_cull <- simulate_once(A, n0, years,
+                          cull_stage = "Adult", cull_prop = 0.1, cull_start = 10)
 
 # Compare trajectories: solid = no culling, dashed = culling
 plot(0:years, rowSums(sim1), type = "l",
      xlab = "Year", ylab = "Total population size",
      ylim = range(c(rowSums(sim1), rowSums(sim_cull))))
 lines(0:years, rowSums(sim_cull), lty = 2)
-legend("topleft", legend = c("No culling", "Culling: 5 adults/year from year 10"),
+legend("topleft", legend = c("No culling", "Culling: 10% of adults/year from year 10"),
        lty = c(1, 2), bty = "n")
 ```
 
-For this single-run summary, realised `lambda` is the geometric mean of year-to-year total-population growth factors. This is a finite-horizon, trajectory-specific estimate; in many ecology texts, the long-run stochastic growth rate is denoted \\(\\lambda_s\\) (or \\(\\log \\lambda_s\\)), which is related but not identical to a single-run realised value.
-
-Interpretation:
-
-- `lambda > 1`: realised growth over the simulated period
-- `0 < lambda < 1`: realised decline
-- `lambda = 0`: extinction occurred at some point in the simulated period
-- `lambda` should not be negative in this setting
-
 ```{r mpm_sim_with_cull_lambda, echo=TRUE, include=TRUE}
 # Realised lambda from each simulated trajectory
-tot_no <- rowSums(sim1)
 tot_cu <- rowSums(sim_cull)
-
-# Geometric-mean per-step growth rate over the full horizon.
-# If a trajectory hits zero, define realised lambda as 0 (extinction within horizon).
-realised_lambda_no <- if (length(tot_no) < 2 || tot_no[1] <= 0) {
-  NA_real_
-} else if (any(tot_no <= 0)) {
-  0
-} else {
-  exp(mean(diff(log(tot_no))))
-}
-
-realised_lambda_cu <- if (length(tot_cu) < 2 || tot_cu[1] <= 0) {
-  NA_real_
-} else if (any(tot_cu <= 0)) {
-  0
-} else {
-  exp(mean(diff(log(tot_cu))))
-}
+realised_lambda_cu <- (tot_cu[years + 1] / tot_cu[1])^(1 / years)
 
 data.frame(
   scenario = c("No culling", "Culling"),
+  final_N = c(tot_no[years + 1], tot_cu[years + 1]),
   realised_lambda = c(realised_lambda_no, realised_lambda_cu)
 )
 ```
 
+Interpretation:
+
+- realised $\lambda > 1$: the population grew over the simulated period,
+- $0 <$ realised $\lambda < 1$: it declined,
+- realised $\lambda = 0$: it went extinct at some point in the simulated period.
+
+These are just two runs, and with only about 100 individuals chance plays a large part. The realised $\lambda$ for the culling run is also averaged over the whole 30 years, including the first 10 years without culling. To compare the scenarios properly, we need many replicates.
+
 ### Many replicates (uncertainty bands)
 
 A single run is one possible realisation. We typically run many replicates and summarise.
-In this script, we run two sets of replicates (no culling vs culling), then compute median and 10-90% intervals for each year.
+Here we run two sets of replicates (no culling vs culling), then compute the median and 10-90% interval for each year.
 Note: different studies may use different interval widths (for example, 95% intervals) depending on purpose and reporting conventions.
-To keep the comparison clear, the code is structured as:
-1. Scenario A: run all replicates with no culling.
-2. Scenario B: run all replicates with culling.
-3. Compare Scenario A and B in one graph.
 
 ```{r mpm_seed_reps, include=FALSE}
 set.seed(1203)
 ```
 
 ```{r mpm_sim_reps, echo=TRUE, include=TRUE}
+
 # Number of Monte Carlo replicates
 nreps <- 200
 
-# Store total abundance per year for each replicate
+# Store total abundance per year (rows) for each replicate (columns)
 totals_no <- matrix(NA_real_, nrow = years + 1, ncol = nreps)
 totals_cull <- matrix(NA_real_, nrow = years + 1, ncol = nreps)
 
-# Scenario A: run all replicates with no culling
 for (rep in 1:nreps) {
-  out_no <- matrix(0L, nrow = years + 1, ncol = 3)
-  colnames(out_no) <- c("Juvenile", "Subadult", "Adult")
-  out_no[1, ] <- as.integer(n0[c("Juvenile", "Subadult", "Adult")])
-
-  for (t in 1:years) {
-    J <- out_no[t, "Juvenile"]
-    S <- out_no[t, "Subadult"]
-    A <- out_no[t, "Adult"]
-
-    newJ <- rpois(1, lambda = F_A * A)
-    J_to_S <- rbinom(1, size = J, prob = G_J)
-    S_stay <- rbinom(1, size = S, prob = P_S)
-    S_remaining <- S - S_stay
-    p_grow_cond <- if ((1 - P_S) > 0) G_S / (1 - P_S) else 0
-    S_to_A <- rbinom(1, size = S_remaining, prob = p_grow_cond)
-    A_surv <- rbinom(1, size = A, prob = P_A)
-
-    out_no[t + 1, "Juvenile"] <- newJ
-    out_no[t + 1, "Subadult"] <- J_to_S + S_stay
-    out_no[t + 1, "Adult"] <- S_to_A + A_surv
-  }
-  totals_no[, rep] <- rowSums(out_no)
-}
-
-```
-
-```{r mpm_seed_reps_cull, include=FALSE}
-set.seed(1204)
-```
-
-```{r mpm_sim_reps_cull, echo=TRUE, include=TRUE}
-# Scenario B: run all replicates with culling
-for (rep in 1:nreps) {
-  out_cu <- matrix(0L, nrow = years + 1, ncol = 3)
-  colnames(out_cu) <- c("Juvenile", "Subadult", "Adult")
-  out_cu[1, ] <- as.integer(n0[c("Juvenile", "Subadult", "Adult")])
-
-  for (t in 1:years) {
-    J <- out_cu[t, "Juvenile"]
-    S <- out_cu[t, "Subadult"]
-    A <- out_cu[t, "Adult"]
-
-    if (cull_enabled && t >= cull_start_year) {
-      remove_n <- min(out_cu[t, cull_stage], as.integer(cull_n))
-      out_cu[t, cull_stage] <- out_cu[t, cull_stage] - remove_n
-      J <- out_cu[t, "Juvenile"]
-      S <- out_cu[t, "Subadult"]
-      A <- out_cu[t, "Adult"]
-    }
-
-    newJ <- rpois(1, lambda = F_A * A)
-    J_to_S <- rbinom(1, size = J, prob = G_J)
-    S_stay <- rbinom(1, size = S, prob = P_S)
-    S_remaining <- S - S_stay
-    p_grow_cond <- if ((1 - P_S) > 0) G_S / (1 - P_S) else 0
-    S_to_A <- rbinom(1, size = S_remaining, prob = p_grow_cond)
-    A_surv <- rbinom(1, size = A, prob = P_A)
-
-    out_cu[t + 1, "Juvenile"] <- newJ
-    out_cu[t + 1, "Subadult"] <- J_to_S + S_stay
-    out_cu[t + 1, "Adult"] <- S_to_A + A_surv
-  }
-  totals_cull[, rep] <- rowSums(out_cu)
+  # Scenario A: no culling
+  totals_no[, rep] <- rowSums(simulate_once(A, n0, years))
+  # Scenario B: 10% of adults harvested each year from year 10
+  totals_cull[, rep] <- rowSums(simulate_once(A, n0, years,
+                                              cull_stage = "Adult",
+                                              cull_prop = 0.1))
 }
 
 # Summarise each year across replicates (median and 10-90% interval)
-sum_no <- data.frame(
-  year = 0:years,
-  median = apply(totals_no, 1, median),
-  lo = apply(totals_no, 1, quantile, probs = 0.1),
-  hi = apply(totals_no, 1, quantile, probs = 0.9)
-)
-sum_cu <- data.frame(
-  year = 0:years,
-  median = apply(totals_cull, 1, median),
-  lo = apply(totals_cull, 1, quantile, probs = 0.1),
-  hi = apply(totals_cull, 1, quantile, probs = 0.9)
-)
+summarise_reps <- function(totals) {
+  data.frame(
+    year = 0:(nrow(totals) - 1),
+    median = apply(totals, 1, median),
+    lo = apply(totals, 1, quantile, probs = 0.1),
+    hi = apply(totals, 1, quantile, probs = 0.9)
+  )
+}
+sum_no <- summarise_reps(totals_no)
+sum_cu <- summarise_reps(totals_cull)
 
 # Scenario A vs Scenario B: compare summaries in one figure
 plot(sum_no$year, sum_no$median, type = "n",
@@ -539,60 +449,73 @@ legend("topleft",
        bty = "n")
 ```
 
-## Student exercises (for a class handout)
+Two useful summaries of the replicates are the median final population size and the proportion of replicates that went extinct (an estimate of the probability of extinction within 30 years):
 
-### Exercise: Projection interval sanity check
+```{r mpm_sim_reps_summary, echo=TRUE, include=TRUE}
+data.frame(
+  scenario = c("No culling", "Culling 10% of adults"),
+  median_final_N = c(median(totals_no[years + 1, ]), median(totals_cull[years + 1, ])),
+  prob_extinct = c(mean(totals_no[years + 1, ] == 0), mean(totals_cull[years + 1, ] == 0))
+)
+```
 
-1. In the tutorial, \\(\\Delta t = 1\\) year. Write one sentence explaining what that means.
-2. Suppose you wanted \\(\\Delta t = 1\\) month. What changes would you need to make to the interpretation of:
-   - \\(P_A\\)?
-   - \\(F_A\\)?
+Notice that even without culling a few replicates can go extinct by chance, although $\lambda > 1$: demographic stochasticity matters in small populations.
+
+## Your task
+
+### Exercise 1: Projection interval sanity check
+
+1. In the tutorial, $\Delta t = 1$ year. Write one sentence explaining what that means.
+2. Suppose you wanted $\Delta t = 1$ month. What changes would you need to make to the interpretation of:
+   - $P_A$?
+   - $F_A$?
 3. Name one real reason you might prefer monthly time steps over yearly ones.
 
-### Exercise: Change one vital rate and re-run projections
+### Exercise 2: Change one vital rate and re-run projections
 
-1. Reduce adult survival from \\(P_A = 0.80\\) to \\(P_A = 0.70\\). Recompute:
+1. Reduce adult survival from $P_A = 0.80$ to $P_A = 0.70$. Rebuild `A`, then recompute:
    - the deterministic projection plot,
-   - \\(\\lambda\\).
+   - $\lambda$.
 2. Does the population grow or decline now? How can you tell?
+3. Run `simulate_once()` with the new matrix. Do you need to change the function? Why not?
 
-```{r, eval=FALSE}
-# TODO: change P_A and rebuild A
-# TODO: rerun the deterministic projection loop and eigen()
-```
+Hint: change `P_A` in the chunk that defines the vital rates, then re-run the chunks from there onwards (building `A`, the projection loop and `eigen()`).
 
-### Exercise: Culling as management
+### Exercise 3: Culling as management
 
-1. In the simulation, cull 5 adults per year from year 10. Increase this to 10 adults per year.
-2. Compare the median population trajectory and the uncertainty bands.
-3. To identify which stage is most impactful, run the same culling intensity for each stage separately (juveniles, subadults, adults), then compare results. Which stage has the largest effect, and why?
+1. Change the harvest from 10% to 20% of adults per year. Before you run it, predict $\lambda$ under the new harvest using the deterministic calculation (multiply the adult column of `A` by 0.8). Then run the replicates and compare the median trajectory, the uncertainty bands and the probability of extinction.
+2. Now use a **fixed quota** instead: remove exactly 5 adults per year from year 10 (`cull_prop = 0`, `cull_n = 5`). How does the probability of extinction compare with the 10% harvest? Why is a fixed quota riskier for a small population than a proportional harvest?
+3. To identify which stage is most impactful, run the same culling intensity for each stage separately (juveniles, subadults, adults: change `cull_stage`), then compare results. Do this both for a fixed quota of 5 individuals per year and for a 10% harvest. Which stage has the largest effect, and why?
 
-```{r, eval=FALSE}
-# TODO: change cull_n and/or cull_stage in the simulation loops
-# TODO: rerun the replicate loop and compare summaries
-```
+Hint for question 3: ask how many future juveniles an individual in each stage is "worth". The left eigenvector of `A` (the reproductive values) does this for you: `v <- Re(eigen(t(A))$vectors[, 1]); v / v[1]`.
 
-### Exercise: Contraception treatment (reduced fecundity)
+### Exercise 4: Contraception treatment (reduced fertility)
 
-Design a second management treatment where fecundity is reduced instead of removing individuals.
+Design a second management treatment where fertility is reduced instead of removing individuals.
 
-1. Keep survival/transition rates unchanged, but reduce fecundity after year 10 with a 90% effective contraceptive treatment (for example, multiply `F_A` by 0.1 from year 10 onward).
-2. Implement this as a time-dependent fecundity value inside the yearly loop (for example, `F_A_t`), and use `F_A_t` in the births step.
+1. Keep survival/transition rates unchanged, but reduce fertility from year 10 with a 90% effective contraceptive treatment (multiply `F_A` by 0.1 from year 10 onwards).
+2. Implement this by adding an argument `fert_mult` to `simulate_once()` (with default `fert_mult = 1`), and using `F_A * fert_mult` instead of `F_A` in the births step from year `cull_start` onwards.
 3. Run replicate simulations for:
    - baseline (no treatment),
-   - culling treatment,
+   - culling treatment (10% of adults per year),
    - contraception treatment.
-4. Compare all three scenarios in one figure and discuss which treatment gives the largest reduction in population growth.
+4. Compare all three scenarios in one figure and discuss which treatment gives the largest reduction in population growth. Also predict the long-term $\lambda$ for the contraception treatment with a deterministic calculation.
 
-```{r, eval=FALSE}
-# TODO: define contraception settings, e.g. contracept_enabled <- TRUE
-# TODO: inside the yearly loop, set F_A_t based on year (reduced after start year)
-# TODO: replace births with newJ <- rpois(1, lambda = F_A_t * A)
-# TODO: run replicate summaries for baseline, culling, and contraception
-```
+### Exercise 5 (optional): Environmental stochasticity
+
+So far the vital rates are the same every year. Make adult survival vary between years: in each year, with probability 0.5 the year is "good" ($P_A = 0.9$) and otherwise it is "bad" ($P_A = 0.7$). The average is still 0.8. Modify a copy of `simulate_once()` to draw the type of year at the start of each year, and compare the spread of the replicate trajectories with the original simulation.
+
+## Takeaways
+
+- Every rate in a matrix model refers to the projection interval $\Delta t$: survival, growth and fertility must all be per $\Delta t$.
+- Deterministic projection gives the expected trajectory and, for a constant matrix, the long-term growth rate $\lambda$ (the dominant eigenvalue).
+- A stochastic simulation with the same vital rates shows the range of outcomes that chance alone produces. In small populations this includes extinction, even when $\lambda > 1$.
+- Writing the simulation once as a function makes it easy to run many replicates and to compare scenarios fairly.
+- A proportional harvest is equivalent to changing the matrix, so its long-term effect on $\lambda$ can be predicted before simulating. A fixed quota is much riskier for a small population, because the proportion removed rises as the population shrinks.
+- Removing individuals from different stages has very different effects: individuals in stages with high reproductive value (here adults) matter most.
 
 ## Notes and extensions
 
-- If you include juvenile stasis (juveniles surviving but remaining juveniles), add a \\(P_J\\) term and include it in the matrix and simulation.
-- The deterministic matrix model is most useful for *structure* and *long-term behaviour* (\\(\\lambda\\), stable stage structure, elasticities).
+- If you include juvenile stasis (juveniles surviving but remaining juveniles), add a $P_J$ term and include it in the matrix and simulation.
+- The deterministic matrix model is most useful for *structure* and *long-term behaviour* ($\lambda$, stable stage structure, elasticities).
 - Stochastic simulations are most useful for *short-term variability* and *scenario exploration* (management, uncertainty, risk).

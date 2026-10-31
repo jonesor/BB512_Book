@@ -20,10 +20,24 @@ Finally, the strength of selection depends on the environment. A trait may be im
 
 The objective of this exercise is to develop an intuitive understanding of the effect of selection and genetic drift on traits.
 
-<!-- TODO Owen: add source and licence for this image, or replace it -->
-
-```{r huntergatherer, out.width = "50%", fig.align = 'center', echo = FALSE, fig.cap = "Two present-day human environments: a forest where people hunt and gather (left) and a modern city, Copenhagen (right). Both photographs show people living today: all living human populations are equally evolved, and all are still subject to natural selection. How would selection on each trait differ between these environments?"}
-knitr::include_graphics("images/huntergathererDK.png")
+```{r huntergatherer, out.width = "49%", fig.show = "hold", fig.align = "center", echo = FALSE, fig.cap = "Two present-day human environments: Hadza men returning from a hunt in the dry savanna woodland of northern Tanzania (left) and Nyhavn in Copenhagen (right). Both photographs show people living today: all living human populations are equally evolved, and all are still subject to natural selection. How would selection on each trait differ between these environments? Photos: Andreas Lederer (left) and Jorge Láscar (right), both CC BY 2.0, via Wikimedia Commons."}
+# Both photos are CC BY 2.0 on Wikimedia Commons:
+#   https://commons.wikimedia.org/wiki/File:Hadazbe_returning_from_hunt.jpg
+#   https://commons.wikimedia.org/wiki/File:Nyhavn_(24045348608).jpg
+# They are downloaded once, on the first build, and then kept in images/.
+photos <- c(
+  "images/hadza_returning_from_hunt.jpg" =
+    "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Hadazbe_returning_from_hunt.jpg/1280px-Hadazbe_returning_from_hunt.jpg",
+  "images/nyhavn_copenhagen.jpg" =
+    "https://upload.wikimedia.org/wikipedia/commons/thumb/d/db/Nyhavn_%2824045348608%29.jpg/1280px-Nyhavn_%2824045348608%29.jpg"
+)
+for (f in names(photos)) {
+  if (!file.exists(f)) {
+    download.file(photos[[f]], f, mode = "wb", quiet = TRUE,
+                  headers = c("User-Agent" = "BB512 course book (SDU)"))
+  }
+}
+knitr::include_graphics(names(photos))
 ```
 
 
@@ -60,7 +74,7 @@ These five cases have strong genetic evidence. Use them as reference points when
 
 ## Your task (35 minutes)
 
-You are given a list of traits for humans (below). In small groups:
+You are given a short list of eight human traits (below). They were chosen to cover the whole range, from traits that are probably drifting, through traits with little heritable variation, to traits under strong selection in some environments but not others. In small groups:
 
 1. Write the traits on PostIt notes, and read the evidence cards above (5 minutes).
 2. Discuss and categorise the traits based on the strength of natural selection in foraging (hunter-gatherer) societies, like those in which most of human evolution took place (10 minutes).
@@ -78,29 +92,19 @@ For steps 2 and 3, order the traits from those likely influenced by **GENETIC DR
 # Traits and their descriptions
 traits <- data.frame(
   Trait = c(
-    "Metabolic efficiency", "Amount of body hair", "Singing ability",
-    "Intelligence", "Eye colour", "Earwax type", "Sperm motility",
-    "Muscle strength", "Face symmetry", "Running speed", "Height",
+    "Metabolic efficiency", "Eyesight acuity", "Height",
     "Birth canal (pelvic) shape", "Resistance to bubonic plague",
-    "Sense of smell", "Resistance to common cold", "Eyesight acuity"
+    "Eye colour", "Earwax type", "Face symmetry"
   ),
   Description = c(
     "How effectively your body converts food into energy.",
-    "The density and length of hair covering your body.",
-    "Skill and aptitude for musical vocalisation.",
-    "Cognitive abilities including problem solving and learning (read the note below).",
-    "The colour of the iris (brown, green, blue and so on).",
-    "Wet or dry earwax (see the evidence cards).",
-    "The movement and swimming of sperm.",
-    "Physical power and force exerted by muscles.",
-    "The balance and proportionality of facial features.",
-    "How fast an individual can run.",
+    "Sharpness of vision.",
     "Physical stature, from base to top.",
     "The shape of the bony opening through which a baby is born.",
     "Immunity or resilience against bubonic plague.",
-    "The ability to detect and identify odours.",
-    "Immunity or resilience against the common cold.",
-    "Sharpness of vision."
+    "The colour of the iris (brown, green, blue and so on).",
+    "Wet or dry earwax (see the evidence cards).",
+    "The balance and proportionality of facial features."
   )
 )
 
@@ -108,10 +112,6 @@ traits <- data.frame(
 # book, and long descriptions wrap in the PDF
 knitr::kable(traits, format = "pipe")
 ```
-
-::: {.do-something}
-**A note on the intelligence trait.** Discuss only how selection might act on differences *between individuals within* a population. Do not compare or rank human populations. A trait can be highly heritable within each of two groups, and yet the difference between the groups can be entirely environmental: heritability measured within a group says nothing about the causes of differences between groups (Neal, "Polygenic Inheritance and Quantitative Genetics", and the lecture on polygenic inheritance and quantitative genetics). The history of eugenics, which tried to "improve" human populations by stopping some people from having children, shows why this matters. It was ethically indefensible and, as the lecture on haploid and zygotic selection shows, genetically ineffective.
-:::
 
 ## Discussion (10 minutes)
 

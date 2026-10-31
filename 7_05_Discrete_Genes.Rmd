@@ -2,13 +2,16 @@
 
 ## Background
 
-This activity uses a fast classroom simulation to show how many small genetic effects can generate a continuous, approximately normal trait distribution. It connects to the heritability workflow in `3_04_Heritability.Rmd`.
+This activity uses a fast classroom simulation to show how many small genetic effects, together with some environmental variation, can generate a continuous, approximately normal trait distribution. It connects to the heritability practical in Chapter \@ref(heritability-from-a-linear-regression).
+
+**Reading:** Neal, chapter *Polygenic Inheritance and Quantitative Genetics* (Nilsson-Ehle's wheat kernel colour example makes the same point).
 
 ::: {.do-something}
-Learning outcomes: 
+Learning outcomes:
 
-- Explain how additive genetic effects create continuous trait variation.
+- Explain how many genes with small additive effects create many trait classes, and how environmental variation blurs these classes into a continuous distribution.
 - Compare a classroom simulation with a simple R simulation.
+- Relate the simulation to the partition $V_P = V_G + V_E$ and to heritability.
 :::
 
 ## Worked example
@@ -17,7 +20,7 @@ Learning outcomes:
 
 - Baseline trait value: `35`
 - Number of genes: `25`
-- Each gene contributes `1` unit when ON
+- Each gene contributes `1` unit when ON, and each gene is ON with probability 0.5
 
 ### Steps
 
@@ -26,16 +29,20 @@ Learning outcomes:
 
 ### Output and interpretation
 
-Expected trait value is `35 + 12.5 = 47.5`. Individual values vary around this because each gene is ON or OFF stochastically.
+Expected trait value is `35 + 12.5 = 47.5`. Individual values vary around this because each gene is ON or OFF at random. The genetic variance is $25 \times 0.5 \times 0.5 = 6.25$ (the variance of a binomial distribution). Notice that, with genes alone, every trait value is a whole number: there are many classes (35 to 60), but they are still discrete.
 
 ## Your task
 
-Use the intuition exercise in `supplemental/Quantitative_Genetics/Continuous_Traits_From_Discrete_Genes.docx` and the spreadsheet in `supplemental/Quantitative_Genetics/Continuous_Traits_From_Discrete_Genes.xlsx`.
+You will need the instructions and the Excel spreadsheet (download them):
 
-1. In class, treat each student as a gene that can be ON (1) or OFF (0). Choose a baseline trait value of 35, and add 1 for each ON gene. Record the trait value for at least 30 individuals.
+- [Continuous_Traits_From_Discrete_Genes.docx](https://github.com/jonesor/BB512_Book/raw/master/supplemental/Quantitative_Genetics/Continuous_Traits_From_Discrete_Genes.docx) (instructions)
+- [Continuous_Traits_From_Discrete_Genes.xlsx](https://github.com/jonesor/BB512_Book/raw/master/supplemental/Quantitative_Genetics/Continuous_Traits_From_Discrete_Genes.xlsx) (spreadsheet: each time you press Enter, it re-randomises 25 ON/OFF genes and gives the trait value of a new individual)
+
+1. **Classroom simulation.** Each student is a gene. In each round, every student flips a coin: heads = ON (1), tails = OFF (0). Count the number of ONs in the class and add it to a baseline of 35. That is the trait value of one individual. Repeat for at least 30 rounds (30 individuals), and record each value. (Alternatively, use the spreadsheet to generate at least 30 individuals.)
 2. Plot a quick histogram of the observed trait values. Describe the shape.
-3. Now simulate the same process in R for 100 individuals and 25 genes. Compare your histogram to the classroom version.
-4. Relate the outcome to the concept of additive genetic variance in `3_04_Heritability.Rmd`.
+3. Now simulate the same process in R for 100 individuals and 25 genes (first chunk below). Compare your histogram with the classroom version.
+4. Real traits are also affected by the environment (food, temperature, chance events during development). Add a small random environmental effect to each individual (second chunk below) and compare the two histograms.
+5. Relate the outcome to the concepts of genetic and environmental variance in Chapter \@ref(heritability-from-a-linear-regression).
 
 ```{r discrete-genes-seed, include = FALSE}
 set.seed(123)
@@ -49,10 +56,29 @@ n_individuals <- 100
 gene_on <- rbinom(n_individuals, size = n_genes, prob = 0.5)
 trait_value <- baseline + gene_on
 
-hist(trait_value, breaks = 12, col = "gray80", main = "Trait values", xlab = "Trait")
+hist(trait_value, breaks = seq(min(trait_value) - 0.5, max(trait_value) + 0.5, 1),
+     col = "gray80", main = "Genes only", xlab = "Trait")
 ```
+
+Now add an environmental effect, drawn from a normal distribution with mean 0 and standard deviation 1.5 (so the environmental variance, $V_E$, is $1.5^2 = 2.25$):
+
+```{r discrete-genes-env, echo = TRUE}
+environment_effect <- rnorm(n_individuals, mean = 0, sd = 1.5)
+trait_value_env <- trait_value + environment_effect
+
+hist(trait_value_env, breaks = 15, col = "gray80",
+     main = "Genes + environment", xlab = "Trait")
+
+var(trait_value)       # genetic variance (expected 6.25)
+var(trait_value_env)   # phenotypic variance, V_P = V_G + V_E (expected 8.5)
+```
+
+* Are the trait values in the second histogram still whole numbers? Why does the environment make the distribution continuous?
+* In this model all the genetic variance is additive. What is the expected heritability, $h^2 = V_A/V_P$? (Use the expected variances: 6.25 and 8.5.)
+* What happens to the heritability if you increase the standard deviation of the environmental effect to 4?
 
 ## Takeaways
 
-- Many small additive effects naturally yield a continuous distribution.
+- Many genes with small additive effects produce many trait classes and a roughly bell-shaped distribution; environmental variation blurs the classes into a continuous distribution. (Normality is an approximation, not a law.)
+- Phenotypic variance is the sum of genetic and environmental variance ($V_P = V_G + V_E$), so the same genes give a lower heritability in a more variable environment.
 - Random genetic variation produces a spread of trait values even with identical environments.

@@ -2,9 +2,11 @@
 
 ## Background
 
-Population growth estimates depend on when the census is taken relative to reproduction. A pre-breeding census counts individuals before reproduction; a post-breeding census counts them after reproduction. This changes how survival and fecundity are represented in the projection matrix, even if the underlying biology is the same.
+Population growth estimates depend on when the census is taken relative to reproduction. A pre-breeding census counts individuals just before reproduction; a post-breeding census counts them just after reproduction. This changes how survival and fertility are represented in the projection matrix, even if the underlying biology is the same.
 
-Provided the conversion between the two census types is done correctly, the population growth rate ($\lambda$) they produce is identical — census timing is just a bookkeeping convention, not a biological difference. However, it is easy to get the conversion wrong, and doing so *does* change your estimate of $\lambda$. This chapter shows both: a correct conversion (same $\lambda$), and a common mistake (different $\lambda$).
+Provided the conversion between the two census types is done correctly, the population growth rate ($\lambda$) they produce is identical: census timing is just a bookkeeping convention, not a biological difference. However, it is easy to get the conversion wrong, and doing so *does* change your estimate of $\lambda$. This chapter shows both: a correct conversion (same $\lambda$), and a common mistake (different $\lambda$).
+
+The background reading is the chapter *Growth of Age-Structured and Stage-Structured Populations* in Neal, which builds a Leslie matrix for a post-breeding census. This chapter follows on from the fecundity box in "Matrix population modelling".
 
 ## Learning outcomes
 
@@ -14,14 +16,40 @@ Learning outcomes:
 - Explain the difference between pre-breeding and post-breeding census models.
 - Convert a post-breeding matrix to a pre-breeding matrix.
 - Recognise that a correct conversion leaves $\lambda$ unchanged, and explain why.
-- Identify how a mis-specified survival or fecundity term changes the resulting $\lambda$ estimate.
+- Identify how a mis-specified survival or fertility term changes the resulting $\lambda$ estimate.
 :::
 
 ## Worked example
 
-### Inputs
+### The life history
 
-We start with a **post-breeding census** matrix. In a post-breeding census, individuals are counted right after breeding, so the fecundity term for a stage is simply its fecundity scaled by *that stage's own* survival through the year (it has to survive the year in order to be alive, and to breed, at the moment of census).
+We use a simple bird-like life history, with the same notation as in the life tables practical. Individuals breed for the first time at age 2, breed again at age 3, and none survive beyond age 3. We follow females only, so $m_x$ counts daughters.
+
+| Parameter | Value | Meaning |
+|---|---|---|
+| $p_0$ | 0.2 | Survival from birth (age 0) to age 1 (first-year survival) |
+| $p_1$ | 0.9 | Survival from age 1 to age 2 |
+| $p_2$ | 0.6 | Survival from age 2 to age 3 |
+| $m_1$ | 0 | Daughters per female aged 1 (age-1 birds do not breed) |
+| $m_2$ | 3.0 | Daughters per female aged 2 |
+| $m_3$ | 6.0 | Daughters per female aged 3 |
+
+Breeding happens once a year, in a short breeding season (a "birth pulse"). The only question is whether we count the population just after or just before that breeding season. Each choice gives a different set of age classes:
+
+| | Post-breeding census (`A1`) | Pre-breeding census (`A2`) |
+|---|---|---|
+| When we count | Just **after** breeding: this year's newborns are included | Just **before** breeding: this year's newborns are not born yet |
+| Age classes in the matrix | Ages 0, 1, 2 | Ages 1, 2, 3 |
+| Survival arrows (sub-diagonal) | Age 0 → 1 ($p_0$), age 1 → 2 ($p_1$) | Age 1 → 2 ($p_1$), age 2 → 3 ($p_2$) |
+| Fertility arrows (top row) | From age 1: $p_1 m_2$; from age 2: $p_2 m_3$ | From age 2: $m_2 p_0$; from age 3: $m_3 p_0$ |
+| Whose survival is in the fertility | The **parent's**: it must survive the year and then breed at the next breeding season | The **newborns'**: they must survive from birth to the next census ($p_0$) |
+| Life cycle | 0 → 1 → 2, with fertility arrows from 1 and 2 back to 0 | 1 → 2 → 3, with fertility arrows from 2 and 3 back to 1 |
+
+Notice that in the post-breeding census the oldest class is age 2: those individuals survive (with $p_2$), breed at age 3 just before the next census, and then die, so they appear only through their fertility. In the pre-breeding census the youngest class is age 1: newborns are never counted at age 0.
+
+### Post-breeding census
+
+We start with the **post-breeding census** matrix. Individuals are counted right after breeding, so the fertility of an individual counted at age $x$ is $p_x m_{x+1}$: it must survive the year ($p_x$), and then breed at age $x+1$, just before the next census, where its newborns are counted at age 0. For example, a bird counted at age 1 contributes $p_1 m_2 = 0.9 \times 3 = 2.7$ newborns to next year's count.
 
 ```{r prepostbreeding, echo = TRUE}
 p0 <- 0.2
@@ -33,42 +61,60 @@ m3 <- 6.0
 A1 <- matrix(c(0.0, m2 * p1, m3 * p2,
                p0, 0.0, 0.0,
                0.0,p1,0), byrow = TRUE, nrow = 3)
-
+A1
 ```
 
-### Steps
+### Pre-breeding census
 
-1. Define survival and fecundity values.
-2. Build the projection matrix for one annual time step.
-3. Use the matrix for projection and comparison tasks below.
+Now let's correctly convert this to a **pre-breeding census** matrix. Individuals are counted just *before* breeding, so two things change:
 
-### Output and interpretation
-
-The resulting matrix encodes the post-breeding census assumptions for transitions and fecundity over one year.
-
-Now let's correctly convert this to a **pre-breeding census** matrix. In a pre-breeding census, individuals are counted just *before* breeding, so two things change:
-
-- Survival transitions shift by one stage, because an individual now has to survive through the year *before* being counted in the next stage at the census.
-- Crucially, the fecundity term is no longer scaled by the *parent's* survival (the parent doesn't need to survive to be counted — the census happens before it would breed again). Instead, it is scaled by $p_0$, the survival of the *newborn offspring* through to the pre-breeding census.
+- The age classes are now ages 1, 2 and 3, so the survival arrows are the survival from age 1 to 2 ($p_1$) and from age 2 to 3 ($p_2$). First-year survival, $p_0$, is no longer on the sub-diagonal.
+- The fertility term is no longer scaled by the *parent's* survival. A parent counted at age $x$ is about to breed, so it is alive at breeding by construction (its survival up to this point is already in the sub-diagonal). What must be added instead is the survival of its *newborns* from birth to the next census, $p_0$. So the fertility of an individual counted at age $x$ is $m_x p_0$.
 
 ```{r postpreconversion, echo = TRUE}
 A2 <- matrix(c(0.0, m2 * p0, m3 * p0,
                p1, 0.0, 0.0,
                0.0,p2,0), byrow = TRUE, nrow = 3)
+A2
 ```
 
-Compare population growth rates. This uses the `eigs` function from the `popdemo` R package.
+Either way, first-year survival $p_0$ appears once in every route from birth to reproduction. In `A1` it is on the sub-diagonal; in `A2` it is inside the fertilities.
+
+### Comparing the two
+
+Compare population growth rates. This uses the `eigs` function from the `popdemo` R package (install it with `install.packages("popdemo")` if you have not already done so in "Matrix population modelling").
 
 ```{r comparepgr, echo = TRUE}
 (popdemo::eigs(A1, what = "lambda"))
 (popdemo::eigs(A2, what = "lambda"))
 ```
 
-Notice that $\lambda$ is (to rounding error) identical for `A1` and `A2`. This is not a coincidence: when the conversion between census types is done consistently, it only changes *how* the same underlying survival and reproduction are represented in the matrix — it does not change the biology, so it cannot change the population's actual growth rate.
+Notice that $\lambda$ is exactly identical for `A1` and `A2`. This is not a coincidence or a rounding effect. Both matrices have the same characteristic equation,
+
+$$
+\lambda^3 = p_0 p_1 m_2 \lambda + p_0 p_1 p_2 m_3,
+$$
+
+so they must have the same $\lambda$. Each term is one route through the life cycle: survive to age 2 and breed ($p_0 p_1 m_2$), or survive to age 3 and breed ($p_0 p_1 p_2 m_3$). The conversion only changes *how* the same survival and reproduction are arranged in the matrix; it does not change the biology, so it cannot change the population's growth rate.
+
+The net reproductive rate, $R_0 = \sum l_x m_x$, is also identical, because it is calculated from the same life table ($l_1 = p_0$, $l_2 = p_0 p_1$, $l_3 = p_0 p_1 p_2$):
+
+```{r prepostR0, echo = TRUE}
+l2 <- p0 * p1
+l3 <- p0 * p1 * p2
+(R0 <- l2 * m2 + l3 * m3)
+```
+
+Not everything is invariant, though. Because the two matrices count different age classes, the stable age distribution and the reproductive values are different: for example, in a post-breeding census most of the population is newborns (age 0), whereas a pre-breeding census never counts newborns at all. The sensitivities of $\lambda$ to individual matrix elements also differ. Only $\lambda$ (and quantities derived from it) and $R_0$ are guaranteed to be the same.
+
+```{r prepoststable, echo = TRUE}
+popdemo::eigs(A1, what = "ss") # stable age distribution, ages 0, 1, 2
+popdemo::eigs(A2, what = "ss") # stable age distribution, ages 1, 2, 3
+```
 
 ## A common mistake
 
-It is easy to get the pre-breeding conversion partly right and partly wrong. A very common error is to correctly shift the *survival* transitions to the next stage, but forget to also change the fecundity term — i.e. to keep scaling fecundity by the parent's own survival ($p_1$, $p_2$) instead of switching to the offspring survival ($p_0$):
+It is easy to get the pre-breeding conversion partly right and partly wrong. A very common error is to correctly shift the *survival* transitions to the new age classes, but forget to also change the fertility term, i.e. to keep scaling fertility by the parent's own survival ($p_1$, $p_2$) instead of switching to the newborns' survival ($p_0$):
 
 ```{r commonmistake, echo = TRUE}
 A3 <- matrix(c(0.0, m2 * p1, m3 * p2,
@@ -78,16 +124,17 @@ A3 <- matrix(c(0.0, m2 * p1, m3 * p2,
 (popdemo::eigs(A3, what = "lambda"))
 ```
 
-This looks like a small, easy-to-miss slip — only the fecundity row is "wrong", and the matrix still looks like a sensible pre-breeding matrix. But it produces a substantially different (and incorrect) estimate of $\lambda$, compared to the correctly-converted `A2`.
+This looks like a small, easy-to-miss slip: only the fertility row is "wrong", and the matrix still looks like a sensible pre-breeding matrix. But it produces a substantially different (and incorrect) estimate of $\lambda$, compared to the correctly converted `A2`.
 
 ## Your task
 
-- Confirm that `A1` and `A2` give (to rounding error) the same $\lambda$. Explain, in your own words, why a *correct* change of census timing should not change the underlying population growth rate.
-- Compare `A2` (correct pre-breeding matrix) and `A3` (the common mistake). Which specific matrix entries differ, and why does that particular mistake push $\lambda$ so far from the correct value?
-- Modify one survival probability (e.g., `p1`) and re-build `A1`, `A2`, and `A3`. Does the correct conversion (`A1` vs `A2`) still agree? Does the size of the error from the mistake (`A2` vs `A3`) grow, shrink, or stay about the same?
+- Confirm that `A1` and `A2` give exactly the same $\lambda$. Explain, in your own words, why a *correct* change of census timing should not change the underlying population growth rate.
+- Compare `A2` (correct pre-breeding matrix) and `A3` (the common mistake). Which specific matrix entries differ, and why does that particular mistake push $\lambda$ so far from the correct value? (Hint: look for $p_0$ in each matrix.)
+- Modify one survival probability (e.g. `p1`) and re-build `A1`, `A2` and `A3`. Does the correct conversion (`A1` vs `A2`) still agree? Does the size of the error from the mistake (`A2` vs `A3`) grow, shrink, or stay about the same? Now try changing `p0` instead. What do you notice?
 
 ## Takeaways
 
-- Census timing (pre- vs. post-breeding) changes how fecundity and survival are encoded in the matrix, but a *correctly done* conversion between the two gives the same $\lambda$ — timing alone is a bookkeeping choice, not a biological difference.
-- However, small errors in how survival or fecundity terms are calculated for a given census type are easy to make and can substantially bias your $\lambda$ estimate.
-- The general lesson extends beyond census timing: the specific method used to calculate stage-specific survival and reproduction values for a matrix model matters. Applying the wrong calculation will bias your estimates, even if the matrix "looks" reasonable.
+- Census timing (pre- vs post-breeding) changes which age classes are counted, and how fertility and survival are encoded in the matrix. A *correctly done* conversion between the two gives exactly the same $\lambda$ and $R_0$: timing alone is a bookkeeping choice, not a biological difference.
+- In a post-breeding census the fertility includes the parent's survival over the year ($p_x m_{x+1}$); in a pre-breeding census it includes the newborns' first-year survival ($m_x p_0$).
+- The stable age distribution, reproductive values and sensitivities do depend on census timing, so always say which census a matrix uses.
+- Small errors in how survival or fertility terms are calculated for a given census type are easy to make and can substantially bias your $\lambda$ estimate. The general lesson extends beyond census timing: applying the wrong calculation will bias your estimates, even if the matrix "looks" reasonable.

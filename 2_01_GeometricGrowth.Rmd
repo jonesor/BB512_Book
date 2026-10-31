@@ -10,13 +10,17 @@ The key quantities involved in this model are as follows, although it's importan
 
 
 - $N_t$ = population size at time $t$; and $N_0$, $N_1$ is population size at time 0, time 1 etc.
-- $\lambda$ = population growth (multiplication) rate over a single time step, $\Delta t$. This is sometimes called the *finite rate of increase*.
-- $R_m$ = population rate of increase over a single time step, $\Delta t$. This is sometimes called the *discrete growth factor*. 
-- $r_m$ = individual rate of increase over an infinitesimally small time step. This is sometimes called the *instantaneous rate of increase* or *intrinsic rate of increase*
+- $\lambda$ = population multiplication rate over a single time step, $\Delta t$. This is sometimes called the *finite rate of increase*.
+- $R_m$ = per capita rate of increase per time step, $\Delta t$ (the change in $N$ per individual over one time step).
+- $r_m$ = per capita rate of increase over an infinitesimally small time step. This is called the *intrinsic rate of increase* (or *instantaneous rate of increase*), and it equals the per capita birth rate minus the per capita death rate, $r_m = b - d$.
 
 $R_m$ is related to $\lambda$ such that $R_m = \lambda - 1$ (and $\lambda = R_m + 1$).
 
-The relevant equations can be seen in Box 4.1 of the Neal textbook but here we will use the following:
+$r_m$ is related to $\lambda$ such that $\lambda = e^{r_m}$, so $r_m = \ln \lambda$. This is why the slope of $\ln(N_t)$ against $t$ (see below) is $r_m = \ln \lambda$. It also gives the *doubling time*, the time a growing population takes to double in size: $t_d = \ln 2 / r_m = \ln 2 / \ln \lambda$.
+
+These symbols are summarised in the notation box in the [Part 2 introduction](#part-2), and we use them throughout Part 2.
+
+The relevant equations are in the Neal textbook chapter *Exponential Growth*, but here we will use the following:
 
 $N_{t+1} = N_t + (R_m N_t)$, 
 
@@ -28,11 +32,11 @@ $N_{t+1} = N_t (1 + R_m)$ and, equivalently, $N_{t+1} = N_t \lambda$.
 ::: {.do-something}
 Learning outcomes: 
 
-- Competence in using Excel formulae for mathematical modeling.
+- Competence in using Excel formulae for mathematical modelling.
 - Understanding the parameters of exponential/geometric growth.
 - Competence in using mathematical models in Excel to strengthen own understanding of biological processes.
 - Awareness of rearranging of mathematical formulae to produce different forms of models.
-- Knowing that the slope of the $ln(N_t)$ vs. $t$ relationship can tell you about population growth rate (it is $ln(\lambda)$).
+- Knowing that the slope of the $ln(N_t)$ vs. $t$ relationship can tell you about population growth rate (it is $\ln(\lambda)$).
 :::
 
 ## Worked example
@@ -52,26 +56,29 @@ Learning outcomes:
 
 $N_5 = 16.1051$
 
-Plotting $N_t$ against $t$ gives a curve, while plotting $ln(N_t)$ against $t$ gives a straight line with slope $ln(\lambda)$.
+Plotting $N_t$ against $t$ gives a curve, while plotting $\ln(N_t)$ against $t$ gives a straight line with slope $\ln(\lambda) = r_m$.
 
 ## Your task
 
 Download and open the Excel file [`GeometricGrowth.xlsx`](https://www.dropbox.com/s/xxx05sckvop5i52/GeometricGrowth.xlsx?dl=1).
+
+Danish Excel: `LN` is the same, `EXP` is `EKSP` and `SLOPE` is `HÆLDNING`; decimals use a comma (`0,0953`) and arguments are separated by `;` rather than `,`.
 
 1.	Starting with an initial population size (`N`) of 10 [at time (`t`) =0], and with a $\lambda$ of `1.1`, use Excel’s equation functions to work out the population size from `t=1` through to `t=20`. In the template, $\lambda$ is in cell B8 and $N_0$ in B10, so the formula for $t = 1$ (cell B11) is `=B10*$B$8`, filled down.
 2.	Use charts to plot the results. On the horizontal axis (x-axis) you should have time, and on the vertical axis (y-axis) you should have population size (`N`). A scatterplot would be best for this.
 3.	Fill in the `logN` column with the natural logarithm of population size. The Excel formula for natural log is `LN()` (the same in Danish Excel), e.g. `=LN(B10)` in cell C10, filled down the column. Then make another scatterplot with time on the x-axis and `logN` on the y-axis.
 4.	What do you notice about the curves in these different versions of plotting the same data?
 5.	Try altering the population growth rate. Try values of 0.8, 1 and 1.2 for example. What happens to the curves? What is special about the value of 1?
-6. Add a linear trendline with its equation to the `logN` plot from step 3. Identify the slope. The slope is $ln(\lambda)$, so you can work out $\lambda$ by "reversing" the $ln$ by taking its exponential, e.g. `=EXP(0.0953)` in Excel (`=EKSP(0,0953)` in Danish Excel).
+6. Add a linear trendline with its equation to the `logN` plot from step 3. Identify the slope. The slope is $\ln(\lambda) = r_m$, so you can work out $\lambda$ by "reversing" the $\ln$ by taking its exponential ($\lambda = e^{r_m}$), e.g. `=EXP(0.0953)` in Excel (`=EKSP(0,0953)` in Danish Excel).
 
-    Note: do not use Excel's "logarithmic scale" axis option for this step. That option only changes how the axis is drawn (and uses base-10 logs); a trendline added to that chart is still fitted to the untransformed N, so its slope is not $ln(\lambda)$.
+    Note: do not use Excel's "logarithmic scale" axis option for this step. That option only changes how the axis is drawn (and uses base-10 logs); a trendline added to that chart is still fitted to the untransformed N, so its slope is not $\ln(\lambda)$.
+7. With $\lambda = 1.1$, read off your chart roughly how many time steps the population takes to double (from 10 to 20, and from 20 to 40). Check your answer with the doubling time, $t_d = \ln 2 / \ln \lambda$. Does it depend on the starting population size?
 
 
 Now reset the population growth rate to 1.1. Now let's see if the mathematical rules of so-called “geometric series” work...
 
-1.	If the population starts at t=0, $N_t = N_0 \lambda^t$ . In words, the population at time $t$ is the initial population size multiplied by the finite population growth rate raised to the power of $t$.
-2.	Your instructor will explain how this works on the blackboard.
+1.	If the population starts at t=0, $N_t = N_0 \lambda^t$ . In words, the population at time $t$ is the initial population size multiplied by the multiplication rate ($\lambda$) raised to the power of $t$.
+2.	This works because each time step multiplies by $\lambda$ again: $N_1 = \lambda N_0$, $N_2 = \lambda N_1 = \lambda^2 N_0$, $N_3 = \lambda^3 N_0$, and so on.
 3.	Following these rules, the population size at time $t=5$ ($N_5$), is $10 * 1.1^5$, or $10* 1.61051$, which is $16.1051$. Check that this matches what you got earlier.
 4.	This approach can be really useful because it can save lots of time. For example, what is the population after 900 generations? It would be tedious to work this out using the first, "simple" approach, but very easy if you use the geometric series rules and have access to a calculator/computer.
 
@@ -81,9 +88,10 @@ Now reset the population growth rate to 1.1. Now let's see if the mathematical r
 - What makes the geometric growth model "unrealistic" for real-world scenarios? Explain your reasoning.
 - Give an example of real-world populations where geometric growth might be a suitable model. Explain your reasoning.
 - Suppose a population's size decreases by 25% every year due to environmental factors. If there are initially 800 individuals, determine the population size after 4 years.
+- A population has $\lambda = 1.1$ per year. What is $\lambda$ per half-year? (Hint: convert to $r_m$, which scales with time, then convert back.)
 
 ## Takeaways
 
 - Geometric growth assumes discrete time steps and a constant growth multiplier $\lambda$.
-- Log-transforming $N_t$ linearizes the growth pattern and reveals $ln(\lambda)$ as the slope.
+- Log-transforming $N_t$ linearises the growth pattern and reveals $\ln(\lambda) = r_m$ as the slope.
 - The model is useful for short-term or early-phase growth but ignores density dependence.

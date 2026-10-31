@@ -19,17 +19,19 @@ Where:
 
 In this equation, the term $\left(1 - \frac{N_t}{K}\right)$ slows population growth as the population size $N_t$ approaches $K$. If $N_t = K$, the population stops growing.
 
-This is the discrete-time form of the logistic model used by Neal. Here $r_m$ is applied once per time step, so when the population is very small (and $\left(1 - \frac{N_t}{K}\right) \approx 1$) it grows by a factor of about $1 + r_m$ each time step. If you remember from earlier exercises that $\lambda = e^{r_m}$, note that this model treats $\lambda$ as approximately $1 + r_m$ instead. For example, with $r_m = 0.8$, the model gives $1.8$ where $e^{0.8} \approx 2.23$. The approximation is good when $r_m$ is small and poor when it is large. Stepping forward a whole time unit at a time is also what allows the overshoot, oscillations and chaos you will explore below. The continuous-time logistic model always approaches $K$ smoothly.
+The quantity $r = r_m\left(1 - \frac{N_t}{K}\right)$ is the *realised* per capita growth rate (Neal, *Logistic Growth*): the growth rate per individual actually achieved at population size $N_t$. It equals $r_m$ when the population is very small and falls to 0 at $K$. In the spreadsheet it is the column "Per capita growth rate (r)", which you will plot in Graph 2. (The symbols are summarised in the notation box in the [Part 2 introduction](#part-2).)
 
-As growth rates increase beyond a certain point, the population can exhibit more complex behaviours. At higher growth rates, populations may overshoot the carrying capacity, leading to oscillations as they fluctuate around it. In some cases, the population may show what’s called deterministic chaos. This means that while the population fluctuates unpredictably, the system itself is not random — small changes in initial conditions or growth rates can lead to vastly different outcomes.
+This is the discrete-time form of the logistic model used by Neal. Here $r_m$ is applied once per time step, so when the population is very small (and $\left(1 - \frac{N_t}{K}\right) \approx 1$) it grows by a factor of about $1 + r_m$ each time step. If you remember from earlier exercises that $\lambda = e^{r_m}$, note that this model treats $\lambda$ as approximately $1 + r_m$ instead. For example, with $r_m = 0.8$, the model gives $1.8$ where $e^{0.8} \approx 2.23$. The approximation is good when $r_m$ is small and poor when it is large (the exponential growth lecture showed the same thing: $1.20$ vs. $e^{0.2} = 1.22$ for $r_m = 0.2$). Strictly, a rate applied once per time step is what Neal calls $R_m$ in the geometric model ($\lambda = 1 + R_m$). Neal (and we) keep the symbol $r_m$ in the discrete logistic, but remember that here it is applied once per step. Stepping forward a whole time unit at a time is also what allows the overshoot, oscillations and chaos you will explore below. The continuous-time logistic model always approaches $K$ smoothly.
 
-This Excel-based exercise will help you explore how changes in the growth rate and carrying capacity affect population dynamics. Though simple, the logistic model provides valuable insights into how populations stabilize, fluctuate, and respond to environmental limits.
+As growth rates increase beyond a certain point, the population can exhibit more complex behaviours. At higher growth rates, populations may overshoot the carrying capacity, leading to oscillations as they fluctuate around it. In some cases, the population may show what’s called deterministic chaos. This means that while the population fluctuates unpredictably, the system itself is not random: small changes in initial conditions or growth rates can lead to vastly different outcomes.
+
+This Excel-based exercise will help you explore how changes in the growth rate and carrying capacity affect population dynamics. Though simple, the logistic model provides valuable insights into how populations stabilise, fluctuate, and respond to environmental limits.
 
 
 ::: {.do-something}
 Learning outcomes: 
 
-- Increased competence in using Excel formulae for mathematical modeling.
+- Increased competence in using Excel formulae for mathematical modelling.
 - Understanding the parameters of the logistic population growth model.
 - Understanding how strikingly different types of population dynamics can result from the same (logistic) model simply by varying the population growth rate parameter.
 - Understanding the concept of *deterministic chaos* and how it is different from randomness.
@@ -73,7 +75,7 @@ In this exercise, you will explore how changes in key parameters affect populati
    - `r_m`: The maximum per capita population growth rate (default = 0.8).
      - If $r_m > 0$, the population grows.
      - If $r_m < 0$, the population shrinks.
-     - Biologically, population size cannot fall below zero (but see the footnote in Step 5 — the spreadsheet does not enforce this).
+     - Biologically, population size cannot fall below zero (but see the footnote in Step 5: the spreadsheet does not enforce this).
    - `K`: The carrying capacity of the population (default = 200).
 
 4. **Explore the Model**  
@@ -120,24 +122,25 @@ In this exercise, you will explore how changes in key parameters affect populati
     
     <!-- The dynamics show damped oscillations, where the population overshoots and then oscillates before eventually settling close to `K`. -->
 
-- **Step 5**: Experiment with higher values for `r_m` (e.g., 2.0, 2.8, 2.9, 3.0).  
+- **Step 5**: Experiment with higher values for `r_m` (e.g., 2.0, 2.4, 2.5, 2.8, 2.9, 3.0, 3.1).  
 
   - How do the population dynamics change as `r_m` increases?  
     
     <!-- As `r_m` increases, the nature of the oscillations changes in a predictable way:
     - r_m < 1: the population approaches K smoothly.
     - 1 < r_m < 2: damped oscillations of decreasing amplitude around K.
-    - 2 < r_m < 2.57: stable, cyclic oscillations around K (2-point, 4-point... stable limit cycles).
-    - r_m > 2.57: chaotic fluctuations.
-    - r_m too high (around 3 and above): the population fluctuates and crashes (to extinction, or to negative values in the spreadsheet). -->
+    - 2 < r_m < 2.449: a stable 2-point limit cycle around K (e.g. 2.4).
+    - 2.449 < r_m < 2.57: 4-point, 8-point ... limit cycles (e.g. 2.5).
+    - r_m > 2.57: chaotic fluctuations (with narrow windows of regular cycles, e.g. a 3-point cycle near 2.83).
+    - r_m above 3 (e.g. 3.1): the population fluctuates and crashes (to extinction, or to negative values in the spreadsheet). At exactly 3.0 it stays positive and chaotic. -->
 
   - Is there a limit to how high `r_m` can be?
 
-    <!-- Yes. At very high r_m the population overshoots so far that the next time step gives N <= 0, i.e. extinction. -->
+    <!-- Yes. Above r_m = 3 (e.g. 3.1) the population overshoots so far that a later time step gives N <= 0, i.e. extinction. -->
 
-  - What happens when `r_m` is 2.8 or 3.0^[The behaviour where `r_m` values above 3 cause the population to become very negative, is a mathematical artefact caused by numerical instability in the discrete-time logistic growth model. When the growth rate is too high, the population can overshoot its carrying capacity, and the formula's negative feedback term can drive the population to unrealistic, negative values. This issue arises because the model doesn't impose biological constraints, such as preventing population sizes from falling below zero. In real biological systems, such negative values would not occur.]? Are the dynamics predictable or chaotic?  
+  - What happens when `r_m` is 2.8, 3.0 or 3.1^[The behaviour where `r_m` values above 3 cause the population to become very negative, is a mathematical artefact caused by numerical instability in the discrete-time logistic growth model. When the growth rate is too high, the population can overshoot its carrying capacity, and the formula's negative feedback term can drive the population to unrealistic, negative values. This issue arises because the model doesn't impose biological constraints, such as preventing population sizes from falling below zero. In real biological systems, such negative values would not occur.]? Are the dynamics predictable or chaotic?  
     
-    <!-- For `r_m` around 2.8, the population enters chaotic oscillations. The population fluctuates unpredictably around `K` with no clear pattern. -->
+    <!-- For `r_m` of 2.8 or 3.0, the population fluctuates chaotically around `K` with no clear pattern. At 3.1 it overshoots so far that it becomes negative within a few time steps. -->
 
 
 - **Step 6**: Compare the population trajectory for populations with `r_m` = 2.8 and `r_m` = 2.81, and then fix `r_m` at 2.8 but vary the initial population size by a small amount.  
@@ -150,7 +153,7 @@ In this exercise, you will explore how changes in key parameters affect populati
     <!-- They would be very difficult to predict because of the chaotic dynamics. Even tiny changes lead to unpredictable outcomes. -->
   - What kinds of species have high population growth rates like this? How might this relate to managing pest species or diseases?  
  
-    <!-- Species with high growth rates, like locusts or certain pathogens, can display chaotic or rapid fluctuations, making them difficult to manage. This unpredictability is a challenge for population managers or those controlling pests and diseases. -->
+    <!-- Species with high growth rates, such as outbreak insects (e.g. locusts, some forest moths), can display chaotic or rapid fluctuations, making them difficult to manage. This unpredictability is a challenge for population managers or those controlling pests and diseases. -->
 
 
 ### Graph 2: Per Capita Growth Rate vs. Population Size
@@ -199,7 +202,7 @@ These steps help you visualise how population size and per capita growth rate ar
 
 
 ::: {.do-something}
-These two graphs are different ways to visualize the same model. 
+These two graphs are different ways to visualise the same model. 
 
 It is important that you can make the connections between these graphs.
 
@@ -211,7 +214,7 @@ Some useful keywords:
 * Oscillation
 * Damped oscillation
 * Cycle/cyclic dynamics
-* Stable-limit cycle (2-point, 3-point limit cycle)
+* Stable-limit cycle (2-point, 4-point, 8-point ... limit cycles)
 * Chaos/Chaotic dynamics
 * Unpredictable/predictable
 
@@ -230,7 +233,7 @@ Some useful keywords:
 
 * In the logistic growth model, what factors can cause a population to overshoot its carrying capacity temporarily? How does the population respond to such overshooting?
     
-    <!-- Factors such as a high intrinsic growth rate ($r_m$) or a delay in density-dependent effects can cause overshooting. After overshooting, the population may oscillate around the carrying capacity before stabilizing, or in extreme cases, exhibit chaotic behaviour. -->
+    <!-- Factors such as a high intrinsic growth rate ($r_m$) or a delay in density-dependent effects can cause overshooting. After overshooting, the population may oscillate around the carrying capacity before stabilising, or in extreme cases, exhibit chaotic behaviour. -->
 
 * How can a ballpark knowledge of maximum per capita population growth rate ($r_m$) be useful to a population manager?
     
@@ -238,7 +241,7 @@ Some useful keywords:
 
 * What are the key assumptions of the logistic growth model, and how might these assumptions limit its real-world application?
     
-    <!-- The logistic model assumes that the carrying capacity ($K$) is constant, resources are evenly distributed, and environmental conditions do not change. In reality, carrying capacity can fluctuate due to factors like climate change, resource availability, or human impact, which may limit the model’s predictive accuracy in dynamic ecosystems. -->
+    <!-- The logistic model assumes that the carrying capacity ($K$) is constant, that density dependence is linear (per capita growth falls in a straight line from $r_m$ to 0 at $K$), that there is no time lag in the response to density, no age or stage structure, and a closed population (no immigration or emigration). In reality, carrying capacity can fluctuate due to factors like climate change, resource availability, or human impact, which may limit the model’s predictive accuracy in dynamic ecosystems. -->
 
 ## Optional: Do this in R.
 
@@ -252,11 +255,11 @@ K <- 1000   # carrying capacity
 N0 <- 10    # initial population size
 timesteps <- 50  # number of time steps
 
-# Initialize population vector
+# Initialise population vector
 population <- numeric(timesteps)
 population[1] <- N0
 
-# Initialize per capita growth rate vector
+# Initialise per capita growth rate vector
 # Length of one less than population, as it's based on changes
 per_capita_growth <- numeric(timesteps - 1)  
 
@@ -285,13 +288,13 @@ par(mfrow=c(1,2))
 # Plot 1: Population size through time
 plot(1:timesteps, population, type = "o", col = "blue", 
      xlab = "Time", ylab = "Population size",
-     main = "Population Size through Time (Logistic Growth Model)")
+     main = "N through time")
 
 # Plot 2: Per capita growth rate vs population size
 plot(population[1:(timesteps-1)], per_capita_growth, 
      type = "o", col = "red", 
      xlab = "Population Size", 
      ylab = "Per Capita Growth Rate",
-     main = "Per Capita Growth Rate vs Population Size")
+     main = "Per capita growth vs N")
 
 ```

@@ -5,5 +5,7 @@ This part introduces the core logic of natural selection using simple, concrete 
 By the end of Part 1, you should be able to:
 
 - Explain how selection can generate order from random variation.
-- Identify the roles of variation, heritability, and environment in adaptation.
+- Identify the four conditions for evolution by natural selection (individuals vary in a trait, they vary in reproductive success, the trait affects reproductive success, and the trait is inherited), and the role of the environment in adaptation.
 - Describe how selection pressures shape trait distributions over time.
+
+**Reading:** Neal, chapters *Darwin Questions the Fixity of Species*, *Darwin's Evolutionary Theories* and *Understanding Natural Selection*.

@@ -2,9 +2,9 @@
 
 ## Background
 
-Trade-offs are inherent compromises in biology, where allocating limited resources to one trait may come at the expense of another. Organisms face these trade-offs when making crucial life-history decisions. One classic example is the British ornithologist David Lack's clutch size trade-off, where bird species must balance between producing more eggs with reduced individual investment or fewer eggs with higher individual investment. In other words, although it may be beneficial to have many offspring, the survival of those offspring will decline if they cannot be cared for.
+Trade-offs are inherent compromises in biology, where allocating limited resources to one trait may come at the expense of another. Organisms face these trade-offs when making crucial life-history decisions. One classic example is the British ornithologist David Lack's clutch size trade-off. Parents can feed only so many chicks, so the more eggs a bird lays, the less food each chick gets and the lower its chance of surviving. Lack proposed that clutch size evolves to the number from which, on average, the most young survive. In other words, although it may be beneficial to have many offspring, the survival of those offspring will decline if they cannot be cared for.
 
-Understanding such trade-offs sheds light on the fascinating strategies that organisms employ to optimize their fitness and evolutionary success.
+Understanding such trade-offs sheds light on the fascinating strategies that organisms employ to optimise their fitness and evolutionary success. Further reading: Neal's chapter *Evolution of Life Histories*.
 
 
 ::: {.do-something}
@@ -54,6 +54,8 @@ What do you notice? What is the optimum number of eggs to lay?
 
 Advanced: What happens to the optimum as you change the relationship between clutch size and survival?
 
+Field observations of the big bird show that most females lay **3 eggs**. Keep this in mind for the questions below.
+
 ## Assumptions
 
 This simple model assumes that every egg hatches, that every chick in a nest has the same chance of surviving, that we count only one breeding season, and that laying and raising more eggs has no cost to the parents' own survival. Question 3 relaxes the last assumption.
@@ -61,7 +63,7 @@ This simple model assumes that every egg hatches, that every chick in a nest has
 
 ## Questions
 
-1. What is Lack's hypothesis? Does the big bird's optimum support it?
+1. What is Lack's hypothesis? Does the big bird's optimum support it, given that most big birds lay 3 eggs?
 2. In a good food year, each chick's survival probability in clutches of 5 or more eggs is 0.2 higher (for example, 0.50 becomes 0.70). Recalculate. What is the best clutch size now, and why?
 3. Raising chicks is costly for the parents. Suppose the probability that a parent survives to breed again next year is $0.8 - 0.08 \times \text{eggs}$ (so 0.72 with 1 egg, and 0.48 with 4 eggs). On average, a parent then breeds $1 / (1 - \text{parent survival})$ times in its life. Calculate the number of surviving chicks over a parent's whole life for each clutch size. Does the best clutch size change? What does this mean for Lack's hypothesis?
 4. (Discussion) Birds also trade off the number of eggs against the size of each egg. What would you need to add to this model to study that trade-off?

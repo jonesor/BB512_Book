@@ -4,12 +4,12 @@
 
 The logistic and exponential growth models are closely related and serve as fundamental tools in understanding population dynamics.
 
-- The **exponential (geometric)** growth model assumes that populations grow without any environmental constraints, leading to unlimited growth. 
+- The **exponential** growth model (continuous time; its discrete-time counterpart is *geometric* growth) assumes that populations grow without any environmental constraints, leading to unlimited growth. 
 - The **logistic** growth model, on the other hand, incorporates environmental limits, specifically the **carrying capacity** ($K$), which represents the maximum number of individuals the environment can support. 
 
 ### Linking Logistic and Exponential Growth Models
 
-The logistic growth model is represented by the following equation (Eqn. 5.2 in Neal):
+The logistic growth model is represented by the following equation (see the Neal textbook chapter *Logistic Growth*):
 
 $\frac{dN}{dt}=r_m N\left(1-\frac{N}{K}\right)$
 
@@ -27,18 +27,18 @@ which simplifies to
 
 $\frac{dN}{dt}= r_m N$
 
-This is the familiar **geometric (exponential) growth equation** (Eqn. 4.6 in Neal), which assumes unlimited resources and continuous population growth.
+This is the familiar **exponential growth equation** (Neal chapter *Exponential Growth*), which assumes unlimited resources and continuous population growth. (Its discrete-time counterpart, $N_{t+1} = \lambda N_t$, is called *geometric* growth.)
 
-The Excel workbook uses Neal's *discrete-time* versions of these models, in which the population is updated once per time step: $N_{t+1} = N_{t} + r_{m} N_{t}\left(1 - \frac{N_{t}}{K}\right)$ for logistic growth, and $N_{t+1} = N_{t} + r_{m} N_{t}$ for exponential growth. These use the same $r_m$ as the continuous equations, but apply it once per whole time step, so $dN/dt$ is approximated by the change in population size over one time step, $N_{t+1} - N_{t}$. The same simplification applies: setting $K = \infty$ turns the discrete logistic model into the discrete exponential model.
+The Excel workbook uses Neal's *discrete-time* versions of these models, in which the population is updated once per time step: $N_{t+1} = N_{t} + r_{m} N_{t}\left(1 - \frac{N_{t}}{K}\right)$ for logistic growth, and $N_{t+1} = N_{t} + r_{m} N_{t}$ for unlimited growth. The second is geometric growth with $\lambda = 1 + r_m$: here $r_m$ is playing the role of Neal's per-step rate $R_m$ (see the notation box in the [Part 2 introduction](#part-2)). These use the same $r_m$ as the continuous equations, but apply it once per whole time step, so $dN/dt$ is approximated by the change in population size over one time step, $N_{t+1} - N_{t}$. The same simplification applies: setting $K = \infty$ turns the discrete logistic model into the discrete (geometric) model.
 
-The discrete models are approximations of the continuous ones. For a small population, the discrete model multiplies the population by $1 + r_m$ each time step, whereas the continuous model gives $\lambda = e^{r_m}$ (e.g. $1.8$ vs. $2.23$ for $r_m = 0.8$). The approximation is good when $r_m$ is small and poor when it is large. Stepping forward a whole time unit at a time is what makes the overshoot, oscillations, cycles and chaos you will see in Task 1 possible. Because the population cannot "see" that it is approaching $K$ until the next time step, it can overshoot. The continuous logistic model never does this: it always approaches $K$ smoothly.
+The discrete models are approximations of the continuous ones. For a small population, the discrete model multiplies the population by $1 + r_m$ each time step, whereas the continuous model gives $\lambda = e^{r_m}$ (e.g. $1.8$ vs. $2.23$ for $r_m = 0.8$, or $1.20$ vs. $1.22$ for $r_m = 0.2$, as in the exponential growth lecture). The approximation is good when $r_m$ is small and poor when it is large. Stepping forward a whole time unit at a time is what makes the overshoot, oscillations, cycles and chaos you will see in Task 1 possible. Because the population cannot "see" that it is approaching $K$ until the next time step, it can overshoot. The continuous logistic model never does this: it always approaches $K$ smoothly.
 
 **Take-home Message: The logistic and exponential growth models are closely related. By setting $K = \infty$, we transition from the logistic model to the exponential model.**
 
 ::: {.do-something}
 Learning outcomes:
 
-- Increase competence in using Excel for mathematical modeling.
+- Increase competence in using Excel for mathematical modelling.
 - Understand the relationship between exponential and logistic growth models.
 - Learn how models can be adjusted to explore different biological phenomena.
 - Develop skills in visualising and interpreting model outputs from different perspectives.
@@ -86,7 +86,7 @@ Look at the `BasicLogistic` worksheet and work through the following tasks:
    
 2. Use the following terms to describe the dynamics you see: 
 
-   - **Oscillation**, **damped oscillation**, **stable cycle**, **2-point cycle**, **chaotic**, **unpredictable**, **predictable**.
+   - **Oscillation**, **damped oscillation**, **stable cycle**, **2-point cycle**, **4-point cycle**, **chaotic**, **unpredictable**, **predictable**.
 
 
 **Task 2: Per Capita Growth Rate vs. Population Size (Figure 2)**
@@ -105,35 +105,37 @@ Look at the `BasicLogistic` worksheet and work through the following tasks:
 
 **Task 3: Population Growth Rate vs. Population Size (Figure 3)**
 
-1. **Figure 3** shows the overall population growth rate ($dN/dt$) — the change in population size per unit time. Adjust the values for $r_m$ and $K$ and observe how **Figure 3** changes.
+1. **Figure 3** shows the overall population growth rate ($dN/dt$), the change in population size per unit time. Adjust the values for $r_m$ and $K$ and observe how **Figure 3** changes.
 
 2. Answer the following questions:
 
    - At what population sizes is the population growth rate 0 ($dN/dt = 0$)?
-   - At what population size is the growth rate maximized?
+   - At what population size is the growth rate maximised?
 
 
 **Task 4: Comparison with Exponential Growth**
 
 1. Now, consider the differences between **logistic growth** and **exponential growth**. How would Figures 1, 2, and 3 change when considering exponential growth?
 
-Sketch equivalent graphs for the exponential (geometric) growth model, including:
+Sketch equivalent graphs for the exponential growth model (unlimited growth, with no $K$), including:
 
    - **Fig 1**: Population size ($N$) over time ($t$).
    - **Fig 2**: Per capita growth rate ($\frac{1}{N} \frac{dN}{dt}$) vs. population size ($N$).
    - **Fig 3**: Population growth rate ($\frac{dN}{dt}$) vs. population size ($N$) 
 
-2. Look at the **`Exponential` worksheet** to see how close you were.
+2. Look at the **`Exponential` worksheet** to see how close you were. In this sheet the parameter cell is labelled "r_m intrinsic growth rate" (default 0.1). Because the sheet applies it once per time step, $N_{t+1} = N_t(1 + 0.1)$, it is really acting as the per-step rate $R_m$, giving geometric growth with $\lambda = 1.1$ (the continuous model would give $e^{0.1} = 1.105$). The note on the sheet that $dN/dt$ "increases linearly" means linearly with $N$ (Figure 3); through time, $dN/dt$ increases exponentially.
 
 **Task 5: Adding a Time Lag**
 
 1. In the **`TimeLag` worksheet**, explore how adding a time lag to the logistic model affects population dynamics. This is the equation we are using: $\frac{dN}{dt}=r_m N_t\left(1-\frac{N_{t-\tau}}{K}\right)$, where $\tau$ is the length of the time lag. With $\tau = 1$, density dependence acts on the population size one time step ago rather than the current population size.
 
-2. Adjust the formula in the Excel sheet to incorporate a time lag in the population size ($N_{t-\tau}$). The `dN/dt` column (column C) currently uses the current population size. For a 1-step lag, change the formula in cell C11 to `=$B$5*B11*(1-(B10/$B$6))`, so that the density-dependent term uses the population size from the previous time step. Then fill this formula down to the bottom of the column.
+2. Adjust the formula in the Excel sheet to incorporate a time lag in the population size ($N_{t-\tau}$). The `dN/dt` column (column C) currently uses the current population size. For a 1-step lag, change the formula in cell C11 to `=$B$5*B11*(1-(B10/$B$6))`, so that the density-dependent term uses the population size from the previous time step. Then fill this formula down to the bottom of the column. Before you do, check that B5 holds $r_m$, B6 holds $K$ and row 11 is the second row of data in your copy of the sheet (note that this sheet starts at Time = 1). The formula works in Danish Excel as written.
 
 3. Start with the default $r_m = 0.6$, which gives smooth convergence to $K$ in the ordinary logistic model. With the 1-step lag, you should see the population overshoot $K$ and then show damped oscillations before settling. Now increase $r_m$ to 1.2. What happens to the oscillations?
 
 4. Compare this with the ordinary logistic model (no lag) at the same $r_m$ values (e.g. using the `BasicLogistic` worksheet). This exercise demonstrates how a simple life history trait (such as a time lag) can make a population overshoot and oscillate at growth rates that would otherwise give smooth convergence to $K$. With a large enough lag or growth rate, the oscillations become sustained cycles.
+
+5. Note that the lecture's thresholds for time-lag models ($r_m\tau$ below $e^{-1} = 0.37$ gives a smooth approach, up to $\pi/2 = 1.57$ damped oscillations, above that sustained cycles with a period of about $4\tau$) are for the *continuous-time* lag model. In this *discrete* version with a one-step lag, the approach to $K$ is smooth only for $r_m$ below about 0.25, there are damped oscillations from about 0.25 to 1, and sustained cycles above $r_m = 1$, with a period of about 6 to 7 time steps. So do not expect the Excel results to match the lecture's numbers exactly; the qualitative message (lags cause overshoot and cycles) is the same.
 
 
 ## Questions
@@ -150,7 +152,7 @@ In Figure 3, as $r_m$ increases, the parabola becomes taller: the maximum popula
 
 * In the discrete model, $N_{t+1} = N_t + dN/dt$. Using what you know about Figure 3, what shape would a plot of $N_{t+1}$ against $N_t$ have? Where would it cross the line $N_{t+1} = N_t$, and why?
 
-<!-- It is also a parabola: it is the Figure 3 parabola with the line $N_{t+1} = N_t$ added to it, so it passes through the origin and rises, peaks and then falls. It crosses the line $N_{t+1} = N_t$ at $N_t = 0$ and $N_t = K$, because these are the population sizes where $dN/dt = 0$, so the population does not change from one time step to the next (the equilibria). The steepness of the parabola where it crosses at $K$ depends on $r_m$ and determines whether the population approaches $K$ smoothly, oscillates, or behaves chaotically. -->
+<!-- It is also a parabola: it is the Figure 3 parabola with the line $N_{t+1} = N_t$ added to it, so it passes through the origin and rises, peaks and then falls. It crosses the line $N_{t+1} = N_t$ at $N_t = 0$ and $N_t = K$, because these are the population sizes where $dN/dt = 0$, so the population does not change from one time step to the next (the equilibria). The steepness of the parabola where it crosses at $K$ depends on $r_m$ and determines whether the population approaches $K$ smoothly, oscillates, or behaves chaotically: the slope there is $1 - r_m$, so the approach is smooth for $r_m < 1$, shows damped oscillations for $1 < r_m < 2$, and $K$ is unstable (cycles or chaos) for $r_m > 2$. -->
 
 * What happens to the population dynamics when a time lag is introduced? A time lag could be caused by a long gestation period, or by the need to take a year out before breeding again.
 
@@ -164,4 +166,4 @@ In Figure 3, as $r_m$ increases, the parabola becomes taller: the maximum popula
 - Logistic and exponential growth are linked by the carrying capacity term.
 - Figures of $N$ vs. time, per-capita growth rate vs. $N$ and $dN/dt$ vs. $N$ are three views of the same model; you should be able to move between them.
 - In discrete time, high $r_m$ causes overshoot, oscillations, cycles and chaos.
-- Time lags can destabilize otherwise stable dynamics.
+- Time lags can destabilise otherwise stable dynamics.

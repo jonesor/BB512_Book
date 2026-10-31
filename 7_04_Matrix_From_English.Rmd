@@ -2,7 +2,7 @@
 
 ## Background
 
-This activity is designed for quick in-class practice translating a verbal life-history description into a matrix population model. It connects directly to the workflow in `2_07_matrixModels.Rmd`.
+This activity is designed for quick in-class practice translating a verbal life-history description into a matrix population model. It connects directly to the workflow in the chapter [Matrix population modelling].
 
 ::: {.do-something}
 Learning outcomes: 
@@ -37,13 +37,17 @@ The key idea is to map each biological statement to a matrix entry: fecundity go
 
 ## Your task
 
-Use the red-tailed hawk life history description in `supplemental/Exercise_Plain_English_To_Matrix_Model_2018.txt`.
+Read this description of the life history of the red-tailed hawk (*Buteo jamaicensis*):
+
+> We assumed that the Red-tailed hawk life history could be described in terms of three major life stages: hatchling, juvenile, and adult (generally the third year of life and beyond). Adults are the primary reproductive stage, and produce an average of 3 new hatchlings each year. Juveniles tend to produce only 1 new hatchling per year on average. We assumed that adults experienced an average of 18% mortality each year. Juvenile mortality was set at 30% per year. Approximately 5% of juveniles fail to transition to adults, remaining in the juvenile phase. Finally, hatchlings had a 20% chance of surviving and transitioning to become juveniles. We initialized the population with 1000 hatchlings, 150 juveniles, and 5 adults.
+
+Assume that the population is counted once a year, and that the numbers of "new hatchlings" per juvenile and per adult are already the numbers counted as hatchlings at the next census (so they can go straight into the matrix as fertilities).
 
 1. Draw a 3-stage life cycle diagram (hatchling, juvenile, adult). 
 2. Translate the verbal description into a 3x3 projection matrix. State any assumptions you make about the juvenile stasis and transition rates.
 3. Use the initial population sizes given (1000 hatchlings, 150 juveniles, 5 adults) and project the population for 20 time steps.
 4. Calculate the dominant eigenvalue and interpret whether the population grows or declines.
-5. Compare your approach with the workflow in `2_07_matrixModels.Rmd`.
+5. Compare your approach with the workflow in the chapter [Matrix population modelling].
 
 ## Takeaways
 

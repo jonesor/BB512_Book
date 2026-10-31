@@ -8,9 +8,11 @@
 
 An important kind of trade off are those which occur between processes in early and late life. For example, it may be beneficial to increase reproduction at younger ages, but this might lead to increased risk of death at older ages. A mechanism for this could be that limited resources are allocated to producing offspring rather than maintaining/repairing the body. 
 
-The balance of the trade off between these early and late life processes is shaped by the **force of selection**: how much a small change in survival or reproduction at a given age changes fitness. Crucially, the force of selection tends to decline with age meaning that late-life processes are not as important as early-life processes. This means that a mutation giving a modest reproductive advantage at an early age, alongside a harmful or even deadly effect late in life can be "seen" by natural selection as advantageous. This idea is called **antagonistic pleiotropy** (Williams 1957): one gene with a good effect early in life and a bad effect later.
+The balance of the trade off between these early and late life processes is shaped by the **force of selection**: how much a small change in survival or reproduction at a given age changes fitness. Crucially, from the age of first reproduction onwards, the force of selection tends to decline with age, meaning that late-life processes are not as important as early-life processes. Medawar (1952) pointed out that because few individuals survive to old age, harmful mutations whose effects appear only late in life are hardly removed by selection, so they can build up in a population: this is **mutation accumulation**. Hamilton (1966) showed mathematically why the force of selection on survival and reproduction declines with age once reproduction has begun. It also means that a mutation giving a modest reproductive advantage at an early age, alongside a harmful or even deadly effect late in life, can be "seen" by natural selection as advantageous. This idea is called **antagonistic pleiotropy** (Williams 1957): one gene with a good effect early in life and a bad effect later. Further reading: Neal's chapter *Evolution of Life Histories*.
 
-This highlights the significance of early-late life trade-offs and their role in shaping aging patterns in various organisms. Understanding this concept is essential for comprehending life history evolution, aging, and longevity across species.
+References: Medawar, P. B. (1952) *An Unsolved Problem of Biology*. H. K. Lewis, London. Williams, G. C. (1957) Pleiotropy, natural selection, and the evolution of senescence. *Evolution* 11: 398-411. Hamilton, W. D. (1966) The moulding of senescence by natural selection. *Journal of Theoretical Biology* 12: 12-45.
+
+This highlights the significance of early-late life trade-offs and their role in shaping ageing patterns in various organisms. Understanding this concept is essential for comprehending life history evolution, ageing, and longevity across species.
 
 The aim of this exercise is to gain an understanding of early-life late-life trade offs and to understand why events early in life tend to be much more important to evolution than those that happen later in life.
 
@@ -25,7 +27,7 @@ Learning outcomes:
 
 ## Before you start: predict
 
-Recall that fitness can be measured as $R_0 = \sum l_x m_x$, where $l_x$ is the probability of surviving from birth to age $x$, and $m_x$ is the number of offspring produced at age $x$.
+Recall that fitness can be measured as $R_0 = \sum l_x m_x$, where $l_x$ is the probability of surviving from birth to age $x$, and $m_x$ is the number of daughters produced per female at age $x$ (as in *Life tables and survivorship types*).
 
 Before you open the spreadsheet, make a prediction and write it down: will **one extra offspring at age 1** or **one extra offspring at age 20** raise $R_0$ more? Why? You will check your prediction in the tasks below.
 
@@ -37,11 +39,13 @@ Open the Excel file [TradeOffsAndForceOfSelection.xlsx](https://www.dropbox.com/
 
 This file shows a simplified life table, following a cohort of 1000 individuals for a fictional creature. 
 
-Survival rates from year to year are set to be 0.8 (i.e. 80% make it through to the next year). This fixed, constant survival rate leads to an exponentially declining survival curve, illustrated with a chart in the Excel file. Fertility (i.e. the number of babies produced per year) is set to be 10 per year.
+Survival rates from year to year are set to be 0.8 (i.e. 80% make it through to the next year). This fixed, constant survival rate leads to an exponentially declining survival curve, illustrated with a chart in the Excel file. Fertility ($m_x$, the number of babies produced per year; assume these are daughters per female) is set to be 10 per year.
 
 In the spreadsheet, the **Survival** value in each row is the probability of surviving *into* that age from the age before. So setting Survival to 0 in the age-25 row means that nobody reaches age 25. (The Survival value in the age-1 row is not used: the cohort starts at age 1.)
 
-The product of survivorship ($l_x$) and fertility ($m_x$), $l_x m_x$, is the expected number of offspring produced at age $x$ by a newborn. The sum of these values, $\sum l_x m_x$, is the net reproductive rate, $R_0$: the population's growth per generation (see the practical *Life tables and survivorship types*). $R_0$ is a good measure of the fitness of a life history strategy.
+The product of survivorship ($l_x$) and fertility ($m_x$), $l_x m_x$, is the expected number of offspring produced at age $x$ by a newborn. The sum of these values, $\sum l_x m_x$, is the net reproductive rate, $R_0$: the population's growth per generation (see the practical *Life tables and survivorship types*). $R_0$ is a good measure of the fitness of a life history strategy when the population is roughly stable in size (stationary, or regulated around an equilibrium).
+
+**A caveat.** This fictional life table has $R_0 \approx 50$, which would make the population grow about 10.8-fold per year ($\lambda \approx 10.8$, from the Euler-Lotka equation). In a growing population the right fitness measure is $r_m$ (or $\lambda$), and it weights early reproduction even more heavily than $R_0$ does: an offspring produced early is itself breeding while later offspring are still to come. For this life table, matching the effect of one extra offspring at age 1 would need about 2.4 extra offspring at age 5 if fitness is $R_0$, but about 46,000 if fitness is $r_m$. So treat the numbers below as an illustration: the qualitative message (early life matters more than late life) holds, and is even stronger, in growing populations.
 
 Note that the initial $R_0$ is 49.81
 
@@ -58,13 +62,13 @@ Consider a trade-off between early reproduction and late life survival (i.e. via
 * If, instead of adding to $m_x$ at age 1 you were to increase $m_x$ at age 25, how much would you need to increase $m_x$ to reach this figure?
 
 * What about at age 20?   Age 15?  Age 10?  Age 5? 
-Plot the increase required vs. age (make a new worksheet/ark in Excel) What do you notice?
+Plot the increase required vs. age (make a new worksheet/ark in Excel). What do you notice?
 
 * Reset everything again ($m_x$ =10; survival = 0.8). Set $m_x$ from age 15 onwards to be 0. Now alter survival rate after this point (at ages 15-25). What happens to fitness?
 
 ## Questions
 
-- Explain the concept of the declining force of selection in the context of life history evolution and aging. How does this phenomenon contribute to the evolution of life history strategies in different organisms?
+- Explain the concept of the declining force of selection in the context of life history evolution and ageing. How does this phenomenon contribute to the evolution of life history strategies in different organisms?
 - Use concepts of life history evolution, including the force of selection, to explain why age-related diseases are common in humans.
 - How would predation risk influence the early-late life trade off in resource allocation to reproduction vs. body maintenance?
 - In this model, survival after the last reproduction has no effect on fitness. Why might survival after reproduction still matter for killer whales or humans?
@@ -73,4 +77,4 @@ Plot the increase required vs. age (make a new worksheet/ark in Excel) What do y
 
 - The force of selection declines with age, making early-life traits more influential.
 - Small early-life advantages can outweigh large late-life costs.
-- Trade-offs between reproduction and survival shape aging and life history strategies.
+- Trade-offs between reproduction and survival shape ageing and life history strategies.

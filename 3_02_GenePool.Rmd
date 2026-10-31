@@ -4,33 +4,40 @@
 set.seed(123)
 ```
 
+::: {.do-something}
+Learning outcomes. By the end of this practical you should be able to:
+
+- Explain why genetic drift is stronger in small populations than in large ones.
+- Estimate the probability that an allele is fixed from replicate simulations, and show that for a neutral allele it equals the allele's starting frequency.
+- Predict the fate of a new neutral mutation (starting frequency $1/(2N)$).
+- Describe how bottlenecks and founder events change allele frequencies and genetic diversity.
+- Use a simple simulation in R to explore a biological process.
+:::
+
+This practical comes *before* the lecture on genetic drift, on purpose: you will discover the main results of drift by simulation, and the lecture will then explain and quantify them. Sections marked "optional" are best revisited after the drift lecture.
+
+**Reading:** Neal, chapter *Genetic Drift and Effective Population Size*.
+
 ## Background
 
-A central goal in evolutionary biology is to understand variation -- including genetic variation -- and how it changes through time. One important idea is the "gene pool," which contains all the different versions of genes (alleles) within a group of organisms. These alleles influence phenotypic traits and other characteristics. To grasp how populations evolve, we need to understand how allele frequencies change in a population. Over time, genetic diversity changes as the relative numbers of alleles change. Some alleles may be lost from the population while others may become "fixed" -- where the allele is the only one left, so every individual in the population carries it.
+A central goal in evolutionary biology is to understand variation (including genetic variation) and how it changes through time. One important idea is the "gene pool," which contains all the different versions of genes (alleles) within a group of organisms. These alleles influence phenotypic traits and other characteristics. To grasp how populations evolve, we need to understand how allele frequencies change in a population. Over time, genetic diversity changes as the relative numbers of alleles change. Some alleles may be lost from the population while others may become "fixed": the allele is the only one left, so every individual in the population carries it.
 
 When no other process is acting, allele frequencies still change by chance. This is **genetic drift**. The main factor that determines the strength of drift is population size. In small populations, "sampling error" means that, just by chance, large changes often occur in allele frequencies. In large populations, dramatic changes are much less likely.
 
 Two related concepts are critical in understanding genetic drift: bottlenecks and founder effects. A **genetic bottleneck** occurs when a population is dramatically reduced in size, for example by an environmental catastrophe. During a bottleneck, allele frequencies (and genetic diversity) can change dramatically because of sampling effects. A **founder effect** is a similar scenario, where a small group (a sample from the population) establishes a new population. Because the new population starts from a small sample of the ancestral population, it can have a rather different genetic composition from the ancestral population.
 
-::: {.do-something}
-Learning outcomes:
-
-- Greater understanding of evolution via genetic drift (neutral evolution).
-- Understanding of genetic bottlenecks and founder effects.
-- Understanding the relationship between stochasticity and genetic variation.
-- Use of R for exploring biological phenomena.
-:::
-
 ## Your task
 
 In this practical, you will use R to simulate how allele frequencies change in a population over generations. By changing population size, starting frequency and the history of the population, you will see how drift behaves in different situations.
 
-The practical has four parts:
+The practical has four parts. The **core path** (about 45 minutes) is Parts 1 to 3 plus the bottleneck simulation in Part 4; the rest is optional, for the end of the session or at home.
 
-1. **The gene pool.** Build a gene pool and see that the gene pool in the next generation is a *sample* of the current one.
-2. **Drift through time.** Project allele frequency through time and investigate the importance of population size.
-3. **Many populations.** Repeat the simulation many times to estimate the probability that an allele is fixed or lost, including for a rare (new) allele.
-4. **Bottlenecks and founder effects.** Modify the code to simulate a population that passes through a period of small size, and a new population founded by a few individuals.
+1. **The gene pool** (5 minutes). Build a gene pool and see that the gene pool in the next generation is a *sample* of the current one.
+2. **Drift through time** (10 minutes). Project allele frequency through time and investigate the importance of population size.
+3. **Many populations** (15 minutes). Repeat the simulation many times to estimate the probability that an allele is fixed or lost, including for a rare (new) allele.
+4. **Bottlenecks** (15 minutes). Modify the code to simulate a population that passes through a period of small size.
+
+Optional: tracking genetic diversity (Part 3), effective population size and founder effects (Part 4), and the Challenge at the end.
 
 ::: {.do-something}
 **Before you start, make a prediction.** Imagine two populations, each starting with allele *A* at a frequency of 0.5. One has 20 individuals and the other has 1000. Sketch what you expect the frequency of *A* to look like over 100 generations in each population. Which population do you expect to lose one of its alleles first? Keep your sketch, and compare it with your simulations in Part 2.
@@ -89,9 +96,9 @@ What we are saying here is "repeat `A`, `number_A` times, then repeat `a` `numbe
 gene_pool <- c(rep("A", number_A), rep("a", number_a))
 ```
 
-Output (counts in the initial gene pool):
+We can count the alleles in the initial gene pool with `table`:
 
-```{r creategenepool_output, echo = FALSE}
+```{r creategenepool_output, echo = TRUE}
 table(gene_pool)
 ```
 
@@ -274,15 +281,36 @@ mean(final_freq_rare == 0)   # proportion of populations where A was lost
 
 * Are rare alleles more or less likely to be lost than common ones?
 * Compare the proportion of populations where the new allele was fixed with $1/(2N)$. What does this tell you about the fate of most new mutations?
-* Try a few different starting frequencies (e.g. 0.1, 0.25, 0.75). Can you find a simple rule linking the starting frequency of a neutral allele to its probability of fixation?
+* Try a few different starting frequencies (e.g. 0.1, 0.25, 0.75). Can you find a simple rule linking the starting frequency of a neutral allele to its probability of fixation? You can use this template: change `p0` and run it again. Record your results in a small table (starting frequency, proportion of populations where *A* was fixed).
+
+```{r rareallele_template, echo = TRUE, eval = FALSE}
+p0 <- 0.25
+results_p0 <- replicate(200, simulate_gene_pool(pop_size = 20, n_gen = 300,
+                                                initial_freq_A = p0))
+mean(results_p0[300, ] == 1)   # proportion of populations where A was fixed
+```
+
+With 200 replicates, expect your proportions to differ from the "true" probability by a few percentage points just by chance.
 
 ::: {.do-something}
-**Going further: tracking genetic diversity.** In the lecture we measured genetic diversity with expected heterozygosity, $H_e = 2pq$. Calculate $H_e$ for each generation of each population (`2 * results * (1 - results)`), and plot its average across populations (`rowMeans`). Theory predicts that drift reduces $H_e$ by a factor of $1 - 1/(2N)$ every generation, so that $H_t = H_0 (1 - 1/(2N))^t$. Add this curve to your plot with `lines()`. Does your simulation agree with the theory?
+**Going further (optional): tracking genetic diversity.** In the mutation lecture we measured genetic diversity with expected heterozygosity, $H_e = 2pq$. Theory predicts that drift reduces $H_e$ by a factor of $1 - 1/(2N)$ every generation, so that $H_t = H_0 (1 - 1/(2N))^t$. The code below calculates $H_e$ for each generation of each population, averages it across 500 populations of 20 individuals (an average over only 20 populations is too noisy), and adds the theoretical curve in red. Note that the first row of `results` is generation $t = 0$, so the theoretical curve uses `t <- 0:(n_gen - 1)`. Does your simulation agree with the theory?
+
+```{r heterozygosity, echo = TRUE, eval = FALSE}
+n_gen <- 100
+results <- replicate(500, simulate_gene_pool(pop_size = 20, n_gen = n_gen,
+                                             initial_freq_A = 0.5))
+He <- rowMeans(2 * results * (1 - results))   # mean He in each generation
+
+t <- 0:(n_gen - 1)
+plot(t, He, type = "l", ylim = c(0, 0.5),
+     xlab = "Generation", ylab = "Mean expected heterozygosity")
+lines(t, 0.5 * (1 - 1 / (2 * 20))^t, col = "red")
+```
 :::
 
 ## Part 4: Bottlenecks and founder effects
 
-Next, modify the code to simulate a **genetic bottleneck**, when a population goes through a period of small population size. Add this code at the *start* of the loop (inside the curly brackets), so that the population size is reset each generation:
+Next, modify the code to simulate a **genetic bottleneck**, when a population goes through a period of small population size. Start from the code in Part 2, set `pop_size <- 1000` at the top *before* the initial gene pool is built (otherwise the gene pool starts with only 40 alleles, which is itself a hidden founder event), and add this code at the *start* of the loop (inside the curly brackets), so that the population size is reset each generation:
 
 ```{r bottlenecksimulation, eval = FALSE, echo = TRUE}
 if (i %in% 30:50) {
@@ -292,9 +320,9 @@ if (i %in% 30:50) {
 }
 ```
 
-This code means, "*...if the generation is between `30` and `50`, make the population size 10, otherwise make the population size 1000*". In other words, the population goes through a bottleneck of 10 individuals for about 20 generations. You can modify this code to change the length and severity of the bottleneck.
+This code means, "*...if the generation is between `30` and `50`, make the population size 10, otherwise make the population size 1000*". In other words, the population goes through a bottleneck of 10 individuals for 21 generations (30 to 50 inclusive). You can modify this code to change the length and severity of the bottleneck.
 
-Figure \@ref(fig:bottlenecksimulationplot) shows an example of what your plot of a bottleneck simulation might look like. I have added some lines to show where the bottleneck starts and ends. Here is the complete code:
+Figure \@ref(fig:bottlenecksimulationplot) shows an example of what your plot of a bottleneck simulation might look like. I have added some lines to show where the bottleneck starts and ends. Here is the complete code, which you can also simply copy:
 
 ```{r genepool-bottleneck-seed, include = FALSE}
 set.seed(127)
@@ -351,7 +379,24 @@ Run the bottleneck simulation several times, and answer the following questions:
 * What happens to allele frequency *after* the bottleneck, when the population is large again? Does the population "recover" its original allele frequency?
 * Does the severity of the bottleneck (i.e. its length and the population size during it) matter?
 
-### Founder effects
+::: {.do-something}
+**Optional (revisit after the drift lecture): effective population size.** Over the 100 generations of the bottleneck run, the census population size averages about 790 (79 generations at 1000 and 21 at 10). Yet the population loses diversity like a much smaller one. For drift, what matters is the *effective population size*, $N_e$, the size of an idealised population that would lose diversity at the same rate. When $N$ changes over time, $N_e$ is approximately the *harmonic mean* of $N$, which is dominated by the small values:
+
+$$N_e \approx \frac{t}{\sum_{i=1}^{t} 1/N_i}$$
+
+Calculate the arithmetic mean and the harmonic mean of $N$ for your bottleneck run. Here is one way to do it in R:
+
+```{r effectivesize, echo = TRUE, eval = FALSE}
+N <- rep(1000, 100)    # population size in each of the 100 generations
+N[30:50] <- 10         # the bottleneck
+mean(N)                # arithmetic mean
+1 / mean(1 / N)        # harmonic mean, approximately Ne
+```
+
+What does the difference between the two tell you about the importance of short periods of small population size?
+:::
+
+### Founder effects (optional)
 
 A founder effect is like a bottleneck at the very start of a new population. To simulate it, take a large source population (1000 individuals, frequency of *A* = 0.5) and found a new population from just 10 individuals (20 alleles) drawn at random from it. Repeat this 50 times, as if 50 islands were each colonised by a different group of 10 founders:
 
@@ -395,5 +440,5 @@ Let's finish with some more general questions:
 - Bottlenecks and founder effects can rapidly reshape allele frequencies, and the change persists after the population becomes large again.
 
 ::: {.do-something}
-**Challenge:** Can you think of a way to simulate the genetics of a population that is steadily shrinking through time? Try it.
+**Challenge (optional):** Can you think of a way to simulate the genetics of a population that is steadily shrinking through time? Try it.
 :::

@@ -20,8 +20,8 @@ Learning outcomes:
 
 | Symbol  | Meaning  | Alternatives   |
 |---------|----------|----------------|
-| $R$     | Per capita rate of increase, per capita population growth rate (discrete time)   | $R_m$ (Neal), $r_d$ (Gotelli)    |
-| $r$     | Intrinsic rate of increase (continuous time)      | $r_m$ (Neal). From a life table, $r \approx \ln(R_0)/T$, which Neal calls $r_c$, the capacity for increase  |
+| $R_m$   | Per capita rate of increase per time step, per capita population growth rate (discrete time)   | $R$, $r_d$ (Gotelli)    |
+| $r_m$   | Intrinsic rate of increase (continuous time)      | $r$. From a life table, $r_m \approx \ln(R_0)/T$, which Neal calls $r_c$, the capacity for increase  |
 |  $\lambda$    | Population growth rate, population multiplication rate      |   |
 |  $R_0$   | Net reproductive rate: the expected number of female offspring per female, per generation ($\sum l_x m_x$)  |  Not the same as the "basic reproduction number" of epidemiology, which uses the same symbol |
 
@@ -46,21 +46,21 @@ This equation can be simplified to:
 
 **eqn. 3.** $N_{t+1} = N_t + (b-d)N_t$.
 
-Furthermore, because the expression $(b-d)$ is important, we can give it its own symbol, $R$. $R$ is called the *per capita rate of increase* or the *intrinsic rate of increase*. (Note that the nomenclature varies depending on the book/paper! In other places this is called $r_d$, or $R_m$).
+Furthermore, because the expression $(b-d)$ is important, we can give it its own symbol, $R_m$ (as in Neal). $R_m$ is called the *per capita rate of increase*. (Note that the nomenclature varies depending on the book/paper! In other places this is called $R$ or $r_d$.)
 
 So we now have:
 
-**eqn. 4.** $N_{t+1} = N_t + RN_t$.
+**eqn. 4.** $N_{t+1} = N_t + R_m N_t$.
 
 Or, if we are only interested in the **change** in population size:
 
-**eqn. 5.** $\frac{\Delta N}{\Delta t} = RN_t$.
+**eqn. 5.** $\frac{\Delta N}{\Delta t} = R_m N_t$.
 
 Equation 4 can be simplified again, by factoring out the $N_t$ on the right hand side:
 
-**eqn. 6.** $N_{t+1} = (R + 1)N_t$.
+**eqn. 6.** $N_{t+1} = (R_m + 1)N_t$.
 
-The quantity $(R+1)$ is given its own symbol: $\lambda$, the **population multiplication rate** (also known as the "finite rate of increase").
+The quantity $(R_m+1)$ is given its own symbol: $\lambda$, the **population multiplication rate** (also known as the "finite rate of increase").
 
 
 **eqn. 7.**  $N_{t+1} = \lambda N_t$.
@@ -70,7 +70,7 @@ By rearranging this equation (eqn. 7) we can see that $\lambda$ is simply the ra
 
 **eqn. 8.** $\lambda = N_{t+1}/N_t$.
 
-It follows, therefore, that when the population is neither growing nor declining (when $N_{t+1}=N_t$), $\lambda = 1$ (and when $R$ = 0).
+It follows, therefore, that when the population is neither growing nor declining (when $N_{t+1}=N_t$), $\lambda = 1$ (and $R_m = 0$).
 
 
 ### Calculating N for any future time point
@@ -83,7 +83,7 @@ If we want to calculate $N_{t+2}$, we would need to plug in $N_{t+1}$ instead of
 
 and, since we know that $N_{t+1} = \lambda N_t$,: $N_{t+2} = \lambda   \lambda N_t$.
 
-Similarly, if we wanted to calculate $N_{t+2}$, we'd end up with:  $N_{t+3} = \lambda \lambda \lambda N_t$.
+Similarly, if we wanted to calculate $N_{t+3}$, we'd end up with:  $N_{t+3} = \lambda \lambda \lambda N_t$.
 
 This can be simplified by raising $\lambda$ to a suitable power, and using the starting population at time = 0, $N_0$:
 
@@ -96,16 +96,13 @@ This should be familiar to those of you that did (or remember!) the concept of g
 If we plot exponential growth on a log scale we can see that it is straight line. For example, in the plot below I show the sequence for a population with a starting population of 1 and a $\lambda$  (population multiplication rate) of 1.2 (i.e., the population increases by 20% each year). In (A) the time series is plotted on the natural scale while in (B) it is plotted on the log scale.
 
 ```{r plotprojections, echo = TRUE, message = FALSE}
-# Load required libraries
-require(tidyverse)
-
 # Set initial population and lambda
 startPop <- 1
 lambda <- 1.2
 
 # Create a data frame with time and corresponding population
-df1 <- data.frame(time = 0:20) %>% 
-  mutate(N = lambda^time * startPop)
+df1 <- data.frame(time = 0:20)
+df1$N <- lambda^df1$time * startPop
 ```
 
 ```{r echo = TRUE}
@@ -131,7 +128,7 @@ $\ln{N_t} =  \ln(\lambda )t + \ln(N_0)$.
 
 This looks familiar. Indeed, the equation of a straight line ($y = ax + b$) maps onto this. In this equation, the slope $a$ is equivalent to $\ln(\lambda )$ and the intercept ($b$) is equivalent to $\ln(N_0)$.
 
-This is very convenient because now we can use simple regression methods to estimate $\ln(\lambda)$ (the slope) of the relationship, and therefore the value of $\lambda$ (or $R$, which is  $\lambda -1$).
+This is very convenient because now we can use simple regression methods to estimate $\ln(\lambda)$ (the slope) of the relationship, and therefore the value of $\lambda$ (or $R_m$, which is $\lambda - 1$).
 
 ## Real-World Application: Breeding Pairs of Merlin (Falco columbarius)
 
@@ -170,7 +167,9 @@ summary(mod1)
 
 Interpretation
 
-The summary of the model indicates that the slope of the relationship between year and logN is `r as.vector(mod1$coefficients[2])`. This slope is $\ln(\lambda)$, so the population multiplication rate ($\lambda$) is $e^{\text{slope}}$ = `r round(exp(as.vector(coef(mod1)[2])),3)`, the intrinsic rate of increase ($r$) is the slope itself = `r round(as.vector(coef(mod1)[2]),3)`, and the per capita rate of increase ($R = \lambda - 1$) is `r round(exp(as.vector(coef(mod1)[2]))-1,3)`.
+The summary of the model indicates that the slope of the relationship between year and logN is `r round(as.vector(coef(mod1)[2]), 3)`. This slope is $\ln(\lambda)$, so the population multiplication rate ($\lambda$) is $e^{\text{slope}}$ = `r round(exp(as.vector(coef(mod1)[2])),3)`, the intrinsic rate of increase ($r_m$) is the slope itself = `r round(as.vector(coef(mod1)[2]),3)`, and the per capita rate of increase ($R_m = \lambda - 1$) is `r round(exp(as.vector(coef(mod1)[2]))-1,3)`.
+
+Strictly, this slope is the *realised* average growth rate over 1970-1982. It equals the intrinsic rate $r_m$ only if growth was not slowed by density dependence during that period (Neal returns to the merlins in the chapter *Logistic Growth*).
 
 This suggests that the number of breeding pairs is indeed growing exponentially over the time period studied, with a specific rate of increase. Understanding this rate is crucial for conservation efforts, because it provides insights into the population's resilience, its demands on the ecosystem, and how it might respond to future changes in environmental conditions or conservation policies.
 
@@ -179,21 +178,43 @@ This suggests that the number of breeding pairs is indeed growing exponentially 
 
 In contrast to the discrete time model, the continuous time model allows us to understand population growth without the constraint of clear time intervals. This is particularly useful for studying populations that don't have breeding seasons or for those that experience continuous births and deaths (e.g. bacteria, humans).
 
-The starting point for the continuous time model is the intrinsic rate of increase, $r$. This is defined as: $r = ln(\lambda)$ which is the same as saying $r = ln(N_{t+1}/N_t)$
+In continuous time, the population changes smoothly according to
 
-We say that $r = ln(\lambda)$ "r is the natural log of lambda".
+**eqn. 10.** $\frac{dN}{dt} = r_m N$,
 
-Here, $\lambda$ is the population multiplication rate, as discussed in the discrete time model section. The natural logarithm of $\lambda$ gives us $r$, which can be interpreted as the rate of population growth per unit time when resources are unlimited.
+where $r_m$ is the intrinsic rate of increase: the instantaneous per capita birth rate minus death rate ($r_m = b - d$, with $b$ and $d$ now instantaneous rates rather than per time step). Solving this equation gives the population size at any time $t$:
 
-To back-transform from a natural log, we use the exponential. Therefore, $\lambda = e^r$: "lambda is the exponential of r".
+**eqn. 11.** $N_t = N_0 e^{r_m t}$.
 
-This allows us to relate $\lambda$ and $r$ directly. From the discrete model (above), we know that $\lambda = 1 + R$, so: 
+Compare this with the discrete-time result, eqn. 9: $N_t = \lambda^t N_0$. The two describe the same growth if $\lambda = e^{r_m}$, or equivalently
 
-$1+R = e^r$
+**eqn. 12.** $r_m = \ln(\lambda)$: "$r_m$ is the natural log of lambda", which is the same as saying $r_m = \ln(N_{t+1}/N_t)$ for a population growing at a constant rate.
 
-$R = e^r - 1$
+To back-transform from a natural log, we use the exponential. Therefore, $\lambda = e^{r_m}$: "lambda is the exponential of $r_m$".
+
+This allows us to relate $\lambda$ and $r_m$ directly. From the discrete model (above), we know that $\lambda = 1 + R_m$, so:
+
+$1 + R_m = e^{r_m}$
+
+$R_m = e^{r_m} - 1$
+
+### Doubling time
+
+A useful way to express a growth rate is the time it takes the population to double. Setting $N_t = 2N_0$ in eqn. 11 gives $2 = e^{r_m t_d}$, so the doubling time is
+
+**eqn. 13.** $t_d = \ln(2)/r_m = \ln(2)/\ln(\lambda)$.
+
+For the merlins, $t_d$ = ln(2)/`r round(as.vector(coef(mod1)[2]), 3)` = `r round(log(2)/as.vector(coef(mod1)[2]), 1)` years.
+
+```{r doublingtime, echo = TRUE}
+r_m <- as.vector(coef(mod1)[2])  # slope of the merlin regression
+log(2) / r_m                     # doubling time in years
+```
+
+### Changing the time scale
+
+Because $r_m$ is a rate per unit time, it is easy to convert between time scales: just divide or multiply by the number of time units. For example, a population with $\lambda = 2$ per week has $r_m = \ln(2) = 0.693$ per week, which is $0.693/7 = 0.099$ per day, so $\lambda$ per day is $e^{0.099} = 1.104$. (You cannot simply divide $\lambda$ by 7.)
 
 ### Zero population growth
 
-When the population is steady with zero growth, $r = 0$ and $\lambda  = 1$. It's important to note that the relationship \( \lambda = r + 1 \) only holds true when the population is not growing or shrinking. This is a special case and should not be generalised. Do not make the common mistake to think that $\lambda$ is simply $r + 1$!
-
+When the population is steady with zero growth, $r_m = 0$ and $\lambda = 1$. It's important to note that the relationship $\lambda = r_m + 1$ only holds true when the population is not growing or shrinking, and approximately when $r_m$ is small (e.g. $r_m = 0.05$ gives $\lambda = 1.051$). It should not be generalised. Do not make the common mistake to think that $\lambda$ is simply $r_m + 1$!

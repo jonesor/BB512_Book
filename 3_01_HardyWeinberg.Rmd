@@ -20,6 +20,8 @@ The Hardy-Weinberg equilibrium provides a baseline against which real population
 
 In this practical we will learn more about HWE and practise solving some HWE-related problems.
 
+**Reading:** Neal, chapter *The Hardy-Weinberg Principle*. Neal writes the two alleles as $A_1$ and $A_2$; here we use A and a.
+
 
 The key formulae of the Hardy-Weinberg Equilibrium are:
 
@@ -53,7 +55,7 @@ Here, $n_{AA}$, $n_{Aa}$ and $n_{aa}$ are the numbers of individuals with each g
 
 Equation 1 serves as the foundational stepping stone for Equation 2. In Equation 1, we establish the sum of allele frequencies, $p$ and $q$, in the gene pool. This equation sets the stage for the more complex Equation 2, where we translate these allele frequencies into genotype frequencies for the population.
 
-We can derive Equation 2 based on the gene pool and random mating. Let's consider a mating event between two random alleles. The possible combinations of alleles are:
+We can derive Equation 2 from the gene pool and random mating. Consider a zygote formed by two gametes, one from the father and one from the mother, each drawn at random from the gene pool (the *random union of gametes*). A gamete carries A with probability $p$ and a with probability $q$, so the possible combinations (father's allele first) are:
 
 * $p \times p = p^2$ (AA)
 * $q \times q = q^2$ (aa)
@@ -69,6 +71,8 @@ $p^2 + 2pq + q^2$.
 This must equal 1 (100% probability), which gives us Equation 2:
 
 $p^2 + 2pq + q^2 = 1$.
+
+Note that this identity is true for *any* value of $p$: it is just $(p + q)^2 = 1$. What HWE claims is something stronger, namely that the genotype frequencies in the population actually *equal* $p^2$, $2pq$ and $q^2$.
 
 In these formulae, $p^2$ is the frequency of the homozygous AA genotype, $q^2$ is the frequency of the homozygous aa genotype and $2pq$ is the frequency of the heterozygous Aa genotype. From these equations we can produce the following plot, which shows the expected genotype frequencies at HWE for any allele frequency. HWE can occur at any allele frequency, but once the allele frequency is known, the expected genotype frequencies are fixed by Equation 2. (It is a common misconception that the three genotypes should occur in a 1:2:1 ratio, or that allele frequencies should tend towards 50% $p$ and 50% $q$.)
 
@@ -112,7 +116,7 @@ Tackle the following problems, using the HWE theory outlined above. Worked solut
 
 ### Problem #1.
 
-A population has two alleles, A and a, at a gene of interest. The frequency of allele A is 0.7. Assuming the population is at HWE, calculate the following:
+A population has two alleles, A and a, at a gene of interest. The frequency of allele A is 0.8. Assuming the population is at HWE, calculate the following:
 
 *	The frequency of allele a.
 *	The expected frequencies of the genotypes AA, Aa and aa.
@@ -122,17 +126,24 @@ A population has two alleles, A and a, at a gene of interest. The frequency of a
 
 Sickle-cell disease is caused by variants of the haemoglobin gene. In this simplified two-allele example, people with two copies of the usual allele (HbA/HbA) do not have sickle-cell disease, but lack the protection against severe malaria associated with sickle-cell trait. People with two copies of the sickle-cell allele (HbS/HbS) have sickle-cell disease: their red blood cells can become rigid and sickle-shaped, causing serious illness. Heterozygous people (HbA/HbS) have sickle-cell *trait*. Most have no symptoms of sickle-cell disease, and they have increased protection against severe malaria. In regions where malaria is common, this can give heterozygotes a survival advantage over either homozygote.
 
-*	In a population from a malaria-endemic region, 9% of babies are born with sickle-cell disease (HbS/HbS). Assuming the population is at HWE at birth, what percentage of babies will be heterozygous (HbA/HbS), and so more resistant to severe malaria?
+*	In a classic study in a malaria-endemic area of Tanzania (Allison 1956, used in Neal's chapters *The Hardy-Weinberg Principle* and *Applying Zygotic Selection Models to Natural Systems*), 9 of 287 infants (about 3%) had sickle-cell disease (HbS/HbS). Assuming the population is at HWE at birth, what percentage of babies would you expect to be heterozygous (HbA/HbS), and so more resistant to severe malaria? (These genotypes are also written AA, AS and SS.)
+*	Allison found 89 heterozygous infants. How close is this to your prediction?
 
 Because of the survival differences described above, genotype frequencies among *adults* in such a population are not expected to stay at HWE. This is why the question asks about babies at birth.
 
 ### Problem #3.
 
-You genotype a sample of 200 individuals from a population at a gene with two alleles, A and a. You find 120 AA, 40 Aa and 40 aa individuals. This time, do not assume the population is at HWE: assess whether the observed counts match HWE expectations. A descriptive comparison is sufficient for this exercise; you do not need to perform a formal statistical test.
+You genotype a sample of 200 individuals from a population at a gene with two alleles, A and a. You find 90 AA, 70 Aa and 40 aa individuals. This time, do not assume the population is at HWE: assess whether the observed counts match HWE expectations. A descriptive comparison is sufficient for this exercise; a formal statistical test is an optional extension (see the box below).
 
 *	Calculate the frequencies of alleles A and a from the genotype counts. (Hint: 200 diploid individuals carry 400 allele copies, and each heterozygote carries one copy of each allele.)
 *	Calculate the expected number of each genotype if the population were at HWE.
 *	Compare the observed and expected counts. Is there an excess or a deficit of heterozygotes? Suggest some reasons why a population might show this pattern.
+
+::: {.do-something}
+**Optional extension: a formal test.** Neal tests for departures from HWE with a $\chi^2$ (chi-square) test. For each genotype, calculate $(O - E)^2/E$, where $O$ is the observed and $E$ the expected count, and add the three values to get $\chi^2$. Compare your value with the critical value of the $\chi^2$ distribution for the correct degrees of freedom (3.84 for $P = 0.05$ and 10.83 for $P = 0.001$ with 1 degree of freedom; in R, `pchisq(your_value, df = 1, lower.tail = FALSE)` gives the $P$ value).
+
+Think carefully about the degrees of freedom. There are three genotype classes, but how many independent pieces of information did you take from the data to calculate the expected counts? Why is the answer 1 degree of freedom, not 2?
+:::
 
 
 ### Problem #4.

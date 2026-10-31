@@ -11,6 +11,7 @@ render_lecture <- local({
     natural_selection = c("ggplot2", "ragg", "patchwork"),
     hardy_weinberg = c("ggplot2", "ragg", "dplyr", "tibble", "patchwork", "systemfonts"),
     inbreeding = c("ggplot2", "scales", "ragg", "patchwork"),
+    migration_gene_flow = c("ggplot2", "scales", "ragg"),
     mutation_genetic_variation = c("ggplot2", "scales", "ragg"),
     haploid_zygotic_selection = c("ggplot2", "scales", "ragg", "patchwork"),
     polygenic_quantitative_genetics = c("ggplot2", "scales", "ragg"),
@@ -82,7 +83,7 @@ render_lecture <- local({
 })
 
 render_lectures <- function() {
-  for (lecture in c("natural_selection", "hardy_weinberg", "inbreeding",
+  for (lecture in c("natural_selection", "hardy_weinberg", "inbreeding", "migration_gene_flow",
                     "mutation_genetic_variation", "haploid_zygotic_selection",
                     "polygenic_quantitative_genetics", "life_tables",
                     "age_stage_structured_models", "life_histories",

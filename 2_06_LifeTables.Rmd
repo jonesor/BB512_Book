@@ -4,7 +4,7 @@
 
 Life tables are powerful analytical tools used in various fields to understand and quantify mortality patterns and life expectancy within populations. Originating in population biology and demography, life tables have found extensive applications in epidemiology, human mortality studies, and even product life-cycle management. By systematically tracking and analysing the survival and mortality rates of individuals within specific cohorts, life tables reveal essential information about population dynamics, age-specific risks, and the factors that influence longevity. When they also record reproduction, they tell us how fast a population grows.
 
-The basic algebra used in life tables is explained in Neal, in the chapters *Life tables and age-specific death rates* and *Age-specific reproduction and population growth rates*, and in the lecture "Life tables and age-structured population growth". This practical uses the same notation as Neal and the lecture (see the table below). Gotelli's *A Primer of Ecology* (optional) covers the same material with different symbols: $g_x$ for $p_x$, $b_x$ for $m_x$ and $G$ for $T$.
+The basic algebra used in life tables is explained in Neal, in the chapters *Life Tables* and *Growth of Age-Structured and Stage-Structured Populations*, and in the lecture "Life tables and age-structured population growth". This practical uses the same notation as Neal and the lecture (see the table below). Gotelli's *A Primer of Ecology* (optional) covers the same material with different symbols: $g_x$ for $p_x$, $b_x$ for $m_x$ and $G$ for $T$.
 
 In addition to providing valuable insights into mortality patterns and life expectancy, life tables also allow us to consider mortality patterns in the context of distinct survivorship types that result from the way mortality risk changes over the life course. Three primary survivorship types are commonly identified, based on survivorship curves ($l_x$) plotted on a log scale:
 
@@ -22,7 +22,7 @@ Learning outcomes:
 - Increased competence in using Excel formulae for mathematical modelling.
 - Competence in using mathematical models in Excel to strengthen your own understanding of biological processes.
 - Building a cohort life table, and interpreting survivorship ($l_x$), survival probability ($p_x$), probability of death ($q_x$) and life expectancy ($e_x$).
-- Calculating the net reproductive rate ($R_0$), generation time ($T$) and the approximate population growth rate ($r \approx \ln(R_0)/T$).
+- Calculating the net reproductive rate ($R_0$), generation time ($T$) and the capacity for increase ($r_c = \ln(R_0)/T$), an approximation to the intrinsic rate of increase $r_m$.
 - Understanding the three types of survivorship curve and how they relate to the way mortality changes with age.
 - Understanding why changes in reproduction early in life matter more than changes late in life (the declining "force of selection").
 
@@ -38,10 +38,12 @@ Learning outcomes:
 | $p_x$ | Survival probability: probability of surviving from age $x$ to $x+1$ | $S_{x+1}/S_x$, or $l_{x+1}/l_x$ |
 | $q_x$ | Probability of dying between age $x$ and $x+1$ | $1 - p_x$ |
 | $e_x$ | Life expectancy: further years expected at age $x$ | $\left(\sum_{y \ge x} l_y\right)/l_x - 0.5$ |
+| $\mu_x$ | Force of mortality: the instantaneous death rate of individuals still alive at age $x$ (a rate, not a probability) | if $\mu$ is constant over the year, $q_x = 1 - e^{-\mu_x}$ |
 | $m_x$ | Female offspring per female aged $x$ | |
 | $R_0$ | Net reproductive rate: female offspring per female per lifetime (per generation) | $\sum l_x m_x$ |
 | $T$ | Generation time: mean age of mothers when their daughters are born | $\sum x l_x m_x / R_0$ |
-| $r$ | Population growth rate per year (approximation) | $\ln(R_0)/T$ |
+| $r_c$ | Capacity for increase: approximate population growth rate per year (an approximation to $r_m$) | $\ln(R_0)/T$ |
+| $r_m$ | Intrinsic rate of increase per year (exact, from the Euler-Lotka equation); $\lambda = e^{r_m}$ | solve $\sum e^{-r_m x} l_x m_x = 1$ |
 
 ## Worked example
 
@@ -52,9 +54,9 @@ The *Worked example* sheet in the spreadsheet is the life table from the lecture
 - Life expectancy at birth: $e_0 = (1 + 0.8 + 0.4 + 0.1)/1 - 0.5 = 1.8$ years
 - Net reproductive rate: $R_0 = 0 + 1.6 + 1.2 + 0.1 = 2.9$
 - Generation time: $T = (1 \times 1.6 + 2 \times 1.2 + 3 \times 0.1)/2.9 = 4.3/2.9 = 1.48$ years
-- Growth rate: $r \approx \ln(2.9)/1.48 = 0.72$ per year, so $\lambda = e^r \approx 2.05$
+- Capacity for increase: $r_c = \ln(2.9)/1.48 = 0.72$ per year, so $\lambda \approx e^{r_c} = 2.05$
 
-Note that $r = \ln(R_0)/T$ is an approximation. The exact value for this life table ($r = 0.776$, $\lambda = 2.17$) comes from the Euler–Lotka equation or from a matrix model (next practical).
+Note that $r_c = \ln(R_0)/T$ is an approximation to the intrinsic rate of increase, $r_m$. The exact value for this life table ($r_m = 0.776$, $\lambda = 2.17$) comes from the Euler-Lotka equation or from a matrix model (next practical). The spreadsheet labels this quantity "r (approx.)".
 
 ## Your task
 
@@ -80,23 +82,25 @@ From there you can calculate the age-specific **probability of death**, $q_x$. T
 
 Then calculate **life expectancy**, $e_x$, in column `I`: add up the $l_x$ values from age $x$ to the end of the table, divide by $l_x$, and subtract 0.5 (because, on average, individuals that die during a year die halfway through it). For example, in the worked example $e_1 = (0.8 + 0.4 + 0.1)/0.8 - 0.5 = 1.125$ years. **Tip** `=SUM(D3:$D$13)/D3-0.5` in cell `I3` can be dragged down the column.
 
-Now complete the remaining columns, $l_x m_x$ and $l_x m_x x$, and use them to calculate (a) the net reproductive rate, $R_0 = \sum l_x m_x$; (b) the **generation time**, $T = \sum x l_x m_x / R_0$; and (c) the approximate population growth rate, $r \approx \ln(R_0)/T$. Is this population growing, stationary or shrinking?
+Now complete the remaining columns, $l_x m_x$ and $l_x m_x x$, and use them to calculate (a) the net reproductive rate, $R_0 = \sum l_x m_x$; (b) the **generation time**, $T = \sum x l_x m_x / R_0$; and (c) the capacity for increase, $r_c = \ln(R_0)/T$, which approximates the population growth rate per year. Is this population growing, stationary or shrinking?
 
 Refer to the sheet “*Worked example*” if you get stuck (click on the cells to see the formulae used there).
 
-#### Declining force of selection
+#### Declining force of selection (optional, if time)
 
-The force of selection describes the relative importance of events that happen during the life course for fitness (measured, for example, by $R_0$ or $r$).
+This experiment is optional here: you will do a fuller version in the practical *Trade-offs and the declining force of selection*. Do it if you have finished the rest of the life table and the survivorship curves.
+
+The force of selection describes the relative importance of events that happen during the life course for fitness (measured, for example, by $R_0$ or $r_m$).
 
 To investigate this you can do a computer "experiment" by altering reproduction at different ages. You can think of these as "what if?" experiments, e.g. "What if there was a mutation that added 1 to reproduction at age 1, or at age 2, etc.?"
 
 Before you start, **predict**: will adding one daughter at age 2 or at age 8 have the bigger effect on $R_0$? Why?
 
-Add 1 to $m_x$ at one age at a time (put it back before moving to the next age), and record the new value of $R_0$. Graph your results as age vs. change in $R_0$.
+Add 1 to $m_x$ at one age at a time, from age 1 to age 10 (put it back before moving to the next age), and record the new value of $R_0$. Do not include age 0: newborns cannot breed at birth. Graph your results as age vs. change in $R_0$.
 
 What you should see is that changes early in life matter more than changes later in life. (Adding one daughter at age $x$ raises $R_0$ by exactly $l_x$: a female must survive to age $x$ to have that extra daughter.)
 
-Use $R_0$, not the approximate $r$, for this experiment. The approximation $r = \ln(R_0)/T$ can even fall when reproduction is added late in life, because $T$ increases; the exact $r$ always increases, but by less and less with age.
+Use $R_0$, not $r_c$, for this experiment. The approximation $r_c = \ln(R_0)/T$ can even fall when reproduction is added late in life, because $T$ increases; the exact $r_m$ always increases, but by less and less with age.
 
 ### Survivorship curves
 
@@ -119,44 +123,21 @@ Make sure that you are (1) able to "diagnose" survivorship type from looking at 
 
 1. What are the three main types of survivorship curves, and which organisms typically exhibit each type?
 
-<!--
-Type I curves indicate high survival in early life and high mortality at older ages (e.g., humans). Type II curves show constant mortality throughout life (e.g., many birds). Type III curves represent high juvenile mortality with survivors living long lives (e.g., fish, plants).
--->
-
 2. What does a net reproductive rate ($R_0$) of less than 1 signify for a population?
-
- <!-- An R0 of less than 1 indicates that, on average, each female is replaced by fewer than one daughter over her lifetime, so the population is declining. -->
 
 3. How does the shape of a survivorship curve reflect trade-offs in life history strategies, typically?
 
-<!-- Type I curves suggest investment in offspring with low juvenile mortality, typical in species with fewer offspring and greater parental care. Type III curves reflect species that produce many offspring but provide little care, leading to high early mortality. -->
-
 4. How is survivorship ($l_x$) different from survival probability ($p_x$)?
-
-<!-- Survivorship (\(l_x\)) and survival probability (\(p_x\)) are related concepts in life tables, but they measure different aspects of survival in a population.
-
-- **Survivorship (\(l_x\))**: This is the proportion of individuals that survive from birth to age \(x\). It is a cumulative measure of survival across multiple age classes. For example, if \(l_0 = 1\) (all individuals alive at birth), then \(l_1\) might be 0.8 (80% of individuals survive to age 1). \(l_x\) declines with increasing age as more individuals die.
-
-- **Survival probability (\(p_x\))**: This is the probability that an individual who is alive at age \(x\) will survive to age \(x+1\). It measures survival over a single time step. For example, if 80% of individuals survive from age 1 to age 2, then \(p_1 = 0.8\).
-
-The two are linked: \(l_{x+1} = l_x \times p_x\). In the worked example, \(l_2 = 0.4\) and \(p_2 = 0.25\), so \(l_3 = 0.4 \times 0.25 = 0.1\). -->
 
 5. How does altering reproduction or survival/mortality at different ages affect $R_0$ and population growth rate?
 
-<!--
-   - Changes early in life have a larger impact on $R_0$ and population growth rate than changes later in life, because fewer individuals survive to experience late-life changes (adding one daughter at age x raises R0 by l_x). This is the declining force of selection.-->
-
 6. Two populations have the same $R_0$, but one has a shorter generation time. Which grows faster per year, and why?
 
-<!-- The one with the shorter generation time. R0 is growth per generation; r is approximately ln(R0)/T per year, so a shorter T means the population multiplies by R0 more often. E.g. R0 = 2: T = 1 year gives r = 0.69 per year; T = 2 years gives r = 0.35 per year. -->
-
-7. The probability of dying in a year, $q_x$, can never be greater than 1, but the force of mortality, $\mu_x$, can. Why?
-
-<!-- q_x is a probability over an interval, so it is bounded between 0 and 1. mu_x is an instantaneous rate per individual still alive (like a speed), so it has no upper limit. For a constant rate over a year, q = 1 - exp(-mu): at low mortality q is close to mu, but as mu increases q approaches 1 without reaching it. -->
+7. The probability of dying in a year, $q_x$, can never be greater than 1, but the force of mortality, $\mu_x$ (see the Notation table and the lecture), can. Why?
 
 ## Takeaways
 
 - Life tables summarise age-specific survival and reproduction in a compact, comparable way.
 - Survivorship type reflects how mortality changes with age, and so different life history strategies.
-- $R_0$ is growth per generation; dividing $\ln(R_0)$ by the generation time $T$ gives (approximately) the growth rate per year, $r$.
+- $R_0$ is growth per generation; dividing $\ln(R_0)$ by the generation time $T$ gives the capacity for increase, $r_c$, an approximation to the growth rate per year, $r_m$.
 - Early-life changes usually have the greatest impact on $R_0$ and population growth.

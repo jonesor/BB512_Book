@@ -49,14 +49,14 @@ The model makes these assumptions:
 
 - **Constant population size.** Each time you catch a bug, one of the surviving bugs is chosen at random to produce one offspring, so the number of bugs stays at the carrying capacity.
 - **Asexual reproduction.** An offspring has a single parent and inherits its colour genes.
-- **Small mutations.** Each of the offspring's three colour genes can differ slightly from the parent's, by up to the value of the "max-mutation-step" slider.
+- **Small mutations.** Each of the offspring's three colour genes can differ slightly from the parent's. The "max-mutation-step" slider controls how big these differences can be.
 - **Offspring appear near their parent**, within the distance set by the "offspring-distance" slider.
 - **Newborn bugs start very small** and grow to full size over time.
 - **Bugs do not move**, and the predator (you) is the only cause of death.
 
 So if you consistently catch (e.g.) non-reddish bugs, the reddish bugs that remain will have offspring that are also reddish, and the average colour of the population will shift towards red.
 
-Evolution can be defined as: "*change in the heritable characteristics [colour traits] of biological populations [bugs] over successive generations [time].*"
+In the lecture, evolution was defined as: "*change in the heritable characteristics [colour traits] of biological populations [bugs] over successive generations [time].*"
 
 ### Predict first
 
@@ -94,6 +94,8 @@ Use the "Time to catch 10 bugs" plot to put numbers on your hunting efficiency. 
 
 Compare your numbers with your neighbour's. They will differ (you are different predators!), but is the pattern the same?
 
+Your catch time does not depend only on the bugs. Apart from bug evolution, what else could change how long it takes you to catch 10 bugs? Which of the plots gives more direct evidence that the bugs themselves have evolved?
+
 ## Questions
 
 Answer the following questions, then make sure you confirm your understanding and have the right answers with an instructor.
@@ -103,7 +105,7 @@ Answer the following questions, then make sure you confirm your understanding an
 *	Would you say that the bug population becomes worse or better adapted to their environment?
 *	Can you explain how this happens?
 *	After simulating in one environment (e.g. poppy field) for a few minutes, pause then switch to another environment. Are the bugs now well- or poorly-adapted to their environment?
-*	Do the genotypes of individuals change (e.g. with individual age)?
+*	Do the genotypes of individuals change (e.g. with individual age)? Switch on "show-genotype?" and watch a few individual bugs for 30 seconds to find out.
 *	Increasing the "max-mutation-step" makes bug offspring less like their parents. How do you think this will influence the speed of adaptation of the bugs?
 *	In the lecture we met four conditions for evolution by natural selection: (1) individuals vary in a trait, (2) individuals vary in reproductive success, (3) the trait affects reproductive success, and (4) the trait is inherited. Where do you see each of these in the model? Where does new variation come from?
 *	Newborn bugs start very small. Could this let some bugs escape for reasons that have nothing to do with their colour? How might that affect the results?
@@ -114,7 +116,7 @@ Some useful keywords:
 *	Selection
 *	Adaptation
 *	Selection pressure
-*	Heritability
+*	Heritability (how much of the variation in a trait among individuals is passed on from parents to offspring; you will meet a more precise definition in Part 3)
 
 ::: {.do-something}
 **Optional extension: gene flow and local adaptation**

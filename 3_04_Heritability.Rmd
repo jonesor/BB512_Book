@@ -43,7 +43,7 @@ if (writeHeritabilityData) {
 
 Heritability measures how much of the variation in a trait **within a population** is due to additive genetic differences between individuals. It is a proportion, between 0 and 1, and it tells us how closely offspring resemble their parents. Heritability matters in plant and animal breeding, in medicine and in conservation, because it determines how fast a trait can respond to selection.
 
-Narrow-sense heritability is a ratio of two variances: the additive genetic variance divided by the total phenotypic variance.
+Narrow-sense heritability (Neal writes it $h^2_N$) is a ratio of two variances: the additive genetic variance divided by the total phenotypic variance.
 
 $h^2 = \frac{V_A}{V_P}$
 
@@ -54,10 +54,12 @@ A heritability close to 1 means that most of the variation among individuals is 
 Heritability is not a fixed property of a trait. It belongs to a particular population in a particular environment, because it changes whenever either variance changes:
 
 - **More environmental variation** (a patchier habitat, more variable weather or food) increases $V_P$ and so lowers $h^2$, even if $V_A$ is unchanged.
-- **Selection** removes unfavourable alleles and so reduces $V_A$. A trait under strong, persistent selection can end up with low heritability.
+- **Selection** removes unfavourable alleles and so reduces $V_A$. A trait under strong, persistent selection can end up with low heritability. (Traits closely related to fitness also tend to have low heritability because their environmental variance is large; see the lecture.)
 - **Genetic architecture** (how many genes affect the trait, and how large their effects are) differs between traits and species.
 
-We can estimate heritability from the resemblance between parents and offspring. If we plot the mean value of the offspring in each family against the **mid-parent value** (the mean of the two parents), the slope of the regression line estimates $h^2$. If you only know one parent, the slope estimates $h^2/2$, because each parent passes on only half of its alleles. This is the method used in the lecture for East's tobacco plants and for Darwin's finches.
+We can estimate heritability from the resemblance between parents and offspring. If we plot the offspring value in each family (one offspring, or the mean of several) against the **mid-parent value** (the mean of the two parents), the slope of the regression line estimates $h^2$. If you only know one parent, the slope estimates $h^2/2$, because each parent passes on only half of its alleles. Using the mean of several offspring per family gives a more precise estimate, but one offspring per family (as in this practical) also works. This is the method used in the lecture for East's tobacco plants and for Darwin's finches.
+
+**Reading:** Neal, chapter *Polygenic Inheritance and Quantitative Genetics*.
 
 **Reference**
 
@@ -99,7 +101,7 @@ You are provided with two datasets for wing length (mm) in a small songbird. Eac
 Starter code in R:
 
 ```{r heritability_starter_code, eval = FALSE, echo = TRUE}
-pop_1 <- read.csv("data/Heritability_Pop1.csv")
+pop_1 <- read.csv("data/heritability_pop1.csv")
 plot(pop_1$Midparent_value, pop_1$Offspring_value,
      xlab = "Mid-parent wing length (mm)", ylab = "Offspring wing length (mm)")
 mod1 <- lm(Offspring_value ~ Midparent_value, data = pop_1)
