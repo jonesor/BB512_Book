@@ -76,7 +76,7 @@ lc_plot <- function(nodes, edges, width, height, r = 0.6, xlim = c(0, width), yl
     p <- p + geom_path(data = g$path, aes(x, y), colour = col, linewidth = lw,
                        arrow = arrow_spec, lineend = "butt", linejoin = "mitre") +
       annotate("label", x = lab[1] + e$label_dx, y = lab[2] + e$label_dy, label = e$value,
-               colour = col, fill = bb512$bg, label.size = 0, size = value_size,
+               colour = col, fill = bb512$bg, linewidth = 0, size = value_size,
                family = "Avenir Next", fontface = "bold", label.padding = grid::unit(0.12, "lines"))
   }
   for (i in seq_len(nrow(nodes))) {

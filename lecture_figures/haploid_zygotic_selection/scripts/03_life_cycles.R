@@ -55,7 +55,7 @@ p <- ggplot2::ggplot() +
                      family = fam, size = 4.9, colour = bb512$grey, lineheight = 0.9) +
   ggplot2::geom_label(data = nodes, ggplot2::aes(x, y, label = label, fill = ploidy),
                       family = fam, size = 5.2, colour = "white", fontface = "bold",
-                      label.size = 0, label.r = grid::unit(0.15, "lines"),
+                      linewidth = 0, label.r = grid::unit(0.15, "lines"),
                       label.padding = grid::unit(0.45, "lines"), lineheight = 0.9) +
   ggplot2::geom_text(data = sel, ggplot2::aes(x, y, label = label), family = fam,
                      size = 5, fontface = "bold", colour = bb512$clay) +
