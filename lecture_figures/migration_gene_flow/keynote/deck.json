@@ -1,0 +1,3172 @@
+[
+ {
+  "n": 1,
+  "layout": "Title",
+  "ph": [
+   {
+    "idx": 103,
+    "name": "Title 2",
+    "text": "Migration, gene flow and the differentiation of populations",
+    "runs": [],
+    "pptx_size": null
+   },
+   {
+    "idx": 104,
+    "name": "Text Placeholder 3",
+    "text": "Why do some populations stay genetically alike while others drift apart?",
+    "runs": [],
+    "pptx_size": null
+   }
+  ],
+  "tables": [],
+  "notes": "~0.5 min.\nLecture 12 of BB512. Reading: Neal (2004) Chapter 9, plus section 8.4 (drift versus migration) from the previous chapter.\nGuiding question (why do some populations stay genetically alike while others drift apart?), to come back to at the end: very few migrants are needed (roughly one per generation) to stop drift pulling populations apart, but far more are needed to swamp local adaptation.\nImage: flowering common bent (Agrostis capillaris), a wind-pollinated grass, the species in the copper-mine example later on. (The previous version used a dandelion, but dandelions mostly reproduce without sex, an odd emblem for gene flow.) Same photo as the copper-mine slide (filename 'Agrostis-capillaris_Flints_SHammonds.JPG'); record photographer and licence before sharing outside the course.",
+  "pics": [
+   "Picture Placeholder 1"
+  ]
+ },
+ {
+  "n": 2,
+  "layout": "Agenda",
+  "ph": [
+   {
+    "idx": 101,
+    "name": "Title 1",
+    "text": "Migration and gene flow",
+    "runs": [],
+    "pptx_size": null
+   },
+   {
+    "idx": 103,
+    "name": "Text Placeholder 2",
+    "text": "Distinguish migration from gene flow, and define the migration rate m.\nUse island models to predict how gene flow changes allele frequencies over time.\nExplain how gene flow limits divergence by drift and local adaptation by selection.\nExplain how clines form where gene flow meets spatially varying selection.\nQuantify population structure with F-statistics, and explain what FST can and cannot tell us about gene flow.",
+    "runs": [
+     [
+      68,
+      1,
+      [
+       "italic"
+      ]
+     ],
+     [
+      378,
+      2,
+      [
+       "sub"
+      ]
+     ]
+    ],
+    "pptx_size": null
+   }
+  ],
+  "tables": [],
+  "notes": "~1 min.\nObjective 1 = Section 01; objectives 2 and 3 = Section 02 (island models, migration-selection balance); objective 4 = Section 03 (stepping stones and clines); objective 5 and the drift part of objective 3 = Section 04.\nThe textbook chapter (Neal Ch. 9) covers sections 01-03. Section 04 (F-statistics, F_ST and N_e m) goes beyond Neal Ch. 9 but builds directly on the inbreeding coefficient F from the previous lecture (Neal 8.5) and on Neal 8.4.",
+  "pics": []
+ },
+ {
+  "n": 3,
+  "layout": "Section",
+  "ph": [
+   {
+    "idx": 102,
+    "name": "Text Placeholder 1",
+    "text": "01",
+    "runs": [],
+    "pptx_size": null
+   },
+   {
+    "idx": 103,
+    "name": "Title 2",
+    "text": "Migration is not gene flow",
+    "runs": [],
+    "pptx_size": null
+   }
+  ],
+  "tables": [],
+  "notes": "Transition. ~0.2 min.",
+  "pics": []
+ },
+ {
+  "n": 4,
+  "layout": "Figure & Bullets",
+  "ph": [
+   {
+    "idx": 100,
+    "name": "Title 1",
+    "text": "A dragonfly that crosses oceans",
+    "runs": [],
+    "pptx_size": null
+   },
+   {
+    "idx": 102,
+    "name": "Text Placeholder 3",
+    "text": "The globe skimmer (Pantala flavescens) migrates thousands of kilometres, over several generations.\nPopulations on different continents are genetically very similar.\nIts genes travel, not just its bodies: close to one worldwide gene pool.",
+    "runs": [
+     [
+      19,
+      18,
+      [
+       "italic"
+      ]
+     ]
+    ],
+    "pptx_size": null
+   }
+  ],
+  "tables": [],
+  "notes": "~2 min.\nEcologists ask why and how far animals move. Population geneticists ask a different question: do the movers breed where they arrive, so that their alleles enter another gene pool? (Neal Ch. 9 introduction.)\nTroast et al. (2016) PLoS ONE 11: e0148949 found very similar genetic profiles in globe skimmers from North America, South America and Asia, consistent with gene flow across oceans and a common worldwide gene pool.\nThe map shows the species' global distribution (it does not show migration routes).\nImages carried over from the previous version: photo of a male in flight and a distribution map (Wikimedia Commons, '1920px-Pantala_flavescens_distribution_map.svg.png'). Record photographer and licence (probably CC BY-SA) before sharing outside the course.",
+  "pics": [
+   "Picture Placeholder 2"
+  ]
+ },
+ {
+  "n": 5,
+  "layout": "Two Columns",
+  "ph": [
+   {
+    "idx": 100,
+    "name": "Title 1",
+    "text": "Moving is not the same as gene flow",
+    "runs": [],
+    "pptx_size": null
+   },
+   {
+    "idx": 101,
+    "name": "Text Placeholder 2",
+    "text": "LONG JOURNEYS, LITTLE GENE FLOW",
+    "runs": [],
+    "pptx_size": null
+   },
+   {
+    "idx": 103,
+    "name": "Text Placeholder 3",
+    "text": "Sockeye salmon (Oncorhynchus nerka) feed at sea for years, then return to breed in the stream where they hatched.\nWhat matters is the distance from birthplace to breeding place.",
+    "runs": [
+     [
+      16,
+      18,
+      [
+       "italic"
+      ]
+     ]
+    ],
+    "pptx_size": null
+   },
+   {
+    "idx": 104,
+    "name": "Text Placeholder 4",
+    "text": "GENE FLOW WITHOUT MOVING ADULTS",
+    "runs": [],
+    "pptx_size": null
+   },
+   {
+    "idx": 106,
+    "name": "Text Placeholder 5",
+    "text": "Pollen carried by wind or insects\nSeeds, spores and larvae\nGametes released into water",
+    "runs": [],
+    "pptx_size": null
+   }
+  ],
+  "tables": [],
+  "notes": "~1.5 min.\nSalmon example from Neal Ch. 9 introduction: spectacular migrations, but strong natal homing means little gene flow between river populations.\nNeal's key sentence: what is important is not how far individuals move, but how far they move from where they were born to where they produce offspring.\nRight column: plants do not move as adults at all, yet can have high gene flow through pollen and seed. We will meet wind-borne pollen again in the copper-mine grass example.",
+  "pics": []
+ },
+ {
+  "n": 6,
+  "layout": "Key Concept",
+  "ph": [
+   {
+    "idx": 102,
+    "name": "Title 1",
+    "text": "Gene flow",
+    "runs": [],
+    "pptx_size": null
+   },
+   {
+    "idx": 103,
+    "name": "Text Placeholder 2",
+    "text": "The movement of alleles from one population into the gene pool of another, through migrants that breed there or gametes (such as pollen) that fertilise there.",
+    "runs": [],
+    "pptx_size": null
+   },
+   {
+    "idx": 105,
+    "name": "Text Placeholder 3",
+    "text": "Migration rate m = the proportion of a population's breeders that are immigrants each generation. Immigrants that do not breed contribute nothing.",
+    "runs": [
+     [
+      15,
+      1,
+      [
+       "italic"
+      ]
+     ]
+    ],
+    "pptx_size": null
+   }
+  ],
+  "tables": [],
+  "notes": "~1 min.\nNeal 9.1: m only counts immigrants that successfully breed and mix their alleles into the native gene pool, which is why it is hard to measure directly.\nm is a proportion (e.g. 0.01 = 1% of breeders). Later we will use N_e m, which is a number of migrants per generation. Keep the two apart.",
+  "pics": []
+ },
+ {
+  "n": 7,
+  "layout": "Section",
+  "ph": [
+   {
+    "idx": 102,
+    "name": "Text Placeholder 1",
+    "text": "02",
+    "runs": [],
+    "pptx_size": null
+   },
+   {
+    "idx": 103,
+    "name": "Title 2",
+    "text": "Island models",
+    "runs": [],
+    "pptx_size": null
+   }
+  ],
+  "tables": [],
+  "notes": "Transition. ~0.2 min.",
+  "pics": []
+ },
+ {
+  "n": 8,
+  "layout": "Title, Bullets & Photo",
+  "ph": [
+   {
+    "idx": 100,
+    "name": "Title 1",
+    "text": "Four ways to model gene flow",
+    "runs": [],
+    "pptx_size": null
+   },
+   {
+    "idx": 103,
+    "name": "Text Placeholder 3",
+    "text": "TAKEAWAY",
+    "runs": [],
+    "pptx_size": null
+   },
+   {
+    "idx": 105,
+    "name": "Text Placeholder 4",
+    "text": "The models differ only in who exchanges migrants with whom.\n1 and 2 ignore distance; in 3 and 4, most migrants move short distances.\nIn 4 there are no separate populations; mates come from nearby.",
+    "runs": [],
+    "pptx_size": null
+   }
+  ],
+  "tables": [],
+  "notes": "~1 min. Roadmap. Say aloud: we work through models 1 to 3 in detail; model 4 behaves much like a two-dimensional stepping-stone model.\n1 Continent-island: one-way flow from a large source with fixed allele frequency q_m.\n2 Island: every population exchanges migrants equally with every other; immigrants to an island come from the other islands (Neal Appendix 9.1). (Wright's version uses a pool that includes the recipient; with many islands the difference is negligible.)\n3 Stepping-stone: migrants only move between neighbours (Neal 9.3).\n4 Isolation by distance / neighbourhood models: continuous populations where mating probability declines with distance (Wright 1969; Neal Ch. 9 introduction). Neal mentions but does not simulate these; the results resemble the 2-D stepping-stone model.\nFigure: schematic, scripts/08_four_models.R.",
+  "pics": [
+   "Picture Placeholder 2"
+  ]
+ },
+ {
+  "n": 9,
+  "layout": "Figure & Bullets",
+  "ph": [
+   {
+    "idx": 100,
+    "name": "Title 1",
+    "text": "Model 1: a white field among yellow fields",
+    "runs": [],
+    "pptx_size": null
+   },
+   {
+    "idx": 102,
+    "name": "Text Placeholder 3",
+    "text": "Continent: yellow-flowered sweet clover; yellow allele frequency qm = 1.\nIsland: one field of white-flowered clover, q0 = 0.\nEach generation, 5% of the field's breeders come from outside (m = 0.05).\nHow fast does the field turn yellow? Does it ever stop?",
+    "runs": [
+     [
+      66,
+      1,
+      [
+       "sub"
+      ]
+     ],
+     [
+      118,
+      1,
+      [
+       "sub"
+      ]
+     ],
+     [
+      188,
+      1,
+      [
+       "italic"
+      ]
+     ]
+    ],
+    "pptx_size": null
+   }
+  ],
+  "tables": [],
+  "notes": "~1.5 min. Context before equations.\nNeal Example 9.2: a farmer sows a pure line of white-flowered sweet clover surrounded by fields of homozygous yellow-flowered clover. Treat the field as the 'island' and the surrounding fields as the 'continent'. This is Neal's hypothetical illustration.\nNotation follows Neal 9.1: q_0 = island ('native') allele frequency, q_m = frequency among immigrants, m = immigration rate (the proportion of the island's breeders that are immigrants).\nAsk for predictions before moving on: does the field ever become completely yellow? (Yes, eventually, if nothing else acts.)\nNeal also rearranges these equations to estimate m from allele frequencies (Eqn 9.3, Example 9.1); point students to it for reading, including Neal's caveats about selection and drift on the markers.\nFigure: schematic, scripts/09_continent_island_diagram.R.",
+  "pics": [
+   "Picture Placeholder 2"
+  ]
+ },
+ {
+  "n": 10,
+  "layout": "Figure & Bullets",
+  "ph": [
+   {
+    "idx": 100,
+    "name": "Title 1",
+    "text": "Model 1: one generation, counted",
+    "runs": [],
+    "pptx_size": null
+   },
+   {
+    "idx": 102,
+    "name": "Text Placeholder 3",
+    "text": "95 residents keep their white alleles\n5 immigrants bring yellow alleles\nSo the yellow allele is now at 5 in 100: q1 = 0.05\nNeal Eqn 9.1:\nq1 = (1 − m)q0 + mqm\nresidents + immigrants",
+    "runs": [
+     [
+      114,
+      1,
+      [
+       "sub"
+      ]
+     ],
+     [
+      123,
+      13,
+      [
+       "bold"
+      ]
+     ],
+     [
+      138,
+      1,
+      [
+       "sub"
+      ]
+     ],
+     [
+      147,
+      1,
+      [
+       "italic"
+      ]
+     ],
+     [
+      150,
+      1,
+      [
+       "sub"
+      ]
+     ],
+     [
+      154,
+      1,
+      [
+       "italic"
+      ]
+     ],
+     [
+      156,
+      1,
+      [
+       "sub"
+      ]
+     ]
+    ],
+    "pptx_size": null
+   }
+  ],
+  "tables": [],
+  "notes": "~2 min.\nCount, then name the parts. For simplicity every breeder is homozygous, so the proportion of breeders carrying the yellow allele equals its allele frequency.\nq_1 = 0.95 x 0 + 0.05 x 1 = 0.05. The 0.95 is (1 - m): residents keep their alleles. The 0.05 is m: immigrants bring their alleles. This is Neal Eqn 9.1.\nNothing else operates here: no selection, no drift, no mutation.\nFigure: schematic, scripts/09b_one_generation_counted.R.",
+  "pics": [
+   "Picture Placeholder 2"
+  ]
+ },
+ {
+  "n": 11,
+  "layout": "Figure & Bullets",
+  "ph": [
+   {
+    "idx": 100,
+    "name": "Title 1",
+    "text": "Model 1: each generation, the gap shrinks",
+    "runs": [],
+    "pptx_size": null
+   },
+   {
+    "idx": 102,
+    "name": "Text Placeholder 3",
+    "text": "Each generation the gap to the mainland shrinks by 5%\nBig gap, big change; small gap, small change\nNeal Eqn 9.2 (gap form):\nqm − qt = (1 − m)t(qm − q0)\nWorked examples: end of slides",
+    "runs": [
+     [
+      99,
+      12,
+      [
+       "bold"
+      ]
+     ],
+     [
+      125,
+      1,
+      [
+       "sub"
+      ]
+     ],
+     [
+      130,
+      1,
+      [
+       "sub"
+      ]
+     ],
+     [
+      139,
+      1,
+      [
+       "italic"
+      ]
+     ],
+     [
+      141,
+      1,
+      [
+       "sup"
+      ]
+     ],
+     [
+      144,
+      1,
+      [
+       "sub"
+      ]
+     ],
+     [
+      149,
+      1,
+      [
+       "sub"
+      ]
+     ],
+     [
+      152,
+      30,
+      [
+       "small"
+      ]
+     ]
+    ],
+    "pptx_size": null
+   }
+  ],
+  "tables": [],
+  "notes": "~1.5 min.\nThe equation is Neal Eqn 9.2 multiplied by -1 on both sides, so it matches the positive gap in the bars; Neal writes q_t - q_m = (1 - m)^t (q_0 - q_m). The gap q_m - q_t starts at 1 and is multiplied by 0.95 each generation: 1, 0.95, 0.9025, 0.857... This is Neal Eqn 9.2 in words; the derivation is on Neal p. 137.\nAlso say: Delta q = m(q_m - q_0) (Neal Exp. 9.2): the change depends on the migration rate AND on how different the two populations are, so change is fast at first and slows as the gap closes.\nFigure: analytical, scripts/09c_gap_shrinks.R.",
+  "pics": [
+   "Picture Placeholder 2"
+  ]
+ },
+ {
+  "n": 12,
+  "layout": "Title, Bullets & Photo",
+  "ph": [
+   {
+    "idx": 100,
+    "name": "Title 1",
+    "text": "Model 1: the field turns yellow",
+    "runs": [],
+    "pptx_size": null
+   },
+   {
+    "idx": 103,
+    "name": "Text Placeholder 3",
+    "text": "TAKEAWAY",
+    "runs": [],
+    "pptx_size": null
+   },
+   {
+    "idx": 105,
+    "name": "Text Placeholder 4",
+    "text": "Fast at first, then slower, because the gap shrinks\nHalfway (q = 0.5) after 13.5 generations\nm sets the speed; the field always heads towards qm",
+    "runs": [
+     [
+      93,
+      1,
+      [
+       "italic"
+      ]
+     ],
+     [
+      143,
+      1,
+      [
+       "sub"
+      ]
+     ]
+    ],
+    "pptx_size": null
+   }
+  ],
+  "tables": [],
+  "notes": "~1.5 min.\nSolve 0.5 - 1 = (0.95)^t (0 - 1): 0.5 = 0.95^t, t = ln 0.5 / ln 0.95 = 13.5, about 14 generations (Neal Example 9.2).\nq_1 = 0.05, q_2 = 0.0975, q_3 = 0.1426 (from the previous two slides).\nThe grey curves show m = 0.01 and m = 0.2: the rate sets the speed, but every curve heads to q_m = 1. Gene flow homogenises.\nFigure: analytical (Eqn 9.2), scripts/10_continent_island_curve.R.",
+  "pics": [
+   "Picture Placeholder 2"
+  ]
+ },
+ {
+  "n": 13,
+  "layout": "Activity",
+  "ph": [
+   {
+    "idx": 101,
+    "name": "Text Placeholder 1",
+    "text": "2 MIN · PAIRS",
+    "runs": [],
+    "pptx_size": null
+   },
+   {
+    "idx": 102,
+    "name": "Title 2",
+    "text": "Sketch q over time: an island starts at q = 0.75, the mainland is at 0.25.",
+    "runs": [],
+    "pptx_size": null
+   },
+   {
+    "idx": 103,
+    "name": "Text Placeholder 3",
+    "text": "Where does it end up?\nIs the change fast or slow at first? Why?\nWhat would a higher migration rate change, and what would it not change?",
+    "runs": [],
+    "pptx_size": null
+   }
+  ],
+  "tables": [],
+  "notes": "~2 min including answers. A sketch, not a calculation: the calculation (Neal Problem 9.3) is a self-study worked example at the end of the slides.\nAnswers: it falls towards 0.25 (gene flow pulls towards the source, not towards 1); fastest at first because the gap is largest; higher m makes it faster but does not change where it ends up.",
+  "pics": []
+ },
+ {
+  "n": 14,
+  "layout": "Figure & Bullets",
+  "ph": [
+   {
+    "idx": 100,
+    "name": "Title 1",
+    "text": "Model 2: islands exchanging migrants",
+    "runs": [],
+    "pptx_size": null
+   },
+   {
+    "idx": 102,
+    "name": "Text Placeholder 3",
+    "text": "Several islands of equal size, each starting with a different allele frequency.\nEach generation, a proportion m of every island's breeders are immigrants from the other islands.\nSo immigrants to an island carry the average allele frequency of the other islands.\nSame rule as Model 1 (Neal Eqn 9.1), applied to every island at once.\nPredict: what happens to the differences between islands?",
+    "runs": [
+     [
+      110,
+      1,
+      [
+       "italic"
+      ]
+     ]
+    ],
+    "pptx_size": null
+   }
+  ],
+  "tables": [],
+  "notes": "~1.5 min. Context before the check question and the result.\nNeal 9.1 and Example 9.3; Neal Appendix 9.1 is the spreadsheet version. Each island follows Eqn 9.1, but its q_m is now the mean of the donor islands, which changes every generation.\nAsk for a prediction before moving on: do the islands converge? On what value? (Answers in the next two slides.)\nFigure: schematic, scripts/13a_island_setup.R.",
+  "pics": [
+   "Picture Placeholder 2"
+  ]
+ },
+ {
+  "n": 15,
+  "layout": "Check Question (4 options)",
+  "ph": [
+   {
+    "idx": 101,
+    "name": "Title 1",
+    "text": "Model 2: three equal islands have q = 0.2, 0.4 and 0.6. What allele frequency do immigrants bring to the 0.2 island?",
+    "runs": [],
+    "pptx_size": null
+   },
+   {
+    "idx": 105,
+    "name": "Text Placeholder 2",
+    "text": "0.2",
+    "runs": [],
+    "pptx_size": null
+   },
+   {
+    "idx": 109,
+    "name": "Text Placeholder 3",
+    "text": "0.3",
+    "runs": [],
+    "pptx_size": null
+   },
+   {
+    "idx": 113,
+    "name": "Text Placeholder 4",
+    "text": "0.4",
+    "runs": [],
+    "pptx_size": null
+   },
+   {
+    "idx": 117,
+    "name": "Text Placeholder 5",
+    "text": "0.5",
+    "runs": [],
+    "pptx_size": null
+   }
+  ],
+  "tables": [],
+  "notes": "~1.5 min. Answer D, 0.5.\nIn the island model each population receives migrants from all the others, so q_m is the mean of the DONOR populations: (0.4 + 0.6)/2 = 0.5 (Neal Example 9.3).\nCommon wrong answer C (0.4) is the mean of all three islands, including the recipient. That would be right in Wright's version of the island model, where migrants come from a pool to which every island contributes; the previous slide defines immigrants as coming from the OTHER islands, as in Neal. With only three islands the two versions differ noticeably; with many islands they converge.\nIf populations differ in size, the donors' frequencies must be weighted by size.\nNeal applies Eqn 9.2 with q_m held fixed and gets 0.3954 for this island after 10 generations (m = 0.1); he notes this is an approximation because the q_m values themselves change every generation. Iterating properly (next slide's method) gives 0.36, with all three converging on the overall mean of 0.4.",
+  "pics": []
+ },
+ {
+  "n": 16,
+  "layout": "Title, Bullets & Photo",
+  "ph": [
+   {
+    "idx": 100,
+    "name": "Title 1",
+    "text": "Model 2: islands converge",
+    "runs": [],
+    "pptx_size": null
+   },
+   {
+    "idx": 103,
+    "name": "Text Placeholder 3",
+    "text": "TAKEAWAY",
+    "runs": [],
+    "pptx_size": null
+   },
+   {
+    "idx": 105,
+    "name": "Text Placeholder 4",
+    "text": "Four islands, m = 0.1\nHigh islands pulled down, low islands pulled up\nAll converge on the overall mean (0.5)\nNeal Eqn 9.1 on every island; Fig. 9.1",
+    "runs": [
+     [
+      14,
+      1,
+      [
+       "italic"
+      ]
+     ],
+     [
+      109,
+      38,
+      [
+       "small"
+      ]
+     ]
+    ],
+    "pptx_size": null
+   }
+  ],
+  "tables": [],
+  "notes": "~1.5 min.\nReproduces Neal Fig. 9.1 and Appendix 9.1 (the spreadsheet simulation): starting frequencies 0.2, 0.4, 0.6, 0.8; m = 0.1; equal sizes.\nNeal's conclusion (9.2): gene flow makes populations genetically uniform, and this becomes more powerful as m increases (say this aloud; the figure shows only m = 0.1; the Model 1 curve slide showed the effect of m).\nThen the question Neal asks next: gene flow beats drift easily (we come back to this in Section 04), but can it beat selection?\nFigure: deterministic iteration of Eqn 9.1, scripts/13_island_model.R.",
+  "pics": [
+   "Picture Placeholder 2"
+  ]
+ },
+ {
+  "n": 17,
+  "layout": "Figure & Bullets",
+  "ph": [
+   {
+    "idx": 100,
+    "name": "Title 1",
+    "text": "Model 1 + selection: a windy island",
+    "runs": [],
+    "pptx_size": null
+   },
+   {
+    "idx": 102,
+    "name": "Text Placeholder 3",
+    "text": "Same continent–island model, with one change: selection on the island.\nMainland: all insects winged (wing allele q = 1).\nIsland: winged insects are blown out to sea, so they have fitness 1 − s, with s = 0.25. Wings are recessive.\nEach generation, 1% of the island's breeders come from the mainland (m = 0.01).\nPredict: does selection remove the wing allele, or does gene flow keep it?",
+    "runs": [
+     [
+      191,
+      1,
+      [
+       "italic"
+      ]
+     ],
+     [
+      199,
+      1,
+      [
+       "italic"
+      ]
+     ],
+     [
+      299,
+      1,
+      [
+       "italic"
+      ]
+     ]
+    ],
+    "pptx_size": null
+   }
+  ],
+  "tables": [],
+  "notes": "~1.5 min. Prediction before the result.\nSet-up from Neal 9.2 and Fig. 9.2. Ask for a show of hands: does selection eliminate the wing allele, or does gene flow keep it at a substantial frequency? Most students expect elimination because s = 0.25 is strong selection. The next slide shows why not.\nSelection coefficient s: the proportional reduction in fitness of the disfavoured genotype (fitness 1 - s rather than 1). Selection is covered in detail in the next lecture (Neal Ch. 10).\nFigure: schematic, scripts/16a_migsel_setup.R.",
+  "pics": [
+   "Picture Placeholder 2"
+  ]
+ },
+ {
+  "n": 18,
+  "layout": "Title, Bullets & Photo",
+  "ph": [
+   {
+    "idx": 100,
+    "name": "Title 1",
+    "text": "Model 1 + selection: the balance",
+    "runs": [],
+    "pptx_size": null
+   },
+   {
+    "idx": 103,
+    "name": "Text Placeholder 3",
+    "text": "TAKEAWAY",
+    "runs": [],
+    "pptx_size": null
+   },
+   {
+    "idx": 105,
+    "name": "Text Placeholder 4",
+    "text": "Equilibrium: loss by selection = gain by immigration\nNeal Exp. 9.11: q ≈ √(m/s)\nm = 0.01: q = 0.20 but 4% winged; alleles hide in heterozygotes\nGene flow limits local adaptation",
+    "runs": [
+     [
+      75,
+      1,
+      [
+       "italic"
+      ]
+     ],
+     [
+      77,
+      1,
+      [
+       "italic"
+      ]
+     ],
+     [
+      80,
+      1,
+      [
+       "italic"
+      ]
+     ]
+    ],
+    "pptx_size": null
+   }
+  ],
+  "tables": [],
+  "notes": "~2 min.\nNeal Exp. 9.10: loss by selection, s p q^2 / (1 - s q^2), balances gain by immigration, m(q_m - q). With q_m = 1 this simplifies to q-hat = sqrt(m/s) (Exp. 9.11).\nm = 0.01, s = 0.25: q-hat = sqrt(0.04) = 0.20, so 1% immigration maintains 20% wing alleles despite strong selection. Because wings are recessive, only q^2 = 4% of insects are winged: the allele hides in heterozygotes.\nm = 0.1: q-hat = 0.632; q^2 = 0.40.\nAccuracy note: Neal reaches sqrt(m/s) by approximation, but it is exact if the island is counted after immigration (life cycle: selection, then immigration). Counted after selection instead, the equilibrium is (sqrt(m/s) - m)/(1 - m): 0.59 rather than 0.63 at m = 0.1, and 0.19 rather than 0.20 at m = 0.01. Solving Neal's unsimplified Exp. 9.10 gives 0.60 at m = 0.1. The conclusion is unchanged.\nDifferent dominance changes the numbers but not Neal's conclusion: gene flow is a powerful factor limiting differentiation by selection.\nFigure: analytical, checked by iterating the recursion; scripts/15_migration_selection.R.",
+  "pics": [
+   "Picture Placeholder 2"
+  ]
+ },
+ {
+  "n": 19,
+  "layout": "Section",
+  "ph": [
+   {
+    "idx": 102,
+    "name": "Text Placeholder 1",
+    "text": "03",
+    "runs": [],
+    "pptx_size": null
+   },
+   {
+    "idx": 103,
+    "name": "Title 2",
+    "text": "Stepping stones and clines",
+    "runs": [],
+    "pptx_size": null
+   }
+  ],
+  "tables": [],
+  "notes": "Transition. ~0.2 min.",
+  "pics": []
+ },
+ {
+  "n": 20,
+  "layout": "Figure & Bullets",
+  "ph": [
+   {
+    "idx": 100,
+    "name": "Title 1",
+    "text": "Model 3: the stepping-stone model",
+    "runs": [],
+    "pptx_size": null
+   },
+   {
+    "idx": 102,
+    "name": "Text Placeholder 3",
+    "text": "Populations in a chain along an environmental gradient, e.g. up a mountainside.\nSelection favours different alleles at the two ends, holding them at q = 0.9 and 0.1.\nMigrants move only between neighbours.\nNeal Exp. 9.13:\nq2′ = (1 − m21 − m23)q2 + m12q1 + m32q3\nPredict: what happens in between?",
+    "runs": [
+     [
+      222,
+      1,
+      [
+       "sub"
+      ]
+     ],
+     [
+      232,
+      1,
+      [
+       "italic"
+      ]
+     ],
+     [
+      233,
+      2,
+      [
+       "sub"
+      ]
+     ],
+     [
+      238,
+      1,
+      [
+       "italic"
+      ]
+     ],
+     [
+      239,
+      2,
+      [
+       "sub"
+      ]
+     ],
+     [
+      243,
+      1,
+      [
+       "sub"
+      ]
+     ],
+     [
+      247,
+      1,
+      [
+       "italic"
+      ]
+     ],
+     [
+      248,
+      2,
+      [
+       "sub"
+      ]
+     ],
+     [
+      251,
+      1,
+      [
+       "sub"
+      ]
+     ],
+     [
+      255,
+      1,
+      [
+       "italic"
+      ]
+     ],
+     [
+      256,
+      2,
+      [
+       "sub"
+      ]
+     ],
+     [
+      259,
+      1,
+      [
+       "sub"
+      ]
+     ]
+    ],
+    "pptx_size": null
+   }
+  ],
+  "tables": [],
+  "notes": "~2 min.\nNeal 9.3, Fig. 9.3 and Exp. 9.13, written for population 2 (Neal writes q_1 = [1 - (m21 + m23)] q_0 + m12 q_m1 + m32 q_m3). In words: population 2 keeps what does not emigrate and gains immigrants from both neighbours. Why the ends differ: selection favours different alleles in the two environments, for example cold-tolerance high up and heat-tolerance low down. Subscripts give direction: m12 is from population 1 into 2; m21 is from 2 into 1.\nExamples of linear chains: altitude on a mountain, salinity along an estuary shoreline.\nAsk students to sketch their prediction before the next slide.\nCorrection to previous version: the old diagram labelled two arrows m34; the left-pointing one should be m43.",
+  "pics": [
+   "Picture Placeholder 2"
+  ]
+ },
+ {
+  "n": 21,
+  "layout": "Title, Bullets & Photo",
+  "ph": [
+   {
+    "idx": 100,
+    "name": "Title 1",
+    "text": "Model 3: a gradient between the ends",
+    "runs": [],
+    "pptx_size": null
+   },
+   {
+    "idx": 103,
+    "name": "Text Placeholder 3",
+    "text": "TAKEAWAY",
+    "runs": [],
+    "pptx_size": null
+   },
+   {
+    "idx": 105,
+    "name": "Text Placeholder 4",
+    "text": "At equilibrium, equal migration gives a straight-line gradient\nA barrier (low m): a steep section\nCline: a gradual change in allele frequency or phenotype across space",
+    "runs": [
+     [
+      78,
+      1,
+      [
+       "italic"
+      ]
+     ]
+    ],
+    "pptx_size": null
+   }
+  ],
+  "tables": [],
+  "notes": "~2.5 min.\nName the pattern: a gradient like this is a cline. Its shape reflects the balance of selection, gene flow and drift; steep sections often mark barriers to movement or sharp changes in selection. Neal 9.3: intermediate populations on real clines are not set by migration alone; selection and possibly drift also act.\nReproduces Neal Fig. 9.4 and Appendix 9.2: nine populations, ends fixed at 0.9 and 0.1, m = 0.2 between neighbours; barrier = m reduced to 0.05 between populations 4-5 and 5-6. Shown at equilibrium.\nNeal's conclusion: gene flow limits differentiation of adjacent populations, and abrupt changes are associated with geographical features that reduce movement.\nCaveat: a steep step can also come from an abrupt change in selection, so a step alone does not prove a barrier.\nFigure: deterministic iteration, scripts/18_stepping_stone_cline.R.",
+  "pics": [
+   "Picture Placeholder 2"
+  ]
+ },
+ {
+  "n": 22,
+  "layout": "Figure & Bullets",
+  "ph": [
+   {
+    "idx": 100,
+    "name": "Title 1",
+    "text": "Copper tolerance in a grass on a mine",
+    "runs": [],
+    "pptx_size": null
+   },
+   {
+    "idx": 102,
+    "name": "Text Placeholder 3",
+    "text": "Common bent (Agrostis capillaris; A. tenuis in older work) on a small copper mine in Britain\nOn the mine: selection for copper tolerance\nOff the mine: tolerant plants are at a disadvantage\nA real stepping-stone chain: the mine is one end, normal soil the other\nWind blows mostly one way, carrying pollen. Predict: upwind versus downwind?",
+    "runs": [
+     [
+      13,
+      19,
+      [
+       "italic"
+      ]
+     ],
+     [
+      34,
+      9,
+      [
+       "italic"
+      ]
+     ]
+    ],
+    "pptx_size": null
+   }
+  ],
+  "tables": [],
+  "notes": "~1.5 min.\nMcNeilly (1968) Heredity 23: 99-108, 'Evolution in closely adjacent plant populations III. Agrostis tenuis on a small copper mine'; described in Neal 9.3.\nThe mine lies at the bottom of a steep-sided valley that funnels the wind in one direction for most of the flowering season.\nCorrection to previous version: it said that off the mine 'there has been no selection'. In fact tolerant plants are selected against off the mine (Neal p. 143), which is what keeps tolerance low there and explains the seed-adult difference on the next slide.\nImage carried over from the previous version (filename 'Agrostis-capillaris_Flints_SHammonds.JPG'); record photographer and licence before sharing.",
+  "pics": [
+   "Picture Placeholder 2"
+  ]
+ },
+ {
+  "n": 23,
+  "layout": "Figure & Bullets",
+  "ph": [
+   {
+    "idx": 100,
+    "name": "Title 1",
+    "text": "Pollen carries tolerance downwind",
+    "runs": [],
+    "pptx_size": null
+   },
+   {
+    "idx": 102,
+    "name": "Text Placeholder 3",
+    "text": "Seed: offspring after gene flow (fathers via wind-borne pollen). Adults: survivors of selection.\nOn the mine: non-tolerant pollen blows in, so seed is less tolerant; copper then kills non-tolerant seedlings.\nDownwind: tolerant pollen blows off the mine, so seed is more tolerant; on normal soil, tolerant plants do worse and are lost.\nUpwind: little pollen arrives, so the edge stays steep.\nGene flow pulls one way, selection pulls back: the cline is the balance.",
+    "runs": [
+     [
+      0,
+      4,
+      [
+       "bold"
+      ]
+     ],
+     [
+      65,
+      6,
+      [
+       "bold"
+      ]
+     ]
+    ],
+    "pptx_size": null
+   }
+  ],
+  "tables": [],
+  "notes": "~2.5 min.\nSite: Drws-y-Coed, a small (about 300 x 100 m) copper mine on a glaciated valley floor in North Wales (McNeilly 1968). Transect 1 is at the upwind end of the mine, transect 2 at the downwind end.\nWhat McNeilly reports: upwind, tolerant adults stop abruptly between the last mine site and a site 1 m off the mine; downwind, tolerant adults extend well onto normal soil with no abrupt change. Every seed sample from the mine was markedly less tolerant than its adults, and every off-mine seed sample downwind was more tolerant than its adults.\nAdults = established plants; Seed = offspring grown from seed collected from those adults, so seed carries the fathers' (pollen) genes.\nOn the mine, seed is LESS tolerant than adults: non-tolerant pollen blows in from upwind; selection on the mine then removes non-tolerant seedlings.\nDownwind, seed is MORE tolerant than adults: tolerant pollen blows off the mine; selection against tolerance off the mine then removes tolerant plants before adulthood.\nSo each generation, gene flow and selection pull in opposite directions; the cline is the balance.\nFigure: SCHEMATIC. The shape follows McNeilly's text; the values are illustrative, not his data (his Fig. 3 could not be digitised). The previous version's bar chart came from a redrawn figure that disagreed with McNeilly's text at the first downwind site, so it was replaced. Say aloud that the curves are a sketch of the pattern. scripts/21_copper_tolerance.R.",
+  "pics": [
+   "Picture Placeholder 2"
+  ]
+ },
+ {
+  "n": 24,
+  "layout": "Section",
+  "ph": [
+   {
+    "idx": 102,
+    "name": "Text Placeholder 1",
+    "text": "04",
+    "runs": [],
+    "pptx_size": null
+   },
+   {
+    "idx": 103,
+    "name": "Title 2",
+    "text": "Measuring differentiation and gene flow",
+    "runs": [],
+    "pptx_size": null
+   }
+  ],
+  "tables": [],
+  "notes": "Transition. ~0.2 min. This section goes beyond Neal Ch. 9; it builds on F from the inbreeding lecture (Neal 8.5) and on Neal 8.4.",
+  "pics": []
+ },
+ {
+  "n": 25,
+  "layout": "Two Columns",
+  "ph": [
+   {
+    "idx": 100,
+    "name": "Title 1",
+    "text": "Gene flow is hard to measure directly",
+    "runs": [],
+    "pptx_size": null
+   },
+   {
+    "idx": 101,
+    "name": "Text Placeholder 2",
+    "text": "DIRECT: FOLLOW INDIVIDUALS",
+    "runs": [],
+    "pptx_size": null
+   },
+   {
+    "idx": 103,
+    "name": "Text Placeholder 3",
+    "text": "Mark–recapture, tracking, parentage of seeds\nMeasures movement, not necessarily breeding\nShort studies miss rare long-distance events",
+    "runs": [],
+    "pptx_size": null
+   },
+   {
+    "idx": 104,
+    "name": "Text Placeholder 4",
+    "text": "INDIRECT: READ THE GENES",
+    "runs": [],
+    "pptx_size": null
+   },
+   {
+    "idx": 106,
+    "name": "Text Placeholder 5",
+    "text": "Compare allele frequencies among populations\nLess differentiation implies more gene flow\nAverages over many generations, but relies on a model",
+    "runs": [],
+    "pptx_size": null
+   }
+  ],
+  "tables": [],
+  "notes": "~1.5 min.\nDirect: following pollinators, fruit-eaters or seeds is very difficult; wind pollination almost impossible to track. Gene flow is a long-term process, but field studies last a few seasons.\nIndirect: use the genetic consequences of past gene flow. That needs a way to quantify differentiation (next slides) and a model linking it to gene flow.",
+  "pics": []
+ },
+ {
+  "n": 26,
+  "layout": "Title, Bullets & Photo",
+  "ph": [
+   {
+    "idx": 100,
+    "name": "Title 1",
+    "text": "Why measure heterozygosity?",
+    "runs": [],
+    "pptx_size": null
+   },
+   {
+    "idx": 103,
+    "name": "Text Placeholder 3",
+    "text": "TAKEAWAY",
+    "runs": [],
+    "pptx_size": null
+   },
+   {
+    "idx": 105,
+    "name": "Text Placeholder 4",
+    "text": "HS: within populations; HT: pooled\nThe more populations differ, the further HS falls below HT\nThe gap measures differentiation; with a model, we can infer gene flow",
+    "runs": [
+     [
+      1,
+      1,
+      [
+       "sub"
+      ]
+     ],
+     [
+      25,
+      1,
+      [
+       "sub"
+      ]
+     ],
+     [
+      77,
+      1,
+      [
+       "sub"
+      ]
+     ],
+     [
+      92,
+      1,
+      [
+       "sub"
+      ]
+     ]
+    ],
+    "pptx_size": null
+   }
+  ],
+  "tables": [],
+  "notes": "~2 min. The 'why' before the F-statistics.\nWe want to measure how different populations are, because, given a model, that lets us infer gene flow (more gene flow, more similar). Differentiation can also come from divergent selection or recent isolation plus drift, which is why the inference needs a model (Section 04 caveats). Heterozygosity is a convenient yardstick.\nExpected heterozygosity 2p(1 - p) (from the Hardy-Weinberg lecture) is hump-shaped. Two populations with different allele frequencies each sit lower on the hump than their pooled average would: H_S (the mean of the two green points) lies below H_T (the curve at the mean allele frequency).\nSimilar populations (p = 0.4 and 0.6): H_S = 0.48, H_T = 0.50, gap 0.02, F_ST = 0.04. Different populations (p = 0.1 and 0.9): H_S = 0.18, H_T = 0.50, gap 0.32, F_ST = 0.64.\nSame logic as the inbreeding lecture: there, F measured a heterozygote deficit caused by mating with relatives; here the deficit is caused by population structure (the Wahlund effect). Next slide puts these into the three-level framework.\nFigure: analytical, scripts/23b_why_heterozygosity.R.",
+  "pics": [
+   "Picture Placeholder 2"
+  ]
+ },
+ {
+  "n": 27,
+  "layout": "Figure & Bullets",
+  "ph": [
+   {
+    "idx": 100,
+    "name": "Title 1",
+    "text": "Three levels of heterozygosity",
+    "runs": [],
+    "pptx_size": null
+   },
+   {
+    "idx": 102,
+    "name": "Text Placeholder 3",
+    "text": "Each F compares heterozygosity at two levels (recall F from the inbreeding lecture)\nFIS: inbreeding within subpopulations\nFST: differentiation among subpopulations\nFIT: both combined\nKey equation: FST = (HT − HS) / HT\nWorked example: end of slides",
+    "runs": [
+     [
+      85,
+      2,
+      [
+       "sub"
+      ]
+     ],
+     [
+      123,
+      2,
+      [
+       "sub"
+      ]
+     ],
+     [
+      165,
+      2,
+      [
+       "sub"
+      ]
+     ],
+     [
+      183,
+      13,
+      [
+       "bold"
+      ]
+     ],
+     [
+      198,
+      2,
+      [
+       "sub"
+      ]
+     ],
+     [
+      205,
+      1,
+      [
+       "sub"
+      ]
+     ],
+     [
+      210,
+      1,
+      [
+       "sub"
+      ]
+     ],
+     [
+      216,
+      1,
+      [
+       "sub"
+      ]
+     ],
+     [
+      218,
+      29,
+      [
+       "small"
+      ]
+     ]
+    ],
+    "pptx_size": null
+   }
+  ],
+  "tables": [],
+  "notes": "~2.5 min.\nFormulas for reference (in the worked example at the end): F_IS = (H_S - H_I)/H_S; F_ST = (H_T - H_S)/H_T; F_IT = (H_T - H_I)/H_T.\nH_I: observed heterozygosity, averaged over subpopulations.\nH_S: expected heterozygosity (2pq) within each subpopulation, averaged.\nH_T: expected heterozygosity 2 p-bar q-bar if all subpopulations were pooled into one randomly mating population.\nEach F compares a lower level with a higher one. They combine as (1 - F_IT) = (1 - F_IS)(1 - F_ST); equivalently F_IT = F_IS + F_ST - F_IS F_ST.\nCorrection to previous version: one slide labelled the differentiation index 'F_IS (Fixation Index)'; it should be F_ST.",
+  "pics": [
+   "Picture Placeholder 2"
+  ]
+ },
+ {
+  "n": 28,
+  "layout": "Key Concept",
+  "ph": [
+   {
+    "idx": 102,
+    "name": "Title 1",
+    "text": "FST, the fixation index",
+    "runs": [
+     [
+      1,
+      2,
+      [
+       "sub"
+      ]
+     ]
+    ],
+    "pptx_size": null
+   },
+   {
+    "idx": 103,
+    "name": "Text Placeholder 2",
+    "text": "The proportion of the total expected heterozygosity that is due to allele-frequency differences among subpopulations.",
+    "runs": [],
+    "pptx_size": null
+   },
+   {
+    "idx": 105,
+    "name": "Text Placeholder 3",
+    "text": "FST = 0: subpopulations identical.  FST = 1: fixed for different alleles.",
+    "runs": [
+     [
+      1,
+      2,
+      [
+       "sub"
+      ]
+     ],
+     [
+      37,
+      2,
+      [
+       "sub"
+      ]
+     ]
+    ],
+    "pptx_size": null
+   }
+  ],
+  "tables": [],
+  "notes": "~0.5 min.\nCommon misconception: F_IT > 0 does not mean individuals mate with relatives. It can arise purely from structure: sampling the whole population as if it were one gene pool shows fewer heterozygotes than expected (Wahlund effect).\nTell students: worked examples for self-study, including the F-statistics, are at the end of the PDF. They are not done in class.",
+  "pics": []
+ },
+ {
+  "n": 29,
+  "layout": "Title, Bullets & Photo",
+  "ph": [
+   {
+    "idx": 100,
+    "name": "Title 1",
+    "text": "From FST to migrants per generation",
+    "runs": [
+     [
+      6,
+      2,
+      [
+       "sub"
+      ]
+     ]
+    ],
+    "pptx_size": null
+   },
+   {
+    "idx": 103,
+    "name": "Text Placeholder 3",
+    "text": "TAKEAWAY",
+    "runs": [],
+    "pptx_size": null
+   },
+   {
+    "idx": 105,
+    "name": "Text Placeholder 4",
+    "text": "Wright's island model: FST ≈ 1 / (4Nem + 1)\nMore migrants, less differentiation\nNem = number of migrants, not a proportion\nWorked example: end of slides",
+    "runs": [
+     [
+      24,
+      2,
+      [
+       "sub"
+      ]
+     ],
+     [
+      36,
+      1,
+      [
+       "sub"
+      ]
+     ],
+     [
+      37,
+      1,
+      [
+       "italic"
+      ]
+     ],
+     [
+      81,
+      1,
+      [
+       "sub"
+      ]
+     ],
+     [
+      82,
+      1,
+      [
+       "italic"
+      ]
+     ],
+     [
+      123,
+      29,
+      [
+       "small"
+      ]
+     ]
+    ],
+    "pptx_size": null
+   }
+  ],
+  "tables": [],
+  "notes": "~2.5 min.\nSewall Wright (spelling corrected from 'Sewell' in the previous version) derived F_ST = 1/(4Nm + 1) for an island model at equilibrium between drift and gene flow.\nN_e = effective size of each subpopulation, m = migration rate (a proportion), so N_e m = number of migrants per generation. Written N_e m (Neal Eqn 8.4) rather than Nm, because in Neal Exp. 8.1 N_m means the number of males. Correction to previous version: it described Nm as 'the proportion of individuals that move'.\nRearranged (in the worked example at the end): N_e m = (1/F_ST - 1)/4. Worked check: N_e m = 1 gives F_ST = 1/5 = 0.2.\nDo not apply the formula to the two-subpopulation worked example at the end of the slides (F_ST = 0.375, one locus): it assumes many subpopulations. Naively it gives N_e m = 0.42; with the finite-island correction F_ST = 1/(1 + 4 N_e m (n/(n - 1))^2) for n = 2 it gives about 0.10. A useful example of misuse if a student asks.\nThe relationship is flat for F_ST below about 0.1, so small errors in F_ST give large errors in N_e m.\nThe shaded band ('butterfly data, later example') is Edith's checkerspot, introduced a few slides on.\nFigure: analytical, scripts/28_fst_nm.R.",
+  "pics": [
+   "Picture Placeholder 2"
+  ]
+ },
+ {
+  "n": 30,
+  "layout": "Title & Bullets",
+  "ph": [
+   {
+    "idx": 100,
+    "name": "Title 1",
+    "text": "Read FST with care",
+    "runs": [
+     [
+      6,
+      2,
+      [
+       "sub"
+      ]
+     ]
+    ],
+    "pptx_size": null
+   },
+   {
+    "idx": 101,
+    "name": "Text Placeholder 2",
+    "text": "Converting FST to Nem assumes:\nmany subpopulations of equal size, exchanging migrants at random\ndrift and gene flow at equilibrium, which can take many generations\nneutral markers: no selection and negligible mutation\nEven then:\nFST reflects gene flow averaged over the past, not today's movement\ndifferent histories can give the same FST\nWhitlock & McCauley (1999) Heredity 82: 117–125",
+    "runs": [
+     [
+      0,
+      10,
+      [
+       "bold"
+      ]
+     ],
+     [
+      12,
+      2,
+      [
+       "sub"
+      ]
+     ],
+     [
+      15,
+      2,
+      [
+       "bold"
+      ]
+     ],
+     [
+      19,
+      1,
+      [
+       "sub"
+      ]
+     ],
+     [
+      20,
+      1,
+      [
+       "italic"
+      ]
+     ],
+     [
+      22,
+      8,
+      [
+       "bold"
+      ]
+     ],
+     [
+      218,
+      10,
+      [
+       "bold"
+      ]
+     ],
+     [
+      230,
+      2,
+      [
+       "sub"
+      ]
+     ],
+     [
+      336,
+      2,
+      [
+       "sub"
+      ]
+     ],
+     [
+      339,
+      47,
+      [
+       "small"
+      ]
+     ]
+    ],
+    "pptx_size": null
+   }
+  ],
+  "tables": [],
+  "notes": "~1.5 min.\nThese are the assumptions of Wright's island model. The previous version listed equal sizes, constant sizes, equilibrium and no selection or mutation; added here: many subpopulations, random exchange, and the time-averaging point.\nWhitlock and McCauley (1999) Heredity 82: 117-125, 'Indirect measures of gene flow and migration: F_ST not equal to 1/(4Nm + 1)', is the classic critique: F_ST is a useful measure of differentiation, but converting it to Nm is rarely reliable.\nRecent colonisation, extinction and recolonisation (metapopulations), or range expansion can all leave low F_ST without much current gene flow.",
+  "pics": []
+ },
+ {
+  "n": 31,
+  "layout": "Figure & Bullets",
+  "ph": [
+   {
+    "idx": 100,
+    "name": "Title 1",
+    "text": "Checkerspot: genes versus observations",
+    "runs": [],
+    "pptx_size": null
+   },
+   {
+    "idx": 102,
+    "name": "Text Placeholder 3",
+    "text": "Edith's checkerspot (Euphydryas editha): 21 populations, central California\nSeven loci: FST = 0.017 to 0.062, so Nem ≈ 3.8 to 14.5 (mean 7.8)\nOne locus (Hk): FST = 0.29, perhaps because it is under selection\nMark–recapture between nearby populations: about 0.1 individuals moving per generation (observed)\nDiscuss (2 min): why might FST suggest far more gene flow than the butterflies show today?\nData: McKechnie et al. (1975); analysis: Slatkin (1987)",
+    "runs": [
+     [
+      21,
+      17,
+      [
+       "italic"
+      ]
+     ],
+     [
+      89,
+      2,
+      [
+       "sub"
+      ]
+     ],
+     [
+      114,
+      1,
+      [
+       "sub"
+      ]
+     ],
+     [
+      115,
+      1,
+      [
+       "italic"
+      ]
+     ],
+     [
+      153,
+      2,
+      [
+       "italic"
+      ]
+     ],
+     [
+      159,
+      2,
+      [
+       "sub"
+      ]
+     ],
+     [
+      306,
+      16,
+      [
+       "bold"
+      ]
+     ],
+     [
+      334,
+      2,
+      [
+       "sub"
+      ]
+     ],
+     [
+      397,
+      55,
+      [
+       "small"
+      ]
+     ]
+    ],
+    "pptx_size": null
+   }
+  ],
+  "tables": [],
+  "notes": "~2.5 min including a 2-minute pair discussion.\nPrompts if the discussion stalls: time scales, rare events, the model's assumptions.\nSources: allozyme data for 21 populations from McKechnie, Ehrlich and White (1975) Genetics 81: 571-594; F_ST and Nm by locus in Slatkin (1987) Science 236: 787-792, Table 1, using F_ST = 1/(1 + 4Nm). Direct estimate (about 0.1 individuals moving per generation between nearby populations; Slatkin writes this as Nm, but mark-recapture counts movers, not effective gene flow) from Ehrlich and colleagues' mark-recapture work (Ehrlich et al. 1975, Science 188: 221), as quoted by Slatkin (1987).\nSlatkin's Table 1: pgm 0.028 (Nm 8.7), pgi 0.052 (4.6), hk 0.291 (0.6), got 0.017 (14.5), ak 0.062 (3.8), bdh 0.034 (7.1), a-gpdh 0.027 (9.0), to 0.035 (6.9). Mean Nm excluding hk = 7.8.\nArithmetic check: (1/0.062 - 1)/4 = 3.78; (1/0.017 - 1)/4 = 14.5; (1/0.291 - 1)/4 = 0.61.\nWhy Hk matters: it is the locus that breaks the pattern. Mueller et al. (1985, Genetics 110: 495-511) found that Hk was one of three loci whose frequency changes in one population were inconsistent with drift alone, so selection is a plausible reason it stands out. This links to 'neutral markers' on the previous slide: different loci can tell different stories.\nCorrection to previous version: it gave the 0.017-0.062 range without saying that one of the eight loci was left out.\nAnswers to the discussion:\nTime scales: F_ST reflects gene flow averaged over many past generations; migration may have been higher in the past (e.g. before habitat fragmentation).\nRare events: occasional long-distance dispersal is easily missed by a few seasons of mark-recapture but has a large genetic effect.\nAssumptions: populations may not be at equilibrium (recent colonisation, local extinction and recolonisation keep F_ST low); unequal population sizes; selection on the markers.\nMeasurement: mark-recapture records movement; it may also miss migrants that breed outside the study area.\nSpatial scale makes the puzzle sharper: the genetic samples come from throughout central California, yet F_ST is low; the direct estimate is between nearby populations, yet movement is rare.\nSlatkin's (1987) interpretation: movement between existing populations cannot explain their genetic similarity, so there was probably substantial gene flow in the recent past. Local populations also go extinct and are recolonised (a new population was established within a year of one going extinct), which keeps F_ST low.\nNeither estimate is simply 'right': they measure different things over different time scales.\nPhoto: Walter Siegmund, CC BY-SA 3.0 (Wikimedia Commons, Euphydryas_editha_5679.JPG).",
+  "pics": [
+   "Picture Placeholder 2"
+  ]
+ },
+ {
+  "n": 32,
+  "layout": "Big Fact",
+  "ph": [
+   {
+    "idx": 100,
+    "name": "Text Placeholder 1",
+    "text": "≈ 1",
+    "runs": [],
+    "pptx_size": null
+   },
+   {
+    "idx": 102,
+    "name": "Text Placeholder 2",
+    "text": "migrant per generation, whatever the population size, stops drift fixing populations for different alleles.\nIt does not make them identical: FST is still about 0.2.\nNeal (8.4) says one every fourth generation; either way, very few migrants are needed.",
+    "runs": [
+     [
+      142,
+      2,
+      [
+       "sub"
+      ]
+     ]
+    ],
+    "pptx_size": null
+   }
+  ],
+  "tables": [],
+  "notes": "~1 min.\nNeal 8.4: changes in allele frequency are dominated by drift only if N_e m is much less than 1. With N_e = 100 and m = 0.01, N_e m = 1 and allele frequencies follow those of the migrants' source.\nThe point: because drift is weaker in large populations by exactly as much as a given m represents more migrants, what matters is the NUMBER of migrants, not the proportion.\nNeal's wording is now on the slide, because students will see it in the set text. Neal (8.4) says a single migrant every fourth generation is enough to prevent fixation. Most texts use about one migrant per generation (e.g. Mills and Allendorf 1996, Conservation Biology). Both make the point that very few migrants are needed; one per generation is the safer figure.\nChecked with Wright's equilibrium distribution of allele frequencies among islands (beta distribution with parameters 4 N_e m q-bar and 4 N_e m (1 - q-bar)):\n- N_e m = 1, mean q = 0.5: essentially no populations near fixation for either allele; F_ST = 0.2.\n- N_e m = 0.25 (Neal's one every fourth generation), mean q = 0.5: about 6% of populations near fixation (q < 0.01) for each allele; F_ST = 0.5.\n- N_e m = 1 but a rare allele (mean q = 0.1): about 29% of populations have q < 0.01, but almost none are fixed for it. So 'prevents fixation for different alleles' is the accurate claim; rare alleles can still be locally lost.\nF_ST = 0.2 is substantial differentiation (Wright called 0.15 to 0.25 'great'), so one migrant per generation limits divergence; it does not abolish it.\nApplications: genetic rescue of small, isolated populations and managed exchange between zoo populations.",
+  "pics": []
+ },
+ {
+  "n": 33,
+  "layout": "Title, Bullets & Photo",
+  "ph": [
+   {
+    "idx": 100,
+    "name": "Title 1",
+    "text": "Beating drift versus beating selection",
+    "runs": [],
+    "pptx_size": null
+   },
+   {
+    "idx": 103,
+    "name": "Text Placeholder 3",
+    "text": "TAKEAWAY",
+    "runs": [],
+    "pptx_size": null
+   },
+   {
+    "idx": 105,
+    "name": "Text Placeholder 4",
+    "text": "Drift (Neal Eqn 8.4): Nem ≈ 1, a number\nSelection: m ≈ s, a proportion\nGold point: 10 migrants hold drift in check, but m < s, so local adaptation persists",
+    "runs": [
+     [
+      23,
+      1,
+      [
+       "sub"
+      ]
+     ],
+     [
+      24,
+      1,
+      [
+       "italic"
+      ]
+     ],
+     [
+      51,
+      1,
+      [
+       "italic"
+      ]
+     ],
+     [
+      55,
+      1,
+      [
+       "italic"
+      ]
+     ],
+     [
+      120,
+      1,
+      [
+       "italic"
+      ]
+     ],
+     [
+      124,
+      1,
+      [
+       "italic"
+      ]
+     ]
+    ],
+    "pptx_size": null
+   }
+  ],
+  "tables": [],
+  "notes": "~2 min. The idea that ties the lecture together.\nDrift versus gene flow (Neal 8.4, Eqn 8.4): drift dominates only if N_e m is much less than 1. The boundary N_e m = 1 is a NUMBER of migrants, so in a large population a tiny proportion is enough (the green line falls as N_e rises).\nSelection versus gene flow: a locally favoured allele is swamped once m is of the order of s, a PROPORTION, whatever the population size (the red line is flat). In Neal's recessive wing example q-hat = sqrt(m/s) reaches 1 at m = s; for an additive allele in the continent-island model the local allele is lost once m reaches s.\nSo between the lines, drift is held in check (populations are not fixed for different alleles, and neutral differences shrink as N_e m rises) but locally selected genes can stay different. Both lines are rules of thumb, not on/off switches: differentiation falls steadily with N_e m (F_ST about 0.2 at N_e m = 1, 0.02 at 10, 0.002 at 100), and a locally favoured allele declines steadily as m approaches s. Example (gold point): N_e = 10,000 and m = 0.001 gives 10 migrants per generation, plenty to stop drift, but m = 0.001 is well below s = 0.01, so local adaptation persists.\nLink back: the wing example (m = 0.01 kept the allele at only 20%) and the 'about 1 migrant' slide. This also answers the guiding question on the title slide.\nCaveats: these are rules of thumb, not sharp thresholds. The figure assumes s = 0.01 and starts at N_e = 100, because below N_e = 1/s drift also overrides selection (Neal 8.4: N_e s much less than 1).\nFigure: analytical rules of thumb, not a simulation; scripts/27b_number_vs_proportion.R.",
+  "pics": [
+   "Picture Placeholder 2"
+  ]
+ },
+ {
+  "n": 34,
+  "layout": "Summary (Key Points Only)",
+  "ph": [
+   {
+    "idx": 101,
+    "name": "Title 1",
+    "text": "Key points",
+    "runs": [],
+    "pptx_size": null
+   },
+   {
+    "idx": 102,
+    "name": "Text Placeholder 2",
+    "text": "Gene flow needs migrants that breed; movement alone is not enough.\nGene flow pulls populations towards a common allele frequency.\nDrift is beaten by a number of migrants (Nem ≈ 1); selection only by a proportion (m ≈ s).\nSelection varying in space plus gene flow gives clines; barriers steepen them.\nFST measures differentiation; converting it to Nem needs strong assumptions.\nRead Neal Ch. 9 and §8.4; try Neal problems 9.4.1–3. Worked examples and answers: end of slides.",
+    "runs": [
+     [
+      151,
+      6,
+      [
+       "italic"
+      ]
+     ],
+     [
+      172,
+      1,
+      [
+       "sub"
+      ]
+     ],
+     [
+      173,
+      1,
+      [
+       "italic"
+      ]
+     ],
+     [
+      201,
+      10,
+      [
+       "italic"
+      ]
+     ],
+     [
+      213,
+      1,
+      [
+       "italic"
+      ]
+     ],
+     [
+      217,
+      1,
+      [
+       "italic"
+      ]
+     ],
+     [
+      301,
+      2,
+      [
+       "sub"
+      ]
+     ],
+     [
+      348,
+      1,
+      [
+       "sub"
+      ]
+     ],
+     [
+      349,
+      1,
+      [
+       "italic"
+      ]
+     ],
+     [
+      377,
+      96,
+      [
+       "small"
+      ]
+     ]
+    ],
+    "pptx_size": null
+   }
+  ],
+  "tables": [],
+  "notes": "~1.5 min.\nThe practical is 'Neutral or adaptive evolution in humans'.\nBack to the guiding question: very few migrants are needed to stop drift separating populations, but local adaptation can persist against much higher gene flow when selection is strong; the outcome depends on m relative to s.\nPractical (second 45-minute slot): https://jonesor.github.io/BB512_Book/neutral-or-adaptive-evolution-in-humans-what-drives-evolution-of-our-traits.html\nBridge to the practical: which human traits would gene flow homogenise among populations, and which are held apart by selection in different environments (e.g. skin pigmentation and UV)?\nAnswers to Neal problems: 1. m = 1 - (0.118/0.176)^(1/10) = 0.039 (with q_m = 0); 2. after five generations: 0.317, 0.529, 0.742, 0.812 if q_m is recalculated every generation (Appendix 9.1 spreadsheet); 0.321, 0.530, 0.740, 0.810 with Neal's shortcut of holding q_m fixed (Eqn 9.2, as in Example 9.3); 3. about 10 generations (done in class).",
+  "pics": []
+ },
+ {
+  "n": 35,
+  "layout": "Quote",
+  "ph": [
+   {
+    "idx": 101,
+    "name": "Title 1",
+    "text": "Before I came here I was confused about this subject. Having listened to your lecture I am still confused. But on a higher level.",
+    "runs": [],
+    "pptx_size": null
+   },
+   {
+    "idx": 103,
+    "name": "Text Placeholder 2",
+    "text": "ATTRIBUTED TO ENRICO FERMI",
+    "runs": [],
+    "pptx_size": null
+   }
+  ],
+  "tables": [],
+  "notes": "Kept from the previous version. Widely attributed to Fermi; no primary source is known, so 'attributed to' is used rather than a definite attribution.",
+  "pics": []
+ },
+ {
+  "n": 36,
+  "layout": "Section",
+  "ph": [
+   {
+    "idx": 102,
+    "name": "Text Placeholder 1",
+    "text": "A",
+    "runs": [],
+    "pptx_size": null
+   },
+   {
+    "idx": 103,
+    "name": "Title 2",
+    "text": "Worked examples (self-study)",
+    "runs": [],
+    "pptx_size": null
+   }
+  ],
+  "tables": [],
+  "notes": "Self-study section of the PDF; not presented in class. Each slide works one of Neal's examples or problems, with the equation numbers from Neal Chapter 9.",
+  "pics": []
+ },
+ {
+  "n": 37,
+  "layout": "Two Columns",
+  "ph": [
+   {
+    "idx": 100,
+    "name": "Title 1",
+    "text": "Worked example: continent–island",
+    "runs": [],
+    "pptx_size": null
+   },
+   {
+    "idx": 101,
+    "name": "Text Placeholder 2",
+    "text": "SWEET CLOVER (NEAL EXAMPLE 9.2)",
+    "runs": [],
+    "pptx_size": null
+   },
+   {
+    "idx": 103,
+    "name": "Text Placeholder 3",
+    "text": "White field q0 = 0; yellow fields qm = 1; m = 0.05. When is q = 0.5?\nNeal Eqn 9.2: qt − qm = (1 − m)t(q0 − qm)\n0.5 − 1 = 0.95t × (0 − 1), so 0.5 = 0.95t\nt = ln 0.5 / ln 0.95 = 13.5 generations",
+    "runs": [
+     [
+      13,
+      1,
+      [
+       "sub"
+      ]
+     ],
+     [
+      35,
+      1,
+      [
+       "sub"
+      ]
+     ],
+     [
+      42,
+      1,
+      [
+       "italic"
+      ]
+     ],
+     [
+      84,
+      1,
+      [
+       "sub"
+      ]
+     ],
+     [
+      89,
+      1,
+      [
+       "sub"
+      ]
+     ],
+     [
+      98,
+      1,
+      [
+       "italic"
+      ]
+     ],
+     [
+      100,
+      1,
+      [
+       "sup"
+      ]
+     ],
+     [
+      103,
+      1,
+      [
+       "sub"
+      ]
+     ],
+     [
+      108,
+      1,
+      [
+       "sub"
+      ]
+     ],
+     [
+      125,
+      1,
+      [
+       "sup"
+      ]
+     ],
+     [
+      151,
+      1,
+      [
+       "sup"
+      ]
+     ],
+     [
+      153,
+      1,
+      [
+       "italic"
+      ]
+     ],
+     [
+      176,
+      16,
+      [
+       "bold"
+      ]
+     ]
+    ],
+    "pptx_size": null
+   },
+   {
+    "idx": 104,
+    "name": "Text Placeholder 4",
+    "text": "BUTTERFLIES (NEAL PROBLEM 9.3)",
+    "runs": [],
+    "pptx_size": null
+   },
+   {
+    "idx": 106,
+    "name": "Text Placeholder 5",
+    "text": "Island q0 = 0.75; mainland qm = 0.25; m = 0.05. When is q = 0.55?\n0.55 − 0.25 = 0.95t × (0.75 − 0.25)\n0.30 = 0.95t × 0.50, so 0.6 = 0.95t\nt = ln 0.6 / ln 0.95 ≈ 10 generations",
+    "runs": [
+     [
+      8,
+      1,
+      [
+       "sub"
+      ]
+     ],
+     [
+      28,
+      1,
+      [
+       "sub"
+      ]
+     ],
+     [
+      38,
+      1,
+      [
+       "italic"
+      ]
+     ],
+     [
+      84,
+      1,
+      [
+       "sup"
+      ]
+     ],
+     [
+      113,
+      1,
+      [
+       "sup"
+      ]
+     ],
+     [
+      136,
+      1,
+      [
+       "sup"
+      ]
+     ],
+     [
+      138,
+      1,
+      [
+       "italic"
+      ]
+     ],
+     [
+      161,
+      14,
+      [
+       "bold"
+      ]
+     ]
+    ],
+    "pptx_size": null
+   }
+  ],
+  "tables": [],
+  "notes": "Self-study. Both use Neal Eqn 9.2 and take logs to solve for t. Note the butterflies move DOWN towards the mainland frequency: gene flow pulls towards q_m, not towards 1.",
+  "pics": []
+ },
+ {
+  "n": 38,
+  "layout": "Two Columns",
+  "ph": [
+   {
+    "idx": 100,
+    "name": "Title 1",
+    "text": "Worked example: island model",
+    "runs": [],
+    "pptx_size": null
+   },
+   {
+    "idx": 101,
+    "name": "Text Placeholder 2",
+    "text": "THE QUESTION (NEAL EXAMPLE 9.3)",
+    "runs": [],
+    "pptx_size": null
+   },
+   {
+    "idx": 103,
+    "name": "Text Placeholder 3",
+    "text": "Three equal islands: q = 0.2, 0.4 and 0.6; m = 0.1.\nWhat do immigrants bring to the 0.2 island, and where is it after 10 generations?",
+    "runs": [
+     [
+      43,
+      1,
+      [
+       "italic"
+      ]
+     ]
+    ],
+    "pptx_size": null
+   },
+   {
+    "idx": 104,
+    "name": "Text Placeholder 4",
+    "text": "THE SOLUTION",
+    "runs": [],
+    "pptx_size": null
+   },
+   {
+    "idx": 106,
+    "name": "Text Placeholder 5",
+    "text": "Immigrants come from the other two: qm = (0.4 + 0.6) / 2 = 0.5\nNeal Eqn 9.2 with qm fixed: 0.5 + 0.910 × (0.2 − 0.5) = 0.395\nCaveat: qm changes each generation. Recalculating it every generation gives 0.36, and all islands converge on the overall mean, 0.4.",
+    "runs": [
+     [
+      37,
+      1,
+      [
+       "sub"
+      ]
+     ],
+     [
+      59,
+      3,
+      [
+       "bold"
+      ]
+     ],
+     [
+      82,
+      1,
+      [
+       "sub"
+      ]
+     ],
+     [
+      100,
+      2,
+      [
+       "sup"
+      ]
+     ],
+     [
+      119,
+      5,
+      [
+       "bold"
+      ]
+     ],
+     [
+      134,
+      1,
+      [
+       "sub"
+      ]
+     ]
+    ],
+    "pptx_size": null
+   }
+  ],
+  "tables": [],
+  "notes": "Self-study. Neal's own caveat (p. 139): holding q_m fixed is an approximation; populations actually converge on the mean of all islands because the q_m values are not readjusted. The 0.36 comes from iterating Eqn 9.1 with q_m recalculated each generation (Appendix 9.1 spreadsheet; R/models.R).",
+  "pics": []
+ },
+ {
+  "n": 39,
+  "layout": "Two Columns",
+  "ph": [
+   {
+    "idx": 100,
+    "name": "Title 1",
+    "text": "Worked example: migration–selection",
+    "runs": [],
+    "pptx_size": null
+   },
+   {
+    "idx": 101,
+    "name": "Text Placeholder 2",
+    "text": "THE QUESTION (NEAL SECTION 9.2)",
+    "runs": [],
+    "pptx_size": null
+   },
+   {
+    "idx": 103,
+    "name": "Text Placeholder 3",
+    "text": "Mainland all winged (qm = 1). On the island winged insects have fitness 1 − s, with s = 0.25; wings are recessive.\nWith m = 0.01 or 0.1, what is the equilibrium? How many insects have wings?",
+    "runs": [
+     [
+      22,
+      1,
+      [
+       "sub"
+      ]
+     ],
+     [
+      76,
+      1,
+      [
+       "italic"
+      ]
+     ],
+     [
+      84,
+      1,
+      [
+       "italic"
+      ]
+     ],
+     [
+      120,
+      1,
+      [
+       "italic"
+      ]
+     ]
+    ],
+    "pptx_size": null
+   },
+   {
+    "idx": 104,
+    "name": "Text Placeholder 4",
+    "text": "THE SOLUTION",
+    "runs": [],
+    "pptx_size": null
+   },
+   {
+    "idx": 106,
+    "name": "Text Placeholder 5",
+    "text": "Neal Exp. 9.11: q̂ ≈ √(m/s)\nm = 0.01: q̂ = √0.04 = 0.20; winged q̂2 = 4%\nm = 0.1: q̂ = √0.4 = 0.63; winged q̂2 = 40%\nMost wing alleles hide in heterozygotes, so selection cannot remove them.",
+    "runs": [
+     [
+      23,
+      1,
+      [
+       "italic"
+      ]
+     ],
+     [
+      25,
+      1,
+      [
+       "italic"
+      ]
+     ],
+     [
+      28,
+      1,
+      [
+       "italic"
+      ]
+     ],
+     [
+      51,
+      4,
+      [
+       "bold"
+      ]
+     ],
+     [
+      66,
+      1,
+      [
+       "sup"
+      ]
+     ],
+     [
+      70,
+      2,
+      [
+       "bold"
+      ]
+     ],
+     [
+      73,
+      1,
+      [
+       "italic"
+      ]
+     ],
+     [
+      94,
+      4,
+      [
+       "bold"
+      ]
+     ],
+     [
+      109,
+      1,
+      [
+       "sup"
+      ]
+     ],
+     [
+      113,
+      3,
+      [
+       "bold"
+      ]
+     ]
+    ],
+    "pptx_size": null
+   }
+  ],
+  "tables": [],
+  "notes": "Self-study. Neal Exp. 9.10 balances loss by selection, s p q^2/(1 - s q^2), against gain by immigration, m(q_m - q). sqrt(m/s) is exact if the island is counted after immigration (see notes on the in-class slide).",
+  "pics": []
+ },
+ {
+  "n": 40,
+  "layout": "Title Only",
+  "ph": [
+   {
+    "idx": 100,
+    "name": "Title 1",
+    "text": "Worked example: F-statistics",
+    "runs": [],
+    "pptx_size": null
+   },
+   {
+    "idx": null,
+    "name": "TextBox 3",
+    "text": "1. p = f(A1A1) + ½ f(A1A2); e.g. 0.05 + 0.05 = 0.1\n2. HS = 2pq (expected); HI = f(A1A2) (observed). Means: HS = 0.30, HI = 0.26\n3. Pooled: HT = 2p̄q̄ = 2 × 0.4 × 0.6 = 0.48\n4. FIS = (HS − HI) / HS = (0.30 − 0.26) / 0.30 = 0.13\n    FST = (HT − HS) / HT = (0.48 − 0.30) / 0.48 = 0.375\n    FIT = (HT − HI) / HT = (0.48 − 0.26) / 0.48 = 0.46",
+    "runs": [
+     [
+      0,
+      10,
+      [
+       "small"
+      ]
+     ],
+     [
+      10,
+      1,
+      [
+       "sub",
+       "small"
+      ]
+     ],
+     [
+      11,
+      1,
+      [
+       "small"
+      ]
+     ],
+     [
+      12,
+      1,
+      [
+       "sub",
+       "small"
+      ]
+     ],
+     [
+      13,
+      9,
+      [
+       "small"
+      ]
+     ],
+     [
+      22,
+      1,
+      [
+       "sub",
+       "small"
+      ]
+     ],
+     [
+      23,
+      1,
+      [
+       "small"
+      ]
+     ],
+     [
+      24,
+      1,
+      [
+       "sub",
+       "small"
+      ]
+     ],
+     [
+      25,
+      25,
+      [
+       "small"
+      ]
+     ],
+     [
+      51,
+      4,
+      [
+       "small"
+      ]
+     ],
+     [
+      55,
+      1,
+      [
+       "sub",
+       "small"
+      ]
+     ],
+     [
+      56,
+      20,
+      [
+       "small"
+      ]
+     ],
+     [
+      76,
+      1,
+      [
+       "sub",
+       "small"
+      ]
+     ],
+     [
+      77,
+      6,
+      [
+       "small"
+      ]
+     ],
+     [
+      83,
+      1,
+      [
+       "sub",
+       "small"
+      ]
+     ],
+     [
+      84,
+      1,
+      [
+       "small"
+      ]
+     ],
+     [
+      85,
+      1,
+      [
+       "sub",
+       "small"
+      ]
+     ],
+     [
+      86,
+      22,
+      [
+       "small"
+      ]
+     ],
+     [
+      108,
+      1,
+      [
+       "sub",
+       "small"
+      ]
+     ],
+     [
+      109,
+      10,
+      [
+       "small"
+      ]
+     ],
+     [
+      119,
+      1,
+      [
+       "sub",
+       "small"
+      ]
+     ],
+     [
+      120,
+      7,
+      [
+       "small"
+      ]
+     ],
+     [
+      128,
+      12,
+      [
+       "small"
+      ]
+     ],
+     [
+      140,
+      1,
+      [
+       "sub",
+       "small"
+      ]
+     ],
+     [
+      141,
+      31,
+      [
+       "small"
+      ]
+     ],
+     [
+      173,
+      4,
+      [
+       "small"
+      ]
+     ],
+     [
+      177,
+      2,
+      [
+       "sub",
+       "small"
+      ]
+     ],
+     [
+      179,
+      5,
+      [
+       "small"
+      ]
+     ],
+     [
+      184,
+      1,
+      [
+       "sub",
+       "small"
+      ]
+     ],
+     [
+      185,
+      4,
+      [
+       "small"
+      ]
+     ],
+     [
+      189,
+      1,
+      [
+       "sub",
+       "small"
+      ]
+     ],
+     [
+      190,
+      5,
+      [
+       "small"
+      ]
+     ],
+     [
+      195,
+      1,
+      [
+       "sub",
+       "small"
+      ]
+     ],
+     [
+      196,
+      26,
+      [
+       "small"
+      ]
+     ],
+     [
+      222,
+      4,
+      [
+       "bold",
+       "small"
+      ]
+     ],
+     [
+      227,
+      5,
+      [
+       "small"
+      ]
+     ],
+     [
+      232,
+      2,
+      [
+       "sub",
+       "small"
+      ]
+     ],
+     [
+      234,
+      5,
+      [
+       "small"
+      ]
+     ],
+     [
+      239,
+      1,
+      [
+       "sub",
+       "small"
+      ]
+     ],
+     [
+      240,
+      4,
+      [
+       "small"
+      ]
+     ],
+     [
+      244,
+      1,
+      [
+       "sub",
+       "small"
+      ]
+     ],
+     [
+      245,
+      5,
+      [
+       "small"
+      ]
+     ],
+     [
+      250,
+      1,
+      [
+       "sub",
+       "small"
+      ]
+     ],
+     [
+      251,
+      26,
+      [
+       "small"
+      ]
+     ],
+     [
+      277,
+      5,
+      [
+       "bold",
+       "small"
+      ]
+     ],
+     [
+      283,
+      5,
+      [
+       "small"
+      ]
+     ],
+     [
+      288,
+      2,
+      [
+       "sub",
+       "small"
+      ]
+     ],
+     [
+      290,
+      5,
+      [
+       "small"
+      ]
+     ],
+     [
+      295,
+      1,
+      [
+       "sub",
+       "small"
+      ]
+     ],
+     [
+      296,
+      4,
+      [
+       "small"
+      ]
+     ],
+     [
+      300,
+      1,
+      [
+       "sub",
+       "small"
+      ]
+     ],
+     [
+      301,
+      5,
+      [
+       "small"
+      ]
+     ],
+     [
+      306,
+      1,
+      [
+       "sub",
+       "small"
+      ]
+     ],
+     [
+      307,
+      26,
+      [
+       "small"
+      ]
+     ],
+     [
+      333,
+      4,
+      [
+       "bold",
+       "small"
+      ]
+     ]
+    ],
+    "pptx_size": null
+   },
+   {
+    "idx": null,
+    "name": "TextBox 4",
+    "text": "What it means\nSubpopulation 1 has fewer heterozygotes than expected (0.10 vs 0.18): some inbreeding within it (FIS > 0).\nMost of the overall deficit comes from differences between subpopulations (FST): the Wahlund effect.\nCheck: (1 − FIT) = (1 − FIS)(1 − FST): 0.54 = 0.87 × 0.625",
+    "runs": [
+     [
+      0,
+      13,
+      [
+       "bold",
+       "small"
+      ]
+     ],
+     [
+      14,
+      98,
+      [
+       "small"
+      ]
+     ],
+     [
+      112,
+      2,
+      [
+       "sub",
+       "small"
+      ]
+     ],
+     [
+      114,
+      6,
+      [
+       "small"
+      ]
+     ],
+     [
+      121,
+      76,
+      [
+       "small"
+      ]
+     ],
+     [
+      197,
+      2,
+      [
+       "sub",
+       "small"
+      ]
+     ],
+     [
+      199,
+      22,
+      [
+       "small"
+      ]
+     ],
+     [
+      222,
+      13,
+      [
+       "small"
+      ]
+     ],
+     [
+      235,
+      2,
+      [
+       "sub",
+       "small"
+      ]
+     ],
+     [
+      237,
+      10,
+      [
+       "small"
+      ]
+     ],
+     [
+      247,
+      2,
+      [
+       "sub",
+       "small"
+      ]
+     ],
+     [
+      249,
+      7,
+      [
+       "small"
+      ]
+     ],
+     [
+      256,
+      2,
+      [
+       "sub",
+       "small"
+      ]
+     ],
+     [
+      258,
+      22,
+      [
+       "small"
+      ]
+     ]
+    ],
+    "pptx_size": null
+   }
+  ],
+  "tables": [
+   [
+    [
+     "Subpopulation",
+     "A1A1",
+     "A1A2",
+     "A2A2",
+     "p",
+     "q",
+     "HS = 2pq",
+     "HI"
+    ],
+    [
+     "1",
+     "0.05",
+     "0.10",
+     "0.85",
+     "0.1",
+     "0.9",
+     "0.18",
+     "0.10"
+    ],
+    [
+     "2",
+     "0.49",
+     "0.42",
+     "0.09",
+     "0.7",
+     "0.3",
+     "0.42",
+     "0.42"
+    ],
+    [
+     "Mean",
+     "",
+     "",
+     "",
+     "0.4",
+     "0.6",
+     "0.30",
+     "0.26"
+    ]
+   ]
+  ],
+  "notes": "Appendix slide for self-study in the PDF; not presented in class. Pointed to from the F_ST key concept and the summary.\nData changed from the earlier version (subpopulation 1 was 0.01/0.18/0.81, in exact HW proportions, giving F_IS = 0) so that all three indices take different values.\nNumbers: subpop 1 p = 0.1, H_S = 0.18, H_I = 0.10; subpop 2 p = 0.7, H_S = 0.42, H_I = 0.42. Means H_S = 0.30, H_I = 0.26; H_T = 0.48. F_IS = 0.133, F_ST = 0.375, F_IT = 0.458.\nCheck: (1 - F_IS)(1 - F_ST) = 0.867 x 0.625 = 0.542 = 1 - F_IT. Consistent.\nHardy-Weinberg proportions within subpopulations do not rule out selection: divergent selection can create allele-frequency differences while each subpopulation remains in HW proportions. Telling drift from selection needs many loci (selection affects particular loci, drift affects all) or other evidence.\nDo not convert this F_ST to N_e m with Wright's formula: it assumes many subpopulations (see notes on the F_ST to migrants slide).",
+  "pics": []
+ },
+ {
+  "n": 41,
+  "layout": "Two Columns",
+  "ph": [
+   {
+    "idx": 100,
+    "name": "Title 1",
+    "text": "Worked example: FST to migrants",
+    "runs": [
+     [
+      17,
+      2,
+      [
+       "sub"
+      ]
+     ]
+    ],
+    "pptx_size": null
+   },
+   {
+    "idx": 101,
+    "name": "Text Placeholder 2",
+    "text": "THE QUESTION",
+    "runs": [],
+    "pptx_size": null
+   },
+   {
+    "idx": 103,
+    "name": "Text Placeholder 3",
+    "text": "Edith's checkerspot: FST = 0.062 at one locus.\nAssuming Wright's island model, how many migrants per generation does this imply?",
+    "runs": [
+     [
+      22,
+      2,
+      [
+       "sub"
+      ]
+     ]
+    ],
+    "pptx_size": null
+   },
+   {
+    "idx": 104,
+    "name": "Text Placeholder 4",
+    "text": "THE SOLUTION",
+    "runs": [],
+    "pptx_size": null
+   },
+   {
+    "idx": 106,
+    "name": "Text Placeholder 5",
+    "text": "FST ≈ 1 / (4Nem + 1), so Nem ≈ (1/FST − 1) / 4\n(1/0.062 − 1) / 4 = (16.1 − 1) / 4 ≈ 3.8 migrants per generation\nCheck: Nem = 1 gives FST = 1/5 = 0.2\nOnly valid for many subpopulations at equilibrium; do not apply it to the two-subpopulation example.",
+    "runs": [
+     [
+      1,
+      2,
+      [
+       "sub"
+      ]
+     ],
+     [
+      13,
+      1,
+      [
+       "sub"
+      ]
+     ],
+     [
+      14,
+      1,
+      [
+       "italic"
+      ]
+     ],
+     [
+      26,
+      1,
+      [
+       "sub"
+      ]
+     ],
+     [
+      27,
+      1,
+      [
+       "italic"
+      ]
+     ],
+     [
+      35,
+      2,
+      [
+       "sub"
+      ]
+     ],
+     [
+      84,
+      27,
+      [
+       "bold"
+      ]
+     ],
+     [
+      120,
+      1,
+      [
+       "sub"
+      ]
+     ],
+     [
+      121,
+      1,
+      [
+       "italic"
+      ]
+     ],
+     [
+      134,
+      2,
+      [
+       "sub"
+      ]
+     ]
+    ],
+    "pptx_size": null
+   }
+  ],
+  "tables": [],
+  "notes": "Self-study. Data from Slatkin (1987) Table 1 (locus ak). The formula assumes many equal subpopulations exchanging migrants at random, neutral markers and drift-migration equilibrium.",
+  "pics": []
+ },
+ {
+  "n": 42,
+  "layout": "Two Columns",
+  "ph": [
+   {
+    "idx": 100,
+    "name": "Title 1",
+    "text": "Worked example: stepping-stone barrier",
+    "runs": [],
+    "pptx_size": null
+   },
+   {
+    "idx": 101,
+    "name": "Text Placeholder 2",
+    "text": "THE QUESTION (NEAL APPENDIX 9.2)",
+    "runs": [],
+    "pptx_size": null
+   },
+   {
+    "idx": 103,
+    "name": "Text Placeholder 3",
+    "text": "Nine populations; ends held at q = 0.9 and 0.1.\nm = 0.2 between neighbours, except m = 0.05 across the two links either side of population 5.\nAt equilibrium, what are the frequencies in populations 4, 5 and 6?",
+    "runs": [
+     [
+      48,
+      1,
+      [
+       "italic"
+      ]
+     ],
+     [
+      83,
+      1,
+      [
+       "italic"
+      ]
+     ]
+    ],
+    "pptx_size": null
+   },
+   {
+    "idx": 104,
+    "name": "Text Placeholder 4",
+    "text": "THE SOLUTION",
+    "runs": [],
+    "pptx_size": null
+   },
+   {
+    "idx": 106,
+    "name": "Text Placeholder 5",
+    "text": "At equilibrium the same net allele flow crosses every link, so each step in q is proportional to 1/m.\nSix links with m = 0.2 (weight 5 each) and two with m = 0.05 (weight 20 each): total weight 70.\nStep per normal link = 0.8 × 5/70 = 0.057; per barrier link = 0.8 × 20/70 = 0.229\nq4 = 0.9 − 3 × 0.057 = 0.73;  q5 = 0.50;  q6 = 0.27",
+    "runs": [
+     [
+      99,
+      1,
+      [
+       "italic"
+      ]
+     ],
+     [
+      117,
+      1,
+      [
+       "italic"
+      ]
+     ],
+     [
+      154,
+      1,
+      [
+       "italic"
+      ]
+     ],
+     [
+      281,
+      1,
+      [
+       "sub"
+      ]
+     ],
+     [
+      303,
+      4,
+      [
+       "bold"
+      ]
+     ],
+     [
+      311,
+      1,
+      [
+       "sub"
+      ]
+     ],
+     [
+      315,
+      4,
+      [
+       "bold"
+      ]
+     ],
+     [
+      323,
+      1,
+      [
+       "sub"
+      ]
+     ],
+     [
+      327,
+      4,
+      [
+       "bold"
+      ]
+     ]
+    ],
+    "pptx_size": null
+   }
+  ],
+  "tables": [],
+  "notes": "Self-study. Net flow across the link between populations i and i + 1 is m (q_i - q_{i+1}); at equilibrium every interior population gains as much as it loses, so this flow is the same on every link. Hence each step is proportional to 1/m. Matches the barrier line in the Model 3 figure (scripts/18_stepping_stone_cline.R iterates to the same values).",
+  "pics": []
+ },
+ {
+  "n": 43,
+  "layout": "Two Columns",
+  "ph": [
+   {
+    "idx": 100,
+    "name": "Title 1",
+    "text": "Answers to the in-class questions",
+    "runs": [],
+    "pptx_size": null
+   },
+   {
+    "idx": 101,
+    "name": "Text Placeholder 2",
+    "text": "MODEL 1 SKETCH AND MODEL 2",
+    "runs": [],
+    "pptx_size": null
+   },
+   {
+    "idx": 103,
+    "name": "Text Placeholder 3",
+    "text": "Sketch (island 0.75, mainland 0.25): q falls towards 0.25. Fastest at first, when the gap is largest. A higher m makes it faster but does not change where it ends up.\nIsland model: immigrants bring the mean of the other islands, so the 0.2 island receives 0.5. All islands converge on the overall mean.\nWindy island: gene flow wins partly; the wing allele persists at q = √(m/s).",
+    "runs": [
+     [
+      111,
+      1,
+      [
+       "italic"
+      ]
+     ],
+     [
+      374,
+      1,
+      [
+       "italic"
+      ]
+     ],
+     [
+      376,
+      1,
+      [
+       "italic"
+      ]
+     ]
+    ],
+    "pptx_size": null
+   },
+   {
+    "idx": 104,
+    "name": "Text Placeholder 4",
+    "text": "MODEL 3 AND THE CHECKERSPOT",
+    "runs": [],
+    "pptx_size": null
+   },
+   {
+    "idx": 106,
+    "name": "Text Placeholder 5",
+    "text": "Stepping-stone: the in-between populations form a gradient (a cline) between the ends; a barrier makes a steep section.\nCheckerspot: FST averages gene flow over many generations; past gene flow, rare long-distance dispersal and local extinction and recolonisation can all keep FST low while few individuals move today.\nMovement also differs from gene flow: not every mover breeds.",
+    "runs": [
+     [
+      134,
+      2,
+      [
+       "sub"
+      ]
+     ],
+     [
+      278,
+      2,
+      [
+       "sub"
+      ]
+     ]
+    ],
+    "pptx_size": null
+   }
+  ],
+  "tables": [],
+  "notes": "Self-study. Gives students the answers that were discussed in class, so the PDF is complete.",
+  "pics": []
+ }
+]
