@@ -28,9 +28,15 @@ p <- ggplot() +
            size = 4.4, family = fam, lineheight = 0.9) +
   annotate("text", x = 4.75, y = 1.3, hjust = 0.5, label = "fitness~1 - italic(s)", parse = TRUE,
            colour = bb512$gold, size = 4.6, family = fam) +
-  # the key fact
-  annotate("text", x = 3.3, y = 0.55, hjust = 0.5, label = "Wings are recessive: only qq insects have wings",
-           colour = bb512$ink, size = 4.6, family = fam, fontface = "bold") +
-  coord_fixed(xlim = c(0.1, 6.5), ylim = c(0.25, 4.6), expand = FALSE) +
+  # notation and the key fact (Neal: q = wing allele, p = 1 - q; winged insects = q^2)
+  annotate("text", x = 3.3, y = 1.0, hjust = 0.5,
+           label = "italic(q)*' = wing allele frequency;  '*italic(p) == 1 - italic(q)*' = wingless allele'",
+           parse = TRUE, colour = bb512$ink, size = 4.4, family = fam) +
+  annotate("text", x = 3.3, y = 0.52, hjust = 0.5, label = "Wings are recessive: only insects with two",
+           colour = bb512$ink, size = 4.4, family = fam, fontface = "bold") +
+  annotate("text", x = 3.3, y = 0.22, hjust = 0.5, parse = TRUE,
+           label = "bold('wing alleles (frequency ')*bold(italic(q))^bold(2)*bold(') have wings')",
+           colour = bb512$ink, size = 4.4, family = fam) +
+  coord_fixed(xlim = c(0.1, 6.5), ylim = c(0.0, 4.6), expand = FALSE) +
   theme_void() + theme(plot.background = element_rect(fill = bb512$bg, colour = NA))
 save_bb512(p, "16a_migsel_setup", layout = "half")
