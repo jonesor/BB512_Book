@@ -19,14 +19,10 @@ render_lecture <- local({
     life_tables = c("ggplot2", "scales", "ragg", "patchwork", "png"),
     age_stage_structured_models = c("ggplot2", "scales", "ragg"),
     life_histories = c("ggplot2", "scales", "ragg"),
-<<<<<<< HEAD
-    sexual_selection = c("ggplot2", "ragg", "systemfonts"),
-    short_answers = c("ggplot2", "ragg")
-=======
     coevolution = c("ggplot2", "ragg"),
     sexual_selection = c("ggplot2", "ragg", "systemfonts"),
-    behaviour_altruism = c("ggplot2", "scales", "ragg", "patchwork")
->>>>>>> f37e780dadf039a1fb37608619a0d7460fe118a7
+    behaviour_altruism = c("ggplot2", "scales", "ragg", "patchwork"),
+    short_answers = c("ggplot2", "ragg")
   )
 
   function(lecture, script = NULL) {
@@ -95,11 +91,8 @@ render_lectures <- function() {
                     "mutation_genetic_variation", "haploid_zygotic_selection",
                     "polygenic_quantitative_genetics", "life_tables",
                     "age_stage_structured_models", "life_histories",
-<<<<<<< HEAD
-                    "sexual_selection", "short_answers")) {
-=======
-                    "coevolution", "sexual_selection", "behaviour_altruism")) {
->>>>>>> f37e780dadf039a1fb37608619a0d7460fe118a7
+                    "coevolution", "sexual_selection", "behaviour_altruism",
+                    "short_answers")) {
     render_lecture(lecture)
   }
   invisible(NULL)
