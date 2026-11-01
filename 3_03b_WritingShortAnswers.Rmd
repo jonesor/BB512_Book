@@ -1,0 +1,141 @@
+# Writing Short Answers
+
+The final exam has two parts: multiple-choice questions and short-answer questions. A short-answer question needs a paragraph or two of written text. It tests whether you understand the key terms and concepts, and whether you can communicate that understanding clearly. Knowing the material is not enough: you need to show the examiner that you know it.
+
+In this session you will look at what makes a good short answer, mark three example answers yourself, and then write and mark an answer of your own.
+
+::: {.do-something}
+Learning outcomes:
+
+- Break a question into its parts, and use its verbs (define, describe, explain, compare) to decide what each part needs.
+- Plan an answer before writing it.
+- Write paragraphs with a topic sentence, supporting sentences and a concluding sentence.
+- Use precise terminology and specific examples.
+- Mark an answer against a rubric, and use the rubric to improve your own writing.
+
+:::
+
+## What examiners look for
+
+* **Read the question, then read it again.** Most questions have several parts. Underline each one and answer every part: a missing part costs marks however good the rest is.
+* **Look at the verbs.** *Define* asks for a precise meaning. *Describe* asks what happens. *Explain* asks why or how it happens. *Compare* asks for similarities and differences, side by side. *Contrast* asks for differences only.
+* **Plan first.** Spend a couple of minutes listing the points you will make for each part. A plan stops you writing everything you know about the topic and missing what was asked.
+* **Answer first.** Your first sentence should answer the question directly. Background can come afterwards, if it is needed at all. An examiner should not have to hunt for your point.
+* **Use the right terms, and use them correctly.** Precise terms are shorter and clearer than everyday descriptions, and they show the examiner you understand the concept.
+* **Give specific examples.** "A bird" or "a plant" is not a specific example. "Copper-tolerant common bent grass on a small copper mine in Wales" is. The examples from the lectures and the textbook are ideal, because you know what was found and why it matters.
+* **Keep to time.** A long answer to one question can cost you a whole question elsewhere.
+
+Compare these two definitions:
+
+> Gene flow is the movement of alleles from one population into the gene pool of another, through immigrants that breed there or gametes, such as pollen, that fertilise there.
+
+> Gene flow is when animals move to a new place and take their genes with them.
+
+The first is precise and complete. The second describes migration, misses the point that immigrants must breed, and leaves out plants altogether.
+
+## Paragraph structure
+
+Paragraphs in scientific writing follow a simple pattern:
+
+1. A **topic sentence** that states the main idea of the paragraph, and tells the reader what to expect. An examiner who reads only your topic sentences should be able to see your whole answer.
+2. One or more **supporting sentences** that explain, give evidence or give examples. Each one should back up the topic sentence: if it does not, it belongs in another paragraph.
+3. A **concluding sentence** that says what follows from the point, qualifies it, or links to the next paragraph. Do not just repeat the topic sentence: that costs time and earns nothing. In a short paragraph you can leave the concluding sentence out.
+
+One paragraph should make one main point. Make it long enough to make and support that point, and no longer.
+
+### A worked example
+
+> **Question.** Compare how haploid and diploid genetic systems affect the response to selection. Give an example of a trait under selection in each, and explain how the genetic system affects the speed of evolutionary change.
+
+> (1) Haploid systems respond to selection more quickly than diploid systems, because in a diploid an allele can be hidden from selection in heterozygotes. (2) In a haploid organism every allele is expressed, so selection acts on a new advantageous mutation as soon as it appears. (3) For example, drug resistance in *Mycobacterium tuberculosis*, a haploid bacterium, can evolve within a single patient, helped by short generation times and very large population sizes. (4) In a haploid, then, the speed of change is set by the strength of selection and the supply of new mutations, not by dominance.
+>
+> (5) In a diploid, the speed of change depends on dominance, and a favoured dominant allele spreads fastest while it is rare. (6) This is because it is expressed in heterozygotes, which carry almost all the copies of a rare allele: the dominant *carbonaria* allele of the peppered moth rose from about 1% to 99% of moths near Manchester in about 50 generations, which needs selection of about *s* = 0.3 against the pale form. (7) However, a dominant allele slows down near fixation, because the last copies of the recessive allele hide in heterozygotes.
+>
+> (8) A favoured recessive allele shows the opposite pattern. (9) While it is rare it occurs almost only in heterozygotes, where it is not expressed, so it can take thousands of generations to start spreading, but once it is common it goes to fixation quickly. (10) Dominance therefore decides whether change in a diploid is slow at the start or at the end, a delay that haploids never have.
+
+How the answer is built:
+
+* **The first sentence answers the question:** haploids respond faster, and it says why.
+* **One point per paragraph:** haploids; dominant alleles in diploids; recessive alleles in diploids.
+* **Topic sentences (1, 5 and 8):** read on their own, they outline the whole answer.
+* **Supporting sentences** back up their topic sentence, and each claim has a specific example with numbers (tuberculosis; the peppered moth).
+* **Concluding sentences (4, 7 and 10)** each add something: what follows (4), a qualification (7), and a link back to the comparison (10). None of them just repeats its topic sentence.
+
+Together, the three paragraphs answer every part of the question: they compare the two systems, give an example of each, and explain how each system affects the speed of change.
+
+## Mark three answers yourself
+
+Here is a short-answer question with its marking rubric, followed by three student answers. **Mark each answer using the rubric on your own, then agree marks with a partner.** The examiner's marks are shown in the practical session, and a full explanation is posted on itslearning (Resources › Practice Exams) after the session. Where your marks differ from the examiner's, work out why.
+
+> **Question.** Define gene flow and explain how it differs from migration. Explain how gene flow can both help and hinder a population's adaptation to local conditions, giving a specific example. Explain why very few migrants per generation are enough to stop populations diverging by genetic drift, but many more are needed to swamp local adaptation.
+
+**Rubric (10 points)**
+
+| Criterion | 2 points | 1 point | 0 points |
+|---|---|---|---|
+| 1. Definition | Gene flow is the movement of alleles into another population's gene pool, by immigrants that breed there or by gametes (such as pollen) that fertilise there | Partly right: talks about genes moving, but vague about how they enter the gene pool | Incorrect, or describes only the movement of individuals |
+| 2. Differs from migration | Explains that migration is the movement of individuals, and that it causes gene flow only if the migrants or their gametes take part in breeding | Says the two differ, but not why | Treats them as the same thing, or missing |
+| 3. Local adaptation | Explains both how gene flow can help (bringing in variation, genetic rescue) and how it can hinder (bringing in alleles suited to other environments), with a specific example | Only one side, or no specific example | Incorrect or missing |
+| 4. Drift versus selection | Explains that a *number* of migrants (about one per generation) is enough to stop divergence by drift whatever the population size, but that gene flow swamps selection only when the migration *rate* $m$ is similar to or larger than $s$ | States the result without explaining it, or explains only one half | Incorrect or missing |
+| 5. Structure | The first sentence of each part answers it; one point per paragraph, each with a topic sentence; correct terminology | Mostly clear, but loosely structured, repetitive or imprecise | Disorganised |
+
+A factual error in a criterion caps that criterion at 1 point. Material the question does not ask for earns nothing, however accurate it is.
+
+### Answer A
+
+> Gene flow is the process where animals from one area move to another area and bring their genes with them.
+>
+> One of the main ways gene flow happens is through movement, for example when birds fly to a different place and then mate with the local birds.
+>
+> Gene flow can make a population less unique, because when animals from different areas mix, the local traits get diluted. For example, if birds with colourful feathers mate with birds with dull feathers, you might end up with fewer colourful birds.
+>
+> Drift is random, so it can be stopped by a few migrants, but selection is stronger, so more migrants are needed to stop it.
+
+### Answer B
+
+> Gene flow is the movement of alleles from one population into the gene pool of another. It happens only when the incoming individuals or gametes take part in reproduction: a migrant that arrives but does not breed adds nothing to the gene pool. Migration, the movement of individuals, is therefore not the same as gene flow. Sockeye salmon migrate thousands of kilometres at sea, yet because they return to breed in the stream where they hatched, there is little gene flow between river populations.
+>
+> Gene flow happens by two main routes. Animals that disperse from where they were born and breed in another population carry their alleles with them. Plants do not move as adults, so their gene flow happens mainly through pollen, carried by wind or insects, and through seeds.
+>
+> Gene flow can both help and hinder local adaptation. It helps by bringing back genetic variation that a small, isolated population has lost: when eight female pumas from Texas were released into the inbred Florida panther population in 1995, heterozygosity increased, signs of inbreeding depression became rarer and the population grew (genetic rescue). It hinders by bringing in alleles that suit other environments. Common bent grass on a small copper mine in Wales is copper tolerant, but non-tolerant pollen blows onto the mine, so seed produced there is less tolerant than the adults, and copper then kills the non-tolerant seedlings. Downwind, tolerant pollen blowing off the mine produces tolerant seedlings on normal soil, where tolerance is costly.
+>
+> Drift and selection respond to gene flow differently. The strength of drift is about $1/(2N)$ per generation, so drift is weaker in large populations, while gene flow pulls a population back towards the others by the proportion $m$ each generation. The two balance when $Nm$ is about 1, so about one migrant per generation is enough to stop drift making populations very different, whatever their size. Selection, in contrast, changes allele frequencies by a proportion set by the selection coefficient $s$, so gene flow swamps local adaptation only when $m$ is similar to or larger than $s$. Populations can therefore exchange enough migrants to stop divergence by drift and still stay locally adapted, as the grass on the copper mine shows.
+
+### Answer C
+
+> Gene flow is about how animals move to new places, like birds flying south for winter.
+>
+> So, the mechanisms are migration and movement, because that's how animals and people move around.
+>
+> Gene flow doesn't let animals adapt, because they are always moving, so they can't get used to one place. For example, if a penguin moves to a desert, it can't adapt because it's too hot and there's no water.
+>
+> Drift happens in small populations and selection happens in big ones, so how many migrants you need depends on the size of the population.
+
+## Now write your own (15 minutes)
+
+Answer the question below without notes, in about 15 minutes, as you would in the exam. Aim for about 250 words: three short paragraphs is enough for full marks. Plan for a couple of minutes first. Submit your answer to the assignment "Practice Short Answer Question" on itslearning.
+
+> **Question.** Adaptive and neutral evolution are two fundamental modes of evolutionary change. (i) Explain the difference between them, giving two ways in which they differ. (ii) Give one example of each, and explain why it fits.
+
+**Rubric (10 points)**
+
+| Criterion | 2 points | 1 point | 0 points |
+|---|---|---|---|
+| 1. Adaptive evolution | A change in allele frequencies caused by natural selection, consistent in direction, that produces adaptations | Vague (for example, "organisms adapt to their environment"), or the cause is missing | Incorrect or missing |
+| 2. Neutral evolution | A change in allele frequencies caused by genetic drift, in variants with little or no effect on fitness, random in direction | Partly right, or the cause is missing | Incorrect (for example, "neutral means no change") or missing |
+| 3. Where they differ | States at least two differences: in direction, in outcome, or in what controls them (the selection coefficient $s$ versus drift, about $1/(2N_e)$) | One difference, or differences implied but never stated | None |
+| 4. Examples, explained | A specific example of each, in a heritable trait, each with an explanation of why it fits | Both examples named but not explained, or only one explained | No suitable examples |
+| 5. Structure | The first sentence answers the question; one point per paragraph, each with a topic sentence; correct terminology | Mostly clear, but loosely structured, repetitive or imprecise | Disorganised |
+
+A factual error in a criterion caps that criterion at 1 point.
+
+When the time is up, swap laptops with a neighbour (or email them your answer) and mark each other's answer with the rubric. Give a mark for each criterion, and add one sentence on the change that would gain the most marks. If you would rather not share your answer, mark your own instead. After the session, compare both answers with the model answer posted on itslearning (Resources › Practice Exams). This practice does not count towards your final grade.
+
+## Takeaways
+
+- Answer every part of the question, and let the verbs tell you what each part needs.
+- Plan before you write.
+- Answer the question in your first sentence.
+- One main point per paragraph: a topic sentence, support, and an ending that adds something rather than repeating the topic sentence.
+- Use precise terms, and back every general claim with a specific example.
+- Marking other people's answers against a rubric is one of the quickest ways to improve your own.

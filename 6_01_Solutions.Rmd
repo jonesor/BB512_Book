@@ -566,6 +566,10 @@ With this change, the median final population size is about 136 (10-90% range ab
 
 ## Solutions: Hardy-Weinberg equilibrium
 
+```{r hwe-solutions-setup, include=FALSE}
+source("scripts/hardy_weinberg_practical.R")
+```
+
 Answers to the Hardy-Weinberg questions.
 
 Remember the basic formulas:
@@ -585,63 +589,58 @@ A general rule for all these problems: keep full precision in your calculator an
 
 ### Problem 1
 
-The frequency of allele *a*: Since $p + q = 1$ and $p = 0.8$, $q = 1 - 0.8 = 0.2$.
+The frequency of allele *a*: Since $p + q = 1$ and $p = `r hwe$fmt(hwe$p1$p)`$, $q = 1 - `r hwe$fmt(hwe$p1$p)` = `r hwe$fmt(hwe$p1$q)`$.
 
 The expected genotype frequencies:
 
-- *AA* = $p^2 = 0.8 \times 0.8 = 0.64$ (64%)
-- *Aa* = $2pq = 2 \times 0.8 \times 0.2 = 0.32$ (32%)
-- *aa* = $q^2 = 0.2 \times 0.2 = 0.04$ (4%)
+- *AA* = $p^2 = `r hwe$fmt(hwe$p1$p)` \times `r hwe$fmt(hwe$p1$p)` = `r hwe$fmt(hwe$p1$AA)`$ (`r hwe$pct(hwe$p1$AA)`%)
+- *Aa* = $2pq = 2 \times `r hwe$fmt(hwe$p1$p)` \times `r hwe$fmt(hwe$p1$q)` = `r hwe$fmt(hwe$p1$Aa)`$ (`r hwe$pct(hwe$p1$Aa)`%)
+- *aa* = $q^2 = `r hwe$fmt(hwe$p1$q)` \times `r hwe$fmt(hwe$p1$q)` = `r hwe$fmt(hwe$p1$aa)`$ (`r hwe$pct(hwe$p1$aa)`%)
 
-Check: $0.64 + 0.32 + 0.04 = 1$.
+Check: $`r hwe$fmt(hwe$p1$AA)` + `r hwe$fmt(hwe$p1$Aa)` + `r hwe$fmt(hwe$p1$aa)` \approx `r hwe$fmt(hwe$p1$AA + hwe$p1$Aa + hwe$p1$aa)`$ (displayed frequencies are rounded).
 
-The phenotype frequencies if *A* is completely dominant over *a*: Both *AA* and *Aa* individuals show the dominant phenotype, so its frequency is $0.64 + 0.32 = 0.96$ (96%). Only *aa* individuals show the recessive phenotype, so its frequency is 0.04 (4%). Notice that the heterozygotes cannot be told apart from the *AA* homozygotes by looking at them, and that there are eight times as many of them as there are recessive homozygotes: most copies of a rare recessive allele are "hidden" in heterozygotes.
+The phenotype frequencies if *A* is completely dominant over *a*: Both *AA* and *Aa* individuals show the dominant phenotype, so its frequency is $`r hwe$fmt(hwe$p1$AA)` + `r hwe$fmt(hwe$p1$Aa)` \approx `r hwe$fmt(hwe$p1$dominant)`$ (`r hwe$pct(hwe$p1$dominant)`%). Only *aa* individuals show the recessive phenotype, so its frequency is `r hwe$fmt(hwe$p1$aa)` (`r hwe$pct(hwe$p1$aa)`%). Heterozygotes cannot be distinguished from *AA* homozygotes by phenotype alone. There are approximately `r hwe$fmt(hwe$p1$Aa / hwe$p1$aa, 2)` times as many heterozygotes as recessive homozygotes.
 
 ### Problem 2
 
-The frequency of HbS/HbS infants is $q^2 = 9/287 = 0.0314$. To find $q$, take the square root: $q = \sqrt{0.0314} = 0.177$. Since $p = 1 - q$, $p = 0.823$. Then $2pq = 2 \times 0.823 \times 0.177 = 0.291$, so about 29% of babies are expected to be heterozygous (HbA/HbS) at birth.
-
-Among 287 infants this predicts $0.291 \times 287 = 84$ heterozygotes. Allison observed 89 (31%), which is close. (If you count alleles directly, as in Problem 3, you get $q = (2 \times 9 + 89)/574 = 0.186$, the value in Neal and the selection lecture. The $q^2$ route gives a slightly different answer because it relies on HWE and uses only the smallest class, 9 individuals, so it is more affected by chance. Neal's $\chi^2$ test confirms that the infants fit HWE.)
-
-Among adults the heterozygote frequency is higher and the HbS/HbS frequency lower: Allison's 654 adults were 61.2% HbA/HbA, 38.1% HbA/HbS and only 0.8% HbS/HbS. Heterozygotes survive better than either homozygote, so selection acting on the genotypes after birth pushes the adults away from HWE. This is why we applied HWE at birth. It also shows that a population at HWE (the infants) can still be under strong selection: conforming to HWE does not prove that there is no selection.
+Assuming HWE at birth, the frequency of SS babies is $q^2 = `r hwe$fmt(hwe$inputs$problem2_SS)`$. The HbS allele frequency is therefore $q = \sqrt{`r hwe$fmt(hwe$inputs$problem2_SS)`} \approx `r hwe$fmt(hwe$p2$q)`$, and the HbA allele frequency is $p = 1 - q \approx `r hwe$fmt(hwe$p2$p)`$. The expected frequency of carriers (AS) is $2pq \approx 2 \times `r hwe$fmt(hwe$p2$p)` \times `r hwe$fmt(hwe$p2$q)` \approx `r hwe$fmt(hwe$p2$Aa)`$, so **about `r hwe$pct(hwe$p2$Aa)`% of babies are expected to be carriers**.
 
 ### Problem 3
 
-The allele frequencies: 200 diploid individuals carry 400 allele copies. Each *AA* individual carries two copies of *A* and each *Aa* individual carries one, so the number of *A* copies is $2 \times 90 + 70 = 250$.
+The allele frequencies: `r hwe$fmt(hwe$p3$N)` diploid individuals carry `r hwe$fmt(2 * hwe$p3$N)` allele copies. Each *AA* individual carries two copies of *A* and each *Aa* individual carries one, so the number of *A* copies is $2 \times `r hwe$fmt(hwe$p3$observed["AA"])` + `r hwe$fmt(hwe$p3$observed["Aa"])` = `r hwe$fmt(hwe$p3$A_copies)`$.
 
-$p = 250 / 400 = 0.625$, and $q = 1 - 0.625 = 0.375$. (Check: the number of *a* copies is $2 \times 40 + 70 = 150$, and $150 / 400 = 0.375$.)
+$p = `r hwe$fmt(hwe$p3$A_copies)` / `r hwe$fmt(2 * hwe$p3$N)` \approx `r hwe$fmt(hwe$p3$p)`$, and $q = 1 - p \approx `r hwe$fmt(hwe$p3$q)`$. (Check: the number of *a* copies is $2 \times `r hwe$fmt(hwe$p3$observed["aa"])` + `r hwe$fmt(hwe$p3$observed["Aa"])` = `r hwe$fmt(hwe$p3$a_copies)`$, and $`r hwe$fmt(hwe$p3$a_copies)` / `r hwe$fmt(2 * hwe$p3$N)` \approx `r hwe$fmt(hwe$p3$q)`$.)
 
-The expected counts under HWE are the expected frequencies multiplied by the sample size, 200:
+The expected counts under HWE are the expected frequencies multiplied by the sample size, `r hwe$fmt(hwe$p3$N)`:
 
 | Genotype | Observed | Expected under HWE |
 |---|---|---|
-| *AA* | 90 | $0.625^2 \times 200 = 0.390625 \times 200 = 78.1$ |
-| *Aa* | 70 | $2 \times 0.625 \times 0.375 \times 200 = 0.46875 \times 200 = 93.75$ |
-| *aa* | 40 | $0.375^2 \times 200 = 0.140625 \times 200 = 28.1$ |
+| *AA* | `r hwe$fmt(hwe$p3$observed["AA"])` | $p^2N \approx `r hwe$fmt(hwe$p3$p)`^2 \times `r hwe$fmt(hwe$p3$N)` \approx `r hwe$fmt(hwe$p3$expected["AA"], 3)`$ |
+| *Aa* | `r hwe$fmt(hwe$p3$observed["Aa"])` | $2pqN \approx 2 \times `r hwe$fmt(hwe$p3$p)` \times `r hwe$fmt(hwe$p3$q)` \times `r hwe$fmt(hwe$p3$N)` \approx `r hwe$fmt(hwe$p3$expected["Aa"], 3)`$ |
+| *aa* | `r hwe$fmt(hwe$p3$observed["aa"])` | $q^2N \approx `r hwe$fmt(hwe$p3$q)`^2 \times `r hwe$fmt(hwe$p3$N)` \approx `r hwe$fmt(hwe$p3$expected["aa"], 3)`$ |
 
-Comparison: there are fewer heterozygotes than expected (70 observed against about 94 expected), and more of both homozygotes than expected. This is a heterozygote deficit.
+Comparison: `r hwe$p3$comparison` There are `r hwe$fmt(hwe$p3$observed["Aa"])` observed heterozygotes, compared with `r hwe$fmt(hwe$p3$expected["Aa"], 3)` expected.
 
-Possible explanations include inbreeding or other non-random mating, the sample combining two or more partly separated subpopulations (the Wahlund effect), selection against heterozygotes, or genotyping errors (for example, heterozygotes being misread as homozygotes). The comparison tells us there is a pattern to investigate, not which of these causes is responsible. (In the Inbreeding lecture you will quantify a deficit like this with $F = 1 - H_o/H_e$, here $1 - 0.35/0.469 = 0.25$.)
+`r hwe$p3$explanations` The comparison alone does not identify a cause. In the Inbreeding lecture you will quantify departures in heterozygosity with $F = 1 - H_o/H_e$, here $1 - `r hwe$fmt(hwe$p3$Ho)` / `r hwe$fmt(hwe$p3$Aa)` \approx `r hwe$fmt(hwe$p3$F, 3)`$.
 
 *Optional extension: the $\chi^2$ test.*
 
 | Genotype | $O$ | $E$ | $(O - E)^2/E$ |
 |---|---|---|---|
-| *AA* | 90 | 78.125 | 1.81 |
-| *Aa* | 70 | 93.75 | 6.02 |
-| *aa* | 40 | 28.125 | 5.01 |
-| Total | 200 | 200 | $\chi^2 = 12.84$ |
+| *AA* | `r hwe$fmt(hwe$p3$observed["AA"])` | `r hwe$fmt(hwe$p3$expected["AA"], 3)` | `r hwe$fmt(hwe$p3$contributions["AA"], 2)` |
+| *Aa* | `r hwe$fmt(hwe$p3$observed["Aa"])` | `r hwe$fmt(hwe$p3$expected["Aa"], 3)` | `r hwe$fmt(hwe$p3$contributions["Aa"], 2)` |
+| *aa* | `r hwe$fmt(hwe$p3$observed["aa"])` | `r hwe$fmt(hwe$p3$expected["aa"], 3)` | `r hwe$fmt(hwe$p3$contributions["aa"], 2)` |
+| Total | `r hwe$fmt(hwe$p3$N)` | `r hwe$fmt(sum(hwe$p3$expected))` | $\chi^2 \approx `r hwe$fmt(hwe$p3$chi_square, 2)`$ |
 
-There are three classes, so you might expect $3 - 1 = 2$ degrees of freedom (one is lost because the expected counts are forced to add up to the sample size, 200). But we also used the data to estimate one parameter, $p$, to calculate the expected counts, and that costs a second degree of freedom. So df $= 3 - 1 - 1 = 1$. With 1 degree of freedom, $\chi^2 = 12.84$ is larger than the critical value for $P = 0.001$ (10.83): `pchisq(12.84, df = 1, lower.tail = FALSE)` gives $P = 0.0003$. The heterozygote deficit is very unlikely to be due to chance alone. (Neal uses the same df = 1 for the Tanzanian haemoglobin data: $\chi^2 = 0.15$ for the infants, which fit HWE, and 25.8 for the adults, which do not.)
+There are three classes, so you might expect $3 - 1 = 2$ degrees of freedom (one is lost because the expected counts are forced to add up to the sample size, `r hwe$fmt(hwe$p3$N)`). But we also estimated one parameter, $p$, from the data to calculate the expected counts, which costs another degree of freedom. So df $= 3 - 1 - 1 = 1$. Using the unrounded statistic, $\chi^2 \approx `r hwe$fmt(hwe$p3$chi_square, 2)`$ gives $P `r if (hwe$p3$p_value < 0.0001) "< 0.0001" else paste("\\approx", hwe$fmt(hwe$p3$p_value, 4))`$. `r hwe$p3$test_interpretation`
 
 ### Problem 4
 
-The first thing you'll need to do is obtain $p$ and $q$. Since white is recessive (i.e. *bb*), and 40% of the butterflies are white, *bb* = $q^2$ = 0.4.
-To determine $q$, the frequency of the recessive allele, take the square root of $q^2$: $q = \sqrt{0.4} = 0.6325$. Since $p + q = 1$, $p = 1 - 0.6325 = 0.3675$. (Keep these to four decimal places, or better, leave them in your calculator.)
+Since white is recessive (genotype *bb*), $q^2 = `r hwe$fmt(hwe$inputs$problem4_white)`$. Take the square root: $q = \sqrt{`r hwe$fmt(hwe$inputs$problem4_white)`} \approx `r hwe$fmt(hwe$p4$q)`$. Then $p = 1 - q \approx `r hwe$fmt(hwe$p4$p)`$. Keep full precision for subsequent calculations; the displayed values are rounded.
 
-Now to answer our questions. The percentage of butterflies that are heterozygous is $2pq = 2 \times 0.3675 \times 0.6325 = 0.465$, i.e. 46.5%. The frequency of homozygous dominant individuals is $p^2 = 0.3675^2 = 0.135$.
+The heterozygote frequency is $2pq \approx 2 \times `r hwe$fmt(hwe$p4$p)` \times `r hwe$fmt(hwe$p4$q)` \approx `r hwe$fmt(hwe$p4$Aa)`$, or about `r hwe$pct(hwe$p4$Aa)`%. The homozygous dominant frequency is $p^2 \approx `r hwe$fmt(hwe$p4$p)`^2 \approx `r hwe$fmt(hwe$p4$AA)`$.
 
-*Extension:* Brown butterflies are those with genotype *BB* or *Bb*, so they make up $1 - 0.4 = 0.6$ of the population (check: $0.135 + 0.465 = 0.6$). Of these, the heterozygotes are $0.465 / 0.6 = 0.775$, so 77.5% of brown butterflies are expected to be heterozygous. Note the difference between this and the 46.5% heterozygotes in the population as a whole: here the denominator is only the brown butterflies. (If you round to $q = 0.63$ and $p = 0.37$ too early, you get 0.47, 0.14 and about 78% instead.)
+*Extension:* Brown butterflies have genotype *BB* or *Bb*, so their frequency is $1 - `r hwe$fmt(hwe$inputs$problem4_white)` = `r hwe$fmt(hwe$p4$dominant)`$. The proportion of brown butterflies that are heterozygous is $2pq / (1 - q^2) \approx `r hwe$fmt(hwe$p4$Aa)` / `r hwe$fmt(hwe$p4$dominant)` \approx `r hwe$fmt(hwe$p4$heterozygous_among_brown)`$, or about `r hwe$pct(hwe$p4$heterozygous_among_brown)`%. Compare this with `r hwe$pct(hwe$p4$Aa)`% in the population as a whole: the denominator here includes only brown butterflies.
 
 ## Solutions: Gene pool model
 

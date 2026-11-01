@@ -9,6 +9,15 @@
   `bookdown::render_book("index.Rmd", "bookdown::pdf_book")`.
 - Use `_clean.sh` to remove caches and generated artifacts before a clean rebuild.
 
+### Hardy-Weinberg practical inputs
+
+Edit the `inputs` list in `scripts/hardy_weinberg_practical.R` to change the
+worked example or any of the four problems. Frequencies are proportions
+(e.g. `0.09` for 9%); Problem 3 uses counts named `AA`, `Aa` and `aa`.
+The practical and matching solutions load this file in hidden chunks, so
+questions, calculations, tables and interpretations update together when rebuilt.
+Calculations retain full precision; only displayed numbers are rounded.
+
 ### Build/release notes
 
 - Rendered stochastic examples use fixed RNG settings in `preamble.R` and

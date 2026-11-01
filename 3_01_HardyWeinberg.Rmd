@@ -1,5 +1,9 @@
 # Hardy-Weinberg equilibrium
 
+```{r hwe-practical-setup, include=FALSE}
+source("scripts/hardy_weinberg_practical.R")
+```
+
 ::: {.do-something}
 Learning outcomes. By the end of this practical you should be able to:
 
@@ -102,13 +106,13 @@ Any deviation from these assumptions could result in a population that is not in
 
 Unless a problem states otherwise, assume that the population is at HWE. This matters: working back from the frequency of a recessive genotype to an allele frequency (as below) is only valid if the population is at HWE.
 
-Suppose 16% of individuals have the recessive genotype, aa, so $q^2 = 0.16$. What proportion of the population would we expect to be heterozygous?
+Suppose `r hwe$pct(hwe$inputs$worked_recessive)`% of individuals have the recessive genotype, aa, so $q^2 = `r hwe$fmt(hwe$inputs$worked_recessive)`$. What proportion of the population would we expect to be heterozygous?
 
-1. Calculate $q = \sqrt{0.16} = 0.4$.
-2. Calculate $p = 1 - q = 0.6$.
-3. Calculate the heterozygote frequency: $2pq = 2(0.6)(0.4) = 0.48$.
+1. Calculate $q = \sqrt{`r hwe$fmt(hwe$inputs$worked_recessive)`} \approx `r hwe$fmt(hwe$worked$q)`$.
+2. Calculate $p = 1 - q \approx `r hwe$fmt(hwe$worked$p)`$.
+3. Calculate the heterozygote frequency: $2pq \approx 2(`r hwe$fmt(hwe$worked$p)`)(`r hwe$fmt(hwe$worked$q)`) \approx `r hwe$fmt(hwe$worked$Aa)`$.
 
-We therefore expect 48% of individuals to be heterozygous (Aa), assuming the population is at HWE.
+We therefore expect about `r hwe$pct(hwe$worked$Aa)`% of individuals to be heterozygous (Aa), assuming the population is at HWE.
 
 ## Your task
 
@@ -116,26 +120,23 @@ Tackle the following problems, using the HWE theory outlined above. Worked solut
 
 ### Problem #1.
 
-A population has two alleles, A and a, at a gene of interest. The frequency of allele A is 0.8. Assuming the population is at HWE, calculate the following:
+A population has two alleles, A and a, at a gene of interest. The frequency of allele A is `r hwe$fmt(hwe$p1$p)`. Assuming the population is at HWE, calculate the following:
 
 *	The frequency of allele a.
 *	The expected frequencies of the genotypes AA, Aa and aa.
 *	The frequencies of the two possible phenotypes if A is completely dominant over a.
 
-### Problem #2.
+### PROBLEM #2.
 
-Sickle-cell disease is caused by variants of the haemoglobin gene. In this simplified two-allele example, people with two copies of the usual allele (HbA/HbA) do not have sickle-cell disease, but lack the protection against severe malaria associated with sickle-cell trait. People with two copies of the sickle-cell allele (HbS/HbS) have sickle-cell disease: their red blood cells can become rigid and sickle-shaped, causing serious illness. Heterozygous people (HbA/HbS) have sickle-cell *trait*. Most have no symptoms of sickle-cell disease, and they have increased protection against severe malaria. In regions where malaria is common, this can give heterozygotes a survival advantage over either homozygote.
+Sickle-cell disease is caused by the HbS allele of the haemoglobin gene; the normal allele is HbA. People with genotype AA have normal red blood cells but are vulnerable to severe malaria. People with genotype SS have sickle-cell disease, which is often fatal without treatment. Carriers (AS) are usually healthy and are protected against severe malaria, so in malarial regions they survive better than either homozygote.
 
-*	In a classic study in a malaria-endemic area of Tanzania (Allison 1956, used in Neal's chapters *The Hardy-Weinberg Principle* and *Applying Zygotic Selection Models to Natural Systems*), 9 of 287 infants (about 3%) had sickle-cell disease (HbS/HbS). Assuming the population is at HWE at birth, what percentage of babies would you expect to be heterozygous (HbA/HbS), and so more resistant to severe malaria? (These genotypes are also written AA, AS and SS.)
-*	Allison found 89 heterozygous infants. How close is this to your prediction?
-
-Because of the survival differences described above, genotype frequencies among *adults* in such a population are not expected to stay at HWE. This is why the question asks about babies at birth.
+If `r hwe$pct(hwe$inputs$problem2_SS)`% of babies in a population are born with sickle-cell disease (SS), what percentage are carriers (AS)?
 
 ### Problem #3.
 
-You genotype a sample of 200 individuals from a population at a gene with two alleles, A and a. You find 90 AA, 70 Aa and 40 aa individuals. This time, do not assume the population is at HWE: assess whether the observed counts match HWE expectations. A descriptive comparison is sufficient for this exercise; a formal statistical test is an optional extension (see the box below).
+You genotype a sample of `r hwe$fmt(hwe$p3$N)` individuals from a population at a gene with two alleles, A and a. You find `r hwe$fmt(hwe$p3$observed["AA"])` AA, `r hwe$fmt(hwe$p3$observed["Aa"])` Aa and `r hwe$fmt(hwe$p3$observed["aa"])` aa individuals. This time, do not assume the population is at HWE: assess whether the observed counts match HWE expectations. A descriptive comparison is sufficient for this exercise; a formal statistical test is an optional extension (see the box below).
 
-*	Calculate the frequencies of alleles A and a from the genotype counts. (Hint: 200 diploid individuals carry 400 allele copies, and each heterozygote carries one copy of each allele.)
+*	Calculate the frequencies of alleles A and a from the genotype counts. (Hint: `r hwe$fmt(hwe$p3$N)` diploid individuals carry `r hwe$fmt(2 * hwe$p3$N)` allele copies, and each heterozygote carries one copy of each allele.)
 *	Calculate the expected number of each genotype if the population were at HWE.
 *	Compare the observed and expected counts. Is there an excess or a deficit of heterozygotes? Suggest some reasons why a population might show this pattern.
 
@@ -148,7 +149,7 @@ Think carefully about the degrees of freedom. There are three genotype classes, 
 
 ### Problem #4.
 
-Within a population of butterflies, brown (B) is completely dominant over white (b), and 40% of all butterflies are white. Assuming the population is at HWE, calculate the following:
+Within a population of butterflies, brown (B) is completely dominant over white (b), and `r hwe$pct(hwe$inputs$problem4_white)`% of all butterflies are white. Assuming the population is at HWE, calculate the following:
 
 *	The percentage of butterflies in the population that are heterozygous.
 *	The frequency of homozygous dominant individuals.
