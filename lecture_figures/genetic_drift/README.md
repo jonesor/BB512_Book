@@ -25,3 +25,7 @@ Notes:
 - Font: Avenir Next is used when installed (Mac); otherwise Nunito Sans, then Helvetica. The committed PNG files were rendered with the Nunito Sans fallback, so re-run `render_all.R` on a Mac to get Avenir Next.
 - Seeds: the two illustrative simulations (05, 06) search for a seed that shows the intended pattern; the search conditions are in each script header and the seed used is written to `figures/*_seed.txt`.
 - Figures not used by the 45-minute deck (harmonic mean, drift vs selection) were dropped; the worked numbers are in the speaker notes.
+
+## Added November 2026
+
+- `scripts/02b_genotype_phenotype.R` (slide 7, half): AA and Aa give the same phenotype, so selection cannot separate them. Schematic; fitness values illustrative.

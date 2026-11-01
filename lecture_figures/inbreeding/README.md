@@ -53,3 +53,8 @@ relative to our ancestral reference." The blue cells are allozygous homozygotes;
 the red column in the second reveal adds autozygous (IBD) homozygotes.
 
 The figures were rendered for checking in an environment without Avenir Next (a substitute sans font was used). Re-run `render_all.R` on a Mac with Avenir Next before final use, and look at the PNGs.
+
+## Added November 2026
+
+- `R/punnett.R` now holds `punnett_inbreeding()`, shared by scripts 05 and 05b (outputs of 05 unchanged).
+- `scripts/05b_punnett_inbreeding_legend.R` (slide 19, square): the p = 0.6, F = 0.25 square with a legend.

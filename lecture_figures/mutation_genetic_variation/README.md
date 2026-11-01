@@ -60,3 +60,10 @@ Placeholders fill and crop, so export at the placeholder's real aspect ratio.
 ## Editing
 
 Each script has its parameters (population size, rates, generations, seed) near the top. Stochastic figures set their own seed; the shared runner also resets the seed before each script so results do not depend on run order.
+
+## Added November 2026
+
+- `scripts/00a_mutation_consequences.R` (slide 6, fullbox): synonymous, missense, nonsense and frameshift examples. Schematic.
+- `scripts/00b_recombination_gametes.R` (slide 7, half): AaBb parent makes four gamete types, 1/4 each. Schematic.
+
+Both replace diagrams previously pasted into the deck without code.
