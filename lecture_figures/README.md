@@ -28,6 +28,7 @@ render_lecture("life_tables")
 render_lecture("age_stage_structured_models")
 render_lecture("life_histories")
 render_lecture("sexual_selection")
+render_lecture("behaviour_altruism")
 
 # Generate all lectures
 render_lectures()
@@ -94,6 +95,7 @@ Use Avenir Next for the intended lecture typography.
 | Life tables and age-structured population growth | `life_tables/figures/` | PNG |
 | Age and stage-structured models | `age_stage_structured_models/figures/` | PNG |
 | Evolution of life histories | `life_histories/figures/` | PNG |
+| Behaviour, altruism and limiting aggression | `behaviour_altruism/figures/` | PNG |
 
 Existing names, dimensions and styling are preserved, including the
 Hardy-Weinberg figure referenced by the book. Rendering overwrites matching
