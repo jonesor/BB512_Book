@@ -11,6 +11,7 @@ render_lecture <- local({
     natural_selection = c("ggplot2", "ragg", "patchwork"),
     hardy_weinberg = c("ggplot2", "ragg", "dplyr", "tibble", "patchwork", "systemfonts"),
     inbreeding = c("ggplot2", "scales", "ragg", "patchwork"),
+    genetic_drift = c("ggplot2", "scales", "ragg", "maps", "mapdata"),
     migration_gene_flow = c("ggplot2", "scales", "ragg"),
     mutation_genetic_variation = c("ggplot2", "scales", "ragg"),
     haploid_zygotic_selection = c("ggplot2", "scales", "ragg", "patchwork"),
@@ -18,8 +19,14 @@ render_lecture <- local({
     life_tables = c("ggplot2", "scales", "ragg", "patchwork", "png"),
     age_stage_structured_models = c("ggplot2", "scales", "ragg"),
     life_histories = c("ggplot2", "scales", "ragg"),
+<<<<<<< HEAD
     sexual_selection = c("ggplot2", "ragg", "systemfonts"),
     short_answers = c("ggplot2", "ragg")
+=======
+    coevolution = c("ggplot2", "ragg"),
+    sexual_selection = c("ggplot2", "ragg", "systemfonts"),
+    behaviour_altruism = c("ggplot2", "scales", "ragg", "patchwork")
+>>>>>>> f37e780dadf039a1fb37608619a0d7460fe118a7
   )
 
   function(lecture, script = NULL) {
@@ -84,11 +91,15 @@ render_lecture <- local({
 })
 
 render_lectures <- function() {
-  for (lecture in c("natural_selection", "hardy_weinberg", "inbreeding", "migration_gene_flow",
+  for (lecture in c("natural_selection", "hardy_weinberg", "genetic_drift", "inbreeding", "migration_gene_flow",
                     "mutation_genetic_variation", "haploid_zygotic_selection",
                     "polygenic_quantitative_genetics", "life_tables",
                     "age_stage_structured_models", "life_histories",
+<<<<<<< HEAD
                     "sexual_selection", "short_answers")) {
+=======
+                    "coevolution", "sexual_selection", "behaviour_altruism")) {
+>>>>>>> f37e780dadf039a1fb37608619a0d7460fe118a7
     render_lecture(lecture)
   }
   invisible(NULL)

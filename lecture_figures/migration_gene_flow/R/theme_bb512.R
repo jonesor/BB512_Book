@@ -17,7 +17,13 @@ bb512 <- list(
 
 # The PPTX uses Avenir Next. On a Mac this should be installed.
 # Change base_family to Helvetica if the font is not available on your system.
-theme_bb512 <- function(base_size = 18, base_family = "Avenir Next") {
+# Font can be overridden without editing this file, e.g. Sys.setenv(BB512_FONT = "Helvetica").
+bb512_font <- function() {
+  f <- Sys.getenv("BB512_FONT", "")
+  if (nzchar(f)) f else "Avenir Next"
+}
+
+theme_bb512 <- function(base_size = 18, base_family = bb512_font()) {
   ggplot2::theme_minimal(base_size = base_size, base_family = base_family) +
     ggplot2::theme(
       plot.background       = ggplot2::element_rect(fill = bb512$bg, colour = NA),
