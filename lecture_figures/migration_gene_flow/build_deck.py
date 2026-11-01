@@ -435,7 +435,7 @@ fill(ph(s, 102), [
     "On the mine: selection for copper tolerance",
     "Off the mine: tolerant plants are at a disadvantage",
     "A real stepping-stone chain: the mine is one end, normal soil the other",
-    "Wind blows mostly one way, carrying pollen. Predict: upwind versus downwind?",
+    "Wind blows mostly one way, carrying pollen. Predict: on which side of the mine, upwind or downwind, will tolerant plants extend further onto normal soil? Why?",
 ], size=19)
 notes(s, """~1.5 min.
 McNeilly (1968) Heredity 23: 99-108, 'Evolution in closely adjacent plant populations III. Agrostis tenuis on a small copper mine'; described in Neal 9.3.
