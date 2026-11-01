@@ -109,12 +109,38 @@ jobs:
           echo "--- full-book/ after relocation ---"
           find full-book -maxdepth 3 || true
 
+      # Commit from a clean worktree so changes to docs/ from rendering do not
+      # interfere with syncing to the latest master. Retry if another push wins.
       - name: Commit combined markdown
         if: github.event_name != 'pull_request'
-        uses: stefanzweifel/git-auto-commit-action@v5
-        with:
-          commit_message: "Rebuild full-book/BB512.md"
-          file_pattern: "full-book/**"
+        shell: bash
+        run: |
+          set -euo pipefail
+          git fetch origin master
+          worktree="$RUNNER_TEMP/combined-markdown-commit"
+          git worktree add --detach "$worktree" origin/master
+          for attempt in 1 2 3 4 5; do
+            git fetch origin master
+            git -C "$worktree" reset --hard origin/master
+            mkdir -p "$worktree/full-book"
+            rsync -a --delete full-book/ "$worktree/full-book/"
+            git -C "$worktree" add -A -- full-book/
+            if git -C "$worktree" diff --cached --quiet; then
+              echo "Combined Markdown is already up to date."
+              exit 0
+            fi
+            git -C "$worktree" -c user.name='github-actions[bot]' \
+              -c user.email='41898282+github-actions[bot]@users.noreply.github.com' \
+              commit -m "Rebuild full-book/BB512.md"
+            if git -C "$worktree" push origin HEAD:master; then
+              echo "Combined Markdown pushed successfully."
+              exit 0
+            fi
+            echo "Push rejected; refreshing master (attempt $attempt of 5)."
+            sleep $((attempt * 2))
+          done
+          echo "::error::Could not push combined Markdown after five attempts."
+          exit 1
 
       # Pull requests only need the build to be validated, not published.
       - name: Upload Pages artifact
