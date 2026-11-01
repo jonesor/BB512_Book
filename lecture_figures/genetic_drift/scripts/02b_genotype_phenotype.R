@@ -1,46 +1,48 @@
 # Slide 7: "Different genotypes can give the same phenotype" (Figure & Bullets, "half")
-# Schematic, not data. One locus with complete dominance: AA and Aa both give the dark
-# phenotype, aa gives the pale one. Fitness depends on phenotype, so selection cannot
-# tell AA from Aa: changes in their relative frequencies are left to drift.
-# Fitness values (1 and 0.8) are illustrative.
-# R version of the diagram previously pasted into the deck.
+# Schematic, not data. The genotype -> phenotype -> fitness map is many-to-one:
+# four genotypes (G1-G4) give three phenotypes (P1-P3), which give two fitness values
+# (F1, F2). Selection acts on phenotype, so it cannot tell apart genotypes that share a
+# phenotype (e.g. synonymous mutations, canalisation); those differences evolve neutrally.
+# The particular mapping is illustrative. Replaces a textbook figure (after Herron &
+# Freeman, Evolutionary Analysis) previously pasted into the deck.
 source("R/theme_bb512.R"); library(ggplot2)
 fam <- .bb512_font
 
-box <- function(x, y, lab, fill, tcol, w = 1.3, h = 0.72) {
-  data.frame(x = x, y = y, lab = lab, fill = fill, tcol = tcol,
-             xmin = x - w / 2, xmax = x + w / 2, ymin = y - h / 2, ymax = y + h / 2)
-}
-y_g <- 1; y_p <- 3; y_w <- 5
-boxes <- rbind(
-  box(c(3.1, 5.0, 6.9), y_g, c("AA", "Aa", "aa"), bb512$pale, bb512$ink),
-  box(c(4.05, 6.9), y_p, c("Dark", "Pale"), c(bb512$forest, bb512$sage),
-      c(bb512$bg, bb512$ink), w = 1.7),
-  box(c(4.05, 6.9), y_w, c("W == 1", "W == 0.8"), bb512$bg, bb512$ink, w = 1.7)
+y_lev <- c(G = 1, P = 3, F = 5)
+nodes <- rbind(
+  data.frame(id = paste0("G", 1:4), lev = "G", x = c(2.2, 3.6, 5.0, 6.4)),
+  data.frame(id = paste0("P", 1:3), lev = "P", x = c(2.9, 5.0, 6.4)),
+  data.frame(id = paste0("F", 1:2), lev = "F", x = c(3.95, 6.4))
 )
-boxes$parse <- grepl("==", boxes$lab)
+nodes$y <- y_lev[nodes$lev]
+nodes$fill <- c(G = bb512$pale, P = bb512$sage, F = bb512$forest)[nodes$lev]
+nodes$tcol <- c(G = bb512$ink, P = bb512$ink, F = bb512$bg)[nodes$lev]
+nodes$lab <- sub("([A-Z])([0-9])", "\\1[\\2]", nodes$id)   # plotmath subscripts
 
-h2 <- 0.36 + 0.08
-arrows <- rbind(
-  data.frame(x = c(3.1, 5.0, 6.9), y = y_g + h2, xend = c(3.75, 4.35, 6.9), yend = y_p - h2),
-  data.frame(x = c(4.05, 6.9), y = y_p + h2, xend = c(4.05, 6.9), yend = y_w - h2)
-)
-levels_df <- data.frame(y = c(y_g, y_p, y_w), lab = c("Genotype", "Phenotype", "Fitness"))
+# Many-to-one links: G1, G2 -> P1; G3 -> P2; G4 -> P3; P1, P2 -> F1; P3 -> F2
+links <- data.frame(from = c("G1", "G2", "G3", "G4", "P1", "P2", "P3"),
+                    to   = c("P1", "P1", "P2", "P3", "F1", "F1", "F2"))
+r <- 0.36
+seg <- do.call(rbind, lapply(seq_len(nrow(links)), function(i) {
+  a <- nodes[nodes$id == links$from[i], ]; b <- nodes[nodes$id == links$to[i], ]
+  d <- c(b$x - a$x, b$y - a$y); d <- d / sqrt(sum(d^2))
+  data.frame(x = a$x + d[1] * r * 1.2, y = a$y + d[2] * r * 1.2,
+             xend = b$x - d[1] * r * 1.35, yend = b$y - d[2] * r * 1.35)
+}))
+levels_df <- data.frame(y = y_lev, lab = c("Genotype", "Phenotype", "Fitness"))
 
 p <- ggplot() +
-  geom_segment(data = arrows, aes(x = x, y = y, xend = xend, yend = yend),
+  geom_segment(data = seg, aes(x = x, y = y, xend = xend, yend = yend),
                colour = bb512$grey, linewidth = 0.9,
                arrow = arrow(length = unit(0.1, "in"), type = "closed")) +
-  geom_rect(data = boxes, aes(xmin = xmin, xmax = xmax, ymin = ymin, ymax = ymax, fill = fill),
-            colour = bb512$grid, linewidth = 0.8) +
-  geom_text(data = subset(boxes, !parse), aes(x, y, label = lab, colour = tcol),
-            size = 6, fontface = "bold", family = fam) +
-  geom_text(data = subset(boxes, parse), aes(x, y, label = lab, colour = tcol),
-            size = 6, family = fam, parse = TRUE) +
+  geom_point(data = nodes, aes(x, y, fill = fill), shape = 21, size = 21,
+             colour = bb512$grid, stroke = 1) +
+  geom_text(data = nodes, aes(x, y, label = lab, colour = tcol), parse = TRUE,
+            size = 6.2, family = fam) +
   geom_text(data = levels_df, aes(x = 0.2, y = y, label = lab), hjust = 0,
             size = 5.4, colour = bb512$grey, family = fam) +
   scale_fill_identity() + scale_colour_identity() +
-  coord_cartesian(xlim = c(0.1, 7.85), ylim = c(0.4, 5.6), expand = FALSE, clip = "off") +
+  coord_cartesian(xlim = c(0.1, 7.0), ylim = c(0.35, 5.65), expand = FALSE, clip = "off") +
   theme_void() +
   theme(plot.background = element_rect(fill = bb512$bg, colour = NA),
         plot.margin = margin(6, 6, 6, 6))
