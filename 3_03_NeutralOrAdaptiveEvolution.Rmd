@@ -56,32 +56,16 @@ Learning outcomes:
 
 Traits like resistance to infectious disease are likely to face strong selection in environments where the disease is common. Heritable variation with little or no effect on survival or reproduction (for example, many DNA differences at synonymous sites, which do not change the protein) is more likely to change by drift.
 
-## Evidence cards: some well-studied human cases
-
-These five cases have strong genetic evidence. Use them as reference points when you place the other traits.
-
-::: {.do-something}
-**Lactase persistence (digesting milk sugar as an adult).** This is caused by variants near the *LCT* gene that keep the lactase enzyme switched on in adults. *Different* variants have arisen and spread in Europe, East Africa and the Middle East, in populations that keep milk-producing animals (Tishkoff et al. 2007, *Nature Genetics*). They carry some of the strongest signals of recent selection in the human genome. Ancient DNA shows that the main European variant was rare until the last few thousand years. Why selection was so strong is still debated: milk drinking alone may not explain it, and famine and disease may have intensified it (Evershed et al. 2022, *Nature*).
-
-**EDAR V370A.** This is a single amino-acid change in the *EDAR* gene, common in East Asia and the Americas. It affects hair thickness, sweat gland density and tooth shape, and it shows a strong signal of past selection (Kamberov et al. 2013, *Cell*). Which of these traits (if any) was the target of selection is not known.
-
-**Malaria resistance: HbS and Duffy-null.** People heterozygous for the sickle-cell allele (HbS) are protected against severe *Plasmodium falciparum* malaria: heterozygote advantage, as in the Hardy-Weinberg practical. The Duffy-null allele protects against *Plasmodium vivax* malaria. It is close to fixation in much of sub-Saharan Africa but rare elsewhere, a pattern that suggests strong local selection (Hamblin & Di Rienzo 2000, *American Journal of Human Genetics*).
-
-**ABO blood groups.** The A and B alleles are very old: the polymorphism is shared with other primates, which suggests that selection has *maintained* variation for millions of years (balancing selection), probably through infectious diseases (Ségurel et al. 2012, *PNAS*).
-
-**Earwax type (wet or dry), *ABCC11*.** A single DNA change determines dry earwax (Yoshiura et al. 2006, *Nature Genetics*). The dry allele is common in East Asia and rare in Europe and Africa. There is a signal of selection (Ohashi et al. 2011, *Molecular Biology and Evolution*), but the trait it acted on (perhaps sweat and body odour) is uncertain. This is a good example of a case where the honest answer is "we don't fully know".
-:::
-
-## Your task (35 minutes)
+## Your task (30 minutes)
 
 You are given a short list of eight human traits (below). They were chosen to cover the whole range, from traits that are probably drifting, through traits with little heritable variation, to traits under strong selection in some environments but not others. In small groups:
 
-1. Write the traits on PostIt notes, and read the evidence cards above (5 minutes).
+1. Write the traits on PostIt notes.
 2. Discuss and categorise the traits based on the strength of natural selection in foraging (hunter-gatherer) societies, like those in which most of human evolution took place (10 minutes).
 3. Repeat the exercise for modern industrialised societies like Denmark (10 minutes). In Denmark today, most people survive to adulthood, so ask how each trait might affect the *number of children* people have: selection still acts, but now mainly through differences in reproduction rather than survival.
 4. **Gene flow between populations** (10 minutes). Human populations exchange migrants, and gene flow pulls their allele frequencies together. In the lecture on migration and gene flow we saw that very few migrants (about one per generation) are enough to stop drift making populations very different, but that local selection can keep populations different if it is strong compared with the migration rate ($s$ larger than $m$). For each trait, ask:
     * Does the trait differ between human populations living in different environments?
-    * Would gene flow erase those differences (as expected for neutral traits), or could local selection hold them apart? Skin pigmentation and UV, lactase persistence and dairying, and HbS and malaria are good places to start.
+    * Would gene flow erase those differences (as expected for neutral traits), or could local selection hold them apart? Good places to start: skin pigmentation and UV; lactase persistence (digesting milk sugar as an adult), which became common in populations that keep milk-producing animals; and the sickle-cell allele (HbS), which protects carriers against malaria.
     * Remember that most human genetic variation is found *within* populations rather than between them.
 
 For steps 2 and 3, order the traits from those likely influenced by **GENETIC DRIFT** to those evolving through **ADAPTIVE EVOLUTION** via **NATURAL SELECTION**. For each trait, start with the question "is the variation heritable?".
@@ -103,7 +87,7 @@ traits <- data.frame(
     "The shape of the bony opening through which a baby is born.",
     "Immunity or resilience against bubonic plague.",
     "The colour of the iris (brown, green, blue and so on).",
-    "Wet or dry earwax (see the evidence cards).",
+    "Wet or dry earwax, set by a single DNA change; dry earwax is common in East Asia and rare in Europe and Africa.",
     "The balance and proportionality of facial features."
   )
 )
