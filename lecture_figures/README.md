@@ -27,6 +27,7 @@ render_lecture("polygenic_quantitative_genetics")
 render_lecture("life_tables")
 render_lecture("age_stage_structured_models")
 render_lecture("life_histories")
+render_lecture("coevolution")
 render_lecture("sexual_selection")
 render_lecture("behaviour_altruism")
 
@@ -78,7 +79,7 @@ install.packages(c("ggplot2", "scales", "ragg", "patchwork",
 ```
 
 Hardy-Weinberg uses `ggplot2`, `ragg`, `patchwork`, `dplyr`, `tibble` and
-`systemfonts`. Natural selection uses `ggplot2`, `ragg` and `patchwork`. The other lectures use `ggplot2`, `scales` and `ragg`;
+`systemfonts`. Natural selection uses `ggplot2`, `ragg` and `patchwork`. Coevolution uses `ggplot2` and `ragg`. The other lectures use `ggplot2`, `scales` and `ragg`;
 inbreeding and haploid/zygotic selection also use `patchwork`.
 Use Avenir Next for the intended lecture typography.
 
@@ -95,6 +96,7 @@ Use Avenir Next for the intended lecture typography.
 | Life tables and age-structured population growth | `life_tables/figures/` | PNG |
 | Age and stage-structured models | `age_stage_structured_models/figures/` | PNG |
 | Evolution of life histories | `life_histories/figures/` | PNG |
+| Coevolution | `coevolution/figures/` | PNG |
 | Behaviour, altruism and limiting aggression | `behaviour_altruism/figures/` | PNG |
 
 Existing names, dimensions and styling are preserved, including the
