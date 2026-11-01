@@ -83,7 +83,7 @@ traits <- data.frame(
   Description = c(
     "How effectively your body converts food into energy.",
     "Sharpness of vision.",
-    "Physical stature, from base to top.",
+    "Standing height.",
     "The shape of the bony opening through which a baby is born.",
     "Immunity or resilience against bubonic plague.",
     "The colour of the iris (brown, green, blue and so on).",
