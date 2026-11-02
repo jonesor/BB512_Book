@@ -7,6 +7,7 @@ remain separate from the Bookdown source and rendered book files.
 
 To immediately generate all lectures from the repository root:
 
+
 ```r
 source("lecture_figures/generate_all.R")
 ```
