@@ -27,7 +27,7 @@ Calculations retain full precision; only displayed numbers are rounded.
   these build seeds, allowing students to explore different random outcomes.
 
 - The published site is deployed automatically by the `Build Book` GitHub Actions
-  workflow (`.github/workflows/build-book.yml`): every push to `main`/`master`
+  workflow (`.github/workflows/build-book.yml`): every push to `main`
   builds the book and publishes it to GitHub Pages via
   `actions/deploy-pages`. Pull requests and scheduled runs only validate that
   the book builds; they do not publish.
@@ -60,4 +60,4 @@ Calculations retain full precision; only displayed numbers are rounded.
 - Check schedule times are OK and confirm that the times are correct by cross-referencing the outputs on the website with the official calendar.
 - Edit the Instructors part of `index.Rmd` to add/remove instructors as appropriate.
 - Edit the Excel schedule `BB512_Schedule.xlsx` to put the instructors in the correct place.
-- No manual rebuild/publish step is needed — merging to `main`/`master` triggers an automatic build and deploy to GitHub Pages.
+- No manual rebuild/publish step is needed — merging to `main` triggers an automatic build and deploy to GitHub Pages.
