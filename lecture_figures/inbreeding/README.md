@@ -17,8 +17,8 @@ Run all figures from this folder with `source("render_all.R")`, or `LANG=C.UTF-8
 |---|---|---|---|---|
 | `01_ancestor_slots.R` | 4 | `half` | 2^t ancestor slots vs generations, with N = 50 and N = 1,000 | Exact arithmetic |
 | `02_F_over_time.R` | 7 | `takeaway` | F_t = 1 - (1 - 1/2Ne)^t for Ne = 10, 50, 500 | Analytical; no mutation, migration or selection |
-| `03_pedigrees.R` | 9, 10, 11, 13 | `half`, `takeaway`, `full` | Full-sib pedigree: plain (03a), one allele from A (03b), four autozygous routes (03c), path-counting loops (03d) | Schematic; founders unrelated and not inbred |
-| `03e_half_sib_answer.R` | 15 | `takeaway` | Answer to the half-sibling activity: one loop (F = 1/8) beside full siblings (two loops, F = 1/4) | Schematic; founders unrelated and not inbred |
+| `03_pedigrees.R` | 9, 10, 11, 13 | `half`, `takeaway`, `full` | Full-sib pedigree: plain (03a), one allele from A (03b), four autozygous routes (03c), path counting (03d) | Schematic; founders unrelated and not inbred |
+| `03e_half_sib_answer.R` | 15 | `takeaway` | Answer to the half-sibling activity: one path (F = 1/8) beside full siblings (two paths, F = 1/4) | Schematic; founders unrelated and not inbred |
 | `03f_relationship_overview.R` | new, after the F chart | `fullbox` | Seven matings in order of decreasing F, X on a common baseline, one colour per path | Schematic; exact values |
 | `03g_worked_paths.R` | new, self-study | `fullbox` | One worked figure per mating (`03g_worked_*.png`): numbered pedigree, path table and sum | Schematic; exact values |
 | `03h_pedigree_to_arrows.R` | new, self-study | `fullbox` | The first-cousin mating as a family tree (squares, circles, double line) and as an arrow diagram | Schematic |

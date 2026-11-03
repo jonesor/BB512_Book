@@ -44,18 +44,12 @@ p_c <- patchwork::wrap_plots(panels, nrow = 1) &
   ggplot2::theme(plot.background = ggplot2::element_rect(fill = bb512$bg, colour = NA))
 save_bb512(p_c, "03c_four_routes", layout = "full")
 
-# 03d: path counting. One panel per loop. Arrows show genes moving DOWN from the
+# 03d: path counting. One panel per path. Arrows show genes moving DOWN from the
 # common ancestor to each of X's parents (same meaning as the arrows in 03b and 03c).
-# The loop closes at X (dashed), but X is not counted: n = the individuals on the
-# path between X's two parents through the common ancestor (here C, A, D), so n = 3.
-# Loop labels: the full loop X-C-A-D-X, with X greyed out because it is not counted.
-# Drawn as a grey layer (whole loop) plus an ink layer with X replaced by phantom().
-loops <- list(list(anc = "A", col = bb512$clay, mid = "C\u2013A\u2013D", num = 1),
-              list(anc = "B", col = bb512$blue, mid = "C\u2013B\u2013D", num = 2))
-loop_label <- function(L, grey) {
-  if (grey) sprintf("phantom('Loop %d: ')*'X\u2013%s\u2013X'", L$num, L$mid)
-  else sprintf("'Loop %d: '*phantom('X\u2013')*'%s'*phantom('\u2013X')", L$num, L$mid)
-}
+# Dashed lines close on X, but X is not counted: n = the individuals on the path
+# between X's two parents through the common ancestor (here C, A, D), so n = 3.
+paths <- list(list(anc = "A", col = bb512$clay, lab = "Path 1: C\u2013A\u2013D"),
+              list(anc = "B", col = bb512$blue, lab = "Path 2: C\u2013B\u2013D"))
 r_node <- 0.25
 closing <- local({
   pos <- function(id) ped_nodes[match(id, ped_nodes$id), c("x", "y")]
@@ -68,7 +62,7 @@ closing <- local({
   }
   rbind(seg("C", "X"), seg("D", "X"))
 })
-loop_panels <- lapply(loops, function(L) {
+path_panels <- lapply(paths, function(L) {
   nf <- c(stats::setNames(L$col, L$anc), C = L$col, D = L$col)
   draw_pedigree(highlight = list(c(L$anc, "C"), c(L$anc, "D")), cols = c(L$col, L$col),
                 node_fill = nf, row_labels = FALSE, r = r_node, node_text = 5.5,
@@ -76,13 +70,11 @@ loop_panels <- lapply(loops, function(L) {
     ggplot2::geom_segment(data = closing, ggplot2::aes(x, y, xend = xend, yend = yend),
                           colour = L$col, linewidth = 1.2, linetype = "22",
                           inherit.aes = FALSE) +
-    ggplot2::annotate("text", x = 2, y = 3.75, label = loop_label(L, TRUE), parse = TRUE,
-                      size = 5.4, colour = bb512$sage, family = "Avenir Next") +
-    ggplot2::annotate("text", x = 2, y = 3.75, label = loop_label(L, FALSE), parse = TRUE,
-                      size = 5.4, colour = bb512$ink, family = "Avenir Next") +
+    ggplot2::annotate("text", x = 2, y = 3.75, label = L$lab, size = 5.4,
+                      colour = bb512$ink, family = "Avenir Next") +
     ggplot2::annotate("text", x = 2, y = 0.2, label = "n == 3*':'~(1/2)^3*' = 1/8'", parse = TRUE,
                       size = 5.4, colour = L$col, fontface = "bold", family = "Avenir Next")
 })
-p_d <- patchwork::wrap_plots(loop_panels, nrow = 1) &
+p_d <- patchwork::wrap_plots(path_panels, nrow = 1) &
   ggplot2::theme(plot.background = ggplot2::element_rect(fill = bb512$bg, colour = NA))
 save_bb512(p_d, "03d_path_counting", layout = "half")

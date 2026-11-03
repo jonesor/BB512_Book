@@ -1,7 +1,7 @@
 # Answer slide for "What is F for the child of two half-siblings?"
 # Left: half siblings C and D share one parent (A); their other parents (B, E) are
-# unrelated to everyone. One loop, X-C-A-D-X, n = 3, so F = (1/2)^3 = 1/8.
-# Right: full siblings for comparison: two loops, F = 2 x (1/2)^3 = 1/4.
+# unrelated to everyone. One path, C-A-D, n = 3, so F = (1/2)^3 = 1/8.
+# Right: full siblings for comparison: two paths, F = 2 x (1/2)^3 = 1/4.
 # Assumes all founders are unrelated and not inbred (F_A = F_B = 0). Schematic.
 source("R/theme_bb512.R")
 source("R/pedigree.R")
@@ -27,19 +27,10 @@ closing_segs <- function(nodes) {
   rbind(seg("C", "X"), seg("D", "X"))
 }
 
-# Title with the loop(s), X greyed out (not counted): grey layer + ink layer with phantom X.
-loop_title <- function(head, mids) {
-  loops_g <- paste(sprintf("'X–%s–X'", mids), collapse = "*';  '*")
-  loops_i <- paste(sprintf("phantom('X–')*'%s'*phantom('–X')", mids), collapse = "*';  '*")
-  list(grey = sprintf("phantom('%s')*%s", head, loops_g),
-       ink  = sprintf("'%s'*%s", head, loops_i))
-}
-
 panel <- function(nodes, edges, ancs, mids, col, heading, result, xlim) {
   ped_nodes <<- nodes; ped_edges <<- edges
   hl <- unlist(lapply(ancs, function(a) list(c(a, "C"), c(a, "D"))), recursive = FALSE)
   nf <- c(stats::setNames(rep(col, length(ancs)), ancs), C = col, D = col)
-  lt <- loop_title("", mids)
   g <- draw_pedigree(highlight = hl, cols = rep(col, length(hl)), node_fill = nf,
                      row_labels = FALSE, r = r_node, node_text = 5.5,
                      xlim = xlim, ylim = c(0.0, 4.35)) +
@@ -48,9 +39,7 @@ panel <- function(nodes, edges, ancs, mids, col, heading, result, xlim) {
                           colour = col, linewidth = 1.2, linetype = "22", inherit.aes = FALSE) +
     ggplot2::annotate("text", x = 2, y = 4.15, label = heading, size = 5.6,
                       fontface = "bold", colour = bb512$ink, family = "Avenir Next") +
-    ggplot2::annotate("text", x = 2, y = 3.65, label = lt$grey, parse = TRUE, size = 5,
-                      colour = bb512$sage, family = "Avenir Next") +
-    ggplot2::annotate("text", x = 2, y = 3.65, label = lt$ink, parse = TRUE, size = 5,
+    ggplot2::annotate("text", x = 2, y = 3.65, label = paste(mids, collapse = ";  "), size = 5,
                       colour = bb512$ink, family = "Avenir Next") +
     ggplot2::annotate("text", x = 2, y = 0.25, label = result, parse = TRUE, size = 5.6,
                       colour = col, fontface = "bold", family = "Avenir Next")
@@ -59,11 +48,11 @@ panel <- function(nodes, edges, ancs, mids, col, heading, result, xlim) {
 }
 
 p_half <- panel(half_nodes, half_edges, ancs = "A", mids = "C–A–D",
-                col = bb512$clay, heading = "Half siblings: 1 loop",
+                col = bb512$clay, heading = "Half siblings: 1 path",
                 result = "F == (1/2)^3*' = 1/8'", xlim = c(0.35, 3.65))
 p_full <- panel(full_nodes, full_edges, ancs = c("A", "B"),
                 mids = c("C–A–D", "C–B–D"),
-                col = bb512$blue, heading = "Full siblings: 2 loops",
+                col = bb512$blue, heading = "Full siblings: 2 paths",
                 result = "F == 2%*%(1/2)^3*' = 1/4'", xlim = c(0.35, 3.65))
 
 if (!requireNamespace("patchwork", quietly = TRUE)) stop("Install 'patchwork'")
