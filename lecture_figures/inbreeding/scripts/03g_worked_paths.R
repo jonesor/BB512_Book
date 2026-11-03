@@ -15,9 +15,9 @@ for (key in names(relationships)) {
   paths <- find_paths(ped)
   plist <- attr(paths, "paths")
   top <- max(ped$y)
-  sy <- if (top == 1) 1.6 else min(0.84, 3.6 / top)   # selfing needs room for its curves
+  sy <- if (top == 1) 1.5 else min(0.78, 3.35 / top)   # selfing needs room for its curves
   sx <- 1.2
-  oy <- (4.25 - top * sy) / 2
+  oy <- (3.95 - top * sy) / 2
 
   # Number each counted individual in path order. Paths through different common
   # ancestors share their other individuals and these get the same number.
@@ -33,7 +33,7 @@ for (key in names(relationships)) {
   numbers$lx <- ifelse(centred, numbers$px, numbers$px + side * 0.36)
   numbers$ly <- ifelse(centred, numbers$py + 0.36, numbers$py)
 
-  p <- ped_canvas("fullbox") +
+  p <- ped_canvas("full") +
     ped_layers(rel, ox = ped_cx, oy = oy, sx = sx, sy = sy, r = 0.2, off = 0.055,
                letters_size = 5.2, path_lw = 1.3, base_lw = 0.7, arrow_in = 0.11) +
     ggplot2::annotate("text", x = numbers$lx, y = numbers$ly, label = numbers$num,
@@ -41,7 +41,7 @@ for (key in names(relationships)) {
 
   # Table
   k <- nrow(paths)
-  y_head <- 3.35
+  y_head <- 3.15
   y_rows <- y_head - 0.55 * seq_len(k)
   cols <- path_colours(rel)[paths$ca]
   values <- fraction(paths$contribution)
@@ -72,5 +72,5 @@ for (key in names(relationships)) {
                       label = "n counts the individuals on the path, not X", hjust = 0,
                       size = 5, colour = bb512$grey, family = ped_font)
 
-  save_bb512(p, paste0("03g_worked_", key), layout = "fullbox")
+  save_bb512(p, paste0("03g_worked_", key), layout = "full")
 }

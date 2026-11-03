@@ -12,7 +12,7 @@ rel <- relationships$first
 tree <- data.frame(
   id    = c("A", "B", "m1", "E", "F", "m2", "C", "D", "X"),
   x     = c(2.15, 3.25, 0.85, 1.85, 3.55, 4.55, 1.35, 4.05, 2.70),
-  y     = c(3.75, 3.75, 2.75, 2.75, 2.75, 2.75, 1.75, 1.75, 0.75),
+  y     = c(3.50, 3.50, 2.58, 2.58, 2.58, 2.58, 1.66, 1.66, 0.74),
   shape = c("s", "c", "c", "s", "c", "s", "s", "c", "s")
 )
 r <- 0.2
@@ -32,19 +32,19 @@ at <- function(id) tree[match(id, tree$id), ]
 line <- function(x, y, xend, yend) data.frame(x = x, y = y, xend = xend, yend = yend)
 
 lines <- rbind(
-  line(at("A")$x + r, 3.75, at("B")$x - r, 3.75),          # A = B mating
-  line(2.70, 3.75, 2.70, 3.25),                            # descent
-  line(1.85, 3.25, 3.55, 3.25),                            # sibship
-  line(1.85, 3.25, 1.85, 2.75 + r), line(3.55, 3.25, 3.55, 2.75 + r),
-  line(at("m1")$x + r, 2.75, at("E")$x - r, 2.75),         # E's mate
-  line(at("F")$x + r, 2.75, at("m2")$x - r, 2.75),         # F's mate
-  line(1.35, 2.75, 1.35, 1.75 + r), line(4.05, 2.75, 4.05, 1.75 + r),
-  line(2.70, 1.74, 2.70, 0.75 + r)                         # descent to X
+  line(at("A")$x + r, 3.50, at("B")$x - r, 3.50),          # A = B mating
+  line(2.70, 3.50, 2.70, 3.04),                            # descent
+  line(1.85, 3.04, 3.55, 3.04),                            # sibship
+  line(1.85, 3.04, 1.85, 2.58 + r), line(3.55, 3.04, 3.55, 2.58 + r),
+  line(at("m1")$x + r, 2.58, at("E")$x - r, 2.58),         # E's mate
+  line(at("F")$x + r, 2.58, at("m2")$x - r, 2.58),         # F's mate
+  line(1.35, 2.58, 1.35, 1.66 + r), line(4.05, 2.58, 4.05, 1.66 + r),
+  line(2.70, 1.65, 2.70, 0.74 + r)                         # descent to X
 )
-double <- rbind(line(at("C")$x + r, 1.79, at("D")$x - r, 1.79),
-                line(at("C")$x + r, 1.69, at("D")$x - r, 1.69))
+double <- rbind(line(at("C")$x + r, 1.71, at("D")$x - r, 1.71),
+                line(at("C")$x + r, 1.61, at("D")$x - r, 1.61))
 
-p <- ped_canvas("fullbox") +
+p <- ped_canvas("full") +
   ggplot2::geom_segment(data = lines, ggplot2::aes(x, y, xend = xend, yend = yend),
                         colour = bb512$grey, linewidth = 0.8) +
   ggplot2::geom_segment(data = double, ggplot2::aes(x, y, xend = xend, yend = yend),
@@ -55,16 +55,16 @@ p <- ped_canvas("fullbox") +
                     label = tree$id[!tree$id %in% c("m1", "m2")], size = 5.2, fontface = "bold",
                     colour = ifelse(tree$id[!tree$id %in% c("m1", "m2")] == "X", bb512$ink, bb512$bg),
                     family = ped_font) +
-  ggplot2::annotate("text", x = 2.70, y = 2.03, label = "related mates", size = 5,
+  ggplot2::annotate("text", x = 2.70, y = 1.93, label = "related mates", size = 5,
                     colour = bb512$clay, family = ped_font) +
   ggplot2::annotate("text", x = 2.70, y = 0.22, label = "Family tree: squares and circles",
                     size = 5, colour = bb512$grey, family = ped_font) +
-  ggplot2::annotate("segment", x = 5.45, xend = 6.25, y = 2.2, yend = 2.2, colour = bb512$ink,
+  ggplot2::annotate("segment", x = 5.45, xend = 6.25, y = 2.05, yend = 2.05, colour = bb512$ink,
                     linewidth = 1.1,
                     arrow = grid::arrow(length = grid::unit(0.14, "inches"), type = "closed")) +
-  ped_layers(rel, ox = 8.95, oy = 0.72, sx = 1.2, sy = 1.02, r = 0.2, off = 0.055,
+  ped_layers(rel, ox = 8.95, oy = 0.72, sx = 1.2, sy = 0.94, r = 0.2, off = 0.055,
              letters_size = 5.2, path_lw = 1.3, base_lw = 0.7, arrow_in = 0.11) +
   ggplot2::annotate("text", x = 8.95, y = 0.22, label = "Arrow diagram: paths to count",
                     size = 5, colour = bb512$grey, family = ped_font)
 
-save_bb512(p, "03h_pedigree_to_arrows", layout = "fullbox")
+save_bb512(p, "03h_pedigree_to_arrows", layout = "full")
