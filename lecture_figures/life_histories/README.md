@@ -27,6 +27,6 @@ Slides 10 (extrinsic and intrinsic factors) and 18 (maternal age and infant mort
 `images/prepare_images.py` crops or letterboxes photographs to their placeholder sizes (sources in `images/source/`, credits and open questions in `images/CREDITS.md`). `build_deck.py` builds the PPTX from `BB512_Theme.pptx`, including speaker notes. Inline markup in slide text: `*italic*`, `**bold**`, `~subscript~`, `^superscript^`, and backticks for code (set in Menlo).
 
     python3 images/prepare_images.py
-    python3 build_deck.py "/Users/jones/Desktop/Keynote Themes/BB512_Theme.pptx" "BB512 - 07 - Evolution of life histories.pptx"
+    python3 build_deck.py ../theme/BB512_Theme.pptx "BB512 - 07 - Evolution of life histories.pptx"
 
 The figures were rendered for checking without Avenir Next (Inter was substituted). Re-run `render_all.R` on a Mac with Avenir Next before final use, and look at the PNGs.

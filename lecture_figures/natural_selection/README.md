@@ -17,7 +17,7 @@ Run all figures with `render_lecture("natural_selection")` after `source("lectur
 `images/prepare_images.py` crops or letterboxes photographs to their placeholder or frame sizes (sources in `images/source/`, mostly extracted from the 2022 deck; credits in `images/CREDITS.md`). `build_deck.py` builds the PPTX from `BB512_Theme.pptx`, including speaker notes with timings (about 43 minutes in total):
 
     python3 images/prepare_images.py
-    python3 build_deck.py "/Users/jones/Desktop/Keynote Themes/BB512_Theme.pptx" "BB512 - 02 - Understanding Natural Selection.pptx"
+    python3 build_deck.py ../theme/BB512_Theme.pptx "BB512 - 02 - Understanding Natural Selection.pptx"
 
 The Nilsson & Pelger "< 400,000 generations" Big Fact slide was removed; its content is now an optional aside in the notes of "Two camera eyes, two histories" (16). Antibiotic resistance (26) is the next candidate to cut if short of time.
 

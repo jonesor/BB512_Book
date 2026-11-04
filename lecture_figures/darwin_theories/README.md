@@ -15,6 +15,6 @@ Run all figures from this folder with `source("render_all.R")` or `LANG=C.UTF-8 
 `images/prepare_images.py` crops, letterboxes and assembles photographs into grids at their placeholder sizes (sources in `images/source/`, credits in `images/CREDITS.md`). `build_deck.py` builds the PPTX from `BB512_Theme.pptx`, copying bullet and paragraph styles from the theme's sample slides, and writes speaker notes for every slide. Inline markup: `*italic*`, `**bold**`, `~subscript~`, `^superscript^`, backticks for code (Menlo).
 
     python3 images/prepare_images.py
-    python3 build_deck.py "/Users/jones/Desktop/Keynote Themes/BB512_Theme.pptx" "BB512 - 01 - Darwin and his theories.pptx"
+    python3 build_deck.py ../theme/BB512_Theme.pptx "BB512 - 01 - Darwin and his theories.pptx"
 
 The figures were rendered for checking without Avenir Next (Inter was substituted). Re-run `render_all.R` on a Mac with Avenir Next before final use, and look at the PNGs.

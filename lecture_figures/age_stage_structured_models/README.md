@@ -30,7 +30,7 @@ Slides 25 ("From diagram to matrix"), 33 (killer whale elasticities) and 40–42
 `images/prepare_images.py` crops or letterboxes photographs to their placeholder sizes (sources in `images/source/`, credits in `images/CREDITS.md`). `build_deck.py` builds the PPTX from `BB512_Theme.pptx`, including speaker notes. Matrices on the slides are native, editable text boxes (one per cell) with brackets drawn as lines. Inline markup in slide text: `*italic*`, `**bold**`, `~subscript~`, `^superscript^`, and backticks for code (set in Menlo).
 
     python3 images/prepare_images.py
-    python3 build_deck.py "/Users/jones/Desktop/Keynote Themes/BB512_Theme.pptx" "BB512 - 06 - Age and stage-structured models.pptx"
+    python3 build_deck.py ../theme/BB512_Theme.pptx "BB512 - 06 - Age and stage-structured models.pptx"
 
 The figures were rendered for checking without Avenir Next (Inter was substituted). Re-run the figures on a Mac with Avenir Next before final use, and look at the PNGs.
 

@@ -116,3 +116,10 @@ Existing names, dimensions and styling are preserved, including the
 Hardy-Weinberg figure referenced by the book. Rendering overwrites matching
 outputs but does not remove older files. These commands generate lecture
 figures; they do not build the book or presentation decks.
+
+## Slide theme
+
+The BB512 PowerPoint theme used by every `build_deck.py` is kept at
+`lecture_figures/theme/BB512_Theme.pptx`. From a lecture folder:
+
+    python3 build_deck.py ../theme/BB512_Theme.pptx "<output>.pptx"

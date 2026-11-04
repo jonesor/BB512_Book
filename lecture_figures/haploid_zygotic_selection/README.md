@@ -28,6 +28,6 @@ Slide numbers count hidden slides. Slides 16 (haploid Δq equation) and 50 (muta
 
 `images/prepare_images.py` crops or letterboxes photographs to their placeholder sizes (sources in `images/source/`, credits in `images/CREDITS.md`). `build_deck.py` builds the PPTX from `BB512_Theme.pptx`, including speaker notes:
 
-    python3 build_deck.py "/Users/jones/Desktop/Keynote Themes/BB512_Theme.pptx" "BB512 - 14 - Haploid and Zygotic Selection.pptx"
+    python3 build_deck.py ../theme/BB512_Theme.pptx "BB512 - 14 - Haploid and Zygotic Selection.pptx"
 
 The figures were rendered for checking without Avenir Next (Inter was substituted). Re-run `render_all.R` on a Mac with Avenir Next before final use, and look at the PNGs.

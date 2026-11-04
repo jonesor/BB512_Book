@@ -15,6 +15,11 @@ Figures for the BB512 lecture "Sexual selection and mating systems"
 Render from the repository root with
 `Rscript lecture_figures/render_all.R sexual_selection`.
 
-Note: the PNGs in `figures/` are the versions used in the Keynote deck.
+Other assets: `images/` holds the photos (`p01`–`p09`) and `videos/` the video clips
+(`v1`–`v4`) used in the deck. `keynote/` holds the copies of figures `01`–`05` that
+were placed in the Keynote deck (exported 24 Oct 2026).
+
+Note: the PNGs in `keynote/` are the versions used in the Keynote deck; `figures/`
+was re-rendered on 3 Nov 2026.
 `01_anisogamy_disruptive.R` was rewritten afterwards and reproduces that figure
 closely but not pixel for pixel; re-render and check before replacing the slide.

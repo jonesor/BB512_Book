@@ -25,7 +25,7 @@ Run all figures from this folder with `source("render_all.R")`, or `LANG=C.UTF-8
 
 `images/prepare_images.py` crops or letterboxes photographs and published figures to their placeholder sizes (sources in `images/source/`, credits in `images/CREDITS.md`). `build_deck.py` builds the PPTX from `BB512_Theme.pptx`, including speaker notes with timings (about 40 minutes for slides 1–32, leaving time for questions; slides 33–39 are self-study for the PDF). Inline markup in slide text: `*italic*`, `**bold**`, `~subscript~`, `^superscript^`, and backticks for code (set in Menlo).
 
-    python3 build_deck.py "/Users/jones/Desktop/Keynote Themes/BB512_Theme.pptx" "BB512 - 05 - Life tables and age-structured population growth.pptx"
+    python3 build_deck.py ../theme/BB512_Theme.pptx "BB512 - 05 - Life tables and age-structured population growth.pptx"
 
 The lecture's hypothetical cohort (500, 400, 200, 50 females; m = 0, 2, 3, 1) is the same as Gotelli's Table 3.1 and the "Worked example" sheet of the practical spreadsheet (`Life_Tables_Exercises.xlsx`).
 
