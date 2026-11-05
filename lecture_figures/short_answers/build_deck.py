@@ -234,7 +234,7 @@ Answer first: students often spend the first paragraph on background; the examin
 Specific example: "a bird" is not specific; "copper-tolerant common bent grass on a small copper mine in Wales" is. The lecture and textbook examples are ideal because students know what was found.
 """)
 
-new("Two Columns", {100: "Precise terms say more in fewer words",
+new("Two Columns", {100: "Precise terms show what you know",
                     101: "PRECISE",
                     103: (["Gene flow is the movement of alleles from one population into the gene pool of another, through immigrants that breed there or gametes, such as pollen, that fertilise there.",
                           "*Defines the term, states the condition (they must breed), and covers plants.*"], 20),
@@ -335,10 +335,10 @@ new("Title & Bullets", {100: "The examiner's marks",
 new("Activity", {101: "15 MIN · ON YOUR OWN",
                  102: ("Explain how adaptive and neutral evolution differ, and give an example of each", 30),
                  103: ["Plan for 2 minutes, then write for 13 (about 250 words). No notes",
-                       "Submit to the itslearning assignment “Practice Short Answer Question”",
+                       "Write in a document on your laptop. Nothing to hand in",
                        "Swap laptops with a neighbour, or email them your answer, and mark theirs with the rubric on screen (5 min)"]},
     notes="""
-(15 min + 5 min) Full question and rubric are in the course book chapter and in the itslearning assignment (make the assignment visible before the session). The rubric has five criteria worth 2 points each, in the same format as the gene flow rubric: adaptive evolution; neutral evolution; where they differ; examples, explained; structure. Model answer, marked 10/10 against the same rubric, in the itslearning PDF released after the session: about 220 words in three paragraphs; each process defined by its cause; two differences (direction, outcome); peppered moth as adaptive; synonymous sites as neutral. The question asks for two differences only; s versus 1/(2Ne) is a good extra, not required.
+(15 min + 5 min) Full question and rubric are in the course book chapter. Students do not submit anything: the itslearning assignment is not used. The rubric has five criteria worth 2 points each, in the same format as the gene flow rubric: adaptive evolution; neutral evolution; where they differ; examples, explained; structure. Model answer, marked 10/10 against the same rubric, in the itslearning PDF released after the session: about 220 words in three paragraphs; each process defined by its cause; two differences (direction, outcome); peppered moth as adaptive; synonymous sites as neutral. The question asks for two differences only; s versus 1/(2Ne) is a good extra, not required.
 Common ways to lose marks: treating "neutral" as "does not evolve"; using a trait with little heritable variation (fingerprint detail) as an example of neutral evolution; never saying where the two differ; examples without explanation.
 Builds on Monday's practical (Neutral or Adaptive Evolution in Humans), which covers the definitions, s versus 1/(2Ne), synonymous sites and non-heritable traits such as fingerprint detail. Human examples from that practical (for example, lactase persistence) are good adaptive examples.
 """)
