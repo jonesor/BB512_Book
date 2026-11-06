@@ -15,7 +15,7 @@ p <- ggplot2::ggplot(df, ggplot2::aes(t, q, group = start)) +
   ggplot2::geom_hline(yintercept = qhat, linetype = "dashed", linewidth = 0.75, colour = bb512$grey) +
   ggplot2::geom_line(linewidth = 1.3, colour = bb512$forest) +
   ggplot2::annotate("text", x = G, y = qhat + 0.06, hjust = 1, family = fam, size = 5.2, colour = bb512$grey,
-                    label = sprintf("hat(q) == %.2f", qhat), parse = TRUE) +
+                    label = sprintf("Equilibrium: q = %.2f", qhat)) +
   ggplot2::scale_y_continuous(limits = c(0, 0.85), breaks = seq(0, 0.8, 0.2)) +
   ggplot2::labs(x = "Generation (t)", y = "Frequency of HbS (q)") +
   theme_bb512()

@@ -9,13 +9,13 @@ Run all figures from this folder with `source("render_all.R")`, or `LANG=C.UTF-8
 | Script | Slide | Layout | Description | Type |
 |---|---|---|---|---|
 | `00_check_numbers.R` | all | none | Arithmetic check for every worked example | Analytical/iteration |
-| `01_fitness_growth.R` | 6 | `half` | Geometric growth, λ = 1.05 vs 1.15 | Analytical, illustrative values |
+| `01_fitness_growth.R` | 6 | `half` | Geometric growth, λ = 1.15 (A, fittest) vs 1.05 (B) | Analytical, illustrative values |
 | `02_genetic_systems.R` | 9 | `full` | 2 × 2 grid: ploidy × reproduction, with examples | Schematic |
 | `03_life_cycles.R` | 10 | `full` | Asexual, haploid-dominant and diploid-dominant life cycles | Schematic |
 | `04_selection_filter.R` | 14 | `full` | One generation of haploid selection in three steps | Analytical |
 | `05_haploid_dynamics.R` | 17 | `full` | Worked example over 40 generations; abs(Δq) against p | Deterministic iteration |
 | `06_mean_fitness.R` | 18 | `takeaway` | Mean fitness over time in the worked example | Deterministic iteration |
-| `07_zygotic_cycle.R` | 22 | `full` | Zygotes → adults → next zygotes, q = 0.4, s = 0.3 | Analytical |
+| `07_zygotic_cycle.R` | 22 | `full` | Zygotes → adults → next zygotes for a recessive lethal, q = 0.4 | Analytical |
 | `08_dq_by_case.R` | 25 | `takeaway` | abs(Δp) against the favoured allele's frequency p for Cases B, C, D and haploid, s = 0.1 | Analytical |
 | `09_spread_by_case.R` | 26 | `full` | Spread of a favoured allele, s = 0.1, p0 = 0.01 | Deterministic iteration |
 | `10_haldane_carbonaria.R` | 36 | `takeaway` | carbonaria 1848–1898 with the exact s (0.30); approximate value (0.33) printed only | Model fitted to Haldane's figures |
@@ -28,6 +28,6 @@ Slide numbers count hidden slides. Slides 16 (haploid Δq equation) and 50 (muta
 
 `images/prepare_images.py` crops or letterboxes photographs to their placeholder sizes (sources in `images/source/`, credits in `images/CREDITS.md`). `build_deck.py` builds the PPTX from `BB512_Theme.pptx`, including speaker notes:
 
-    python3 build_deck.py ../theme/BB512_Theme.pptx "BB512 - 14 - Haploid and Zygotic Selection.pptx"
+    python3 build_deck.py "/Users/jones/Desktop/Keynote Themes/BB512_Theme.pptx" "BB512 - 14 - Haploid and Zygotic Selection.pptx"
 
 The figures were rendered for checking without Avenir Next (Inter was substituted). Re-run `render_all.R` on a Mac with Avenir Next before final use, and look at the PNGs.

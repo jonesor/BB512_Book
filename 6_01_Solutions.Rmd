@@ -808,7 +808,7 @@ confint(mod1)[2, ]
 
 *What is your estimate of $h^2$, and how precise is it?*
 
-The heritability is the slope of the relationship: `r f2(h2_1)`, with a 95% confidence interval of `r f2(ci_1[1])` to `r f2(ci_1[2])`. This is a high heritability. (The data were simulated with a true value of 0.70.)
+The heritability is the slope of the relationship: `r f2(h2_1)`, with a 95% confidence interval of `r f2(ci_1[1])` to `r f2(ci_1[2])`. This is a high heritability, but the interval is wide: anything from about `r sprintf("%.1f", ci_1[1])` to nearly 1 is compatible with the data. (The data were simulated with a true value of 0.70.)
 
 *What does this heritability tell us about the variation in wing length in this population? What does it not tell us about any one bird?*
 
@@ -854,18 +854,19 @@ VA_2
 
 *How does the heritability compare with population 1? Do the two confidence intervals overlap?*
 
-For this population the heritability is `r f2(h2_2)` (95% confidence interval `r f2(ci_2[1])` to `r f2(ci_2[2])`), much lower than in population 1 (`r f2(h2_1)`). The two confidence intervals `r if (ci_2[2] < ci_1[1]) "only just fail to overlap" else "overlap"`, and the interval for population 2 `r if (ci_2[1] < 0) "includes zero" else "does not include zero"`. (The true values used in the simulation were 0.18 and 0.70.) Note how wide both intervals are, even with 100 families: heritability is hard to estimate precisely, and estimates from a few dozen families are very uncertain. Report the uncertainty, not just the slope. (Non-overlapping 95% confidence intervals are a conservative, informal check, not a formal test of the difference.)
+For this population the heritability is `r f2(h2_2)` (95% confidence interval `r f2(ci_2[1])` to `r f2(ci_2[2])`), much lower than in population 1 (`r f2(h2_1)`). The two confidence intervals `r if (ci_2[2] < ci_1[1]) "only just fail to overlap" else "overlap"`, and the interval for population 2 `r if (ci_2[1] < 0) "includes zero" else "does not include zero"`. That does not mean that $h^2$ is zero: the data are compatible with anything from no additive variance up to about `r f2(ci_2[2])`. (The true values used in the simulation were 0.18 and 0.70.) Note how wide both intervals are, even with 100 families: heritability is hard to estimate precisely, and estimates from a few dozen families are very uncertain. Report the uncertainty, not just the slope. (Non-overlapping 95% confidence intervals are a conservative, informal check, not a formal test of the difference.)
 
-*Compare $V_P$ and $V_A$ between the populations.*
+*Compare $V_A$ and $V_P - V_A$ between the populations.*
 
 | | Population 1 | Population 2 |
 |---|---|---|
 | $h^2$ | `r f2(h2_1)` | `r f2(h2_2)` |
+| 95% confidence interval | `r f2(ci_1[1])` to `r f2(ci_1[2])` | `r f2(ci_2[1])` to `r f2(ci_2[2])` |
 | $V_P$ (mm²) | `r f2(VP_1)` | `r f2(VP_2)` |
 | $V_A$ (mm²) | `r f2(VA_1)` | `r f2(VA_2)` |
-| $V_P - V_A$ (mm²) | `r f2(VP_1 - VA_1)` | `r f2(VP_2 - VA_2)` |
+| $V_P - V_A$ (mm²), an estimate of $V_E$ | `r f2(VP_1 - VA_1)` | `r f2(VP_2 - VA_2)` |
 
-The additive genetic variance is about the same in both populations (both data sets were simulated with $V_A$ = 2.8 mm²). What differs is the phenotypic variance: population 2 is about four times as variable, and almost all of the extra variance is non-genetic. So heritability is lower in population 2 not because it has less genetic variation, but because its environment is more variable. This is why heritability is a property of a population in an environment, not of a trait.
+The estimates of the additive genetic variance are similar (both data sets were simulated with $V_A$ = 2.8 mm²), but they are uncertain. Multiplying the confidence limits for $h^2$ by $V_P$ gives roughly `r f2(ci_1[1] * VP_1)` to `r f2(ci_1[2] * VP_1)` mm² in population 1 and `r f2(ci_2[1] * VP_2)` to `r f2(ci_2[2] * VP_2)` mm² in population 2 (a variance cannot really be negative; this just shows how wide the interval is). So these data alone cannot show that $V_A$ is equal. The clear difference is in the phenotypic variance: population 2 is about four times as variable. Because we simulated the data, we know that all of the extra variance is environmental, so heritability is lower in population 2 not because it has less genetic variation, but because its environment is more variable. With real data, this would be the most likely explanation rather than a certainty. Either way, heritability is a property of a population in an environment, not of a trait.
 
 *Can you suggest environmental differences that could explain this?*
 
@@ -891,13 +892,15 @@ Population 1. With $S$ = 2 mm, $R$ = `r f2(h2_1)` × 2 = `r f2(2 * h2_1)` mm in 
 
 *Violation of assumptions*
 
-- **Additive genetic effects:** dominance and interactions between genes are not passed on predictably, so the slope estimates only the additive part; genotype-by-environment interactions mean that the estimate applies only to the environment studied.
+Shared environment, correct parentage and measurement accuracy are the three set in class; the others are the optional extension.
+
+- **Additive genetic effects:** dominance and interactions between genes are not passed on predictably, so the slope estimates only the additive part; genotype-by-environment interactions mean that the estimate applies only to the environment studied. These limit what the estimate means, rather than making it too high or too low.
 - **No shared environment:** if parents and offspring share a good or a poor territory, they resemble each other for non-genetic reasons, and $h^2$ is overestimated. Cross-fostering removes this bias.
 - **Correct parentage:** extra-pair paternity means that some chicks are not the offspring of their social father, which weakens the resemblance and underestimates $h^2$.
-- **Linearity:** if the relationship is curved (for example because of dominance, or because extreme parents produce offspring that do poorly), a straight line is a poor summary.
+- **Linearity:** if the relationship is curved (for example because of dominance, or because extreme parents produce offspring that do poorly), a straight line is a poor summary, with no fixed direction of error.
 - **Measurement accuracy:** errors in measuring the parents make the slope shallower (heritability is underestimated); errors in the offspring add noise and widen the confidence interval.
-- **Random mating:** if birds choose mates of similar size (assortative mating), the mid-parent values vary more than under random mating, and the simple regression no longer estimates $h^2$ exactly.
-- **Representative sample:** if only some birds are measured, for example only those that survived a harsh winter (selection on wing length), the sample is biased.
+- **Random mating:** if birds choose mates of similar size (assortative mating), the mid-parent values vary more than under random mating, but their covariance with the offspring rises in step, so the slope on the mid-parent value still estimates $h^2$. This is an advantage of using both parents: the slope on a single parent would be steeper than $h^2/2$, so doubling it would overestimate $h^2$.
+- **Representative sample:** it matters which birds are filtered. If selection acts on the offspring before they are measured (for example, only those that survived a harsh winter, with survival depending on wing length), the slope is too shallow and $h^2$ is underestimated. Choosing parents on the basis of the trait does not bias the slope, although a narrower range of parents gives a less precise estimate.
 - **Independence:** if the same parent appears in several families, or several chicks from one nest are entered as separate points, the data points are not independent and the confidence interval will be too narrow.
 
 ## Solutions: Lotka-Volterra competition

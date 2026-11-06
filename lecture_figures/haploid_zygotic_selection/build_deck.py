@@ -222,15 +222,19 @@ Point out that C is not declining in number (λ = 1), but it is still being sele
 new("Section", {102: "02", 103: "Genetic systems"},
     notes="(10 s) The same fitness differences produce different rates of change depending on how genes are packaged and passed on.")
 
-new("Title & Photo", {100: "Four genetic systems, two models",
-                      102: "Examples are typical rather than absolute: aphids, for example, are asexual in summer and sexual in autumn."},
+new("Title & Photo", {100: "Ploidy and sex decide the model",
+                      102: "Ploidy makes dominance possible; sex makes it matter. You need the zygotic model only when you have both."},
     pictures={101: F + "02_genetic_systems.png"},
     notes="""
-(2 min) Columns: ploidy, the number of chromosome sets in the adult (haploid n, diploid 2n; from Greek *haploos*, single, and *diplous*, double). Rows: reproduction, asexual (offspring are copies) or sexual (alleles reshuffled every generation). Other systems exist, e.g. haplodiploid bees, ants and wasps (haploid males, diploid females), and polyploids such as tetraploid potatoes.
-Ploidy decides whether an allele can be hidden by another allele in the same individual (dominance). Sex decides whether genotypes are inherited intact (clones) or rebuilt each generation from the allele pool.
-Walk round the four boxes.
-Correction from the previous version: dinoflagellates were listed as asexual diploids, but most dinoflagellates are haploid for most of their life cycle (only the zygote is diploid). They are replaced by aphids and water fleas (*Daphnia*), which are diploid in their asexual (parthenogenetic) phases. Avoid apomictic dandelions and many parthenogenetic whiptail lizards as examples: they are mostly triploid. Bdelloid rotifer ploidy is disputed.
-The coloured line in each box says which model we will use: anything that reproduces clonally, haploid or diploid, follows the haploid selection model (Neal section 10.3). Only diploid sexual organisms need the zygotic model.
+(2 min)
+Say:
+**Columns** = ploidy: haploid (one chromosome set) or diploid (two).
+**Rows** = reproduction: asexual (offspring are copies) or sexual (genes reshuffled each generation).
+**Ploidy decides whether an allele can be hidden in a heterozygote (dominance).**
+**Sex decides whether genotypes are inherited intact or rebuilt each generation.**
+**Walk round the four boxes.**
+Key message: ploidy makes dominance possible; sex makes it matter. You need the zygotic model only when you have both. Anything clonal, haploid or diploid, uses the haploid model.
+If asked: other systems exist (haplodiploid bees, ants and wasps; polyploids such as potatoes). Aphids and *Daphnia* are diploid only in their asexual phase. Avoid dandelions and whiptail lizards as examples (mostly triploid) and bdelloid rotifers (ploidy disputed).
 Schematic, script 02_genetic_systems.R.
 """)
 

@@ -1,10 +1,11 @@
 # Slide "One generation of zygotic selection": worked example as a cycle.
-# Deterministic. No dominance (Neal Case B), s = 0.3: W = 1, 0.85, 0.70 for A1A1, A1A2, A2A2.
+# Deterministic. A recessive lethal (W = 1, 1, 0 for A1A1, A1A2, A2A2) is used so that the departure of
+# adults from Hardy-Weinberg proportions is visible (with weak selection it is too small to see).
 # Start: q = 0.4, zygotes in Hardy-Weinberg proportions. Selection acts on viability (zygote to adult);
-# adults then mate at random, so the next zygotes are again in Hardy-Weinberg proportions with q' = 0.359.
+# adults then mate at random, so the next zygotes are again in Hardy-Weinberg proportions with q' = 0.286.
 source("R/theme_bb512.R"); source("R/models.R")
 fam <- "Avenir Next"
-q <- 0.4; p <- 1 - q; w <- c(1, 0.85, 0.7)
+q <- 0.4; p <- 1 - q; w <- c(1, 1, 0)
 z0 <- c(p^2, 2*p*q, q^2); ad <- z0 * w / sum(z0 * w)
 q1 <- ad[3] + ad[2] / 2; z1 <- c((1-q1)^2, 2*q1*(1-q1), q1^2)
 stopifnot(abs(q1 - zygotic_step(q, w[1], w[2], w[3])) < 1e-12)
@@ -14,8 +15,8 @@ df <- data.frame(stage = rep(1:3, each = 3), g = rep(1:3, 3), f = c(z0, ad, z1))
 df$x <- centres[df$stage] + (df$g - 2) * 1.0
 df$lab <- sprintf("%.2f", df$f)
 cols <- c(bb512$forest, bb512$sage, bb512$clay)
-heads <- data.frame(x = centres, y = 0.70,
-  lab = c("Zygotes (HWE)\nq = 0.40", "Adults after selection\n(not in HWE)", "Next zygotes (HWE)\nq' = 0.36"))
+heads <- data.frame(x = centres, y = 0.79,
+  lab = c("Zygotes\nHardy–Weinberg\nq = 0.40", "Adults\nnot Hardy–Weinberg\nq = 0.29", "Next zygotes\nHardy–Weinberg\nq' = 0.29"))
 p_ <- ggplot2::ggplot(df) +
   ggplot2::geom_col(ggplot2::aes(x, f, fill = factor(g)), width = 0.85) +
   ggplot2::geom_text(ggplot2::aes(x, f + 0.035, label = lab), family = fam, size = 5, colour = bb512$ink) +
@@ -27,9 +28,9 @@ p_ <- ggplot2::ggplot(df) +
                     linewidth = 1.1, colour = bb512$clay,
                     arrow = grid::arrow(length = grid::unit(0.14, "in"), type = "closed")) +
   ggplot2::annotate("text", x = c(4.05, 8.95), y = c(0.42, 0.42), family = fam, size = 5, colour = bb512$clay,
-                    lineheight = 0.9, label = c("Selection:\n× W, ÷ 0.88", "Random\nmating")) +
+                    lineheight = 0.9, label = c("Selection:\nrecessive\nhomozygotes die", "Random\nmating")) +
   ggplot2::scale_fill_manual(values = cols, guide = "none") +
-  ggplot2::coord_cartesian(xlim = c(0, 13), ylim = c(-0.07, 0.78), expand = FALSE, clip = "off") +
+  ggplot2::coord_cartesian(xlim = c(0, 13), ylim = c(-0.07, 0.90), expand = FALSE, clip = "off") +
   ggplot2::theme_void() +
   ggplot2::theme(plot.background = ggplot2::element_rect(fill = bb512$bg, colour = NA),
                  plot.margin = ggplot2::margin(6, 10, 6, 10))

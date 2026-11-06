@@ -49,6 +49,8 @@ $h^2 = \frac{V_A}{V_P}$
 
 Only the additive part of the genetic variance counts, because parents pass on alleles, not whole genotypes. Effects that depend on particular combinations of alleles (dominance and interactions between genes) are broken up every generation, so they do not make offspring resemble their parents in a predictable way.
 
+The rest of the phenotypic variance is mainly environmental. If we ignore non-additive genetic effects, as we do in this practical, $V_P = V_A + V_E$, where $V_E$ is the environmental variance.
+
 A heritability close to 1 means that most of the variation among individuals is additive genetic, so offspring closely resemble their parents. A heritability close to 0 means that parents' trait values tell us little about their offspring's: the variation is mostly due to the environment, to chance, or to non-additive genetic effects.
 
 Heritability is not a fixed property of a trait. It belongs to a particular population in a particular environment, because it changes whenever either variance changes:
@@ -111,12 +113,15 @@ coef(mod1)[2]     # slope = heritability estimate
 confint(mod1)[2, ] # 95% confidence interval for the slope
 ```
 
+**Reading a confidence interval:** the 95% confidence interval is the range of values for $h^2$ that are compatible with your data. The narrower it is, the more precise your estimate. If the interval includes zero, the data cannot rule out $h^2 = 0$, but that does not show that $h^2$ is zero: the upper limit tells you how large it could plausibly be.
+
 **Questions**
 
 * What is your estimate of $h^2$, and how precise is it?
 * What does this heritability tell us about the variation in wing length in this population? What does it *not* tell us about any one bird?
 * What else might explain the remaining variation?
-* Calculate $V_P$ as the variance of the offspring values (`var(pop_1$Offspring_value)`). Why should we not use the variance of the mid-parent values for this? Then calculate the additive genetic variance, $V_A = h^2 \times V_P$.
+* Calculate $V_P$ as the variance of the offspring values (`var(pop_1$Offspring_value)`). Now calculate `var(pop_1$Midparent_value)` and compare the two. Why is the variance of the mid-parent values only about half of $V_P$, and so why should we not use it as $V_P$? (Hint: each mid-parent value is the mean of two birds.)
+* Calculate the additive genetic variance, $V_A = h^2 \times V_P$.
 * Imagine a breeder selects parents whose mean wing length is 2 mm above the population mean. Use the breeder's equation, $R = h^2 S$, to predict the change in mean wing length in the next generation.
 
 <!-- If the heritability is high, significant changes in the trait could occur in fewer generations through natural selection. The rate would also depend on other factors like generation time and strength of selection.
@@ -126,12 +131,20 @@ Low heritability of a critical trait like disease resistance would be concerning
 
 ### Comparative Analysis (10 minutes)
 
-Now analyse the second data set. It is for the same trait in the same species, but from a different population living in a different environment. Repeat steps 1 to 4, and calculate $V_P$ and $V_A$ for this population too.
+Now analyse the second data set. It is for the same trait in the same species, but from a different population living in a different environment. Repeat steps 1 to 4, and calculate $V_P$ and $V_A$ for this population too. Copy this table into your notes and fill it in for both populations.
+
+| | Population 1 | Population 2 |
+|---|---|---|
+| $h^2$ | | |
+| 95% confidence interval | | |
+| $V_P$ (mm²) | | |
+| $V_A$ (mm²) | | |
+| $V_P - V_A$ (mm²), an estimate of $V_E$ | | |
 
 **Questions**
 
 * How does the heritability compare with population 1? Do the two confidence intervals overlap?
-* Compare $V_P$ and $V_A$ between the two populations. Which variance component differs, and what does that suggest about the cause of the difference in heritability?
+* Use your table to compare $V_A$ and $V_P - V_A$ between the two populations. Which differs more, and what does that suggest about the cause of the difference in heritability?
 * Can you suggest environmental differences between the two populations that could explain this?
 * For the same selection differential ($S$ = 2 mm), which population would respond faster to selection?
 * Can you think of any real-world applications where understanding heritability would be important?
@@ -147,12 +160,13 @@ Estimating heritability from a mid-parent–offspring regression assumes the fol
 * **Linearity:** the relationship between parent and offspring trait values is a straight line.
 * **Measurement accuracy:** measurement error in the parents' values makes the slope shallower, so heritability is underestimated; error in the offspring values makes the estimate less precise.
 * **Random mating:** mates do not choose each other on the basis of the trait (no assortative mating).
-* **Representative sample:** the families measured are a random sample of the population. If only some birds are sampled (for example, only those that survived a harsh winter), selection on the trait can bias the estimate.
+* **Representative sample:** the families measured are a random sample of the population. If the offspring measured are only those that survived a harsh winter, for example, selection on wing length can bias the estimate.
 * **Independence:** each family contributes one data point. Using the same parents in several families, or several offspring from one family as separate data points, violates this.
 
-**Question**
+**Questions**
 
-* For each assumption, how might it be violated in a wild bird population, and would that make the heritability estimate too high or too low?
+* For **shared environment**, **correct parentage** and **measurement accuracy**: give a specific example of how each assumption could be violated in a wild bird population, and explain why that would make the heritability estimate too high or too low.
+* **Optional extension:** do the same for the other five assumptions. Some have no clear direction, or cause a different problem (for example, a confidence interval that is too narrow), and one may surprise you.
 
 ## Takeaways
 
