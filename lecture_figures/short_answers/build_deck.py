@@ -192,8 +192,8 @@ new("Title", {103: "Writing short answers",
     pictures={100: F + "01_title_paragraph.png"},
     notes="""
 (0.5 min) Practical for Day 13, after the lecture on haploid and zygotic selection. Practice for the short-answer part of the exam (the other part is multiple choice).
-Plan for 40 minutes (leaving 5 minutes of slack in a 45-minute slot): about 9 minutes of slides, 10 minutes marking three example answers, 15 minutes writing an answer and 5 minutes peer-marking. Slides 3 (Key Concept) and 7 (2-minute pairs activity) are skipped to save time; unskip them if the group is quick.
-Everything here is also in the course book chapter "Writing Short Answers", The examiner's marks and the model answer are NOT in the course book (it is public): the marks are on the slide after the marking activity, and a full write-up is a PDF in itslearning Resources > Practice Exams, set to appear after the session.
+Plan for 40 minutes (leaving 5 minutes of slack in a 45-minute slot): about 12 minutes of slides, 15 minutes marking three example answers, 10 minutes on the examiner's marks and discussion, and 3 minutes setting the homework. Writing an answer and peer-marking are homework. Slides 3 (Key Concept) and 7 (2-minute pairs activity) are skipped to save time; unskip them if the group is quick.
+Everything here is also in the course book chapter "Writing Short Answers", The examiner's marks and the model answer are NOT in the course book (it is public): the marks are on the slide after the marking activity, and a full write-up is a PDF in itslearning Resources > Practice Exams, set to appear at the next session, after the homework.
 Title image: schematic of a paragraph (topic sentence, supporting sentences, concluding sentence), scripts/01_paragraph_graphics.R. Not data.
 """)
 
@@ -205,7 +205,7 @@ new("Agenda", {101: "Writing short answers",
                      "Use precise terms and specific examples",
                      "Mark an answer against a rubric, and use the rubric to improve your own"]},
     notes="""
-(0.5 min) The first four objectives are sections 01 and 02; the last is section 03, where students mark three answers and then each other's.
+(0.5 min) The first four objectives are sections 01 and 02; the last is section 03, where students mark three answers in class, then write and mark their own as homework.
 """)
 
 # ---------------------------------------------------------------- 3 Key concept
@@ -311,14 +311,14 @@ new("Title & Bullets", {100: "Why this answer works",
 new("Section", {102: "03", 103: "Practise"},
     notes="(10 s)")
 
-new("Activity", {101: "10 MIN · ON YOUR OWN, THEN PAIRS",
+new("Activity", {101: "15 MIN · ON YOUR OWN, THEN PAIRS",
                  102: ("Mark three answers to the gene flow question", 34),
                  103: ["Open the chapter *Writing Short Answers* in the course book",
                        "Mark answers A, B and C with the rubric, on your own",
                        "Agree marks with a partner. The examiner's marks come next",
                        "Where you disagree, find the rubric line that decides it"]},
     notes="""
-(10 min, including the marks slide that follows) Examiner's marks: A 4/10 (mediocre), B 10/10 (model), C 1/10 (poor). Give pairs about 8 minutes, then show the next slide.
+(15 min) Examiner's marks: A 4/10 (mediocre), B 10/10 (model), C 1/10 (poor). Give about 7 minutes to mark alone and 8 minutes to agree marks in pairs, then show the next slide.
 The commonest disagreement is the definition: an answer that only talks about individuals moving, and never about them breeding, has not defined gene flow.
 Changes from the itslearning version: the speciation part of the question was replaced (the migration lecture does not cover speciation) with the lecture's guiding question about drift versus selection; the model answer uses lecture examples (salmon, copper-mine grass, Florida panther genetic rescue); the rubric's Mechanisms criterion was replaced by Differs from migration (the question never asked how gene flow happens), structure is marked separately from examples, and a factual error caps a criterion at 1.
 Debrief prompt: B scores 10/10, but which paragraph could go without losing a mark? (The second, on how gene flow happens: not asked for.)
@@ -329,21 +329,21 @@ new("Title & Bullets", {100: "The examiner's marks",
                               "**Answer B: 10/10.** Every part answered, with specific examples (salmon, Florida panther, copper-mine grass) and the reason: *Nm* ≈ 1 versus *m* ≈ *s*. But its paragraph on how gene flow happens earns nothing: the question did not ask for it",
                               "**Answer C: 1/10.** Treats gene flow as migration; the penguin example is about individuals, not allele frequencies; drift happens in all populations, not only small ones"], 18)},
     notes="""
-(2 min, inside the 10 minutes for marking) Show once pairs have agreed their marks. Ask: who gave A more than 6, and why? Which paragraph could B lose without losing a mark? The commonest disagreement is the first two criteria: an answer that talks only about individuals moving, never about them breeding, has neither defined gene flow nor said how it differs from migration. The full explanation is in the itslearning PDF released after the session.
+(10 min) Feedback and discussion. Show once pairs have agreed their marks. Ask: who gave A more than 6, and why? Which paragraph could B lose without losing a mark? The commonest disagreement is the first two criteria: an answer that talks only about individuals moving, never about them breeding, has neither defined gene flow nor said how it differs from migration. The full explanation is in the itslearning PDF released at the next session.
 """)
 
-new("Activity", {101: "15 MIN · ON YOUR OWN",
-                 102: ("Explain how adaptive and neutral evolution differ, and give an example of each", 30),
+new("Activity", {101: "HOMEWORK · BEFORE THE NEXT SESSION",
+                 102: ("Homework: how do adaptive and neutral evolution differ? Give an example of each", 30),
                  103: ["Plan for 2 minutes, then write for 13 (about 250 words). No notes",
-                       "Write in a document on your laptop. Nothing to hand in",
-                       "Swap laptops with a neighbour, or email them your answer, and mark theirs with the rubric on screen (5 min)"]},
+                       "Write in a document. Nothing to hand in",
+                       "Email your answer to a classmate, and mark each other's with the rubric on the next slide (5 min)"]},
     notes="""
-(15 min + 5 min) Full question and rubric are in the course book chapter. Students do not submit anything: the itslearning assignment is not used. The rubric has five criteria worth 2 points each, in the same format as the gene flow rubric: adaptive evolution; neutral evolution; where they differ; examples, explained; structure. Model answer, marked 10/10 against the same rubric, in the itslearning PDF released after the session: about 220 words in three paragraphs; each process defined by its cause; two differences (direction, outcome); peppered moth as adaptive; synonymous sites as neutral. The question asks for two differences only; s versus 1/(2Ne) is a good extra, not required.
+(2 min to set the homework; 15 min + 5 min at home) Full question and rubric are in the course book chapter. Students do not submit anything: the itslearning assignment is not used. The rubric has five criteria worth 2 points each, in the same format as the gene flow rubric: adaptive evolution; neutral evolution; where they differ; examples, explained; structure. Model answer, marked 10/10 against the same rubric, in the itslearning PDF released at the next session: about 220 words in three paragraphs; each process defined by its cause; two differences (direction, outcome); peppered moth as adaptive; synonymous sites as neutral. The question asks for two differences only; s versus 1/(2Ne) is a good extra, not required.
 Common ways to lose marks: treating "neutral" as "does not evolve"; using a trait with little heritable variation (fingerprint detail) as an example of neutral evolution; never saying where the two differ; examples without explanation.
 Builds on Monday's practical (Neutral or Adaptive Evolution in Humans), which covers the definitions, s versus 1/(2Ne), synonymous sites and non-heritable traits such as fingerprint detail. Human examples from that practical (for example, lactase persistence) are good adaptive examples.
 """)
 
-new("Title & Bullets", {100: "Mark with this rubric",
+new("Title & Bullets", {100: "Homework: mark with this rubric",
                         101: (["**Adaptive evolution.** 2: change caused by selection, consistent in direction, makes adaptations · 1: vague, or no cause · 0: wrong",
                               "**Neutral evolution.** 2: change caused by drift, in variants with little effect on fitness, random in direction · 1: partly right, or no cause · 0: wrong",
                               "**Where they differ.** 2: at least two differences (direction, outcome, *s* vs 1/(2*N*~e~)) · 1: one, or only implied · 0: none",
@@ -351,7 +351,7 @@ new("Title & Bullets", {100: "Mark with this rubric",
                               "**Structure.** 2: first sentence answers; one point per paragraph; right terms · 1: loose or repetitive · 0: disorganised",
                               "*A factual error caps a criterion at 1. Then add one sentence: the biggest fix.*"], 16)},
     notes="""
-(Shown during the 5 minutes of peer marking, already counted on the previous slide.) Swap laptops with a neighbour, or email the answer; students who would rather not share mark their own answer. Leave this slide up while they mark. Full rubric in the course book chapter; model answer (10/10) in the itslearning PDF released after the session.
+(1 min) Show briefly so students know how they will mark at home. They email their answer to a classmate; students who would rather not share mark their own answer. Full rubric in the course book chapter; model answer (10/10) in the itslearning PDF released at the next session.
 """)
 
 new("Summary", {101: "Key points",
@@ -360,7 +360,7 @@ new("Summary", {101: "Key points",
                       "One point per paragraph, ending on something new, not a repeat",
                       "Precise terms, backed by specific examples"],
                 106: ["Course book: *Writing Short Answers*",
-                      "itslearning, after the session: marks explained and a model answer"]},
+                      "itslearning, at the next session: marks explained and a model answer"]},
     notes="""
 (0.5 min) Further help (moved here from the original "Some resources" slide):
 University of Melbourne Academic Skills, "Managing short answer exams: Writing short answer questions in the Sciences" (PDF): http://services.unimelb.edu.au/__data/assets/pdf_file/0010/489124/Managing_short_answer_exams_in_Science_Update_051112.pdf (checked 1 Nov 2026: available).
