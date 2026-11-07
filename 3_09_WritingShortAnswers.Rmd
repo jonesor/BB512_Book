@@ -2,7 +2,7 @@
 
 The final exam has two parts: multiple-choice questions and short-answer questions. A short-answer question needs a paragraph or two of written text. It tests whether you understand the key terms and concepts, and whether you can communicate that understanding clearly. Knowing the material is not enough: you need to show the examiner that you know it.
 
-In this session you will look at what makes a good short answer, mark three example answers yourself, and then write and mark an answer of your own.
+In this session you will look at what makes a good short answer and mark three example answers yourself. Then, **for homework**, you will write and mark an answer of your own.
 
 ::: {.do-something}
 Learning outcomes:
@@ -65,7 +65,7 @@ Together, the three paragraphs answer every part of the question: they compare t
 
 ## Mark three answers yourself
 
-Here is a short-answer question with its marking rubric, followed by three student answers. **Mark each answer using the rubric on your own, then agree marks with a partner.** The examiner's marks are shown in the practical session, and a full explanation is posted on itslearning (Resources › Practice Exams) after the session. Where your marks differ from the examiner's, work out why.
+Here is a short-answer question with its marking rubric, followed by three student answers. **Mark each answer using the rubric on your own, then agree marks with a partner.** The examiner's marks are shown in the practical session, and a full explanation is posted on itslearning (Resources › Practice Exams) at the next session. Where your marks differ from the examiner's, work out why.
 
 > **Question.** Define gene flow and explain how it differs from migration. Explain how gene flow can both help and hinder a population's adaptation to local conditions, giving a specific example. Explain why very few migrants per generation are enough to stop populations diverging by genetic drift, but many more are needed to swamp local adaptation.
 
@@ -111,9 +111,9 @@ A factual error in a criterion caps that criterion at 1 point. Material the ques
 >
 > Drift happens in small populations and selection happens in big ones, so how many migrants you need depends on the size of the population.
 
-## Now write your own (15 minutes)
+## Homework: write your own (15 minutes)
 
-Answer the question below without notes, in about 15 minutes, as you would in the exam. Aim for about 250 words: three short paragraphs is enough for full marks. Plan for a couple of minutes first. Write in a document on your laptop. There is nothing to hand in.
+**Do this at home, before the next session.** Answer the question below without notes, in about 15 minutes, as you would in the exam. Aim for about 250 words: three short paragraphs is enough for full marks. Plan for a couple of minutes first. Write in a document on your laptop. There is nothing to hand in.
 
 > **Question.** Adaptive and neutral evolution are two fundamental modes of evolutionary change. (i) Explain the difference between them, giving two ways in which they differ. (ii) Give one example of each, and explain why it fits.
 
@@ -129,7 +129,7 @@ Answer the question below without notes, in about 15 minutes, as you would in th
 
 A factual error in a criterion caps that criterion at 1 point.
 
-When the time is up, swap laptops with a neighbour (or email them your answer) and mark each other's answer with the rubric. Give a mark for each criterion, and add one sentence on the change that would gain the most marks. If you would rather not share your answer, mark your own instead. After the session, compare both answers with the model answer posted on itslearning (Resources › Practice Exams). This practice does not count towards your final grade.
+When the time is up, email your answer to a classmate and mark each other's answer with the rubric (about 5 minutes). Give a mark for each criterion, and add one sentence on the change that would gain the most marks. If you would rather not share your answer, mark your own instead. At the next session, a model answer will be posted on itslearning (Resources › Practice Exams): compare both answers with it. This practice does not count towards your final grade.
 
 ## Takeaways
 
