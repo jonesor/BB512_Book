@@ -1128,6 +1128,33 @@ The full answers from the worksheet are [here](https://www.dropbox.com/s/oz2c10b
 
 Note that comparing a coefficient with 1 is not enough when the carrying capacities differ. In Q1, species 1 wins even though $\alpha = 1.25 > 1$, because its carrying capacity is three times larger.
 
+## Solutions: Competition with a removal factor
+
+**Part 1**
+
+1. With $m = 0$ the intercepts are $K_1 = 100$, $K_1/\alpha = 83.3$, $K_2 = 100$ and $K_2/\beta = 166.7$. Species 2's isocline lies outside species 1's ($K_2 > K_1/\alpha$ and $K_2/\beta > K_1$), so species 2 wins.
+2. With $m = 0.1$: $K_1' = 100(1 - 0.1/1) = 90$ and $K_2' = 100(1 - 0.1/0.3) = 66.7$. The intercepts are 90, 75, 66.7 and 111.1. Now $K_1' < K_2'/\beta$ and $K_2' < K_1'/\alpha$: the isoclines cross, and the two species should coexist stably.
+
+**Part 2**
+
+| $m$ | $K_1'$ | $K_2'$ | Final $N_1$ | Final $N_2$ | Outcome |
+|---|---|---|---|---|---|
+| 0 | 100 | 100 | 0 | 100 | Species 2 wins |
+| 0.05 | 95 | 83.3 | 0 | 83.3 | Species 2 wins |
+| 0.1 | 90 | 66.7 | 35.7 | 45.2 | Stable coexistence |
+| 0.2 | 80 | 33.3 | 80 | 0 | Species 1 wins |
+
+1. As removal increases, the outcome changes from exclusion of species 1, to coexistence, to exclusion of species 2. Coexistence occurs for $m$ between about 0.067 and 0.146.
+2. Removal takes the same proportion of each population, but species 1 replaces its losses more than three times as fast. Its effective carrying capacity falls only by $m/r_1$ (10% at $m = 0.1$), while that of species 2 falls by $m/r_2$ (33%). Species 2's competitive advantage is gradually cancelled out by its slower recovery.
+3. No. Every starting point ends at the same equilibrium ($N_1 = 35.7$, $N_2 = 45.2$). The isoclines cross with each species' own isocline outside the other's intercept on its own axis, so the equilibrium is stable (each species limits itself more than it limits the other, after removal).
+4. Both effective carrying capacities fall by the same proportion ($K' = 90$ for both), so the isoclines shrink together and species 2 still wins. Removal changes the outcome only when the species differ in $r$.
+
+**Questions**
+
+1. If the brown hydra recover from losses faster than the green hydra (a higher $r$), removing the same proportion of both reduces the green hydra's effective carrying capacity more, cancelling their competitive advantage and allowing coexistence. To test this you would measure each species' rate of increase on its own, and the competition coefficients, and check whether the observed removal rate falls in the predicted window for coexistence.
+2. The grazer may let the faster-growing plant persist alongside the slower one, or even take over. If grazing becomes very intense ($m \geq r$ of the slower plant), the slower plant cannot persist at all, whatever its competitive ability; if $m$ exceeds both growth rates, both are lost.
+3. With a selective predator, $K_i' = K_i(1 - m_i/r_i)$, so what matters is each species' $m_i/r_i$. A predator that prefers the better competitor can promote coexistence or reverse the outcome even if the two species grow equally fast; one that prefers the weaker competitor speeds up its exclusion.
+
 ## Solutions: Lotka-Volterra predator-prey dynamics
 
 You can find a completed Excel spreadsheet [here](https://www.dropbox.com/s/wet7brtgxywdqi5/10.%20Pred-PreyDynamics.xlsx?dl=1).

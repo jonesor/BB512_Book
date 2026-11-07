@@ -5,6 +5,7 @@ This part explores how species interactions shape population and community dynam
 By the end of Part 4, you should be able to:
 
 - Predict the outcome of competition from the isocline intercepts ($K_1$, $K_1/\alpha$, $K_2$, $K_2/\beta$).
+- Explain how a removal factor (predation or disturbance) can change the outcome of competition.
 - Interpret competition and predator-prey dynamics from model outputs.
 - Explain why Lotka-Volterra predator-prey cycles are neutrally stable in continuous time, and why the discrete-time version spirals outwards.
 - Reason about stability and equilibrium in multi-species systems.

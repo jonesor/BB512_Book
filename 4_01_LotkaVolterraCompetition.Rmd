@@ -128,7 +128,7 @@ This PDF walks you through the creation of an Excel spreadsheet exploring inters
 1. What parameter values will cause species 1 to exclude species 2 from the habitat? What do these values mean in ecological terms?
 2. What parameter values will reverse this outcome? What do these values mean in ecological terms?
 3. What parameter values will allow the two species to coexist indefinitely and stably? What do these values mean in ecological terms?
-4. Are there parameter values under which the outcome depends on initial population sizes or rates of population growth? What do these values mean in ecological terms?
+4. Are there parameter values under which the outcome depends on initial population sizes or rates of population growth? What do these values mean in ecological terms? (For the role of growth rates, see the next chapter, *Competition with a removal factor*.)
 5. (Optional) Neal describes two pairs of flour beetles. Predict the outcome for each from the isoclines, then check with your sheet: (a) *Rhizopertha* (species 1, $K_1 = 330$) and *Oryzaephilus* (species 2, $K_2 = 440$), with $\alpha = 0.235$ and $\beta = 0.12$; (b) *Tribolium confusum* (species 1, $K_1 = 220$) and *T. castaneum* (species 2, $K_2 = 340$), with $\alpha = 1$ and $\beta = 2.2$. For (b), try several different starting densities.
 
 ## Takeaways
