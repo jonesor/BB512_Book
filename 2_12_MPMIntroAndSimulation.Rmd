@@ -1,5 +1,9 @@
 # Matrix Population Models (MPMs): Projection and Simulation
 
+::: {.homework-box}
+**Extra homework (optional).** Goes with the lecture *Age- and stage-structured models*. Revisits projection from the practical *Matrix population modelling*, then adds stochastic simulation and management scenarios. It is not covered in class. Answers are in the Solutions part.
+:::
+
 This short tutorial introduces **matrix population models (MPMs)** and shows two closely related uses:
 
 1. **Projection**: how a population vector is projected forward through time using a matrix.

@@ -1,5 +1,9 @@
 # The legend of Ambalappuzha
 
+::: {.homework-box}
+**Extra homework (optional).** Goes with the lecture *Exponential growth* and the practical *Geometric growth*. A short illustration of how fast geometric growth gets out of hand. It is not covered in class. Answers are in the Solutions part.
+:::
+
 Exponential growth is a powerful concept. To help us grasp it better let's use an ancient Indian chess legend as an example.
 
 ::: {.do-something}

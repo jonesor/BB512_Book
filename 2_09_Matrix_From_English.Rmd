@@ -1,5 +1,9 @@
 # From plain English to a matrix model
 
+::: {.homework-box}
+**Extra homework (optional).** Goes with the lecture *Age- and stage-structured models*. A quick warm-up for, or follow-up to, the practical *Matrix population modelling*. It is not covered in class. Answers are in the Solutions part.
+:::
+
 ## Background
 
 This activity is designed for quick in-class practice translating a verbal life-history description into a matrix population model. It connects directly to the workflow in the chapter [Matrix population modelling].

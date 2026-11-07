@@ -1,5 +1,9 @@
 # Stochastic population growth
 
+::: {.homework-box}
+**Homework.** Goes with the lecture *Exponential growth*. Do this at home after the in-class practical *Geometric growth*. Answers are in the Solutions part.
+:::
+
 ```{r stochastic-growth-seed, include = FALSE}
 set.seed(134)
 ```

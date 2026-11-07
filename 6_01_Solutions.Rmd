@@ -120,6 +120,24 @@ Answers to the questions:
 * **Decline of 25% per year:** this means $\lambda = 0.75$, so $N_4 = 800 \times 0.75^4 = 253.1$, i.e. about 253 individuals.
 * **$\lambda$ per half-year:** $r_m = \ln 1.1 = 0.0953$ per year, so $r_m = 0.0477$ per half-year, and $\lambda = e^{0.0477} = 1.049$ per half-year. Check: $1.049^2 = 1.1$. (Simply halving the 10% increase to 5% would be slightly too much, because growth compounds.)
 
+## Solutions: The legend of Ambalappuzha
+
+You can find the completed Excel file [here](https://www.dropbox.com/s/ybe5qhmfltuhoyv/RiceOnAChessboard_completed.xlsx?dl=1).
+
+**How much rice?** The 64 squares hold $2^{64} - 1 = 1.84 \times 10^{19}$ grains of rice. At 25 mg (0.000025 kg) per grain, that is about $4.6 \times 10^{14}$ kg (461 billion tonnes): hundreds of times the world's annual rice production.
+
+**Great tits (optional exercise).** Each female lays about 6 eggs, so she produces about 3 daughters per year. We start with 100 females (one per breeding pair).
+
+- If every female survives every year, and daughters breed the year after they hatch, each female this year becomes herself plus 3 daughters next year: $F_{t+1} = F_t + 3F_t = 4F_t$, so $\lambda = 4$. After 5 years there are $100 \times 4^5 = 102{,}400$ females.
+- If instead adults die after breeding once, only the 3 daughters per female are left next year, so $\lambda = 3$ and after 5 years there are $100 \times 3^5 = 24{,}300$ females.
+
+Either way, numbers explode within a few years. The answer depends strongly on the assumptions, which is the point of the discussion prompts: real great tits have far from 100% survival (most fledglings die in their first year), and density dependence (territories, food, nest sites) stops growth long before these numbers are reached.
+
+Take home messages:
+
+* Exponential/geometric growth is extremely powerful and can very quickly lead to very large numbers.
+* The multiplication rate, $\lambda$, depends on both reproduction and survival, and on assumptions about the life cycle (e.g. whether adults survive to breed again).
+
 ## Solutions: Estimating Population Growth Rate
 
 You can find the completed Excel file [here](https://www.dropbox.com/scl/fi/sxvtkuwxs0mn9ohgwh0ot/EstimatingGrowth_completed.xlsx?rlkey=lzefpmqt3ishxze4weoy9nz65&dl=1). 
@@ -384,6 +402,26 @@ The main take home messages for this class are that you should:
 
 Several of these are shared with the exponential/geometric growth models.
 
+## Solutions: From plain English to a matrix model
+
+**Matrix.** With stages hatchling (H), juvenile (J) and adult (A), and the census once a year:
+
+- Fertilities (top row): juveniles 1, adults 3 hatchlings per year (the text says these are hatchlings, so we treat them as already counted at the next census).
+- Hatchling to juvenile: 0.20.
+- Juveniles survive with probability 0.70 (30% mortality). Of the survivors, 5% stay juvenile and 95% become adults: stasis $0.70 \times 0.05 = 0.035$, growth $0.70 \times 0.95 = 0.665$.
+- Adults survive with probability 0.82 (18% mortality) and stay adults.
+
+    A_hawk <- matrix(c(0.00, 1.000, 3.00,
+                       0.20, 0.035, 0.00,
+                       0.00, 0.665, 0.82),
+                     byrow = TRUE, nrow = 3)
+    popdemo::eigs(A_hawk, what = "lambda")   # 1.172
+    pr <- popdemo::project(A_hawk, vector = c(1000, 150, 5), time = 20)
+
+**Assumption about juvenile stasis.** "5% of juveniles fail to transition" can also be read as 5% of *all* juveniles: stasis 0.05 and growth 0.65 (so survival is still 0.70). This gives $\lambda = 1.171$, almost the same as 1.172, so the assumption barely matters here. What matters is that you state it, and that stasis plus growth for juveniles does not exceed their survival of 0.70.
+
+**Interpretation.** $\lambda \approx 1.17$, so the population grows by about 17% per year. After the transient period (the starting population is dominated by hatchlings), the projection settles into steady exponential growth, reaching about 14,300 individuals after 20 years.
+
 ## Solutions: Pre- and Post-reproduction census
 
 **Why `A1` and `A2` give the same $\lambda$.** Both give $\lambda = 1.0703$ (to 4 decimal places), and they are exactly identical, not just equal to rounding error. Both matrices have the same characteristic equation, $\lambda^3 = p_0 p_1 m_2 \lambda + p_0 p_1 p_2 m_3$: each term is one route from birth to reproduction (survive to age 2 and breed, or survive to age 3 and breed), and each route contains the same survival and reproduction terms in both census types. The net reproductive rate is also the same in both: $R_0 = p_0 p_1 m_2 + p_0 p_1 p_2 m_3 = 0.54 + 0.648 = 1.188$. Census timing only changes *when* we count the population (and so which age classes are in the matrix), not what the animals do, so it cannot change how fast the population grows. What *does* change is anything that depends on the classes counted: the stable age distribution (post-breeding: 74% newborns of age 0; pre-breeding: 43% age 1, with no newborns counted), the reproductive values and the sensitivities.
@@ -426,6 +464,65 @@ In both cases the element you changed shows the biggest change in contribution, 
 **Interpretation.** The Location B population has a lower $\lambda$ (0.99, slowly declining) than Location A (1.45) mainly because fewer juveniles survive and mature into adults; lower fertility is the second most important reason; and slightly higher adult survival at Location B partly offsets these. Negative contributions lower $\lambda$ at Location B relative to Location A, positive ones raise it.
 
 **Why LTRE alone does not tell a manager what to target.** LTRE is retrospective: it explains an observed difference in $\lambda$ that has already happened. A contribution is large if the element *did* differ a lot between the populations and/or if $\lambda$ is sensitive to it. A vital rate can make a large contribution because it varied a lot for reasons managers cannot influence (e.g. spring weather), and a rate with a high sensitivity (here juvenile stasis, 0.336) can make no contribution at all because it did not differ. To ask what *would* happen if a vital rate were changed, use prospective tools (sensitivity, elasticity, *in silico* experiments), together with knowledge of which rates can realistically be changed, by how much, and at what cost.
+
+## Solutions: Matrix Population Models (MPMs): Projection and Simulation
+
+The simulation results below come from 2,000 replicates per scenario. They are stochastic: in another set of runs, probabilities of extinction typically change by about ±0.02 and medians by a few individuals. Your results with 200 replicates will vary more. The deterministic $\lambda$ values are exact.
+
+**Exercise 1: Projection interval.**
+
+1. $\Delta t = 1$ year means that one multiplication by $\mathbf{A}$ moves the population forward by one year, so every entry in the matrix is a rate per year (e.g. $P_A = 0.8$ is the probability that an adult survives one whole year).
+2. With $\Delta t = 1$ month, $P_A$ would be the probability of surviving one *month*. If mortality is spread evenly through the year, the monthly survival that gives the same annual survival is $0.8^{1/12} = 0.982$. $F_A$ would be the number of new juveniles (counted at the next monthly census) per adult per *month*. For most animals and plants this is not constant: reproduction happens in a breeding season, so $F_A$ would be zero in most months, and the matrix would have to change from month to month (a seasonal model). Growth probabilities ($G_J$, $G_S$) would also have to be per month.
+3. For example: the species is short-lived or breeds several times a year (insects, rodents), so a year is too coarse; you want to model seasonal events such as a breeding season, a hunting season or a harsh winter; or management (e.g. culling) happens at a particular time of year.
+
+**Exercise 2: Lower adult survival.** With $P_A = 0.70$, $\lambda = 0.964$, so the population now declines by about 4% per year. You can tell because $\lambda < 1$, and because the deterministic projection of total population size eventually goes down (after the transient phase). `simulate_once()` does not need to be changed, because it reads the vital rates from the matrix `A` that you give it: rebuild `A` and the simulation uses the new $P_A$ automatically. (This is why we never use `A` as the name of an adult count.)
+
+**Exercise 3: Culling as management.**
+
+1. With a 20% adult harvest, the deterministic prediction (adult column × 0.8) is $\lambda = 0.903$, compared with 0.960 for 10% and 1.019 for no harvest. In the replicates, the median final population size (year 30) falls from about 143 (no harvest) to about 42 (10%) and about 11 (20%), and the probability of extinction within 30 years rises from 0 to about 0.03. The 10-90% band at year 30 moves down from about 88-209 (no harvest) to about 20-69 (10%) and 3-24 (20%), so with a 20% harvest a sizeable minority of runs end with only a handful of individuals.
+2. A fixed quota of 5 adults per year gives a probability of extinction of about 0.85 (median final size 0), and 10 adults per year about 1.00. A 10% harvest gives about 0. A fixed quota is much riskier because the *proportion* removed rises as the population shrinks: when there are 50 adults, 5 is 10%, but when there are 10 adults, 5 is half of them. This sets up a downward spiral. A proportional harvest automatically takes fewer individuals when the population is small. (With about 20 adults at the start of culling, removing 5 per year is more than the population can replace.)
+3. Culling the same number or the same proportion from each stage:
+
+| Stage culled | Fixed quota, 5/year: median final N | Fixed quota: P(extinct) | 10% harvest: $\lambda$ | 10% harvest: median final N |
+|---|---|---|---|---|
+| None | 143 | 0 | 1.019 | 143 |
+| Juveniles | 101 | 0 | 1.006 | 109 |
+| Subadults | 23 | 0.05 | 0.992 | 83 |
+| Adults | 0 | 0.85 | 0.960 | 42 |
+
+Culling adults has by far the largest effect, then subadults, and juveniles the least. The reason is reproductive value: how many future juveniles an individual in each stage is expected to produce. Relative to a juvenile, the reproductive values are juvenile 1 : subadult 2.9 : adult 5.5. A juvenile is worth little, because it has a low chance (0.35) of even reaching the subadult stage, whereas an adult is already breeding and has a high survival rate. Removing an adult therefore removes much more future reproduction than removing a juvenile.
+
+```{r, eval = FALSE}
+# Reproductive values, scaled to 1 for juveniles
+v <- Re(eigen(t(A))$vectors[, 1])
+v / v[1]
+```
+
+**Exercise 4: Contraception.** Add an argument `fert_mult = 1` to the function, and replace the births line with:
+
+```{r, eval = FALSE}
+simulate_once <- function(A, n0, years,
+                          cull_stage = "Adult", cull_prop = 0, cull_n = 0,
+                          cull_start = 10, fert_mult = 1) {
+  # ... everything else as before, but in Step 5:
+  F_now <- if (year >= cull_start) F_A * fert_mult else F_A
+  newJ <- rpois(1, lambda = F_now * nA)
+  # ...
+}
+
+# Contraception scenario (no culling): fertility reduced by 90% from year 10
+simulate_once(A, n0, years, fert_mult = 0.1)
+```
+
+The deterministic prediction for 90% effective contraception is $\lambda = 0.843$ (multiply `A["Juvenile", "Adult"]` by 0.1 and recompute the dominant eigenvalue), a much stronger reduction than the 10% adult harvest ($\lambda = 0.960$). In the replicates, the median final population size is about 2 (10-90% range 0 to 5), with a probability of extinction within 30 years of about 0.16, compared with a median of about 42 for the 10% adult harvest and 143 for no treatment. Contraception gives the largest reduction in population growth here, because it cuts the fertility of *all* adults by 90%, whereas the harvest removes only 10% of them. Note the time lag: contraception acts only through future recruitment, so the adults and subadults already present decline only slowly at first. Whether it is better in practice also depends on cost, feasibility and animal welfare, which the model does not include.
+
+**Exercise 5 (optional): Environmental stochasticity.** Add one line at the start of each year in a copy of the function (just after `n_now <- out[t, ]`):
+
+```{r, eval = FALSE}
+P_A <- if (runif(1) < 0.5) 0.9 else 0.7 # good or bad year for adult survival
+```
+
+With this change, the median final population size is about 136 (10-90% range about 71 to 235), compared with about 145 (about 90 to 214) for demographic stochasticity alone. The average adult survival is unchanged, but the spread of outcomes is wider, because in a run of bad years all adults have low survival at the same time. Variation between years also tends to reduce the long-run growth rate slightly (the stochastic growth rate $\lambda_s$ is lower than the $\lambda$ of the average matrix); see the chapter "Stochastic population growth".
 
 ## Solutions: How many eggs should a bird lay?
 
@@ -505,64 +602,24 @@ This is only true for an individual's *own* offspring. If older individuals help
 - *Predation risk.* Where predation is high, an individual is unlikely to survive to old age whatever it invests in its body, so resources spent on maintenance and repair are less valuable. Selection should favour putting more into early reproduction and less into maintenance.
 - *Survival after reproduction.* Older individuals can raise inclusive fitness by helping relatives. Post-reproductive killer whale females lead their groups to salmon when food is scarce, and in humans, grandmothers can improve their grandchildren's survival (the grandmother hypothesis).
 
-## Solutions: Matrix Population Models (MPMs): Projection and Simulation
+## Solutions: From population biology to fitness
 
-The simulation results below come from 2,000 replicates per scenario. They are stochastic: in another set of runs, probabilities of extinction typically change by about ±0.02 and medians by a few individuals. Your results with 200 replicates will vary more. The deterministic $\lambda$ values are exact.
+The matrix model with a trade-off (increased juvenile survival, but old-adult survival reduced to 0.05) looks like this.
 
-**Exercise 1: Projection interval.**
+    A3 <- matrix(c(0.00, 4.00, 2.00,
+                   0.11, 0.80, 0.00,
+                   0.00, 0.10, 0.05),
+                byrow = TRUE, nrow = 3)
 
-1. $\Delta t = 1$ year means that one multiplication by $\mathbf{A}$ moves the population forward by one year, so every entry in the matrix is a rate per year (e.g. $P_A = 0.8$ is the probability that an adult survives one whole year).
-2. With $\Delta t = 1$ month, $P_A$ would be the probability of surviving one *month*. If mortality is spread evenly through the year, the monthly survival that gives the same annual survival is $0.8^{1/12} = 0.982$. $F_A$ would be the number of new juveniles (counted at the next monthly census) per adult per *month*. For most animals and plants this is not constant: reproduction happens in a breeding season, so $F_A$ would be zero in most months, and the matrix would have to change from month to month (a seasonal model). Growth probabilities ($G_J$, $G_S$) would also have to be per month.
-3. For example: the species is short-lived or breeds several times a year (insects, rodents), so a year is too coarse; you want to model seasonal events such as a breeding season, a hunting season or a harsh winter; or management (e.g. culling) happens at a particular time of year.
+    eigs(A3)$lambda
 
-**Exercise 2: Lower adult survival.** With $P_A = 0.70$, $\lambda = 0.964$, so the population now declines by about 4% per year. You can tell because $\lambda < 1$, and because the deterministic projection of total population size eventually goes down (after the transient phase). `simulate_once()` does not need to be changed, because it reads the vital rates from the matrix `A` that you give it: rebuild `A` and the simulation uses the new $P_A$ automatically. (This is why we never use `A` as the name of an adult count.)
+We can compare the $\lambda$ value from this model (1.187) with the original one (1.166) to ask whether the large cost is worth paying for the small benefit. It turns out that it is. You can then ask how MUCH cost would be worth bearing, by repeating the exercise and slowly reducing old-adult survival until you reach the original $\lambda$ value.
 
-**Exercise 3: Culling as management.**
+You should find that the cost can be huge, and still worth bearing. In fact, you could reduce old-adult survival to 0 and it is still worth doing ($\lambda = 1.186$)! You can even reduce old-age adult reproduction without much effect on fitness: with old-adult survival at 0.05 and old-adult reproduction set to 0, $\lambda$ is 1.175, still above the original.
 
-1. With a 20% adult harvest, the deterministic prediction (adult column × 0.8) is $\lambda = 0.903$, compared with 0.960 for 10% and 1.019 for no harvest. In the replicates, the median final population size (year 30) falls from about 143 (no harvest) to about 42 (10%) and about 11 (20%), and the probability of extinction within 30 years rises from 0 to about 0.03. The 10-90% band at year 30 moves down from about 88-209 (no harvest) to about 20-69 (10%) and 3-24 (20%), so with a 20% harvest a sizeable minority of runs end with only a handful of individuals.
-2. A fixed quota of 5 adults per year gives a probability of extinction of about 0.85 (median final size 0), and 10 adults per year about 1.00. A 10% harvest gives about 0. A fixed quota is much riskier because the *proportion* removed rises as the population shrinks: when there are 50 adults, 5 is 10%, but when there are 10 adults, 5 is half of them. This sets up a downward spiral. A proportional harvest automatically takes fewer individuals when the population is small. (With about 20 adults at the start of culling, removing 5 per year is more than the population can replace.)
-3. Culling the same number or the same proportion from each stage:
+HOWEVER, changes to prime-age adults are much more important. With juvenile survival at 0.11, you can only reduce prime-age adult survival to about 0.76 (from 0.8) before the cost is not worth bearing (population growth rate falls below that of the baseline model).
 
-| Stage culled | Fixed quota, 5/year: median final N | Fixed quota: P(extinct) | 10% harvest: $\lambda$ | 10% harvest: median final N |
-|---|---|---|---|---|
-| None | 143 | 0 | 1.019 | 143 |
-| Juveniles | 101 | 0 | 1.006 | 109 |
-| Subadults | 23 | 0.05 | 0.992 | 83 |
-| Adults | 0 | 0.85 | 0.960 | 42 |
-
-Culling adults has by far the largest effect, then subadults, and juveniles the least. The reason is reproductive value: how many future juveniles an individual in each stage is expected to produce. Relative to a juvenile, the reproductive values are juvenile 1 : subadult 2.9 : adult 5.5. A juvenile is worth little, because it has a low chance (0.35) of even reaching the subadult stage, whereas an adult is already breeding and has a high survival rate. Removing an adult therefore removes much more future reproduction than removing a juvenile.
-
-```{r, eval = FALSE}
-# Reproductive values, scaled to 1 for juveniles
-v <- Re(eigen(t(A))$vectors[, 1])
-v / v[1]
-```
-
-**Exercise 4: Contraception.** Add an argument `fert_mult = 1` to the function, and replace the births line with:
-
-```{r, eval = FALSE}
-simulate_once <- function(A, n0, years,
-                          cull_stage = "Adult", cull_prop = 0, cull_n = 0,
-                          cull_start = 10, fert_mult = 1) {
-  # ... everything else as before, but in Step 5:
-  F_now <- if (year >= cull_start) F_A * fert_mult else F_A
-  newJ <- rpois(1, lambda = F_now * nA)
-  # ...
-}
-
-# Contraception scenario (no culling): fertility reduced by 90% from year 10
-simulate_once(A, n0, years, fert_mult = 0.1)
-```
-
-The deterministic prediction for 90% effective contraception is $\lambda = 0.843$ (multiply `A["Juvenile", "Adult"]` by 0.1 and recompute the dominant eigenvalue), a much stronger reduction than the 10% adult harvest ($\lambda = 0.960$). In the replicates, the median final population size is about 2 (10-90% range 0 to 5), with a probability of extinction within 30 years of about 0.16, compared with a median of about 42 for the 10% adult harvest and 143 for no treatment. Contraception gives the largest reduction in population growth here, because it cuts the fertility of *all* adults by 90%, whereas the harvest removes only 10% of them. Note the time lag: contraception acts only through future recruitment, so the adults and subadults already present decline only slowly at first. Whether it is better in practice also depends on cost, feasibility and animal welfare, which the model does not include.
-
-**Exercise 5 (optional): Environmental stochasticity.** Add one line at the start of each year in a copy of the function (just after `n_now <- out[t, ]`):
-
-```{r, eval = FALSE}
-P_A <- if (runif(1) < 0.5) 0.9 else 0.7 # good or bad year for adult survival
-```
-
-With this change, the median final population size is about 136 (10-90% range about 71 to 235), compared with about 145 (about 90 to 214) for demographic stochasticity alone. The average adult survival is unchanged, but the spread of outcomes is wider, because in a run of bad years all adults have low survival at the same time. Variation between years also tends to reduce the long-run growth rate slightly (the stochastic growth rate $\lambda_s$ is lower than the $\lambda$ of the average matrix); see the chapter "Stochastic population growth".
+Thus, old-age costs are "worth it" while prime-age costs are much more important. This finding is central to the evolution of senescence and life span, which you met in the practical *Trade-offs and the declining force of selection* (the declining force of selection).
 
 ## Solutions: Hardy-Weinberg equilibrium
 
@@ -724,46 +781,6 @@ The heterozygote frequency is $2pq \approx 2 \times `r hwe$fmt(hwe$p4$p)` \times
 4. **Challenge: how could you simulate a population that is steadily shrinking through time?**
    - Inside the loop, set the population size as a function of the generation number before sampling, for example `pop_size <- round(1000 * 0.95^(i - 1))` for a 5% decline per generation, or `pop_size <- max(10, 1000 - 10 * i)` for a linear decline to a floor of 10. As the population shrinks, drift becomes stronger and the frequency of *A* fluctuates more and more until one allele is fixed.
 
-## Solutions: Neutral or adaptive evolution in humans
-
-There is no single correct ordering: groups can defend different placements. What matters is the reasoning. A good answer for each trait goes through three questions:
-
-1. **Is the variation heritable?** If not, the trait cannot evolve by drift *or* by selection.
-2. **How strongly does the trait affect survival or reproduction, in this environment?** Strong effects put the trait at the selection end of the continuum; weak or no effects put it at the drift end.
-3. **Is the population large enough for that selection to beat drift?** Selection is effective only when $s$ is clearly larger than about $1/(2N_e)$.
-
-The take-home message is that whether a trait evolves adaptively or neutrally depends on the environment (and on population size), not just on the trait. A useful comparison is antibiotic resistance in bacteria. With antibiotics, resistance genes are strongly selected *for*. Without antibiotics they are not neutral: resistance usually has a fitness cost, so it is usually selected *against* (which is why resistance can decline when an antibiotic is used less, although compensatory mutations can reduce the cost). The environment can change both the strength and the direction of selection.
-
-Humans are still evolving. In industrialised societies such as Denmark, almost everyone survives to adulthood, so selection now acts mainly through differences in the number of children people have (and the age at which they have them), rather than through survival. Studies of modern populations have measured selection on traits such as height, age at first birth and cholesterol in exactly this way (e.g. Byars et al. 2010, *PNAS*; Sanjak et al. 2018, *PNAS*).
-
-### Suggested placements
-
-| Trait | Heritable variation? | As foragers | In Denmark today | Where on the drift-selection continuum, and why |
-|---|---|---|---|---|
-| Metabolic efficiency | Yes, partly | Probably important: food was often scarce, so efficient use of energy aided survival and reproduction | Weak, possibly reversed: food is abundant, and very efficient storage may contribute to obesity and type 2 diabetes | Towards selection as foragers; weaker today. *Debatable*: the "thrifty gene" idea has weak direct genetic support |
-| Eyesight acuity | Partly | Probably important for hunting and gathering | Weak: glasses correct poor vision | Towards selection as foragers; near the drift end today |
-| Height | Yes, highly heritable (many genes) | Probably selected, but the optimum depends on environment | Modern studies detect weak selection, mainly through number of children, with differences between the sexes (e.g. Stulp et al. 2015, *Proc. R. Soc. B*) | In the middle: weak but measurable selection |
-| Birth canal (pelvic) shape | Yes | Stabilising selection: the canal must allow birth of a big-brained baby while still allowing efficient walking | Weaker: caesarean section reduces the cost of a mismatch | Selection keeps the shape within limits, but much of the variation between populations fits drift during serial founder effects as humans spread out of Africa (Betti & Manica 2018, *Proc. R. Soc. B*; see the drift lecture). A good example of both acting together |
-| Resistance to bubonic plague | Yes, partly (immune genes) | Weak: plague is a disease of dense agricultural and urban societies, not of small foraging groups | Weak: plague is rare and treatable | Strongly selected in medieval Europe during the Black Death (Klunk et al. 2022, *Nature*, immune genes such as *ERAP2*), not in foragers and not today. A clear example of environment-dependent selection |
-| Eye colour | Yes, strongly (mainly *OCA2*/*HERC2*) | Probably weak, except perhaps through mate choice | Weak | Blue eyes rose quickly in Europe, which suggests some selection (on pigmentation in general, or sexual selection), but drift and "hitch-hiking" with selected pigmentation alleles are possible. *Debatable* |
-| Earwax type (*ABCC11*) | Yes, simple (one DNA change) | Unknown; a selection signal exists, perhaps linked to sweat or body odour | Weak | Some evidence of past selection (Ohashi et al. 2011, *Molecular Biology and Evolution*), but the trait it acted on is uncertain. *Debatable* |
-| Face symmetry | Weakly; much is developmental noise | Possibly via mate choice, as a cue of health | Weak | Mostly not heritable, so it can evolve little by either process |
-
-Examples of traits that **cannot** evolve much because their variation is mostly not heritable: the fine texture of the iris, the detailed ridge minutiae of fingerprints (these differ between identical twins), and much of the variation in face symmetry.
-
-### Gene flow between populations
-
-- Differences that gene flow would erase: neutral variation (most DNA differences, and traits close to the drift end of the continuum). Very few migrants per generation are enough to prevent large neutral differences between populations, which is one reason why most human genetic variation is found *within* populations rather than between them.
-- Differences that local selection can maintain against gene flow: traits where the selection coefficient is large compared with the migration rate. Examples are skin pigmentation (UV intensity differs with latitude), lactase persistence (dairying history), and HbS and Duffy-null (malaria). These traits vary between populations much more than most neutral markers do.
-
-### Discussion questions
-
-* **Traits categorised differently between the two societies.** Eyesight acuity and metabolic efficiency were probably more strongly selected in foraging societies than in Denmark today. Others (e.g. plague resistance) were strongly selected only in particular historical environments. In both settings, though, selection still acts, especially through the number of children.
-* **Traits with little heritable variation.** Iris texture, fingerprint detail and much of face symmetry: they can vary a lot but cannot evolve much by either process.
-* **Gene flow vs local selection.** See above.
-* **Preconceived notions.** Common ones are that "evolution has stopped in humans" (it has not), that "every trait is an adaptation" (many traits drift, and some barely vary heritably), and that "drift only matters in tiny populations" (it acts in every finite population; it dominates whenever $s$ is small compared with $1/(2N_e)$).
-* **Other traits to add.** Sense of smell (many olfactory receptor genes have become non-functional, consistent with relaxed selection and drift), lactase persistence, skin pigmentation, blood groups, alcohol flush reaction, ability to taste bitter compounds (*TAS2R38*), and wisdom teeth are all good candidates with some genetic evidence.
-
 ## Solutions: Heritability
 
 *Predictions.* If offspring were on average exactly like their parents, the slope would be 1 ($h^2 = 1$). If offspring were no more like their own parents than like any other bird, the line would be flat (slope 0, $h^2 = 0$). A slope in between means that offspring resemble their parents partly: on average, they lie part of the way between their parents' value and the population mean ("regression towards the mean").
@@ -902,6 +919,57 @@ Shared environment, correct parentage and measurement accuracy are the three set
 - **Random mating:** if birds choose mates of similar size (assortative mating), the mid-parent values vary more than under random mating, but their covariance with the offspring rises in step, so the slope on the mid-parent value still estimates $h^2$. This is an advantage of using both parents: the slope on a single parent would be steeper than $h^2/2$, so doubling it would overestimate $h^2$.
 - **Representative sample:** it matters which birds are filtered. If selection acts on the offspring before they are measured (for example, only those that survived a harsh winter, with survival depending on wing length), the slope is too shallow and $h^2$ is underestimated. Choosing parents on the basis of the trait does not bias the slope, although a narrower range of parents gives a less precise estimate.
 - **Independence:** if the same parent appears in several families, or several chicks from one nest are entered as separate points, the data points are not independent and the confidence interval will be too narrow.
+
+## Solutions: Continuous traits from discrete genes
+
+*Shape of the histograms.* Both the classroom histogram and the R histogram should be roughly bell-shaped and centred near 47.5 (35 + 12.5). With only 30 individuals the classroom histogram will be lumpy; with 100 it is smoother. With genes alone, every value is a whole number, so the distribution has many classes but is still discrete.
+
+*Does the environment make the trait continuous?* Yes. After adding the environmental effect, the values are no longer whole numbers, and the gaps between the genetic classes are filled in: individuals with the same number of ON genes now differ slightly, and individuals with different numbers of ON genes overlap. This is exactly Neal's point about wheat kernel colour: with little environmental effect there are only a few discrete classes, but environmental (and other small genetic) effects blur them into a continuous distribution.
+
+*Variances.* In the example run shown in the chapter, `var(trait_value)` is 6.29 (expected 6.25) and `var(trait_value_env)` is 8.24 (expected $6.25 + 2.25 = 8.5$). These values vary a lot between runs: with 100 individuals, the genetic variance typically lies between about 4.7 and 8.0, and the phenotypic variance between about 6.3 and 11.1.
+
+*Heritability.* All the genetic variance here is additive, so $h^2 = V_A/V_P = 6.25/8.5 = 0.74$. With an environmental standard deviation of 4, $V_E = 16$, $V_P = 22.25$ and $h^2 = 6.25/22.25 = 0.28$. The genes are exactly the same, but the more variable environment lowers the heritability, just as for the two bird populations in the heritability practical.
+
+
+## Solutions: Neutral or adaptive evolution in humans
+
+There is no single correct ordering: groups can defend different placements. What matters is the reasoning. A good answer for each trait goes through three questions:
+
+1. **Is the variation heritable?** If not, the trait cannot evolve by drift *or* by selection.
+2. **How strongly does the trait affect survival or reproduction, in this environment?** Strong effects put the trait at the selection end of the continuum; weak or no effects put it at the drift end.
+3. **Is the population large enough for that selection to beat drift?** Selection is effective only when $s$ is clearly larger than about $1/(2N_e)$.
+
+The take-home message is that whether a trait evolves adaptively or neutrally depends on the environment (and on population size), not just on the trait. A useful comparison is antibiotic resistance in bacteria. With antibiotics, resistance genes are strongly selected *for*. Without antibiotics they are not neutral: resistance usually has a fitness cost, so it is usually selected *against* (which is why resistance can decline when an antibiotic is used less, although compensatory mutations can reduce the cost). The environment can change both the strength and the direction of selection.
+
+Humans are still evolving. In industrialised societies such as Denmark, almost everyone survives to adulthood, so selection now acts mainly through differences in the number of children people have (and the age at which they have them), rather than through survival. Studies of modern populations have measured selection on traits such as height, age at first birth and cholesterol in exactly this way (e.g. Byars et al. 2010, *PNAS*; Sanjak et al. 2018, *PNAS*).
+
+### Suggested placements
+
+| Trait | Heritable variation? | As foragers | In Denmark today | Where on the drift-selection continuum, and why |
+|---|---|---|---|---|
+| Metabolic efficiency | Yes, partly | Probably important: food was often scarce, so efficient use of energy aided survival and reproduction | Weak, possibly reversed: food is abundant, and very efficient storage may contribute to obesity and type 2 diabetes | Towards selection as foragers; weaker today. *Debatable*: the "thrifty gene" idea has weak direct genetic support |
+| Eyesight acuity | Partly | Probably important for hunting and gathering | Weak: glasses correct poor vision | Towards selection as foragers; near the drift end today |
+| Height | Yes, highly heritable (many genes) | Probably selected, but the optimum depends on environment | Modern studies detect weak selection, mainly through number of children, with differences between the sexes (e.g. Stulp et al. 2015, *Proc. R. Soc. B*) | In the middle: weak but measurable selection |
+| Birth canal (pelvic) shape | Yes | Stabilising selection: the canal must allow birth of a big-brained baby while still allowing efficient walking | Weaker: caesarean section reduces the cost of a mismatch | Selection keeps the shape within limits, but much of the variation between populations fits drift during serial founder effects as humans spread out of Africa (Betti & Manica 2018, *Proc. R. Soc. B*; see the drift lecture). A good example of both acting together |
+| Resistance to bubonic plague | Yes, partly (immune genes) | Weak: plague is a disease of dense agricultural and urban societies, not of small foraging groups | Weak: plague is rare and treatable | Strongly selected in medieval Europe during the Black Death (Klunk et al. 2022, *Nature*, immune genes such as *ERAP2*), not in foragers and not today. A clear example of environment-dependent selection |
+| Eye colour | Yes, strongly (mainly *OCA2*/*HERC2*) | Probably weak, except perhaps through mate choice | Weak | Blue eyes rose quickly in Europe, which suggests some selection (on pigmentation in general, or sexual selection), but drift and "hitch-hiking" with selected pigmentation alleles are possible. *Debatable* |
+| Earwax type (*ABCC11*) | Yes, simple (one DNA change) | Unknown; a selection signal exists, perhaps linked to sweat or body odour | Weak | Some evidence of past selection (Ohashi et al. 2011, *Molecular Biology and Evolution*), but the trait it acted on is uncertain. *Debatable* |
+| Face symmetry | Weakly; much is developmental noise | Possibly via mate choice, as a cue of health | Weak | Mostly not heritable, so it can evolve little by either process |
+
+Examples of traits that **cannot** evolve much because their variation is mostly not heritable: the fine texture of the iris, the detailed ridge minutiae of fingerprints (these differ between identical twins), and much of the variation in face symmetry.
+
+### Gene flow between populations
+
+- Differences that gene flow would erase: neutral variation (most DNA differences, and traits close to the drift end of the continuum). Very few migrants per generation are enough to prevent large neutral differences between populations, which is one reason why most human genetic variation is found *within* populations rather than between them.
+- Differences that local selection can maintain against gene flow: traits where the selection coefficient is large compared with the migration rate. Examples are skin pigmentation (UV intensity differs with latitude), lactase persistence (dairying history), and HbS and Duffy-null (malaria). These traits vary between populations much more than most neutral markers do.
+
+### Discussion questions
+
+* **Traits categorised differently between the two societies.** Eyesight acuity and metabolic efficiency were probably more strongly selected in foraging societies than in Denmark today. Others (e.g. plague resistance) were strongly selected only in particular historical environments. In both settings, though, selection still acts, especially through the number of children.
+* **Traits with little heritable variation.** Iris texture, fingerprint detail and much of face symmetry: they can vary a lot but cannot evolve much by either process.
+* **Gene flow vs local selection.** See above.
+* **Preconceived notions.** Common ones are that "evolution has stopped in humans" (it has not), that "every trait is an adaptation" (many traits drift, and some barely vary heritably), and that "drift only matters in tiny populations" (it acts in every finite population; it dominates whenever $s$ is small compared with $1/(2N_e)$).
+* **Other traits to add.** Sense of smell (many olfactory receptor genes have become non-functional, consistent with relaxed selection and drift), lactase persistence, skin pigmentation, blood groups, alcohol flush reaction, ability to taste bitter compounds (*TAS2R38*), and wisdom teeth are all good candidates with some genetic evidence.
 
 ## Solutions: Lotka-Volterra competition
 
@@ -1052,71 +1120,4 @@ Take-home messages:
 * In a one-off contest with B > C, Hawk is the ESS, even though everyone would do better as Doves.
 * When C > B, the ESS is a mix of Hawks and Doves with Hawk frequency p* = B/C.
 * Repeated interaction with the same partner changes the incentives: escalation is answered in kind, so restraint can pay.
-
-## Solutions: The legend of Ambalappuzha
-
-You can find the completed Excel file [here](https://www.dropbox.com/s/ybe5qhmfltuhoyv/RiceOnAChessboard_completed.xlsx?dl=1).
-
-**How much rice?** The 64 squares hold $2^{64} - 1 = 1.84 \times 10^{19}$ grains of rice. At 25 mg (0.000025 kg) per grain, that is about $4.6 \times 10^{14}$ kg (461 billion tonnes): hundreds of times the world's annual rice production.
-
-**Great tits (optional exercise).** Each female lays about 6 eggs, so she produces about 3 daughters per year. We start with 100 females (one per breeding pair).
-
-- If every female survives every year, and daughters breed the year after they hatch, each female this year becomes herself plus 3 daughters next year: $F_{t+1} = F_t + 3F_t = 4F_t$, so $\lambda = 4$. After 5 years there are $100 \times 4^5 = 102{,}400$ females.
-- If instead adults die after breeding once, only the 3 daughters per female are left next year, so $\lambda = 3$ and after 5 years there are $100 \times 3^5 = 24{,}300$ females.
-
-Either way, numbers explode within a few years. The answer depends strongly on the assumptions, which is the point of the discussion prompts: real great tits have far from 100% survival (most fledglings die in their first year), and density dependence (territories, food, nest sites) stops growth long before these numbers are reached.
-
-Take home messages:
-
-* Exponential/geometric growth is extremely powerful and can very quickly lead to very large numbers.
-* The multiplication rate, $\lambda$, depends on both reproduction and survival, and on assumptions about the life cycle (e.g. whether adults survive to breed again).
-
-## Solutions: From population biology to fitness
-
-The matrix model with a trade-off (increased juvenile survival, but old-adult survival reduced to 0.05) looks like this.
-
-    A3 <- matrix(c(0.00, 4.00, 2.00,
-                   0.11, 0.80, 0.00,
-                   0.00, 0.10, 0.05),
-                byrow = TRUE, nrow = 3)
-
-    eigs(A3)$lambda
-
-We can compare the $\lambda$ value from this model (1.187) with the original one (1.166) to ask whether the large cost is worth paying for the small benefit. It turns out that it is. You can then ask how MUCH cost would be worth bearing, by repeating the exercise and slowly reducing old-adult survival until you reach the original $\lambda$ value.
-
-You should find that the cost can be huge, and still worth bearing. In fact, you could reduce old-adult survival to 0 and it is still worth doing ($\lambda = 1.186$)! You can even reduce old-age adult reproduction without much effect on fitness: with old-adult survival at 0.05 and old-adult reproduction set to 0, $\lambda$ is 1.175, still above the original.
-
-HOWEVER, changes to prime-age adults are much more important. With juvenile survival at 0.11, you can only reduce prime-age adult survival to about 0.76 (from 0.8) before the cost is not worth bearing (population growth rate falls below that of the baseline model).
-
-Thus, old-age costs are "worth it" while prime-age costs are much more important. This finding is central to the evolution of senescence and life span, which you met in the practical *Trade-offs and the declining force of selection* (the declining force of selection).
-
-## Solutions: From plain English to a matrix model
-
-**Matrix.** With stages hatchling (H), juvenile (J) and adult (A), and the census once a year:
-
-- Fertilities (top row): juveniles 1, adults 3 hatchlings per year (the text says these are hatchlings, so we treat them as already counted at the next census).
-- Hatchling to juvenile: 0.20.
-- Juveniles survive with probability 0.70 (30% mortality). Of the survivors, 5% stay juvenile and 95% become adults: stasis $0.70 \times 0.05 = 0.035$, growth $0.70 \times 0.95 = 0.665$.
-- Adults survive with probability 0.82 (18% mortality) and stay adults.
-
-    A_hawk <- matrix(c(0.00, 1.000, 3.00,
-                       0.20, 0.035, 0.00,
-                       0.00, 0.665, 0.82),
-                     byrow = TRUE, nrow = 3)
-    popdemo::eigs(A_hawk, what = "lambda")   # 1.172
-    pr <- popdemo::project(A_hawk, vector = c(1000, 150, 5), time = 20)
-
-**Assumption about juvenile stasis.** "5% of juveniles fail to transition" can also be read as 5% of *all* juveniles: stasis 0.05 and growth 0.65 (so survival is still 0.70). This gives $\lambda = 1.171$, almost the same as 1.172, so the assumption barely matters here. What matters is that you state it, and that stasis plus growth for juveniles does not exceed their survival of 0.70.
-
-**Interpretation.** $\lambda \approx 1.17$, so the population grows by about 17% per year. After the transient period (the starting population is dominated by hatchlings), the projection settles into steady exponential growth, reaching about 14,300 individuals after 20 years.
-
-## Solutions: Continuous traits from discrete genes
-
-*Shape of the histograms.* Both the classroom histogram and the R histogram should be roughly bell-shaped and centred near 47.5 (35 + 12.5). With only 30 individuals the classroom histogram will be lumpy; with 100 it is smoother. With genes alone, every value is a whole number, so the distribution has many classes but is still discrete.
-
-*Does the environment make the trait continuous?* Yes. After adding the environmental effect, the values are no longer whole numbers, and the gaps between the genetic classes are filled in: individuals with the same number of ON genes now differ slightly, and individuals with different numbers of ON genes overlap. This is exactly Neal's point about wheat kernel colour: with little environmental effect there are only a few discrete classes, but environmental (and other small genetic) effects blur them into a continuous distribution.
-
-*Variances.* In the example run shown in the chapter, `var(trait_value)` is 6.29 (expected 6.25) and `var(trait_value_env)` is 8.24 (expected $6.25 + 2.25 = 8.5$). These values vary a lot between runs: with 100 individuals, the genetic variance typically lies between about 4.7 and 8.0, and the phenotypic variance between about 6.3 and 11.1.
-
-*Heritability.* All the genetic variance here is additive, so $h^2 = V_A/V_P = 6.25/8.5 = 0.74$. With an environmental standard deviation of 4, $V_E = 16$, $V_P = 22.25$ and $h^2 = 6.25/22.25 = 0.28$. The genes are exactly the same, but the more variable environment lowers the heritability, just as for the two bird populations in the heritability practical.
 

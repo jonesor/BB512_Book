@@ -1,5 +1,9 @@
 # Building a phylogenetic tree
 
+::: {.homework-box}
+**Extra homework (optional).** Goes with the lecture *Darwin and his theories* (common descent and the tree of life). It is not covered in class.
+:::
+
 ## Background
 
 This activity builds intuition for phylogenetic trees by using discrete morphological characters. It follows the classroom activity by Wojciech Grajkowski, *Building a phylogenetic tree* (Bioscience Explained 6(2)), which you can [download here as a PDF](https://github.com/jonesor/BB512_Book/raw/main/supplemental/Macroevolution_Building_A_Tree/FylTree_ENG_2015.pdf). The PDF includes the organism cards and a worksheet.

@@ -1,5 +1,9 @@
 # Continuous traits from discrete genes
 
+::: {.homework-box}
+**Extra homework (optional).** Goes with the lecture *Polygenic inheritance and quantitative genetics*. A quick warm-up for the practical *Heritability from a linear regression*. It is not covered in class. Answers are in the Solutions part.
+:::
+
 ## Background
 
 This activity uses a fast classroom simulation to show how many small genetic effects, together with some environmental variation, can generate a continuous, approximately normal trait distribution. It connects to the heritability practical in Chapter \@ref(heritability-from-a-linear-regression).

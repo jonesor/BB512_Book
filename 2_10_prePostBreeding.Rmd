@@ -1,5 +1,9 @@
 # Pre- and Post-reproduction census
 
+::: {.homework-box}
+**Extra homework (optional).** Goes with the lecture *Age- and stage-structured models* and follows on from the practical *Matrix population modelling*. It is not covered in class. Answers are in the Solutions part.
+:::
+
 ## Background
 
 Population growth estimates depend on when the census is taken relative to reproduction. A pre-breeding census counts individuals just before reproduction; a post-breeding census counts them just after reproduction. This changes how survival and fertility are represented in the projection matrix, even if the underlying biology is the same.

@@ -21,6 +21,14 @@
   border-radius: 6px 6px 6px 6px;
 }
 
+.homework-box {
+  border: 3px solid #2e7d32;
+  background-color: #f1f8f1;
+  margin:  25px;
+  padding: 10px 10px 5px 10px;
+  border-radius: 6px 6px 6px 6px;
+}
+
 </style>
 
 
