@@ -2,7 +2,7 @@
 
 ## Background
 
-This activity builds intuition for phylogenetic trees by using discrete morphological characters. It follows the classroom activity by Wojciech Grajkowski, *Building a phylogenetic tree* (Bioscience Explained 6(2)), which you can [download here as a PDF](https://github.com/jonesor/BB512_Book/raw/master/supplemental/Macroevolution_Building_A_Tree/FylTree_ENG_2015.pdf). The PDF includes the organism cards and a worksheet.
+This activity builds intuition for phylogenetic trees by using discrete morphological characters. It follows the classroom activity by Wojciech Grajkowski, *Building a phylogenetic tree* (Bioscience Explained 6(2)), which you can [download here as a PDF](https://github.com/jonesor/BB512_Book/raw/main/supplemental/Macroevolution_Building_A_Tree/FylTree_ENG_2015.pdf). The PDF includes the organism cards and a worksheet.
 
 **Reading:** Neal, chapter *Darwin's Evolutionary Theories* (common descent and Darwin's "tree of life").
 
@@ -66,7 +66,7 @@ Now look back at the character table. On this tree, no single change can explain
 
 ## Your task
 
-Use the [PDF](https://github.com/jonesor/BB512_Book/raw/master/supplemental/Macroevolution_Building_A_Tree/FylTree_ENG_2015.pdf) as a guide for the classroom activity.
+Use the [PDF](https://github.com/jonesor/BB512_Book/raw/main/supplemental/Macroevolution_Building_A_Tree/FylTree_ENG_2015.pdf) as a guide for the classroom activity.
 
 1. Pick six organisms (use the cards in the PDF: plants, birds or butterflies, or invent six organisms with clear traits).
 2. Identify seven discrete characters that differ among the organisms (presence/absence, colour class, tail length category, etc.).

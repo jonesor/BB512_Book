@@ -49,7 +49,7 @@ The model makes these assumptions:
 
 - **Constant population size.** Each time you catch a bug, one of the surviving bugs is chosen at random to produce one offspring, so the number of bugs stays at the carrying capacity.
 - **Asexual reproduction.** An offspring has a single parent and inherits its colour genes.
-- **Small mutations.** Each of the offspring's three colour genes can differ slightly from the parent's. The "max-mutation-step" slider controls how big these differences can be.
+- **Small mutations.** Each of the offspring's three colour genes can differ slightly from the parent's. The "max-mutation-step" slider sets the largest possible difference: each gene can move up or down by any amount up to that value, with small changes more likely than large ones.
 - **Offspring appear near their parent**, within the distance set by the "offspring-distance" slider.
 - **Newborn bugs start very small** and grow to full size over time.
 - **Bugs do not move**, and the predator (you) is the only cause of death.

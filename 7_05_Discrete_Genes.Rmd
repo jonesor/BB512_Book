@@ -35,8 +35,8 @@ Expected trait value is `35 + 12.5 = 47.5`. Individual values vary around this b
 
 You will need the instructions and the Excel spreadsheet (download them):
 
-- [Continuous_Traits_From_Discrete_Genes.docx](https://github.com/jonesor/BB512_Book/raw/master/supplemental/Quantitative_Genetics/Continuous_Traits_From_Discrete_Genes.docx) (instructions)
-- [Continuous_Traits_From_Discrete_Genes.xlsx](https://github.com/jonesor/BB512_Book/raw/master/supplemental/Quantitative_Genetics/Continuous_Traits_From_Discrete_Genes.xlsx) (spreadsheet: each time you press Enter, it re-randomises 25 ON/OFF genes and gives the trait value of a new individual)
+- [Continuous_Traits_From_Discrete_Genes.docx](https://github.com/jonesor/BB512_Book/raw/main/supplemental/Quantitative_Genetics/Continuous_Traits_From_Discrete_Genes.docx) (instructions)
+- [Continuous_Traits_From_Discrete_Genes.xlsx](https://github.com/jonesor/BB512_Book/raw/main/supplemental/Quantitative_Genetics/Continuous_Traits_From_Discrete_Genes.xlsx) (spreadsheet: each time you press Enter, it re-randomises 25 ON/OFF genes and gives the trait value of a new individual)
 
 1. **Classroom simulation.** Each student is a gene. In each round, every student flips a coin: heads = ON (1), tails = OFF (0). Count the number of ONs in the class and add it to a baseline of 35. That is the trait value of one individual. Repeat for at least 30 rounds (30 individuals), and record each value. (Alternatively, use the spreadsheet to generate at least 30 individuals.)
 2. Plot a quick histogram of the observed trait values. Describe the shape.
