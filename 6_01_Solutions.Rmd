@@ -789,16 +789,6 @@ The heterozygote frequency is $2pq \approx 2 \times `r hwe$fmt(hwe$p4$p)` \times
 2. Four paths, each with $n = 5$: P1–A–G1–D–P2, P1–A–G2–D–P2, P1–B–G3–C–P2 and P1–B–G4–C–P2. Each contributes $(1/2)^5 = 1/32$, so $F_X = 4/32 = 1/8 = 0.125$. That is twice the value for ordinary first cousins (two paths) and half that for full siblings.
 3. One: P1–S–P2. Every other route between P1 and P2 goes up through S, so it would have to pass through S twice.
 4. $F_X = (1/2)^3 (1 + 1/4) = 5/32 = 0.156$, which is 25% higher than the 1/8 for half-siblings whose father is not inbred. Because S is inbred, the two alleles he can pass on are themselves identical by descent with probability 1/4, so even if P1 and P2 received *different* alleles from S, X can still be autozygous.
-5. `inbreeding_F()` gives 0.125 and 0.15625. Pedigree 2 in R:
-
-```{r inb-sol-ped2, echo = TRUE, eval = FALSE}
-ped2 <- data.frame(
-  id     = c("A", "B", "G1", "G2", "S", "M1", "M2", "P1", "P2", "X"),
-  mother = c(NA, NA, "B", "B", "G2", NA, NA, "M1", "M2", "P2"),
-  father = c(NA, NA, "A", "A", "G1", NA, NA, "S", "S", "P1"))
-inbreeding_F(ped2, "X")
-```
-
 **Part 2**
 
 | $q$ | Unrelated parents | First cousins | Times higher |
@@ -812,7 +802,7 @@ inbreeding_F(ped2, "X")
 
 **Part 3**
 
-1. $F$ passes 1/16 after 3 generations ($F_3 = 0.073$) and 1/4 after 12 generations ($F_{12} = 0.26$).
+1. $F$ passes 1/16 after 3 generations ($F_3 = 1 - (1 - 1/40)^3 = 0.073$) and 1/4 after 12 generations ($F_{12} = 0.26$).
 2. No. Avoiding close relatives only keeps $F$ close to the population-wide value. In a population of $N_e = 20$, everyone soon shares ancestors, so $F$ rises at about $1/(2N_e)$ per generation whoever mates with whom.
 3. Bring in unrelated individuals from other populations (gene flow), and increase $N_e$: breed from as many individuals as possible, keep the sex ratio of breeders even and avoid letting a few individuals produce most of the offspring.
 

@@ -4,14 +4,13 @@
 Learning outcomes. By the end of this practical you should be able to:
 
 - Calculate the inbreeding coefficient, $F$, from a pedigree by path counting, including when the common ancestor is itself inbred.
-- Check a pedigree calculation in R.
 - Calculate genotype frequencies in an inbred population, and explain why inbreeding increases the risk of recessive disorders most when the allele is rare.
 - Explain why small populations become inbred even when close relatives never mate.
 :::
 
 **Reading:** Neal, chapter *Inbreeding*.
 
-This practical follows the lecture on inbreeding and takes about 30 minutes in class. Finish anything you do not complete at home. It uses the same path-counting rule and arrow diagrams as the lecture, but new pedigrees.
+This practical follows the lecture on inbreeding and takes about 30 minutes in class. Finish anything you do not complete at home. It uses the same path-counting rule and arrow diagrams as the lecture, but new pedigrees. You need only pen, paper and a calculator.
 
 ```{r inb-draw, include = FALSE}
 # Draws a pedigree as an arrow diagram (arrows run from parent to offspring).
@@ -50,7 +49,7 @@ where $F_{CA}$ is the inbreeding coefficient of the common ancestor (0 if it is 
 
 ## Part 1: Path counting (15 minutes)
 
-Work out $F$ for individual X in each pedigree **by hand first**. Write down each path, its $n$, and its contribution. Then check your answer in R.
+Work out $F$ for individual X in each pedigree. Write down each path, its $n$, and its contribution, then add them up. Compare your answers with a neighbour's: if you disagree, one of you has missed a path or counted one twice.
 
 ### Pedigree 1: double first cousins
 
@@ -90,40 +89,6 @@ draw_pedigree(ped2_nodes, ped2, highlight = "X")
 3. How many paths connect P1 and P2? (Remember that a path may not pass through the same individual twice, so paths that go above S, through G1 or G2, are not separate paths: they would visit S twice.)
 4. Calculate $F_X$. How much higher is it than for the offspring of half-siblings whose father is not inbred (1/8)?
 
-### Checking in R
-
-The function below calculates $F$ from a pedigree without finding paths at all: it builds up how related every pair of individuals is, generation by generation (the *kinship* method). If it agrees with your path counting, you found all the paths. Each pedigree is a data frame with one row per individual, listing its mother and father (`NA` for founders), with parents listed before their offspring.
-
-```{r inb-function, echo = TRUE}
-inbreeding_F <- function(ped, focal) {
-  ids <- ped$id
-  n <- nrow(ped)
-  k <- matrix(0, n, n, dimnames = list(ids, ids))   # kinship of every pair
-  for (i in seq_len(n)) {
-    parents <- c(ped$mother[i], ped$father[i])
-    known <- !is.na(parents)
-    # kinship of an individual with itself: 1/2 (1 + its own F)
-    k[i, i] <- 0.5 * (1 + if (all(known)) k[parents[1], parents[2]] else 0)
-    # kinship with everyone listed earlier: average kinship of its parents with them
-    if (i > 1) for (j in seq_len(i - 1)) {
-      k[i, j] <- k[j, i] <- 0.5 * sum(k[j, parents[known]])
-    }
-  }
-  focal_row <- ped[ped$id == focal, ]
-  k[focal_row$mother, focal_row$father]   # F of focal = kinship of its parents
-}
-```
-
-```{r inb-check, echo = TRUE, eval = FALSE}
-ped1 <- data.frame(
-  id     = c("G1", "G2", "G3", "G4", "A", "D", "B", "C", "P1", "P2", "X"),
-  mother = c(NA, NA, NA, NA, "G2", "G2", "G4", "G4", "B", "D", "P2"),
-  father = c(NA, NA, NA, NA, "G1", "G1", "G3", "G3", "A", "C", "P1"))
-inbreeding_F(ped1, "X")
-```
-
-5. Check both of your answers. Then enter the pedigree for Pedigree 2 yourself and check it too.
-
 ## Part 2: Inbreeding and recessive disorders (8 minutes)
 
 Inbreeding does not change allele frequencies, but it moves some heterozygotes into the homozygote classes. In a population with inbreeding coefficient $F$, the genotype frequencies are
@@ -132,17 +97,13 @@ Inbreeding does not change allele frequencies, but it moves some heterozygotes i
 |---|---|---|---|
 | Frequency | $p^2 + Fpq$ | $2pq(1 - F)$ | $q^2 + Fpq$ |
 
-Suppose $A_2$ is a recessive allele that causes a disorder. Calculate the risk that a child is affected ($q^2 + Fpq$) when the parents are first cousins ($F = 1/16$), compared with unrelated parents ($F = 0$).
+Suppose $A_2$ is a recessive allele that causes a disorder, so only $A_2A_2$ children are affected. Fill in the table: the risk that a child is affected is $q^2$ if the parents are unrelated ($F = 0$), and $q^2 + Fpq$ if they are first cousins ($F = 1/16$).
 
-```{r inb-risk, echo = TRUE}
-q <- c(0.1, 0.01, 0.001)       # frequency of the recessive allele
-p <- 1 - q
-F <- 1 / 16                    # offspring of first cousins
-risk_unrelated <- q^2
-risk_cousins   <- q^2 + F * p * q
-data.frame(q, risk_unrelated, risk_cousins,
-           times_higher = risk_cousins / risk_unrelated)
-```
+| $q$ | Risk, unrelated parents ($q^2$) | Risk, first cousins ($q^2 + Fpq$) | How many times higher? |
+|---|---|---|---|
+| 0.1 | | | |
+| 0.01 | | | |
+| 0.001 | | | |
 
 1. For which allele frequency does cousin marriage raise the risk most, relative to unrelated parents? Why? (Hint: compare $q^2$ with $Fpq$ when $q$ is very small.)
 2. Even for the rarest allele, is the absolute risk for the child of cousins large or small? Why do medical geneticists still pay attention to it?
@@ -153,7 +114,7 @@ In a small population, everyone is related to everyone else, so mates share ance
 
 $$F_t = 1 - \left(1 - \frac{1}{2N_e}\right)^t.$$
 
-```{r inb-small, fig.cap = "Inbreeding through time in populations of different effective size. The dashed lines show F for the offspring of first cousins (1/16) and of full siblings (1/4).", echo = TRUE}
+```{r inb-small, fig.cap = "Inbreeding through time in populations of different effective size. The dashed lines show F for the offspring of first cousins (1/16) and of full siblings (1/4).", echo = FALSE}
 t <- 0:50
 plot(t, 1 - (1 - 1 / (2 * 20))^t, type = "l", lwd = 2, ylim = c(0, 1),
      xlab = "Generation", ylab = "Inbreeding coefficient, F")
@@ -164,7 +125,7 @@ legend("topleft", legend = c("Ne = 20", "Ne = 50", "Ne = 500"),
        col = c("black", "blue", "darkgreen"), lwd = 2, bty = "n")
 ```
 
-1. A captive population is kept at $N_e = 20$. After how many generations is the average individual as inbred as the child of first cousins? Of full siblings?
+1. A captive population is kept at $N_e = 20$. Use the figure to estimate after how many generations the average individual is as inbred as the child of first cousins, and as the child of full siblings. Check one of your estimates with the formula and a calculator.
 2. The keepers make sure that no relatives closer than second cousins ever mate. Does this stop the population becoming inbred? Explain.
 3. What could the keepers do to slow the increase in $F$? (Think back to the migration practical.)
 
