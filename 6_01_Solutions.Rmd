@@ -781,6 +781,12 @@ The heterozygote frequency is $2pq \approx 2 \times `r hwe$fmt(hwe$p4$p)` \times
 4. **Challenge: how could you simulate a population that is steadily shrinking through time?**
    - Inside the loop, set the population size as a function of the generation number before sampling, for example `pop_size <- round(1000 * 0.95^(i - 1))` for a 5% decline per generation, or `pop_size <- max(10, 1000 - 10 * i)` for a linear decline to a floor of 10. As the population shrinks, drift becomes stronger and the frequency of *A* fluctuates more and more until one allele is fixed.
 
+**Going further: mutation refills the gene pool**
+
+- Without mutation, every population eventually loses one allele and the heterozygosity falls to zero, permanently. With mutation, a population that has lost an allele soon gets it back, and the allele frequencies keep wandering instead of sticking at 0 or 1. The average $H_e$ settles at a balance (about 0.3 with the default settings) where mutation adds variation as fast as drift removes it.
+- Increasing either the mutation rate or the population size increases the average heterozygosity (for example, about 0.18 with a mutation rate of 0.001, and about 0.44 with $N = 200$; the maximum for two alleles is 0.5). The number of new mutations per generation is about $2N \times$ the mutation rate, and drift removes variation more slowly in large populations, so what matters is the product of $N$ and the mutation rate.
+- With realistic mutation rates (around $10^{-5}$), a population of 50 receives a new mutation at a given gene only about once every 1,000 generations, while drift removes variation much faster. So small populations hold little variation at any one gene, and once it is lost, mutation restores it only very slowly. This is one reason why small populations of conservation concern have low genetic diversity.
+
 ## Solutions: Inbreeding
 
 **Part 1**
