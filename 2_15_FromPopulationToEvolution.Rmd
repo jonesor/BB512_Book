@@ -1,5 +1,9 @@
 # From population biology to fitness
 
+::: {.homework-box}
+**Extra homework (optional).** Goes with the lecture *Evolution of life histories* and follows on from the practical *Trade-offs and the declining force of selection*. It is not covered in class. Answers are in the Solutions part.
+:::
+
 The purpose of this practical is to draw clear links between the first part of the course (population biology) and the second part of the course (evolution).
 
 ::: {.do-something}

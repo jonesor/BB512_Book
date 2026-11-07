@@ -1,5 +1,9 @@
 # Estimating Population Growth Rate
 
+::: {.homework-box}
+**Extra homework (optional).** Goes with the lecture *Exponential growth*. Shows how to estimate $\lambda$ from a time series of counts. It is not covered in class. Answers are in the Solutions part.
+:::
+
 ## Background
 
 In population biology, one important measure of population dynamics is the population growth rate (\(\lambda\)), called the multiplication rate in Neal and also known as the finite rate of increase. 

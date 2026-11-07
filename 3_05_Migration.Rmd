@@ -1,0 +1,233 @@
+# Migration and differentiation
+
+::: {.do-something}
+Learning outcomes. By the end of this practical you should be able to:
+
+- Simulate a set of island populations exposed to both genetic drift and gene flow.
+- Calculate $F_{ST}$ from allele frequencies, and explain what it measures.
+- Show that about one migrant per generation is enough to stop drift fixing populations for different alleles, whatever the population size.
+- Explain why gene flow beats drift when the *number* of migrants ($N_e m$) is large, but beats selection only when the *proportion* of migrants ($m$) is similar to or larger than $s$.
+:::
+
+**Reading:** Neal, chapters *Migration, Gene Flow and Differentiation of Populations* and *Genetic Drift and Effective Population Size* (the section on drift and migration).
+
+This practical follows the lecture on migration, gene flow and differentiation. The lecture's worked examples (sweet clover, three islands, the windy island, the stepping-stone barrier) use deterministic models, where nothing happens by chance. Here we combine gene flow with the drift simulation from *The Gene Pool Model*, so you can see the two forces pulling against each other. Each part gives you a block of R code to copy and run; you only need to change the settings at the top.
+
+## Background
+
+### Two steps per generation
+
+Each generation, every island goes through two steps.
+
+1. **Gene flow.** A proportion $m$ of the island's breeders are immigrants. In the island model, immigrants come from the other islands, so they carry the average allele frequency of the other islands, $q_m$. The frequency after immigration is (as in Neal and the lecture)
+$$q' = (1 - m)q + m q_m.$$
+2. **Drift.** The next generation's gene pool is a random sample of $2N$ alleles from the gene pool after immigration, exactly as in *The Gene Pool Model*.
+
+Gene flow pulls the islands towards each other; drift pushes them apart at random.
+
+### Measuring differentiation: $F_{ST}$
+
+$H_S$ is the expected heterozygosity ($2pq$) within each island, averaged over islands. $H_T$ is the expected heterozygosity if all the islands were pooled into one population ($2\bar{p}\bar{q}$, using the mean allele frequency). The more the islands differ, the further $H_S$ falls below $H_T$. The fixation index is
+
+$$F_{ST} = \frac{H_T - H_S}{H_T}.$$
+
+$F_{ST} = 0$ means the islands have identical allele frequencies; $F_{ST} = 1$ means each island is fixed for one allele or the other.
+
+For neutral alleles in Wright's island model (many islands of equal size, at equilibrium between drift and gene flow), $F_{ST}$ depends only on the number of migrants per generation, $N_e m$:
+
+$$F_{ST} \approx \frac{1}{4N_e m + 1}.$$
+
+Our simulated islands are ideal populations, so here $N_e = N$.
+
+::: {.do-something}
+**Before you start, make a prediction.** Two sets of islands each receive one migrant per generation. In the first set each island has 50 individuals (so $m = 0.02$); in the second each has 500 ($m = 0.002$). Which set do you expect to be more differentiated? Write down your answer and a reason.
+:::
+
+## Your task
+
+The practical has three parts (about 40 minutes), plus an optional extension.
+
+1. **Drift with and without gene flow** (10 minutes).
+2. **Measuring $F_{ST}$: numbers versus proportions** (15 minutes).
+3. **Gene flow versus selection: the windy island** (15 minutes).
+
+## Part 1: Drift with and without gene flow
+
+::: {.do-something}
+Copy and paste the code below into R and run it. It simulates a set of islands, applying the two steps (gene flow, then drift) once per generation, plots the allele frequency on every island and prints how many islands have lost one allele by the end. Run it first with `m <- 0` and then with `m <- 0.02` (one migrant per generation), and compare.
+:::
+
+```{r mig-part1-seed, include = FALSE}
+set.seed(401)
+```
+
+```{r mig-part1, fig.cap = "Ten islands of 50 individuals without gene flow ($m = 0$).", echo = TRUE}
+# Simulation settings (try changing these)
+n_pops <- 10     # number of islands
+N      <- 50     # individuals per island
+m      <- 0      # migration rate (proportion of breeders that are immigrants)
+n_gen  <- 200    # number of generations
+
+##########################################################
+# If you are unfamiliar with R, don't edit below this line!
+##########################################################
+
+q <- matrix(NA, nrow = n_gen + 1, ncol = n_pops)   # one column per island
+q[1, ] <- 0.5                                       # all islands start at q = 0.5
+for (t in 1:n_gen) {
+  # Step 1, gene flow: immigrants carry the mean frequency of the OTHER islands
+  q_migrants <- (sum(q[t, ]) - q[t, ]) / (n_pops - 1)
+  q_after_migration <- (1 - m) * q[t, ] + m * q_migrants
+  # Step 2, drift: sample 2N alleles on every island
+  q[t + 1, ] <- rbinom(n_pops, 2 * N, q_after_migration) / (2 * N)
+}
+
+matplot(0:n_gen, q, type = "l", lty = 1, ylim = c(0, 1),
+        xlab = "Generation", ylab = "Frequency of A2 (q)", main = paste("m =", m))
+
+# Number of islands that have lost one allele (q = 0 or 1) by the end
+sum(q[n_gen + 1, ] %in% c(0, 1))
+```
+
+```{r mig-part1b-seed, include = FALSE}
+set.seed(404)
+```
+
+```{r mig-part1b, fig.cap = "The same, with one migrant per generation ($m = 0.02$).", echo = FALSE}
+m <- 0.02
+q <- matrix(NA, nrow = n_gen + 1, ncol = n_pops)   # one column per island
+q[1, ] <- 0.5                                       # all islands start at q = 0.5
+for (t in 1:n_gen) {
+  # Step 1, gene flow: immigrants carry the mean frequency of the OTHER islands
+  q_migrants <- (sum(q[t, ]) - q[t, ]) / (n_pops - 1)
+  q_after_migration <- (1 - m) * q[t, ] + m * q_migrants
+  # Step 2, drift: sample 2N alleles on every island
+  q[t + 1, ] <- rbinom(n_pops, 2 * N, q_after_migration) / (2 * N)
+}
+matplot(0:n_gen, q, type = "l", lty = 1, ylim = c(0, 1),
+        xlab = "Generation", ylab = "Frequency of A2 (q)", main = paste("m =", m))
+sum(q[n_gen + 1, ] %in% c(0, 1))
+```
+
+`rbinom()` does the same job as the `sample()` code in *The Gene Pool Model*: it draws $2N$ alleles at random and counts the $A_2$ alleles, but much faster, which matters when we simulate many islands.
+
+1. Describe the difference between the two runs. How many islands have been fixed for one allele in each?
+2. With $m = 0.02$, an island that loses an allele by chance usually gets it back. Where does it come from?
+3. Run the code a few more times with each setting. Do the islands with gene flow end up *identical*? (Look at how much they still spread out.)
+
+## Part 2: Measuring $F_{ST}$: numbers versus proportions
+
+The code below runs the same simulation with 20 islands for 1000 generations. It takes a few hundred generations for drift and gene flow to reach a balance, so it calculates $F_{ST}$ in every generation, plots it, and prints its average over the last 500 generations together with Wright's prediction.
+
+```{r mig-part2-seed, include = FALSE}
+set.seed(403)
+```
+
+```{r mig-part2, fig.cap = "$F_{ST}$ through time for 20 islands of 50 individuals with one migrant per generation. The dashed line is Wright's prediction, $1/(4N_e m + 1) = 0.2$.", echo = TRUE}
+# Simulation settings (try changing these)
+N      <- 50     # individuals per island
+m      <- 0.02   # migration rate
+n_pops <- 20     # number of islands
+n_gen  <- 1000   # number of generations
+
+##########################################################
+# If you are unfamiliar with R, don't edit below this line!
+##########################################################
+
+q <- matrix(NA, nrow = n_gen + 1, ncol = n_pops)   # one column per island
+q[1, ] <- 0.5                                       # all islands start at q = 0.5
+for (t in 1:n_gen) {
+  # Step 1, gene flow: immigrants carry the mean frequency of the OTHER islands
+  q_migrants <- (sum(q[t, ]) - q[t, ]) / (n_pops - 1)
+  q_after_migration <- (1 - m) * q[t, ] + m * q_migrants
+  # Step 2, drift: sample 2N alleles on every island
+  q[t + 1, ] <- rbinom(n_pops, 2 * N, q_after_migration) / (2 * N)
+}
+
+# F_ST in every generation: (H_T - H_S) / H_T
+H_S <- rowMeans(2 * q * (1 - q))               # mean heterozygosity within islands
+H_T <- 2 * rowMeans(q) * (1 - rowMeans(q))     # heterozygosity of pooled islands
+F_ST <- (H_T - H_S) / H_T                      # NaN if every island is fixed for the same allele
+
+plot(0:n_gen, F_ST, type = "l", ylim = c(0, 1), xlab = "Generation", ylab = "F_ST")
+abline(h = 1 / (4 * N * m + 1), lty = 2)
+
+c(simulated_F_ST = mean(F_ST[(n_gen / 2):n_gen + 1], na.rm = TRUE),
+  wright_prediction = 1 / (4 * N * m + 1))
+```
+
+Now fill in this table by changing `N` and `m` and re-running the chunk. Because of drift, your values will vary a little from run to run (by about ±0.03).
+
+| $N$ | $m$ | $N m$ (migrants per generation) | Simulated $F_{ST}$ | $1/(4Nm + 1)$ |
+|---|---|---|---|---|
+| 50 | 0.002 | | | |
+| 50 | 0.02 | | | |
+| 500 | 0.002 | | | |
+| 500 | 0.02 | | | |
+
+1. Compare the two rows with one migrant per generation. Was your prediction right? Why does the *proportion* of migrants ($m$) not decide $F_{ST}$ on its own? (Hint: what happens to the strength of drift when $N$ is larger?)
+2. How well does Wright's formula predict your simulations? (It is an approximation: it assumes very many islands, and we have 20.)
+3. With one migrant per generation, $F_{ST}$ is about 0.2, not 0. In what sense does one migrant per generation "stop drift"? (Think back to Part 1.)
+4. If you try larger values of $m$ with $N = 50$, you may sometimes see `NaN`. Why? (Hint: the 20 islands together are one finite population, which also drifts.)
+
+## Part 3: Gene flow versus selection: the windy island
+
+Now return to the lecture's windy island: a continent-island model with selection on the island. On the mainland all the insects are winged (the wing allele has frequency $q_m = 1$). On the island, winged insects are blown out to sea, so they have fitness $1 - s$; wings are recessive. Each generation a proportion $m$ of the island's breeders come from the mainland. The island is large, so we can ignore drift. The code applies selection and then gene flow once per generation, starting from an island with no wing alleles, and prints the equilibrium.
+
+```{r mig-windy, echo = TRUE}
+# Simulation settings (try changing these)
+m     <- 0.01    # proportion of the island's breeders that come from the mainland
+s     <- 0.25    # selection against winged (recessive homozygote) insects
+n_gen <- 2000
+
+##########################################################
+# If you are unfamiliar with R, don't edit below this line!
+##########################################################
+
+q <- 0                                  # start with no wing alleles on the island
+for (t in 1:n_gen) {
+  p <- 1 - q
+  q <- (p * q + q^2 * (1 - s)) / (1 - s * q^2)   # selection on the island
+  q <- (1 - m) * q + m * 1                        # gene flow from the mainland (q_m = 1)
+}
+c(q_hat = q, proportion_winged = q^2, lecture_prediction = sqrt(m / s))
+```
+
+1. Check that the simulation agrees with the lecture's result ($\hat{q} = \sqrt{m/s}$). Then change `m` to fill in this table for $s = 0.25$:
+
+| $m$ | $m/s$ | $\hat{q}$ | Proportion winged ($\hat{q}^2$) |
+|---|---|---|---|
+| 0.001 | | | |
+| 0.01 | | | |
+| 0.05 | | | |
+| 0.1 | | | |
+| 0.25 | | | |
+
+2. At what values of $m$, relative to $s$, is local adaptation (winglessness) largely kept, and when is it swamped by gene flow?
+3. Why are there so many more wing alleles ($\hat{q}$) than winged insects ($\hat{q}^2$)?
+4. **Putting it together.** Suppose the island has $N_e = 10{,}000$ and $m = 0.001$. How many migrants arrive per generation? Use Part 2 to predict $F_{ST}$ at neutral loci, and use your table to predict whether the island stays mostly wingless. Explain in two sentences how gene flow can make an island genetically very similar to the mainland at most loci, while it stays locally adapted at the wing locus.
+
+## Optional extension: an island far from the others
+
+Real populations are rarely all equally connected. In the Part 1 code, replace the gene-flow line with these two lines, so that island 1 receives only a tenth as many immigrants as the others:
+
+```{r mig-isolated, echo = TRUE, eval = FALSE}
+  m_each <- rep(m, n_pops); m_each[1] <- m / 10
+  q_after_migration <- (1 - m_each) * q[t, ] + m_each * q_migrants
+```
+
+Run 20 islands with $N = 50$ and $m = 0.02$, and add `lines(0:n_gen, q[, 1], lwd = 3)` after the plot to pick out island 1. How does the isolated island behave compared with the others? Why might isolated populations be a conservation concern?
+
+## Questions
+
+1. Explain the difference between migration and gene flow. Why does the migration rate $m$ only count immigrants that breed?
+2. In the simulation, gene flow happens before drift in each generation. Which force tends to make islands more alike, and which more different?
+3. Two populations have $F_{ST} = 0.5$. Is this population structure caused by drift or by selection? What extra information would you need to tell?
+4. A conservation manager wants to stop small, isolated reserves from losing genetic variation by drift, but does not want to swamp local adaptation. Using your results, how many migrants per generation would you suggest moving between reserves, and why is a *number* rather than a *proportion* the useful target?
+
+## Takeaways
+
+- Gene flow pulls populations towards a common allele frequency; drift pushes them apart at random. The balance between them sets the level of differentiation.
+- At equilibrium in the island model, $F_{ST} \approx 1/(4N_e m + 1)$: differentiation depends on the *number* of migrants per generation, not the proportion. About one migrant per generation is enough to stop drift fixing populations for different alleles, whatever the population size, although it leaves $F_{ST}$ at about 0.2.
+- Gene flow beats selection only when the *proportion* of immigrants, $m$, is similar to or larger than $s$. So a population can receive enough migrants to stay similar at neutral loci and still stay locally adapted at selected loci.
+- Recessive alleles brought in by gene flow are kept mostly in heterozygotes, where selection cannot see them.

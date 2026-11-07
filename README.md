@@ -1,5 +1,10 @@
 ## READ ME
 
+> **Branch `2027-version`** holds changes for the *next* run of BB512
+> (practical schedule, extra-homework tags, new practicals). Do not merge it into
+> `main` until the current year's course and exam are over: every push to `main`
+> republishes the live book.
+
 ### Build workflow
 
 - Build the book: run `_build.sh` (renders the gitbook).

@@ -1,0 +1,112 @@
+# Competition with a removal factor
+
+::: {.do-something}
+Learning outcomes. By the end of this practical you should be able to:
+
+- Add a non-selective removal factor (for example, predation or disturbance) to the Lotka-Volterra competition model.
+- Explain why removal hurts slowly growing species more than fast-growing ones.
+- Show that removal can change the outcome of competition, including allowing two species to coexist when one would otherwise exclude the other.
+:::
+
+**Reading:** Neal, chapter *Interspecific Competition* (the section on the removal factor).
+
+This short practical (about 20 minutes) follows on from *Lotka-Volterra competition*. Use it at the end of the second competition session, once your Excel model is working, or do it at home. It answers part of question 4 in that chapter: can the *growth rates* of the two species affect who wins?
+
+## Background
+
+In the basic Lotka-Volterra model, the outcome of competition depends only on the carrying capacities ($K_1$, $K_2$) and the competition coefficients ($\alpha$, $\beta$). The intrinsic rates of increase ($r_1$, $r_2$) change how fast the outcome is reached, but not what it is.
+
+Gause noticed that this did not match his *Paramecium* experiments, where he removed a tenth of every culture each day when he sampled it. A species that grows quickly recovers from such losses faster than a slow one, so it can gain ground. Slobodkin (1961) added this idea to the model as a **removal factor**, $m$: a proportion of each population removed per unit time, the same for both species (for example, by a predator that does not choose between them, or by disturbance).
+
+$$\frac{dN_1}{dt} = r_1 N_1 \frac{K_1 - N_1 - \alpha N_2}{K_1} - m N_1$$
+
+$$\frac{dN_2}{dt} = r_2 N_2 \frac{K_2 - N_2 - \beta N_1}{K_2} - m N_2$$
+
+Setting $dN_1/dt = 0$ shows that the isocline of species 1 has the same shape as before, but it is pulled in towards the origin: $K_1$ is replaced by an *effective* carrying capacity
+
+$$K_1' = K_1\left(1 - \frac{m}{r_1}\right),$$
+
+and in the same way $K_2' = K_2(1 - m/r_2)$. So the intercepts become $K_1'$, $K_1'/\alpha$, $K_2'$ and $K_2'/\beta$, and you can predict the outcome exactly as before. The key point: **the same removal rate shrinks the effective carrying capacity of a slowly growing species much more than that of a fast-growing one.**
+
+## Your task
+
+We use two species with equal carrying capacities ($K_1 = K_2 = 100$). Species 2 is the better competitor ($\alpha = 1.2$, $\beta = 0.6$), so without removal it excludes species 1. But species 1 grows faster ($r_1 = 1$, $r_2 = 0.3$).
+
+### Part 1: Predict (5 minutes)
+
+1. With $m = 0$, calculate the four isocline intercepts and confirm that species 2 should win.
+2. With $m = 0.1$, calculate $K_1'$ and $K_2'$, and then the four intercepts. Sketch the isoclines. What do you predict now?
+
+### Part 2: Run the model (15 minutes)
+
+::: {.do-something}
+Copy and paste the code below into R and run it. It solves the model, plots both populations through time and on the phase plane (with the isoclines), and prints the final population sizes. Then change `m` to fill in the table below. You may need to install the `deSolve` package first with `install.packages("deSolve")`.
+:::
+
+```{r comp-removal, fig.width = 9, fig.height = 4, fig.cap = "Competition with a removal factor ($m = 0.1$). Left: population sizes through time. Right: the phase plane, with the isoclines (solid: species 1; dashed: species 2) and the trajectory from the starting point (open circle) to the end (filled circle).", echo = TRUE}
+# Model settings (try changing these)
+m      <- 0.1    # removal rate (the same for both species)
+r1     <- 1;    r2   <- 0.3     # intrinsic rates of increase
+K1     <- 100;  K2   <- 100     # carrying capacities
+alpha  <- 1.2   # effect of species 2 on species 1
+beta   <- 0.6   # effect of species 1 on species 2
+N1_start <- 10; N2_start <- 10
+t_max  <- 500
+
+##########################################################
+# If you are unfamiliar with R, don't edit below this line!
+##########################################################
+
+library(deSolve)
+competition <- function(t, N, p) {
+  dN1 <- r1 * N[1] * (K1 - N[1] - alpha * N[2]) / K1 - m * N[1]
+  dN2 <- r2 * N[2] * (K2 - N[2] - beta * N[1]) / K2 - m * N[2]
+  list(c(dN1, dN2))
+}
+out <- ode(y = c(N1_start, N2_start), times = 0:t_max, func = competition, parms = NULL)
+N1 <- out[, 2]; N2 <- out[, 3]
+
+par(mfrow = c(1, 2))
+plot(out[, 1], N1, type = "l", lwd = 2, ylim = c(0, max(K1, K2)),
+     xlab = "Time", ylab = "Population size", main = paste("m =", m))
+lines(out[, 1], N2, lwd = 2, lty = 2)
+legend("topright", legend = c("Species 1", "Species 2"), lty = c(1, 2), lwd = 2, bty = "n")
+
+# Effective carrying capacities and isoclines
+K1_eff <- max(K1 * (1 - m / r1), 0)
+K2_eff <- max(K2 * (1 - m / r2), 0)
+lim <- max(K1, K2, K1 / alpha, K2 / beta)
+plot(N1, N2, type = "l", xlim = c(0, lim), ylim = c(0, lim),
+     xlab = "Species 1 (N1)", ylab = "Species 2 (N2)", main = "Phase plane")
+lines(c(K1_eff, 0), c(0, K1_eff / alpha), lwd = 2)            # species 1 isocline
+lines(c(0, K2_eff / beta), c(K2_eff, 0), lwd = 2, lty = 2)    # species 2 isocline
+points(N1_start, N2_start); points(tail(N1, 1), tail(N2, 1), pch = 19)
+par(mfrow = c(1, 1))
+
+round(c(N1_end = tail(N1, 1), N2_end = tail(N2, 1),
+        K1_effective = K1_eff, K2_effective = K2_eff), 1)
+```
+
+| $m$ | $K_1'$ | $K_2'$ | Final $N_1$ | Final $N_2$ | Outcome |
+|---|---|---|---|---|---|
+| 0 | | | | | |
+| 0.05 | | | | | |
+| 0.1 | | | | | |
+| 0.2 | | | | | |
+
+1. Describe how the outcome changes as the removal rate increases. Was your prediction for $m = 0.1$ right?
+2. Why does removal favour species 1? Use the effective carrying capacities in your answer.
+3. At $m = 0.1$, try a few different starting numbers (for example, `N1_start <- 90; N2_start <- 5`). Does the outcome depend on where you start? Use the phase plane to explain why.
+4. What happens if you make both species grow at the same rate (`r2 <- 1`)? Why?
+
+## Questions
+
+1. Slobodkin grew green hydra (*Hydra viridissima*), which get extra energy from symbiotic algae, together with brown hydra (*H. littoralis*). Without removal, the green hydra always excluded the brown. When he removed a fixed proportion of the newborn animals of both species, the two coexisted. Use this practical to suggest an explanation. What would you need to measure to test it?
+2. A grazer eats two plant species indiscriminately. Before the grazer arrived, the slower-growing plant dominated. What might happen when the grazer arrives, and what might happen if grazing becomes very intense?
+3. Why might a removal factor that is *selective* (for example, a predator that prefers one species) be modelled by giving the two species different values of $m$? How would that change your conclusions?
+
+## Takeaways
+
+- A non-selective removal factor reduces the effective carrying capacity of each species to $K(1 - m/r)$.
+- Because it hurts slow growers more, removal can reverse the outcome of competition, or allow coexistence where one species would otherwise exclude the other.
+- So predation and disturbance can maintain diversity among competitors, and the intrinsic rate of increase, which plays no part in the outcome of the basic model, can matter in nature.

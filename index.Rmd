@@ -91,9 +91,15 @@ Some chapters also have a worked example that walks through the method before yo
 
 If you are short on time, read the Learning outcomes and Takeaways first, then do the Your task section.
 
+Not every chapter is used in class. Those that are not have a green box at the top saying which lecture they go with:
+
+::: {.homework-box}
+**Homework** chapters are part of the course: do them at home after the matching in-class practical. **Extra homework (optional)** chapters give more practice or go a bit further. You do not need to do all of them, but they are good preparation for the exam.
+:::
+
 ## Parts overview
 
-The table below shows how each part of this website maps onto the major skills you will build through the course. Parts 6 and 7 hold the solutions and some optional extras.
+The table below shows how each part of this website maps onto the major skills you will build through the course. Part 6 holds the solutions and Part 7 some background reference material.
 
 | Part | Focus | Skills you build |
 | --- | --- | --- |
@@ -103,7 +109,7 @@ The table below shows how each part of this website maps onto the major skills y
 | 4. Interactions Between Species and Community Structure | Competition and predator-prey models | Evaluate stability and dynamics of interacting species |
 | 5. Animal Behaviour, Altruism and Sexual Selection | Game theory and behaviour | Interpret behaviour through evolutionary payoffs and strategies |
 | 6. Solutions/answers | Answer keys and model results | Check work and compare interpretations |
-| 7. Appendix - extras | Extensions and advanced examples | Apply methods to additional contexts |
+| 7. Appendix | Background reference material | Revisit the maths behind the models |
 
 ## This website and other course materials
 

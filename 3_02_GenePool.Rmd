@@ -37,7 +37,7 @@ The practical has four parts. The **core path** (about 45 minutes) is Parts 1 to
 3. **Many populations** (15 minutes). Repeat the simulation many times to estimate the probability that an allele is fixed or lost, including for a rare (new) allele.
 4. **Bottlenecks** (15 minutes). Modify the code to simulate a population that passes through a period of small size.
 
-Optional: tracking genetic diversity (Part 3), effective population size and founder effects (Part 4), and the Challenge at the end.
+Optional: tracking genetic diversity (Part 3), effective population size and founder effects (Part 4), mutation (after Part 4), and the Challenge at the end.
 
 ::: {.do-something}
 **Before you start, make a prediction.** Imagine two populations, each starting with allele *A* at a frequency of 0.5. One has 20 individuals and the other has 1000. Sketch what you expect the frequency of *A* to look like over 100 generations in each population. Which population do you expect to lose one of its alleles first? Keep your sketch, and compare it with your simulations in Part 2.
@@ -421,6 +421,55 @@ abline(v = 0.5, col = "red", lty = 3)
 * How different are the new populations from the source population, and from each other?
 * How would this change with 50 founders instead of 10?
 * Optional: use `simulate_gene_pool()` with `initial_freq_A` set to one of these founder frequencies to follow a founded population forward in time.
+
+## Going further (optional): mutation refills the gene pool
+
+So far drift has been the only process, and in a small population it eventually removes all variation. In the mutation lecture we described the gene pool as a "leaky tub": mutation pours new alleles in, while drift (and selection) drain them out. This code adds mutation to the gene pool model. Each generation, after the new gene pool has been sampled, every allele has a small chance, `mutation_rate`, of mutating into the other allele (*A* to *a*, or *a* to *A*).
+
+::: {.do-something}
+Copy and paste the code below into R and run it. It follows five populations and prints the average expected heterozygosity ($H_e = 2pq$) over the last half of the run. Run it first with `mutation_rate <- 0` and then with `mutation_rate <- 0.005`.
+:::
+
+```{r genepool-mutation-seed, include = FALSE}
+set.seed(127)
+```
+
+```{r genepool-mutation, fig.cap = "Five populations of 50 individuals with mutation (rate 0.005 per allele per generation). Alleles are lost by drift, but mutation brings them back.", echo = TRUE}
+# Simulation settings (try changing these)
+pop_size      <- 50      # number of individuals
+mutation_rate <- 0.005   # chance that an allele mutates, per generation
+n_gen         <- 1000    # number of generations
+n_pops        <- 5       # number of populations
+
+##########################################################
+# If you are unfamiliar with R, don't edit below this line!
+##########################################################
+
+allele_freq_A <- matrix(NA, nrow = n_gen, ncol = n_pops)
+for (j in 1:n_pops) {
+  gene_pool <- c(rep("A", pop_size), rep("a", pop_size))   # start at 0.5
+  for (i in 1:n_gen) {
+    # Drift: sample 2N alleles, with replacement, as before
+    gene_pool <- sample(gene_pool, 2 * pop_size, replace = TRUE)
+    # Mutation: each allele mutates to the other type with probability mutation_rate
+    mutates <- runif(2 * pop_size) < mutation_rate
+    gene_pool[mutates] <- ifelse(gene_pool[mutates] == "A", "a", "A")
+    allele_freq_A[i, j] <- mean(gene_pool == "A")
+  }
+}
+
+matplot(1:n_gen, allele_freq_A, type = "l", lty = 1, ylim = c(0, 1),
+        xlab = "Generation", ylab = "Frequency of allele A",
+        main = paste("mutation rate =", mutation_rate))
+
+# Average expected heterozygosity (2pq) over the second half of the run
+p <- allele_freq_A[(n_gen / 2 + 1):n_gen, ]
+mean(2 * p * (1 - p))
+```
+
+* Without mutation, what happens to genetic variation in every population? With mutation, can a population that has lost an allele get it back?
+* How does the average heterozygosity change if you increase the mutation rate, or the population size? Why? (Hint: how many new mutations arrive per generation in a population of $N$ individuals?)
+* Real mutation rates per gene are much lower (around $10^{-5}$ or less per generation). What does this suggest about how much variation small populations can hold at a single gene?
 
 ## Conclusions
 

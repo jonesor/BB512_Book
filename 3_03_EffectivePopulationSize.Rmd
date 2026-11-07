@@ -1,0 +1,124 @@
+# Effective population size
+
+::: {.homework-box}
+**Homework.** Goes with the lecture *Genetic drift and effective population size*. The practical session that day is the practice exam, so work through this chapter at home after the lecture (about 30 minutes). Answers are in the Solutions part.
+:::
+
+::: {.do-something}
+Learning outcomes. By the end of this practical you should be able to:
+
+- Explain why the effective population size, $N_e$, is usually smaller than the number of individuals, $N$.
+- Calculate $N_e$ for a population with unequal numbers of breeding males and females, and for a population whose size changes over time.
+- Use a simulation to show that a population with few breeding males loses genetic diversity as fast as a much smaller population.
+- Explain why $N_e$, not $N$, is the number that matters for drift, inbreeding and gene flow.
+:::
+
+**Reading:** Neal, chapter *Genetic Drift and Effective Population Size* (the section on effective population size).
+
+## Background
+
+In *The Gene Pool Model* every individual took part in breeding, every individual had the same chance of passing on its alleles, and the population size never changed. Real populations break all of these rules. Some individuals never breed, some breed far more than others, and numbers go up and down.
+
+Drift depends on how many individuals actually pass on their genes. The **effective population size**, $N_e$, is the size of an idealised population (like the one in *The Gene Pool Model*) that would lose genetic diversity at the same rate as the real population. As in the lecture, expected heterozygosity then falls as
+
+$$H_t = H_0 \left(1 - \frac{1}{2N_e}\right)^t.$$
+
+$N_e$ is almost always smaller than $N$. Neal describes three main reasons.
+
+1. **Unequal numbers of breeding males and females.** If $N_m$ males and $N_f$ females breed, then
+$$N_e = \frac{4 N_m N_f}{N_m + N_f}.$$
+Every offspring has exactly one father and one mother, so half of the next generation's genes come from the males, however few of them there are.
+2. **Population size that changes over time.** Over $t$ generations, $N_e$ is the *harmonic mean* of the population sizes,
+$$\frac{1}{N_e} = \frac{1}{t}\left(\frac{1}{N_1} + \frac{1}{N_2} + \dots + \frac{1}{N_t}\right),$$
+which is dominated by the smallest values.
+3. **Unequal numbers of offspring.** If a few parents produce most of the offspring, most genes in the next generation are copies of the genes of a few parents.
+
+## Part 1: Unequal sex ratio (10 minutes)
+
+**Worked example (Neal).** A reserve holds 100 zebra, of which 50 breed: 10 males, each with a harem of 4 females, and 40 females. $N_e = (4 \times 10 \times 40)/(10 + 40) = 1600/50 = 32$, about a third of the total number of zebra.
+
+Use a calculator for these.
+
+1. A seal colony has 200 breeding females, but only 4 dominant males father all the pups. What is $N_e$? Compare it with the number of breeding adults.
+2. What would $N_e$ be if the same 204 breeding adults were 102 males and 102 females?
+3. A zoo wants to slow the loss of genetic diversity in a captive group of 2 breeding males and 18 breeding females. It can add one more breeding animal. Should it add a male or a female? Calculate $N_e$ for both options.
+
+## Part 2: Population size that changes over time (5 minutes)
+
+4. In the bottleneck simulation in *The Gene Pool Model* (79 generations at $N = 1000$ and 21 at $N = 10$), the arithmetic mean population size is about 790, but the harmonic mean is about 46. Which of these predicts how fast the population loses diversity, and why?
+5. A population of 500 crashes to 20 in one bad winter, and then recovers to 500 straight away. Over five generations (500, 500, 20, 500, 500), what is $N_e$? What would it have been without the crash?
+6. A population is founded by 10 individuals and doubles every generation: 10, 20, 40, 80, 160. What is $N_e$ over these five generations? Which generation contributes most?
+
+## Part 3: Seeing $N_e$ in a simulation (15 minutes)
+
+The simulation below follows 500 populations of 100 diploid individuals, each starting with allele *A* at a frequency of 0.5. Every offspring gets one allele from a randomly chosen father (from the breeding males) and one from a randomly chosen mother (from the breeding females). The code plots the average expected heterozygosity over time, and compares it with the prediction for an ideal population of $N = 100$ and for the $N_e$ given by the sex-ratio formula. It also works out the $N_e$ that matches the simulated loss of heterozygosity, using the equation in the Background.
+
+::: {.do-something}
+Copy and paste the code below into R and run it. It takes a few seconds. Run it first with `n_males <- 50` and `n_females <- 50`, then with `n_males <- 5` and `n_females <- 95`.
+:::
+
+```{r ne-sim-seed, include = FALSE}
+set.seed(501)
+```
+
+```{r ne-sim, fig.cap = "Average expected heterozygosity in 500 populations of 100 individuals with 5 breeding males and 95 breeding females. Dashed: expected for an ideal population of 100. Red: expected for the effective population size from the sex-ratio formula.", echo = TRUE}
+# Simulation settings (try changing these)
+n_males   <- 5      # breeding males
+n_females <- 95     # breeding females
+n_gen     <- 50     # number of generations
+n_pops    <- 500    # number of populations
+
+##########################################################
+# If you are unfamiliar with R, don't edit below this line!
+##########################################################
+
+N <- n_males + n_females
+H <- matrix(NA, nrow = n_gen + 1, ncol = n_pops)   # heterozygosity 2pq
+for (j in 1:n_pops) {
+  # each row is one individual; its two alleles (1 = A, 0 = a). Start: all Aa
+  genotypes <- cbind(rep(1, N), rep(0, N))
+  for (t in 0:n_gen) {
+    p <- mean(genotypes)
+    H[t + 1, j] <- 2 * p * (1 - p)
+    if (t == n_gen) break
+    males   <- genotypes[1:n_males, , drop = FALSE]
+    females <- genotypes[(n_males + 1):N, , drop = FALSE]
+    # each offspring: one random allele from a random father and from a random mother
+    from_father <- males[cbind(sample(n_males, N, replace = TRUE), sample(2, N, replace = TRUE))]
+    from_mother <- females[cbind(sample(n_females, N, replace = TRUE), sample(2, N, replace = TRUE))]
+    genotypes <- cbind(from_father, from_mother)
+  }
+}
+H_mean <- rowMeans(H)
+
+Ne_formula <- 4 * n_males * n_females / (n_males + n_females)
+generation <- 0:n_gen
+plot(generation, H_mean, type = "l", lwd = 2, ylim = c(0, 0.5),
+     xlab = "Generation", ylab = "Average expected heterozygosity (2pq)")
+lines(generation, 0.5 * (1 - 1 / (2 * N))^generation, lty = 2)
+lines(generation, 0.5 * (1 - 1 / (2 * Ne_formula))^generation, col = "red")
+legend("topright", legend = c("Simulation", "Ideal population of N", "Ideal population of Ne (formula)"),
+       lty = c(1, 2, 1), lwd = c(2, 1, 1), col = c("black", "black", "red"), bty = "n")
+
+# The Ne that matches the simulated loss of heterozygosity
+Ne_simulated <- 1 / (2 * (1 - (H_mean[n_gen + 1] / H_mean[1])^(1 / n_gen)))
+round(c(census_N = N, Ne_formula = Ne_formula, Ne_simulated = Ne_simulated), 1)
+```
+
+7. With 50 males and 50 females, how do the census $N$, the formula and the simulation compare?
+8. With 5 males and 95 females, which prediction does the simulated heterozygosity follow? How many generations does it take to lose half of the starting heterozygosity, compared with an ideal population of 100?
+9. Try 10 males and 90 females, and 1 male and 99 females. Why does it matter so much how many males breed, even though females are in the majority?
+
+## Questions
+
+10. Unequal numbers of offspring also reduce $N_e$. Explain why, using the idea that the next generation's gene pool is a sample of the current one. Would $N_e$ be larger or smaller than $N$ if every parent had *exactly* two offspring?
+11. In a small population, the average inbreeding coefficient rises by about $1/(2N_e)$ per generation (you will meet this again in the inbreeding lecture). A conservation manager counts 300 animals in a reserve, but only 20 males and 40 females breed. By roughly how much does $F$ rise each generation, using $N$ and using $N_e$?
+12. Later in the course you will meet $F_{ST} \approx 1/(4N_e m + 1)$, which describes how different populations become when drift and gene flow balance. Why should this formula use $N_e$ rather than the census size?
+13. In many wild populations $N_e$ is only about a tenth of $N$. What does this mean for using population counts to judge how much genetic diversity a population can keep?
+
+## Takeaways
+
+- The effective population size, $N_e$, is the size of an ideal population that would lose genetic diversity at the same rate. It is the $N$ that matters for drift, inbreeding and the balance between drift and gene flow.
+- $N_e$ is usually much smaller than the number of individuals, because of unequal numbers of breeding males and females, changes in population size, and unequal numbers of offspring.
+- With unequal sex ratio, the rarer sex sets the limit: $N_e = 4N_mN_f/(N_m + N_f)$.
+- With changing population size, $N_e$ is the harmonic mean, so short periods of small size have long-lasting effects.

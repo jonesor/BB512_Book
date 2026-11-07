@@ -1,5 +1,9 @@
 # Deeper into Logistic Growth
 
+::: {.homework-box}
+**Homework.** Goes with the lecture *Logistic growth*. Do this at home after the in-class practical *Basic logistic population growth*. Answers are in the Solutions part.
+:::
+
 ## Background
 
 The logistic and exponential growth models are closely related and serve as fundamental tools in understanding population dynamics.
