@@ -781,6 +781,57 @@ The heterozygote frequency is $2pq \approx 2 \times `r hwe$fmt(hwe$p4$p)` \times
 4. **Challenge: how could you simulate a population that is steadily shrinking through time?**
    - Inside the loop, set the population size as a function of the generation number before sampling, for example `pop_size <- round(1000 * 0.95^(i - 1))` for a 5% decline per generation, or `pop_size <- max(10, 1000 - 10 * i)` for a linear decline to a floor of 10. As the population shrinks, drift becomes stronger and the frequency of *A* fluctuates more and more until one allele is fixed.
 
+## Solutions: Migration and differentiation
+
+**Part 1**
+
+1. Without gene flow the islands drift apart, and several (6 of the 10 in the book's run) are fixed for one allele within 200 generations. With one migrant per generation they wander but stay mixed, and none is fixed.
+2. From the immigrants: they carry the average allele frequency of the other islands, which almost always still contain both alleles.
+3. No. They still spread out quite widely (look at the range of the lines in the right-hand panel). Gene flow stops them being *fixed* for different alleles, but drift still makes them differ.
+
+**Part 2**
+
+Typical values (averages of 10 runs; yours will vary by a few hundredths):
+
+| $N$ | $m$ | $N m$ | Simulated $F_{ST}$ | $1/(4Nm + 1)$ |
+|---|---|---|---|---|
+| 50 | 0.002 | 0.1 | about 0.73 | 0.71 |
+| 50 | 0.02 | 1 | about 0.18 | 0.20 |
+| 500 | 0.002 | 1 | about 0.21 | 0.20 |
+| 500 | 0.02 | 10 | about 0.024 | 0.024 |
+
+1. The two sets with one migrant per generation have about the same $F_{ST}$ (about 0.2), even though $m$ differs tenfold. A larger population needs a smaller *proportion* of migrants because drift is weaker in large populations: the random change caused by drift each generation shrinks as $N$ grows (its variance is $pq/2N$), while the pull of gene flow is set by $m$. Halving $m$ and doubling $N$ weakens both forces in step, so the balance between them, and $F_{ST}$, depends on $Nm$.
+2. Very well, within the run-to-run variation.
+3. One migrant per generation keeps both alleles on every island (no island is fixed), so drift cannot make the islands *completely* different, but it still leaves substantial differentiation ($F_{ST} \approx 0.2$).
+4. The 20 islands together form one finite population (here 1000 individuals). Over many generations the whole set drifts too, and eventually every island can be fixed for the same allele. Then $H_T = 0$ and $F_{ST}$ cannot be calculated. You can see the whole set drifting in Part 1: with gene flow, all the islands move up or down together.
+
+**Part 3**
+
+1. The simulation gives exactly $\sqrt{m/s}$ for this life cycle (selection, then immigration, counted after immigration):
+
+| $m$ | $m/s$ | $\hat{q}$ | Proportion winged |
+|---|---|---|---|
+| 0.001 | 0.004 | 0.063 | 0.004 |
+| 0.01 | 0.04 | 0.20 | 0.04 |
+| 0.05 | 0.2 | 0.45 | 0.20 |
+| 0.1 | 0.4 | 0.63 | 0.40 |
+| 0.25 | 1 | 1.00 | 1.00 |
+
+2. When $m$ is much smaller than $s$, most insects stay wingless: local adaptation is kept. As $m$ approaches $s$, the island fills with winged insects, and when $m \geq s$ local adaptation is swamped completely.
+3. Wings are recessive, so most wing alleles are in heterozygotes, which are wingless and are not selected against. Only the homozygotes ($\hat{q}^2$) are winged.
+4. $N_e m = 10{,}000 \times 0.001 = 10$ migrants per generation, so neutral $F_{ST} \approx 1/41 \approx 0.024$: the island is genetically very similar to the mainland at most loci. But $m = 0.001$ is far below $s = 0.25$, so $\hat{q} \approx 0.063$ and only about 0.4% of insects are winged. Drift is beaten by a *number* of migrants, which is large here, whereas selection is beaten only by a *proportion*, which is small here, so the island stays locally adapted at the wing locus.
+
+**Optional extension**
+
+The isolated island drifts much more freely: in repeated runs of 500 generations it is fixed for one allele about half the time, compared with about 7% for the other islands, and on average it differs from the others about twice as much. Isolated populations lose genetic variation by drift and cannot get it back, which reduces their ability to adapt and can expose them to inbreeding.
+
+**Questions**
+
+1. Migration is the movement of individuals; gene flow is the movement of alleles into another population's gene pool. A migrant that does not breed (or whose offspring do not survive to breed) contributes no alleles, so it causes no gene flow, and $m$ counts only immigrants that breed.
+2. Gene flow makes islands more alike; drift makes them more different.
+3. $F_{ST}$ alone cannot tell you. Drift affects all neutral loci in the same way, whereas selection affects particular loci. If $F_{ST}$ is high at this locus but low at most other loci, selection is the likely cause (like the *Hk* locus in the checkerspot example from the lecture); if it is similar across many loci, drift (with little gene flow) is more likely.
+4. About one to a few migrants per generation (for example, one to ten) between reserves. This is a number because the strength of drift depends on population size, so the same number of migrants has the same effect on differentiation in small and large reserves. A few migrants per generation is a small *proportion* of a reasonably large reserve, well below typical selection coefficients, so it should not swamp local adaptation.
+
 ## Solutions: Natural selection at a single locus
 
 **Part 1**

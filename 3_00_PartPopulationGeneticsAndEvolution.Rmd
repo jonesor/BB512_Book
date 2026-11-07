@@ -6,8 +6,9 @@ By the end of Part 3, you should be able to:
 
 - Use Hardy-Weinberg logic to interpret allele and genotype frequencies.
 - Simulate allele frequency change under genetic drift, including bottlenecks and founder effects.
+- Explain how gene flow limits differentiation by drift and by selection, and calculate $F_{ST}$.
 - Model how selection changes allele frequencies, and explain how dominance and heterozygote superiority affect the outcome.
 - Distinguish traits likely to evolve adaptively from those likely to evolve neutrally.
 - Estimate heritability and interpret its evolutionary implications.
 
-**Reading:** Neal, chapters *The Hardy-Weinberg Principle*, *Genetic Drift and Effective Population Size*, *Haploid and Zygotic Selection* and *Polygenic Inheritance and Quantitative Genetics*.
+**Reading:** Neal, chapters *The Hardy-Weinberg Principle*, *Genetic Drift and Effective Population Size*, *Migration, Gene Flow and Differentiation of Populations*, *Haploid and Zygotic Selection* and *Polygenic Inheritance and Quantitative Genetics*.
