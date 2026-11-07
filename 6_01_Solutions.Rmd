@@ -781,6 +781,47 @@ The heterozygote frequency is $2pq \approx 2 \times `r hwe$fmt(hwe$p4$p)` \times
 4. **Challenge: how could you simulate a population that is steadily shrinking through time?**
    - Inside the loop, set the population size as a function of the generation number before sampling, for example `pop_size <- round(1000 * 0.95^(i - 1))` for a 5% decline per generation, or `pop_size <- max(10, 1000 - 10 * i)` for a linear decline to a floor of 10. As the population shrinks, drift becomes stronger and the frequency of *A* fluctuates more and more until one allele is fixed.
 
+## Solutions: Natural selection at a single locus
+
+**Part 1**
+
+1. AS (the carriers) has the highest relative fitness ($W = 1$). Relative fitnesses are AA 0.793, AS 1 and SS 0.163, so $s_1 = 0.207$ (against AA) and $s_2 = 0.837$ (against SS).
+2. Heterozygote superiority.
+
+**Part 2**
+
+1. Generations needed (starting at 0.01, $s = 0.3$):
+
+| Favoured allele | Reaches 50% | Reaches 99% |
+|---|---|---|
+| Dominant | 16 | not by generation 300 (0.988) |
+| Recessive | 244 | 260 |
+| Additive | 25 | 52 |
+| Haploid | 13 | 26 |
+
+2. While the dominant allele is rare, nearly all its copies are in heterozygotes, where it is expressed, so selection sees every copy. When it is common, the remaining copies of the disfavoured recessive allele are almost all in heterozygotes, where they look like the favoured type and are invisible to selection. Only the rare recessive homozygotes ($p^2$) are selected against, so the last few percent take a very long time to remove.
+3. While a recessive allele is rare, nearly all copies are in heterozygotes, where it is not expressed, so selection hardly sees it. Only once homozygotes become reasonably common ($q^2$) does it spread, and then it goes to fixation quickly.
+4. In a haploid every allele is expressed, so there is no hiding in heterozygotes and no dominance. Selection acts on every copy from the start. Bacteria are haploid, with short generations and very large populations, so a resistance mutation can spread within weeks inside a single patient.
+5. 50 generations from 1% to 99% melanic (50% at generation 14). This matches the historical rise of *carbonaria* near Manchester, with about one generation per year, and is one reason a selection coefficient of about 0.3 against *typica* is thought plausible.
+
+**Part 3**
+
+1. All three runs converge on $q \approx 0.198$. $\hat{q} = 0.207/(0.207 + 0.837) = 0.198$.
+2. When HbS is rare, almost all copies are in AS carriers, who have the highest fitness, so it increases. When it is common, many copies are in SS individuals, who have very low fitness, so it decreases. The balance point is the equilibrium.
+3. HbS falls to about 0.076 after 10 generations, 0.022 after 50, 0.011 after 100 and 0.002 after 500. It falls quickly at first but then very slowly, because once HbS is rare almost all copies are in carriers, who are no longer at a disadvantage. This is selection against a recessive.
+
+**Optional extensions**
+
+- Mutation-selection balance: the recessive lethal settles at $q \approx 0.0032 = \sqrt{10^{-5}}$, as predicted. The additive allele settles at about 0.0002 (about $u/(\frac{1}{2}s)$), 16 times lower: an additive harmful allele is exposed to selection in heterozygotes, whereas a recessive one is hidden there.
+- Selection in a small population: about 8 to 10% of the populations fix the new mutation (theory predicts about 9.5%), compared with 1% for a neutral mutation. Even so, about 90% of new favoured mutations are lost, because while there are only one or two copies their fate is decided mostly by chance.
+
+**Questions**
+
+1. $W = 1.2/1.5 = 0.8$, so $s = 0.2$.
+2. Variation in fitness: the genotypes have different values of $W$. Heritability: the genotypes are made by passing on alleles, and each generation's zygotes are formed from the alleles of the survivors.
+3. Once a harmful recessive allele is rare, almost all copies are in heterozygotes, where selection cannot see them (Part 3, question 3). Selection then removes it extremely slowly, while mutation keeps adding new copies, so it settles at a mutation-selection balance ($\hat{q} = \sqrt{u/s}$).
+4. No. When fitnesses are estimated by comparing a sample with HWE expectations calculated from that same sample, the model is forced to give no change in allele frequency at the observed frequency, so the "prediction" is built in. Using two samples avoids this: survival to adulthood is proportional to (adult genotype frequency) / (infant genotype frequency). With Allison's data this gives relative fitnesses of about 0.76 (AA), 1 (AS) and 0.20 (SS), and $\hat{q} \approx 0.23$, close to the observed 0.19 (infants) and 0.20 (adults). This still assumes the infants and adults come from the same population and that selection is the same every year.
+
 ## Solutions: Heritability
 
 *Predictions.* If offspring were on average exactly like their parents, the slope would be 1 ($h^2 = 1$). If offspring were no more like their own parents than like any other bird, the line would be flat (slope 0, $h^2 = 0$). A slope in between means that offspring resemble their parents partly: on average, they lie part of the way between their parents' value and the population mean ("regression towards the mean").

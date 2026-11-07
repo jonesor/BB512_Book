@@ -1,0 +1,241 @@
+# Natural selection at a single locus
+
+::: {.do-something}
+Learning outcomes. By the end of this practical you should be able to:
+
+- Calculate relative fitness ($W$) and selection coefficients ($s$) from genotype counts.
+- Use the zygotic selection model to project allele frequencies through time in R.
+- Explain why a favoured dominant allele spreads quickly at first but slowly near fixation, while a favoured recessive allele does the opposite.
+- Explain why haploid populations respond to selection faster than diploid ones.
+- Predict the equilibrium allele frequency under heterozygote superiority, and explain how it maintains a harmful allele (sickle-cell haemoglobin).
+:::
+
+**Reading:** Neal, chapters *Haploid and Zygotic Selection* and *Applying Zygotic Selection Models to Natural Systems*.
+
+This practical follows the lecture on haploid and zygotic selection. It reuses the idea from *The Gene Pool Model*: each generation we calculate the allele frequency in the next generation from the current one. The difference is that the change is now caused by selection, not by chance, so (until the optional extensions) the model is deterministic: run it twice and you get the same answer.
+
+## Background
+
+### Fitness and selection coefficients
+
+Following Neal, the **absolute fitness** of a genotype is its multiplication rate, $\lambda$: the number of copies in the next generation per copy in this one (or, for one part of the life cycle, its survival or fecundity). Selection depends only on fitness *relative* to other genotypes, so we divide each absolute fitness by the largest one. This gives the **relative fitness**, $W$, which is 1 for the fittest genotype. The **selection coefficient** is $s = 1 - W$: the proportional reduction in fitness compared with the best genotype.
+
+### The zygotic selection model
+
+We follow one locus with two alleles, $A_1$ (frequency $p$) and $A_2$ (frequency $q = 1 - p$), in a large, randomly mating diploid population. Zygotes are formed in Hardy-Weinberg proportions, and then the genotypes survive (or reproduce) according to their relative fitnesses $W_{11}$, $W_{12}$ and $W_{22}$:
+
+| Genotype | $A_1A_1$ | $A_1A_2$ | $A_2A_2$ |
+|---|---|---|---|
+| Frequency in zygotes | $p^2$ | $2pq$ | $q^2$ |
+| Relative fitness | $W_{11}$ | $W_{12}$ | $W_{22}$ |
+| Contribution after selection | $p^2 W_{11}$ | $2pq W_{12}$ | $q^2 W_{22}$ |
+
+The contributions do not add up to 1. Their sum is the **mean fitness** of the population,
+
+$$\bar{W} = p^2 W_{11} + 2pq W_{12} + q^2 W_{22},$$
+
+and the frequency of $A_2$ in the next generation is the share of the $A_2$ alleles among the survivors (half of the heterozygotes' alleles, and all of the $A_2A_2$ homozygotes' alleles):
+
+$$q' = \frac{pq W_{12} + q^2 W_{22}}{\bar{W}}.$$
+
+Neal describes the main cases by how the fitnesses are written:
+
+| Case (Neal) | $W_{11}$ | $W_{12}$ | $W_{22}$ |
+|---|---|---|---|
+| No dominance (additive), selection against $A_2$ | 1 | $1 - \frac{1}{2}s$ | $1 - s$ |
+| Selection against a recessive ($A_2$) | 1 | 1 | $1 - s$ |
+| Selection against a dominant ($A_2$) | 1 | $1 - s$ | $1 - s$ |
+| Heterozygote superiority | $1 - s_1$ | 1 | $1 - s_2$ |
+
+In a **haploid** organism (for example a bacterium) each individual carries one allele, so there are no heterozygotes and no dominance. With fitnesses $W_1$ and $W_2$, the frequency of $A_2$ becomes
+
+$$q' = \frac{q W_2}{p W_1 + q W_2}.$$
+
+::: {.do-something}
+**Before you start, make a prediction.** A new allele that gives a 30% fitness advantage appears at a frequency of 1%. Sketch how you expect its frequency to change over 300 generations if it is (a) dominant, (b) recessive, (c) additive (no dominance) or (d) in a haploid organism. Which will be first to reach 50%? Which will be first to reach 99%? Keep your sketch for Part 2.
+:::
+
+## Your task
+
+The practical has three parts (about 40 minutes), plus optional extensions for the end of the session or at home.
+
+1. **Measuring selection: sickle-cell haemoglobin** (10 minutes). Estimate relative fitnesses from Allison's data.
+2. **Dominance and the speed of selection** (15 minutes). Project a favoured allele through time when it is dominant, recessive, additive or haploid.
+3. **Heterozygote superiority** (15 minutes). Find the equilibrium for sickle-cell haemoglobin, and see what happens when malaria is removed.
+
+Optional: mutation-selection balance, and selection in a small population (selection plus drift).
+
+## Part 1: Measuring selection: sickle-cell haemoglobin
+
+In malarial regions of Africa, the sickle-cell allele (HbS) of the haemoglobin gene is common, even though SS (HbS/HbS) individuals have sickle-cell disease and, without modern treatment, rarely survive to adulthood. AS (HbA/HbS) carriers are partly protected against malaria, which kills many AA (HbA/HbA) children. Allison (1956) counted the genotypes of 654 adults in Tanzania. We take $A_1$ = HbA and $A_2$ = HbS, so $q$ is the frequency of HbS.
+
+| Genotype | AA | AS | SS | Total |
+|---|---|---|---|---|
+| Adults (observed) | 400 | 249 | 5 | 654 |
+
+If the adults had not been through selection, their genotypes would be in Hardy-Weinberg proportions. So we can compare the observed numbers with the numbers expected under HWE. A genotype that is rarer than expected has survived less well.
+
+```{r sel-allison, echo = TRUE}
+observed <- c(AA = 400, AS = 249, SS = 5)
+n <- sum(observed)
+
+# Frequency of HbS among the adults (each AS has one S allele, each SS has two)
+q <- (observed["AS"] + 2 * observed["SS"]) / (2 * n)
+p <- 1 - q
+
+# Expected numbers under Hardy-Weinberg
+expected <- n * c(AA = p^2, AS = 2 * p * q, SS = q^2)
+
+# Observed / expected is proportional to survival
+survival <- observed / expected
+
+# Relative fitness: divide by the largest value
+W <- survival / max(survival)
+round(rbind(observed, expected, survival, W), 3)
+```
+
+1. Which genotype has the highest relative fitness? Write down the selection coefficients against AA ($s_1$) and against SS ($s_2$).
+2. Which of Neal's cases is this?
+
+## Part 2: Dominance and the speed of selection
+
+Here is the zygotic selection model as an R function. It follows the same recipe as the drift simulation: start with a frequency, and use a loop to calculate the frequency in each following generation. `q0` is the starting frequency of $A_2$ and `n_gen` is the number of generations. The result has one value per generation, from generation 0 to generation `n_gen`.
+
+```{r sel-function, echo = TRUE}
+zygotic_selection <- function(q0, W11, W12, W22, n_gen) {
+  q <- rep(NA, n_gen + 1)
+  q[1] <- q0                      # q[1] is generation 0
+  for (t in 2:(n_gen + 1)) {
+    p_t <- 1 - q[t - 1]
+    q_t <- q[t - 1]
+    W_bar <- p_t^2 * W11 + 2 * p_t * q_t * W12 + q_t^2 * W22
+    q[t] <- (p_t * q_t * W12 + q_t^2 * W22) / W_bar
+  }
+  return(q)
+}
+
+haploid_selection <- function(q0, W1, W2, n_gen) {
+  q <- rep(NA, n_gen + 1)
+  q[1] <- q0
+  for (t in 2:(n_gen + 1)) {
+    p_t <- 1 - q[t - 1]
+    q[t] <- q[t - 1] * W2 / (p_t * W1 + q[t - 1] * W2)
+  }
+  return(q)
+}
+```
+
+Our example is industrial melanism in the peppered moth (*Biston betularia*). The melanic *carbonaria* form is caused by a dominant allele, $A_2$ here. In polluted woodland, birds took more of the pale *typica* moths ($A_1A_1$). We set the fitness of *typica* to $1 - s$ with $s = 0.3$, and compare the real case (the favoured allele is dominant) with what would happen if the same allele were recessive or additive, or if the moth were haploid.
+
+```{r sel-dominance, fig.cap = "Spread of a favoured allele ($s = 0.3$) from a starting frequency of 0.01, depending on dominance.", echo = TRUE}
+n_gen <- 300
+s <- 0.3
+dominant  <- zygotic_selection(q0 = 0.01, W11 = 1 - s, W12 = 1,         W22 = 1, n_gen = n_gen)
+recessive <- zygotic_selection(q0 = 0.01, W11 = 1 - s, W12 = 1 - s,     W22 = 1, n_gen = n_gen)
+additive  <- zygotic_selection(q0 = 0.01, W11 = 1 - s, W12 = 1 - s / 2, W22 = 1, n_gen = n_gen)
+haploid   <- haploid_selection(q0 = 0.01, W1 = 1 - s, W2 = 1, n_gen = n_gen)
+
+generation <- 0:n_gen
+matplot(generation, cbind(dominant, recessive, additive, haploid),
+        type = "l", lty = 1, lwd = 2, col = c("black", "red", "blue", "darkgreen"),
+        xlab = "Generation", ylab = "Frequency of the favoured allele",
+        ylim = c(0, 1))
+legend(x = 120, y = 0.75, legend = c("Dominant", "Recessive", "Additive", "Haploid"),
+       col = c("black", "red", "blue", "darkgreen"), lty = 1, lwd = 2)
+```
+
+You can find the first generation in which the frequency reaches a threshold like this (`NA` means it never got there):
+
+```{r sel-thresholds, echo = TRUE}
+first_generation <- function(q, threshold) which(q >= threshold)[1] - 1
+first_generation(dominant, 0.5)
+first_generation(dominant, 0.99)
+```
+
+1. Compare the plot with your prediction. Use `first_generation()` to fill in a table: how many generations does each version take to reach 50% and 99%?
+2. Why does the favoured *dominant* allele spread fastest at first, but then slow down so much that it has not reached 99% by generation 300? (Hint: when the allele is rare, almost all copies are in heterozygotes. When it is common, where are the last copies of the *other* allele hiding?)
+3. Why does the favoured *recessive* allele take so long to get started?
+4. Why is the haploid version the fastest of all? What does this mean for the evolution of antibiotic resistance in bacteria?
+5. Bird predators see phenotypes, not alleles. The *carbonaria* phenotype frequency is $1 - p^2$. Starting with 1% melanic moths ($q_0 = 1 - \sqrt{0.99} \approx 0.005$), how many generations does it take for 99% of the moths to be melanic? (Calculate `1 - (1 - dominant)^2` from a new run.) Compare this with the historical rise of *carbonaria* near Manchester (from about 1% to about 99% in around 50 generations, from the first record in 1848 to about 1895).
+
+## Part 3: Heterozygote superiority
+
+Now use the sickle-cell fitnesses you estimated in Part 1.
+
+```{r sel-sickle, fig.cap = "Frequency of the sickle-cell allele from three starting frequencies, using the relative fitnesses estimated from Allison's data.", echo = TRUE}
+n_gen <- 50
+start_freqs <- c(0.01, 0.5, 0.9)
+runs <- sapply(start_freqs, function(q0)
+  zygotic_selection(q0, W11 = W["AA"], W12 = W["AS"], W22 = W["SS"], n_gen = n_gen))
+
+matplot(0:n_gen, runs, type = "l", lty = 1, lwd = 2,
+        xlab = "Generation", ylab = "Frequency of HbS (q)", ylim = c(0, 1))
+```
+
+With heterozygote superiority, the equilibrium frequency of $A_2$ is
+
+$$\hat{q} = \frac{s_1}{s_1 + s_2}.$$
+
+1. Where do all three runs end up? Calculate $\hat{q}$ from your $s_1$ and $s_2$ and check that it agrees.
+2. Explain in words why the HbS allele cannot be lost (when it is rare) or fixed (when it is common) in a malarial region.
+3. **Remove malaria.** Without malaria, AA and AS people survive equally well, but SS still has its low fitness. Change the fitnesses to `W11 = 1, W12 = 1, W22 = W["SS"]`, start at your $\hat{q}$, and run for 500 generations. How fast does the frequency of HbS fall? Why does it fall so slowly once it is rare? (Which of Neal's cases is this?)
+
+## Optional extensions
+
+### Mutation-selection balance
+
+Harmful recessive alleles are removed by selection, but new copies are created by mutation. Change the loop in `zygotic_selection()` so that, after selection, a proportion $u$ of the $A_1$ alleles mutate to $A_2$. Add the argument `u = 0` to the function and this line at the end of the loop:
+
+```{r sel-mutation, echo = TRUE, eval = FALSE}
+    q[t] <- q[t] + u * (1 - q[t])   # mutation from A1 to A2
+```
+
+Start at `q0 = 0` and run a recessive lethal ($W_{22} = 0$, so $s = 1$) with $u = 10^{-5}$ for 20,000 generations. Neal gives the equilibrium for a recessive allele as $\hat{q} = \sqrt{u/s}$. Does your simulation agree? Why is a harmful *recessive* allele kept at a much higher frequency than a harmful additive one (try $W_{12} = 0.95$, $W_{22} = 0.9$)?
+
+### Selection in a small population
+
+In a real population, selection and drift act together. To add drift, sample $2N$ alleles from the gene pool expected after selection, as in *The Gene Pool Model*. `rbinom()` does this sampling in one step.
+
+```{r sel-drift-seed, include = FALSE}
+set.seed(301)
+```
+
+```{r sel-drift, echo = TRUE}
+selection_drift <- function(N, q0, W11, W12, W22, n_gen) {
+  q <- rep(NA, n_gen + 1)
+  q[1] <- q0
+  for (t in 2:(n_gen + 1)) {
+    p_t <- 1 - q[t - 1]
+    q_t <- q[t - 1]
+    W_bar <- p_t^2 * W11 + 2 * p_t * q_t * W12 + q_t^2 * W22
+    q_expected <- (p_t * q_t * W12 + q_t^2 * W22) / W_bar
+    q[t] <- rbinom(1, 2 * N, q_expected) / (2 * N)   # drift: sample 2N alleles
+  }
+  return(q)
+}
+
+# 500 populations of N = 50, each starting with one copy of a new favoured
+# additive mutation (fitnesses 1, 1.05, 1.1)
+N <- 50
+final_q <- replicate(500, tail(selection_drift(N, q0 = 1 / (2 * N),
+                                               W11 = 1, W12 = 1.05, W22 = 1.1,
+                                               n_gen = 1000), 1))
+mean(final_q == 1)   # proportion of populations where the new allele was fixed
+```
+
+A new *neutral* mutation is fixed with probability $1/(2N)$ = `r 1 / (2 * 50)`. How much more likely is a favoured mutation to be fixed? What happens to most new favoured mutations, and why?
+
+## Questions
+
+1. A genotype's absolute fitness is 1.2 and that of the fittest genotype is 1.5. What are its relative fitness and selection coefficient?
+2. Selection can only change allele frequencies if there is variation in fitness *and* that variation is heritable. Where are these two conditions in the zygotic selection model?
+3. Many harmful alleles in humans are recessive and are carried at low frequency. Use your results from Part 2 and the optional mutation-selection extension to explain why selection has not removed them.
+4. In Part 1 we estimated fitness by comparing adults with their HWE expectations, and in Part 3 the predicted equilibrium came out at exactly the adults' observed frequency of HbS. Is this a successful prediction? (Hint: the fitnesses were estimated from the same adults.) Allison also counted 287 infants (189 AA, 89 AS, 9 SS). How could you use infants and adults together to estimate survival to adulthood instead?
+
+## Takeaways
+
+- Selection acts on genotypes (or phenotypes), but we follow its effect on allele frequencies. Only relative fitness matters.
+- In diploids, dominance controls the *speed* of selection. A favoured dominant allele spreads fast while rare but slowly near fixation, because the last copies of the recessive allele hide in heterozygotes. A favoured recessive allele is slow to start but fast to finish.
+- Haploids have no heterozygotes to hide in, so they respond to selection faster than diploids.
+- Heterozygote superiority keeps both alleles in the population, at $\hat{q} = s_1/(s_1 + s_2)$. This is why the sickle-cell allele is common where malaria is common.
+- Harmful recessive alleles are removed only very slowly once they are rare, and mutation keeps replacing them.
