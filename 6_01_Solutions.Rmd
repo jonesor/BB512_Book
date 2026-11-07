@@ -787,6 +787,33 @@ The heterozygote frequency is $2pq \approx 2 \times `r hwe$fmt(hwe$p4$p)` \times
 - Increasing either the mutation rate or the population size increases the average heterozygosity (for example, about 0.18 with a mutation rate of 0.001, and about 0.44 with $N = 200$; the maximum for two alleles is 0.5). The number of new mutations per generation is about $2N \times$ the mutation rate, and drift removes variation more slowly in large populations, so what matters is the product of $N$ and the mutation rate.
 - With realistic mutation rates (around $10^{-5}$), a population of 50 receives a new mutation at a given gene only about once every 1,000 generations, while drift removes variation much faster. So small populations hold little variation at any one gene, and once it is lost, mutation restores it only very slowly. This is one reason why small populations of conservation concern have low genetic diversity.
 
+## Solutions: Effective population size
+
+**Part 1**
+
+1. $N_e = (4 \times 4 \times 200)/(4 + 200) = 15.7$: fewer than 8% of the 204 breeding adults.
+2. $N_e = (4 \times 102 \times 102)/204 = 204$, equal to the number of breeding adults.
+3. Adding a male: $N_e = (4 \times 3 \times 18)/21 = 10.3$. Adding a female: $N_e = (4 \times 2 \times 19)/21 = 7.2$, no better than now ($N_e = 7.2$ with 2 males and 18 females). Add a male: the rarer sex limits $N_e$, because half of every offspring's genes come from it.
+
+**Part 2**
+
+4. The harmonic mean (about 46). Diversity lost in the bottleneck cannot be regained when the population grows again, so the generations of small size dominate.
+5. $N_e = 5/(4/500 + 1/20) = 86$, compared with 500 without the crash. A single generation at 20 reduces $N_e$ by more than 80%.
+6. $N_e = 5/(1/10 + 1/20 + 1/40 + 1/80 + 1/160) = 25.8$. The first generation (the 10 founders) contributes about half of the sum of $1/N$, so the founders set most of the drift.
+
+**Part 3**
+
+7. All three agree closely (about 100): with equal numbers of breeding males and females, the population behaves like an ideal one.
+8. It follows the red line ($N_e = 19$, simulated about 18). It loses half of its heterozygosity in about 26 generations, compared with about 138 for an ideal population of 100.
+9. With 10 males, $N_e = 36$; with 1 male, $N_e = 4$, and heterozygosity halves in about 7 generations. Every offspring has one father, so half of the next generation's genes come from the males. If there are few males, those genes are a copy of very few genomes, however many females there are.
+
+**Questions**
+
+10. If some parents have many offspring and others none, the next generation's gene pool is drawn mostly from the few successful parents, so it is a smaller sample of the current one and drift is stronger. If every parent had exactly two offspring, every allele would be passed on in a much more even way, and $N_e$ would be *larger* than $N$ (about twice $N$ in theory), which is why captive breeding programmes try to equalise family sizes.
+11. $N_e = (4 \times 20 \times 40)/60 = 53$. Using $N$: $1/600 \approx 0.0017$ per generation. Using $N_e$: $1/107 \approx 0.009$ per generation, more than five times as fast. (Only the 60 breeders pass on genes; the other 240 animals do not affect the next generation's gene pool at all.)
+12. $F_{ST}$ reflects the balance between drift, which pushes populations apart, and gene flow, which pulls them together. The strength of drift is set by $N_e$, so it is the number of effective individuals, and the number of migrants among them ($N_e m$), that matters.
+13. Counts of individuals can greatly overstate how well a population can keep its genetic diversity. A population of 1000 animals may drift and become inbred like one of 100, so genetic management should be based on $N_e$, which means knowing how many individuals breed, the sex ratio, and how population size has varied.
+
 ## Solutions: Inbreeding
 
 **Part 1**

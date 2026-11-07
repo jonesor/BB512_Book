@@ -6,6 +6,7 @@ By the end of Part 3, you should be able to:
 
 - Use Hardy-Weinberg logic to interpret allele and genotype frequencies.
 - Simulate allele frequency change under genetic drift, including bottlenecks and founder effects.
+- Calculate the effective population size, and explain why it is usually smaller than the census size.
 - Calculate the inbreeding coefficient from a pedigree, and explain the consequences of inbreeding.
 - Explain how gene flow limits differentiation by drift and by selection, and calculate $F_{ST}$.
 - Model how selection changes allele frequencies, and explain how dominance and heterozygote superiority affect the outcome.
