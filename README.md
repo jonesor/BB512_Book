@@ -1,6 +1,6 @@
 ## READ ME
 
-> **Branch `practicals-restructure`** holds changes for the *next* run of BB512
+> **Branch `2027-version`** holds changes for the *next* run of BB512
 > (practical schedule, extra-homework tags, new practicals). Do not merge it into
 > `main` until the current year's course and exam are over: every push to `main`
 > republishes the live book.
