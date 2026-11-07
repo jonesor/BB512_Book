@@ -67,35 +67,33 @@ Optional: mutation-selection balance, and selection in a small population (selec
 
 ## Part 1: Measuring selection: sickle-cell haemoglobin
 
-In malarial regions of Africa, the sickle-cell allele (HbS) of the haemoglobin gene is common, even though SS (HbS/HbS) individuals have sickle-cell disease and, without modern treatment, rarely survive to adulthood. AS (HbA/HbS) carriers are partly protected against malaria, which kills many AA (HbA/HbA) children. Allison (1956) counted the genotypes of 654 adults in Tanzania. We take $A_1$ = HbA and $A_2$ = HbS, so $q$ is the frequency of HbS.
+In malarial regions of Africa, the sickle-cell allele (HbS) of the haemoglobin gene is common, even though SS (HbS/HbS) individuals have sickle-cell disease and, without modern treatment, rarely survive to adulthood. AS (HbA/HbS) carriers are protected against severe malaria, which kills many AA (HbA/HbA) children. Allison (1956) counted the genotypes of 287 infants and 654 adults in Tanzania. We take $A_1$ = HbA and $A_2$ = HbS, so $q$ is the frequency of HbS.
 
 | Genotype | AA | AS | SS | Total |
 |---|---|---|---|---|
-| Adults (observed) | 400 | 249 | 5 | 654 |
+| Infants | 189 | 89 | 9 | 287 |
+| Adults | 400 | 249 | 5 | 654 |
 
-If the adults had not been through selection, their genotypes would be in Hardy-Weinberg proportions. So we can compare the observed numbers with the numbers expected under HWE. A genotype that is rarer than expected has survived less well.
+As in the lecture, we compare the *frequency* of each genotype among adults with its frequency among infants. A genotype that makes up a smaller share of the adults than of the infants has survived less well. This ratio is proportional to survival from infancy to adulthood, and dividing by the largest ratio gives relative fitness.
 
 ```{r sel-allison, echo = TRUE}
-observed <- c(AA = 400, AS = 249, SS = 5)
-n <- sum(observed)
+infants <- c(AA = 189, AS = 89, SS = 9)
+adults  <- c(AA = 400, AS = 249, SS = 5)
 
-# Frequency of HbS among the adults (each AS has one S allele, each SS has two)
-q <- (observed["AS"] + 2 * observed["SS"]) / (2 * n)
-p <- 1 - q
+freq_infants <- infants / sum(infants)
+freq_adults  <- adults / sum(adults)
 
-# Expected numbers under Hardy-Weinberg
-expected <- n * c(AA = p^2, AS = 2 * p * q, SS = q^2)
-
-# Observed / expected is proportional to survival
-survival <- observed / expected
+# Survival ratio: adult frequency / infant frequency
+survival <- freq_adults / freq_infants
 
 # Relative fitness: divide by the largest value
 W <- survival / max(survival)
-round(rbind(observed, expected, survival, W), 3)
+round(rbind(freq_infants, freq_adults, survival, W), 3)
 ```
 
 1. Which genotype has the highest relative fitness? Write down the selection coefficients against AA ($s_1$) and against SS ($s_2$).
 2. Which of Neal's cases is this?
+3. This method measures survival only. What assumption are we making about the fertility of the three genotypes? And what are we assuming about the infants and adults, who were sampled at the same time rather than followed through life?
 
 ## Part 2: Dominance and the speed of selection
 
@@ -176,7 +174,7 @@ With heterozygote superiority, the equilibrium frequency of $A_2$ is
 
 $$\hat{q} = \frac{s_1}{s_1 + s_2}.$$
 
-1. Where do all three runs end up? Calculate $\hat{q}$ from your $s_1$ and $s_2$ and check that it agrees.
+1. Where do all three runs end up? Calculate $\hat{q}$ from your $s_1$ and $s_2$ and check that it agrees. Compare it with the frequency of HbS that Allison observed among infants (0.19) and adults (0.20).
 2. Explain in words why the HbS allele cannot be lost (when it is rare) or fixed (when it is common) in a malarial region.
 3. **Remove malaria.** Without malaria, AA and AS people survive equally well, but SS still has its low fitness. Change the fitnesses to `W11 = 1, W12 = 1, W22 = W["SS"]`, start at your $\hat{q}$, and run for 500 generations. How fast does the frequency of HbS fall? Why does it fall so slowly once it is rare? (Which of Neal's cases is this?)
 
@@ -230,7 +228,7 @@ A new *neutral* mutation is fixed with probability $1/(2N)$ = `r 1 / (2 * 50)`. 
 1. A genotype's absolute fitness is 1.2 and that of the fittest genotype is 1.5. What are its relative fitness and selection coefficient?
 2. Selection can only change allele frequencies if there is variation in fitness *and* that variation is heritable. Where are these two conditions in the zygotic selection model?
 3. Many harmful alleles in humans are recessive and are carried at low frequency. Use your results from Part 2 and the optional mutation-selection extension to explain why selection has not removed them.
-4. In Part 1 we estimated fitness by comparing adults with their HWE expectations, and in Part 3 the predicted equilibrium came out at exactly the adults' observed frequency of HbS. Is this a successful prediction? (Hint: the fitnesses were estimated from the same adults.) Allison also counted 287 infants (189 AA, 89 AS, 9 SS). How could you use infants and adults together to estimate survival to adulthood instead?
+4. Another way to estimate fitness is to compare the adults with the numbers expected under Hardy-Weinberg, *calculated from the adults' own allele frequency*. Try it. What equilibrium frequency does it predict, and why is that not a real test of the model? (Hint: compare $\hat{q}$ with the adults' observed frequency of HbS.)
 
 ## Takeaways
 

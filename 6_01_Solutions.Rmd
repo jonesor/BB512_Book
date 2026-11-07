@@ -836,8 +836,9 @@ The isolated island drifts much more freely: in repeated runs of 500 generations
 
 **Part 1**
 
-1. AS (the carriers) has the highest relative fitness ($W = 1$). Relative fitnesses are AA 0.793, AS 1 and SS 0.163, so $s_1 = 0.207$ (against AA) and $s_2 = 0.837$ (against SS).
+1. AS (the carriers) has the highest relative fitness ($W = 1$). Relative fitnesses are AA 0.756, AS 1 and SS 0.199, so $s_1 = 0.244$ (against AA) and $s_2 = 0.801$ (against SS).
 2. Heterozygote superiority.
+3. We assume the three genotypes are equally fertile, so survival differences are the whole of fitness. We also assume that the infants and adults are comparable: that the adults were once infants like these, so the same genotype frequencies applied when they were born and selection has been the same every year.
 
 **Part 2**
 
@@ -857,9 +858,9 @@ The isolated island drifts much more freely: in repeated runs of 500 generations
 
 **Part 3**
 
-1. All three runs converge on $q \approx 0.198$. $\hat{q} = 0.207/(0.207 + 0.837) = 0.198$.
+1. All three runs converge on $q \approx 0.233$. $\hat{q} = 0.244/(0.244 + 0.801) = 0.233$. This is close to the observed 0.19 (infants) to 0.20 (adults); the difference is not surprising, because only survival was measured, and fertility may also differ between genotypes.
 2. When HbS is rare, almost all copies are in AS carriers, who have the highest fitness, so it increases. When it is common, many copies are in SS individuals, who have very low fitness, so it decreases. The balance point is the equilibrium.
-3. HbS falls to about 0.076 after 10 generations, 0.022 after 50, 0.011 after 100 and 0.002 after 500. It falls quickly at first but then very slowly, because once HbS is rare almost all copies are in carriers, who are no longer at a disadvantage. This is selection against a recessive.
+3. Starting from 0.233, HbS falls to about 0.083 after 10 generations, 0.023 after 50, 0.012 after 100 and 0.002 after 500. It falls quickly at first but then very slowly, because once HbS is rare almost all copies are in carriers, who are no longer at a disadvantage. This is selection against a recessive.
 
 **Optional extensions**
 
@@ -871,7 +872,7 @@ The isolated island drifts much more freely: in repeated runs of 500 generations
 1. $W = 1.2/1.5 = 0.8$, so $s = 0.2$.
 2. Variation in fitness: the genotypes have different values of $W$. Heritability: the genotypes are made by passing on alleles, and each generation's zygotes are formed from the alleles of the survivors.
 3. Once a harmful recessive allele is rare, almost all copies are in heterozygotes, where selection cannot see them (Part 3, question 3). Selection then removes it extremely slowly, while mutation keeps adding new copies, so it settles at a mutation-selection balance ($\hat{q} = \sqrt{u/s}$).
-4. No. When fitnesses are estimated by comparing a sample with HWE expectations calculated from that same sample, the model is forced to give no change in allele frequency at the observed frequency, so the "prediction" is built in. Using two samples avoids this: survival to adulthood is proportional to (adult genotype frequency) / (infant genotype frequency). With Allison's data this gives relative fitnesses of about 0.76 (AA), 1 (AS) and 0.20 (SS), and $\hat{q} \approx 0.23$, close to the observed 0.19 (infants) and 0.20 (adults). This still assumes the infants and adults come from the same population and that selection is the same every year.
+4. Comparing the adults with HWE expectations calculated from the adults gives relative fitnesses of about 0.79 (AA), 1 (AS) and 0.16 (SS), and $\hat{q} = 0.198$: exactly the adults' observed frequency of HbS. This is not a test. When fitnesses are estimated against expectations calculated from the same sample, the model is forced to predict no change at that sample's allele frequency, so the "prediction" is built in. Comparing two samples (infants and adults), as in Part 1, avoids this.
 
 ## Solutions: Heritability
 
