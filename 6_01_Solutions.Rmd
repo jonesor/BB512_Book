@@ -817,13 +817,13 @@ The heterozygote frequency is $2pq \approx 2 \times `r hwe$fmt(hwe$p4$p)` \times
 
 **Part 1**
 
-1. Without gene flow the islands drift apart, and several (6 of the 10 in the book's run) are fixed for one allele within 200 generations. With one migrant per generation they wander but stay mixed, and none is fixed.
+1. Without gene flow the islands drift apart, and most are fixed for one allele within 200 generations (6 of the 10 in the book's run; 8 on average). With one migrant per generation they wander but stay mixed: usually no island is fixed at generation 200 (in about 80% of runs), and an island that does lose an allele soon gets it back.
 2. From the immigrants: they carry the average allele frequency of the other islands, which almost always still contain both alleles.
 3. No. They still spread out quite widely (look at the range of the lines in the right-hand panel). Gene flow stops them being *fixed* for different alleles, but drift still makes them differ.
 
 **Part 2**
 
-Typical values (averages of 10 runs; yours will vary by a few hundredths):
+Typical values (averages of 10 runs; a single run will vary by a few hundredths):
 
 | $N$ | $m$ | $N m$ | Simulated $F_{ST}$ | $1/(4Nm + 1)$ |
 |---|---|---|---|---|

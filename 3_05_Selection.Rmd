@@ -12,7 +12,7 @@ Learning outcomes. By the end of this practical you should be able to:
 
 **Reading:** Neal, chapters *Haploid and Zygotic Selection* and *Applying Zygotic Selection Models to Natural Systems*.
 
-This practical follows the lecture on haploid and zygotic selection. It reuses the idea from *The Gene Pool Model*: each generation we calculate the allele frequency in the next generation from the current one. The difference is that the change is now caused by selection, not by chance, so (until the optional extensions) the model is deterministic: run it twice and you get the same answer.
+This practical follows the lecture on haploid and zygotic selection. It reuses the idea from *The Gene Pool Model*: each generation we calculate the allele frequency in the next generation from the current one, using a loop in R. The difference is that the change is now caused by selection, not by chance, so (until the optional extensions) the model is deterministic: run it twice and you get the same answer.
 
 ## Background
 
@@ -74,20 +74,21 @@ In malarial regions of Africa, the sickle-cell allele (HbS) of the haemoglobin g
 | Infants | 189 | 89 | 9 | 287 |
 | Adults | 400 | 249 | 5 | 654 |
 
-As in the lecture, we compare the *frequency* of each genotype among adults with its frequency among infants. A genotype that makes up a smaller share of the adults than of the infants has survived less well. This ratio is proportional to survival from infancy to adulthood, and dividing by the largest ratio gives relative fitness.
+As in the lecture, we compare the *frequency* of each genotype among adults with its frequency among infants. A genotype that makes up a smaller share of the adults than of the infants has survived less well. This ratio is proportional to survival from infancy to adulthood, and dividing by the largest ratio gives relative fitness. You can do this with a calculator, or copy and paste the code below into R.
 
 ```{r sel-allison, echo = TRUE}
+# Allison's counts (try changing these to analyse other data)
 infants <- c(AA = 189, AS = 89, SS = 9)
 adults  <- c(AA = 400, AS = 249, SS = 5)
 
+##########################################################
+# If you are unfamiliar with R, don't edit below this line!
+##########################################################
+
 freq_infants <- infants / sum(infants)
 freq_adults  <- adults / sum(adults)
-
-# Survival ratio: adult frequency / infant frequency
-survival <- freq_adults / freq_infants
-
-# Relative fitness: divide by the largest value
-W <- survival / max(survival)
+survival <- freq_adults / freq_infants     # proportional to survival
+W <- survival / max(survival)              # relative fitness
 round(rbind(freq_infants, freq_adults, survival, W), 3)
 ```
 
@@ -97,77 +98,97 @@ round(rbind(freq_infants, freq_adults, survival, W), 3)
 
 ## Part 2: Dominance and the speed of selection
 
-Here is the zygotic selection model as an R function. It follows the same recipe as the drift simulation: start with a frequency, and use a loop to calculate the frequency in each following generation. `q0` is the starting frequency of $A_2$ and `n_gen` is the number of generations. The result has one value per generation, from generation 0 to generation `n_gen`.
-
-```{r sel-function, echo = TRUE}
-zygotic_selection <- function(q0, W11, W12, W22, n_gen) {
-  q <- rep(NA, n_gen + 1)
-  q[1] <- q0                      # q[1] is generation 0
-  for (t in 2:(n_gen + 1)) {
-    p_t <- 1 - q[t - 1]
-    q_t <- q[t - 1]
-    W_bar <- p_t^2 * W11 + 2 * p_t * q_t * W12 + q_t^2 * W22
-    q[t] <- (p_t * q_t * W12 + q_t^2 * W22) / W_bar
-  }
-  return(q)
-}
-
-haploid_selection <- function(q0, W1, W2, n_gen) {
-  q <- rep(NA, n_gen + 1)
-  q[1] <- q0
-  for (t in 2:(n_gen + 1)) {
-    p_t <- 1 - q[t - 1]
-    q[t] <- q[t - 1] * W2 / (p_t * W1 + q[t - 1] * W2)
-  }
-  return(q)
-}
-```
-
 Our example is industrial melanism in the peppered moth (*Biston betularia*). The melanic *carbonaria* form is caused by a dominant allele, $A_2$ here. In polluted woodland, birds took more of the pale *typica* moths ($A_1A_1$). We set the fitness of *typica* to $1 - s$ with $s = 0.3$, and compare the real case (the favoured allele is dominant) with what would happen if the same allele were recessive or additive, or if the moth were haploid.
 
+::: {.do-something}
+Copy and paste the code below into R and run it. It applies the zygotic selection model (and the haploid model) once per generation, plots the four cases, and prints how many generations each takes to reach 50% and 99%. Then change the settings at the top to answer the questions.
+:::
+
 ```{r sel-dominance, fig.cap = "Spread of a favoured allele ($s = 0.3$) from a starting frequency of 0.01, depending on dominance.", echo = TRUE}
-n_gen <- 300
-s <- 0.3
-dominant  <- zygotic_selection(q0 = 0.01, W11 = 1 - s, W12 = 1,         W22 = 1, n_gen = n_gen)
-recessive <- zygotic_selection(q0 = 0.01, W11 = 1 - s, W12 = 1 - s,     W22 = 1, n_gen = n_gen)
-additive  <- zygotic_selection(q0 = 0.01, W11 = 1 - s, W12 = 1 - s / 2, W22 = 1, n_gen = n_gen)
-haploid   <- haploid_selection(q0 = 0.01, W1 = 1 - s, W2 = 1, n_gen = n_gen)
+# Simulation settings (try changing these)
+s     <- 0.3     # selection coefficient against the A1A1 (typica) moths
+q0    <- 0.01    # starting frequency of the favoured allele, A2
+n_gen <- 300     # number of generations
 
-generation <- 0:n_gen
-matplot(generation, cbind(dominant, recessive, additive, haploid),
-        type = "l", lty = 1, lwd = 2, col = c("black", "red", "blue", "darkgreen"),
-        xlab = "Generation", ylab = "Frequency of the favoured allele",
-        ylim = c(0, 1))
-legend(x = 120, y = 0.75, legend = c("Dominant", "Recessive", "Additive", "Haploid"),
+##########################################################
+# If you are unfamiliar with R, don't edit below this line!
+##########################################################
+
+# Relative fitnesses (W11, W12, W22) for each case
+cases <- list(Dominant  = c(1 - s, 1,         1),
+              Recessive = c(1 - s, 1 - s,     1),
+              Additive  = c(1 - s, 1 - s / 2, 1))
+results <- matrix(NA, nrow = n_gen + 1, ncol = 4,
+                  dimnames = list(NULL, c(names(cases), "Haploid")))
+for (case in names(cases)) {
+  W <- cases[[case]]
+  q <- q0
+  for (t in 1:n_gen) {
+    p <- 1 - q[t]
+    W_bar <- p^2 * W[1] + 2 * p * q[t] * W[2] + q[t]^2 * W[3]
+    q[t + 1] <- (p * q[t] * W[2] + q[t]^2 * W[3]) / W_bar
+  }
+  results[, case] <- q
+}
+# Haploid: fitness 1 - s for A1 and 1 for A2
+q <- q0
+for (t in 1:n_gen) q[t + 1] <- q[t] / ((1 - q[t]) * (1 - s) + q[t])
+results[, "Haploid"] <- q
+
+matplot(0:n_gen, results, type = "l", lty = 1, lwd = 2,
+        col = c("black", "red", "blue", "darkgreen"),
+        xlab = "Generation", ylab = "Frequency of the favoured allele", ylim = c(0, 1))
+legend(x = 0.4 * n_gen, y = 0.75, legend = colnames(results),
        col = c("black", "red", "blue", "darkgreen"), lty = 1, lwd = 2)
+
+# Generations needed to reach 50% and 99% (NA = not reached)
+first_gen <- function(x, threshold) which(x >= threshold)[1] - 1
+data.frame(reaches_50 = apply(results, 2, first_gen, 0.5),
+           reaches_99 = apply(results, 2, first_gen, 0.99))
+
+# Dominant case: generations until 99% of moths are melanic (phenotype 1 - p^2)
+first_gen(1 - (1 - results[, "Dominant"])^2, 0.99)
 ```
 
-You can find the first generation in which the frequency reaches a threshold like this (`NA` means it never got there):
-
-```{r sel-thresholds, echo = TRUE}
-first_generation <- function(q, threshold) which(q >= threshold)[1] - 1
-first_generation(dominant, 0.5)
-first_generation(dominant, 0.99)
-```
-
-1. Compare the plot with your prediction. Use `first_generation()` to fill in a table: how many generations does each version take to reach 50% and 99%?
+1. Compare the plot and the printed table with your prediction. How many generations does each version take to reach 50% and 99%?
 2. Why does the favoured *dominant* allele spread fastest at first, but then slow down so much that it has not reached 99% by generation 300? (Hint: when the allele is rare, almost all copies are in heterozygotes. When it is common, where are the last copies of the *other* allele hiding?)
 3. Why does the favoured *recessive* allele take so long to get started?
 4. Why is the haploid version the fastest of all? What does this mean for the evolution of antibiotic resistance in bacteria?
-5. Bird predators see phenotypes, not alleles. The *carbonaria* phenotype frequency is $1 - p^2$. Starting with 1% melanic moths ($q_0 = 1 - \sqrt{0.99} \approx 0.005$), how many generations does it take for 99% of the moths to be melanic? (Calculate `1 - (1 - dominant)^2` from a new run.) Compare this with the historical rise of *carbonaria* near Manchester (from about 1% to about 99% in around 50 generations, from the first record in 1848 to about 1895).
+5. Bird predators see phenotypes, not alleles. The *carbonaria* phenotype frequency is $1 - p^2$. A population with 1% melanic moths has $q_0 = 1 - \sqrt{0.99} \approx 0.005$. Set `q0 <- 0.005` and read the last line of the output: how many generations does it take for 99% of the moths to be melanic? Compare this with the historical rise of *carbonaria* near Manchester (from about 1% to about 99% in around 50 generations, from the first record in 1848 to about 1895).
 
 ## Part 3: Heterozygote superiority
 
-Now use the sickle-cell fitnesses you estimated in Part 1.
+Now use the sickle-cell fitnesses you estimated in Part 1. The code runs the zygotic selection model from three starting frequencies of HbS.
 
 ```{r sel-sickle, fig.cap = "Frequency of the sickle-cell allele from three starting frequencies, using the relative fitnesses estimated from Allison's data.", echo = TRUE}
+# Simulation settings (try changing these)
+W11 <- 0.756     # AA (relative fitness from Part 1)
+W12 <- 1         # AS
+W22 <- 0.199     # SS
+start_freqs <- c(0.01, 0.5, 0.9)   # starting frequencies of HbS (q)
 n_gen <- 50
-start_freqs <- c(0.01, 0.5, 0.9)
-runs <- sapply(start_freqs, function(q0)
-  zygotic_selection(q0, W11 = W["AA"], W12 = W["AS"], W22 = W["SS"], n_gen = n_gen))
 
-matplot(0:n_gen, runs, type = "l", lty = 1, lwd = 2,
+##########################################################
+# If you are unfamiliar with R, don't edit below this line!
+##########################################################
+
+results <- matrix(NA, nrow = n_gen + 1, ncol = length(start_freqs))
+for (i in seq_along(start_freqs)) {
+  q <- start_freqs[i]
+  for (t in 1:n_gen) {
+    p <- 1 - q[t]
+    W_bar <- p^2 * W11 + 2 * p * q[t] * W12 + q[t]^2 * W22
+    q[t + 1] <- (p * q[t] * W12 + q[t]^2 * W22) / W_bar
+  }
+  results[, i] <- q
+}
+matplot(0:n_gen, results, type = "l", lty = 1, lwd = 2,
         xlab = "Generation", ylab = "Frequency of HbS (q)", ylim = c(0, 1))
+
+# Frequency of HbS at a few generations, for each starting frequency
+gens <- c(10, 50, 100, 500)
+gens <- gens[gens <= n_gen]
+round(results[gens + 1, , drop = FALSE], 4)
 ```
 
 With heterozygote superiority, the equilibrium frequency of $A_2$ is
@@ -176,48 +197,67 @@ $$\hat{q} = \frac{s_1}{s_1 + s_2}.$$
 
 1. Where do all three runs end up? Calculate $\hat{q}$ from your $s_1$ and $s_2$ and check that it agrees. Compare it with the frequency of HbS that Allison observed among infants (0.19) and adults (0.20).
 2. Explain in words why the HbS allele cannot be lost (when it is rare) or fixed (when it is common) in a malarial region.
-3. **Remove malaria.** Without malaria, AA and AS people survive equally well, but SS still has its low fitness. Change the fitnesses to `W11 = 1, W12 = 1, W22 = W["SS"]`, start at your $\hat{q}$, and run for 500 generations. How fast does the frequency of HbS fall? Why does it fall so slowly once it is rare? (Which of Neal's cases is this?)
+3. **Remove malaria.** Without malaria, AA and AS people survive equally well, but SS still has its low fitness. Change the settings to `W11 <- 1`, `W12 <- 1`, `W22 <- 0.199`, `start_freqs <- 0.233` (the equilibrium) and `n_gen <- 500`. How fast does the frequency of HbS fall? Why does it fall so slowly once it is rare? (Which of Neal's cases is this?)
 
 ## Optional extensions
 
 ### Mutation-selection balance
 
-Harmful recessive alleles are removed by selection, but new copies are created by mutation. Change the loop in `zygotic_selection()` so that, after selection, a proportion $u$ of the $A_1$ alleles mutate to $A_2$. Add the argument `u = 0` to the function and this line at the end of the loop:
+Harmful recessive alleles are removed by selection, but new copies are created by mutation. This code adds mutation: after selection, a proportion $u$ of the $A_1$ alleles mutate to $A_2$.
 
 ```{r sel-mutation, echo = TRUE, eval = FALSE}
-    q[t] <- q[t] + u * (1 - q[t])   # mutation from A1 to A2
+# Simulation settings (try changing these)
+W11 <- 1; W12 <- 1; W22 <- 0   # a recessive lethal
+u <- 1e-5                      # mutation rate from A1 to A2
+n_gen <- 20000
+
+##########################################################
+# If you are unfamiliar with R, don't edit below this line!
+##########################################################
+
+q <- 0
+for (t in 1:n_gen) {
+  p <- 1 - q
+  W_bar <- p^2 * W11 + 2 * p * q * W12 + q^2 * W22
+  q <- (p * q * W12 + q^2 * W22) / W_bar   # selection
+  q <- q + u * (1 - q)                     # mutation
+}
+q   # frequency of A2 at the end
 ```
 
-Start at `q0 = 0` and run a recessive lethal ($W_{22} = 0$, so $s = 1$) with $u = 10^{-5}$ for 20,000 generations. Neal gives the equilibrium for a recessive allele as $\hat{q} = \sqrt{u/s}$. Does your simulation agree? Why is a harmful *recessive* allele kept at a much higher frequency than a harmful additive one (try $W_{12} = 0.95$, $W_{22} = 0.9$)?
+Neal gives the equilibrium for a recessive allele as $\hat{q} = \sqrt{u/s}$. Does the simulation agree? Why is a harmful *recessive* allele kept at a much higher frequency than a harmful additive one (try `W12 <- 0.95; W22 <- 0.9`)?
 
 ### Selection in a small population
 
-In a real population, selection and drift act together. To add drift, sample $2N$ alleles from the gene pool expected after selection, as in *The Gene Pool Model*. `rbinom()` does this sampling in one step.
+In a real population, selection and drift act together. This code adds drift as in *The Gene Pool Model*: each generation, the next gene pool is a random sample of $2N$ alleles from the gene pool expected after selection. It follows many small populations, each starting with one copy of a new favoured mutation, and reports how many fix it.
 
 ```{r sel-drift-seed, include = FALSE}
 set.seed(301)
 ```
 
 ```{r sel-drift, echo = TRUE}
-selection_drift <- function(N, q0, W11, W12, W22, n_gen) {
-  q <- rep(NA, n_gen + 1)
-  q[1] <- q0
-  for (t in 2:(n_gen + 1)) {
-    p_t <- 1 - q[t - 1]
-    q_t <- q[t - 1]
-    W_bar <- p_t^2 * W11 + 2 * p_t * q_t * W12 + q_t^2 * W22
-    q_expected <- (p_t * q_t * W12 + q_t^2 * W22) / W_bar
-    q[t] <- rbinom(1, 2 * N, q_expected) / (2 * N)   # drift: sample 2N alleles
-  }
-  return(q)
-}
+# Simulation settings (try changing these)
+N <- 50                          # population size
+W11 <- 1; W12 <- 1.05; W22 <- 1.1   # a new favoured additive mutation (A2)
+n_pops <- 500                    # number of populations
+n_gen <- 1000
 
-# 500 populations of N = 50, each starting with one copy of a new favoured
-# additive mutation (fitnesses 1, 1.05, 1.1)
-N <- 50
-final_q <- replicate(500, tail(selection_drift(N, q0 = 1 / (2 * N),
-                                               W11 = 1, W12 = 1.05, W22 = 1.1,
-                                               n_gen = 1000), 1))
+##########################################################
+# If you are unfamiliar with R, don't edit below this line!
+##########################################################
+
+final_q <- rep(NA, n_pops)
+for (i in 1:n_pops) {
+  q <- 1 / (2 * N)                 # one copy of the new mutation
+  for (t in 1:n_gen) {
+    p <- 1 - q
+    W_bar <- p^2 * W11 + 2 * p * q * W12 + q^2 * W22
+    q_expected <- (p * q * W12 + q^2 * W22) / W_bar
+    q <- rbinom(1, 2 * N, q_expected) / (2 * N)   # drift: sample 2N alleles
+    if (q == 0 || q == 1) break
+  }
+  final_q[i] <- q
+}
 mean(final_q == 1)   # proportion of populations where the new allele was fixed
 ```
 
