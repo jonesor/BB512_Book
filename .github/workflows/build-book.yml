@@ -35,7 +35,7 @@ jobs:
       - name: Setup Pandoc
         uses: r-lib/actions/setup-pandoc@v2
         with:
-          pandoc-version: "latest"
+          pandoc-version: "3.6.3"
 
       - name: Ensure Pandoc On PATH For R
         run: |
