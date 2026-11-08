@@ -63,7 +63,8 @@ jobs:
             libtiff5-dev \
             libgit2-dev \
             libglpk-dev \
-            libuv1-dev
+            libuv1-dev \
+            libnode-dev
 
       - name: Install R packages
         run: |
