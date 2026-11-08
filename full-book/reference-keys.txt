@@ -1,6 +1,7 @@
 fig:colours
 fig:stochGrowthRate
 fig:stochProjection
+fig:plotmatrix
 fig:LTRE3
 fig:bigbird
 fig:hardyweinberg
