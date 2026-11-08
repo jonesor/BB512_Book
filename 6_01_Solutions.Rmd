@@ -418,8 +418,8 @@ The largest difference in an element is in fertility, but the largest contributi
 
 **Changing one element of `A_treat`.** For example:
 
-- Treatment fertility 1.8 instead of 1.3: the fertility difference halves (−0.5 instead of −1.0), so the fertility contribution roughly halves, to −0.098. The maturation and adult survival contributions change slightly (−0.345 and +0.065), because the midpoint matrix, and therefore the sensitivities, have changed. The sum is −0.378 (observed Δλ = −0.380).
-- Treatment maturation 0.4 instead of 0.2: the maturation difference falls from −0.3 to −0.1, so its contribution drops to −0.096, and fertility (−0.239) becomes the largest contribution. The sum is −0.270 (observed Δλ = −0.270).
+- Treatment fertility 1.8 instead of 1.3: the fertility difference halves (−0.5 instead of −1.0), so the fertility contribution roughly halves, to −0.098. The maturation and adult survival contributions change slightly (−0.345 and +0.065), because the midpoint matrix, and therefore the sensitivities, have changed. The sum is −0.378 (observed $\Delta\lambda$ = −0.380).
+- Treatment maturation 0.4 instead of 0.2: the maturation difference falls from −0.3 to −0.1, so its contribution drops to −0.096, and fertility (−0.239) becomes the largest contribution. The sum is −0.270 (observed $\Delta\lambda$ = −0.270).
 
 In both cases the element you changed shows the biggest change in contribution, and the change can be explained as (new difference) × (sensitivity), with small knock-on changes in the other contributions because the sensitivities are recalculated at the new midpoint matrix.
 

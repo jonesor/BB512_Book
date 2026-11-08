@@ -13,10 +13,12 @@ output:
     includes:
       in_header: extras.css
   bookdown::pdf_book:
+    latex_engine: xelatex
     includes:
       in_header: preamble.tex
     papersize: a4
   pdf_document:
+    latex_engine: xelatex
     includes:
       in_header: preamble.tex
 classoption: a4paper

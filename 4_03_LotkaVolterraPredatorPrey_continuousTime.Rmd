@@ -138,12 +138,17 @@ abline(h = parameters["R"] / parameters["a"], col = "blue", lwd = 2, lty = 2)
 # Add point for initial population sizes
 points(output_df$V[1], output_df$C[1], pch = 19, col = "black", cex = 1.5)
 
-# Add an arrow to the end of the line
-arrows(x0 = output_df$V[nrow(output_df) - 1], 
-       y0 = output_df$C[nrow(output_df) - 1], 
-       x1 = output_df$V[nrow(output_df)], 
-       y1 = output_df$C[nrow(output_df)], 
-       col = "purple", length = 0.1, lwd = 2)
+# Add a direction arrow only if the final step has visible movement.
+n <- nrow(output_df)
+step_inches <- c(
+  diff(grconvertX(output_df$V[c(n - 1, n)], from = "user", to = "inches")),
+  diff(grconvertY(output_df$C[c(n - 1, n)], from = "user", to = "inches"))
+)
+if (all(is.finite(step_inches)) && sqrt(sum(step_inches^2)) > 1e-3) {
+  arrows(x0 = output_df$V[n - 1], y0 = output_df$C[n - 1],
+         x1 = output_df$V[n], y1 = output_df$C[n],
+         col = "purple", length = 0.1, lwd = 2)
+}
 ```
 
 ### Questions

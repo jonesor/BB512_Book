@@ -17,8 +17,8 @@ r_m <- uniroot(function(r) el(r) - 1, c(0, 3))$root
 
 d <- data.frame(r = seq(0, 1.6, length.out = 400)); d$s <- el(d$r)
 marks <- data.frame(r = c(0, r_c, r_m), s = el(c(0, r_c, r_m)),
-                    lab = c(sprintf("italic(r) == 0*':'~~sum~'='~italic(R)[0] == %.1f", R0),
-                            sprintf("italic(r)[c] == ln(italic(R)[0])/italic(T) == %.3f", r_c),
+                    lab = c(sprintf("italic(r) == 0*':'~~sum~'='~italic(R)[0]~'='~%.1f", R0),
+                            sprintf("italic(r)[c] == ln(italic(R)[0])/italic(T)~'='~%.3f", r_c),
                             sprintf("exact~italic(r)[m] == %.3f", r_m)),
                     col = c("g", "a", "e"))
 
