@@ -20,7 +20,7 @@ The model suggests that stable coexistence is possible if each species limits it
 ::: {.do-something}
 Learning outcomes:
 
-- Competence in constructing an Excel-based population model.
+- Build a discrete-time competition model in Excel and use it to test predictions.
 - Understanding how the Lotka-Volterra competition model works.
 - Understanding the competition coefficients $\alpha$ and $\beta$, and using the isocline intercepts ($K_1$, $K_1/\alpha$, $K_2$, $K_2/\beta$) to predict the outcome of competition.
 
@@ -114,10 +114,10 @@ This PDF walks you through the creation of an Excel spreadsheet exploring inters
 - The spreadsheet is a **discrete-time** version of the model: $N_{1,t+1} = N_{1,t} + R_1 N_{1,t}(K_1 - N_{1,t} - \alpha N_{2,t})/K_1$, and the same for species 2. Its $R$ is a rate per time step, not Neal's continuous $r$. Keep $R_1$ and $R_2$ at 1 or below, so that you see the Lotka-Volterra behaviour rather than the oscillations and chaos of the discrete logistic model (compare *Deeper into logistic growth*).
 :::
 
-* Create the Excel spreadsheet by following the instructions in the PDF.
+* Create the Excel spreadsheet by following the instructions in the PDF, with one change: fill the time column and the two formula columns down to $t = 200$ (row 211), not only to row 51, and include all 200 time steps in both graphs. Some parameter sets take more than 50 time steps to settle, or to move away from an unstable equilibrium.
 
 ::: {.do-something}
-**Note on the PDF:** the labels added to Figure 5 have the subscripts the wrong way round. The correct isocline intercepts are $K_1$ and $K_1/\alpha_{12}$ for species 1, and $K_2$ and $K_2/\alpha_{21}$ for species 2 (in Neal's notation, $K_1$, $K_1/\alpha$, $K_2$ and $K_2/\beta$; see the Background above).
+**Note on the PDF:** in older copies of the PDF, the typed note under Figure 5 has the subscripts the wrong way round. The correct isocline intercepts are $K_1$ and $K_1/\alpha_{12}$ for species 1, and $K_2$ and $K_2/\alpha_{21}$ for species 2 (in Neal's notation, $K_1$, $K_1/\alpha$, $K_2$ and $K_2/\beta$; see the Background above).
 :::
 
 * In the first session, build the sheet and check it: with the PDF's default values ($R_1 = R_2 = 1$, $K_1 = 1200$, $\alpha = 0.75$, $K_2 = 1000$, $\beta = 0.5$, starting at $N_1 = 100$, $N_2 = 50$) the two species should settle at $N_1 = 720$, $N_2 = 640$. Label the four isocline intercepts on your graph.
