@@ -22,7 +22,8 @@ render_lecture <- local({
     coevolution = c("ggplot2", "ragg"),
     sexual_selection = c("ggplot2", "ragg", "systemfonts"),
     behaviour_altruism = c("ggplot2", "scales", "ragg", "patchwork"),
-    short_answers = c("ggplot2", "ragg")
+    short_answers = c("ggplot2", "ragg"),
+    lv_competition = c("ggplot2", "ragg", "patchwork")
   )
 
   function(lecture, script = NULL) {

@@ -30,11 +30,9 @@ render_lecture("age_stage_structured_models")
 render_lecture("life_histories")
 render_lecture("coevolution")
 render_lecture("sexual_selection")
-<<<<<<< HEAD
 render_lecture("short_answers")
-=======
 render_lecture("behaviour_altruism")
->>>>>>> f37e780dadf039a1fb37608619a0d7460fe118a7
+render_lecture("lv_competition")
 
 # Generate all lectures
 render_lectures()
@@ -84,11 +82,7 @@ install.packages(c("ggplot2", "scales", "ragg", "patchwork",
 ```
 
 Hardy-Weinberg uses `ggplot2`, `ragg`, `patchwork`, `dplyr`, `tibble` and
-<<<<<<< HEAD
-`systemfonts`. Natural selection uses `ggplot2`, `ragg` and `patchwork`. Writing short answers uses `ggplot2` and `ragg`. The other lectures use `ggplot2`, `scales` and `ragg`;
-=======
-`systemfonts`. Natural selection uses `ggplot2`, `ragg` and `patchwork`. Coevolution uses `ggplot2` and `ragg`. The other lectures use `ggplot2`, `scales` and `ragg`;
->>>>>>> f37e780dadf039a1fb37608619a0d7460fe118a7
+`systemfonts`. Natural selection uses `ggplot2`, `ragg` and `patchwork`. Writing short answers and coevolution use `ggplot2` and `ragg`. Lotka-Volterra competition (practical) uses `ggplot2`, `ragg` and `patchwork`. The other lectures use `ggplot2`, `scales` and `ragg`;
 inbreeding and haploid/zygotic selection also use `patchwork`.
 Use Avenir Next for the intended lecture typography.
 
@@ -105,12 +99,10 @@ Use Avenir Next for the intended lecture typography.
 | Life tables and age-structured population growth | `life_tables/figures/` | PNG |
 | Age and stage-structured models | `age_stage_structured_models/figures/` | PNG |
 | Evolution of life histories | `life_histories/figures/` | PNG |
-<<<<<<< HEAD
 | Writing short answers (practical) | `short_answers/figures/` | PNG |
-=======
 | Coevolution | `coevolution/figures/` | PNG |
 | Behaviour, altruism and limiting aggression | `behaviour_altruism/figures/` | PNG |
->>>>>>> f37e780dadf039a1fb37608619a0d7460fe118a7
+| Lotka-Volterra competition (practical) | `lv_competition/figures/` | PNG |
 
 Existing names, dimensions and styling are preserved, including the
 Hardy-Weinberg figure referenced by the book. Rendering overwrites matching
