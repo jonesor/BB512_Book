@@ -95,7 +95,15 @@ You are provided with two datasets for wing length (mm) in a small songbird. Eac
 
 [Data set 2](https://www.dropbox.com/scl/fi/yoy0x7kczvlr1eku5057m/heritability_pop2.csv?rlkey=30hta1di8v6w93ghbhq09dlbm&dl=0)
 
-1) Download the first data set and import it into R (RStudio). The starter code assumes you have saved it in a folder called `data` inside your project; change the path if you saved it somewhere else.
+The same two files are also on itslearning, in the plan for the *Polygenic Inheritance and Quantitative Genetics* lecture, as CSV files and as Excel files (`.xlsx`). Use whichever you prefer.
+
+1) Download the first data set and import it into RStudio:
+    a) Download `heritability_pop1.csv` (or `heritability_pop1.xlsx`) from the link above or from itslearning. On the Dropbox page, click **Download**. Save the file somewhere you will find it again, for example a folder for this course, and make a note of where it is.
+    b) In RStudio, go to the **Environment** pane (top right) and click **Import Dataset**. Choose **From Text (readr)...** for the CSV file, or **From Excel...** for the Excel file. (If RStudio asks to install a package, click **Yes**.)
+    c) Click **Browse...**, find the file you downloaded and click **Open**. The preview should show two columns, `Midparent_value` and `Offspring_value`.
+    d) Under **Import Options**, change **Name** to `pop_1`. The starter code below uses this name.
+    e) Click **Import**. `pop_1` now appears in the Environment pane, and the data open in a viewer tab.
+    f) Copy the code from the **Code Preview** box into your script, so you can import the data again next time without clicking through the menus.
 2) Plot the data, with mid-parent value on the x-axis and offspring value on the y-axis.
 3) Fit a linear regression model of the form `y ~ x`.
 4) Look at the slope of the relationship: this is your estimate of the heritability. Use `confint()` to find its 95% confidence interval.
@@ -103,7 +111,9 @@ You are provided with two datasets for wing length (mm) in a small songbird. Eac
 Starter code in R:
 
 ```{r heritability_starter_code, eval = FALSE, echo = TRUE}
-pop_1 <- read.csv("data/heritability_pop1.csv")
+# pop_1 was created by Import Dataset (step 1). Alternatively, if the file is in a folder
+# called "data" inside your project, you can import it with this line instead:
+# pop_1 <- read.csv("data/heritability_pop1.csv")
 plot(pop_1$Midparent_value, pop_1$Offspring_value,
      xlab = "Mid-parent wing length (mm)", ylab = "Offspring wing length (mm)")
 mod1 <- lm(Offspring_value ~ Midparent_value, data = pop_1)
@@ -131,7 +141,7 @@ Low heritability of a critical trait like disease resistance would be concerning
 
 ### Comparative Analysis (10 minutes)
 
-Now analyse the second data set. It is for the same trait in the same species, but from a different population living in a different environment. Repeat steps 1 to 4, and calculate $V_P$ and $V_A$ for this population too. Copy this table into your notes and fill it in for both populations.
+Now analyse the second data set. It is for the same trait in the same species, but from a different population living in a different environment. Repeat steps 1 to 4, importing `heritability_pop2` with the name `pop_2`, and calculate $V_P$ and $V_A$ for this population too. Copy this table into your notes and fill it in for both populations.
 
 | | Population 1 | Population 2 |
 |---|---|---|

@@ -7,6 +7,7 @@
 #                           at each locus (no dominance), but the effect of A depends on B  -> 0 0 0 2 4
 #                           (added for BB512; not in Neal; additive-by-additive epistasis)
 #   Dominance + epistasis:  as dominance, and A only has an effect if a B is present      -> 0 0 0 4 4
+# A key (capitals = red, lower case = white) sits top left, above the row labels.
 # Kernel colours use the same white-to-dark-red ramp as the wheat figure (01_wheat_f2.R), on a 0-4 scale.
 source("R/theme_bb512.R")
 fam <- "Avenir Next"
@@ -35,6 +36,10 @@ k$fill <- ramp[k$score + 1]
 k$txt  <- ifelse(k$score >= 3, "white", bb512$ink)
 
 hdr <- data.frame(col = 1:5, geno = geno, nred = paste(nred, "red"))
+# key, top left: students found the caption-only key easy to miss
+key <- data.frame(y = c(4.78, 4.5),
+                  lab = c("A, B = red alleles", "a, b = white alleles"),
+                  col = c(bb512$clay, bb512$grey), face = c("bold", "plain"))
 
 p <- ggplot2::ggplot(k) +
   ggplot2::geom_point(ggplot2::aes(col, row, fill = I(fill)), shape = 21, size = 17,
@@ -45,6 +50,8 @@ p <- ggplot2::ggplot(k) +
                      fontface = "bold", colour = bb512$forest) +
   ggplot2::geom_text(data = hdr, ggplot2::aes(col, 4.5, label = nred), family = fam, size = 4.8,
                      colour = bb512$grey) +
+  ggplot2::geom_text(data = key, ggplot2::aes(-1.6, y, label = lab, colour = I(col), fontface = face),
+                     family = fam, size = 5.2, hjust = 0) +
   ggplot2::geom_text(data = rules, ggplot2::aes(-1.6, row + 0.13, label = name), family = fam, size = 6,
                      fontface = "bold", colour = bb512$ink, hjust = 0) +
   ggplot2::geom_text(data = rules, ggplot2::aes(-1.6, row - 0.08, label = rule), family = fam, size = 4.6,

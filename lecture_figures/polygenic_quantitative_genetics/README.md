@@ -19,7 +19,7 @@ Run all figures from this folder with `source("render_all.R")`, or `LANG=C.UTF-8
 | `03_variance_budget.R` | 14, 19 | `takeaway` | East's variance components: V_G and V_E (03a); V_A, V_D + V_I, V_E (03b) | Empirical (Neal, partitioning section) |
 | `04_east_regression.R` | 18 | `takeaway` | Mid-parent–offspring regression, slope 0.8348, with h² = 1 and h² = 0 reference lines | Empirical, points digitised from Neal's parent–offspring figure |
 | `05_breeders_equation.R` | 25 | `takeaway` | Sheep weight: S = 25 kg, h² = 0.5, R = 12.5 kg | Analytical, illustrative (SD 15 kg assumed) |
-| `06_corn_heritability.R` | 29 | `takeaway` | h² of oil content during the Illinois maize selection experiment | Empirical (Neal, oil-content heritability table) |
+| `06_corn_heritability.R` | 29 (Keynote 27) | `takeaway` | Illinois maize: line means of oil content (top) and h² by block of generations (bottom) | Empirical. Top: DIGITISED from Neal Fig. 12.6 (after Dudley 1977), approximate; bottom: Neal Table 12.3 |
 | `07_reaction_norms.R` | 33 | `full` | Four reaction-norm patterns (plastic, genetic, both, G×E) | Schematic |
 | `08_gxe_heritability.R` | 34 | `takeaway` | Crossing reaction norms: V_G high, zero, moderate across environments | Schematic |
 | `09_phenology_mismatch.R` | 35 (hidden) | `full` | Bud burst, caterpillar and great tit timing against spring temperature | Schematic |
