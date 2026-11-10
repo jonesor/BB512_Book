@@ -168,7 +168,7 @@ new("Agenda", {101: "Lotka-Volterra competition",
                       "Build a discrete-time competition model in Excel and use it to test your predictions",
                       "Explain why coexistence needs each species to limit itself more than it limits its competitor"], 20)},
     notes="""
-(1 min) One objective per part of the practical. Reading: Neal, chapter *Interspecific Competition*. Notation follows Neal (α, β) and the online book; the PDF worksheet uses α~12~ and α~21~ (slide 10).
+(1 min) One objective per part of the practical. Reading: Neal, chapter *Interspecific Competition*. Notation follows Neal (α, β), the online book and the Excel template. The worksheet is the book chapter itself (no PDF any more).
 """)
 
 # ---------------------------------------------------------------- Section 01
@@ -184,7 +184,7 @@ new("Title & Bullets", {100: "From one species to two",
     notes="""
 (3 min) Build up from the logistic: (K − N)/K is the fraction of the carrying capacity still free, so growth slows as N approaches K. With a competitor, the free fraction for species 1 is (K~1~ − N~1~ − αN~2~)/K~1~.
 Common misconception (corrected from the old deck): competition does not change K. K~1~ is still species 1's carrying capacity on its own; species 2 simply occupies part of it.
-The Excel sheet uses the discrete-time version (slide 10); the isoclines and outcomes are the same.
+The Excel sheet uses a discrete-time version (slide 10); the isoclines and outcomes are the same.
 """)
 
 new("Key Concept", {102: "Competition coefficients",
@@ -235,38 +235,39 @@ new("Check Question (4 options)", {101: ("K~1~ = 3000, α = 1.25, K~2~ = 1000, �
 Common wrong answer: B, 'species 2 has the bigger effect (α > 1), so it wins'. This is the parameter set of Q1 in session 2, so students will see it run.
 """)
 
-new("Two Columns", {100: "Reading the PDF worksheet",
-                    101: "IN THE PDF", 103: ["α~12~: effect of species 2 on species 1",
-                                             "α~21~: effect of species 1 on species 2",
-                                             "R: growth per time step",
-                                             "Time steps: N~t+1~ = N~t~ + R N~t~ (…)/K"],
-                    104: "IN THIS COURSE (NEAL)", 106: ["α~12~ = α",
-                                                       "α~21~ = β",
-                                                       "Keep R at 1 or below: larger R adds the oscillations of the discrete logistic",
-                                                       "Same isoclines and outcomes as the continuous model"]},
+sl = new("Title & Bullets", {100: "From equation to Excel",
+                        101: (["Excel moves in time steps:   N~1,t+1~ = N~1,t~ + R~1~N~1,t~ (K~1~ − N~1,t~ − αN~2,t~)/K~1~",
+                               "R = growth per time step; keep it at 1 or below",
+                               "Same isoclines and outcomes as the continuous model",
+                               "In the template, cell B12 holds species 1's next time step:"], 22)},
     notes="""
-(1 min) The worksheet comes from a different textbook. The book chapter has the same table. The typed note under the PDF's Figure 5 was corrected in November 2026; older printed copies had the subscripts swapped.
+(2 min) Walk through the formula once, term by term: B11 is N~1,t~, C11 is N~2,t~, $F$4 is R~1~, $F$5 is K~1~, $F$6 is α. The $ signs keep the parameter references fixed when the formula is copied down.
+Students type this formula themselves and then write the species 2 version (C12) without help; the answer is in the book's solutions.
+R > 1 adds the oscillations and chaos of the discrete logistic (Deeper into logistic growth), which have nothing to do with competition.
 """)
+tb = sl.shapes.add_textbox(Inches(0.85), Inches(4.8), Inches(11.5), Inches(0.6))
+p0 = tb.text_frame.paragraphs[0]; p0.alignment = PP_ALIGN.LEFT; r0 = p0.add_run(); r0.text = "=B11+$F$4*B11*($F$5-B11-$F$6*C11)/$F$5"
+r0.font.name = "Menlo"; r0.font.size = Pt(22); r0.font.color.rgb = FOREST
 
 # ---------------------------------------------------------------- Section 02
 new("Section", {102: "02", 103: "Session 1: build the model"},
     notes="(10 s) Hand over to the students.")
 
-new("Activity", {101: "40 MIN · PAIRS",
+new("Activity", {101: "30 MIN · PAIRS",
                  102: "Can you build a two-species competition model in Excel?",
-                 103: (["Follow the PDF worksheet (linked from the online book)",
-                        "Fill the time column and both formulas down to t = 200 (row 211), not only to row 51",
-                        "Graph N~1~ and N~2~ against time, then N~2~ against N~1~ with both isoclines",
-                        "Label the four intercepts: K~1~, K~1~/α, K~2~ and K~2~/β"], 22)},
+                 103: (["Download the template (online book, Part 1)",
+                        "Type the species 1 formula in B12; write species 2's in C12",
+                        "Copy down to row 211; check it settles at (720, 640)",
+                        "Explore (Part 2): change α, β and R one at a time"], 22)},
     notes="""
-(40 min) The PDF's chart steps describe an old Excel (Chart Wizard). In current Excel: select the columns, Insert > Scatter with straight lines, then Select Data to name the series.
-The PDF fills only to row 51 (t = 40). Some cases in session 2 take more than 100 time steps, so 200 rows are needed.
-Students who finish early: change α and β and watch the isoclines move.
+(30 min) About 15 minutes to type the formulas and check the sheet, then about 15 minutes for the Part 2 exploration prompts in the book (α = β = 0; increasing α; R~1~ = 0.2; labelling the intercepts).
+The template already has the parameters, the time column to t = 200, the isocline ends and both graphs. Only B12 and C12 (yellow) are empty.
+Common errors: missing $ signs (the parameters drift when copied down), and dividing species 2's growth by K~1~.
 """)
 
 new("Title, Bullets & Photo", {100: "Check your sheet",
                                103: "CHECK",
-                               105: ("With the PDF's values (R~1~ = R~2~ = 1, K~1~ = 1200, α = 0.75, K~2~ = 1000, β = 0.5, start 100 and 50), both species settle at N~1~ = 720 and N~2~ = 640.", 19)},
+                               105: ("With the template's starting values (R~1~ = R~2~ = 1, K~1~ = 1200, α = 0.75, K~2~ = 1000, β = 0.5, start 100 and 50), both species settle at N~1~ = 720 and N~2~ = 640.", 19)},
     pictures={101: F + "02_check_sheet.png"},
     notes="""
 (2 min) If a sheet does not settle at (720, 640): check the $ signs in the formulas, and that each formula uses its own species' K in the denominator.
@@ -286,12 +287,12 @@ new("Activity", {101: "30 MIN · PAIRS",
                         "Q4: the outcome depends on the starting numbers or growth rates",
                         "For each: sketch the isoclines and predict first, then run your sheet"], 22)},
     notes="""
-(30 min) For each outcome, students also explain what the values mean in ecological terms. The same four questions as the book and the PDF. Insist on the prediction before running: that is where the learning happens.
+(30 min) For each outcome, students also explain what the values mean in ecological terms. The same four questions as the book (Part 3). Insist on the prediction before running: that is where the learning happens.
 Optional extra (Q5 in the book): Neal's flour beetles; see the last answer slide.
 """)
 
 new("Section", {102: "04", 103: "Answers: try first"},
-    notes="(10 s) The answers use the parameter values of the book's solutions chapter, so students reviewing the PDF of these slides see the same numbers.")
+    notes="(10 s) The answers use the parameter values of the book's solutions chapter, so students reviewing the slides afterwards see the same numbers.")
 
 new("Title, Bullets & Photo", {100: "Q1: species 1 excludes species 2",
                                103: "WHY",
