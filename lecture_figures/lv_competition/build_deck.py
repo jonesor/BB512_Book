@@ -168,7 +168,7 @@ new("Agenda", {101: "Lotka-Volterra competition",
                       "Build a discrete-time competition model in Excel and use it to test your predictions",
                       "Explain why coexistence needs each species to limit itself more than it limits its competitor"], 20)},
     notes="""
-(1 min) One objective per part of the practical. Reading: Neal, chapter *Interspecific Competition*. Notation follows Neal (α, β), the online book and the Excel template. The worksheet is the book chapter itself (no PDF any more).
+(1 min) One objective per part of the practical. Reading: Neal, chapter *Interspecific Competition*. Notation follows Neal (α, β), the online book and the Excel worksheet. The worksheet is the book chapter itself (no PDF any more).
 """)
 
 # ---------------------------------------------------------------- Section 01
@@ -239,7 +239,7 @@ sl = new("Title & Bullets", {100: "From equation to Excel",
                         101: (["Excel moves in time steps:   N~1,t+1~ = N~1,t~ + R~1~N~1,t~ (K~1~ − N~1,t~ − αN~2,t~)/K~1~",
                                "R = growth per time step; keep it at 1 or below",
                                "Same isoclines and outcomes as the continuous model",
-                               "In the template, cell B12 holds species 1's next time step:"], 22)},
+                               "In the worksheet, cell B12 holds species 1's next time step:"], 22)},
     notes="""
 (2 min) Walk through the formula once, term by term: B11 is N~1,t~, C11 is N~2,t~, $F$4 is R~1~, $F$5 is K~1~, $F$6 is α. The $ signs keep the parameter references fixed when the formula is copied down.
 Students type this formula themselves and then write the species 2 version (C12) without help; the answer is in the book's solutions.
@@ -255,19 +255,19 @@ new("Section", {102: "02", 103: "Session 1: build the model"},
 
 new("Activity", {101: "30 MIN · PAIRS",
                  102: "Can you build a two-species competition model in Excel?",
-                 103: (["Download the template (online book, Part 1)",
+                 103: (["Download the Excel worksheet (online book, Part 1)",
                         "Type the species 1 formula in B12; write species 2's in C12",
                         "Copy down to row 211; check it settles at (720, 640)",
                         "Explore (Part 2): change α, β and R one at a time"], 22)},
     notes="""
 (30 min) About 15 minutes to type the formulas and check the sheet, then about 15 minutes for the Part 2 exploration prompts in the book (α = β = 0; increasing α; R~1~ = 0.2; labelling the intercepts).
-The template already has the parameters, the time column to t = 200, the isocline ends and both graphs. Only B12 and C12 (yellow) are empty.
+The worksheet already has the parameters, the time column to t = 200, the isocline ends and both graphs. Only B12 and C12 (yellow) are empty.
 Common errors: missing $ signs (the parameters drift when copied down), and dividing species 2's growth by K~1~.
 """)
 
 new("Title, Bullets & Photo", {100: "Check your sheet",
                                103: "CHECK",
-                               105: ("With the template's starting values (R~1~ = R~2~ = 1, K~1~ = 1200, α = 0.75, K~2~ = 1000, β = 0.5, start 100 and 50), both species settle at N~1~ = 720 and N~2~ = 640.", 19)},
+                               105: ("With the worksheet's starting values (R~1~ = R~2~ = 1, K~1~ = 1200, α = 0.75, K~2~ = 1000, β = 0.5, start 100 and 50), both species settle at N~1~ = 720 and N~2~ = 640.", 19)},
     pictures={101: F + "02_check_sheet.png"},
     notes="""
 (2 min) If a sheet does not settle at (720, 640): check the $ signs in the formulas, and that each formula uses its own species' K in the denominator.

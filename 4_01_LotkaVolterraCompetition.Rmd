@@ -117,7 +117,7 @@ In words: the population at the next time step = the population now + its growth
 
 ### Part 1 (session 1, about 15 minutes): build the model
 
-Download the template spreadsheet **[here](https://github.com/jonesor/BB512_Book/raw/main/practical_files/LV_competition_template.xlsx)**. Most of it is ready for you:
+Download the Excel worksheet **[here](https://github.com/jonesor/BB512_Book/raw/main/practical_files/LV_competition_worksheet.xlsx)**. Most of it is ready for you:
 
 | Cells | What they hold |
 |---|---|
