@@ -103,27 +103,56 @@ For example, with $K_1 = 3000$, $\alpha = 1.25$, $K_2 = 1000$ and $\beta = 0.5$,
 
 ## Your task
 
-In this class (over TWO sessions) you will be working from a PDF available [here](https://www.dropbox.com/s/oukr39oq0rsn8il/9.%20Interspecific%20Competition%20and%20Competitive%20Exclusion.pdf?dl=1) to make a model exploring this idea.
+This practical runs over **two sessions**. In the first you build the model in Excel and explore it; in the second you use it to answer four questions about the outcome of competition.
 
-This PDF walks you through the creation of an Excel spreadsheet exploring interspecific competition and competitive exclusion using the Lotka-Volterra model.
+### The model in Excel
 
-::: {.do-something}
-**Notation and time steps in the PDF**
+Excel works in time steps rather than continuously, so the spreadsheet uses a **discrete-time** version of the equations above. From one time step ($t$) to the next ($t+1$):
 
-- The PDF writes the competition coefficients as $\alpha_{12}$ and $\alpha_{21}$. In Neal's notation (used in this book), $\alpha_{12} = \alpha$ (effect of species 2 on species 1) and $\alpha_{21} = \beta$ (effect of species 1 on species 2).
-- The spreadsheet is a **discrete-time** version of the model: $N_{1,t+1} = N_{1,t} + R_1 N_{1,t}(K_1 - N_{1,t} - \alpha N_{2,t})/K_1$, and the same for species 2. Its $R$ is a rate per time step, not Neal's continuous $r$. Keep $R_1$ and $R_2$ at 1 or below, so that you see the Lotka-Volterra behaviour rather than the oscillations and chaos of the discrete logistic model (compare *Deeper into logistic growth*).
-:::
+$$N_{1,t+1} = N_{1,t} + R_1 N_{1,t} \frac{K_1 - N_{1,t} - \alpha N_{2,t}}{K_1}$$
 
-* Create the Excel spreadsheet by following the instructions in the PDF, with one change: fill the time column and the two formula columns down to $t = 200$ (row 211), not only to row 51, and include all 200 time steps in both graphs. Some parameter sets take more than 50 time steps to settle, or to move away from an unstable equilibrium.
+$$N_{2,t+1} = N_{2,t} + R_2 N_{2,t} \frac{K_2 - N_{2,t} - \beta N_{1,t}}{K_2}$$
 
-::: {.do-something}
-**Note on the PDF:** in older copies of the PDF, the typed note under Figure 5 has the subscripts the wrong way round. The correct isocline intercepts are $K_1$ and $K_1/\alpha_{12}$ for species 1, and $K_2$ and $K_2/\alpha_{21}$ for species 2 (in Neal's notation, $K_1$, $K_1/\alpha$, $K_2$ and $K_2/\beta$; see the Background above).
-:::
+In words: the population at the next time step = the population now + its growth during this step, and growth slows as the species' own numbers and its competitor's numbers fill up the carrying capacity. $R$ is the growth rate per time step. Keep $R_1$ and $R_2$ at 1 or below, so that you see Lotka-Volterra behaviour rather than the oscillations of the discrete logistic model (compare *Deeper into logistic growth*). The isoclines and outcomes are the same as in the continuous model.
 
-* In the first session, build the sheet and check it: with the PDF's default values ($R_1 = R_2 = 1$, $K_1 = 1200$, $\alpha = 0.75$, $K_2 = 1000$, $\beta = 0.5$, starting at $N_1 = 100$, $N_2 = 50$) the two species should settle at $N_1 = 720$, $N_2 = 640$. Label the four isocline intercepts on your graph.
-* In the second session, use the model to answer the questions below. For each parameter set you try, **sketch the isoclines and predict the outcome first**, then run the model to check.
+### Part 1 (session 1, about 15 minutes): build the model
 
-### The questions
+Download the template spreadsheet **[here](https://github.com/jonesor/BB512_Book/raw/main/practical_files/LV_competition_template.xlsx)**. Most of it is ready for you:
+
+| Cells | What they hold |
+|---|---|
+| F4 to F9 | The parameters: $R_1$, $K_1$, $\alpha$, $R_2$, $K_2$, $\beta$ |
+| B11 and C11 | The starting population sizes, $N_1 = 100$ and $N_2 = 50$ |
+| A11 to A211 | Time, from $t = 0$ to $t = 200$ |
+| B5 to C8 | The ends of the two isoclines ($K_1$, $K_1/\alpha$, $K_2$, $K_2/\beta$), calculated from the parameters |
+| Two graphs | $N_1$ and $N_2$ against time, and $N_2$ against $N_1$ with both isoclines |
+
+Your job is to type the two formulas that move the populations forward one time step.
+
+1. In cell **B12** (yellow), type the formula for species 1:
+
+    `=B11+$F$4*B11*($F$5-B11-$F$6*C11)/$F$5`
+
+    Compare it with the first equation above: `B11` is $N_{1,t}$, `C11` is $N_{2,t}$, `$F$4` is $R_1$, `$F$5` is $K_1$ and `$F$6` is $\alpha$. The `$` signs keep the formula pointing at the parameter cells when you copy it down.
+
+2. In cell **C12** (yellow), write the matching formula for species 2 yourself. Use the second equation: you need $N_{2,t}$ (`C11`), $N_{1,t}$ (`B11`), $R_2$ (`$F$7`), $K_2$ (`$F$8`) and $\beta$ (`$F$9`).
+
+3. Select B12 and C12 together and copy them down to row 211 (time step 200). The graphs fill in as you go.
+
+4. **Check your sheet.** With the starting values, both species should settle at $N_1 = 720$ and $N_2 = 640$. If they do not, check the `$` signs, and that each formula divides by its own species' $K$.
+
+### Part 2 (session 1, about 15 minutes): explore
+
+Change one parameter at a time, watch both graphs, and note what happens. Put each parameter back to its starting value before you try the next.
+
+1. Set $\alpha = 0$ and $\beta = 0$. What does each species do, and where does it end up? Why? (Two of the isocline cells will show `#DIV/0!`: can you see why?)
+2. Increase $\alpha$ in steps from 0.75 to 1.5. How does species 1's isocline move? At roughly what value of $\alpha$ does species 1 disappear? Can you explain that value using the *Key idea* above?
+3. Set $R_1 = 0.2$. Does the final outcome change? What does change?
+4. On the phase graph ($N_2$ against $N_1$), label the four points where the isoclines meet the axes: $K_1$, $K_1/\alpha$, $K_2$ and $K_2/\beta$.
+
+### Part 3 (session 2): the questions
+
+Use your model to answer the questions below. For each parameter set you try, **sketch the isoclines and predict the outcome first**, then run the model to check. If a case seems to stop part-way, look at all 200 time steps: some cases take more than 100 steps to settle, or to move away from an unstable equilibrium.
 
 1. What parameter values will cause species 1 to exclude species 2 from the habitat? What do these values mean in ecological terms?
 2. What parameter values will reverse this outcome? What do these values mean in ecological terms?
