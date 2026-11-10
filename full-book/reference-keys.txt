@@ -243,7 +243,10 @@ lotka-volterra-competition
 background-the-model-and-its-isoclines
 key-idea-1
 your-task-17
-the-questions
+the-model-in-excel
+part-1-session-1-about-15-minutes-build-the-model
+part-2-session-1-about-15-minutes-explore
+part-3-session-2-the-questions
 takeaways-19
 lotka-volterra-predator-prey-dynamics
 background-17
