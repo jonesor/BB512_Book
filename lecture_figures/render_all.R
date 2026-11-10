@@ -23,7 +23,8 @@ render_lecture <- local({
     sexual_selection = c("ggplot2", "ragg", "systemfonts"),
     behaviour_altruism = c("ggplot2", "scales", "ragg", "patchwork"),
     short_answers = c("ggplot2", "ragg"),
-    lv_competition = c("ggplot2", "ragg", "patchwork")
+    lv_competition = c("ggplot2", "ragg", "patchwork"),
+    lv_predation = c("ggplot2", "ragg", "patchwork", "scales")
   )
 
   function(lecture, script = NULL) {

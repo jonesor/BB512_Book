@@ -22,7 +22,7 @@ With the default parameters, you should see:
 - a closed orbit in the phase plane around the coexistence equilibrium (the same loop is traced again and again)
 - straight-line isoclines (ZNGIs) whose intersection is the coexistence equilibrium
 
-This is the same model as the Excel spreadsheet and the [discrete-time R chapter](discrete-time-lotka-volterra-predator-prey-model-in-r.html), with the same parameter values, but solved in continuous time. Comparing the three shows which behaviour belongs to the biology and which to the time steps.
+This is the same model as the Excel spreadsheet and the [discrete-time R chapter](discrete-time-lotka-volterra-predator-prey-model-in-r.html), with the same symbols (Neal's) and the same parameter values, but solved accurately in continuous time. Comparing them shows which behaviour belongs to the biology and which to the time steps.
 
 ## Your task
 
@@ -47,36 +47,34 @@ library(deSolve)
 
 The system of equations is defined as follows:
 
-- Victim (prey) population growth: \( \frac{dV}{dt} = RV - aVC \)
-- Consumer (predator) population growth: \( \frac{dC}{dt} = afVC - qC \)
+- Prey population growth: \( \frac{dH}{dt} = rH - aHP \)
+- Predator population growth: \( \frac{dP}{dt} = cHP - dP \)
 
 The function below implements these equations in R.
 
 ```{r define-model, echo = TRUE}
 predator_prey_model <- function(t, state, parameters) {
   with(as.list(c(state, parameters)), {
-    dV <- R * V - a * V * C  # Victim (prey) growth equation
-    dC <- a * f * V * C - q * C  # Consumer (predator) growth equation
+    dH <- r * H - a * H * P  # Prey growth equation
+    dP <- c * H * P - d * P  # Predator growth equation
     
-    list(c(dV, dC))
+    list(c(dH, dP))
   })
 }
 ```
 
 ### Step 3: Set Parameters and Initial Conditions
 
-We set the parameters and initial conditions for the model. I use the same nomenclature as the PDF from the [Excel exercise](https://jonesor.github.io/BB512_Book/lotka-volterra-predator-prey-dynamics.html), and the same values. The parameters are as follows: *R* is the victim population growth rate, *a* is the attack rate of the predator, *f* is the conversion efficiency of the predator and *q* is the predator starvation (death) rate. Here *R* is an instantaneous rate (Neal's *r*), because the model is in continuous time.
-
-The Neal textbook (chapter *Predator-Prey Interactions*) writes the same model as $dH/dt = rH - aHP$ and $dP/dt = cHP - dP$. The translation is: $V = H$ (prey), $C = P$ (predators), $R = r$, $a = a$, $a \cdot f = c$ and $q = d$.
+We set the parameters and initial conditions for the model. We use Neal's symbols (*Predator-Prey Interactions*) and the same values as the [Excel exercise](lotka-volterra-predator-prey-dynamics.html): *r* is the prey growth rate, *a* is the attack rate of the predator, *c* is the conversion efficiency (new predators per prey, per predator, per unit time) and *d* is the predator death rate.
 
 ```{r parameters, echo = TRUE}
-parameters <- c(R = 0.25, # Victim (prey) growth rate
-                a = 0.01, # Attack rate
-                f = 0.008, # Conversion efficiency
-                q = 0.1)  # Predator death rate
+parameters <- c(r = 0.25,    # Prey growth rate
+                a = 0.01,    # Attack rate
+                c = 0.00008, # Conversion efficiency
+                d = 0.1)     # Predator death rate
 
-initial_state <- c(V = 1000,  # Initial victim population
-                   C = 20)   # Initial consumer population
+initial_state <- c(H = 1000,  # Initial prey population
+                   P = 20)    # Initial predator population
 ```
 
 ### Step 4: Simulate the Model
@@ -98,55 +96,55 @@ How does the size of the two populations change through time? You should see tha
 
 #### Population Dynamics Over Time
 
-The plot below shows the changes in consumer and victim populations over time.
+The plot below shows the changes in the prey and predator populations over time.
 
 ```{r population-dynamics, echo = TRUE}
 # Make room in the right-hand margin for the second axis label
 par(mar = c(5, 4, 4, 5))
 
-# Plot victim population on the primary y-axis
-plot(output_df$time, output_df$V, type = "l", col = "blue", lwd = 2, 
-     ylab = "Victim Population (V)", xlab = "Time", main = "Predator-Prey Dynamics")
+# Plot the prey population on the primary y-axis
+plot(output_df$time, output_df$H, type = "l", col = "blue", lwd = 2, 
+     ylab = "Prey (H)", xlab = "Time", main = "Predator-Prey Dynamics")
 
-# Add consumer population on a secondary y-axis
+# Add the predator population on a secondary y-axis
 par(new = TRUE)
-plot(output_df$time, output_df$C, type = "l", col = "red", lwd = 2, 
+plot(output_df$time, output_df$P, type = "l", col = "red", lwd = 2, 
      axes = FALSE, xlab = "", ylab = "")
 axis(side = 4, col = "red", col.axis = "red")
-mtext("Consumer Population (C)", side = 4, line = 3, col = "red")
+mtext("Predators (P)", side = 4, line = 3, col = "red")
 
 # Add legend
-legend("topright", legend = c("Victim (V)", "Consumer (C)"), 
+legend("topright", legend = c("Prey (H)", "Predators (P)"), 
        col = c("blue", "red"), lwd = 2)
 ```
 
 #### Phase Plot with ZNGIs
 
-The phase plot shows the relationship between victim and consumer populations. Zero Net Growth Isoclines (ZNGIs) indicate where the growth rate of each population is zero.
+The phase plot shows the relationship between the prey and predator populations. Zero Net Growth Isoclines (ZNGIs) indicate where the growth rate of each population is zero.
 
 ```{r phase-plot, echo = TRUE}
-plot(output_df$V, output_df$C, type = "l", col = "purple", lwd = 2, 
-     xlab = "Victim (V)", ylab = "Consumer (C)", 
+plot(output_df$H, output_df$P, type = "l", col = "purple", lwd = 2, 
+     xlab = "Prey (H)", ylab = "Predators (P)", 
      main = "Predator-Prey Dynamics with ZNGIs")
 
-# Consumer ZNGI: dC/dt = 0 when V = q / (a * f) (a vertical line)
-abline(v = parameters["q"] / (parameters["a"] * parameters["f"]), col = "red",
+# Predator ZNGI: dP/dt = 0 when H = d / c (a vertical line)
+abline(v = parameters["d"] / parameters["c"], col = "red",
        lwd = 2, lty = 2)
-# Victim ZNGI: dV/dt = 0 when C = R / a (a horizontal line)
-abline(h = parameters["R"] / parameters["a"], col = "blue", lwd = 2, lty = 2)
+# Prey ZNGI: dH/dt = 0 when P = r / a (a horizontal line)
+abline(h = parameters["r"] / parameters["a"], col = "blue", lwd = 2, lty = 2)
 
 # Add point for initial population sizes
-points(output_df$V[1], output_df$C[1], pch = 19, col = "black", cex = 1.5)
+points(output_df$H[1], output_df$P[1], pch = 19, col = "black", cex = 1.5)
 
 # Add a direction arrow only if the final step has visible movement.
 n <- nrow(output_df)
 step_inches <- c(
-  diff(grconvertX(output_df$V[c(n - 1, n)], from = "user", to = "inches")),
-  diff(grconvertY(output_df$C[c(n - 1, n)], from = "user", to = "inches"))
+  diff(grconvertX(output_df$H[c(n - 1, n)], from = "user", to = "inches")),
+  diff(grconvertY(output_df$P[c(n - 1, n)], from = "user", to = "inches"))
 )
 if (all(is.finite(step_inches)) && sqrt(sum(step_inches^2)) > 1e-3) {
-  arrows(x0 = output_df$V[n - 1], y0 = output_df$C[n - 1],
-         x1 = output_df$V[n], y1 = output_df$C[n],
+  arrows(x0 = output_df$H[n - 1], y0 = output_df$P[n - 1],
+         x1 = output_df$H[n], y1 = output_df$P[n],
          col = "purple", length = 0.1, lwd = 2)
 }
 ```
@@ -162,25 +160,25 @@ Before you change anything, write down a prediction for each question (a sentenc
 
 **2. Neutral stability and starting numbers**
 
-- *Predict:* what will happen if you start exactly at the equilibrium, $V = 1250$, $C = 25$? And just next to it, at $V = 1300$, $C = 25$?
-- Now try starting values further away, e.g. $V = 2000, C = 20$ and $V = 1000, C = 40$. What happens to the *amplitude* and the *period*? Do the oscillations grow, shrink or stay the same over time?
+- *Predict:* what will happen if you start exactly at the equilibrium, $H = 1250$, $P = 25$? And just next to it, at $H = 1300$, $P = 25$?
+- Now try starting values further away, e.g. $H = 2000, P = 20$ and $H = 1000, P = 40$. What happens to the *amplitude* and the *period*? Do the oscillations grow, shrink or stay the same over time?
 
 **3. Equilibrium and time-averages**
 
 - Calculate the equilibrium for the default parameters, using
   \[
-  V^* = \frac{q}{a \cdot f}, \quad C^* = \frac{R}{a}.
+  H^* = \frac{d}{c}, \quad P^* = \frac{r}{a}.
   \]
-- The populations never settle at these values. Instead, compare them with the *average* population sizes over the simulation: `mean(output_df$V)` and `mean(output_df$C)`. What do you find?
+- The populations never settle at these values. Instead, compare them with the *average* population sizes over the simulation: `mean(output_df$H)` and `mean(output_df$P)`. What do you find?
 
 **4. Moving the isoclines**
 
-- *Predict* which isocline (prey or predator) moves, and in which direction, if you double each of $R$, $a$, $f$ and $q$ in turn. Check your predictions on the phase plot.
-- A pesticide kills both prey and predators: it lowers $R$ and raises $q$. Try $R = 0.2$ and $q = 0.12$. What happens to the *average* numbers of prey and predators? Is this what you would have guessed? (This is Volterra's principle; see Neal's *Predator-Prey Interactions*.)
+- *Predict* which isocline (prey or predator) moves, and in which direction, if you double each of $r$, $a$, $c$ and $d$ in turn. Check your predictions on the phase plot.
+- A pesticide kills both prey and predators: it lowers $r$ and raises $d$. Try $r = 0.2$ and $d = 0.12$. What happens to the *average* numbers of prey and predators? Is this what you would have guessed? (This is Volterra's principle; see Neal's *Predator-Prey Interactions*.)
 
 **5. Extinction and reality**
 
-- Start far from the equilibrium, at $V = 1000$, $C = 100$. What are the smallest prey and predator numbers reached? Can either population reach exactly zero in this model? What would happen to a real population at these numbers?
+- Start far from the equilibrium, at $H = 1000$, $P = 100$. What are the smallest prey and predator numbers reached? Can either population reach exactly zero in this model? What would happen to a real population at these numbers?
 - Which assumptions of the model are unrealistic? Which real-world factors might stop the cycles continuing for ever?
 
 
@@ -192,13 +190,13 @@ The main findings of the continuous time model are as follows:
 
 1. **Oscillatory Dynamics**: Predator and prey populations exhibit cyclical oscillations. The prey population increases when predator numbers are low, while the predator population grows when prey is abundant, so predator peaks follow prey peaks.
    
-2. **Neutral Stability**: The oscillations are neutrally stable. They persist indefinitely without damping or amplification, and each pair of starting numbers gives its own orbit: the further from equilibrium you start, the larger the cycles. In the model neither population can ever reach exactly zero, but large orbits can take a population down to a fraction of one individual (for example, starting at $V = 1000$, $C = 100$ the predators fall to about 2 and the prey to about 8; with $q = 1$ the predators fall to about 0.01). In a real population that would mean extinction.
+2. **Neutral Stability**: The oscillations are neutrally stable. They persist indefinitely without damping or amplification, and each pair of starting numbers gives its own orbit: the further from equilibrium you start, the larger the cycles. In the model neither population can ever reach exactly zero, but large orbits can take a population down to a fraction of one individual (for example, starting at $H = 1000$, $P = 100$ the predators fall to about 2 and the prey to about 8; with $d = 1$ the predators fall to about 0.01). In a real population that would mean extinction.
 
 3. **Equilibrium Points**: There are two equilibria:
    - The trivial equilibrium, where both predator and prey populations are zero.
-   - The coexistence equilibrium, $V^* = q/(af)$ and $C^* = R/a$. The populations cycle around it rather than settling at it, but the average population sizes over a cycle equal the equilibrium values.
+   - The coexistence equilibrium, $H^* = d/c$ and $P^* = r/a$. The populations cycle around it rather than settling at it, but the average population sizes over a cycle equal the equilibrium values.
 
-4. **Parameter Dependence**: The parameters set the position of the isoclines, and so the equilibrium: $R$ and $a$ move the prey isocline, $q$, $a$ and $f$ move the predator isocline. The *amplitude* of the cycles is set by how far the starting numbers are from the equilibrium. For small cycles the *period* is approximately $2\pi/\sqrt{Rq}$ (about 40 time units with the default parameters); large cycles take longer.
+4. **Parameter Dependence**: The parameters set the position of the isoclines, and so the equilibrium: $r$ and $a$ move the prey isocline, $d$ and $c$ move the predator isocline. The *amplitude* of the cycles is set by how far the starting numbers are from the equilibrium. For small cycles the *period* is approximately $2\pi/\sqrt{rd}$ (about 40 time units with the default parameters); large cycles take longer.
 
 5. **Phase Plane Behaviour**: Predator and prey populations follow closed orbits in the phase plane around the coexistence equilibrium, anticlockwise when prey are on the x-axis, under the assumption that the system remains undisturbed.
 

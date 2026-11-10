@@ -103,6 +103,7 @@ Use Avenir Next for the intended lecture typography.
 | Coevolution | `coevolution/figures/` | PNG |
 | Behaviour, altruism and limiting aggression | `behaviour_altruism/figures/` | PNG |
 | Lotka-Volterra competition (practical) | `lv_competition/figures/` | PNG |
+| Lotka-Volterra predator-prey (practical) | `lv_predation/figures/` | PNG |
 
 Existing names, dimensions and styling are preserved, including the
 Hardy-Weinberg figure referenced by the book. Rendering overwrites matching

@@ -14,7 +14,7 @@ With $\Delta t = 1$, the phase plane typically shows expanding spirals, reflecti
 
 ## Introduction
 
-The Lotka-Volterra model describes the interaction between predators and prey. This document demonstrates how to program the discrete-time version of the model in R, explore its features, and visualise the dynamics of predator and prey populations over time. The time step (\( \Delta t \)) can be adjusted to explore the impact of a time delay in the system. In ecological systems, time delays can represent biological processes such as the time it takes for predators to respond to changes in prey density, for prey populations to recover after predation. If \( \Delta t \) is set to 1, this model is equivalent to a year-by-year model (as we have fitted in Excel in class), where the impact of predators on prey has a 1 year lag. i.e. the growth of predators, depends on the availability of prey 1 year ago and the growth of prey depends on the amount of predators 1 year ago.
+The Lotka-Volterra model describes the interaction between predators and prey. This document demonstrates how to program the discrete-time version of the model in R, explore its features, and visualise the dynamics of predator and prey populations over time. The time step (\( \Delta t \)) can be adjusted to explore the impact of a time delay in the system. In ecological systems, time delays can represent biological processes such as the time it takes for predators to respond to changes in prey density, for prey populations to recover after predation. If \( \Delta t \) is set to 1, this model is equivalent to a year-by-year model (the Excel spreadsheet with dt = 1), where the impact of predators on prey has a 1 year lag. i.e. the growth of predators, depends on the availability of prey 1 year ago and the growth of prey depends on the amount of predators 1 year ago.
 
 There are two ways to think about \( \Delta t \). With \( \Delta t = 1 \) this is a model of populations that really do change in steps (e.g. one breeding season per year). With \( \Delta t \) very small, nothing biological has changed: we are simply calculating the continuous-time model more accurately, in many small steps. The parameters and the starting numbers are the same as in the Excel spreadsheet and the [continuous-time R chapter](continuous-time-lotka-volterra-predator-prey-model-in-r.html).
 
@@ -22,21 +22,21 @@ There are two ways to think about \( \Delta t \). With \( \Delta t = 1 \) this i
 
 The discrete-time equations are as follows:
 
-- Victim (prey) population growth:  
-  \( V_{t+1} = V_t + \Delta t \cdot (R \cdot V_t - a \cdot C_t \cdot V_t) \)
+- Prey population growth:  
+  \( H_{t+1} = H_t + \Delta t \cdot (r \cdot H_t - a \cdot H_t \cdot P_t) \)
   
-- Consumer (predator) population growth:  
-  \( C_{t+1} = C_t + \Delta t \cdot (a \cdot f \cdot V_t \cdot C_t - q \cdot C_t) \)
+- Predator population growth:  
+  \( P_{t+1} = P_t + \Delta t \cdot (c \cdot H_t \cdot P_t - d \cdot P_t) \)
 
 Note that, when $\Delta t = 1$, the model is as follows:
 
-- Victim (prey) population growth:  
-  \( V_{t+1} = V_t + R \cdot V_t - a \cdot C_t \cdot V_t \)
+- Prey population growth:  
+  \( H_{t+1} = H_t + r \cdot H_t - a \cdot H_t \cdot P_t \)
   
-- Consumer (predator) population growth:  
-  \( C_{t+1} = C_t + a \cdot f \cdot V_t \cdot C_t - q \cdot C_t \)
+- Predator population growth:  
+  \( P_{t+1} = P_t + c \cdot H_t \cdot P_t - d \cdot P_t \)
 
-Compare these to Equations 1 and 2 in the Excel exercise PDF.
+These are the formulas you typed into the Excel spreadsheet (there with the time step dt in cell F8).
 
 The function below implements these equations in R.
 
@@ -44,29 +44,29 @@ The function below implements these equations in R.
 discrete_predator_prey_model <- function(time_steps, dt, initial_state, parameters) {
   # Initialise vectors to store populations
   time_steps <- round(time_steps)
-  V <- numeric(time_steps + 1)
-  C <- numeric(time_steps + 1)
+  H <- numeric(time_steps + 1)
+  P <- numeric(time_steps + 1)
   time <- seq(0, time_steps * dt, by = dt)
   
   # Set initial populations
-  V[1] <- initial_state["V"]
-  C[1] <- initial_state["C"]
+  H[1] <- initial_state["H"]
+  P[1] <- initial_state["P"]
   
   # Extract parameters
-  R <- parameters["R"]
+  r <- parameters["r"]
   a <- parameters["a"]
-  f <- parameters["f"]
-  q <- parameters["q"]
+  c <- parameters["c"]
+  d <- parameters["d"]
   
   # Loop through time steps to calculate populations
   for (t in 1:time_steps) {
-    # max(0, ...) stops populations going negative (like IF() in Excel)
-    V[t + 1] <- max(0, V[t] + dt * (R * V[t] - a * V[t] * C[t]))
-    C[t + 1] <- max(0, C[t] + dt * (a * f * V[t] * C[t] - q * C[t]))
+    # max(0, ...) stops populations going negative (like MAX() in Excel)
+    H[t + 1] <- max(0, H[t] + dt * (r * H[t] - a * H[t] * P[t]))
+    P[t + 1] <- max(0, P[t] + dt * (c * H[t] * P[t] - d * P[t]))
   }
   
   # Combine results into a data frame
-  data.frame(time = time, V = V, C = C)
+  data.frame(time = time, H = H, P = P)
 }
 ```
 
@@ -75,13 +75,13 @@ discrete_predator_prey_model <- function(time_steps, dt, initial_state, paramete
 We set the parameters, initial conditions, the total time to simulate (`total_time`) and the time step (\( \Delta t \)). The number of steps is calculated from these, so that changing \( \Delta t \) always covers the same total time and the runs can be compared fairly.
 
 ```{r DT-parameters, echo = TRUE}
-parameters <- c(R = 0.25,  # Victim (prey) growth rate
-                a = 0.01,  # Attack rate
-                f = 0.008, # Conversion efficiency
-                q = 0.1)   # Consumer (predator) death rate
+parameters <- c(r = 0.25,    # Prey growth rate
+                a = 0.01,    # Attack rate
+                c = 0.00008, # Conversion efficiency
+                d = 0.1)     # Predator death rate
 
-initial_state <- c(V = 1000,  # Initial victim population
-                   C = 20)    # Initial consumer population
+initial_state <- c(H = 1000,  # Initial prey population
+                   P = 20)    # Initial predator population
 
 total_time <- 300             # Total time to simulate
 dt <- 1                       # Time step (dt), 1 = a standard discrete model
@@ -102,61 +102,61 @@ output_df <- discrete_predator_prey_model(time_steps = time_steps, dt = dt,
 
 ### Population Dynamics Over Time
 
-The plot below shows the changes in consumer and victim populations over time.
+The plot below shows the changes in the prey and predator populations over time.
 
 ```{r DT-population-dynamics, echo = TRUE}
 # Make room in the right-hand margin for the second axis label
 par(mar = c(5, 4, 4, 5))
 
-# Plot victim population on the primary y-axis
-plot(output_df$time, output_df$V, type = "l", col = "blue", lwd = 2, 
-     ylab = "Victim Population (V)", xlab = "Time", main = "Discrete Predator-Prey Dynamics")
+# Plot the prey population on the primary y-axis
+plot(output_df$time, output_df$H, type = "l", col = "blue", lwd = 2, 
+     ylab = "Prey (H)", xlab = "Time", main = "Discrete Predator-Prey Dynamics")
 
-# Add consumer population on a secondary y-axis
+# Add the predator population on a secondary y-axis
 par(new = TRUE)
-plot(output_df$time, output_df$C, type = "l", col = "red", lwd = 2, 
+plot(output_df$time, output_df$P, type = "l", col = "red", lwd = 2, 
      axes = FALSE, xlab = "", ylab = "")
 axis(side = 4, col = "red", col.axis = "red")
-mtext("Consumer Population (C)", side = 4, line = 3, col = "red")
+mtext("Predators (P)", side = 4, line = 3, col = "red")
 
 # Add legend
-legend("topright", legend = c("Victim (V)", "Consumer (C)"), 
+legend("topright", legend = c("Prey (H)", "Predators (P)"), 
        col = c("blue", "red"), lwd = 2)
 ```
 
 ### Phase Plot with ZNGIs
 
-The phase plot shows the relationship between victim and consumer populations.
+The phase plot shows the relationship between the prey and predator populations.
 
 ```{r DT-phase-plot, echo = TRUE, warning = FALSE}
 ### Phase Plot with ZNGIs, Initial Point, and Arrow
-plot(output_df$V, 
-     output_df$C, 
+plot(output_df$H, 
+     output_df$P, 
      type = "l", 
      col = "purple", 
      lwd = 2, 
-     xlab = "Victim (V)", ylab = "Consumer (C)", 
+     xlab = "Prey (H)", ylab = "Predators (P)", 
      main = "Discrete Predator-Prey Dynamics with ZNGIs")
 
-# Add Consumer ZNGI: no change in C when V = q / (a * f) (a vertical line)
-abline(v = parameters["q"] / (parameters["a"] * parameters["f"]),
+# Add predator ZNGI: no change in P when H = d / c (a vertical line)
+abline(v = parameters["d"] / parameters["c"],
        col = "red", lwd = 2, lty = 2)
 
-# Add Victim ZNGI: no change in V when C = R / a (a horizontal line)
-abline(h = parameters["R"] / parameters["a"], col = "blue", lwd = 2, lty = 2)
+# Add prey ZNGI: no change in H when P = r / a (a horizontal line)
+abline(h = parameters["r"] / parameters["a"], col = "blue", lwd = 2, lty = 2)
 
 # Add point for initial population sizes
-points(output_df$V[1], output_df$C[1], pch = 19, col = "black", cex = 1.5)
+points(output_df$H[1], output_df$P[1], pch = 19, col = "black", cex = 1.5)
 
 # Add a direction arrow only if the final step has visible movement.
 n <- nrow(output_df)
 step_inches <- c(
-  diff(grconvertX(output_df$V[c(n - 1, n)], from = "user", to = "inches")),
-  diff(grconvertY(output_df$C[c(n - 1, n)], from = "user", to = "inches"))
+  diff(grconvertX(output_df$H[c(n - 1, n)], from = "user", to = "inches")),
+  diff(grconvertY(output_df$P[c(n - 1, n)], from = "user", to = "inches"))
 )
 if (all(is.finite(step_inches)) && sqrt(sum(step_inches^2)) > 1e-3) {
-  arrows(x0 = output_df$V[n - 1], y0 = output_df$C[n - 1],
-         x1 = output_df$V[n], y1 = output_df$C[n],
+  arrows(x0 = output_df$H[n - 1], y0 = output_df$P[n - 1],
+         x1 = output_df$H[n], y1 = output_df$P[n],
          col = "purple", length = 0.1, lwd = 2)
 }
 ```
@@ -165,10 +165,10 @@ if (all(is.finite(step_inches)) && sqrt(sum(step_inches^2)) > 1e-3) {
 
 Before each run, predict what you will see (sketch the phase plot), then check.
 
-- Run the model with the default settings ($\Delta t = 1$, `total_time = 300`). How does the phase plot differ from the closed orbit in the continuous-time chapter? When does the first population hit zero? Find it with `output_df$time[which(output_df$C == 0 | output_df$V == 0)[1]]`.
+- Run the model with the default settings ($\Delta t = 1$, `total_time = 300`). How does the phase plot differ from the closed orbit in the continuous-time chapter? When does the first population hit zero? Find it with `output_df$time[which(output_df$P == 0 | output_df$H == 0)[1]]`.
 - Decrease $\Delta t$ to 0.1 (keep `total_time = 300`; the number of steps is recalculated for you, so re-run the parameter chunk as well as the simulation) and compare the phase plane behaviour to $\Delta t = 1$. Then try $\Delta t = 0.01$.
 - Increase $\Delta t$ to 2 and observe whether extinction happens faster.
-- Change $R$ or $q$ (e.g. double one of them) with $\Delta t = 1$. Does the spiral grow faster or slower? Now double $a$ or $f$ instead. Which parameters control how quickly the spiral grows? (Careful: changing $a$ or $f$ also moves the equilibrium, so the default start is then nearer to or further from it. Compare how fast the spiral widens, not only when it ends.)
+- Change $r$ or $d$ (e.g. double one of them) with $\Delta t = 1$. Does the spiral grow faster or slower? Now double $a$ or $c$ instead. Which parameters control how quickly the spiral grows? (Careful: changing $a$ or $c$ also moves the equilibrium, so the default start is then nearer to or further from it. Compare how fast the spiral widens, not only when it ends.)
 
 ## Conclusion
 
@@ -177,5 +177,5 @@ This document demonstrates how to implement and explore the discrete-time Lotka-
 ## Takeaways
 
 - Discrete time steps destabilise the predator-prey cycles of the continuous-time model: the populations react one step too late, so each cycle overshoots a little more than the last.
-- Each time step, the distance from the equilibrium grows by a factor of about $\sqrt{1 + \Delta t^2 R q}$. This depends on the prey growth rate, the predator death rate and the step length, but not on the attack rate or conversion efficiency. With the default values it is about 1.012 per step (roughly 1 % per step).
+- Each time step, the distance from the equilibrium grows by a factor of about $\sqrt{1 + \Delta t^2 r d}$. This depends on the prey growth rate, the predator death rate and the step length, but not on the attack rate or conversion efficiency. With the default values it is about 1.012 per step (roughly 1 % per step).
 - Smaller $\Delta t$ values bring the discrete model closer to the continuous-time behaviour.

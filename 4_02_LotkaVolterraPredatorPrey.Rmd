@@ -1,103 +1,123 @@
 # Lotka-Volterra predator-prey dynamics
 
-## Background 
-
-The Lotka-Volterra predator-prey model (Lotka 1925; Volterra 1926) is a fundamental concept in ecological dynamics, used to study the dynamics between predator and prey populations. Rosenzweig and MacArthur (1963) later extended this basic model to incorporate prey carrying capacity and predator functional response. The model assumes that the predator's population growth is directly influenced by the availability of its prey, while the prey's population growth is affected by predation pressure. As predator numbers increase, the prey population declines, which, in turn, leads to a decrease in predator numbers due to reduced food availability. This cyclical pattern continues as predator and prey populations oscillate over time. 
-
-The Lotka-Volterra predator-prey model gives us a framework for understanding the dynamics of species interactions. 
-
-In this class you will build and explore a Lotka-Volterra predator-prey model in Excel to gain insight into the ecology of interacting predators and prey.
-
+This practical runs over **two sessions**, after the two predation lectures. In the first session you build the classic Lotka-Volterra predator-prey model in Excel and explore its cycles. In the second session you add two things that Neal (*Predator-Prey Interactions*) and the lectures identify as stabilising: a carrying capacity for the prey, and a refuge where some prey cannot be caught.
 
 ::: {.do-something}
-Learning outcomes: 
+Learning outcomes:
 
-- Competence in constructing an Excel-based population model.
-- Understanding how the Lotka-Volterra predator-prey model works, and how it is visualised.
-
+- Build a predator-prey model in Excel from its equations, and check it against known values.
+- Use the zero isoclines to explain the direction of the cycles and to predict how each parameter moves the equilibrium.
+- Explain why the spreadsheet's cycles grow, and show that this comes from the size of the time step rather than from the biology.
+- Explain how a prey carrying capacity and a prey refuge stabilise the interaction.
 :::
 
-## Key idea
+## Background: the model
 
-The two isoclines (the lines where prey or predator numbers stop changing) are set by different parameters: the prey isocline by the prey's growth rate and the predator's attack rate, the predator isocline by the predator's death rate and how efficiently it turns prey into offspring. Changing a parameter moves an isocline, and so moves the equilibrium point where they cross. Whether the populations then cycle more or less widely depends on how far the starting numbers are from that new equilibrium.
+We use Neal's notation (*Predator-Prey Interactions*). The lecture slides show the same symbols next to Gotelli's (V for H, α for a, β for c and q for d):
 
-::: {.do-something}
-**Important: the spreadsheet is a discrete-time model**
+$$\frac{dH}{dt} = rH - aHP \qquad\qquad \frac{dP}{dt} = cHP - dP$$
 
-In the lecture, the Lotka-Volterra model is written in continuous time (dH/dt, dP/dt). In that model the populations cycle for ever: the cycles neither grow nor shrink (they are *neutrally stable*), and their size depends only on the starting numbers.
-
-The spreadsheet instead updates the populations once per time step (N(t+1) = N(t) + change over one step), like the discrete logistic model in *Deeper into logistic growth*. Because each step uses the population sizes at the start of the step, the model always reacts a little too late, and the oscillations **grow** until one or both populations crash. This is a property of the discrete-time version (a time lag), not of predator-prey interactions in general.
-
-Keep this in mind when you answer the questions below, especially question 6. You can compare the two versions in the R chapters [Continuous-time Lotka-Volterra predator-prey model in R](continuous-time-lotka-volterra-predator-prey-model-in-r.html) and [Discrete-time Lotka-Volterra predator-prey model in R](discrete-time-lotka-volterra-predator-prey-model-in-r.html).
-:::
-
-
-## Your task 
-
-Follow the PDF worksheet ([here](https://www.dropbox.com/s/bhwoe161wp9p6hp/10.%20Predator-prey%20dynamics.pdf?dl=1)), which guides you to build and explore a Lotka-Volterra predator-prey model in Excel. The model has parameters for the prey and for the predator, and you will explore how these parameters influence the dynamics of the populations.
-
-
-
-The worksheet is divided into four parts. We will mainly **focus on Part 1** - the basic model - in the class.
-
-::: {.do-something}
-**Symbols: worksheet vs Neal**
-
-The worksheet uses different symbols from Neal (*Predator-Prey Interactions*), whose continuous model is $dH/dt = rH - aHP$ and $dP/dt = cHP - dP$. The worksheet's equations are $V_{t+1} = V_t + RV_t - aC_tV_t$ and $C_{t+1} = C_t + afV_tC_t - qC_t$.
-
-| Worksheet | Neal | Meaning |
+| Symbol | Meaning | Value in the worksheet |
 |---|---|---|
-| $V$ ("victim") | $H$ | Prey population |
-| $C$ ("consumer") | $P$ | Predator population |
-| $R$ | $r$ | Prey growth rate (in the worksheet, per time step) |
-| $a$ | $a$ | Attack rate |
-| $af$ ($f$ = conversion efficiency) | $c$ | Rate at which prey eaten become new predators |
-| $q$ | $d$ | Predator death (starvation) rate |
+| $H$ | number of prey ("herbivores") | starts at 1000 |
+| $P$ | number of predators | starts at 20 |
+| $r$ | prey growth rate (per prey, per unit time) | 0.25 |
+| $a$ | attack rate: prey caught per prey, per predator, per unit time | 0.01 |
+| $c$ | conversion efficiency: new predators per prey, per predator, per unit time | 0.00008 |
+| $d$ | predator death rate (per predator, per unit time) | 0.1 |
 
-So the prey isocline $C = R/a$ is Neal's $P = r/a$, and the predator isocline $V = q/(af)$ is Neal's $H = d/c$.
-:::
+The prey grow exponentially and are removed at a rate proportional to how often prey and predators meet ($aHP$). The predators are born at a rate proportional to the prey they catch ($cHP$; $c$ is smaller than $a$ because many prey are needed to make one new predator) and die at a constant rate $d$.
 
-::: {.do-something}
-**Correct formula for step 7 of the PDF**
+**Zero isoclines.** The prey stop changing when $rH = aHP$, i.e. when $P = r/a$: a horizontal line on a graph of $P$ against $H$. Below it (few predators) the prey increase; above it they decrease. The predators stop changing when $cHP = dP$, i.e. when $H = d/c$: a vertical line. To the right of it (many prey) the predators increase; to the left they decrease. The lines cross at the equilibrium $H^* = d/c$, $P^* = r/a$. Following the arrows round the four regions gives cycles, with the predator peaks a quarter of a cycle behind the prey peaks. For small cycles the period is about $2\pi/\sqrt{rd}$.
 
-The predator formula printed in the PDF is missing a minus sign. In cell C15 use:
+**The spreadsheet version.** Excel cannot solve the differential equations directly. Instead it takes small steps of length $\Delta t$ (cell F8, "dt"), each time adding the change over that step:
 
-- English Excel: `=IF(C14+$H$8*$H$9*B14*C14-$H$7*C14>0,C14+$H$8*$H$9*B14*C14-$H$7*C14,0)`
-- Danish Excel: `=HVIS(C14+$H$8*$H$9*B14*C14-$H$7*C14>0;C14+$H$8*$H$9*B14*C14-$H$7*C14;0)`
+$$H_{t+\Delta t} = H_t + \Delta t\,(rH_t - aH_tP_t) \qquad\qquad P_{t+\Delta t} = P_t + \Delta t\,(cH_tP_t - dP_t)$$
 
-The prey formula in cell B15 (step 6) in Danish Excel is `=HVIS(B14+$F$7*B14-$H$9*C14*B14>0;B14+$F$7*B14-$H$9*C14*B14;0)`, and `MAX` is `MAKS`. Your first rows should read 1050.000, 19.600 (time 1) and 1106.700, 19.286 (time 2).
-:::
+Each step uses the numbers at the *start* of the step, so the populations always react a little late. With $\Delta t = 1$ this lag is large enough to change the behaviour of the model, as you will see.
 
-The sheet runs for 100 time steps. With the default values neither species goes extinct within that time, although the cycles clearly grow. To see the end of the story, copy the formulas further down (to row 314 gives 300 time steps): the prey hit zero at time step 220.
+## Session 1: build and explore the basic model
 
-After completing the Excel sheet, try to answer the following questions:
+### Part 1: build the model (about 10 minutes)
 
-1. In the spreadsheet model, does a larger prey population growth rate (R) increase or decrease the stability of the predator-prey interaction?
-2. What happens if the predators starve more quickly? Less quickly?
-3. What happens if the predator is more efficient at converting prey into offspring? Less efficient?
-4. What happens if the predator is better at finding prey? Worse?
-5. Is the behaviour of the model sensitive to starting populations? Begin with populations near the point where the isoclines cross, and move slowly farther out.
-6. What is the ultimate outcome of the predator-prey interaction in the spreadsheet, regardless of parameter values? Is this outcome caused by the biology or by the model being discrete-time (see the box above)? How does this compare to real predator and prey populations? What factors not included in the model may explain the differences between model predictions and reality?
+Download the Excel worksheet **[here](https://github.com/jonesor/BB512_Book/raw/main/practical_files/LV_predator_prey_worksheet.xlsx)**. Use the sheet **Part 1 Basic model**. The parameters (cells F4 to F8), the starting numbers (row 11), the time column and both graphs are already there. Only the two yellow cells are empty.
 
-## Optional extras
+1. In **B12**, type the formula for the prey at the next time step. Use `$` to fix the parameter cells, so that the formula still points at them when you copy it down:
 
-Part 2 modifies the basic model to include a refuge for the prey, part 3 adds a carrying capacity for the prey, and part 4 adds carrying capacities for both prey and predator. Feel free to continue to work on these if there is time, and if you are interested. Part 3 is particularly worth trying: prey self-limitation turns the expanding oscillations into damped ones that settle at an equilibrium.
+    - English Excel: `=MAX(0,B11+$F$8*($F$4*B11-$F$5*B11*C11))`
+    - Danish Excel: `=MAKS(0;B11+$F$8*($F$4*B11-$F$5*B11*C11))`
 
-## R-version
+    `MAX(0, ...)` stops the population going below zero.
 
-Two R versions are available: a [continuous-time version](continuous-time-lotka-volterra-predator-prey-model-in-r.html) (the model in the lecture) and a [discrete-time version](discrete-time-lotka-volterra-predator-prey-model-in-r.html) (the same model as this spreadsheet).
+2. In **C12**, write the formula for the predators yourself, using the predator equation above (c is in F6 and d in F7). Check your answer in the solutions if you get stuck.
+3. Select B12 and C12 and copy them down to row 3011 (double-click the small square at the bottom right of the selection).
+4. **Check:** time 1 should give $H = 1050$ and $P = 19.6$, and time 2 should give $H = 1106.7$ and $P = 19.286$. If not, check your formulas before going on.
+
+### Part 2: explore the model (about 25 minutes)
+
+For each task, write down your prediction first (a sentence or a quick sketch of the phase plane), then change the values and check.
+
+1. **Cycles.** With the starting values, which peaks first, prey or predators? How long is it from one prey peak to the next? In the phase plane, which way does the trajectory go round (clockwise or anticlockwise), and why? Use the four regions marked out by the isoclines.
+2. **Equilibrium.** Calculate $H^* = d/c$ and $P^* = r/a$. Start the model exactly there (B11 and C11). What happens? What happens if you start a little way away, and further away?
+3. **The time step.** With $\Delta t = 1$ the cycles grow until the prey are wiped out (when?). Now set $\Delta t$ (F8) to 0.5 and then to 0.1, with everything else unchanged. The time-series graph always shows the first 300 time units. What happens to the growth of the cycles? What does this tell you about where the growing cycles come from? What would you expect from the continuous model in the lecture?
+4. **Moving the isoclines.** With $\Delta t = 0.1$, predict which isocline moves, and in which direction, if you double each of $r$, $a$, $c$ and $d$ in turn (one at a time, putting each back afterwards). Check with the phase plane.
+5. (Optional) **Volterra's principle.** A pesticide kills both prey and predators: it lowers $r$ to 0.2 and raises $d$ to 0.12. What happens to the equilibrium numbers of prey and predators? Is that what you would have guessed?
+
+## Session 2: what stabilises predator-prey cycles?
+
+Real predator-prey systems rarely show the neutral cycles of the Lotka-Volterra model. Neal (*Predator-Prey Interactions*) uses the graphical model of Rosenzweig and MacArthur (1963) to show how other features of the biology change the outcome. Here we add two of them to the spreadsheet, one at a time. Keep $\Delta t = 1$ unless a task says otherwise.
+
+### Part 3: a carrying capacity for the prey (about 15 minutes)
+
+Without predators, real prey populations do not grow for ever: they grow logistically towards a carrying capacity $K$. The prey equation becomes
+
+$$\frac{dH}{dt} = rH\left(1 - \frac{H}{K}\right) - aHP$$
+
+and the prey isocline is no longer horizontal: it slopes down from $P = r/a$ at $H = 0$ to $P = 0$ at $H = K$. The predator equation does not change.
+
+Use the sheet **Part 3 Prey K** ($K = 2000$ in F9). The predator formula is already filled in.
+
+1. In **B12**, type the new prey formula and copy it down to row 3011:
+
+    - English Excel: `=MAX(0,B11+$F$8*($F$4*B11*(1-B11/$F$9)-$F$5*B11*C11))`
+    - Danish Excel: `=MAKS(0;B11+$F$8*($F$4*B11*(1-B11/$F$9)-$F$5*B11*C11))`
+
+    Check: time 1 should give $H = 925$, $P = 19.6$.
+
+2. With $K = 2000$, what happens to the cycles? Where do the populations end up? Compare this with the point where the isoclines cross.
+3. Try $K = 5000$ and $K = 10000$ (a richer environment for the prey). What happens to the cycles, and to the final number of predators?
+4. Try $K = 1000$, which is smaller than $d/c$. What happens to the predators, and why? Use the isoclines.
+
+### Part 4: a refuge for the prey (about 10 minutes)
+
+Some prey can hide where the predators cannot reach them (burrows, crevices, dense vegetation). In the sheet **Part 4 Prey refuge**, the first $H_r$ prey (cell F9) cannot be caught: the predators only meet the $H - H_r$ prey outside the refuge. Both formulas are filled in, so you only need to change $H_r$.
+
+1. Set $H_r = 0$. Check that you get the same results as Part 1.
+2. Try $H_r = 50$, 100, 200 and 400. What happens to the size of the cycles, and to the risk of extinction?
+3. How does the refuge move the predator isocline? (Look at the equilibrium in cell B8.) Why do the predators need more prey at equilibrium?
+
+### Questions to answer (both sessions)
+
+1. In the basic model, which parameters set the equilibrium numbers of prey and of predators? Explain in words why the equilibrium number of *prey* depends only on predator parameters, and the equilibrium number of *predators* only on prey and attack parameters.
+2. Why do the cycles in your spreadsheet grow (with $\Delta t = 1$), when the continuous Lotka-Volterra model predicts cycles that keep the same size? What does this tell you about using discrete time steps in models?
+3. How do a prey carrying capacity and a prey refuge each change the outcome? Explain each using the isoclines.
+4. The Lotka-Volterra model assumes, among other things, that predators can eat without limit (no satiation). Name two other assumptions of the model that are unlikely to hold in real populations, and say how each might change the dynamics.
+
+## More: the same model in R
+
+Two optional R chapters (extra homework) solve the same model, with the same parameter values and symbols: [Continuous-time Lotka-Volterra predator-prey model in R](continuous-time-lotka-volterra-predator-prey-model-in-r.html) (the model in the lecture, solved accurately) and [Discrete-time Lotka-Volterra predator-prey model in R](discrete-time-lotka-volterra-predator-prey-model-in-r.html) (the spreadsheet model, with any time step).
 
 ### References
 
 Lotka, A. J. 1925. *Elements of Physical Biology*. Williams & Wilkins.
 
-Volterra, V. 1926. Variazioni e fluttuazioni del numero d'individui in specie animali conviventi. *Memorie della Reale Accademia Nazionale dei Lincei* 2: 31–113.
-
 Rosenzweig, M. L. and R. H. MacArthur. 1963. Graphical representation and stability conditions of predator-prey interactions. *American Naturalist* 97: 209–223.
+
+Volterra, V. 1926. Variazioni e fluttuazioni del numero d'individui in specie animali conviventi. *Memorie della Reale Accademia Nazionale dei Lincei* 2: 31–113.
 
 ## Takeaways
 
-- Predator-prey feedbacks can generate oscillations without external forcing.
-- Parameter changes move the isoclines and the equilibrium; in the continuous model the size of the cycles is set by the starting numbers.
-- The spreadsheet's growing oscillations come from its discrete time steps; the continuous model gives neutrally stable cycles.
-- Simple models highlight mechanisms but omit real-world constraints.
+- Predator-prey feedbacks can generate cycles without any outside forcing, with the predators a quarter of a cycle behind the prey.
+- The parameters set the isoclines and the equilibrium ($H^* = d/c$, $P^* = r/a$); in the continuous model the starting numbers set the size of the cycles.
+- The growing cycles of the spreadsheet come from its time steps: with small steps they almost disappear.
+- A prey carrying capacity and a prey refuge both damp the cycles towards a stable equilibrium.
