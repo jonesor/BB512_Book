@@ -49,7 +49,8 @@ lv_time_plot <- function(sim, steps = max(sim$t), ymax = NULL, fam = "Avenir Nex
 # Phase plane: both zero isoclines, intercepts labelled with plotmath,
 # one or more trajectories (grey line, start marked) and the equilibrium if interior.
 lv_phase_plot <- function(K1, alpha, K2, beta, sims = list(), lim = NULL, ylim = lim,
-                          fam = "Avenir Next", show_eq = TRUE, intercept_labels = TRUE) {
+                          fam = "Avenir Next", show_eq = TRUE, intercept_labels = TRUE,
+                          numbers = TRUE) {
   x1 <- K1; y1 <- K1 / alpha        # species 1 isocline intercepts
   x2 <- K2 / beta; y2 <- K2         # species 2 isocline intercepts
   if (is.null(lim)) lim <- max(x1, y1, x2, y2) * 1.1
@@ -78,18 +79,43 @@ lv_phase_plot <- function(K1, alpha, K2, beta, sims = list(), lim = NULL, ylim =
   # intercept labels on the axes (plotmath)
   ax <- data.frame(v = c(x1, x2), lab = c("K[1]", "K[2]/beta"), col = c("Species 1", "Species 2"))
   ay <- data.frame(v = c(y1, y2), lab = c("K[1]/alpha", "K[2]"), col = c("Species 1", "Species 2"))
-  if (intercept_labels) p <- p +
+  # With numbers (default), the axis ticks sit exactly at the four intercepts and carry both the
+  # value and the symbol (e.g. 1,200 over K1), so students can compare with their Excel phase graph.
+  # Without numbers, the symbols alone sit where tick labels would be.
+  if (intercept_labels && !numbers) p <- p +
     ggplot2::geom_text(data = ax, ggplot2::aes(x = v, y = -0.035 * ylim, label = lab, colour = col),
                        parse = TRUE, vjust = 1, family = fam, size = 5.2) +
     ggplot2::geom_text(data = ay, ggplot2::aes(x = -0.025 * lim, y = v, label = lab, colour = col),
                        parse = TRUE, hjust = 1, family = fam, size = 5.2)
-  p +
+  tick <- function(d, range) {
+    d <- d[order(d$v), ]
+    # two intercepts close together: shift the lower label away from the higher one
+    close <- diff(d$v) < 0.33 * range
+    list(just = if (close) c(0.5, 1, 0.5) else rep(0.5, 3),
+         breaks = c(0, d$v),
+         labels = parse(text = c('"0"', sprintf('atop("%s", %s)', scales::comma(d$v, accuracy = 1), d$lab))),
+         colours = c(bb512$grey, unname(sp_cols[d$col])))
+  }
+  if (numbers && intercept_labels) {
+    tx <- tick(ax, lim); ty <- tick(ay, ylim)
+    sx <- ggplot2::scale_x_continuous(breaks = tx$breaks, labels = tx$labels, expand = c(0, 0))
+    sy <- ggplot2::scale_y_continuous(breaks = ty$breaks, labels = ty$labels, expand = c(0, 0))
+  } else {
+    brk <- if (numbers) scales::breaks_pretty(n = 4) else NULL
+    sx <- ggplot2::scale_x_continuous(breaks = brk, labels = scales::label_comma(), expand = c(0, 0))
+    sy <- ggplot2::scale_y_continuous(breaks = brk, labels = scales::label_comma(), expand = c(0, 0))
+  }
+  p <- p +
     ggplot2::coord_cartesian(xlim = c(0, lim), ylim = c(0, ylim), clip = "off") +
-    ggplot2::scale_x_continuous(breaks = NULL, expand = c(0, 0)) +
-    ggplot2::scale_y_continuous(breaks = NULL, expand = c(0, 0)) +
+    sx + sy +
     ggplot2::labs(x = expression("Species 1 ("*N[1]*")"), y = expression("Species 2 ("*N[2]*")")) +
     theme_bb512() +
     ggplot2::theme(panel.grid.major.y = ggplot2::element_blank(),
-                   axis.title.x = ggplot2::element_text(margin = ggplot2::margin(t = 26)),
-                   axis.title.y = ggplot2::element_text(margin = ggplot2::margin(r = 42)))
+                   axis.title.x = ggplot2::element_text(margin = ggplot2::margin(t = if (numbers) 8 else 26)),
+                   axis.title.y = ggplot2::element_text(margin = ggplot2::margin(r = if (numbers) 8 else 42)))
+  if (numbers && intercept_labels) p <- p +
+    ggplot2::theme(axis.text.x = ggplot2::element_text(colour = tx$colours, lineheight = 0.9, hjust = tx$just),
+                   axis.text.y = ggplot2::element_text(colour = ty$colours, hjust = 1, vjust = ty$just),
+                   axis.ticks = ggplot2::element_line(colour = bb512$grey))
+  p
 }

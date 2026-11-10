@@ -1,6 +1,6 @@
 # BB512: Lotka-Volterra competition practical, figures and deck builder
 
-Reproducible figures for the green-theme practical deck "BB512 - Lotka Volterra Competition Practical v2" (two sessions; Neal, *Interspecific Competition*). The deck is deliberately minimal: students work from the online book, and the slides only show the task and what students should see (check figure, isocline cases, answers Q1 to Q5), styled with `R/theme_bb512.R` (copied from `behaviour_altruism`). `R/lv_model.R` holds the discrete-time model exactly as students build it in Excel (worksheet Equations 2 and 3, in Neal's notation α and β), plus shared time-series and phase-plane plotting functions. Every simulation is deterministic (no random numbers). Answer slides use the parameter values of the book's solutions chapter (`6_01_Solutions.Rmd`, "Solutions: Lotka-Volterra competition").
+Reproducible figures for the green-theme practical deck "BB512 - Lotka Volterra Competition Practical v2" (two sessions; Neal, *Interspecific Competition*). The deck is deliberately minimal: students work from the online book, and the slides only show the task and what students should see (check figure, isocline cases, answers Q1 to Q5), styled with `R/theme_bb512.R` (copied from `behaviour_altruism`). `R/lv_model.R` holds the discrete-time model exactly as students build it in Excel (worksheet Equations 2 and 3, in Neal's notation α and β), plus shared time-series and phase-plane plotting functions. Every simulation is deterministic (no random numbers). Colours match the worksheet's Excel charts (species 1 forest green, solid; species 2 clay red, dashed), and phase-plane axis ticks sit at the four intercepts, labelled with value and symbol, so students can compare directly with their Excel phase graph. Answer slides use the parameter values of the book's solutions chapter (`6_01_Solutions.Rmd`, "Solutions: Lotka-Volterra competition").
 
 Run with `Rscript lecture_figures/render_all.R lv_competition`. `scripts/00_check_numbers.R` prints every number used on the slides and in the notes.
 
@@ -8,7 +8,7 @@ Run with `Rscript lecture_figures/render_all.R lv_competition`. `scripts/00_chec
 |---|---|---|---|---|
 | `00_check_numbers.R` | all | none | Equilibria and values at t = 50 and t = 200 for every case | Arithmetic |
 | `01_one_isocline.R` | not used | `half` | Species 1 zero isocline with direction arrows (K1 = 1200, α = 0.75) | Analytical schematic |
-| `02_check_sheet.R` | 3 | `takeaway` | Worksheet defaults: time series and phase plane, settling at (720, 640) | Deterministic simulation |
+| `02_check_sheet.R` | 3 | `takeaway` | Worksheet defaults: time series (t = 0-200, as in Excel) and phase plane, settling at (720, 640) | Deterministic simulation |
 | `03_four_outcomes.R` | 4 | `full` | The four isocline arrangements, stable and unstable equilibria | Analytical schematic |
 | `04_answer_q1.R` | 6 | `takeaway` | Q1: species 1 excludes species 2 | Deterministic simulation |
 | `05_answer_q2.R` | 7 | `takeaway` | Q2: species 2 excludes species 1 (phase-plane axes not to scale) | Deterministic simulation |
