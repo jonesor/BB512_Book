@@ -176,6 +176,13 @@ Part 2 (about 15 min), answers: α = β = 0 gives (1200, 1000) and #DIV/0! in tw
 Part 3 (session 2): insist on the prediction before running, and on looking at all 200 time steps.
 """)
 
+new("Title & Photo", {100: "Your worksheet",
+                      102: "Yellow: your formulas (B12, C12). Orange: the parameters you change. Blue: the invasion check (do not edit)."},
+    pictures={101: os.path.join(os.path.dirname(os.path.abspath(__file__)), "images", "lv_worksheet_blank.png")},
+    notes="""
+Screenshot of the student worksheet as downloaded (Excel, Mac), rows 1-13. Show it with the task slide so students can find their way around: the two yellow cells are the only ones they type in for Part 1; in Parts 2 and 3 they change only the orange cells (and, for Q4 and Q5, the starting sizes in B11 and C11). The blue block puts K~1~/K~2~ next to α and K~2~/K~1~ next to β, so they can check the invasion rule directly.
+""")
+
 new("Title, Bullets & Photo", {100: "Check your sheet",
                                103: "CHECK",
                                105: ("With the worksheet's starting values (R~1~ = R~2~ = 1, K~1~ = 1200, α = 0.75, K~2~ = 1000, β = 0.5, start 100 and 50), both species settle at N~1~ = 720 and N~2~ = 640.", 19)},
