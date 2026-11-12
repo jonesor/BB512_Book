@@ -905,7 +905,7 @@ Shared environment, correct parentage and measurement accuracy are the three set
 
 ## Solutions: Lotka-Volterra competition
 
-You can find the completed spreadsheet [here](https://github.com/jonesor/BB512_Book/raw/main/practical_files/LV_competition_completed.xlsx).
+Download the completed worksheet **[here](https://github.com/jonesor/BB512_Book/raw/main/practical_files/LV_competition_completed.xlsx)**. It is the same worksheet you used, with the formulas filled in B12:C211.
 
 **Part 1.** The formula for species 2 in cell C12 is
 
