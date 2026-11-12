@@ -2,6 +2,6 @@
 
 | File | Slide | Source | Licence | Changes |
 |---|---|---|---|---|
-| `title_tribolium.jpg` (to add) | 1 | Red flour beetle, *Tribolium castaneum*: USDA Agricultural Research Service, Wikimedia Commons, File:Tribolium_castaneum.jpg | Public domain (US government work); confirm on the file page | Crop to the Title placeholder (5.43 × 7.5 in) |
+| Title photo (Keynote only) | 1 | Red flour beetle, *Tribolium castaneum*: Eric Day, Virginia Tech, Wikimedia Commons, File:Tribolium_castaneum87-300.jpg | Public domain | Rotated 90° and resized to 922 × 1229 px; placed in the Keynote deck (the master), not in the PPTX |
 
 Dropped from the previous version: the AI-generated lizard image (slides 2 and 25 of the blue deck).
