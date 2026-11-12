@@ -8,7 +8,7 @@ Run with `Rscript lecture_figures/render_all.R lv_competition`. `scripts/00_chec
 |---|---|---|---|---|
 | `00_check_numbers.R` | all | none | Equilibria and values at t = 50 and t = 200 for every case | Arithmetic |
 | `01_one_isocline.R` | not used | `half` | Species 1 zero isocline with direction arrows (K1 = 1200, α = 0.75) | Analytical schematic |
-| `02_check_sheet.R` | 4 | `takeaway` | Worksheet defaults: time series (t = 0-200, as in Excel) and phase plane, settling at (720, 640) | Deterministic simulation |
+| `02_check_sheet.R` | not used (slide 4 uses Excel screenshot) | `takeaway` | Worksheet defaults: time series (t = 0-200, as in Excel) and phase plane, settling at (720, 640) | Deterministic simulation |
 | `03_four_outcomes.R` | 5 | `full` | The four isocline arrangements, stable and unstable equilibria | Analytical schematic |
 | `04_answer_q1.R` | 7 | `takeaway` | Q1: species 1 excludes species 2 | Deterministic simulation |
 | `05_answer_q2.R` | 8 | `takeaway` | Q2: species 2 excludes species 1 (phase-plane axes not to scale) | Deterministic simulation |
@@ -22,4 +22,4 @@ Run with `Rscript lecture_figures/render_all.R lv_competition`. `scripts/00_chec
 
     python3 build_deck.py ../theme/BB512_Theme.pptx "BB512 - Lotka Volterra Competition Practical v2.pptx"
 
-Slide 3 shows `images/lv_worksheet_blank.png`, Owen's Excel screenshot of the student worksheet (rows 1-13). The title photo goes in `images/title_tribolium.jpg` (see `images/CREDITS.md`); the builder leaves the picture placeholder empty if the file is missing. The figures were rendered for checking without Avenir Next (Inter was substituted). Re-run `render_all.R` on a Mac with Avenir Next before final use, and look at the PNGs.
+Slides 3 and 4 show Owen's Excel screenshots: `images/lv_worksheet_blank.png` (student worksheet, rows 1-13) and `images/lv_check_graphs.png` (completed worksheet, charts D15:K30, padded with white to the placeholder's shape). The title photo goes in `images/title_tribolium.jpg` (see `images/CREDITS.md`); the builder leaves the picture placeholder empty if the file is missing. The figures were rendered for checking without Avenir Next (Inter was substituted). Re-run `render_all.R` on a Mac with Avenir Next before final use, and look at the PNGs.

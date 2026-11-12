@@ -183,14 +183,13 @@ new("Title & Photo", {100: "Your worksheet",
 Screenshot of the student worksheet as downloaded (Excel, Mac), rows 1-13. Show it with the task slide so students can find their way around: the two yellow cells are the only ones they type in for Part 1; in Parts 2 and 3 they change only the orange cells (and, for Q4 and Q5, the starting sizes in B11 and C11). The blue block puts K~1~/K~2~ next to α and K~2~/K~1~ next to β, so they can check the invasion rule directly.
 """)
 
-new("Title, Bullets & Photo", {100: "Check your sheet",
-                               103: "CHECK",
-                               105: ("With the worksheet's starting values (R~1~ = R~2~ = 1, K~1~ = 1200, α = 0.75, K~2~ = 1000, β = 0.5, start 100 and 50), both species settle at N~1~ = 720 and N~2~ = 640.", 19)},
-    pictures={101: F + "02_check_sheet.png"},
+new("Title & Photo", {100: "Check your sheet",
+                      102: "With the starting values, species 1 settles at N~1~ = 720 and species 2 at N~2~ = 640, where the two isoclines cross."},
+    pictures={101: os.path.join(os.path.dirname(os.path.abspath(__file__)), "images", "lv_check_graphs.png")},
     notes="""
-(2 min) If a sheet does not settle at (720, 640): check the $ signs in the formulas, and that each formula uses its own species' K in the denominator.
+(2 min) Screenshot of the completed worksheet in Excel (D15:K30), so students compare like with like. If a sheet does not settle at (720, 640): check the $ signs in the formulas, and that each formula uses its own species' K in the denominator.
 Equilibrium by hand: N~1~* = (K~1~ − αK~2~)/(1 − αβ) = (1200 − 750)/0.625 = 720; N~2~* = (K~2~ − βK~1~)/(1 − αβ) = (1000 − 600)/0.625 = 640.
-Deterministic simulation of the worksheet model, script 02_check_sheet.R; numbers printed by 00_check_numbers.R.
+The R version of this figure (02_check_sheet.R) is kept in figures/ but no longer used in the deck.
 """)
 
 new("Title & Photo", {100: "What your phase graph can show",
