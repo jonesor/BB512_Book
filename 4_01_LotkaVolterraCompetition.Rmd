@@ -2,7 +2,7 @@
 
 The Lotka-Volterra competition model is a foundational tool in ecology for understanding interspecific competition, or competition between different species for shared resources such as food, space, and nesting sites. It examines how population sizes change in a shared environment by considering factors like interaction strength and environmental carrying capacities.
 
-The model is closely linked to the idea of "competitive exclusion": two species with identical ecological roles cannot coexist indefinitely, and eventually one will exclude the other. This principle comes mainly from experiments, especially Gause's work with yeasts and *Paramecium* in the 1930s, rather than from the model itself. In the basic model, two truly identical species do not exclude each other at all (see the fifth case below).
+The model is closely linked to the idea of "competitive exclusion": two species with identical ecological roles cannot coexist indefinitely, and eventually one will exclude the other. This principle comes mainly from experiments, especially Gause's work with yeasts and *Paramecium* in the 1930s, rather than from the model itself.
 
 The model also explores the role of both inter- and intra-specific competition. It identifies conditions for species coexistence, influenced by parameters like competition coefficients and carrying capacities. These insights are vital for understanding community structure, species interactions, and ecological stability.
 
@@ -13,7 +13,7 @@ In a two-species system there are four general outcomes:
 3. *Exclusion Dependent on Initial Densities:* Depending on the starting numbers of each species, either one could exclude the other.
 4. *Stable Coexistence:* Both species may reach a stable equilibrium where they coexist without one excluding the other.
 
-Neal also describes a fifth, knife-edge case, in which the two isoclines lie exactly on top of each other (see below).
+Neal also describes a fifth case, in which the two isoclines lie exactly on top of each other. This needs exactly matching parameter values, so it is unlikely in nature, and we will not consider it further.
 
 The model suggests that stable coexistence is possible if each species limits its own population growth more than it affects the other species. Overlapping niches could lead to competitive exclusion, influenced by their competition coefficients and carrying capacities.
 
@@ -80,8 +80,6 @@ for (cc in cases) {
   }
 }
 ```
-
-In the fifth case (Neal's "coexistence at a range of equilibrium densities"), $K_1 = K_2/\beta$ and $K_2 = K_1/\alpha$, so the two isoclines lie exactly on top of each other. Every point on the shared line is an equilibrium, and the species coexist at whatever ratio they happen to reach. Two identical species ($\alpha = \beta = 1$, $K_1 = K_2$) are an example. This case needs exactly matching values, so it is unlikely in nature. It also shows that the basic model does not, on its own, predict the exclusion of identical species: Gause observed exclusion in his *Paramecium* experiments, and Neal shows that an extra source of mortality (a "removal factor") has to be added to the model to explain it.
 
 ## Key idea
 
