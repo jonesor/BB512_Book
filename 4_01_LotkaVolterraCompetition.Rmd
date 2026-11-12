@@ -115,11 +115,12 @@ In words: the population at the next time step = the population now + its growth
 
 ### Part 1 (session 1, about 15 minutes): build the model
 
-Download the Excel worksheet **[here](https://github.com/jonesor/BB512_Book/raw/main/practical_files/LV_competition_worksheet.xlsx)**. Most of it is ready for you:
+Download the Excel worksheet **[here](https://github.com/jonesor/BB512_Book/raw/main/practical_files/LV_competition_worksheet.xlsx)**. Most of it is ready for you. The colours show where you work: **yellow** cells are where you type formulas, and **orange** cells hold the parameters you change.
 
 | Cells | What they hold |
 |---|---|
-| F4 to F9 | The parameters: $R_1$, $K_1$, $\alpha$, $R_2$, $K_2$, $\beta$ |
+| F4 to F9 (orange) | The parameters: $R_1$, $K_1$, $\alpha$, $R_2$, $K_2$, $\beta$ |
+| E11 to H13 (blue) | $K_1/K_2$ and $K_2/K_1$ next to $\alpha$ and $\beta$, for checking whether each species can invade (calculated, do not edit) |
 | B11 and C11 | The starting population sizes, $N_1 = 100$ and $N_2 = 50$ |
 | A11 to A211 | Time, from $t = 0$ to $t = 200$ |
 | B5 to C8 | The ends of the two isoclines ($K_1$, $K_1/\alpha$, $K_2$, $K_2/\beta$), calculated from the parameters |
@@ -141,7 +142,7 @@ Your job is to type the two formulas that move the populations forward one time 
 
 ### Part 2 (session 1, about 15 minutes): explore
 
-Change one parameter at a time, watch both graphs, and note what happens. Put each parameter back to its starting value before you try the next.
+Change one parameter (orange cells) at a time, watch both graphs, and note what happens. Put each parameter back to its starting value before you try the next.
 
 1. Set $\alpha = 0$ and $\beta = 0$. What does each species do, and where does it end up? Why? (Two of the isocline cells will show `#DIV/0!`: can you see why?)
 2. Increase $\alpha$ in steps from 0.75 to 1.5. How does species 1's isocline move? At roughly what value of $\alpha$ does species 1 disappear? Can you explain that value using the *Key idea* above?
@@ -150,7 +151,7 @@ Change one parameter at a time, watch both graphs, and note what happens. Put ea
 
 ### Part 3 (session 2): the questions
 
-Use your model to answer the questions below. For each parameter set you try, **sketch the isoclines and predict the outcome first**, then run the model to check. If a case seems to stop part-way, look at all 200 time steps: some cases take more than 100 steps to settle, or to move away from an unstable equilibrium.
+Use your model to answer the questions below by changing the parameters in the orange cells (and, where needed, the starting sizes in B11 and C11). For each parameter set you try, **sketch the isoclines and predict the outcome first**, then run the model to check. If a case seems to stop part-way, look at all 200 time steps: some cases take more than 100 steps to settle, or to move away from an unstable equilibrium.
 
 1. What parameter values will cause species 1 to exclude species 2 from the habitat? What do these values mean in ecological terms?
 2. What parameter values will reverse this outcome? What do these values mean in ecological terms?
