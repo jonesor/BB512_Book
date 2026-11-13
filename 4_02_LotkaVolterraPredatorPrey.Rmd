@@ -36,24 +36,36 @@ $$H_{t+\Delta t} = H_t + \Delta t\,(rH_t - aH_tP_t) \qquad\qquad P_{t+\Delta t} 
 
 Each step uses the numbers at the *start* of the step, so the populations always react a little late. With $\Delta t = 1$ this lag is large enough to change the behaviour of the model, as you will see.
 
-## Session 1: build and explore the basic model
+## Your task
 
-### Part 1: build the model (about 10 minutes)
+This practical runs over **two sessions**. In the first you build the basic model in Excel and explore its cycles; in the second you add a prey carrying capacity and a prey refuge, and then answer four questions.
 
-Download the Excel worksheet **[here](https://github.com/jonesor/BB512_Book/raw/main/practical_files/LV_predator_prey_worksheet.xlsx)**. Use the sheet **Part 1 Basic model**. The parameters (cells F4 to F8), the starting numbers (row 11), the time column and both graphs are already there. Only the two yellow cells are empty.
+### Part 1 (session 1, about 10 minutes): build the model
 
-1. In **B12**, type the formula for the prey at the next time step. Use `$` to fix the parameter cells, so that the formula still points at them when you copy it down:
+Download the Excel worksheet **[here](https://github.com/jonesor/BB512_Book/raw/main/practical_files/LV_predator_prey_worksheet.xlsx)**. It has one sheet for each part (**Part 1 Basic model**, **Part 3 Prey K** and **Part 4 Prey refuge**). Most of it is ready for you. The colours show where you work: **yellow** cells are where you type formulas, and **orange** cells hold the parameters you change.
+
+| Cells | What they hold |
+|---|---|
+| F4 to F8 (orange) | The parameters: $r$, $a$, $c$, $d$ and the time step $\Delta t$ (F9 holds $K$ or $H_r$ in Parts 3 and 4) |
+| B11 and C11 | The starting numbers, $H = 1000$ and $P = 20$ |
+| A11 to A3011 | Time, going up by $\Delta t$ each row |
+| B4 to C8 | The ends of the two zero isoclines and the equilibrium $(H^*, P^*)$, calculated from the parameters |
+| Two graphs | $H$ and $P$ against time (first 300 time units), and $P$ against $H$ with both isoclines |
+
+Your job on the sheet **Part 1 Basic model** is to type the two formulas that move the populations forward one time step.
+
+1. In cell **B12** (yellow), type the formula for the prey:
 
     - English Excel: `=MAX(0,B11+$F$8*($F$4*B11-$F$5*B11*C11))`
     - Danish Excel: `=MAKS(0;B11+$F$8*($F$4*B11-$F$5*B11*C11))`
 
-    `MAX(0, ...)` stops the population going below zero.
+    Compare it with the prey equation above: `B11` is $H_t$, `C11` is $P_t$, `$F$4` is $r$, `$F$5` is $a$ and `$F$8` is $\Delta t$. The `$` signs keep the formula pointing at the parameter cells when you copy it down. `MAX(0, ...)` stops the population going below zero.
 
-2. In **C12**, write the formula for the predators yourself, using the predator equation above (c is in F6 and d in F7). Check your answer in the solutions if you get stuck.
-3. Select B12 and C12 and copy them down to row 3011 (double-click the small square at the bottom right of the selection).
-4. **Check:** time 1 should give $H = 1050$ and $P = 19.6$, and time 2 should give $H = 1106.7$ and $P = 19.286$. If not, check your formulas before going on.
+2. In cell **C12** (yellow), write the matching formula for the predators yourself. Use the predator equation: you need $P_t$ (`C11`), $H_t$ (`B11`), $c$ (`$F$6`), $d$ (`$F$7`) and $\Delta t$ (`$F$8`).
+3. Select B12 and C12 together and copy them down to row 3011 (double-click the small square at the bottom right of the selection). The graphs fill in as you go.
+4. **Check your sheet.** Time 1 should give $H = 1050$ and $P = 19.6$, and time 2 should give $H = 1106.7$ and $P = 19.286$. If not, check the `$` signs and which parameter each cell reference points to.
 
-### Part 2: explore the model (about 25 minutes)
+### Part 2 (session 1, about 25 minutes): explore the model
 
 For each task, write down your prediction first (a sentence or a quick sketch of the phase plane), then change the values and check.
 
@@ -63,11 +75,9 @@ For each task, write down your prediction first (a sentence or a quick sketch of
 4. **Moving the isoclines.** With $\Delta t = 0.1$, predict which isocline moves, and in which direction, if you double each of $r$, $a$, $c$ and $d$ in turn (one at a time, putting each back afterwards). Check with the phase plane.
 5. (Optional) **Volterra's principle.** A pesticide kills both prey and predators: it lowers $r$ to 0.2 and raises $d$ to 0.12. What happens to the equilibrium numbers of prey and predators? Is that what you would have guessed?
 
-## Session 2: what stabilises predator-prey cycles?
+### Part 3 (session 2, about 15 minutes): a carrying capacity for the prey
 
-Real predator-prey systems rarely show the neutral cycles of the Lotka-Volterra model. Neal (*Predator-Prey Interactions*) uses the graphical model of Rosenzweig and MacArthur (1963) to show how other features of the biology change the outcome. Here we add two of them to the spreadsheet, one at a time. Keep $\Delta t = 1$ unless a task says otherwise.
-
-### Part 3: a carrying capacity for the prey (about 15 minutes)
+Real predator-prey systems rarely show the neutral cycles of the Lotka-Volterra model. Neal (*Predator-Prey Interactions*) uses the graphical model of Rosenzweig and MacArthur (1963) to show how other features of the biology change the outcome. Here we add two of them to the spreadsheet, one at a time. Keep $\Delta t = 1$ unless a task says otherwise, and for each value you try, **predict first** (sketch the isoclines), then run the model to check.
 
 Without predators, real prey populations do not grow for ever: they grow logistically towards a carrying capacity $K$. The prey equation becomes
 
@@ -88,7 +98,7 @@ Use the sheet **Part 3 Prey K** ($K = 2000$ in F9). The predator formula is alre
 3. Try $K = 5000$ and $K = 10000$ (a richer environment for the prey). What happens to the cycles, and to the final number of predators?
 4. Try $K = 1000$, which is smaller than $d/c$. What happens to the predators, and why? Use the isoclines.
 
-### Part 4: a refuge for the prey (about 10 minutes)
+### Part 4 (session 2, about 10 minutes): a refuge for the prey
 
 Some prey can hide where the predators cannot reach them (burrows, crevices, dense vegetation). In the sheet **Part 4 Prey refuge**, the first $H_r$ prey (cell F9) cannot be caught: the predators only meet the $H - H_r$ prey outside the refuge. Both formulas are filled in, so you only need to change $H_r$.
 
@@ -96,24 +106,19 @@ Some prey can hide where the predators cannot reach them (burrows, crevices, den
 2. Try $H_r = 50$, 100, 200 and 400. What happens to the size of the cycles, and to the risk of extinction?
 3. How does the refuge move the predator isocline? (Look at the equilibrium in cell B8.) Why do the predators need more prey at equilibrium?
 
-### Questions to answer (both sessions)
+### Part 5 (session 2, about 10 minutes): the questions
+
+Use what you found in Parts 2 to 4 to answer these questions. Write a few sentences for each, and use a sketch of the isoclines where it helps.
 
 1. In the basic model, which parameters set the equilibrium numbers of prey and of predators? Explain in words why the equilibrium number of *prey* depends only on predator parameters, and the equilibrium number of *predators* only on prey and attack parameters.
 2. Why do the cycles in your spreadsheet grow (with $\Delta t = 1$), when the continuous Lotka-Volterra model predicts cycles that keep the same size? What does this tell you about using discrete time steps in models?
 3. How do a prey carrying capacity and a prey refuge each change the outcome? Explain each using the isoclines.
 4. The Lotka-Volterra model assumes, among other things, that predators can eat without limit (no satiation). Name two other assumptions of the model that are unlikely to hold in real populations, and say how each might change the dynamics.
+5. (Optional) Neal (*Predator-Prey Interactions*) describes Gause's experiments with *Paramecium* (prey) and *Didinium* (predator). When Gause added a sediment where *Paramecium* could hide, *Didinium* ate all the prey in the open water and then starved, and the prey took over the microcosm. Your refuge model in Part 4 keeps both species. Which assumptions of the model could explain the difference? (Hints: in your model, what happens to the prey born in the refuge once there are more than $H_r$? And look at how low the predator numbers go in Part 1: can a real population have that many?)
 
 ## More: the same model in R
 
 Two optional R chapters (extra homework) solve the same model, with the same parameter values and symbols: [Continuous-time Lotka-Volterra predator-prey model in R](continuous-time-lotka-volterra-predator-prey-model-in-r.html) (the model in the lecture, solved accurately) and [Discrete-time Lotka-Volterra predator-prey model in R](discrete-time-lotka-volterra-predator-prey-model-in-r.html) (the spreadsheet model, with any time step).
-
-### References
-
-Lotka, A. J. 1925. *Elements of Physical Biology*. Williams & Wilkins.
-
-Rosenzweig, M. L. and R. H. MacArthur. 1963. Graphical representation and stability conditions of predator-prey interactions. *American Naturalist* 97: 209–223.
-
-Volterra, V. 1926. Variazioni e fluttuazioni del numero d'individui in specie animali conviventi. *Memorie della Reale Accademia Nazionale dei Lincei* 2: 31–113.
 
 ## Takeaways
 
@@ -121,3 +126,11 @@ Volterra, V. 1926. Variazioni e fluttuazioni del numero d'individui in specie an
 - The parameters set the isoclines and the equilibrium ($H^* = d/c$, $P^* = r/a$); in the continuous model the starting numbers set the size of the cycles.
 - The growing cycles of the spreadsheet come from its time steps: with small steps they almost disappear.
 - A prey carrying capacity and a prey refuge both damp the cycles towards a stable equilibrium.
+
+## References
+
+Lotka, A. J. 1925. *Elements of Physical Biology*. Williams & Wilkins.
+
+Rosenzweig, M. L. and R. H. MacArthur. 1963. Graphical representation and stability conditions of predator-prey interactions. *American Naturalist* 97: 209–223.
+
+Volterra, V. 1926. Variazioni e fluttuazioni del numero d'individui in specie animali conviventi. *Memorie della Reale Accademia Nazionale dei Lincei* 2: 31–113.

@@ -171,7 +171,7 @@ No title photo yet: drop a licensed photo (e.g. lynx and snowshoe hare) into the
 new("Activity", {101: "2 SESSIONS · PAIRS",
                  102: "Work through the Lotka-Volterra predator-prey practical in the online book",
                  103: (["Session 1: Part 1 (build the model) and Part 2 (explore it)",
-                        "Session 2: Part 3 (prey carrying capacity), Part 4 (prey refuge) and the four questions",
+                        "Session 2: Part 3 (prey carrying capacity), Part 4 (prey refuge) and Part 5 (the questions)",
                         "Predict before you change anything",
                         "Check your work against the next slides"], 22)},
     notes="""

@@ -21,8 +21,8 @@ The model suggests that stable coexistence is possible if each species limits it
 Learning outcomes:
 
 - Build a discrete-time competition model in Excel and use it to test predictions.
-- Understanding how the Lotka-Volterra competition model works.
-- Understanding the competition coefficients $\alpha$ and $\beta$, and using the isocline intercepts ($K_1$, $K_1/\alpha$, $K_2$, $K_2/\beta$) to predict the outcome of competition.
+- Explain how the Lotka-Volterra competition model works.
+- Explain what the competition coefficients $\alpha$ and $\beta$ mean, and use the isocline intercepts ($K_1$, $K_1/\alpha$, $K_2$, $K_2/\beta$) to predict the outcome of competition.
 
 :::
 

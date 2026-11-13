@@ -950,7 +950,7 @@ Note that comparing a coefficient with 1 is not enough when the carrying capacit
 
 The completed spreadsheet is [here](https://github.com/jonesor/BB512_Book/raw/main/practical_files/LV_predator_prey_completed.xlsx). All numbers below come from that model ($r = 0.25$, $a = 0.01$, $c = 0.00008$, $d = 0.1$, starting at $H = 1000$, $P = 20$), with $\Delta t = 1$ unless stated otherwise.
 
-### Session 1
+### Session 1 (Parts 1 and 2)
 
 **Part 1.** The predator formula in C12 is
 
@@ -967,7 +967,7 @@ Time 1 gives $H = 1050$, $P = 19.6$; time 2 gives $H = 1106.7$, $P = 19.286$.
 4. *Moving the isoclines.* Doubling $r$ (to 0.5) raises the prey isocline to $P = 50$. Doubling $a$ (to 0.02) lowers it to $P = 12.5$. Doubling $c$ (to 0.00016) moves the predator isocline left to $H = 625$. Doubling $d$ (to 0.2) moves it right to $H = 2500$. So the equilibrium number of **predators** is set by the prey's growth rate and the attack rate, and the equilibrium number of **prey** by the predators' death and conversion rates. Because the starting point (1000, 20) is now a different distance from the new equilibrium, the cycles also change size.
 5. *Volterra's principle.* With $r = 0.2$ and $d = 0.12$ the equilibrium moves to $H^* = 0.12/0.00008 = 1500$ and $P^* = 0.2/0.01 = 20$ (averages over the run with $\Delta t = 0.1$: about 1482 prey and 19.9 predators). Killing both species **increases** the number of prey and decreases the number of predators, because the pesticide hits the predators' food supply as well as the predators themselves.
 
-### Session 2
+### Session 2 (Parts 3 and 4)
 
 **Part 3: prey carrying capacity.**
 
@@ -982,12 +982,13 @@ Time 1 gives $H = 1050$, $P = 19.6$; time 2 gives $H = 1106.7$, $P = 19.286$.
 2. A refuge of 50 or 100 prey stops extinction (the prey can never be hunted below $H_r$), but the cycles stay large with $\Delta t = 1$ (with $H_r = 100$, prey still range from about 480 to 2980 in the last 100 time units). With $H_r = 200$ the cycles shrink (prey 1210 to 1732 in the last 100 time units), and with $H_r = 400$ the populations settle at $H = 1650$, $P = 33$ (within 1 % by $t = 186$). The larger the refuge, the more stable the interaction.
 3. The predators only meet the $H - H_r$ prey outside the refuge, so they need $d/c = 1250$ *catchable* prey to replace themselves: the predator isocline moves right, to $H = H_r + d/c$ (1450 with $H_r = 200$). The prey isocline is no longer flat: it is $P = rH/(a(H - H_r))$, which rises steeply as $H$ falls towards $H_r$, because when most prey are in the refuge it takes many predators to stop them growing.
 
-### Questions
+### Part 5: the questions
 
 1. $H^* = d/c$ and $P^* = r/a$. The prey equilibrium is the number of prey at which predators exactly replace themselves (births $cHP$ = deaths $dP$), so it depends only on predator parameters. The predator equilibrium is the number of predators that exactly removes the prey's growth (losses $aHP$ = growth $rH$), so it depends only on the prey's growth rate and the attack rate.
 2. In the spreadsheet each population responds to the other one time step late, so each cycle overshoots a little more than the last. Near the equilibrium the distance from it grows by a factor of about $\sqrt{1 + \Delta t^2 rd}$ per step (about 1.2 % per step with $\Delta t = 1$). This factor depends on $\Delta t$, $r$ and $d$ but not on $a$ or $c$, and gets closer to 1 (no growth) as $\Delta t$ gets smaller. A discrete-time model can behave quite differently from the continuous model it is meant to approximate, unless the time step is short compared with the timescale of the dynamics (here, a cycle of about 40 time units).
 3. A **carrying capacity** makes the prey isocline slope downwards. The crossing point is then a stable equilibrium, and the cycles are damped (unless $K < d/c$, when the predators cannot persist). A **refuge** puts a floor under the prey, which stops extinction, and moves the predator isocline to the right and bends the prey isocline upwards near $H_r$; a large enough refuge damps the cycles to a stable equilibrium. Neal (*Predator-Prey Interactions*) shows both with the Rosenzweig-MacArthur graphical model.
 4. Examples: predators can become satiated (a Type II functional response, from the lecture), which tends to destabilise; predators interfere with each other or are limited by territories (a predator carrying capacity), which stabilises; the predator eats other prey too; there is no time lag between eating and reproducing (or, in the spreadsheet, a whole-step lag); individuals meet at random in a uniform environment, whereas real populations are patchy (Huffaker's mites needed a complex landscape to persist); populations are large and deterministic, whereas small numbers make chance extinction likely.
+5. (Optional) In the model, every prey born above $H_r$ is immediately out in the open and can be caught, so whenever the prey grow there is food for the predators. Gause's *Paramecium* stayed in the sediment while *Didinium* was hunting, so once the free-swimming prey were eaten there were no catchable prey at all ($H - H_r = 0$). The model's predators also decline smoothly at rate $d$ and can survive a lean spell at very low, even fractional, numbers: in Part 1 they dwindle to about 0.05 predators by $t = 300$, which is not a real population. Real *Didinium* starve within days, and a population of a few individuals can hit zero by chance. A refuge stabilises the model only because it keeps a steady supply of exposed prey; Gause's experiment had a refuge without that supply.
 
 ## Solutions: Continuous-time Lotka-Volterra predator-prey model in R
 

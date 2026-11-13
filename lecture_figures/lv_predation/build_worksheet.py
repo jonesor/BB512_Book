@@ -14,8 +14,8 @@ NSTEP = 3000                 # rows of the model: enough for dt = 0.1 over 300 t
 FIRST, LAST = 11, 11 + NSTEP
 TMAX = 300                   # time axis of the time-series graph
 
-YELLOW = PatternFill("solid", fgColor="FFF2B2")
-PALE = PatternFill("solid", fgColor="EFEEE6")
+YELLOW = PatternFill("solid", fgColor="FFE699")
+PALE = PatternFill("solid", fgColor="FCE4D6")  # orange: parameters, as in the competition sheet
 BOLD = Font(bold=True)
 TITLE = Font(bold=True, size=14)
 GREY = Font(color="6E6F68", italic=True)
@@ -108,7 +108,6 @@ def sheet(wb, title, kind, heading, instruction, student_prey, student_pred):
     for c in "ABC":
         ws[f"{c}10"].font = BOLD
     ws[f"A{FIRST}"] = 0; ws[f"B{FIRST}"] = 1000; ws[f"C{FIRST}"] = 20
-    ws[f"B{FIRST}"].fill = PALE; ws[f"C{FIRST}"].fill = PALE
     for rr in range(FIRST + 1, LAST + 1):
         p = rr - 1
         ws[f"A{rr}"] = f"=A{p}+$F$8"
