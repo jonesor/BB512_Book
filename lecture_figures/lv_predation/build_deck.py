@@ -181,13 +181,21 @@ Part 2 (about 25 min), answers: prey peak first, predators about a quarter of a 
 Session 2: Part 3 formula =MAX(0,B11+$F$8*($F$4*B11*(1-B11/$F$9)-$F$5*B11*C11)), check t = 1 gives H = 925. Keep dt = 1.
 """)
 
-new("Title, Bullets & Photo", {100: "Check your sheet",
-                               103: "CHECK",
-                               105: ("t = 1: H = 1050, P = 19.6. t = 2: H = 1106.7, P = 19.286. With dt = 1 the cycles grow, and the prey hit zero at t = 220.", 19)},
-    pictures={101: F + "02_check_sheet.png"},
+I = os.path.join(os.path.dirname(os.path.abspath(__file__)), "images")
+
+new("Title & Photo", {100: "Your worksheet",
+                      102: "Yellow: your formulas (B12, C12). Orange: the parameters you change."},
+    pictures={101: os.path.join(I, "pp_worksheet_blank.png")},
     notes="""
-(1 min) 0 to 300 time units with dt = 1, as on the worksheet's own graph. The cycles grow until the prey hit zero at t = 220 (they almost do at t = 167, when only about 2 prey are left); the predators then dwindle.
-Deterministic simulation of the worksheet model, script 02_check_sheet.R; numbers printed by 00_check_numbers.R.
+Screenshot of the student worksheet as downloaded (Excel, Mac), sheet Part 1 Basic model, A1:L12, padded to the picture frame. Show it with the task slide so students can find their way around: the two yellow cells are the only ones they type in for Part 1; after that they change only the orange cells (and, for the equilibrium task, the starting numbers in B11 and C11). The isocline block (B4:C8) feeds the phase graph; the two graphs sit side by side from D13.
+""")
+
+new("Title & Photo", {100: "Check your sheet",
+                      102: "t = 1: H = 1050, P = 19.6. With dt = 1 the cycles grow, and the prey hit zero at t = 220."},
+    pictures={101: os.path.join(I, "pp_check_graphs.png")},
+    notes="""
+(1 min) Screenshot of the completed worksheet in Excel (D13:O28, default values, dt = 1), so students compare like with like. t = 2 gives H = 1106.7, P = 19.286. The cycles grow until the prey hit zero at t = 220 (they almost do at t = 167, when only about 2 prey are left); the predators then dwindle. In the phase plane the trajectory spirals out from the isocline crossing at (1250, 25).
+The R version of this figure (02_check_sheet.R) is kept in figures/ but no longer used in the deck.
 """)
 
 new("Figure & Bullets", {100: "What your phase graph can show",
